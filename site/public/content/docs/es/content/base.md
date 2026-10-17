@@ -37,6 +37,18 @@ Letras juntas, como en My Book Box, y con las líneas equilibradas (`text-wrap: 
 <p class="gm-small gm-muted">Texto pequeño: fechas, notas, avisos legales.</p>
 ```
 
+## Lista de datos
+
+`.gm-dl`: etiqueta en gris y valor debajo, para resúmenes (los datos de un pedido, de un perfil o de una solicitud).
+
+```html
+<dl class="gm-dl">
+  <div><dt>Nombre</dt><dd>Lucía Martín</dd></div>
+  <div><dt>Correo</dt><dd>lucia@ejemplo.com</dd></div>
+  <div><dt>Proyecto</dt><dd>Una tienda online de cerámica, con pago con tarjeta y envíos a toda España.</dd></div>
+</dl>
+```
+
 ## Accesibilidad que ya viene puesta
 
 - **Foco siempre visible:** contorno de 2 px del color de acento al usar el teclado (WCAG 2.4.7).

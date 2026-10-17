@@ -31,6 +31,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 ## Layout
 
 - [Containers](/docs/layout/containers): The container centers the page content and leaves a margin on the sides. It is the first thing inside each section.
+- [Sections](/docs/layout/sections): Each part of a home page (About me, Skills, Contact…) is a section: some space above and below, the title centered and the text below it, in a narrow container so lines are not too long. As in the portfolio template.
 - [Breakpoints](/docs/layout/breakpoints): The screen widths where the layout changes. You think of phones first and add from each breakpoint upwards, as in Bootstrap.
 - [Grid](/docs/layout/grid): To place pieces in columns. It has 12 columns, like Bootstrap's, but is built with CSS Grid: each child says how many of the 12 it spans, and that can change at each [breakpoint](/docs/layout/breakpoints).
 

@@ -31,6 +31,18 @@ El pie de la plantilla de portfolio: un título, los enlaces con icono (correo y
 | `.gm-footer__bottom` | El año y el nombre (en `<strong>`) |
 | `.gm-footer__credit` | Créditos, más pequeños |
 
+## Iconos sociales grandes
+
+Para el correo y las redes fuera del pie (por ejemplo, en la portada): `.gm-socials`, iconos de 36 px que se agrandan un poco al pasar el ratón. El tamaño se cambia con `--gm-socials-size`.
+
+```html
+<div class="gm-socials">
+  <button type="button" aria-label="Copiar dirección de correo"><i class="gmi gmi-envelope-fill" aria-hidden="true"></i></button>
+  <a href="#" aria-label="GitHub (se abre en una pestaña nueva)"><i class="gmi gmi-github" aria-hidden="true"></i></a>
+  <a href="#" aria-label="LinkedIn (se abre en una pestaña nueva)"><i class="gmi gmi-linkedin" aria-hidden="true"></i></a>
+</div>
+```
+
 ## Logos de marcas
 
 GitHub y LinkedIn están en los iconos de GlassMarshmallow (`gmi-github`, `gmi-linkedin`), con su forma oficial: las marcas no permiten redibujar su logo. Para otras marcas, usa su SVG oficial o el de [Simple Icons](https://simpleicons.org) (licencia libre), con `fill="currentColor"` para que tome el color del texto.

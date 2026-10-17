@@ -30,6 +30,68 @@ On the site it sticks to the top (`position: sticky`); here it is shown inside t
 | `.gm-navbar__nav` | The section links; the current page has `aria-current="page"` |
 | `.gm-navbar__actions` | Buttons on the right (language, theme, account…) |
 
+## Without a logo and floating on phones
+
+The bar of the portfolio template. **On computers**, without a logo: the links in the center and the theme button on the right (`.gm-navbar--centered`). **On phones**, no bar: only the round glass buttons remain, floating at the top right (`.gm-navbar--floating`), and the menu button (`.gm-navbar__menu`) opens the [full-screen menu](/docs/components/fullscreen-menu).
+
+```html
+<header class="gm-navbar gm-navbar--centered gm-navbar--floating" style="position: relative; border-radius: 12px">
+  <nav class="gm-navbar__nav" aria-label="Centered bar example">
+    <a href="#" aria-current="page">Home</a>
+    <a href="#">About me</a>
+    <a href="#">Skills</a>
+  </nav>
+  <div class="gm-navbar__actions">
+    <button type="button" class="gm-icon-btn" aria-label="Switch to dark mode"><i class="gmi gmi-moon" aria-hidden="true"></i></button>
+    <button type="button" class="gm-icon-btn gm-icon-btn--glass gm-navbar__menu" aria-label="Open menu"><i class="gmi gmi-list" aria-hidden="true"></i></button>
+  </div>
+</header>
+```
+
+This is how it looks on phones (make the window narrower than 860 px to see it in the top bar):
+
+```html
+<div style="position: relative; height: 160px; overflow: hidden; border-radius: 12px; background: var(--gm-backdrop-lights), var(--gm-backdrop-bg)">
+  <div style="position: absolute; top: 12px; right: 12px; display: flex; gap: 12px">
+    <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Switch to dark mode"><i class="gmi gmi-moon" aria-hidden="true"></i></button>
+    <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Open menu"><i class="gmi gmi-list" aria-hidden="true"></i></button>
+  </div>
+</div>
+```
+
+## Change the colors
+
+With variables on the bar:
+
+| Variable | What it changes |
+| --- | --- |
+| `--gm-header-bg` | The background (a color, with transparency if you want glass) |
+| `--gm-header-filter` | The glass blur (`blur(24px)`; `none` to remove it) |
+| `--gm-header-border` | The bottom line |
+| `--gm-header-shadow` | The shadow |
+| `--gm-nav-link` | The link color |
+
+So the text reads well on the new background, the easiest way is to fix the mode of the bar with `data-theme`: a dark bar on a light page (`data-theme="dark"`) or a pastel with black text (`data-theme="light"`).
+
+```html
+<div style="display: grid; gap: 16px">
+  <header class="gm-navbar gm-navbar--centered" data-theme="dark" style="position: relative; border-radius: 12px">
+    <nav class="gm-navbar__nav" aria-label="Dark bar example">
+      <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
+    </nav>
+    <div class="gm-navbar__actions"><button type="button" class="gm-icon-btn" aria-label="Switch to light mode"><i class="gmi gmi-sun" aria-hidden="true"></i></button></div>
+  </header>
+  <header class="gm-navbar gm-navbar--centered" data-theme="light" style="position: relative; border-radius: 12px; --gm-header-bg: var(--gm-mint); --gm-header-border: transparent; --gm-header-shadow: 0 4px 24px rgba(0, 0, 0, .08)">
+    <nav class="gm-navbar__nav" aria-label="Mint bar example">
+      <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
+    </nav>
+    <div class="gm-navbar__actions"><button type="button" class="gm-icon-btn" aria-label="Switch to dark mode"><i class="gmi gmi-moon" aria-hidden="true"></i></button></div>
+  </header>
+</div>
+```
+
+For the whole site, put the variables in `:root` (and the night ones in `[data-theme="dark"]`), as in [CSS variables](/docs/getting-started/css-variables).
+
 ## On phones
 
 Below 860 px, the `.gm-navbar__nav` links are hidden and move to the [tab bar](/docs/components/tabbar) at the bottom. Between 860 and 1024 px the name next to the logo is hidden so everything fits.

@@ -133,6 +133,7 @@ export const en = {
       'customize/typography': 'Typography',
       'customize/background': 'Background',
       'layout/containers': 'Containers',
+      'layout/sections': 'Sections',
       'layout/breakpoints': 'Breakpoints',
       'layout/grid': 'Grid',
       'utilities/spacing': 'Spacing',

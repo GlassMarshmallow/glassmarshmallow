@@ -22,6 +22,14 @@ Las de negro, blanco y grises funcionan igual: `.gm-theme-white`, de `.gm-theme-
 
 Cambia entre el modo claro y el oscuro para verlo pasar de rosa a azul.
 
+## Acento turquesa de noche
+
+Con `class="gm-accent-turquoise"` en `<html>`, el color de acento de noche es el turquesa de la plantilla de portfolio (`#1cabb0`, 7,4:1 sobre negro) en lugar del azul; de día sigue el rosa. Cambia el foco, los campos, la selección, los iconos del acordeón y los botones de acento.
+
+```html
+<html lang="es" class="gm-accent-turquoise" data-theme="dark">
+```
+
 ## Sólido
 
 `.gm-theme-solid` pinta el pastel de fondo, con el texto negro en modo claro y oscuro.

@@ -889,6 +889,14 @@ The black, white and gray classes work the same way: `.gm-theme-white`, `.gm-the
 
 Switch between light and dark mode to see it turn from pink to blue.
 
+## Turquoise accent at night
+
+With `class="gm-accent-turquoise"` on `<html>`, the night accent color is the turquoise of the portfolio template (`#1cabb0`, 7.4:1 on black) instead of blue; by day it stays pink. It changes focus, fields, selection, accordion icons and accent buttons.
+
+```html
+<html lang="en" class="gm-accent-turquoise" data-theme="dark">
+```
+
 ## Solid
 
 `.gm-theme-solid` paints the pastel as the background, with black text in both light and dark mode.
@@ -1107,6 +1115,61 @@ The maximum width is the `--gm-container` variable. Change it for the whole site
 | `.gm-container` | 1240 px (`--gm-container`) | 24 px; 16 px up to 600 px |
 | `.gm-container--narrow` | 960 px | same |
 | `.gm-container--fluid` | full | same |
+
+<!-- /docs/layout/sections -->
+# Sections
+
+Each part of a home page (About me, Skills, Contact…) is a section: some space above and below, the title centered and the text below it, in a narrow container so lines are not too long. As in the portfolio template.
+
+## Example
+
+```html
+<section class="gm-section" style="padding-block: 2.5rem">
+  <div class="gm-container gm-container--narrow">
+    <h2 class="gm-section__title">About me</h2>
+    <p class="gm-section__text">Hi, I am <strong>Lucía Martín</strong> and I am a web developer. I like working on both sides of an application: what you see and what is behind it.</p>
+    <p class="gm-section__text">I love taking part in projects from the idea until they are up and running.</p>
+  </div>
+</section>
+```
+
+## Where each thing goes
+
+| Piece | Class | How it looks |
+| --- | --- | --- |
+| The section | `.gm-section` | 6 rem above and below (3.5 rem on phones) |
+| The width | `.gm-container .gm-container--narrow` | Centered, 960 px at most; text, 80 characters per line at most |
+| The title | `.gm-section__title` | Centered, 2 rem (1.7 rem on phones), with 2 rem below |
+| The text | `.gm-section__text` | Left-aligned, 1.1 rem with 1.7 line height, in gray; highlighted words (`<strong>`) in the text color |
+
+## With another piece below
+
+Any component can go after the title, for example an [accordion](/docs/components/accordion):
+
+```html
+<section class="gm-section" style="padding-block: 2.5rem">
+  <div class="gm-container gm-container--narrow">
+    <h2 class="gm-section__title">Skills</h2>
+    <div class="gm-accordion">
+      <details class="gm-accordion__item" name="section-example">
+        <summary class="gm-accordion__summary">
+          <span class="gm-accordion__icon" aria-hidden="true"><i class="gmi gmi-palette"></i></span>
+          <span class="gm-accordion__text"><span class="gm-accordion__title">Design</span><span class="gm-accordion__meta">3 tools</span></span>
+          <i class="gmi gmi-chevron-down gm-accordion__chevron" aria-hidden="true"></i>
+        </summary>
+        <div class="gm-accordion__content"><ul class="gm-accordion__list"><li>Figma</li><li>Photoshop</li><li>Illustrator</li></ul></div>
+      </details>
+    </div>
+  </div>
+</section>
+```
+
+## Accessibility
+
+- Each section starts with its title (`h2`) and titles go in order, without skipping levels.
+- Text is left-aligned: centered, long paragraphs are hard to read (WCAG 1.4.8).
+- Lines of 80 characters at most and 1.7 line height (WCAG 1.4.8 and 1.4.12).
+- The gray text reaches 7:1 on the background (AAA).
 
 <!-- /docs/layout/breakpoints -->
 # Breakpoints
@@ -1787,6 +1850,18 @@ Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so n
 <h3 style="margin-top: 0">GlassMarshmallow 0.1</h3>
 <p class="gm-muted">Secondary text for descriptions and hints.</p>
 <p class="gm-small gm-muted">Small text: dates, notes, legal notices.</p>
+```
+
+## Data list
+
+`.gm-dl`: label in gray and value below it, for summaries (the details of an order, a profile or a request).
+
+```html
+<dl class="gm-dl">
+  <div><dt>Name</dt><dd>Lucía Martín</dd></div>
+  <div><dt>Email</dt><dd>lucia@example.com</dd></div>
+  <div><dt>Project</dt><dd>An online ceramics shop, with card payment and shipping all over Spain.</dd></div>
+</dl>
 ```
 
 ## Accessibility already built in
@@ -2550,6 +2625,40 @@ Like in the portfolio: an icon in a circle on the left and a detail line under t
 </div>
 ```
 
+## With preview and logo list
+
+Like Skills in the portfolio template: closed, a few logos on the right (`.gm-accordion__preview`) and how many more there are; open, the list with a logo before each item, one below the other (`.gm-accordion__list--icons`). With `--cascade` and `style="--i: 0"`, `1`, `2`… the items come in one after the other when it opens.
+
+```html
+<div class="gm-accordion">
+  <details class="gm-accordion__item" name="logos-example" open>
+    <summary class="gm-accordion__summary">
+      <span class="gm-accordion__icon" aria-hidden="true"><i class="gmi gmi-window"></i></span>
+      <span class="gm-accordion__text">
+        <span class="gm-accordion__title">Frontend</span>
+        <span class="gm-accordion__meta">5 technologies</span>
+      </span>
+      <span class="gm-accordion__preview" aria-hidden="true">
+        <span class="gm-accordion__preview-item"><i class="gmi gmi-angular"></i></span>
+        <span class="gm-accordion__preview-item"><i class="gmi gmi-react"></i></span>
+        <span class="gm-accordion__preview-item"><i class="gmi gmi-astro"></i></span>
+        <span class="gm-accordion__preview-more">+2</span>
+      </span>
+      <i class="gmi gmi-chevron-down gm-accordion__chevron" aria-hidden="true"></i>
+    </summary>
+    <ul class="gm-accordion__content gm-accordion__list gm-accordion__list--icons gm-accordion__list--cascade">
+      <li style="--i: 0"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-angular"></i></span>Angular</li>
+      <li style="--i: 1"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-react"></i></span>React</li>
+      <li style="--i: 2"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-astro"></i></span>Astro</li>
+      <li style="--i: 3"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-tailwindcss"></i></span>Tailwind CSS</li>
+      <li style="--i: 4"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-code-slash"></i></span>WCAG (web accessibility)</li>
+    </ul>
+  </details>
+</div>
+```
+
+On narrow screens the preview shows fewer logos (3 below 600 px) and disappears below 420 px. The logos are those in the Brand category of the [icons](/icons).
+
 ## Lists inside
 
 If there are several items inside (more than 3), they go one below the other in a list, not run together in a sentence: `<ul class="gm-accordion__list">`. They are easier to scan and screen readers say how many there are.
@@ -2676,6 +2785,34 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
   <span class="gm-avatar gm-avatar--lg gm-avatar--square gm-theme-lavender" role="img" aria-label="Marta Gil">MG</span>
   <span class="gm-avatar gm-avatar--lg gm-theme-mint" role="img" aria-label="Diego Sanz">DS</span>
   <span class="gm-avatar gm-avatar--lg" role="img" aria-label="No profile picture"><i class="gmi gmi-person-fill" aria-hidden="true"></i></span>
+</div>
+```
+
+## With a ring
+
+`.gm-avatar--ring`: the photo with a colored ring, like the one in the portfolio template. By default, with the lights of the illustration; the thickness is proportional to the size.
+
+```html
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+</div>
+```
+
+## Customize
+
+| Variable | What it changes | Default |
+| --- | --- | --- |
+| `--gm-avatar-size` | The size | 3 rem |
+| `--gm-avatar-radius` | How rounded the corners are | 50% (circle); 22% with `--square` |
+| `--gm-avatar-ring` | The ring color (a color or a gradient), with `--ring` | The lights of the illustration |
+
+```html
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Ana López"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: linear-gradient(135deg, var(--gm-mint), var(--gm-sky), var(--gm-lavender))"><img src="media/perfil-4.jpg" alt="Diego Sanz"></span>
+  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
+  <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
 </div>
 ```
 
@@ -3047,7 +3184,7 @@ A glass pill with the field and the send button. While typing, the border takes 
 
 ## Answer bubble
 
-Glass with the lights border and, in dark mode, a turquoise glow. The tail points to the speaker: `.gm-bubble--tail-end` (right) or `.gm-bubble--tail-start` (left), at the height of `--gm-bubble-tail-y`.
+Glass with the lights border and, in dark mode, a turquoise glow. The tail points to the speaker: `.gm-bubble--tail-end` (right) or `.gm-bubble--tail-start` (left), at the height of `--gm-bubble-tail-y` (measured from the bottom on the right one; on the left one, from the top, or from the bottom with `.gm-bubble--tail-bottom`).
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
@@ -3077,6 +3214,31 @@ While the answer arrives, `.gm-typing` with three `<span>`s: three dots bouncing
 ## Error
 
 `.gm-bubble--error`: the border in coral, the error color.
+
+## Change the color
+
+With variables, on the bubble or on any element that contains it:
+
+| Variable | What it changes | Default |
+| --- | --- | --- |
+| `--gm-bubble-color` | The border and the tail of the bubble (a color or a gradient) | The lights of the illustration |
+| `--gm-bubble-tail-color` | Only the tail, if the border is a gradient (the tail takes a color, not a gradient) | The one in `--gm-bubble-color` |
+| `--gm-typing-color` | The "thinking" dots | The lights of the illustration |
+
+```html
+<div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
+  <div class="gm-bubble gm-bubble--tail-end" style="--gm-bubble-color: var(--gm-accent); max-width: 360px">
+    <div class="gm-bubble__scroll">With the accent color: pink by day and blue at night.</div>
+  </div>
+  <div class="gm-bubble gm-bubble--tail-start" style="--gm-bubble-color: linear-gradient(90deg, var(--gm-mint-700), var(--gm-sky-700)); --gm-bubble-tail-color: var(--gm-mint-700); max-width: 360px; margin-left: 16px">
+    <div class="gm-bubble__scroll">With a gradient from mint to sky; the tail, in mint.</div>
+  </div>
+  <div class="gm-bubble" style="--gm-bubble-color: var(--gm-accent); --gm-typing-color: var(--gm-accent); max-width: 120px">
+    <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="gm-visually-hidden">Thinking about the answer…</span>
+  </div>
+</div>
+```
 
 ## Accessibility
 
@@ -3117,6 +3279,34 @@ Many chips in a row fit better in a [swipe row](/docs/components/carousel#swipe-
 </div>
 ```
 
+## Change the borders
+
+| Variable | What it changes | Default |
+| --- | --- | --- |
+| `--gm-chip-border` | The border at rest | The panel gray |
+| `--gm-chip-color` | The border on hover and on the accent chip (a color or a gradient) | The lights of the illustration |
+
+With the accent color at rest and on hover, and with a pastel gradient on hover:
+
+```html
+<div class="gm-flex gm-flex-wrap gm-gap-2 gm-justify-center">
+  <button type="button" class="gm-chip" style="--gm-chip-border: var(--gm-accent); --gm-chip-color: var(--gm-accent)">What technologies do you use?</button>
+  <button type="button" class="gm-chip" style="--gm-chip-color: linear-gradient(90deg, var(--gm-mint), var(--gm-sky), var(--gm-lavender))">How much does a website cost?</button>
+  <button type="button" class="gm-chip gm-chip--accent" style="--gm-chip-color: var(--gm-accent)"><i class="gmi gmi-stars" aria-hidden="true"></i>I want a project</button>
+</div>
+```
+
+## Without a border
+
+`.gm-chip--borderless`: only the glass, with no border at rest or on hover (it still rises a little). Use it on backgrounds where the glass stands out well.
+
+```html
+<div class="gm-flex gm-flex-wrap gm-gap-2 gm-justify-center">
+  <button type="button" class="gm-chip gm-chip--borderless">What technologies do you use?</button>
+  <button type="button" class="gm-chip gm-chip--borderless">Do you build online shops?</button>
+</div>
+```
+
 ## Disabled
 
 With `disabled`, or with `aria-disabled="true"` if it must stay focusable (for example, inside a swipe row while the AI is thinking).
@@ -3125,7 +3315,7 @@ With `disabled`, or with `aria-disabled="true"` if it must stay focusable (for e
 
 - They are `<button>` elements with text: they say what they do.
 - They look smaller than 44 px, but the touch area reaches 44 px (WCAG 2.5.5).
-- Text reaches 7:1 on the glass in both modes; the border, 3:1.
+- Text reaches 7:1 on the glass in both modes; the border, 3:1. If you change the border color, keep it at 3:1; without a border, the text is enough to tell what it is.
 
 <!-- /docs/components/dialog -->
 # Dialog
@@ -3204,7 +3394,7 @@ The footer from the portfolio template: a heading, icon links (email and social)
     <h2>Let's connect</h2>
     <div class="gm-footer__socials">
       <a href="#" aria-label="Send an email"><i class="gmi gmi-envelope-fill" aria-hidden="true"></i></a>
-      <a href="#" aria-label="GitHub (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+      <a href="#" aria-label="GitHub (opens in a new tab)"><i class="gmi gmi-github" aria-hidden="true"></i></a>
     </div>
     <nav class="gm-footer__links" aria-label="Legal information">
       <a href="#">Privacy</a><span aria-hidden="true">·</span><a href="#">Legal notice</a>
@@ -3225,9 +3415,21 @@ The footer from the portfolio template: a heading, icon links (email and social)
 | `.gm-footer__bottom` | The year and the name (in `<strong>`) |
 | `.gm-footer__credit` | Credits, smaller |
 
+## Large social icons
+
+For email and social links outside the footer (for example, on the home page): `.gm-socials`, 36 px icons that grow a little on hover. Change the size with `--gm-socials-size`.
+
+```html
+<div class="gm-socials">
+  <button type="button" aria-label="Copy email address"><i class="gmi gmi-envelope-fill" aria-hidden="true"></i></button>
+  <a href="#" aria-label="GitHub (opens in a new tab)"><i class="gmi gmi-github" aria-hidden="true"></i></a>
+  <a href="#" aria-label="LinkedIn (opens in a new tab)"><i class="gmi gmi-linkedin" aria-hidden="true"></i></a>
+</div>
+```
+
 ## Brand logos
 
-GlassMarshmallow icons do not include brand logos (GitHub, LinkedIn…). For those, use their official SVG or the one from [Simple Icons](https://simpleicons.org) (free license), with `fill="currentColor"` so it takes the text color.
+GitHub and LinkedIn are in the GlassMarshmallow icons (`gmi-github`, `gmi-linkedin`), with their official shape: brands do not allow their logo to be redrawn. For other brands, use their official SVG or the one from [Simple Icons](https://simpleicons.org) (free license), with `fill="currentColor"` so it takes the text color.
 
 ## Accessibility
 
@@ -3374,6 +3576,68 @@ On the site it sticks to the top (`position: sticky`); here it is shown inside t
 | `.gm-navbar__logo` | The logo, 48 px (42 px on phones) |
 | `.gm-navbar__nav` | The section links; the current page has `aria-current="page"` |
 | `.gm-navbar__actions` | Buttons on the right (language, theme, account…) |
+
+## Without a logo and floating on phones
+
+The bar of the portfolio template. **On computers**, without a logo: the links in the center and the theme button on the right (`.gm-navbar--centered`). **On phones**, no bar: only the round glass buttons remain, floating at the top right (`.gm-navbar--floating`), and the menu button (`.gm-navbar__menu`) opens the [full-screen menu](/docs/components/fullscreen-menu).
+
+```html
+<header class="gm-navbar gm-navbar--centered gm-navbar--floating" style="position: relative; border-radius: 12px">
+  <nav class="gm-navbar__nav" aria-label="Centered bar example">
+    <a href="#" aria-current="page">Home</a>
+    <a href="#">About me</a>
+    <a href="#">Skills</a>
+  </nav>
+  <div class="gm-navbar__actions">
+    <button type="button" class="gm-icon-btn" aria-label="Switch to dark mode"><i class="gmi gmi-moon" aria-hidden="true"></i></button>
+    <button type="button" class="gm-icon-btn gm-icon-btn--glass gm-navbar__menu" aria-label="Open menu"><i class="gmi gmi-list" aria-hidden="true"></i></button>
+  </div>
+</header>
+```
+
+This is how it looks on phones (make the window narrower than 860 px to see it in the top bar):
+
+```html
+<div style="position: relative; height: 160px; overflow: hidden; border-radius: 12px; background: var(--gm-backdrop-lights), var(--gm-backdrop-bg)">
+  <div style="position: absolute; top: 12px; right: 12px; display: flex; gap: 12px">
+    <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Switch to dark mode"><i class="gmi gmi-moon" aria-hidden="true"></i></button>
+    <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Open menu"><i class="gmi gmi-list" aria-hidden="true"></i></button>
+  </div>
+</div>
+```
+
+## Change the colors
+
+With variables on the bar:
+
+| Variable | What it changes |
+| --- | --- |
+| `--gm-header-bg` | The background (a color, with transparency if you want glass) |
+| `--gm-header-filter` | The glass blur (`blur(24px)`; `none` to remove it) |
+| `--gm-header-border` | The bottom line |
+| `--gm-header-shadow` | The shadow |
+| `--gm-nav-link` | The link color |
+
+So the text reads well on the new background, the easiest way is to fix the mode of the bar with `data-theme`: a dark bar on a light page (`data-theme="dark"`) or a pastel with black text (`data-theme="light"`).
+
+```html
+<div style="display: grid; gap: 16px">
+  <header class="gm-navbar gm-navbar--centered" data-theme="dark" style="position: relative; border-radius: 12px">
+    <nav class="gm-navbar__nav" aria-label="Dark bar example">
+      <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
+    </nav>
+    <div class="gm-navbar__actions"><button type="button" class="gm-icon-btn" aria-label="Switch to light mode"><i class="gmi gmi-sun" aria-hidden="true"></i></button></div>
+  </header>
+  <header class="gm-navbar gm-navbar--centered" data-theme="light" style="position: relative; border-radius: 12px; --gm-header-bg: var(--gm-mint); --gm-header-border: transparent; --gm-header-shadow: 0 4px 24px rgba(0, 0, 0, .08)">
+    <nav class="gm-navbar__nav" aria-label="Mint bar example">
+      <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
+    </nav>
+    <div class="gm-navbar__actions"><button type="button" class="gm-icon-btn" aria-label="Switch to dark mode"><i class="gmi gmi-moon" aria-hidden="true"></i></button></div>
+  </header>
+</div>
+```
+
+For the whole site, put the variables in `:root` (and the night ones in `[data-theme="dark"]`), as in [CSS variables](/docs/getting-started/css-variables).
 
 ## On phones
 

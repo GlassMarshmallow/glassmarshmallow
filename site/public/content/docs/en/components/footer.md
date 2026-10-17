@@ -31,6 +31,18 @@ The footer from the portfolio template: a heading, icon links (email and social)
 | `.gm-footer__bottom` | The year and the name (in `<strong>`) |
 | `.gm-footer__credit` | Credits, smaller |
 
+## Large social icons
+
+For email and social links outside the footer (for example, on the home page): `.gm-socials`, 36 px icons that grow a little on hover. Change the size with `--gm-socials-size`.
+
+```html
+<div class="gm-socials">
+  <button type="button" aria-label="Copy email address"><i class="gmi gmi-envelope-fill" aria-hidden="true"></i></button>
+  <a href="#" aria-label="GitHub (opens in a new tab)"><i class="gmi gmi-github" aria-hidden="true"></i></a>
+  <a href="#" aria-label="LinkedIn (opens in a new tab)"><i class="gmi gmi-linkedin" aria-hidden="true"></i></a>
+</div>
+```
+
 ## Brand logos
 
 GitHub and LinkedIn are in the GlassMarshmallow icons (`gmi-github`, `gmi-linkedin`), with their official shape: brands do not allow their logo to be redrawn. For other brands, use their official SVG or the one from [Simple Icons](https://simpleicons.org) (free license), with `fill="currentColor"` so it takes the text color.

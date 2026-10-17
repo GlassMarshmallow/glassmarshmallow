@@ -30,6 +30,68 @@ En la web va pegada arriba (`position: sticky`); aquí se ve dentro del recuadro
 | `.gm-navbar__nav` | Los enlaces de las secciones; la página actual lleva `aria-current="page"` |
 | `.gm-navbar__actions` | Botones de la derecha (idioma, tema, cuenta…) |
 
+## Sin logo y flotante en el móvil
+
+La barra de la plantilla de portfolio. **En el ordenador**, sin logo: los enlaces en el centro y el botón de tema a la derecha (`.gm-navbar--centered`). **En el móvil**, sin barra: solo quedan los botones redondos de cristal flotando arriba a la derecha (`.gm-navbar--floating`), y el botón de menú (`.gm-navbar__menu`) abre el [menú a pantalla completa](/docs/components/fullscreen-menu).
+
+```html
+<header class="gm-navbar gm-navbar--centered gm-navbar--floating" style="position: relative; border-radius: 12px">
+  <nav class="gm-navbar__nav" aria-label="Ejemplo de barra centrada">
+    <a href="#" aria-current="page">Inicio</a>
+    <a href="#">Sobre mí</a>
+    <a href="#">Habilidades</a>
+  </nav>
+  <div class="gm-navbar__actions">
+    <button type="button" class="gm-icon-btn" aria-label="Cambiar a modo oscuro"><i class="gmi gmi-moon" aria-hidden="true"></i></button>
+    <button type="button" class="gm-icon-btn gm-icon-btn--glass gm-navbar__menu" aria-label="Abrir menú"><i class="gmi gmi-list" aria-hidden="true"></i></button>
+  </div>
+</header>
+```
+
+Así se ve en el móvil (estrecha la ventana por debajo de 860 px para verlo en la barra de arriba):
+
+```html
+<div style="position: relative; height: 160px; overflow: hidden; border-radius: 12px; background: var(--gm-backdrop-lights), var(--gm-backdrop-bg)">
+  <div style="position: absolute; top: 12px; right: 12px; display: flex; gap: 12px">
+    <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Cambiar a modo oscuro"><i class="gmi gmi-moon" aria-hidden="true"></i></button>
+    <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Abrir menú"><i class="gmi gmi-list" aria-hidden="true"></i></button>
+  </div>
+</div>
+```
+
+## Cambiar los colores
+
+Con variables en la barra:
+
+| Variable | Qué cambia |
+| --- | --- |
+| `--gm-header-bg` | El fondo (un color, con transparencia si quieres cristal) |
+| `--gm-header-filter` | El desenfoque del cristal (`blur(24px)`; `none` para quitarlo) |
+| `--gm-header-border` | La línea de abajo |
+| `--gm-header-shadow` | La sombra |
+| `--gm-nav-link` | El color de los enlaces |
+
+Para que el texto se lea bien sobre el nuevo fondo, lo más sencillo es fijar el modo de la barra con `data-theme`: una barra oscura en una página clara (`data-theme="dark"`) o un pastel con texto negro (`data-theme="light"`).
+
+```html
+<div style="display: grid; gap: 16px">
+  <header class="gm-navbar gm-navbar--centered" data-theme="dark" style="position: relative; border-radius: 12px">
+    <nav class="gm-navbar__nav" aria-label="Ejemplo de barra oscura">
+      <a href="#" aria-current="page">Inicio</a><a href="#">Sobre mí</a><a href="#">Habilidades</a>
+    </nav>
+    <div class="gm-navbar__actions"><button type="button" class="gm-icon-btn" aria-label="Cambiar a modo claro"><i class="gmi gmi-sun" aria-hidden="true"></i></button></div>
+  </header>
+  <header class="gm-navbar gm-navbar--centered" data-theme="light" style="position: relative; border-radius: 12px; --gm-header-bg: var(--gm-mint); --gm-header-border: transparent; --gm-header-shadow: 0 4px 24px rgba(0, 0, 0, .08)">
+    <nav class="gm-navbar__nav" aria-label="Ejemplo de barra menta">
+      <a href="#" aria-current="page">Inicio</a><a href="#">Sobre mí</a><a href="#">Habilidades</a>
+    </nav>
+    <div class="gm-navbar__actions"><button type="button" class="gm-icon-btn" aria-label="Cambiar a modo oscuro"><i class="gmi gmi-moon" aria-hidden="true"></i></button></div>
+  </header>
+</div>
+```
+
+Para toda la web, pon las variables en `:root` (y en `[data-theme="dark"]` las de noche), como en [Variables CSS](/docs/getting-started/css-variables).
+
 ## En el móvil
 
 Por debajo de 860 px, los enlaces de `.gm-navbar__nav` se esconden y pasan a la [barra de pestañas](/docs/components/tabbar) de abajo. Entre 860 y 1024 px se esconde el nombre junto al logo para que quepa todo.

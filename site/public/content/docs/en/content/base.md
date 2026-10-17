@@ -37,6 +37,18 @@ Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so n
 <p class="gm-small gm-muted">Small text: dates, notes, legal notices.</p>
 ```
 
+## Data list
+
+`.gm-dl`: label in gray and value below it, for summaries (the details of an order, a profile or a request).
+
+```html
+<dl class="gm-dl">
+  <div><dt>Name</dt><dd>Lucía Martín</dd></div>
+  <div><dt>Email</dt><dd>lucia@example.com</dd></div>
+  <div><dt>Project</dt><dd>An online ceramics shop, with card payment and shipping all over Spain.</dd></div>
+</dl>
+```
+
 ## Accessibility already built in
 
 - **Focus always visible:** 2 px outline in the accent color when using the keyboard (WCAG 2.4.7).

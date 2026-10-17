@@ -89,6 +89,40 @@ Como en el portfolio: un icono en un círculo a la izquierda y una línea de det
 </div>
 ```
 
+## Con vista previa y lista de logos
+
+Como Habilidades en la plantilla de portfolio: cerrado, unos logos a la derecha (`.gm-accordion__preview`) y cuántos más hay; abierto, la lista con un logo delante de cada elemento, uno debajo de otro (`.gm-accordion__list--icons`). Con `--cascade` y `style="--i: 0"`, `1`, `2`… los elementos entran uno detrás de otro al abrir.
+
+```html
+<div class="gm-accordion">
+  <details class="gm-accordion__item" name="ejemplo-logos" open>
+    <summary class="gm-accordion__summary">
+      <span class="gm-accordion__icon" aria-hidden="true"><i class="gmi gmi-window"></i></span>
+      <span class="gm-accordion__text">
+        <span class="gm-accordion__title">Frontend</span>
+        <span class="gm-accordion__meta">5 tecnologías</span>
+      </span>
+      <span class="gm-accordion__preview" aria-hidden="true">
+        <span class="gm-accordion__preview-item"><i class="gmi gmi-angular"></i></span>
+        <span class="gm-accordion__preview-item"><i class="gmi gmi-react"></i></span>
+        <span class="gm-accordion__preview-item"><i class="gmi gmi-astro"></i></span>
+        <span class="gm-accordion__preview-more">+2</span>
+      </span>
+      <i class="gmi gmi-chevron-down gm-accordion__chevron" aria-hidden="true"></i>
+    </summary>
+    <ul class="gm-accordion__content gm-accordion__list gm-accordion__list--icons gm-accordion__list--cascade">
+      <li style="--i: 0"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-angular"></i></span>Angular</li>
+      <li style="--i: 1"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-react"></i></span>React</li>
+      <li style="--i: 2"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-astro"></i></span>Astro</li>
+      <li style="--i: 3"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-tailwindcss"></i></span>Tailwind CSS</li>
+      <li style="--i: 4"><span class="gm-accordion__list-icon" aria-hidden="true"><i class="gmi gmi-code-slash"></i></span>WCAG (accesibilidad web)</li>
+    </ul>
+  </details>
+</div>
+```
+
+En pantallas estrechas la vista previa enseña menos logos (3 por debajo de 600 px) y desaparece por debajo de 420 px. Los logos son los de la categoría Brand de los [iconos](/icons).
+
 ## Listas dentro
 
 Si dentro hay varios elementos (más de 3), van uno debajo de otro en una lista, no seguidos en una frase: `<ul class="gm-accordion__list">`. Se leen mejor de un vistazo y los lectores de pantalla dicen cuántos son.

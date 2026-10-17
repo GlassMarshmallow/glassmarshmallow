@@ -134,6 +134,7 @@ export const es: Dictionary = {
       'customize/typography': 'Tipografía',
       'customize/background': 'Fondo de la web',
       'layout/containers': 'Contenedores',
+      'layout/sections': 'Secciones',
       'layout/breakpoints': 'Puntos de corte',
       'layout/grid': 'Cuadrícula',
       'utilities/spacing': 'Espaciado',
