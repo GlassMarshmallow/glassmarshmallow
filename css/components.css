@@ -1616,19 +1616,21 @@
 .gm-bubble__close:hover { opacity: 1; }
 /* Antetítulo dentro del bocadillo («Seguimos donde lo dejamos») */
 .gm-bubble__note { display: block; margin-bottom: .3rem; color: var(--gm-accent); font-size: .75rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
-/* Cola: un rombo del color del bocadillo con dos lados del color del borde, que asoma por un lado */
+/* Cola: un rombo del color del bocadillo con dos lados del color del borde, estirado para que quede afilado
+   (como la del portfolio). Va encima del borde con degradado, así el borde no la cruza por la base. */
 .gm-bubble--tail-end::before,
 .gm-bubble--tail-start::before {
   position: absolute;
-  width: 14px;
-  height: 14px;
+  z-index: 1;
+  width: 13px;
+  height: 13px;
   border: 0 solid;
   background: var(--gm-bubble-tail-bg);
   content: "";
-  transform: rotate(45deg);
+  transform: scaleX(1.25) rotate(45deg);
 }
 .gm-bubble--tail-end::before {
-  right: -8px;
+  right: -6.5px;
   bottom: clamp(min(18px, calc(50% - 7px)), var(--gm-bubble-tail-y), max(calc(100% - 32px), calc(50% - 7px)));
   border-color: var(--gm-bubble-tail-end);
   border-top-width: 1px;
@@ -1636,7 +1638,7 @@
 }
 .gm-bubble--tail-start::before {
   top: var(--gm-bubble-tail-y);
-  left: -8px;
+  left: -6.5px;
   border-color: var(--gm-bubble-tail-start);
   border-bottom-width: 1px;
   border-left-width: 1px;
