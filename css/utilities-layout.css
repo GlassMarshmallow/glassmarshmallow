@@ -267,7 +267,7 @@
 /* Animaciones (se quitan solas si la persona pide menos movimiento: ver base.css) */
 .gm-transition { transition: color .2s, background-color .2s, border-color .2s, box-shadow .2s, opacity .2s, transform .2s; }
 /* Entrar */
-.gm-animate-fade-in { animation: gm-fade-in .4s ease both; }
+.gm-animate-fade-in { animation: gm-fade-in .8s ease both; }
 @keyframes gm-fade-in { from { opacity: 0; } }
 .gm-animate-slide-up { animation: gm-slide-up .45s cubic-bezier(.2, .8, .2, 1) both; }
 @keyframes gm-slide-up { from { opacity: 0; transform: translateY(12px); } }
@@ -286,7 +286,7 @@
 .gm-animate-spin-in { animation: gm-spin-in .5s cubic-bezier(.34, 1.56, .64, 1) both; }
 @keyframes gm-spin-in { from { opacity: 0; transform: scale(.3) rotate(-20deg); } }
 /* Salir */
-.gm-animate-fade-out { animation: gm-fade-out .3s ease both; }
+.gm-animate-fade-out { animation: gm-fade-out .6s ease both; }
 @keyframes gm-fade-out { to { opacity: 0; } }
 .gm-animate-slide-out { animation: gm-slide-out .3s cubic-bezier(.2, .8, .2, 1) both; }
 @keyframes gm-slide-out { to { opacity: 0; transform: translateY(12px); } }

@@ -107,7 +107,7 @@ function fixed() {
     rule('transition', 'transition: color .2s, background-color .2s, border-color .2s, box-shadow .2s, opacity .2s, transform .2s;'),
     '/* Entrar */',
   );
-  anim('fade-in', 'from { opacity: 0; }', '.4s ease both');
+  anim('fade-in', 'from { opacity: 0; }', '.8s ease both');
   anim('slide-up', 'from { opacity: 0; transform: translateY(12px); }', `.45s ${EASE} both`);
   anim('slide-down', 'from { opacity: 0; transform: translateY(-12px); }', `.45s ${EASE} both`);
   anim('slide-left', 'from { opacity: 0; transform: translateX(-16px); }', `.45s ${EASE} both`);
@@ -118,7 +118,7 @@ function fixed() {
   anim('blur-in', 'from { opacity: 0; transform: translateY(12px) scale(.96); filter: blur(4px); }', `.45s ${EASE} both`);
   anim('spin-in', 'from { opacity: 0; transform: scale(.3) rotate(-20deg); }', `.5s ${BOUNCE} both`);
   out.push('/* Salir */');
-  anim('fade-out', 'to { opacity: 0; }', '.3s ease both');
+  anim('fade-out', 'to { opacity: 0; }', '.6s ease both');
   anim('slide-out', 'to { opacity: 0; transform: translateY(12px); }', `.3s ${EASE} both`);
   anim('zoom-out', 'to { opacity: 0; transform: scale(.94); }', '.3s ease both');
   out.push('/* Llamar la atención */');
