@@ -1177,7 +1177,7 @@ Each part of a home page (About me, Skills, Contact…) is a section: some space
 | The section | `.gm-section` | 6 rem above and below (3.5 rem on phones) |
 | The width | `.gm-container .gm-container--narrow` | Centered, 960 px at most; text, 80 characters per line at most |
 | The title | `.gm-section__title` | Centered, 2 rem (1.7 rem on phones), with 2 rem below |
-| The text | `.gm-section__text` | Left-aligned, 1.1 rem with 1.7 line height, in gray; highlighted words (`<strong>`) in the text color |
+| The text | `.gm-section__text` | In a centered column of 44 rem at most, left-aligned, 1.1 rem with 1.7 line height, in gray; highlighted words (`<strong>`) in the text color |
 
 ## With another piece below
 

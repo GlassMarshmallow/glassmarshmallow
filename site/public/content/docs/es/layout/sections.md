@@ -21,7 +21,7 @@ Cada parte de una página de inicio (Sobre mí, Habilidades, Contacto…) es una
 | La sección | `.gm-section` | 6 rem arriba y abajo (3,5 rem en el móvil) |
 | El ancho | `.gm-container .gm-container--narrow` | Centrado, 960 px como mucho; el texto, 80 caracteres por línea como mucho |
 | El título | `.gm-section__title` | Centrado, 2 rem (1,7 rem en el móvil), con 2 rem debajo |
-| El texto | `.gm-section__text` | Alineado a la izquierda, 1,1 rem con interlineado de 1,7, en gris; lo destacado (`<strong>`) en el color del texto |
+| El texto | `.gm-section__text` | En una columna centrada de 44 rem como mucho, alineado a la izquierda, 1,1 rem con interlineado de 1,7, en gris; lo destacado (`<strong>`) en el color del texto |
 
 ## Con otra pieza debajo
 

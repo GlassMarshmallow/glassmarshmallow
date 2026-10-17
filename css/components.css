@@ -1885,7 +1885,8 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
    </div></section> */
 .gm-section { padding-block: 6rem; }
 .gm-section__title { margin: 0 0 2rem; font-size: 2rem; text-align: center; }
-.gm-section__text { margin: 0 auto 1.2rem; color: var(--gm-text-secondary); font-size: 1.1rem; line-height: 1.7; }
+/* Columna centrada de 44 rem como mucho (la de «Sobre mí» del portfolio), con el texto alineado a la izquierda */
+.gm-section__text { max-inline-size: 44rem; margin: 0 auto 1.2rem; color: var(--gm-text-secondary); font-size: 1.1rem; line-height: 1.7; }
 .gm-section__text strong { color: var(--gm-text); }
 @media (max-width: 600px) {
   .gm-section { padding-block: 3.5rem; }
