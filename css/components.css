@@ -1098,6 +1098,9 @@
 .gm-accordion__chevron { flex-shrink: 0; margin-left: auto; color: var(--gm-accordion-chevron); font-size: 1.1rem; transition: transform .25s ease; }
 .gm-accordion__item[open] .gm-accordion__chevron { transform: rotate(180deg); }
 .gm-accordion__content { padding: .5rem 1.5rem 1.4rem; line-height: 1.6; }
+/* Lista dentro del acordeón: un elemento debajo de otro (con más de 3, nunca seguidos en una frase) */
+.gm-accordion__list { display: grid; gap: .5rem; margin: 0; padding-left: 1.2rem; }
+.gm-accordion__list li::marker { color: var(--gm-muted); }
 .gm-accordion__content > :first-child { margin-top: 0; }
 .gm-accordion__content > :last-child { margin-bottom: 0; }
 

@@ -32,7 +32,11 @@ Con el mismo `name` en todos los `<details>`, solo se abre uno a la vez.
       <i class="gmi gmi-chevron-down gm-accordion__chevron" aria-hidden="true"></i>
     </summary>
     <div class="gm-accordion__content">
-      <p>Tarjeta, transferencia y Bizum.</p>
+      <ul class="gm-accordion__list">
+        <li>Tarjeta</li>
+        <li>Transferencia</li>
+        <li>Bizum</li>
+      </ul>
     </div>
   </details>
 </div>
@@ -54,7 +58,12 @@ Como en el portfolio: un icono en un círculo a la izquierda y una línea de det
       <i class="gmi gmi-chevron-down gm-accordion__chevron" aria-hidden="true"></i>
     </summary>
     <div class="gm-accordion__content">
-      <p>Figma, Clip Studio Paint, Photoshop e Illustrator.</p>
+      <ul class="gm-accordion__list">
+        <li>Figma</li>
+        <li>Clip Studio Paint</li>
+        <li>Photoshop</li>
+        <li>Illustrator</li>
+      </ul>
     </div>
   </details>
   <details class="gm-accordion__item" name="habilidades">
@@ -67,11 +76,22 @@ Como en el portfolio: un icono en un círculo a la izquierda y una línea de det
       <i class="gmi gmi-chevron-down gm-accordion__chevron" aria-hidden="true"></i>
     </summary>
     <div class="gm-accordion__content">
-      <p>HTML, CSS, JavaScript, TypeScript, Angular y .NET.</p>
+      <ul class="gm-accordion__list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>Angular</li>
+        <li>.NET</li>
+      </ul>
     </div>
   </details>
 </div>
 ```
+
+## Listas dentro
+
+Si dentro hay varios elementos (más de 3), van uno debajo de otro en una lista, no seguidos en una frase: `<ul class="gm-accordion__list">`. Se leen mejor de un vistazo y los lectores de pantalla dicen cuántos son.
 
 ## Varios abiertos a la vez
 
