@@ -1,12 +1,8 @@
-<!-- Fondo de luces de portfolio-ia-template (sin ilustración): solo en la portada.
+<!-- Fondo de luces de portfolio-ia-template (sin ilustración, puntos ni efecto de televisor): solo en la portada.
      El resto de páginas usan el fondo liso -->
 @if (isHome()) {
 <div class="gm-backdrop" aria-hidden="true">
-  <span class="gm-backdrop__dots"></span>
-  <span class="gm-backdrop__grain"></span>
-  <span class="gm-backdrop__scanlines"></span>
   <span class="gm-backdrop__vignette"></span>
-  <span class="gm-backdrop__curve"></span>
 </div>
 }
 <a class="gm-skip-link" href="#contenido">{{ 'common.skipLink' | t }}</a>
