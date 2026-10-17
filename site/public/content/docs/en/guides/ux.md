@@ -27,7 +27,7 @@ Rules so that what you build with GlassMarshmallow is easy to understand and use
 
 ## Buttons and actions
 
-- **One main action per area**: the black (white at night) or turquoise button. The rest, secondary or text buttons.
+- **One main action per area**: the black (white at night) or accent button (pink by day, blue at night). The rest, secondary or text buttons.
 - The button text says **what happens when pressed** (“Save changes”, “Watch the next episode”), not “OK”.
 - Actions that cannot be undone (delete, pay) ask for confirmation and say what will be lost.
 - Everything that can be pressed is at least **44 px** (WCAG 2.5.5).

@@ -94,7 +94,7 @@ Campos y formularios como el formulario de contacto del portfolio: recuadro de c
 | `.gm-input-group` | Dos campos en fila: un tercio y dos tercios (prefijo y número) |
 | `.gm-check` | Una lista de casillas u opciones |
 | `.gm-form__actions` | Los botones del final |
-| `.gm-btn--accent` | El botón turquesa para enviar |
+| `.gm-btn--accent` | El botón de acento (rosa de día, azul de noche) para enviar |
 
 ## Errores
 
@@ -112,7 +112,7 @@ Marca el campo con `aria-invalid="true"` y enlaza el mensaje con `aria-described
 
 - Todos los campos tienen una etiqueta visible. Los grupos de casillas u opciones van en un `fieldset` con su `legend`.
 - Los bordes de los campos llegan a 3,5:1 en modo claro y 3,9:1 en oscuro (se pide 3:1).
-- Al escribir, el campo muestra un anillo y un borde turquesa (5,4:1 en claro, 6:1 en oscuro; para bordes se pide 3:1).
+- Al escribir, el campo muestra un anillo y un borde rosa de día y azul de noche (5,5:1 en claro, 8:1 en oscuro; para bordes se pide 3:1).
 - Usa `autocomplete` (name, email, tel…) para que el navegador pueda rellenar el formulario.
 - Marca los campos obligatorios con * y `required`, y los opcionales con «(opcional)», y explica el * al principio del formulario. Más en [Reglas de los formularios](/docs/forms/rules).
-- El botón de enviar: texto blanco sobre turquesa profundo, 8,6:1 (AAA).
+- El botón de enviar: texto blanco sobre rosa oscuro (8,6:1) de día y azul oscuro (11,3:1) de noche, AAA.

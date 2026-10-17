@@ -40,7 +40,7 @@ Todo el mundo puede usar la página, con o sin ratón.
 | 2.4.3 | A | El foco avanza en un orden lógico, el mismo que el de lectura. | El orden del HTML es el orden visual: ningún `tabindex` mayor que 0. |
 | 2.4.4 | A | Cada enlace dice adónde lleva (nada de «pulsa aquí»). | — |
 | 2.4.6 | AA | Los títulos y las etiquetas describen su contenido. | — |
-| 2.4.7 | AA | El foco del teclado siempre se ve. | Un contorno turquesa de 2 px en todo lo que puede recibir el foco. |
+| 2.4.7 | AA | El foco del teclado siempre se ve. | Un contorno de 2 px rosa de día y azul de noche en todo lo que puede recibir el foco. |
 | 2.4.11 | AA | El elemento con el foco no queda tapado por otro contenido (cabeceras o barras fijas). | La página guarda un margen de scroll del alto de la barra de arriba (y de la de abajo en el móvil). |
 | 2.4.12 | AAA | Ninguna parte del elemento con el foco queda tapada. | El mismo margen de scroll lo deja entero a la vista. |
 | 2.5.3 | A | El nombre accesible de un botón contiene su texto visible. | «‹ Volver» se lee «Volver: Herramientas». |

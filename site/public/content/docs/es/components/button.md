@@ -55,7 +55,7 @@ Y vidriados:
 </div>
 ```
 
-El texto sobre el pastel siempre es negro (7,8:1 o más, AAA). Nunca uses texto blanco sobre estos colores. Para enviar un formulario también está el turquesa `.gm-btn--accent` de [Campo](/docs/forms/field).
+El texto sobre el pastel siempre es negro (7,8:1 o más, AAA). Nunca uses texto blanco sobre estos colores. Para enviar un formulario también está el de acento `.gm-btn--accent` (rosa de día, azul de noche) de [Campo](/docs/forms/field).
 
 ## Pequeño
 

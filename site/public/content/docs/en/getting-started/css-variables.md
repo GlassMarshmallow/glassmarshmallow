@@ -28,7 +28,7 @@ These are the main ones. The pastel palette and its scales are in [Palette](/doc
 | `--gm-muted` | `#48484a` | `#b8b8bc` |
 | `--gm-link` | `#004b96` | `#79beff` |
 | `--gm-link-hover` | `#004b96` | `#79beff` |
-| `--gm-selection` | `rgba(14, 116, 144, .18)` | `rgba(28, 171, 176, .35)` |
+| `--gm-selection` | `rgba(255, 166, 209, .45)` | `rgba(138, 180, 255, .35)` |
 | `--gm-font` | `"Montserrat", -apple-system, BlinkMacSystemFo…` | same |
 | `--gm-font-mono` | `ui-monospace, SFMono-Regular, Menlo, monospace` | same |
 
@@ -52,10 +52,10 @@ These are the main ones. The pastel palette and its scales are in [Palette](/doc
 
 | Variable | Light | Dark |
 | --- | --- | --- |
-| `--gm-accent` | `#0e7490` | `#1cabb0` |
-| `--gm-accent-strong` | `#0a5366` | `#0a5366` |
-| `--gm-accent-hover` | `#08414f` | `#08414f` |
-| `--gm-focus` | `#0e7490` | `#1cabb0` |
+| `--gm-accent` | `#c71c6f` | `#8ab4ff` |
+| `--gm-accent-strong` | `#940061` | `#003290` |
+| `--gm-accent-hover` | `#700148` | `#00236b` |
+| `--gm-focus` | `#c71c6f` | `#8ab4ff` |
 | `--gm-primary` | `#1d1d1f` | `#f5f5f7` |
 | `--gm-on-primary` | `#fff` | `#1d1d1f` |
 
@@ -77,7 +77,7 @@ These are the main ones. The pastel palette and its scales are in [Palette](/doc
 | `--gm-field-bg` | `#f5f5f7` | `#1d1d1f` |
 | `--gm-field-bg-focus` | `#fff` | `#1d1d1f` |
 | `--gm-field-border` | `#86868b` | `#6e6e73` |
-| `--gm-field-focus` | `#0e7490` | `#1cabb0` |
+| `--gm-field-focus` | `#c71c6f` | `#8ab4ff` |
 | `--gm-field-ring` | `rgba(14, 116, 144, .15)` | `rgba(28, 171, 176, .45)` |
 | `--gm-form-bg` | `rgba(255, 255, 255, .78)` | `rgba(255, 255, 255, .04)` |
 

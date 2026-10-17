@@ -53,11 +53,11 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) {
   --gm-header-shadow: 0 4px 30px rgba(0, 0, 0, .1);
   --gm-tabbar-bg: rgba(255, 255, 255, .92);
   --gm-muted: #49494c;   /* 7:1 sobre las luces del fondo (WCAG AAA) */
-  --gm-accent: #0e7490;  /* cian de la pantalla (3:1 sobre el fondo) */
-  --gm-link: #0a5366;    /* cian oscuro: 7:1 sobre las luces (WCAG AAA) */
-  --gm-link-hover: #0a5366;
-  --gm-focus: #0e7490;
-  --gm-selection: rgba(14, 116, 144, .18);
+  --gm-accent: #c71c6f;  /* rosa de día (5:1 sobre las luces) */
+  --gm-link: #004b96;    /* 7:1 sobre las luces (WCAG AAA) */
+  --gm-link-hover: #004b96;
+  --gm-focus: #c71c6f;
+  --gm-selection: rgba(255, 166, 209, .45);
 }
 html[data-theme="dark"]:has(.gm-backdrop:not(.gm-backdrop--contained)) {
   --gm-header-bg: rgba(22, 22, 23, .72);
@@ -67,14 +67,14 @@ html[data-theme="dark"]:has(.gm-backdrop:not(.gm-backdrop--contained)) {
   --gm-tabbar-bg: rgba(22, 22, 23, .72);
   --gm-text-secondary: #a1a1a6; /* párrafos en gris claro, como la plantilla */
   --gm-muted: #b8b8bc;          /* 7:1 o más sobre las luces (WCAG AAA) */
-  --gm-accent: #1cabb0;         /* turquesa (4,6:1 en el punto más claro del fondo) */
+  --gm-accent: #8ab4ff;         /* azul de noche */
   --gm-link: #ffffff;
-  --gm-link-hover: #1cabb0;
-  --gm-focus: #1cabb0;
-  --gm-selection: rgba(28, 171, 176, .35);
-  --gm-accent-gradient-text: linear-gradient(#1cabb0, #1cabb0);
-  --gm-accent-tint: rgba(28, 171, 176, .3);
-  --gm-gradient-text-dark: #1cabb0;
+  --gm-link-hover: #8ab4ff;
+  --gm-focus: #8ab4ff;
+  --gm-selection: rgba(138, 180, 255, .35);
+  --gm-accent-gradient-text: linear-gradient(#8ab4ff, #8ab4ff);
+  --gm-accent-tint: rgba(138, 180, 255, .3);
+  --gm-gradient-text-dark: #8ab4ff;
 }
 
 /* Títulos de la portada: Montserrat en peso 800 */

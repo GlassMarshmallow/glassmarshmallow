@@ -192,7 +192,7 @@ The ideas behind GlassMarshmallow that guide every decision. If you are going to
 
 ## Glass and pastel
 
-GlassMarshmallow's look comes from two things: **glass surfaces** (translucent background, blur and a thin border) and a **pastel palette** of 8 colors, plus black, white and grays. Everything else is restrained: Montserrat, light backgrounds by day and black at night, and a single accent color, turquoise.
+GlassMarshmallow's look comes from two things: **glass surfaces** (translucent background, blur and a thin border) and a **pastel palette** of 8 colors, plus black, white and grays. Everything else is restrained: Montserrat, light backgrounds by day and black at night, and a single accent color: pink by day and blue at night.
 
 ## Designs from real projects
 
@@ -264,7 +264,7 @@ These are the main ones. The pastel palette and its scales are in [Palette](/doc
 | `--gm-muted` | `#48484a` | `#b8b8bc` |
 | `--gm-link` | `#004b96` | `#79beff` |
 | `--gm-link-hover` | `#004b96` | `#79beff` |
-| `--gm-selection` | `rgba(14, 116, 144, .18)` | `rgba(28, 171, 176, .35)` |
+| `--gm-selection` | `rgba(255, 166, 209, .45)` | `rgba(138, 180, 255, .35)` |
 | `--gm-font` | `"Montserrat", -apple-system, BlinkMacSystemFo…` | same |
 | `--gm-font-mono` | `ui-monospace, SFMono-Regular, Menlo, monospace` | same |
 
@@ -288,10 +288,10 @@ These are the main ones. The pastel palette and its scales are in [Palette](/doc
 
 | Variable | Light | Dark |
 | --- | --- | --- |
-| `--gm-accent` | `#0e7490` | `#1cabb0` |
-| `--gm-accent-strong` | `#0a5366` | `#0a5366` |
-| `--gm-accent-hover` | `#08414f` | `#08414f` |
-| `--gm-focus` | `#0e7490` | `#1cabb0` |
+| `--gm-accent` | `#c71c6f` | `#8ab4ff` |
+| `--gm-accent-strong` | `#940061` | `#003290` |
+| `--gm-accent-hover` | `#700148` | `#00236b` |
+| `--gm-focus` | `#c71c6f` | `#8ab4ff` |
 | `--gm-primary` | `#1d1d1f` | `#f5f5f7` |
 | `--gm-on-primary` | `#fff` | `#1d1d1f` |
 
@@ -313,7 +313,7 @@ These are the main ones. The pastel palette and its scales are in [Palette](/doc
 | `--gm-field-bg` | `#f5f5f7` | `#1d1d1f` |
 | `--gm-field-bg-focus` | `#fff` | `#1d1d1f` |
 | `--gm-field-border` | `#86868b` | `#6e6e73` |
-| `--gm-field-focus` | `#0e7490` | `#1cabb0` |
+| `--gm-field-focus` | `#c71c6f` | `#8ab4ff` |
 | `--gm-field-ring` | `rgba(14, 116, 144, .15)` | `rgba(28, 171, 176, .45)` |
 | `--gm-form-bg` | `rgba(255, 255, 255, .78)` | `rgba(255, 255, 255, .04)` |
 
@@ -385,7 +385,7 @@ Everyone can use the page, with or without a mouse.
 | 2.4.3 | A | The focus moves in a logical order, the same as the reading order. | The HTML order is the visual order: no `tabindex` greater than 0. |
 | 2.4.4 | A | Each link says where it goes (no «click here»). | — |
 | 2.4.6 | AA | Headings and labels describe their content. | — |
-| 2.4.7 | AA | The keyboard focus is always visible. | A 2 px turquoise outline on everything that can be focused. |
+| 2.4.7 | AA | The keyboard focus is always visible. | A 2 px outline, pink by day and blue at night, on everything that can be focused. |
 | 2.4.11 | AA | The element with the focus is not hidden behind other content (fixed headers, bars). | The page keeps a scroll margin the height of the top bar (and of the bottom bar on mobile). |
 | 2.4.12 | AAA | No part of the focused element is hidden. | The same scroll margin keeps it whole in view. |
 | 2.5.3 | A | The accessible name of a button contains its visible text. | «‹ Back» is read as «Back: Tools». |
@@ -876,6 +876,19 @@ Combine a color class with a use class to set the background, text and border of
 
 The black, white and gray classes work the same way: `.gm-theme-white`, `.gm-theme-gray-100` to `.gm-theme-gray-900` and `.gm-theme-black`.
 
+## Pink and blue
+
+`.gm-theme-pink-blue` is **pink by day and blue at night**: the color we use for examples and for what should stand out (like the “For agents” button on the home page). It combines with the same uses and also exists as a variable: `--gm-pink-blue`.
+
+```html
+<div class="gm-flex gm-gap-3 gm-flex-wrap">
+  <div class="gm-theme-pink-blue gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-pink-blue .gm-theme-solid</div>
+  <div class="gm-theme-pink-blue gm-theme-glass" style="padding: 12px 16px">.gm-theme-pink-blue .gm-theme-glass</div>
+</div>
+```
+
+Switch between light and dark mode to see it turn from pink to blue.
+
 ## Solid
 
 `.gm-theme-solid` paints the pastel as the background, with black text in both light and dark mode.
@@ -1115,7 +1128,7 @@ A prefixed class applies **from** that width upwards. Without a prefix, everywhe
 ```html
 <div class="gm-grid gm-gap-sm">
   <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">1</div>
-  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">2</div>
+  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-pink-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">2</div>
   <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">3</div>
   <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-peach gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
 </div>
@@ -1152,7 +1165,7 @@ To place pieces in columns. It has 12 columns, like Bootstrap's, but is built wi
 ```html
 <div class="gm-grid gm-gap-sm">
   <div class="gm-col-8 gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">8 of 12</div>
-  <div class="gm-col-4 gm-theme-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">4 of 12</div>
+  <div class="gm-col-4 gm-theme-pink-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">4 of 12</div>
   <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
   <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
   <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
@@ -1440,10 +1453,10 @@ To make your own glass with other values, use the [glass generator](/tools/glass
 
 ```html
 <div class="gm-flex gm-gap-4">
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-opacity-100" style="width: 64px; height: 48px"></div><span class="gm-small">100</span></div>
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-opacity-75" style="width: 64px; height: 48px"></div><span class="gm-small">75</span></div>
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-opacity-50" style="width: 64px; height: 48px"></div><span class="gm-small">50</span></div>
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-opacity-25" style="width: 64px; height: 48px"></div><span class="gm-small">25</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-100" style="width: 64px; height: 48px"></div><span class="gm-small">100</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-75" style="width: 64px; height: 48px"></div><span class="gm-small">75</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-50" style="width: 64px; height: 48px"></div><span class="gm-small">50</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-25" style="width: 64px; height: 48px"></div><span class="gm-small">25</span></div>
 </div>
 ```
 
@@ -1815,7 +1828,7 @@ With `.gm-prose` alone, the text sits on the page background.
 | --- | --- |
 | `h1` | 1.9 rem (1.5 rem on phones) |
 | `.gm-prose__updated` | The date, in small gray |
-| `h2` | 1.1 rem, colored: accent gradient by day, turquoise at night |
+| `h2` | 1.1 rem, colored: accent gradient by day, sky at night |
 | `p`, `li` | 0.95 rem with 1.65 line height |
 | `a` | Link color, semibold and underlined |
 
@@ -2126,7 +2139,7 @@ Fields and forms like the contact form of the portfolio: a glass panel, labels i
 | `.gm-input-group` | Two fields in a row: a third and two thirds (prefix and number) |
 | `.gm-check` | A list of checkboxes or radio buttons |
 | `.gm-form__actions` | The buttons at the end |
-| `.gm-btn--accent` | The turquoise button to send |
+| `.gm-btn--accent` | The accent button (pink by day, blue at night) to send |
 
 ## Errors
 
@@ -2144,10 +2157,10 @@ Mark the field with `aria-invalid="true"` and link the message with `aria-descri
 
 - Every field has a visible label. Groups of checkboxes or radio buttons go in a `fieldset` with its `legend`.
 - Field borders reach 3.5:1 in light mode and 3.9:1 in dark mode (3:1 is required).
-- While you type, the field shows a ring and a turquoise border (5.4:1 in light, 6:1 in dark; 3:1 is required for borders).
+- While you type, the field shows a ring and a pink border by day and blue at night (5.5:1 in light, 8:1 in dark; 3:1 is required for borders).
 - Use `autocomplete` (name, email, tel…) so browsers can fill the form.
 - Mark required fields with * and `required`, and optional ones with “(optional)”, and explain the * at the start of the form. More in [Form rules](/docs/forms/rules).
-- The send button: white text on deep turquoise, 8.6:1 (AAA).
+- The send button: white text on dark pink (8.6:1) by day and dark blue (11.3:1) at night, AAA.
 
 <!-- /docs/forms/segmented -->
 # Segmented control
@@ -2756,7 +2769,7 @@ And glazed:
 </div>
 ```
 
-The text on the pastel is always black (7.8:1 or more, AAA). Never use white text on these colors. To send a form, the turquoise `.gm-btn--accent` of [Field](/docs/forms/field) is also available.
+The text on the pastel is always black (7.8:1 or more, AAA). Never use white text on these colors. To send a form, the accent `.gm-btn--accent` (pink by day, blue at night) of [Field](/docs/forms/field) is also available.
 
 ## Small
 
@@ -3949,7 +3962,7 @@ Paints text with the framework's color gradient. At night it switches to a plain
 | `.gm-gradient-text` | Text of any size | Dark tones, each 7:1 or more (AAA) |
 | `.gm-gradient-title` | Large headings (24 px or more) | The bright logo colors, 3:1 or more |
 
-At night, `.gm-gradient-text` is turquoise and `.gm-gradient-title` uses the text color.
+At night, `.gm-gradient-text` is blue and `.gm-gradient-title` uses the text color.
 
 ## Accessibility
 
@@ -4009,7 +4022,7 @@ Rules so that what you build with GlassMarshmallow is easy to understand and use
 
 ## Buttons and actions
 
-- **One main action per area**: the black (white at night) or turquoise button. The rest, secondary or text buttons.
+- **One main action per area**: the black (white at night) or accent button (pink by day, blue at night). The rest, secondary or text buttons.
 - The button text says **what happens when pressed** (“Save changes”, “Watch the next episode”), not “OK”.
 - Actions that cannot be undone (delete, pay) ask for confirmation and say what will be lost.
 - Everything that can be pressed is at least **44 px** (WCAG 2.5.5).

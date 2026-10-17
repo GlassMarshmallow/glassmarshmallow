@@ -27,7 +27,7 @@ Reglas para que lo que hagas con GlassMarshmallow sea fácil de entender y de us
 
 ## Botones y acciones
 
-- **Una acción principal por zona**: el botón negro (blanco de noche) o turquesa. El resto, secundarios o de texto.
+- **Una acción principal por zona**: el botón negro (blanco de noche) o el de acento (rosa de día, azul de noche). El resto, secundarios o de texto.
 - El texto del botón dice **qué pasa al pulsarlo** («Guardar cambios», «Ver el siguiente episodio»), no «Aceptar».
 - Las acciones que no se pueden deshacer (borrar, pagar) piden confirmación y dicen qué se va a perder.
 - Todo lo que se pulsa mide **44 px** como mínimo (WCAG 2.5.5).

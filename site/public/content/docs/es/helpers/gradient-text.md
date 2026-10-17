@@ -16,7 +16,7 @@ Pinta un texto con el degradado de colores del framework. De noche pasa a color 
 | `.gm-gradient-text` | Texto de cualquier tamaño | Tonos oscuros, cada uno de 7:1 o más (AAA) |
 | `.gm-gradient-title` | Títulos grandes (24 px o más) | Los colores vivos del logo, de 3:1 o más |
 
-De noche, `.gm-gradient-text` va en turquesa y `.gm-gradient-title` en el color del texto.
+De noche, `.gm-gradient-text` va en azul y `.gm-gradient-title` en el color del texto.
 
 ## Accesibilidad
 

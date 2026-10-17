@@ -4,7 +4,7 @@ Las ideas que hay detrás de GlassMarshmallow y que guían cada decisión. Si va
 
 ## Cristal y pastel
 
-El aspecto de GlassMarshmallow sale de dos cosas: **superficies de cristal** (fondo translúcido, desenfoque y borde fino) y una **paleta pastel** de 8 colores, más negro, blanco y grises. Todo lo demás es sobrio: Montserrat, fondos claros de día y negros de noche, y un solo color de acento, el turquesa.
+El aspecto de GlassMarshmallow sale de dos cosas: **superficies de cristal** (fondo translúcido, desenfoque y borde fino) y una **paleta pastel** de 8 colores, más negro, blanco y grises. Todo lo demás es sobrio: Montserrat, fondos claros de día y negros de noche, y un solo color de acento: rosa de día y azul de noche.
 
 ## Diseños que salen de proyectos reales
 

@@ -55,7 +55,7 @@ And glazed:
 </div>
 ```
 
-The text on the pastel is always black (7.8:1 or more, AAA). Never use white text on these colors. To send a form, the turquoise `.gm-btn--accent` of [Field](/docs/forms/field) is also available.
+The text on the pastel is always black (7.8:1 or more, AAA). Never use white text on these colors. To send a form, the accent `.gm-btn--accent` (pink by day, blue at night) of [Field](/docs/forms/field) is also available.
 
 ## Small
 

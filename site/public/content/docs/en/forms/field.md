@@ -94,7 +94,7 @@ Fields and forms like the contact form of the portfolio: a glass panel, labels i
 | `.gm-input-group` | Two fields in a row: a third and two thirds (prefix and number) |
 | `.gm-check` | A list of checkboxes or radio buttons |
 | `.gm-form__actions` | The buttons at the end |
-| `.gm-btn--accent` | The turquoise button to send |
+| `.gm-btn--accent` | The accent button (pink by day, blue at night) to send |
 
 ## Errors
 
@@ -112,7 +112,7 @@ Mark the field with `aria-invalid="true"` and link the message with `aria-descri
 
 - Every field has a visible label. Groups of checkboxes or radio buttons go in a `fieldset` with its `legend`.
 - Field borders reach 3.5:1 in light mode and 3.9:1 in dark mode (3:1 is required).
-- While you type, the field shows a ring and a turquoise border (5.4:1 in light, 6:1 in dark; 3:1 is required for borders).
+- While you type, the field shows a ring and a pink border by day and blue at night (5.5:1 in light, 8:1 in dark; 3:1 is required for borders).
 - Use `autocomplete` (name, email, tel…) so browsers can fill the form.
 - Mark required fields with * and `required`, and optional ones with “(optional)”, and explain the * at the start of the form. More in [Form rules](/docs/forms/rules).
-- The send button: white text on deep turquoise, 8.6:1 (AAA).
+- The send button: white text on dark pink (8.6:1) by day and dark blue (11.3:1) at night, AAA.

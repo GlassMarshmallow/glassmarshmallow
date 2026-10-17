@@ -4,7 +4,7 @@ The ideas behind GlassMarshmallow that guide every decision. If you are going to
 
 ## Glass and pastel
 
-GlassMarshmallow's look comes from two things: **glass surfaces** (translucent background, blur and a thin border) and a **pastel palette** of 8 colors, plus black, white and grays. Everything else is restrained: Montserrat, light backgrounds by day and black at night, and a single accent color, turquoise.
+GlassMarshmallow's look comes from two things: **glass surfaces** (translucent background, blur and a thin border) and a **pastel palette** of 8 colors, plus black, white and grays. Everything else is restrained: Montserrat, light backgrounds by day and black at night, and a single accent color: pink by day and blue at night.
 
 ## Designs from real projects
 

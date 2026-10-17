@@ -16,7 +16,7 @@ Paints text with the framework's color gradient. At night it switches to a plain
 | `.gm-gradient-text` | Text of any size | Dark tones, each 7:1 or more (AAA) |
 | `.gm-gradient-title` | Large headings (24 px or more) | The bright logo colors, 3:1 or more |
 
-At night, `.gm-gradient-text` is turquoise and `.gm-gradient-title` uses the text color.
+At night, `.gm-gradient-text` is blue and `.gm-gradient-title` uses the text color.
 
 ## Accessibility
 

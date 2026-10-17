@@ -40,7 +40,7 @@ Everyone can use the page, with or without a mouse.
 | 2.4.3 | A | The focus moves in a logical order, the same as the reading order. | The HTML order is the visual order: no `tabindex` greater than 0. |
 | 2.4.4 | A | Each link says where it goes (no «click here»). | — |
 | 2.4.6 | AA | Headings and labels describe their content. | — |
-| 2.4.7 | AA | The keyboard focus is always visible. | A 2 px turquoise outline on everything that can be focused. |
+| 2.4.7 | AA | The keyboard focus is always visible. | A 2 px outline, pink by day and blue at night, on everything that can be focused. |
 | 2.4.11 | AA | The element with the focus is not hidden behind other content (fixed headers, bars). | The page keeps a scroll margin the height of the top bar (and of the bottom bar on mobile). |
 | 2.4.12 | AAA | No part of the focused element is hidden. | The same scroll margin keeps it whole in view. |
 | 2.5.3 | A | The accessible name of a button contains its visible text. | «‹ Back» is read as «Back: Tools». |
