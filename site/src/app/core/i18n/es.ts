@@ -107,6 +107,7 @@ export const es: Dictionary = {
       forms: 'Formularios',
       components: 'Componentes',
       helpers: 'Ayudantes',
+      guides: 'Guías',
     },
     pages: {
       'getting-started/introduction': 'Introducción',
@@ -163,6 +164,7 @@ export const es: Dictionary = {
       'helpers/skip-link': 'Saltar al contenido',
       'helpers/gradient-text': 'Texto con degradado',
       'helpers/text-outline': 'Contorno de texto',
+      'guides/ux': 'Experiencia de usuario',
     },
   },
   notFound: {

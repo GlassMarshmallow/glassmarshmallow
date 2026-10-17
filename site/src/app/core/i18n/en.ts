@@ -106,6 +106,7 @@ export const en = {
       forms: 'Forms',
       components: 'Components',
       helpers: 'Helpers',
+      guides: 'Guides',
     },
     pages: {
       'getting-started/introduction': 'Introduction',
@@ -162,6 +163,7 @@ export const en = {
       'helpers/skip-link': 'Skip link',
       'helpers/gradient-text': 'Gradient text',
       'helpers/text-outline': 'Text outline',
+      'guides/ux': 'User experience',
     },
   },
   notFound: {

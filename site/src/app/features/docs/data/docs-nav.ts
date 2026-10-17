@@ -57,6 +57,11 @@ export const DOCS_SECTIONS: DocsSection[] = [
     icon: 'gmi-link',
     pages: ['visually-hidden', 'skip-link', 'gradient-text', 'text-outline'].map((p) => ({ path: `helpers/${p}` })),
   },
+  {
+    id: 'guides',
+    icon: 'gmi-stars',
+    pages: ['ux'].map((p) => ({ path: `guides/${p}` })),
+  },
 ];
 
 /** Todas las páginas seguidas, para «Anterior» y «Siguiente» */
