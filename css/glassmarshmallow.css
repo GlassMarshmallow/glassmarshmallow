@@ -1,8 +1,10 @@
 /*!
- * Mallowglass v0.1 · Licencia MIT
+ * GlassMarshmallow v0.1 · Licencia MIT
  * Diseñado y desarrollado por Sara Paez Yamuza
  */
 @import "./tokens.css";
 @import "./base.css";
 @import "./components.css";
+@import "./theme.css";
+@import "./utilities.css";
 @import "./backdrop.css";

@@ -1,15 +1,15 @@
 # AGENTS.md
 
-Instructions for AI coding agents working on the Mallowglass repository.
+Instructions for AI coding agents working on the GlassMarshmallow repository.
 
 ## Project
 
 - `css/` is the source of the framework (plain CSS, no Sass). Every class and custom property uses the
-  `mg-` prefix (`.mg-btn`, `--mg-accent`).
+  `gm-` prefix (`.gm-btn`, `--gm-accent`).
 - `dist/` is generated with `npm run css`. Never edit it by hand.
 - `site/` is the documentation website (Angular 21, standalone components, signals). It is in English and
   can be switched to Spanish; every visible text lives in `site/src/app/core/i18n`.
-- Icons are a separate project: `mallowglass-icons`.
+- Icons are a separate project: `glassmarshmallow-icons`.
 
 ## Rules
 
@@ -18,6 +18,15 @@ Instructions for AI coding agents working on the Mallowglass repository.
 - Light and dark mode come from `data-theme` on `<html>`; every color is a token in `css/tokens.css`.
 - Do not change colors, fonts, sizes or spacing without the designer's approval.
 - Mobile (375 px) and desktop, with no horizontal scroll.
+
+## Commits
+
+- Semantic commits ([Conventional Commits](https://www.conventionalcommits.org)): `type(scope): description`,
+  with an optional scope and a clear description in Spanish.
+- Types: `feat` (new), `fix` (a fix), `remove` (something taken out; our own addition to the standard), `docs`,
+  `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore` and `revert`. A breaking change adds `!` (`feat!:`).
+- One type per commit: split work that mixes types.
+- Never commit or push unless the designer asks for it.
 
 ## Skills
 

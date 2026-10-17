@@ -1,4 +1,4 @@
-// Junta los archivos de css/ en uno solo (dist/css/mallowglass.css) y crea la versión minificada.
+// Junta los archivos de css/ en uno solo (dist/css/glassmarshmallow.css) y crea la versión minificada.
 // Uso: node build/build-css.mjs
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -25,8 +25,8 @@ function minify(css) {
     .trim();
 }
 
-const css = bundle('mallowglass.css') + '\n';
+const css = bundle('glassmarshmallow.css') + '\n';
 mkdirSync(outDir, { recursive: true });
-writeFileSync(join(outDir, 'mallowglass.css'), css);
-writeFileSync(join(outDir, 'mallowglass.min.css'), minify(css) + '\n');
-console.log(`dist/css/mallowglass.css (${Math.round(css.length / 1024)} kB) y mallowglass.min.css`);
+writeFileSync(join(outDir, 'glassmarshmallow.css'), css);
+writeFileSync(join(outDir, 'glassmarshmallow.min.css'), minify(css) + '\n');
+console.log(`dist/css/glassmarshmallow.css (${Math.round(css.length / 1024)} kB) y glassmarshmallow.min.css`);

@@ -1,16 +1,16 @@
-# Mallowglass
+# GlassMarshmallow
 
 A CSS framework with glass surfaces, light and dark mode and WCAG 2.2 AA accessibility from the first component.
 
 ```sh
-npm install mallowglass
+npm install glassmarshmallow
 ```
 
 ```html
-<link rel="stylesheet" href="dist/css/mallowglass.min.css">
+<link rel="stylesheet" href="dist/css/glassmarshmallow.min.css">
 ```
 
-Icons live in their own project: [mallowglass-icons](../mallowglass-icons).
+Icons live in their own project: [glassmarshmallow-icons](../glassmarshmallow-icons).
 
 ## Structure
 
