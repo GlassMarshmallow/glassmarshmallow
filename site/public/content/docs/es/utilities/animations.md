@@ -13,6 +13,7 @@ Movimientos cortos para que algo aparezca o llame un poco la atención. **Todas 
 
 ```html
 <div class="gm-flex gm-gap-4 gm-flex-wrap gm-items-center">
+  <button type="button" class="gm-btn gm-btn--sm gm-btn--secondary" data-replay><i class="gmi gmi-arrow-repeat" aria-hidden="true"></i>Repetir</button>
   <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-4 gm-animate-fade-in">fade-in</div>
   <div class="gm-theme-mint gm-theme-solid gm-rounded-sm gm-p-4 gm-animate-slide-up">slide-up</div>
   <div class="gm-theme-peach gm-theme-solid gm-rounded-sm gm-p-4 gm-animate-pop">pop</div>
@@ -21,7 +22,7 @@ Movimientos cortos para que algo aparezca o llame un poco la atención. **Todas 
 </div>
 ```
 
-Las que aparecen solo se ven al cargar la página: recárgala para verlas otra vez.
+Las que aparecen solo se mueven una vez, al cargar: pulsa **Repetir** para verlas otra vez.
 
 ## Accesibilidad
 

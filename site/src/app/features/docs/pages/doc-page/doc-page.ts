@@ -128,6 +128,17 @@ export class DocPage {
       }
       return;
     }
+    // Botón «Repetir» de los ejemplos de animaciones: vuelve a lanzar las animaciones de su ejemplo
+    const replay = el.closest<HTMLButtonElement>('[data-replay]');
+    if (replay) {
+      const example = replay.closest('.doc-code__example') ?? replay.parentElement;
+      example?.querySelectorAll<HTMLElement>('[class*="gm-animate-"]').forEach((item) => {
+        item.style.animation = 'none';
+        void item.offsetWidth; // fuerza al navegador a aplicar el cambio antes de quitarlo
+        item.style.animation = '';
+      });
+      return;
+    }
     const tab = el.closest<HTMLButtonElement>('[role="tab"]');
     if (tab) {
       this.selectTab(tab);
