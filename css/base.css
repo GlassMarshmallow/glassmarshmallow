@@ -87,6 +87,18 @@ code, pre { font-family: var(--gm-font-mono); }
 [data-theme="dark"] .gm-gradient-title { color: var(--gm-text); }
 [data-theme="dark"] .gm-gradient-text { color: var(--gm-gradient-text-dark); }
 
+/* Contorno de texto: en oscuro, un contorno negro fino y una sombra difuminada para que el texto se lea sobre
+   fondos con luces o imágenes (como el de portfolio-ia-template). En claro no cambia nada */
+[data-theme="dark"] .gm-text-outline {
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 2px 6px rgba(0, 0, 0, .9),
+    0 0 18px rgba(0, 0, 0, .8);
+}
+
 /* Texto */
 .gm-muted { color: var(--gm-muted); }
 .gm-small { font-size: .84rem; }

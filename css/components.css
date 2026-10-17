@@ -354,6 +354,76 @@
 .gm-tabbar,
 .gm-tabbar-more { display: none; }
 
+/* Aspecto de la barra y del panel «Más» (se enseñan solo en el móvil, abajo) */
+.gm-tabbar {
+  position: fixed;
+  z-index: 25;
+  right: 12px;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  left: 12px;
+  height: 66px;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: 22px;
+  background: var(--gm-tabbar-bg);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, .16);
+  -webkit-backdrop-filter: var(--gm-header-filter);
+  backdrop-filter: var(--gm-header-filter);
+}
+.gm-tabbar :is(a, button) {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  color: var(--gm-muted);
+  background: transparent;
+  font: inherit;
+  font-size: .64rem;
+  white-space: nowrap;
+  cursor: pointer;
+  place-items: center;
+}
+.gm-tabbar :is(a, button) .gmi { font-size: 1.25rem; }
+.gm-tabbar a[aria-current="page"],
+.gm-tabbar button.is-active { color: var(--gm-text); }
+
+/* Panel «Más»: las páginas que no caben en la barra (el .mobile-more de My Book Box). La barra tiene 4 botones
+   como mucho, contando «Más» */
+.gm-tabbar-more {
+  position: fixed;
+  z-index: 26;
+  right: 12px;
+  bottom: calc(86px + env(safe-area-inset-bottom));
+  left: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: 22px;
+  background: var(--gm-header-bg);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
+}
+.gm-tabbar-more a {
+  display: grid;
+  min-width: 0;
+  min-height: 58px;
+  gap: 4px;
+  padding: 7px 5px;
+  border-radius: 14px;
+  color: var(--gm-muted);
+  font-size: .68rem;
+  text-align: center;
+  place-items: center;
+}
+.gm-tabbar-more a .gmi { font-size: 1.25rem; }
+.gm-tabbar-more a[aria-current="page"] { color: var(--gm-text); background: var(--gm-surface-soft); }
+
+
 /* Con Montserrat el menú es más ancho: más compacto en pantallas medianas, sin el nombre junto al logo en las
    pequeñas, y la disposición del móvil (menú abajo) desde 860 px */
 @media (max-width: 1100px) {
@@ -370,76 +440,8 @@
   .gm-navbar__logo { width: 42px; height: 42px; }
   .gm-navbar__nav { display: none; }
 
-  .gm-tabbar {
-    position: fixed;
-    z-index: 25;
-    right: 12px;
-    bottom: calc(10px + env(safe-area-inset-bottom));
-    left: 12px;
-    display: flex;
-    height: 66px;
-    align-items: center;
-    justify-content: space-around;
-    border: 1px solid var(--gm-surface-glass-border);
-    border-radius: 22px;
-    background: var(--gm-tabbar-bg);
-    box-shadow: 0 12px 36px rgba(0, 0, 0, .16);
-    -webkit-backdrop-filter: var(--gm-header-filter);
-    backdrop-filter: var(--gm-header-filter);
-  }
-  .gm-tabbar :is(a, button) {
-    display: grid;
-    min-width: 0;
-    flex: 1;
-    gap: 2px;
-    padding: 0;
-    border: 0;
-    color: var(--gm-muted);
-    background: transparent;
-    font: inherit;
-    font-size: .64rem;
-    white-space: nowrap;
-    cursor: pointer;
-    place-items: center;
-  }
-  .gm-tabbar :is(a, button) .gmi { font-size: 1.25rem; }
-  .gm-tabbar a[aria-current="page"],
-  .gm-tabbar button.is-active { color: var(--gm-text); }
-
-  /* Panel «Más»: las páginas que no caben en la barra (el .mobile-more de My Book Box). La barra tiene 4 botones
-     como mucho, contando «Más» */
-  .gm-tabbar-more {
-    position: fixed;
-    z-index: 26;
-    right: 12px;
-    bottom: calc(86px + env(safe-area-inset-bottom));
-    left: 12px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-    padding: 12px;
-    border: 1px solid var(--gm-surface-glass-border);
-    border-radius: 22px;
-    background: var(--gm-header-bg);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
-    -webkit-backdrop-filter: blur(22px);
-    backdrop-filter: blur(22px);
-  }
+  .gm-tabbar { display: flex; }
   .gm-tabbar-more.is-open { display: grid; }
-  .gm-tabbar-more a {
-    display: grid;
-    min-width: 0;
-    min-height: 58px;
-    gap: 4px;
-    padding: 7px 5px;
-    border-radius: 14px;
-    color: var(--gm-muted);
-    font-size: .68rem;
-    text-align: center;
-    place-items: center;
-  }
-  .gm-tabbar-more a .gmi { font-size: 1.25rem; }
-  .gm-tabbar-more a[aria-current="page"] { color: var(--gm-text); background: var(--gm-surface-soft); }
-
   /* Hueco al final de la página para que la barra no tape el contenido */
   .gm-has-tabbar { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 }
