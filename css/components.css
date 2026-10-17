@@ -1726,7 +1726,7 @@
 /* --- Aviso de IA (transparencia, junto a un chat) -----------------------------------
    <p class="gm-ai-notice">Respuestas generadas con IA…; pueden contener errores.
      <button type="button" class="gm-ai-notice__link">Más información</button></p> */
-.gm-ai-notice { max-width: 30rem; margin: .75rem auto 0; color: var(--gm-muted); font-size: .75rem; line-height: 1.4; }
+.gm-ai-notice { max-width: 30rem; margin: .75rem auto 0; color: var(--gm-muted); font-size: .75rem; line-height: 1.4; text-align: center; }
 .gm-ai-notice__link {
   display: inline-flex;
   min-height: 24px;
