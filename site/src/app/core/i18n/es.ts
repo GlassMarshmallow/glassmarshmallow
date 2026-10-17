@@ -382,7 +382,7 @@ export const es: Dictionary = {
   },
   icons: {
     title: 'Iconos',
-    lead: '{line} iconos de línea y {fill} de relleno. Cuadrícula de 24 × 24, trazo de 1,5 px y extremos redondeados. Toman el color del texto, así que se cambian con CSS.',
+    lead: '{line} iconos de línea, {fill} de relleno y {brands} logos de marcas. Cuadrícula de 24 × 24, trazo de 1,5 px y extremos redondeados. Toman el color del texto, así que se cambian con CSS.',
     search: 'Buscar un icono',
     searchPlaceholder: 'Por ejemplo: arrow, circle, heart',
     found: '{count} iconos',

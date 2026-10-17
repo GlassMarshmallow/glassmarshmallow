@@ -381,7 +381,7 @@ export const en = {
   },
   icons: {
     title: 'Icons',
-    lead: '{line} line icons and {fill} fill icons. 24 × 24 grid, 1.5 px stroke and rounded ends. They take the text color, so you change them with CSS.',
+    lead: '{line} line icons, {fill} fill icons and {brands} brand logos. 24 × 24 grid, 1.5 px stroke and rounded ends. They take the text color, so you change them with CSS.',
     search: 'Search for an icon',
     searchPlaceholder: 'For example: arrow, circle, heart',
     found: '{count} icons',

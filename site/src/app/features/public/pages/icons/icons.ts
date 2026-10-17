@@ -13,7 +13,8 @@ import catalog from '../../../../../../../../glassmarshmallow-icons/catalog.json
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Icons {
-  readonly lineCount = catalog.length;
+  readonly lineCount = catalog.filter((icon) => icon.category !== 'Brand').length;
+  readonly brandCount = catalog.filter((icon) => icon.category === 'Brand').length;
   readonly fillCount = catalog.filter((icon) => icon.fill).length;
   readonly categories = ICON_CATEGORIES;
   readonly query = signal('');
