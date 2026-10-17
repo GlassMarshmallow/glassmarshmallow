@@ -9,6 +9,19 @@ Combine a color class with a use class to set the background, text and border of
 
 The black, white and gray classes work the same way: `.gm-theme-white`, `.gm-theme-gray-100` to `.gm-theme-gray-900` and `.gm-theme-black`.
 
+## Pink and blue
+
+`.gm-theme-pink-blue` is **pink by day and blue at night**: the color we use for examples and for what should stand out (like the “For agents” button on the home page). It combines with the same uses and also exists as a variable: `--gm-pink-blue`.
+
+```html
+<div class="gm-flex gm-gap-3 gm-flex-wrap">
+  <div class="gm-theme-pink-blue gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-pink-blue .gm-theme-solid</div>
+  <div class="gm-theme-pink-blue gm-theme-glass" style="padding: 12px 16px">.gm-theme-pink-blue .gm-theme-glass</div>
+</div>
+```
+
+Switch between light and dark mode to see it turn from pink to blue.
+
 ## Solid
 
 `.gm-theme-solid` paints the pastel as the background, with black text in both light and dark mode.

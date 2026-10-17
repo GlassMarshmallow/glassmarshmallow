@@ -9,6 +9,19 @@ Combina una clase de color con una de uso para poner de una vez el fondo, el tex
 
 Las de negro, blanco y grises funcionan igual: `.gm-theme-white`, de `.gm-theme-gray-100` a `.gm-theme-gray-900` y `.gm-theme-black`.
 
+## Rosa y azul
+
+`.gm-theme-pink-blue` es el **rosa de día y el azul de noche**: el color que usamos para los ejemplos y para lo que se quiere destacar (como el botón «Para agentes» de la portada). Se combina con los mismos usos y también existe como variable: `--gm-pink-blue`.
+
+```html
+<div class="gm-flex gm-gap-3 gm-flex-wrap">
+  <div class="gm-theme-pink-blue gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-pink-blue .gm-theme-solid</div>
+  <div class="gm-theme-pink-blue gm-theme-glass" style="padding: 12px 16px">.gm-theme-pink-blue .gm-theme-glass</div>
+</div>
+```
+
+Cambia entre el modo claro y el oscuro para verlo pasar de rosa a azul.
+
 ## Sólido
 
 `.gm-theme-solid` pinta el pastel de fondo, con el texto negro en modo claro y oscuro.

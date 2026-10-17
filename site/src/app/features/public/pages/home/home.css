@@ -26,12 +26,11 @@
   border: 0;
   border-radius: var(--gm-radius-pill);
   color: var(--gm-on-pastel);
-  background: var(--gm-agents-bg, var(--gm-pink));
+  background: var(--gm-pink-blue);
   font-size: 1rem;
   font-weight: 650;
 }
-.home__agents .gm-menu__trigger:hover { color: var(--gm-on-pastel); background: var(--gm-agents-bg, var(--gm-pink)); box-shadow: var(--gm-shadow-hover); transform: translateY(-1px); }
+.home__agents .gm-menu__trigger:hover { color: var(--gm-on-pastel); background: var(--gm-pink-blue); box-shadow: var(--gm-shadow-hover); transform: translateY(-1px); }
 .home__agents .gm-menu__trigger .gmi { font-size: 1.25em; }
 .home__agents-list { right: 50%; min-width: 240px; text-align: left; transform: translateX(50%); }
 .home__agents-list .gm-menu__item { justify-content: space-between; gap: 16px; }
-:host-context([data-theme="dark"]) .home__agents { --gm-agents-bg: var(--gm-blue); }

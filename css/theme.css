@@ -104,6 +104,18 @@
   --gm-black-text: var(--gm-gray-400);
 }
 
+/* Rosa de día y azul de noche (decidido por Sara): el color de ejemplo y de lo que se quiere destacar */
+:root, [data-theme="light"] {
+  --gm-pink-blue: var(--gm-pink);
+  --gm-pink-blue-rgb: var(--gm-pink-rgb);
+  --gm-pink-blue-text: var(--gm-pink-text);
+}
+[data-theme="dark"] {
+  --gm-pink-blue: var(--gm-blue);
+  --gm-pink-blue-rgb: var(--gm-blue-rgb);
+  --gm-pink-blue-text: var(--gm-blue-text);
+}
+
 /* 1. Color */
 .gm-theme-sky      { --gm-theme: var(--gm-sky);      --gm-theme-rgb: var(--gm-sky-rgb);      --gm-theme-text: var(--gm-sky-text); --gm-theme-on: var(--gm-on-pastel); }
 .gm-theme-blue     { --gm-theme: var(--gm-blue);     --gm-theme-rgb: var(--gm-blue-rgb);     --gm-theme-text: var(--gm-blue-text); --gm-theme-on: var(--gm-on-pastel); }
@@ -112,6 +124,7 @@
 .gm-theme-peach    { --gm-theme: var(--gm-peach);    --gm-theme-rgb: var(--gm-peach-rgb);    --gm-theme-text: var(--gm-peach-text); --gm-theme-on: var(--gm-on-pastel); }
 .gm-theme-lemon    { --gm-theme: var(--gm-lemon);    --gm-theme-rgb: var(--gm-lemon-rgb);    --gm-theme-text: var(--gm-lemon-text); --gm-theme-on: var(--gm-on-pastel); }
 .gm-theme-mint     { --gm-theme: var(--gm-mint);     --gm-theme-rgb: var(--gm-mint-rgb);     --gm-theme-text: var(--gm-mint-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-pink-blue { --gm-theme: var(--gm-pink-blue); --gm-theme-rgb: var(--gm-pink-blue-rgb); --gm-theme-text: var(--gm-pink-blue-text); --gm-theme-on: var(--gm-on-pastel); }
 .gm-theme-coral    { --gm-theme: var(--gm-coral);    --gm-theme-rgb: var(--gm-coral-rgb);    --gm-theme-text: var(--gm-coral-text); --gm-theme-on: var(--gm-on-pastel); }
 
 /* Negro, blanco y grises: del blanco al gray-500 llevan texto negro; del gray-600 al negro, blanco */

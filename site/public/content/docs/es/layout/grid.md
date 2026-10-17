@@ -9,7 +9,7 @@ Para colocar piezas en columnas. Es de 12 columnas, como la de Bootstrap, pero h
 ```html
 <div class="gm-grid gm-gap-sm">
   <div class="gm-col-8 gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">8 de 12</div>
-  <div class="gm-col-4 gm-theme-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">4 de 12</div>
+  <div class="gm-col-4 gm-theme-pink-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">4 de 12</div>
   <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
   <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
   <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
