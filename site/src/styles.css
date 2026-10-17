@@ -1,25 +1,14 @@
 /* Estilos globales de la web de documentación (los del framework están en ../css). */
 
-/* Inicio, modo claro: borde blanco alrededor de las letras del título (con filter, para no tapar el
-   degradado). Aquí y no en home.css porque el encapsulado de Angular no traduce bien :root:not(…) */
+/* Inicio, modo claro: el título de la portada. Aquí y no en home.css porque el encapsulado de Angular no
+   traduce bien :root:not(…) */
 :root:not([data-theme="dark"]) .hero h1 {
-  /* La luz en la misma diagonal que el logo (↗): celeste claro al principio (abajo a la izquierda), los colores
-     sólidos en el centro y naranja claro al final (arriba a la derecha).
-     EXCEPCIÓN WCAG aprobada por Sara (17/10/2026): en los extremos claros el contraste baja de 3:1 */
-  /* Brillo (pedido por Sara): una franja de luz blanca en la mitad de arriba de las letras, como el reflejo de
-     una superficie brillante, sobre el degradado de siempre */
-  background-image:
-    linear-gradient(180deg, rgba(255, 255, 255, .55) 0%, rgba(255, 255, 255, .18) 46%, rgba(255, 255, 255, 0) 54%),
-    linear-gradient(45deg, #45c7ff 0%, #1c6cff 25%, #8c57e9 50%, #b2588b 75%, #ff9646 100%);
-  /* Borde blanco de 1 px alrededor de las letras, como el filo del logo (sin relieve: Sara prefirió solo el
-     brillo), y por fuera una línea finísima en morado suave para que el blanco se distinga sobre el fondo
-     claro. Con filter y no con -webkit-text-stroke: en Montserrat el trazo marca las uniones de dentro */
-  filter:
-    drop-shadow(1px 0 0 #fff)
-    drop-shadow(-1px 0 0 #fff)
-    drop-shadow(0 1px 0 #fff)
-    drop-shadow(0 -1px 0 #fff)
-    drop-shadow(0 0 .5px rgba(60, 30, 120, .5));
+  /* Prueba pedida por Sara: el título en negro liso, sin degradado, brillo ni borde. La versión con degradado,
+     brillo y borde blanco está en el commit 0a1e0a4 */
+  background: none;
+  color: var(--gm-text);
+  -webkit-text-fill-color: currentColor;
+  filter: none;
 }
 
 /* Pie en la portada: blanco en claro y negro en oscuro, sin línea, para continuar el degradado del final.
