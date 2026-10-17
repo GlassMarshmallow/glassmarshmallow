@@ -7,6 +7,8 @@
  *   hay, del alt de la miniatura.
  * - En el visor: flechas, contador («2 de 9»), el texto y el botón de cerrar. ← → pasan de foto, Inicio y
  *   Fin van a la primera y la última, y Escape cierra. Al cerrar, el foco vuelve a la foto de la galería.
+ * - Una sola foto que se amplía (por ejemplo, la foto de perfil): un enlace a la foto grande con data-gm-zoom.
+ *   El visor sale sin flechas ni contador. initZooms() pone en marcha todas.
  * - Textos en español si <html lang="es">; en inglés si no. Se cambian con initGallery(root, { texts }).
  */
 
@@ -18,14 +20,14 @@ const TEXTS = {
 /** Pone en marcha una galería. Devuelve una función para quitarla. */
 export function initGallery(root, options = {}) {
   if (root.gmGallery) return root.gmGallery;
-  const items = [...root.querySelectorAll('.gm-gallery__item')];
+  const items = root.hasAttribute('data-gm-zoom') ? [root] : [...root.querySelectorAll('.gm-gallery__item')];
   if (!items.length) return () => {};
   const lang = (document.documentElement.lang || 'en').slice(0, 2);
   const t = { ...(TEXTS[lang] ?? TEXTS.en), ...options.texts };
   let index = 0;
 
   const dialog = document.createElement('dialog');
-  dialog.className = 'gm-lightbox';
+  dialog.className = items.length === 1 ? 'gm-lightbox gm-lightbox--single' : 'gm-lightbox';
   dialog.setAttribute('aria-label', root.getAttribute('aria-label') || t.viewer);
   dialog.innerHTML = `
     <div class="gm-lightbox__head">
@@ -54,7 +56,7 @@ export function initGallery(root, options = {}) {
   }
 
   const onOpen = (event) => {
-    const item = event.target.closest('.gm-gallery__item');
+    const item = items.find((candidate) => candidate.contains(event.target));
     if (!item || event.metaKey || event.ctrlKey || event.shiftKey) return;
     event.preventDefault();
     show(items.indexOf(item));
@@ -92,4 +94,9 @@ export function initGallery(root, options = {}) {
 /** Pone en marcha todas las galerías con data-gm-gallery que haya dentro de «scope». */
 export function initGalleries(scope = document, options) {
   return [...scope.querySelectorAll('[data-gm-gallery]')].map((root) => initGallery(root, options));
+}
+
+/** Pone en marcha todas las fotos que se amplían (enlaces con data-gm-zoom) que haya dentro de «scope». */
+export function initZooms(scope = document, options) {
+  return [...scope.querySelectorAll('[data-gm-zoom]')].map((link) => initGallery(link, options));
 }

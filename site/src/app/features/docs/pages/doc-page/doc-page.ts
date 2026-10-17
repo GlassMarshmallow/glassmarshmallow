@@ -13,7 +13,7 @@ import { initColorPickers } from '../../../../../../../js/color-picker.js';
 import { initRanges } from '../../../../../../../js/range.js';
 import { initPlayers } from '../../../../../../../js/player.js';
 import { initCarousels } from '../../../../../../../js/carousel.js';
-import { initGalleries } from '../../../../../../../js/gallery.js';
+import { initGalleries, initZooms } from '../../../../../../../js/gallery.js';
 import { initDialogs } from '../../../../../../../js/dialog.js';
 import { initTickers } from '../../../../../../../js/ticker.js';
 import { initFullscreenMenus } from '../../../../../../../js/fullscreen-menu.js';
@@ -71,6 +71,7 @@ export class DocPage {
         initPlayers(content);
         initCarousels(content);
         initGalleries(content);
+        initZooms(content);
         // Ventanas y menús a pantalla completa: se quitan los de la página anterior antes de poner los nuevos
         this.cleanups.forEach((stop) => stop());
         this.cleanups = [...initDialogs(content), ...initFullscreenMenus(content), ...initTickers(content)];
