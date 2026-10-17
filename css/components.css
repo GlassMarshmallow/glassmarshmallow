@@ -272,8 +272,10 @@
   color: var(--gm-text);
   background: var(--gm-fill-subtle);
   font-size: .92rem;
+  line-height: 1.5;
 }
-.gm-alert .gmi { flex-shrink: 0; margin-top: 2px; }
+/* Icono un poco más grande que el texto y centrado con la primera línea (alto de línea: 0,92 rem × 1,5) */
+.gm-alert .gmi { flex-shrink: 0; font-size: 1.25rem; margin-top: calc((.92rem * 1.5 - 1.25rem) / 2); }
 .gm-alert--success { --gm-alert-rgb: var(--gm-mint-rgb); }
 .gm-alert--warning { --gm-alert-rgb: var(--gm-lemon-rgb); }
 .gm-alert--danger { --gm-alert-rgb: var(--gm-coral-rgb); }
