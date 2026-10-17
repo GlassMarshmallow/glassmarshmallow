@@ -1,0 +1,49 @@
+# Containers
+
+The container centers the page content and leaves a margin on the sides. It is the first thing inside each section.
+
+## Container
+
+`.gm-container` is at most 1240 px wide and leaves 24 px on each side (16 px on phones).
+
+```html
+<div class="gm-container" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+  Centered content, with a margin on the sides.
+</div>
+```
+
+## Narrow
+
+`.gm-container--narrow`, at most 960 px: for long texts, forms or articles, which read better without very long lines.
+
+```html
+<div class="gm-container gm-container--narrow" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+  Comfortable to read.
+</div>
+```
+
+## Full width
+
+`.gm-container--fluid` reaches the edges of the screen but keeps the side margin.
+
+```html
+<div class="gm-container--fluid" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+  Edge to edge.
+</div>
+```
+
+## Changing the width
+
+The maximum width is the `--gm-container` variable. Change it for the whole site or only inside a section:
+
+```html-code
+<style>
+  :root { --gm-container: 1100px; }
+</style>
+```
+
+| Class | Max width | Side margin |
+| --- | --- | --- |
+| `.gm-container` | 1240 px (`--gm-container`) | 24 px; 16 px up to 600 px |
+| `.gm-container--narrow` | 960 px | same |
+| `.gm-container--fluid` | full | same |

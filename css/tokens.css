@@ -113,6 +113,11 @@
 
   /* Maquetación */
   --gm-container: 1240px;
+  /* Puntos de corte (solo para leerlos desde JavaScript: en @media hay que escribir el número) */
+  --gm-breakpoint-sm: 600px;
+  --gm-breakpoint-md: 860px;
+  --gm-breakpoint-lg: 1100px;
+  --gm-breakpoint-xl: 1300px;
   --gm-header-height: 72px;
 
   color-scheme: light;
