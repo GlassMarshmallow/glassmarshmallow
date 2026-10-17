@@ -75,6 +75,7 @@
   --gm-fullscreen-menu-bg: rgba(245, 245, 247, .97);
   /* Franja de logos */
   --gm-ticker-bg: rgba(255, 255, 255, .8);
+  --gm-ticker-fade: #fcfcfd; /* el cristal de la franja sobre el fondo: donde se desvanecen los logos, junto al botón de pausa */
   --gm-ticker-border: linear-gradient(90deg, rgba(14, 116, 144, .45), rgba(91, 63, 208, .45), rgba(180, 83, 9, .45)) 1;
   /* Avisos: el pastel del estado a media intensidad (de noche, algo menos, para que el texto blanco llegue a 7:1) */
   --gm-alert-alpha: .45;
@@ -209,6 +210,7 @@
   --gm-glass-btn-shadow: 0 4px 16px rgba(0, 0, 0, .25);
   --gm-fullscreen-menu-bg: rgba(10, 10, 10, .95);
   --gm-ticker-bg: rgba(10, 10, 10, .75);
+  --gm-ticker-fade: #080808;
   --gm-ticker-border: linear-gradient(rgba(28, 171, 176, .35), rgba(28, 171, 176, .35)) 1;
   /* Avisos: el pastel del estado a media intensidad (de noche, algo menos, para que el texto blanco llegue a 7:1) */
   --gm-alert-alpha: .35;

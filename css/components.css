@@ -1862,7 +1862,18 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 .gm-ticker__item :is(svg, .gmi) { width: 1.9rem; height: 1.3rem; fill: currentColor; font-size: 1.3rem; }
 .gm-ticker--static .gm-ticker__track { width: auto; justify-content: center; animation: none; }
 /* Botón para pararla (WCAG 2.2.2): redondo, de cristal, al final de la franja y sin ocupar sitio */
-.gm-ticker__pause { position: absolute; z-index: 1; top: 50%; right: .5rem; transform: translateY(-50%); }
+/* Los logos se desvanecen antes de llegar al botón, para que no asomen por debajo ni a su lado */
+.gm-ticker:has(.gm-ticker__pause)::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 6rem;
+  background: linear-gradient(to right, transparent, var(--gm-ticker-fade) 55%);
+  content: "";
+  pointer-events: none;
+}
+.gm-ticker__pause { position: absolute; z-index: 2; top: 50%; right: .5rem; transform: translateY(-50%); }
 /* La franja recorta lo que sobresale: el contorno del foco va por dentro del botón para que se vea entero */
 .gm-ticker__pause:focus-visible { outline-offset: -4px; }
 @keyframes gm-ticker { to { transform: translateX(-50%); } }

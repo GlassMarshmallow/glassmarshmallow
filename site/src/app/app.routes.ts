@@ -73,6 +73,12 @@ export const routes: Routes = [
         ],
       },
       {
+        path: 'examples',
+        title: 'titles.examples',
+        data: { heading: 'nav.examples' },
+        loadComponent: () => import('./shared/pages/coming-soon/coming-soon').then((m) => m.ComingSoon),
+      },
+      {
         path: 'icons',
         title: 'titles.icons',
         loadComponent: () => import('./features/public/pages/icons/icons').then((m) => m.Icons),
@@ -90,6 +96,7 @@ export const routes: Routes = [
       },
       // Direcciones anteriores (en español)
       { path: 'documentacion', redirectTo: 'docs' },
+      { path: 'ejemplos', redirectTo: 'examples' },
       { path: 'iconos', redirectTo: 'icons' },
       { path: 'generador-de-cristal', redirectTo: 'tools/glass-generator' },
       { path: 'generador-de-degradados', redirectTo: 'tools/gradient-generator' },
