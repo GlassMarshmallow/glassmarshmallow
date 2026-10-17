@@ -15,6 +15,7 @@ let nextId = 0;
  */
 @Component({
   selector: 'app-color-picker',
+  host: { class: 'gm-color-picker' },
   imports: [TranslatePipe],
   templateUrl: './color-picker.html',
   styleUrl: './color-picker.css',

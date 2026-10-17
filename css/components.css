@@ -636,3 +636,128 @@
 @media (max-width: 600px) {
   .gm-search__results { width: 100%; }
 }
+
+/* --- Selector de color --------------------------------------------------------
+   Un botón con la muestra del color que abre una ventana con el círculo de color, las barras de tono,
+   saturación, luminosidad y opacidad, el código y el contraste de un texto blanco y uno negro encima.
+   El script opcional js/color-picker.js lo crea todo a partir de:
+   <div class="gm-color-picker" data-gm-color-picker data-label="Color de fondo">
+     <input type="hidden" name="fondo" value="#5cdfeb" />
+   </div>
+   Las barras llevan el tirador redondo (bolita). */
+.gm-color-picker { display: block; }
+
+/* Botón con la muestra del color */
+.gm-color-picker__trigger {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 14px 4px 4px;
+  border: 1px solid var(--gm-field-border);
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-text);
+  background: var(--gm-field-bg);
+  cursor: pointer;
+  text-align: left;
+}
+.gm-color-picker__trigger:hover { background: var(--gm-hover); }
+.gm-color-picker__swatch, .gm-color-picker__sample {
+  /* Cuadrícula de fondo para que se note la transparencia */
+  background:
+    linear-gradient(var(--gm-swatch), var(--gm-swatch)),
+    repeating-conic-gradient(#c8c8cc 0 25%, #fff 0 50%) 0 0 / 10px 10px;
+}
+.gm-color-picker__swatch { display: block; flex-shrink: 0; width: 38px; height: 38px; border: 1px solid var(--gm-line); border-radius: 9px; }
+.gm-color-picker__text { display: grid; min-width: 0; }
+.gm-color-picker__label { font-size: .8rem; font-weight: 650; }
+.gm-color-picker__value { overflow: hidden; color: var(--gm-muted); font-family: var(--gm-font-mono); font-size: .75rem; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Ventana */
+.gm-color-picker__dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 24px;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  color: var(--gm-text);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-md);
+  -webkit-backdrop-filter: blur(var(--gm-blur-header));
+  backdrop-filter: blur(var(--gm-blur-header));
+}
+/* Fondo casi transparente: la vista previa se sigue viendo mientras se elige */
+.gm-color-picker__dialog::backdrop { background: rgba(0, 0, 0, .12); }
+.gm-color-picker__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+.gm-color-picker__head h2 { margin: 0; font-size: 1.2rem; }
+.gm-color-picker__body { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 24px; }
+
+.gm-color-picker__wheel { position: relative; width: 200px; height: 200px; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--gm-line); cursor: crosshair; touch-action: none; }
+.gm-color-picker__thumb {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .35), 0 2px 6px rgba(0, 0, 0, .3);
+  transform: translate(-50%, -50%);
+  cursor: grab;
+}
+.gm-color-picker__thumb:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
+
+.gm-color-picker__sliders { display: grid; align-content: start; gap: 14px; }
+.gm-color-picker__slider { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px; }
+.gm-color-picker__slider label { font-size: .84rem; font-weight: 650; }
+.gm-color-picker__slider output { color: var(--gm-muted); font-size: .8rem; font-variant-numeric: tabular-nums; }
+.gm-color-picker__slider input {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 14px;
+  margin: 5px 0;
+  border-radius: 999px;
+  background: var(--gm-track);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.gm-color-picker__slider input.gm-color-picker__range--alpha {
+  background: var(--gm-track), repeating-conic-gradient(#c8c8cc 0 25%, #fff 0 50%) 0 0 / 10px 10px;
+}
+.gm-color-picker__slider input::-webkit-slider-thumb {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .4), 0 2px 6px rgba(0, 0, 0, .3);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.gm-color-picker__slider input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .4), 0 2px 6px rgba(0, 0, 0, .3);
+}
+.gm-color-picker__hex input { min-height: 40px; font-family: var(--gm-font-mono); }
+
+/* Contraste */
+.gm-color-picker__contrast { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--gm-line); }
+.gm-color-picker__contrast h3 { margin: 0 0 12px; font-size: .9rem; }
+.gm-color-picker__contrast-list { display: grid; gap: 10px; }
+.gm-color-picker__contrast-item { display: flex; align-items: center; gap: 12px; font-size: .88rem; }
+.gm-color-picker__sample::after { content: 'Aa'; }
+.gm-color-picker__sample { display: grid; flex-shrink: 0; width: 44px; height: 32px; border: 1px solid var(--gm-line); border-radius: 8px; font-weight: 700; place-items: center; }
+.gm-color-picker__badge { display: inline-flex; align-items: center; gap: 4px; margin-left: 6px; padding: 2px 8px; border-radius: 999px; color: var(--gm-danger); background: var(--gm-fill-subtle); font-size: .78rem; font-weight: 600; }
+.gm-color-picker__badge--ok { color: var(--gm-success); background: var(--gm-success-bg); }
+
+.gm-color-picker__actions { display: flex; justify-content: flex-end; margin-top: 20px; }
+
+@media (max-width: 560px) {
+  .gm-color-picker__dialog { padding: 18px; }
+  .gm-color-picker__body { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .gm-color-picker__sliders { width: 100%; }
+}

@@ -1,29 +1,29 @@
-<button type="button" class="trigger" aria-haspopup="dialog" (click)="open()">
-  <span class="swatch" [style.--swatch]="value()" aria-hidden="true"></span>
-  <span class="trigger__text">
-    <span class="trigger__label">{{ label() }}</span>
-    <span class="trigger__value">{{ value() }}</span>
+<button type="button" class="gm-color-picker__trigger" aria-haspopup="dialog" (click)="open()">
+  <span class="gm-color-picker__swatch" [style.--gm-swatch]="value()" aria-hidden="true"></span>
+  <span class="gm-color-picker__text">
+    <span class="gm-color-picker__label">{{ label() }}</span>
+    <span class="gm-color-picker__value">{{ value() }}</span>
   </span>
 </button>
 
-<dialog #dialog class="picker" [attr.aria-labelledby]="uid + '-title'">
-  <div class="picker__head">
+<dialog #dialog class="gm-color-picker__dialog" [attr.aria-labelledby]="uid + '-title'">
+  <div class="gm-color-picker__head">
     <h2 [id]="uid + '-title'">{{ label() }}</h2>
     <button type="button" class="gm-icon-btn" [attr.aria-label]="'common.close' | t" (click)="close()">
       <i class="gmi gmi-x-lg" aria-hidden="true"></i>
     </button>
   </div>
 
-  <div class="picker__body">
+  <div class="gm-color-picker__body">
     <div
       #wheel
-      class="wheel"
+      class="gm-color-picker__wheel"
       [style.background]="wheelBackground()"
       (pointerdown)="onWheelPointer($event)"
       (pointermove)="onWheelPointer($event)"
     >
       <span
-        class="wheel__thumb"
+        class="gm-color-picker__thumb"
         role="slider"
         tabindex="0"
         [attr.aria-label]="'picker.wheel' | t"
@@ -38,31 +38,31 @@
       ></span>
     </div>
 
-    <div class="sliders">
-      <div class="slider">
+    <div class="gm-color-picker__sliders">
+      <div class="gm-color-picker__slider">
         <label [for]="uid + '-h'">{{ 'picker.hue' | t }}</label>
         <output [for]="uid + '-h'">{{ hsla().h }}°</output>
-        <input [id]="uid + '-h'" type="range" min="0" max="359" [value]="hsla().h" [style.--track]="tracks().hue" (input)="setChannel('h', $event)" />
+        <input [id]="uid + '-h'" type="range" min="0" max="359" [value]="hsla().h" [style.--gm-track]="tracks().hue" (input)="setChannel('h', $event)" />
       </div>
-      <div class="slider">
+      <div class="gm-color-picker__slider">
         <label [for]="uid + '-s'">{{ 'picker.saturation' | t }}</label>
         <output [for]="uid + '-s'">{{ hsla().s }} %</output>
-        <input [id]="uid + '-s'" type="range" min="0" max="100" [value]="hsla().s" [style.--track]="tracks().saturation" (input)="setChannel('s', $event)" />
+        <input [id]="uid + '-s'" type="range" min="0" max="100" [value]="hsla().s" [style.--gm-track]="tracks().saturation" (input)="setChannel('s', $event)" />
       </div>
-      <div class="slider">
+      <div class="gm-color-picker__slider">
         <label [for]="uid + '-l'">{{ 'picker.lightness' | t }}</label>
         <output [for]="uid + '-l'">{{ hsla().l }} %</output>
-        <input [id]="uid + '-l'" type="range" min="0" max="100" [value]="hsla().l" [style.--track]="tracks().lightness" (input)="setChannel('l', $event)" />
+        <input [id]="uid + '-l'" type="range" min="0" max="100" [value]="hsla().l" [style.--gm-track]="tracks().lightness" (input)="setChannel('l', $event)" />
       </div>
       @if (alpha()) {
-        <div class="slider">
+        <div class="gm-color-picker__slider">
           <label [for]="uid + '-a'">{{ 'picker.opacity' | t }}</label>
           <output [for]="uid + '-a'">{{ (hsla().a * 100).toFixed(0) }} %</output>
-          <input [id]="uid + '-a'" class="slider--alpha" type="range" min="0" max="100" [value]="hsla().a * 100" [style.--track]="tracks().alpha" (input)="setChannel('a', $event)" />
+          <input [id]="uid + '-a'" class="gm-color-picker__range--alpha" type="range" min="0" max="100" [value]="hsla().a * 100" [style.--gm-track]="tracks().alpha" (input)="setChannel('a', $event)" />
         </div>
       }
 
-      <div class="gm-field hex">
+      <div class="gm-field gm-color-picker__hex">
         <label [for]="uid + '-hex'">{{ 'picker.code' | t }}</label>
         <input
           [id]="uid + '-hex'"
@@ -81,16 +81,16 @@
     </div>
   </div>
 
-  <div class="contrast">
+  <div class="gm-color-picker__contrast">
     <h3>{{ (hsla().a < 1 ? 'picker.contrastOnWhite' : 'picker.contrast') | t }}</h3>
-    <div class="contrast__list">
+    <div class="gm-color-picker__contrast-list">
       @for (item of contrasts(); track item.name) {
-        <div class="contrast__item">
+        <div class="gm-color-picker__contrast-item">
           <!-- La muestra «Aa» va en CSS: es decorativa y puede no tener contraste a propósito -->
-          <span class="contrast__sample" [style.--swatch]="css()" [style.color]="item.color" aria-hidden="true"></span>
+          <span class="gm-color-picker__sample" [style.--gm-swatch]="css()" [style.color]="item.color" aria-hidden="true"></span>
           <span>
             {{ 'picker.textOn' | t: { color: (item.name | t) } }} <strong>{{ item.text }}:1</strong>
-            <span class="contrast__badge" [class.contrast__badge--ok]="item.passes">
+            <span class="gm-color-picker__badge" [class.gm-color-picker__badge--ok]="item.passes">
               <i class="gmi" [class.gmi-check-lg]="item.passes" [class.gmi-x-lg]="!item.passes" aria-hidden="true"></i>
               {{ (item.passes ? 'picker.passes' : 'picker.fails') | t }}
             </span>
@@ -100,7 +100,7 @@
     </div>
   </div>
 
-  <div class="picker__actions">
+  <div class="gm-color-picker__actions">
     <button type="button" class="gm-btn" (click)="close()">{{ 'common.done' | t }}</button>
   </div>
 </dialog>

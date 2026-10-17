@@ -9,6 +9,7 @@ import { RenderedDoc, renderDoc } from '../../data/render-doc';
 import { initCalendars } from '../../../../../../../js/calendar.js';
 import { initMenus } from '../../../../../../../js/menu.js';
 import { initSearches } from '../../../../../../../js/search.js';
+import { initColorPickers } from '../../../../../../../js/color-picker.js';
 
 const REPO = 'https://github.com/spyamuza/glassmarshmallow/blob/main/site/public/content/docs';
 
@@ -48,7 +49,7 @@ export class DocPage {
   readonly next = computed(() => this.neighbour(1));
 
   constructor() {
-    // Cuando el contenido ya está en la página, pone en marcha los calendarios, menús y buscadores de los ejemplos
+    // Cuando el contenido ya está en la página, pone en marcha los calendarios, menús, buscadores y selectores de color de los ejemplos
     afterRenderEffect(() => {
       this.doc();
       const content = this.host.nativeElement.querySelector('.doc__content');
@@ -56,6 +57,7 @@ export class DocPage {
         initCalendars(content);
         initMenus(content);
         initSearches(content);
+        initColorPickers(content);
       }
     });
 
