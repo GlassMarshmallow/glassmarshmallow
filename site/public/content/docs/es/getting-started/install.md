@@ -76,7 +76,7 @@ Sáltate la instalación y carga el CSS compilado desde un CDN.
 
 ## Descarga
 
-Descarga el código fuente desde el [repositorio en GitHub](https://github.com/spyamuza/glassmarshmallow). Los archivos listos para usar están en `dist/css/` y los archivos fuente en `css/`.
+Descarga el código fuente desde el [repositorio en GitHub](https://github.com/GlassMarshmallow/glassmarshmallow). Los archivos listos para usar están en `dist/css/` y los archivos fuente en `css/`.
 
 Para volver a generar `dist/` después de cambiar el código fuente:
 

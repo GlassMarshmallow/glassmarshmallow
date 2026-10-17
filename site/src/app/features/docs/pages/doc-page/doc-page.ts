@@ -18,7 +18,7 @@ import { initDialogs } from '../../../../../../../js/dialog.js';
 import { initTickers } from '../../../../../../../js/ticker.js';
 import { initFullscreenMenus } from '../../../../../../../js/fullscreen-menu.js';
 
-const REPO = 'https://github.com/spyamuza/glassmarshmallow/blob/main/site/public/content/docs';
+const REPO = 'https://github.com/GlassMarshmallow/glassmarshmallow/blob/main/site/public/content/docs';
 
 /**
  * Página de la documentación: lee el Markdown del idioma actual (public/content/docs/<idioma>/<sección>/<página>.md)

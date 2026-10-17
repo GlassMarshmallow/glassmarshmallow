@@ -76,7 +76,7 @@ Skip the install and load the compiled CSS from a CDN.
 
 ## Download
 
-Download the source code from the [repository on GitHub](https://github.com/spyamuza/glassmarshmallow). The ready-to-use files are in `dist/css/` and the source files in `css/`.
+Download the source code from the [repository on GitHub](https://github.com/GlassMarshmallow/glassmarshmallow). The ready-to-use files are in `dist/css/` and the source files in `css/`.
 
 To build `dist/` again after changing the source:
 
