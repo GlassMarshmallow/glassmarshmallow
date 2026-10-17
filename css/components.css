@@ -333,18 +333,14 @@
 /* 44 px de alto para pulsarlos (WCAG 2.5.5, AAA) */
 .gm-navbar__nav a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; color: var(--gm-nav-link); transition: color .2s; }
 .gm-navbar__nav a[aria-current="page"] { color: var(--gm-text); font-weight: 650; }
-/* Al pasar el ratón: el degradado de las luces (en oscuro, el color del texto) */
+/* Al pasar el ratón: --gm-nav-link-hover (un color o un degradado). Por defecto, de día el degradado de acento y de
+   noche el color del texto */
 .gm-navbar__nav a:hover {
-  background: var(--gm-accent-gradient-text);
+  background: var(--gm-nav-link-hover);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-}
-[data-theme="dark"] .gm-navbar__nav a:hover {
-  background: none;
-  color: var(--gm-text);
-  -webkit-text-fill-color: currentColor;
 }
 .gm-navbar__actions { display: flex; align-items: center; gap: 12px; font-size: .84rem; }
 /* Botón de tema: círculo suave; al pasar el ratón se tiñe con el degradado y el icono gira un poco */
