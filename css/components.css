@@ -1456,7 +1456,9 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 .gm-lightbox__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px clamp(16px, 3vw, 32px); }
 .gm-lightbox__count { color: rgba(245, 245, 247, .88); font-size: .9rem; font-variant-numeric: tabular-nums; }
 .gm-lightbox__stage { position: relative; display: grid; min-height: 0; padding: 0 clamp(16px, 7vw, 96px); place-items: center; }
-.gm-lightbox__stage img { max-width: 100%; max-height: 100%; border-radius: 8px; object-fit: contain; box-shadow: 0 30px 90px rgba(0, 0, 0, .55); }
+/* La foto cabe siempre en la pantalla: el 100 % de alto no se resuelve dentro de la rejilla, así que se mide con la
+   ventana, menos la cabecera y el pie de foto (también las fotos altas, como capturas de móvil) */
+.gm-lightbox__stage img { max-width: 100%; max-height: calc(100dvh - 10rem); border-radius: 8px; object-fit: contain; box-shadow: 0 30px 90px rgba(0, 0, 0, .55); }
 .gm-lightbox__caption { min-height: 1.5em; margin: 0; padding: 14px clamp(16px, 3vw, 32px) 22px; text-align: center; }
 .gm-lightbox__button {
   display: grid;
