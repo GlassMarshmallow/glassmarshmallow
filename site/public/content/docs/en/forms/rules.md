@@ -44,13 +44,12 @@ Several simple questions are better than one complicated one. Use closed questio
 
 ## 4. Mark required and optional fields
 
-Required fields have `*` in the label and `required` on the field; optional ones have “(optional)” written in the label. Explain the `*` at the start of the form: not everyone knows what it means.
+Required fields have “(required)” written in the label and `required` on the field; optional ones, “(optional)”. Written in words it needs no explanation and screen readers read it the same way; not everyone knows what an asterisk means.
 
 ```html
 <div style="display: grid; gap: 1.15rem; max-width: 420px">
-  <p class="gm-form__intro">Fields marked with * are required.</p>
   <div class="gm-field">
-    <label for="rules-email">Email *</label>
+    <label for="rules-email">Email (required)</label>
     <input id="rules-email" type="email" autocomplete="email" required>
   </div>
   <div class="gm-field">
@@ -95,7 +94,7 @@ The message says what happened and how to fix it, using the label's words. No bl
 
 ```html
 <div class="gm-field" style="max-width: 420px">
-  <label for="bad-email">Email *</label>
+  <label for="bad-email">Email (required)</label>
   <input id="bad-email" type="email" value="sara@" aria-invalid="true" aria-describedby="bad-email-error">
   <p class="gm-field__error" id="bad-email-error">Invalid field.</p>
 </div>
@@ -105,7 +104,7 @@ The message says what happened and how to fix it, using the label's words. No bl
 
 ```html
 <div class="gm-field" style="max-width: 420px">
-  <label for="good-email">Email *</label>
+  <label for="good-email">Email (required)</label>
   <input id="good-email" type="email" value="sara@" aria-invalid="true" aria-describedby="good-email-error">
   <p class="gm-field__error" id="good-email-error">Enter the full email address, for example sara@example.com.</p>
 </div>

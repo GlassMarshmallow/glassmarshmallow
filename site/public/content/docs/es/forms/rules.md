@@ -44,13 +44,12 @@ Mejor varias preguntas simples que una complicada. Usa preguntas cerradas (opcio
 
 ## 4. Marca los obligatorios y los opcionales
 
-Los obligatorios llevan `*` en la etiqueta y `required` en el campo; los opcionales, «(opcional)» escrito en la etiqueta. Explica el `*` al principio del formulario: no todo el mundo sabe qué significa.
+Los obligatorios llevan «(obligatorio)» escrito en la etiqueta y `required` en el campo; los opcionales, «(opcional)». Escrito con palabras se entiende sin explicaciones y lo leen igual los lectores de pantalla; un asterisco no todo el mundo sabe qué significa.
 
 ```html
 <div style="display: grid; gap: 1.15rem; max-width: 420px">
-  <p class="gm-form__intro">Los campos con * son obligatorios.</p>
   <div class="gm-field">
-    <label for="reglas-correo">Correo electrónico *</label>
+    <label for="reglas-correo">Correo electrónico (obligatorio)</label>
     <input id="reglas-correo" type="email" autocomplete="email" required>
   </div>
   <div class="gm-field">
@@ -95,7 +94,7 @@ El mensaje dice qué ha pasado y cómo arreglarlo, usando las palabras de la eti
 
 ```html
 <div class="gm-field" style="max-width: 420px">
-  <label for="mal-correo">Correo electrónico *</label>
+  <label for="mal-correo">Correo electrónico (obligatorio)</label>
   <input id="mal-correo" type="email" value="sara@" aria-invalid="true" aria-describedby="mal-correo-error">
   <p class="gm-field__error" id="mal-correo-error">Campo no válido.</p>
 </div>
@@ -105,7 +104,7 @@ El mensaje dice qué ha pasado y cómo arreglarlo, usando las palabras de la eti
 
 ```html
 <div class="gm-field" style="max-width: 420px">
-  <label for="bien-correo">Correo electrónico *</label>
+  <label for="bien-correo">Correo electrónico (obligatorio)</label>
   <input id="bien-correo" type="email" value="sara@" aria-invalid="true" aria-describedby="bien-correo-error">
   <p class="gm-field__error" id="bien-correo-error">Escribe el correo electrónico completo, por ejemplo sara@ejemplo.com.</p>
 </div>

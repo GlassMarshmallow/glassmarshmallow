@@ -8,21 +8,20 @@ Campos y formularios como el formulario de contacto del portfolio: recuadro de c
 <form class="gm-form" aria-labelledby="contact-title">
   <div>
     <h3 id="contact-title" style="margin: 0 0 4px">Contacta conmigo</h3>
-    <p class="gm-form__intro">Los campos con * son obligatorios.</p>
   </div>
 
   <div class="gm-field">
-    <label for="contact-name">Nombre completo o de la empresa *</label>
+    <label for="contact-name">Nombre completo o de la empresa (obligatorio)</label>
     <input id="contact-name" name="name" type="text" autocomplete="name" required>
   </div>
 
   <div class="gm-field">
-    <label for="contact-email">Correo electrónico *</label>
+    <label for="contact-email">Correo electrónico (obligatorio)</label>
     <input id="contact-email" name="email" type="email" autocomplete="email" required>
   </div>
 
   <div class="gm-field">
-    <label for="contact-phone">Teléfono *</label>
+    <label for="contact-phone">Teléfono (obligatorio)</label>
     <div class="gm-input-group">
       <select id="contact-prefix" name="prefix" autocomplete="tel-country-code" aria-label="Prefijo" required>
           <option value="+34">+34</option>
@@ -39,7 +38,7 @@ Campos y formularios como el formulario de contacto del portfolio: recuadro de c
   </div>
 
   <div class="gm-field">
-    <label for="contact-type">Tipo de proyecto *</label>
+    <label for="contact-type">Tipo de proyecto (obligatorio)</label>
     <select id="contact-type" name="type" required>
       <option value="">Elige el tipo de proyecto</option>
       <option>Web de empresa</option>
@@ -62,7 +61,7 @@ Campos y formularios como el formulario de contacto del portfolio: recuadro de c
   </fieldset>
 
   <fieldset class="gm-field" aria-describedby="contact-site-help">
-    <legend>¿Tienes ya un dominio o una web? *</legend>
+    <legend>¿Tienes ya un dominio o una web? (obligatorio)</legend>
     <p class="gm-field__help" id="contact-site-help">Marca «Sí» si ya tienes un dominio o una web publicada.</p>
     <div class="gm-check">
       <label><input type="radio" name="has-site" value="yes" required> Sí</label>
@@ -71,7 +70,7 @@ Campos y formularios como el formulario de contacto del portfolio: recuadro de c
   </fieldset>
 
   <div class="gm-field">
-    <label for="contact-details">¿Algo más que deba saber? *</label>
+    <label for="contact-details">¿Algo más que deba saber? (obligatorio)</label>
     <p class="gm-field__help" id="contact-details-help">Cuéntame el proyecto que tienes en mente.</p>
     <textarea id="contact-details" name="details" rows="5" aria-describedby="contact-details-help" required></textarea>
   </div>
@@ -102,7 +101,7 @@ Marca el campo con `aria-invalid="true"` y enlaza el mensaje con `aria-described
 
 ```html
 <div class="gm-field">
-  <label for="err-email">Correo electrónico *</label>
+  <label for="err-email">Correo electrónico (obligatorio)</label>
   <input id="err-email" type="email" value="sara@" aria-invalid="true" aria-describedby="err-email-msg">
   <p class="gm-field__error" id="err-email-msg">Escribe un correo completo, por ejemplo sara@ejemplo.com.</p>
 </div>
@@ -114,5 +113,5 @@ Marca el campo con `aria-invalid="true"` y enlaza el mensaje con `aria-described
 - Los bordes de los campos llegan a 3,5:1 en modo claro y 3,9:1 en oscuro (se pide 3:1).
 - Al escribir, el campo muestra un anillo y un borde rosa de día y azul de noche (5,5:1 en claro, 8:1 en oscuro; para bordes se pide 3:1).
 - Usa `autocomplete` (name, email, tel…) para que el navegador pueda rellenar el formulario.
-- Marca los campos obligatorios con * y `required`, y los opcionales con «(opcional)», y explica el * al principio del formulario. Más en [Reglas de los formularios](/docs/forms/rules).
+- Escribe «(obligatorio)» en la etiqueta de los campos obligatorios, además de `required`, y «(opcional)» en la de los opcionales. Más en [Reglas de los formularios](/docs/forms/rules).
 - El botón de enviar: texto blanco sobre rosa oscuro (8,6:1) de día y azul oscuro (11,3:1) de noche, AAA.
