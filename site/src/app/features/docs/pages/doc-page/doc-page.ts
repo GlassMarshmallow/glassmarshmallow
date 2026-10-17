@@ -14,6 +14,8 @@ import { initRanges } from '../../../../../../../js/range.js';
 import { initPlayers } from '../../../../../../../js/player.js';
 import { initCarousels } from '../../../../../../../js/carousel.js';
 import { initGalleries } from '../../../../../../../js/gallery.js';
+import { initDialogs } from '../../../../../../../js/dialog.js';
+import { initFullscreenMenus } from '../../../../../../../js/fullscreen-menu.js';
 
 const REPO = 'https://github.com/spyamuza/glassmarshmallow/blob/main/site/public/content/docs';
 
@@ -49,6 +51,8 @@ export class DocPage {
   readonly lead = computed<SafeHtml>(() => this.sanitizer.bypassSecurityTrustHtml(this.doc()?.lead ?? ''));
   readonly editUrl = computed(() => `${REPO}/${this.i18n.language()}/${this.path()}.md`);
 
+  private cleanups: Array<() => void> = [];
+
   readonly previous = computed(() => this.neighbour(-1));
   readonly next = computed(() => this.neighbour(1));
 
@@ -66,6 +70,9 @@ export class DocPage {
         initPlayers(content);
         initCarousels(content);
         initGalleries(content);
+        // Ventanas y menús a pantalla completa: se quitan los de la página anterior antes de poner los nuevos
+        this.cleanups.forEach((stop) => stop());
+        this.cleanups = [...initDialogs(content), ...initFullscreenMenus(content)];
         // Tablas más anchas que la página: se desplazan de lado y tienen que poder enfocarse (WCAG 2.1.1)
         content.querySelectorAll<HTMLTableElement>(':scope > table').forEach((table) => {
           if (table.scrollWidth > table.clientWidth) table.tabIndex = 0;

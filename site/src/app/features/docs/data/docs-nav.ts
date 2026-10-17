@@ -40,7 +40,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
   {
     id: 'content',
     icon: 'gmi-journal-text',
-    pages: ['structure', 'base', 'code'].map((p) => ({ path: `content/${p}` })),
+    pages: ['structure', 'base', 'prose', 'code'].map((p) => ({ path: `content/${p}` })),
   },
   {
     id: 'forms',
@@ -50,7 +50,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
   {
     id: 'components',
     icon: 'gmi-window-stack',
-    pages: ['accordion', 'alert', 'avatar', 'button', 'card', 'carousel', 'gallery', 'tag', 'navbar', 'tabbar', 'menu', 'search', 'player', 'progress', 'tooltip'].map((p) => ({ path: `components/${p}` })),
+    pages: ['accordion', 'alert', 'ai-notice', 'avatar', 'button', 'card', 'carousel', 'chat', 'chip', 'dialog', 'footer', 'gallery', 'tag', 'navbar', 'tabbar', 'fullscreen-menu', 'menu', 'search', 'player', 'progress', 'ticker', 'tooltip'].map((p) => ({ path: `components/${p}` })),
   },
   {
     id: 'helpers',

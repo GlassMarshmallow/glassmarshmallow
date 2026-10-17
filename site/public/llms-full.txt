@@ -1784,6 +1784,47 @@ Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so n
 - **Comfortable lines:** paragraphs and lists of 80 characters at most and not justified (WCAG 1.4.8).
 - **System high contrast:** when on, the person's colors win (WCAG 1.4.8).
 
+<!-- /docs/content/prose -->
+# Long text
+
+`.gm-prose` formats long text pages, like privacy or the legal notice: headings, paragraphs with good line height, lists and links. With `.gm-prose--card`, the text sits in a glass card, as in the portfolio template.
+
+## Example
+
+```html
+<article class="gm-prose gm-prose--card">
+  <h1>Privacy</h1>
+  <p class="gm-prose__updated">Last updated: 17 October 2026</p>
+  <h2>Data controller</h2>
+  <p>Sara Paez Yamuza. You can write to me at <a href="#">hello@example.com</a>.</p>
+  <h2>What data is stored</h2>
+  <ul>
+    <li>What you write in the form, only if you send it.</li>
+    <li>Your light or dark mode choice, in your browser.</li>
+  </ul>
+</article>
+```
+
+## Without the card
+
+With `.gm-prose` alone, the text sits on the page background.
+
+## What changes
+
+| Element | Format |
+| --- | --- |
+| `h1` | 1.9 rem (1.5 rem on phones) |
+| `.gm-prose__updated` | The date, in small gray |
+| `h2` | 1.1 rem, colored: accent gradient by day, turquoise at night |
+| `p`, `li` | 0.95 rem with 1.65 line height |
+| `a` | Link color, semibold and underlined |
+
+## Accessibility
+
+- Comfortable text and line height for long reading (WCAG 1.4.8 and 1.4.12); lines of 80 characters at most.
+- Colored headings reach 7:1; links too, and they are underlined.
+- Use heading levels in order (`h1`, then `h2`…), without skipping any.
+
 <!-- /docs/content/code -->
 # Code
 
@@ -2548,6 +2589,41 @@ A highlighted message inside the page: information, something that went well, a 
 - The icon is decorative (`aria-hidden="true"`).
 - Text of 7:1 or more on its background in both modes (AAA).
 
+<!-- /docs/components/ai-notice -->
+# AI notice
+
+A small note next to a chat or anything made with AI, so people know the answers come from an AI and can be wrong. With a link to more information.
+
+## Example
+
+```html
+<p class="gm-ai-notice">
+  Answers generated with AI from my profile; they may contain mistakes.
+  <button type="button" class="gm-ai-notice__link" data-gm-dialog-open="example-ai-info">More information</button>
+</p>
+<dialog class="gm-dialog" id="example-ai-info" aria-labelledby="example-ai-info-title">
+  <div class="gm-dialog__body">
+    <header class="gm-dialog__header">
+      <h2 class="gm-dialog__title" id="example-ai-info-title">About the AI</h2>
+      <button type="button" class="gm-icon-btn" data-gm-dialog-close aria-label="Close"><i class="gmi gmi-x-lg" aria-hidden="true"></i></button>
+    </header>
+    <section class="gm-dialog__section"><h3>What it is</h3><p>An AI model that answers from my profile. It can be wrong: for anything important, write to me.</p></section>
+  </div>
+</dialog>
+```
+
+“More information” opens a [dialog](/docs/components/dialog) explaining which AI it is, what happens to what people write and how to ask for it to be deleted.
+
+## Why
+
+- The **EU AI Act** (article 50) requires telling people they are talking to an AI.
+- Data protection also asks for information about what is stored and what is not.
+
+## Accessibility
+
+- Gray text of 7:1 or more on the background (AAA), small but readable.
+- The link sits inside the sentence, underlined, and is a button because it opens a dialog (it does not go to another page).
+
 <!-- /docs/components/avatar -->
 # Avatar
 
@@ -2939,6 +3015,213 @@ When the slide changes, it fires `gm-carousel-change` with its number (starting 
 - Do not put the only important thing in a carousel: many people only see the first slide.
 - In the swipe row, every item is reachable with Tab and the row scrolls to it on its own.
 
+<!-- /docs/components/chat -->
+# Chat
+
+The chat pieces from the AI portfolio template: the field to ask, the answer bubble and the typing dots. The chat itself (asking the AI, writing the answer letter by letter) comes from your app; the framework provides the look.
+
+## Field to ask
+
+A glass pill with the field and the send button. While typing, the border takes the lights and a soft ring appears.
+
+```html
+<form class="gm-chat-input" role="search" aria-label="Ask me about my work">
+  <label class="gm-visually-hidden" for="example-question">Write a question</label>
+  <input id="example-question" class="gm-chat-input__field" autocomplete="off" placeholder="Ask me anything…">
+  <button type="submit" class="gm-chat-input__send" aria-label="Send question"><i class="gmi gmi-arrow-up-circle-fill" aria-hidden="true"></i></button>
+</form>
+```
+
+## Answer bubble
+
+Glass with the lights border and, in dark mode, a turquoise glow. The tail points to the speaker: `.gm-bubble--tail-end` (right) or `.gm-bubble--tail-start` (left), at the height of `--gm-bubble-tail-y`.
+
+```html
+<div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
+  <div class="gm-bubble gm-bubble--tail-end" style="max-width: 360px">
+    <div class="gm-bubble__scroll" tabindex="0" role="region" aria-label="Answer">
+      I mostly work with Angular and .NET, and design in Figma. You can see my projects on <a href="#">GitHub</a>.
+    </div>
+    <button type="button" class="gm-bubble__close" aria-label="Close the answer"><i class="gmi gmi-x" aria-hidden="true"></i></button>
+  </div>
+  <div class="gm-bubble gm-bubble--tail-start" style="max-width: 360px; margin-left: 16px">
+    <div class="gm-bubble__scroll"><span class="gm-bubble__note">Picking up where we left off</span>When do you need the website?</div>
+  </div>
+</div>
+```
+
+## Thinking
+
+While the answer arrives, `.gm-typing` with three `<span>`s: three dots bouncing with the lights of the illustration.
+
+```html
+<div class="gm-bubble" style="max-width: 120px">
+  <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
+  <span class="gm-visually-hidden">Thinking about the answer…</span>
+</div>
+```
+
+## Error
+
+`.gm-bubble--error`: the border in coral, the error color.
+
+## Accessibility
+
+- The field has its `<label>` (visually hidden) and the send button its name.
+- If text is written letter by letter, it is decorative: announce the whole answer at once in a separate `aria-live="polite"`.
+- If the answer does not fit, the text scrolls inside; with `tabindex="0"` and `role="region"` it can be moved with the keyboard (WCAG 2.1.1).
+- Next to the chat, add the [AI notice](/docs/components/ai-notice): people must know they are talking to an AI.
+
+<!-- /docs/components/chip -->
+# Chip
+
+A glass pill for quick options, like the suggested questions of a chat. It is the one from the AI portfolio template: the same glass as the accordion and, on hover, it rises a little and the border takes the lights of the illustration (turquoise in dark mode).
+
+## Example
+
+```html
+<div class="gm-flex gm-flex-wrap gm-gap-2 gm-justify-center">
+  <button type="button" class="gm-chip">Which technologies do you use?</button>
+  <button type="button" class="gm-chip">How much does a website cost?</button>
+  <button type="button" class="gm-chip">Do you build online shops?</button>
+  <button type="button" class="gm-chip gm-chip--accent"><i class="gmi gmi-stars" aria-hidden="true"></i>I want a project</button>
+</div>
+```
+
+## Accent
+
+`.gm-chip--accent` always has the lights border and semibold text: for the main action of the group.
+
+## On phones
+
+Many chips in a row fit better in a [swipe row](/docs/components/carousel#swipe-row), as in the template:
+
+```html
+<div class="gm-scroll-row" role="group" aria-label="Quick questions" style="max-width: 320px">
+  <button type="button" class="gm-chip">Which technologies do you use?</button>
+  <button type="button" class="gm-chip">How much does a website cost?</button>
+  <button type="button" class="gm-chip">Do you build online shops?</button>
+</div>
+```
+
+## Disabled
+
+With `disabled`, or with `aria-disabled="true"` if it must stay focusable (for example, inside a swipe row while the AI is thinking).
+
+## Accessibility
+
+- They are `<button>` elements with text: they say what they do.
+- They look smaller than 44 px, but the touch area reaches 44 px (WCAG 2.5.5).
+- Text reaches 7:1 on the glass in both modes; the border, 3:1.
+
+<!-- /docs/components/dialog -->
+# Dialog
+
+A window that opens on top of the page to show information or ask for something, with the background dimmed behind it. It is the “About the AI” one from the portfolio template: the panel glass, sections separated by a thin line and colored headings.
+
+## Example
+
+```html
+<button type="button" class="gm-btn" data-gm-dialog-open="example-dialog">Open the dialog</button>
+<dialog class="gm-dialog" id="example-dialog" aria-labelledby="example-dialog-title">
+  <div class="gm-dialog__body">
+    <header class="gm-dialog__header">
+      <h2 class="gm-dialog__title" id="example-dialog-title">About the AI</h2>
+      <button type="button" class="gm-icon-btn" data-gm-dialog-close aria-label="Close"><i class="gmi gmi-x-lg" aria-hidden="true"></i></button>
+    </header>
+    <section class="gm-dialog__section">
+      <h3>What it is</h3>
+      <p>The chat uses an AI model that answers from my profile and <strong>can be wrong</strong>.</p>
+    </section>
+    <section class="gm-dialog__section">
+      <h3>What happens to what you write</h3>
+      <h4>Quick questions</h4>
+      <p>Your question is only used to give you the answer. It is not stored.</p>
+      <h4>“I want a project”</h4>
+      <ol>
+        <li>The assistant asks you a few questions about your project.</li>
+        <li>At the end, it shows you a summary and offers to send it to me.</li>
+        <li>If you do not send it, nothing reaches me.</li>
+      </ol>
+    </section>
+  </div>
+</dialog>
+```
+
+## Parts
+
+| Class | What it is |
+| --- | --- |
+| `.gm-dialog` | The window (an HTML `<dialog>`) |
+| `.gm-dialog__body` | The content; scrolls if it does not fit |
+| `.gm-dialog__header` | Title and close button |
+| `.gm-dialog__title` | The title; it gets focus when opened |
+| `.gm-dialog__section` | Each section, with a line above; its `<h3>`s are colored |
+
+## Script
+
+The optional script opens the dialog with `data-gm-dialog-open="id"` and closes it with `data-gm-dialog-close`, Escape or clicking outside:
+
+```html
+<script type="module">
+  import { initDialogs, openDialog } from 'glassmarshmallow/js/dialog.js';
+  initDialogs();
+  // or from your code: openDialog(document.getElementById('my-dialog'));
+</script>
+```
+
+## Accessibility
+
+- It is an HTML `<dialog>` opened with `showModal()`: the rest of the page becomes inert, so neither the mouse, the keyboard nor screen readers leave the dialog while it is open.
+- It is named with `aria-labelledby` (its title) and screen readers announce it as a dialog.
+- When opened, focus goes to the title, not the ✕, so it is read from the start. When closed, it returns to the button that opened it.
+- Escape always closes it, and the close button says what it does (“Close”).
+- Use it sparingly: it interrupts. For short messages, an [alert](/docs/components/alert) on the page is better.
+
+<!-- /docs/components/footer -->
+# Footer
+
+The footer from the portfolio template: a heading, icon links (email and social), the legal links on one line and the name with the year. Centered, with a thin line above.
+
+## Example
+
+```html
+<footer class="gm-footer">
+  <div class="gm-container">
+    <h2>Let's connect</h2>
+    <div class="gm-footer__socials">
+      <a href="#" aria-label="Send an email"><i class="gmi gmi-envelope-fill" aria-hidden="true"></i></a>
+      <a href="#" aria-label="GitHub (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+    </div>
+    <nav class="gm-footer__links" aria-label="Legal information">
+      <a href="#">Privacy</a><span aria-hidden="true">·</span><a href="#">Legal notice</a>
+    </nav>
+    <p class="gm-footer__bottom">2026 · <strong>Sara Paez Yamuza</strong> · Portfolio</p>
+    <p class="gm-footer__credit">Made with <a href="#">GlassMarshmallow</a></p>
+  </div>
+</footer>
+```
+
+## Parts
+
+| Class | What it is |
+| --- | --- |
+| `.gm-footer` | The footer, centered with a line above |
+| `.gm-footer__socials` | 32 px icon links (email, social) |
+| `.gm-footer__links` | Legal links on one line, underlined and gray |
+| `.gm-footer__bottom` | The year and the name (in `<strong>`) |
+| `.gm-footer__credit` | Credits, smaller |
+
+## Brand logos
+
+GlassMarshmallow icons do not include brand logos (GitHub, LinkedIn…). For those, use their official SVG or the one from [Simple Icons](https://simpleicons.org) (free license), with `fill="currentColor"` so it takes the text color.
+
+## Accessibility
+
+- Icon-only links have an `aria-label` (“Send an email”, “GitHub, opens in a new tab”).
+- Each link is at least 44 px (WCAG 2.5.5).
+- The legal links go in a named `<nav>`.
+
 <!-- /docs/components/gallery -->
 # Photo gallery
 
@@ -3130,6 +3413,50 @@ What does not fit in the bar goes in a panel opened with the “More” button (
 - It is a named `<nav>`; the current page has `aria-current="page"` and shows in the text color (the rest in gray).
 - “More” is a button with `aria-expanded` and `aria-controls`; Escape closes the panel.
 - Focused items are not hidden behind the bar (WCAG 2.4.12).
+
+<!-- /docs/components/fullscreen-menu -->
+# Fullscreen menu
+
+The mobile menu from the portfolio template: a round glass button with the hamburger opens the links in large type, filling the whole screen over a nearly opaque background. It is another way to navigate on phones, for sites with few sections; the other is the [tab bar](/docs/components/tabbar).
+
+## Example
+
+```html
+<button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-controls="example-mobile-menu" aria-label="Open menu"><i class="gmi gmi-list" aria-hidden="true"></i></button>
+<div class="gm-fullscreen-menu" id="example-mobile-menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <button type="button" class="gm-icon-btn gm-icon-btn--glass gm-fullscreen-menu__close" aria-label="Close menu"><i class="gmi gmi-x-lg" aria-hidden="true"></i></button>
+  <nav aria-label="Mobile menu">
+    <ul class="gm-fullscreen-menu__links">
+      <li><a href="#" aria-current="page">Home</a></li>
+      <li><a href="#">About me</a></li>
+      <li><a href="#">Skills</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+```
+
+## Round glass button
+
+`.gm-icon-btn--glass` is the template's 44 px glass circle, meant to sit on an illustration or an image: the menu button, the close button and the light/dark switch.
+
+## Script
+
+```html
+<script type="module">
+  import { initFullscreenMenus } from 'glassmarshmallow/js/fullscreen-menu.js';
+  initFullscreenMenus();
+</script>
+```
+
+The button that opens it is linked to the menu with `aria-controls="menu-id"`.
+
+## Accessibility
+
+- When closed, the menu is inert: it cannot be reached with the keyboard nor read by screen readers.
+- When open, the rest of the page is inert, focus goes to the first link and the button says `aria-expanded="true"`.
+- It closes with Escape, the ✕ or by choosing a link, and focus returns to the menu button.
+- Large links (2 rem) at least 44 px tall; the current page with `aria-current="page"`.
 
 <!-- /docs/components/menu -->
 # Menu
@@ -3411,6 +3738,44 @@ document.querySelector('#read').value = 60;
 - The done part reaches more than 3:1 on the gray in both modes (WCAG 1.4.11), and the gray text 7:1 (AAA).
 - If progress changes on its own (an upload), announce the end with a status message (`role="status"`), not every change.
 - No motion if the person asks for it (`prefers-reduced-motion`).
+
+<!-- /docs/components/ticker -->
+# Logo ticker
+
+A strip that slowly moves from right to left with logos and names, like the technologies strip of the portfolio template. Dark glass (white by day) with a thin turquoise border above and below (by day, with the lights of the illustration).
+
+## Example
+
+The content goes **twice in a row** inside `.gm-ticker__track`, so the loop is seamless.
+
+```html
+<div class="gm-ticker" aria-hidden="true">
+  <div class="gm-ticker__track">
+    <span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>Angular</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>TypeScript</span><span class="gm-ticker__item"><i class="gmi gmi-database"></i>PostgreSQL</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>.NET</span><span class="gm-ticker__item"><i class="gmi gmi-palette"></i>Figma</span><span class="gm-ticker__item"><i class="gmi gmi-stars"></i>Ollama</span>
+    <span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>Angular</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>TypeScript</span><span class="gm-ticker__item"><i class="gmi gmi-database"></i>PostgreSQL</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>.NET</span><span class="gm-ticker__item"><i class="gmi gmi-palette"></i>Figma</span><span class="gm-ticker__item"><i class="gmi gmi-stars"></i>Ollama</span>
+  </div>
+</div>
+```
+
+## Static
+
+`.gm-ticker--static`: no movement, with the logos that fit centered (for example, when the page has no animations). Then one copy is enough.
+
+```html
+<div class="gm-ticker gm-ticker--static" aria-hidden="true">
+  <div class="gm-ticker__track"><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>Angular</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>TypeScript</span><span class="gm-ticker__item"><i class="gmi gmi-database"></i>PostgreSQL</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>.NET</span><span class="gm-ticker__item"><i class="gmi gmi-palette"></i>Figma</span><span class="gm-ticker__item"><i class="gmi gmi-stars"></i>Ollama</span></div>
+</div>
+```
+
+## Pausing it
+
+It pauses on its own on hover or with focus inside. From your code, with `.is-paused` (for example, with a “Pause” button).
+
+## Accessibility
+
+- It is **decorative** (`aria-hidden="true"`): the same information must be elsewhere on the page (in the template, the Skills section).
+- It does not move if the person asks for reduced motion (WCAG 2.3.3).
+- If it is the only moving thing and lasts more than 5 seconds, offer a button to stop it (`.is-paused`) (WCAG 2.2.2).
 
 <!-- /docs/components/tooltip -->
 # Tooltip

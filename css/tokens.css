@@ -43,13 +43,39 @@
   --gm-form-bg: rgba(255, 255, 255, .78);
   --gm-form-shadow: 0 2px 12px rgba(0, 0, 0, .06);
   /* Acordeón (el de Habilidades del portfolio) */
-  --gm-accordion-bg: rgba(255, 255, 255, .78);
-  --gm-accordion-border: #86868b;
-  --gm-accordion-filter: saturate(180%) blur(20px);
-  --gm-accordion-shadow: 0 4px 24px rgba(0, 0, 0, .06);
+  --gm-accordion-bg: var(--gm-panel-bg);
+  --gm-accordion-border: var(--gm-panel-border);
+  --gm-accordion-filter: var(--gm-panel-filter);
+  --gm-accordion-shadow: var(--gm-panel-shadow);
   --gm-accordion-icon-bg: rgba(0, 0, 0, .05);
   --gm-accordion-icon: #1d1d1f;
   --gm-accordion-chevron: #6e6e73;
+  /* Cristal de los paneles (el de las tarjetas de Habilidades de la plantilla de portfolio): acordeón, chips,
+     campo del chat, ventanas y tarjeta de texto */
+  --gm-panel-bg: rgba(255, 255, 255, .78);
+  --gm-panel-border: #86868b;
+  --gm-panel-filter: saturate(180%) blur(20px);
+  --gm-panel-shadow: 0 4px 24px rgba(0, 0, 0, .06);
+  /* Borde con las luces del dibujo (turquesa, violeta y ámbar); en oscuro, turquesa liso */
+  --gm-lights-gradient: linear-gradient(90deg, #0e7490, #5b3fd0, #b45309);
+  /* Bocadillo del chat */
+  --gm-bubble-bg: #fff;
+  --gm-bubble-shadow: 0 6px 24px rgba(0, 0, 0, .08);
+  --gm-bubble-tail-start: #0e7490;
+  --gm-bubble-tail-end: #b45309;
+  --gm-bubble-tail-bg: #fff;
+  /* Ventana */
+  --gm-dialog-bg: rgba(255, 255, 255, .95);
+  --gm-dialog-shadow: 0 4px 24px rgba(0, 0, 0, .12);
+  --gm-dialog-backdrop: rgba(0, 0, 0, .3);
+  /* Botón redondo de cristal (sobre fondos con dibujo) y menú a pantalla completa */
+  --gm-glass-btn-bg: rgba(255, 255, 255, .8);
+  --gm-glass-btn-border: rgba(0, 0, 0, .1);
+  --gm-glass-btn-shadow: 0 4px 16px rgba(0, 0, 0, .1);
+  --gm-fullscreen-menu-bg: rgba(245, 245, 247, .97);
+  /* Franja de logos */
+  --gm-ticker-bg: rgba(255, 255, 255, .8);
+  --gm-ticker-border: linear-gradient(90deg, rgba(14, 116, 144, .45), rgba(91, 63, 208, .45), rgba(180, 83, 9, .45)) 1;
   /* Avisos: el pastel del estado a media intensidad (de noche, algo menos, para que el texto blanco llegue a 7:1) */
   --gm-alert-alpha: .45;
 
@@ -157,13 +183,32 @@
   --gm-form-bg: rgba(255, 255, 255, .04);
   --gm-form-shadow: none;
   /* Acordeón (el de Habilidades del portfolio) */
-  --gm-accordion-bg: rgba(28, 28, 30, .82);
-  --gm-accordion-border: #636366;
-  --gm-accordion-filter: blur(11px);
-  --gm-accordion-shadow: 0 4px 30px rgba(0, 0, 0, .1);
+  --gm-accordion-bg: var(--gm-panel-bg);
+  --gm-accordion-border: var(--gm-panel-border);
+  --gm-accordion-filter: var(--gm-panel-filter);
+  --gm-accordion-shadow: var(--gm-panel-shadow);
   --gm-accordion-icon-bg: rgba(28, 171, 176, .15);
   --gm-accordion-icon: #1cabb0;
   --gm-accordion-chevron: #1cabb0;
+  --gm-panel-bg: rgba(28, 28, 30, .82);
+  --gm-panel-border: #636366;
+  --gm-panel-filter: blur(11px);
+  --gm-panel-shadow: 0 4px 30px rgba(0, 0, 0, .1);
+  --gm-lights-gradient: linear-gradient(#1cabb0, #1cabb0);
+  --gm-bubble-bg: rgba(28, 28, 30, .82);
+  --gm-bubble-shadow: 0 4px 30px rgba(0, 0, 0, .1), 0 0 22px rgba(28, 171, 176, .18);
+  --gm-bubble-tail-start: #1cabb0;
+  --gm-bubble-tail-end: #1cabb0;
+  --gm-bubble-tail-bg: #1c1c1e;
+  --gm-dialog-bg: rgba(28, 28, 30, .92);
+  --gm-dialog-shadow: 0 4px 30px rgba(0, 0, 0, .3);
+  --gm-dialog-backdrop: rgba(0, 0, 0, .55);
+  --gm-glass-btn-bg: rgba(22, 22, 23, .72);
+  --gm-glass-btn-border: rgba(255, 255, 255, .14);
+  --gm-glass-btn-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+  --gm-fullscreen-menu-bg: rgba(10, 10, 10, .95);
+  --gm-ticker-bg: rgba(10, 10, 10, .75);
+  --gm-ticker-border: linear-gradient(rgba(28, 171, 176, .35), rgba(28, 171, 176, .35)) 1;
   /* Avisos: el pastel del estado a media intensidad (de noche, algo menos, para que el texto blanco llegue a 7:1) */
   --gm-alert-alpha: .35;
 

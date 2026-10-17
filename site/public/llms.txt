@@ -49,6 +49,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 
 - [Page structure](/docs/content/structure): The HTML elements that divide a page into regions: header, menu, main content, sections, side content and footer. Screen readers show them as a map of the page, so people can jump straight to the part they want.
 - [Base and text](/docs/content/base): What GlassMarshmallow applies to the whole page when loaded, with no classes: the font, the colors, the headings, the focus and some accessibility rules.
+- [Long text](/docs/content/prose): `.gm-prose` formats long text pages, like privacy or the legal notice: headings, paragraphs with good line height, lists and links. With `.gm-prose--card`, the text sits in a glass card, as in the portfolio template.
 - [Code](/docs/content/code): To show code: inside the text, in a word, or in a multi-line block. With the system monospace font (`--gm-font-mono`).
 
 ## Forms
@@ -64,18 +65,25 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 
 - [Accordion](/docs/components/accordion): A list of sections that open and close, all in one glass card and separated by a thin line. It is the one from the portfolio's skills section.
 - [Alert](/docs/components/alert): A highlighted message inside the page: information, something that went well, a warning or an error. The state pastel at medium strength, with a border of the same color, regular text and an icon.
+- [AI notice](/docs/components/ai-notice): A small note next to a chat or anything made with AI, so people know the answers come from an AI and can be wrong. With a link to more information.
 - [Avatar](/docs/components/avatar): The profile picture box, as a circle or a square with rounded corners. Without a photo, it shows the initials on a pastel or a silhouette.
 - [Button](/docs/components/button): Buttons for actions in forms, dialogs and pages, with the rounded shape of My Book Box. All of them meet WCAG 2.2 AA in light and dark mode.
 - [Card](/docs/components/card): A glass box to group content: translucent background with blur, thin border, rounded corners and a soft shadow. It is the My Book Box panel.
 - [Carousel](/docs/components/carousel): Images shown one at a time, inside a glass frame, with arrows on the sides and dots below. It is the one from the portfolio's projects section.
+- [Chat](/docs/components/chat): The chat pieces from the AI portfolio template: the field to ask, the answer bubble and the typing dots. The chat itself (asking the AI, writing the answer letter by letter) comes from your app; the framework provides the look.
+- [Chip](/docs/components/chip): A glass pill for quick options, like the suggested questions of a chat. It is the one from the AI portfolio template: the same glass as the accordion and, on hover, it rises a little and the border takes the lights of the illustration (turquoise in dark mode).
+- [Dialog](/docs/components/dialog): A window that opens on top of the page to show information or ask for something, with the background dimmed behind it. It is the “About the AI” one from the portfolio template: the panel glass, sections separated by a thin line and colored headings.
+- [Footer](/docs/components/footer): The footer from the portfolio template: a heading, icon links (email and social), the legal links on one line and the name with the year. Centered, with a thin line above.
 - [Photo gallery](/docs/components/gallery): An album: photos in a grid, all the same size, with more columns on large screens and fewer on phones. Pressing one shows it large in a viewer with arrows to move to the next.
 - [Tag](/docs/components/tag): A small pill to label something: a category, a status, something new. It is the gray My Book Box tag.
 - [Navbar](/docs/components/navbar): The top bar, like the one in My Book Box and My MTV Box: logo and name on the left, the section links and, on the right, the actions (language, theme…). It is glass and sticks to the top when scrolling.
 - [Tab bar](/docs/components/tabbar): The phone's bottom bar, floating and glass, like in iOS and My Book Box. It replaces the [navbar](/docs/components/navbar) links below 860 px.
+- [Fullscreen menu](/docs/components/fullscreen-menu): The mobile menu from the portfolio template: a round glass button with the hamburger opens the links in large type, filling the whole screen over a nearly opaque background. It is another way to navigate on phones, for sites with few sections; the other is the [tab bar](/docs/components/tabbar).
 - [Menu](/docs/components/menu): A button that opens a list of options, like the language, version and theme menus of the top bar. One option can be marked as chosen.
 - [Search](/docs/components/search): A text field with the magnifier inside and, below it, the results that match what is typed. It is the search box in the top bar of this site.
 - [Video player](/docs/components/player): The My MTV Box player: controls appear over the video on a black gradient, the buttons are round glass and the play button is white. While the video plays, the controls hide on their own.
 - [Progress](/docs/components/progress): How much of something is done: reading a book, uploading a file, the steps of a form. A thin line on gray with the done part in the accent color and a text below. It is the reading bar from My Book Box.
+- [Logo ticker](/docs/components/ticker): A strip that slowly moves from right to left with logos and names, like the technologies strip of the portfolio template. Dark glass (white by day) with a thin turquoise border above and below (by day, with the lights of the illustration).
 - [Tooltip](/docs/components/tooltip): A small bubble with extra information about a button or a control. It uses the style of the reading bubble of My Book Box: dark background, white text and a soft shadow, in light and dark mode.
 
 ## Helpers
