@@ -1798,7 +1798,7 @@
 .gm-footer__socials a:hover { color: var(--gm-accent); transform: translateY(-2px); }
 .gm-footer__socials :is(svg, .gmi) { width: 32px; height: 32px; font-size: 32px; }
 .gm-footer__links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .35rem .6rem; margin-top: 1rem; color: var(--gm-muted); font-size: .85rem; }
-.gm-footer__links :is(a, button) { min-height: 44px; padding: 0; border: 0; color: inherit; background: none; font: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.gm-footer__links :is(a, button) { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; color: inherit; background: none; font: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
 .gm-footer__links :is(a, button):hover { color: var(--gm-text); }
 .gm-footer__bottom { max-inline-size: none; margin: 1.5rem 0 0; color: var(--gm-muted); text-align: center; }
 .gm-footer__bottom strong { color: var(--gm-text); }
