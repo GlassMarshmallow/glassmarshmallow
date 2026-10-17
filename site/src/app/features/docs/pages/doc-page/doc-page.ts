@@ -132,10 +132,16 @@ export class DocPage {
     const replay = el.closest<HTMLButtonElement>('[data-replay]');
     if (replay) {
       const example = replay.closest('.doc-code__example') ?? replay.parentElement;
-      example?.querySelectorAll<HTMLElement>('[class*="gm-animate-"]').forEach((item) => {
+      example?.querySelectorAll<HTMLElement>('[class*="gm-animate-"], .gm-stagger > *').forEach((item) => {
         item.style.animation = 'none';
         void item.offsetWidth; // fuerza al navegador a aplicar el cambio antes de quitarlo
         item.style.animation = '';
+      });
+      // La cuenta atrás va en ::before: se quita la clase y se vuelve a poner
+      example?.querySelectorAll<HTMLElement>('.gm-countdown').forEach((item) => {
+        item.classList.remove('gm-countdown');
+        void item.offsetWidth;
+        item.classList.add('gm-countdown');
       });
       return;
     }

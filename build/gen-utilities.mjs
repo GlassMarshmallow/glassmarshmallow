@@ -99,18 +99,64 @@ function fixed() {
   }
   for (const value of [0, 25, 50, 75, 100]) out.push(rule(`opacity-${value}`, `opacity: ${value / 100};`));
   // Animaciones (base.css las quita todas si la persona pide menos movimiento)
+  const EASE = 'cubic-bezier(.2, .8, .2, 1)';
+  const BOUNCE = 'cubic-bezier(.34, 1.56, .64, 1)';
+  const anim = (name, keyframes, value) => out.push(rule(`animate-${name}`, `animation: gm-${name} ${value};`), `@keyframes gm-${name} { ${keyframes} }`);
   out.push(
     '/* Animaciones (se quitan solas si la persona pide menos movimiento: ver base.css) */',
     rule('transition', 'transition: color .2s, background-color .2s, border-color .2s, box-shadow .2s, opacity .2s, transform .2s;'),
-    rule('animate-fade-in', 'animation: gm-fade-in .4s ease both;'),
-    rule('animate-slide-up', 'animation: gm-slide-up .45s cubic-bezier(.2, .8, .2, 1) both;'),
-    rule('animate-pop', 'animation: gm-pop .4s cubic-bezier(.34, 1.56, .64, 1) both;'),
-    rule('animate-spin', 'animation: gm-spin .8s linear infinite;'),
-    rule('animate-pulse', 'animation: gm-pulse 2s ease-in-out infinite;'),
-    '@keyframes gm-fade-in { from { opacity: 0; } }',
-    '@keyframes gm-slide-up { from { opacity: 0; transform: translateY(12px); } }',
-    '@keyframes gm-pop { from { opacity: 0; transform: scale(.9); } }',
-    '@keyframes gm-pulse { 50% { opacity: .5; } }',
+    '/* Entrar */',
+  );
+  anim('fade-in', 'from { opacity: 0; }', '.4s ease both');
+  anim('slide-up', 'from { opacity: 0; transform: translateY(12px); }', `.45s ${EASE} both`);
+  anim('slide-down', 'from { opacity: 0; transform: translateY(-12px); }', `.45s ${EASE} both`);
+  anim('slide-left', 'from { opacity: 0; transform: translateX(-16px); }', `.45s ${EASE} both`);
+  anim('slide-right', 'from { opacity: 0; transform: translateX(16px); }', `.45s ${EASE} both`);
+  anim('zoom-in', 'from { opacity: 0; transform: scale(.94); }', `.35s ${EASE} both`);
+  anim('pop', 'from { opacity: 0; transform: scale(.9); }', `.4s ${BOUNCE} both`);
+  // Del portfolio: las tecnologías suben, se enfocan y su logo aparece girando con un rebote
+  anim('blur-in', 'from { opacity: 0; transform: translateY(12px) scale(.96); filter: blur(4px); }', `.45s ${EASE} both`);
+  anim('spin-in', 'from { opacity: 0; transform: scale(.3) rotate(-20deg); }', `.5s ${BOUNCE} both`);
+  out.push('/* Salir */');
+  anim('fade-out', 'to { opacity: 0; }', '.3s ease both');
+  anim('slide-out', 'to { opacity: 0; transform: translateY(12px); }', `.3s ${EASE} both`);
+  anim('zoom-out', 'to { opacity: 0; transform: scale(.94); }', '.3s ease both');
+  out.push('/* Llamar la atención */');
+  anim('bounce', '0%, 100% { transform: translateY(-20%); animation-timing-function: cubic-bezier(.8, 0, 1, 1); } 50% { transform: none; animation-timing-function: cubic-bezier(0, 0, .2, 1); }', '1s infinite');
+  anim('shake', '15%, 45%, 75% { transform: translateX(-6px); } 30%, 60%, 90% { transform: translateX(6px); }', '.5s ease both');
+  anim('heartbeat', '0%, 40%, 100% { transform: scale(1); } 15%, 55% { transform: scale(1.12); }', '1.4s ease-in-out infinite');
+  anim('ping', '75%, 100% { transform: scale(2); opacity: 0; }', '1s cubic-bezier(0, 0, .2, 1) infinite');
+  out.push('/* Mientras carga */');
+  anim('spin', 'to { transform: rotate(360deg); }', '.8s linear infinite');
+  anim('pulse', '50% { opacity: .5; }', '2s ease-in-out infinite');
+  out.push(
+    rule('animate-shimmer', 'background: linear-gradient(90deg, var(--gm-tag) 25%, var(--gm-tag-hover) 50%, var(--gm-tag) 75%) 0 0 / 200% 100%; animation: gm-shimmer 1.4s linear infinite;'),
+    '@keyframes gm-shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }',
+  );
+  // Duración y retardo
+  out.push('/* Duración y retardo (de animaciones y transiciones) */');
+  for (const ms of [150, 200, 300, 500, 700, 1000]) out.push(rule(`duration-${ms}`, `animation-duration: ${ms}ms; transition-duration: ${ms}ms;`));
+  for (const ms of [100, 200, 300, 500, 700, 1000]) out.push(rule(`delay-${ms}`, `animation-delay: ${ms}ms; transition-delay: ${ms}ms;`));
+  // Cascada del portfolio: los hijos entran uno detrás de otro (40 ms entre cada uno)
+  out.push(
+    '/* Cascada (la de las tecnologías del portfolio): cada hijo entra 40 ms después del anterior. Por defecto con',
+    '   blur-in; para otra, pon su clase gm-animate-… en los hijos */',
+    rule('stagger > *', `animation: gm-blur-in .45s ${EASE} both;`),
+  );
+  for (let n = 2; n <= 20; n++) out.push(rule(`stagger > :nth-child(${n})`, `animation-delay: ${(n - 1) * 40}ms;`));
+  // Cuenta atrás de My MTV Box: el botón se llena de izquierda a derecha en --gm-countdown (10 s por defecto)
+  out.push(
+    '/* Cuenta atrás (el botón de «siguiente episodio» de My MTV Box): se llena en --gm-countdown, 10 s por defecto */',
+    rule('countdown', 'position: relative; overflow: hidden; isolation: isolate;'),
+    rule('countdown::before', 'position: absolute; z-index: -1; inset: 0; width: 0; background: var(--gm-countdown-fill, rgb(255 255 255 / .35)); content: ""; animation: gm-countdown var(--gm-countdown, 10s) linear forwards;'),
+    '@keyframes gm-countdown { to { width: 100%; } }',
+  );
+  // Al hacer scroll: aparece al entrar en la pantalla (solo en navegadores con animaciones ligadas al scroll)
+  out.push(
+    '/* Al hacer scroll: sube y aparece al entrar en la pantalla, donde el navegador lo permite; en el resto, quieto */',
+    '@supports (animation-timeline: view()) {',
+    `  .gm-animate-on-scroll { animation: gm-slide-up linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }`,
+    '}',
   );
   return out;
 }

@@ -266,15 +266,91 @@
 .gm-opacity-100 { opacity: 1; }
 /* Animaciones (se quitan solas si la persona pide menos movimiento: ver base.css) */
 .gm-transition { transition: color .2s, background-color .2s, border-color .2s, box-shadow .2s, opacity .2s, transform .2s; }
+/* Entrar */
 .gm-animate-fade-in { animation: gm-fade-in .4s ease both; }
-.gm-animate-slide-up { animation: gm-slide-up .45s cubic-bezier(.2, .8, .2, 1) both; }
-.gm-animate-pop { animation: gm-pop .4s cubic-bezier(.34, 1.56, .64, 1) both; }
-.gm-animate-spin { animation: gm-spin .8s linear infinite; }
-.gm-animate-pulse { animation: gm-pulse 2s ease-in-out infinite; }
 @keyframes gm-fade-in { from { opacity: 0; } }
+.gm-animate-slide-up { animation: gm-slide-up .45s cubic-bezier(.2, .8, .2, 1) both; }
 @keyframes gm-slide-up { from { opacity: 0; transform: translateY(12px); } }
+.gm-animate-slide-down { animation: gm-slide-down .45s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes gm-slide-down { from { opacity: 0; transform: translateY(-12px); } }
+.gm-animate-slide-left { animation: gm-slide-left .45s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes gm-slide-left { from { opacity: 0; transform: translateX(-16px); } }
+.gm-animate-slide-right { animation: gm-slide-right .45s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes gm-slide-right { from { opacity: 0; transform: translateX(16px); } }
+.gm-animate-zoom-in { animation: gm-zoom-in .35s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes gm-zoom-in { from { opacity: 0; transform: scale(.94); } }
+.gm-animate-pop { animation: gm-pop .4s cubic-bezier(.34, 1.56, .64, 1) both; }
 @keyframes gm-pop { from { opacity: 0; transform: scale(.9); } }
+.gm-animate-blur-in { animation: gm-blur-in .45s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes gm-blur-in { from { opacity: 0; transform: translateY(12px) scale(.96); filter: blur(4px); } }
+.gm-animate-spin-in { animation: gm-spin-in .5s cubic-bezier(.34, 1.56, .64, 1) both; }
+@keyframes gm-spin-in { from { opacity: 0; transform: scale(.3) rotate(-20deg); } }
+/* Salir */
+.gm-animate-fade-out { animation: gm-fade-out .3s ease both; }
+@keyframes gm-fade-out { to { opacity: 0; } }
+.gm-animate-slide-out { animation: gm-slide-out .3s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes gm-slide-out { to { opacity: 0; transform: translateY(12px); } }
+.gm-animate-zoom-out { animation: gm-zoom-out .3s ease both; }
+@keyframes gm-zoom-out { to { opacity: 0; transform: scale(.94); } }
+/* Llamar la atención */
+.gm-animate-bounce { animation: gm-bounce 1s infinite; }
+@keyframes gm-bounce { 0%, 100% { transform: translateY(-20%); animation-timing-function: cubic-bezier(.8, 0, 1, 1); } 50% { transform: none; animation-timing-function: cubic-bezier(0, 0, .2, 1); } }
+.gm-animate-shake { animation: gm-shake .5s ease both; }
+@keyframes gm-shake { 15%, 45%, 75% { transform: translateX(-6px); } 30%, 60%, 90% { transform: translateX(6px); } }
+.gm-animate-heartbeat { animation: gm-heartbeat 1.4s ease-in-out infinite; }
+@keyframes gm-heartbeat { 0%, 40%, 100% { transform: scale(1); } 15%, 55% { transform: scale(1.12); } }
+.gm-animate-ping { animation: gm-ping 1s cubic-bezier(0, 0, .2, 1) infinite; }
+@keyframes gm-ping { 75%, 100% { transform: scale(2); opacity: 0; } }
+/* Mientras carga */
+.gm-animate-spin { animation: gm-spin .8s linear infinite; }
+@keyframes gm-spin { to { transform: rotate(360deg); } }
+.gm-animate-pulse { animation: gm-pulse 2s ease-in-out infinite; }
 @keyframes gm-pulse { 50% { opacity: .5; } }
+.gm-animate-shimmer { background: linear-gradient(90deg, var(--gm-tag) 25%, var(--gm-tag-hover) 50%, var(--gm-tag) 75%) 0 0 / 200% 100%; animation: gm-shimmer 1.4s linear infinite; }
+@keyframes gm-shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+/* Duración y retardo (de animaciones y transiciones) */
+.gm-duration-150 { animation-duration: 150ms; transition-duration: 150ms; }
+.gm-duration-200 { animation-duration: 200ms; transition-duration: 200ms; }
+.gm-duration-300 { animation-duration: 300ms; transition-duration: 300ms; }
+.gm-duration-500 { animation-duration: 500ms; transition-duration: 500ms; }
+.gm-duration-700 { animation-duration: 700ms; transition-duration: 700ms; }
+.gm-duration-1000 { animation-duration: 1000ms; transition-duration: 1000ms; }
+.gm-delay-100 { animation-delay: 100ms; transition-delay: 100ms; }
+.gm-delay-200 { animation-delay: 200ms; transition-delay: 200ms; }
+.gm-delay-300 { animation-delay: 300ms; transition-delay: 300ms; }
+.gm-delay-500 { animation-delay: 500ms; transition-delay: 500ms; }
+.gm-delay-700 { animation-delay: 700ms; transition-delay: 700ms; }
+.gm-delay-1000 { animation-delay: 1000ms; transition-delay: 1000ms; }
+/* Cascada (la de las tecnologías del portfolio): cada hijo entra 40 ms después del anterior. Por defecto con
+   blur-in; para otra, pon su clase gm-animate-… en los hijos */
+.gm-stagger > * { animation: gm-blur-in .45s cubic-bezier(.2, .8, .2, 1) both; }
+.gm-stagger > :nth-child(2) { animation-delay: 40ms; }
+.gm-stagger > :nth-child(3) { animation-delay: 80ms; }
+.gm-stagger > :nth-child(4) { animation-delay: 120ms; }
+.gm-stagger > :nth-child(5) { animation-delay: 160ms; }
+.gm-stagger > :nth-child(6) { animation-delay: 200ms; }
+.gm-stagger > :nth-child(7) { animation-delay: 240ms; }
+.gm-stagger > :nth-child(8) { animation-delay: 280ms; }
+.gm-stagger > :nth-child(9) { animation-delay: 320ms; }
+.gm-stagger > :nth-child(10) { animation-delay: 360ms; }
+.gm-stagger > :nth-child(11) { animation-delay: 400ms; }
+.gm-stagger > :nth-child(12) { animation-delay: 440ms; }
+.gm-stagger > :nth-child(13) { animation-delay: 480ms; }
+.gm-stagger > :nth-child(14) { animation-delay: 520ms; }
+.gm-stagger > :nth-child(15) { animation-delay: 560ms; }
+.gm-stagger > :nth-child(16) { animation-delay: 600ms; }
+.gm-stagger > :nth-child(17) { animation-delay: 640ms; }
+.gm-stagger > :nth-child(18) { animation-delay: 680ms; }
+.gm-stagger > :nth-child(19) { animation-delay: 720ms; }
+.gm-stagger > :nth-child(20) { animation-delay: 760ms; }
+/* Cuenta atrás (el botón de «siguiente episodio» de My MTV Box): se llena en --gm-countdown, 10 s por defecto */
+.gm-countdown { position: relative; overflow: hidden; isolation: isolate; }
+.gm-countdown::before { position: absolute; z-index: -1; inset: 0; width: 0; background: var(--gm-countdown-fill, rgb(255 255 255 / .35)); content: ""; animation: gm-countdown var(--gm-countdown, 10s) linear forwards; }
+@keyframes gm-countdown { to { width: 100%; } }
+/* Al hacer scroll: sube y aparece al entrar en la pantalla, donde el navegador lo permite; en el resto, quieto */
+@supports (animation-timeline: view()) {
+  .gm-animate-on-scroll { animation: gm-slide-up linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
+}
 
 @media (min-width: 600px) {
   .gm-sm-m-0 { margin: 0; }
