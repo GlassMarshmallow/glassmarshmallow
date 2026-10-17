@@ -2,6 +2,14 @@
 /* El hueco para la barra inferior del móvil lo pone .gm-has-tabbar */
 main { padding-bottom: 16px; }
 main:focus { outline: none; }
+/* Portada: el bloque principal, centrado en alto entre la cabecera y el pie (el espacio libre se reparte
+   arriba y abajo; el degradado hasta el pie se queda con su alto fijo) */
+.main--home { display: grid; min-height: calc(100dvh - var(--gm-header-height)); align-content: center; padding-bottom: 0; }
+.main--home + .page-end { flex: 0 0 120px; }
+/* Móvil: lo que se ve acaba en la barra de pestañas de abajo */
+@media (max-width: 860px) {
+  .main--home { min-height: calc(100dvh - var(--gm-header-height) - 76px - env(safe-area-inset-bottom)); }
+}
 
 
 /* Degradado que baja hasta el pie (blanco en claro, negro en oscuro) (como el final de la portada de Bootstrap). Ocupa el espacio libre:

@@ -2,7 +2,7 @@
   display: grid;
   align-content: center;
   justify-items: center;
-  padding-block: 56px 24px;
+  padding-block: 32px;
   text-align: center;
 }
 .hero__logo { width: clamp(88px, 12vw, 120px); height: auto; margin-bottom: 20px; }
