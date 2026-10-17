@@ -138,6 +138,7 @@ export const en = {
       'components/avatar': 'Avatar',
       'components/button': 'Button',
       'components/card': 'Card',
+      'components/carousel': 'Carousel',
       'components/tag': 'Tag',
       'components/navbar': 'Navbar',
       'components/tabbar': 'Tab bar',

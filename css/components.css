@@ -1181,3 +1181,110 @@
 /* Más de 3 opciones o textos largos: una debajo de otra */
 .gm-segmented--stack { display: inline-flex; flex-direction: column; align-items: stretch; border-radius: 20px; }
 .gm-segmented--stack > a, .gm-segmented--stack > button, .gm-segmented--stack > label { min-height: 40px; border-radius: 16px; }
+
+/* --- Carrusel (el de Proyectos del portfolio) ----------------------------------
+   <div class="gm-carousel" data-gm-carousel aria-label="Proyectos">
+     <div class="gm-carousel__track">
+       <figure class="gm-carousel__slide"><img src="…" alt="…"><figcaption class="gm-carousel__caption">…</figcaption></figure>
+       …
+     </div>
+   </div>
+   Sin script, las diapositivas se pasan deslizando (o con la barra de desplazamiento). El script opcional
+   js/carousel.js añade las flechas, los puntos y, con data-interval, el paso automático con su botón de pausa. */
+.gm-carousel {
+  position: relative;
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: 12px;
+  background: var(--gm-surface-glass);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.gm-carousel__viewport { position: relative; }
+.gm-carousel__track {
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  border-radius: 10px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.gm-carousel__track::-webkit-scrollbar { display: none; }
+.gm-carousel__slide { position: relative; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+.gm-carousel__slide > img,
+.gm-carousel__slide > video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; object-fit: cover; }
+/* Texto blanco sobre la imagen, con sombra y un degradado debajo para que se lea sobre cualquier foto */
+.gm-carousel__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 48px clamp(16px, 4%, 32px) 18px;
+  border-radius: 0 0 10px 10px;
+  color: #fff;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .72));
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .8);
+}
+.gm-carousel__caption p { margin: 4px 0 0; font-weight: 400; }
+
+/* Flechas: los botones redondos de cristal del reproductor, a los lados de la imagen */
+.gm-carousel__prev,
+.gm-carousel__next {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  color: #f5f5f7;
+  background: rgba(0, 0, 0, .45);
+  font-size: 1.2rem;
+  place-items: center;
+  cursor: pointer;
+  transform: translateY(-50%);
+  -webkit-backdrop-filter: blur(3.9px);
+  backdrop-filter: blur(3.9px);
+  transition: background .2s;
+}
+.gm-carousel__prev { left: 12px; }
+.gm-carousel__next { right: 12px; }
+.gm-carousel__prev:hover, .gm-carousel__next:hover { background: rgba(0, 0, 0, .65); }
+.gm-carousel__prev:focus-visible, .gm-carousel__next:focus-visible { outline: 2px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 4px #000; }
+.gm-carousel__prev:disabled, .gm-carousel__next:disabled { opacity: 0; pointer-events: none; }
+
+/* Puntos y pausa, debajo */
+.gm-carousel__nav { display: flex; align-items: center; justify-content: center; gap: 4px; }
+.gm-carousel__dot {
+  display: grid;
+  width: 32px;
+  height: 44px; /* WCAG 2.5.5 (AAA) */
+  padding: 0;
+  border: 0;
+  background: none;
+  place-items: center;
+  cursor: pointer;
+}
+.gm-carousel__dot::before { width: 10px; height: 10px; border: 1px solid var(--gm-field-border); border-radius: 50%; content: ""; transition: width .2s, background .2s; }
+.gm-carousel__dot[aria-current="true"]::before { width: 24px; border-color: var(--gm-text); border-radius: 999px; background: var(--gm-text); }
+.gm-carousel__dot:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: -4px; border-radius: 8px; }
+.gm-carousel__pause { margin-left: 8px; }
+
+@media (max-width: 600px) {
+  .gm-carousel { gap: 12px; padding: 12px; }
+  .gm-carousel__caption { padding-top: 32px; font-size: .9rem; }
+  .gm-carousel__caption p { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gm-carousel__track { scroll-behavior: auto; }
+  .gm-carousel__dot::before { transition: none; }
+}

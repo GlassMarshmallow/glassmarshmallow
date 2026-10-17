@@ -139,6 +139,7 @@ export const es: Dictionary = {
       'components/avatar': 'Imagen de perfil',
       'components/button': 'Botón',
       'components/card': 'Tarjeta',
+      'components/carousel': 'Carrusel',
       'components/tag': 'Etiqueta',
       'components/navbar': 'Barra de navegación',
       'components/tabbar': 'Barra de pestañas',
