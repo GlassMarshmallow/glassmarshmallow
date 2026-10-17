@@ -1552,7 +1552,7 @@
   border-radius: 50%;
   color: var(--gm-accent);
   background: none;
-  font-size: 2rem;
+  font-size: 2.75rem; /* el círculo del icono se ve de unos 31 px, como el de la plantilla */
   place-items: center;
   cursor: pointer;
   transition: transform .2s ease, opacity .2s ease;
