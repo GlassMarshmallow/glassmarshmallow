@@ -7,7 +7,7 @@
 export const SITE = {
   url: '',
   repo: 'https://github.com/GlassMarshmallow/glassmarshmallow',
-  repoPublic: false,
+  repoPublic: true,
   /** Plantilla de portfolio (página Ejemplos): true cuando su repositorio sea público */
   templateRepo: 'https://github.com/spyamuza/portfolio-ia-template',
   templateRepoPublic: true,
