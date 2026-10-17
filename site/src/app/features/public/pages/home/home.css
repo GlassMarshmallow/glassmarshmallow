@@ -18,18 +18,18 @@
 
 /* Menú «Para agentes»: la lista, centrada bajo el botón y con su ancho propio */
 .home__agents .gm-menu__trigger {
-  /* El aspecto del botón secundario (gm-btn--secondary), que el botón de menú del framework deja liso */
+  /* Botón en el azul pastel de la paleta (pedido por Sara), con texto negro como los pastel sólidos */
   min-height: 48px;
   gap: 7px;
   padding: 0 22px;
-  border: 1px solid var(--gm-line);
+  border: 0;
   border-radius: var(--gm-radius-pill);
-  color: var(--gm-text);
-  background: var(--gm-surface-glass);
+  color: var(--gm-on-pastel);
+  background: var(--gm-blue);
   font-size: 1rem;
   font-weight: 650;
 }
-.home__agents .gm-menu__trigger:hover { background: var(--gm-surface-glass); }
+.home__agents .gm-menu__trigger:hover { color: var(--gm-on-pastel); background: var(--gm-blue); box-shadow: var(--gm-shadow-hover); transform: translateY(-1px); }
 .home__agents .gm-menu__trigger .gmi { font-size: 1.25em; }
 .home__agents-list { right: 50%; min-width: 240px; text-align: left; transform: translateX(50%); }
 .home__agents-list .gm-menu__item { justify-content: space-between; gap: 16px; }
