@@ -67,6 +67,25 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 </div>
 ```
 
+## Enlarge on click
+
+To show the photo large when it is pressed: the box is a link to the large photo with `data-gm-zoom`, and the [gallery](/docs/components/gallery) script opens it in its viewer, without arrows or counter. A magnifier cursor shows on hover.
+
+```html
+<a class="gm-avatar gm-avatar--xl gm-avatar--ring" href="media/perfil-1.jpg" data-gm-zoom aria-label="Enlarge Lucía Martín's photo">
+  <img src="media/perfil-1.jpg" alt="Lucía Martín">
+</a>
+```
+
+```html-code
+<script type="module">
+  import { initZooms } from 'glassmarshmallow/js/gallery.js';
+  initZooms();
+</script>
+```
+
+The viewer closes with Escape, the ✕ or by clicking outside, and focus returns to the photo.
+
 ## Changing the photo
 
 On the profile page, a button with the pencil on top of the photo. Use it with the large sizes (`--lg` and `--xl`): the button is 44 px.

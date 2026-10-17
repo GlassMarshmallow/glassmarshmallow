@@ -67,6 +67,25 @@ Con las iniciales: añade un color de la paleta (`.gm-theme-sky`, `.gm-theme-min
 </div>
 ```
 
+## Ampliar al pulsar
+
+Para que la foto se vea en grande al pulsarla: la casilla es un enlace a la foto grande con `data-gm-zoom`, y el script de la [galería](/docs/components/gallery) la abre en su visor, sin flechas ni contador. Al pasar el ratón sale la lupa.
+
+```html
+<a class="gm-avatar gm-avatar--xl gm-avatar--ring" href="media/perfil-1.jpg" data-gm-zoom aria-label="Ampliar la foto de Lucía Martín">
+  <img src="media/perfil-1.jpg" alt="Lucía Martín">
+</a>
+```
+
+```html-code
+<script type="module">
+  import { initZooms } from 'glassmarshmallow/js/gallery.js';
+  initZooms();
+</script>
+```
+
+El visor se cierra con Escape, con la ✕ o pulsando fuera, y el foco vuelve a la foto.
+
 ## Cambiar la foto
 
 En la página de perfil, un botón con el lápiz encima de la foto. Úsalo con los tamaños grandes (`--lg` y `--xl`): el botón mide 44 px.

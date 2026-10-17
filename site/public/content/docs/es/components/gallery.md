@@ -49,6 +49,10 @@ El framework da el aspecto. Sin el script, cada foto abre la imagen grande en la
 - El `href` de cada foto es la imagen grande; la miniatura (`<img>`) puede ser una versión más ligera.
 - El texto del visor sale de `data-caption` o, si no hay, del `alt` de la miniatura.
 
+## Una sola foto
+
+Para ampliar una foto suelta (por ejemplo, la [foto de perfil](/docs/components/avatar#ampliar-al-pulsar)): un enlace a la foto grande con `data-gm-zoom` e `initZooms()`. El visor sale sin flechas ni contador.
+
 ## Teclado
 
 En el visor:

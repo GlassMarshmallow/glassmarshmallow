@@ -49,6 +49,10 @@ The framework provides the look. Without the script, each photo opens the large 
 - Each photo's `href` is the large image; the thumbnail (`<img>`) can be a lighter version.
 - The viewer text comes from `data-caption` or, if missing, from the thumbnail's `alt`.
 
+## A single photo
+
+To enlarge a single photo (for example, the [profile photo](/docs/components/avatar#enlarge-on-click)): a link to the large photo with `data-gm-zoom` and `initZooms()`. The viewer shows without arrows or counter.
+
 ## Keyboard
 
 In the viewer:
