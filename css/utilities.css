@@ -1,0 +1,66 @@
+/* ==========================================================================
+   glassmarshmallow · Utilidades de color
+   Clases sueltas, como las de Bootstrap: .gm-text-<color> cambia el color del texto y .gm-bg-<color>, el fondo.
+   Para que siempre se cumpla AA, .gm-bg-<color> también pone el color de texto que se lee sobre ese fondo
+   (negro sobre los pastel y los grises claros; blanco sobre los oscuros).
+   ========================================================================== */
+
+/* Color de texto: el tono de texto de cada color (4,5:1 o más en claro y en oscuro) */
+.gm-text-sky { color: var(--gm-sky-text); }
+.gm-text-blue { color: var(--gm-blue-text); }
+.gm-text-lavender { color: var(--gm-lavender-text); }
+.gm-text-pink { color: var(--gm-pink-text); }
+.gm-text-peach { color: var(--gm-peach-text); }
+.gm-text-lemon { color: var(--gm-lemon-text); }
+.gm-text-mint { color: var(--gm-mint-text); }
+.gm-text-coral { color: var(--gm-coral-text); }
+.gm-text-white { color: var(--gm-white-text); }
+.gm-text-gray-100 { color: var(--gm-gray-100-text); }
+.gm-text-gray-200 { color: var(--gm-gray-200-text); }
+.gm-text-gray-300 { color: var(--gm-gray-300-text); }
+.gm-text-gray-400 { color: var(--gm-gray-400-text); }
+.gm-text-gray-500 { color: var(--gm-gray-500-text); }
+.gm-text-gray-600 { color: var(--gm-gray-600-text); }
+.gm-text-gray-700 { color: var(--gm-gray-700-text); }
+.gm-text-gray-800 { color: var(--gm-gray-800-text); }
+.gm-text-gray-900 { color: var(--gm-gray-900-text); }
+.gm-text-black { color: var(--gm-black-text); }
+/* Textos de la página */
+.gm-text-body { color: var(--gm-text); }
+.gm-text-secondary { color: var(--gm-text-secondary); }
+.gm-text-muted { color: var(--gm-muted); }
+
+/* Fondo: el pastel o el gris, con su color de texto */
+.gm-bg-sky { color: var(--gm-on-pastel); background-color: var(--gm-sky); }
+.gm-bg-blue { color: var(--gm-on-pastel); background-color: var(--gm-blue); }
+.gm-bg-lavender { color: var(--gm-on-pastel); background-color: var(--gm-lavender); }
+.gm-bg-pink { color: var(--gm-on-pastel); background-color: var(--gm-pink); }
+.gm-bg-peach { color: var(--gm-on-pastel); background-color: var(--gm-peach); }
+.gm-bg-lemon { color: var(--gm-on-pastel); background-color: var(--gm-lemon); }
+.gm-bg-mint { color: var(--gm-on-pastel); background-color: var(--gm-mint); }
+.gm-bg-coral { color: var(--gm-on-pastel); background-color: var(--gm-coral); }
+.gm-bg-white { color: var(--gm-on-pastel); background-color: var(--gm-white); }
+.gm-bg-gray-025 { color: var(--gm-on-pastel); background-color: var(--gm-gray-025); }
+.gm-bg-gray-050 { color: var(--gm-on-pastel); background-color: var(--gm-gray-050); }
+.gm-bg-gray-100 { color: var(--gm-on-pastel); background-color: var(--gm-gray-100); }
+.gm-bg-gray-200 { color: var(--gm-on-pastel); background-color: var(--gm-gray-200); }
+.gm-bg-gray-300 { color: var(--gm-on-pastel); background-color: var(--gm-gray-300); }
+.gm-bg-gray-400 { color: var(--gm-on-pastel); background-color: var(--gm-gray-400); }
+.gm-bg-gray-500 { color: var(--gm-on-pastel); background-color: var(--gm-gray-500); }
+.gm-bg-gray-600 { color: #fff; background-color: var(--gm-gray-600); }
+.gm-bg-gray-700 { color: #fff; background-color: var(--gm-gray-700); }
+.gm-bg-gray-800 { color: #fff; background-color: var(--gm-gray-800); }
+.gm-bg-gray-900 { color: #fff; background-color: var(--gm-gray-900); }
+.gm-bg-gray-950 { color: #fff; background-color: var(--gm-gray-950); }
+.gm-bg-gray-975 { color: #fff; background-color: var(--gm-gray-975); }
+.gm-bg-black { color: #fff; background-color: var(--gm-black); }
+/* Fondos de la interfaz: cambian con el modo claro y oscuro */
+.gm-bg-body { color: var(--gm-text); background-color: var(--gm-bg); }
+.gm-bg-surface { color: var(--gm-text); background-color: var(--gm-surface-solid); }
+.gm-bg-transparent { background-color: transparent; }
+
+/* Esquema de color del navegador: cómo pinta sus propias piezas (calendarios, desplegables, barras de scroll y
+   el fondo de un <iframe>) en un elemento concreto. No cambia los colores del framework: para eso, data-theme */
+.gm-color-scheme-light { color-scheme: light; }
+.gm-color-scheme-dark { color-scheme: dark; }
+.gm-color-scheme-auto { color-scheme: light dark; }

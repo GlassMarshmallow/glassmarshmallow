@@ -1,0 +1,151 @@
+/* ==========================================================================
+   glassmarshmallow · Paleta pastel
+   Ocho colores pastel, negro, blanco y grises, que se usan de tres formas, como las clases de tema de Bootstrap:
+     1. Elegir el color:   .gm-theme-sky, .gm-theme-blue, .gm-theme-lavender, .gm-theme-pink,
+                           .gm-theme-peach, .gm-theme-lemon, .gm-theme-mint, .gm-theme-coral,
+                           .gm-theme-white, .gm-theme-gray-100 … .gm-theme-gray-900, .gm-theme-black
+     2. Elegir el uso:     .gm-theme-solid (relleno pastel y texto negro)
+                           .gm-theme-glass (vidriado: el color al 18 % con borde al 41 %)
+                           .gm-theme-text  (texto en el color de la paleta)
+   Ejemplo: <div class="gm-theme-sky gm-theme-glass">…</div>
+   Accesibilidad (WCAG 2.2, AAA): texto negro sobre el sólido de 7,8:1 a 13,3:1; texto sobre el vidriado unos
+   14:1; texto de color 7:1 o más en claro (tonos 800 y 900) y de 9,7:1 a 16,6:1 en oscuro.
+   Nunca texto blanco sobre el sólido. Los estados no se indican solo con el color.
+   ========================================================================== */
+
+:root,
+[data-theme="light"] {
+  /* El pastel (también en canales RGB, para el vidriado) y el tono de texto de cada color */
+  --gm-sky: #5cdfeb;      --gm-sky-rgb: 92 223 235;      --gm-sky-text: var(--gm-sky-900);
+  --gm-blue: #8ab4ff;     --gm-blue-rgb: 138 180 255;    --gm-blue-text: var(--gm-blue-900);
+  --gm-lavender: #b9a3ff; --gm-lavender-rgb: 185 163 255; --gm-lavender-text: var(--gm-lavender-800);
+  --gm-pink: #ffa6d1;     --gm-pink-rgb: 255 166 209;    --gm-pink-text: var(--gm-pink-800);
+  --gm-peach: #ffb98a;    --gm-peach-rgb: 255 185 138;   --gm-peach-text: var(--gm-peach-900);
+  --gm-lemon: #ffe38a;    --gm-lemon-rgb: 255 227 138;   --gm-lemon-text: var(--gm-lemon-900);
+  --gm-mint: #8be3b6;     --gm-mint-rgb: 139 227 182;    --gm-mint-text: var(--gm-mint-900);
+  --gm-coral: #ff9b9b;    --gm-coral-rgb: 255 155 155;   --gm-coral-text: var(--gm-coral-800);
+  /* Negro, blanco y escala de grises (los grises que ya usa el framework) */
+  --gm-white: #ffffff; --gm-white-rgb: 255 255 255; --gm-white-text: var(--gm-gray-700);
+  --gm-gray-100: #f5f5f7; --gm-gray-100-rgb: 245 245 247; --gm-gray-100-text: var(--gm-gray-700);
+  --gm-gray-200: #e8e8ed; --gm-gray-200-rgb: 232 232 237; --gm-gray-200-text: var(--gm-gray-700);
+  --gm-gray-300: #d2d2d7; --gm-gray-300-rgb: 210 210 215; --gm-gray-300-text: var(--gm-gray-700);
+  --gm-gray-400: #aeaeb2; --gm-gray-400-rgb: 174 174 178; --gm-gray-400-text: var(--gm-gray-700);
+  --gm-gray-500: #8e8e93; --gm-gray-500-rgb: 142 142 147; --gm-gray-500-text: var(--gm-gray-700);
+  --gm-gray-600: #636366; --gm-gray-600-rgb: 99 99 102; --gm-gray-600-text: var(--gm-gray-700);
+  --gm-gray-700: #48484a; --gm-gray-700-rgb: 72 72 74; --gm-gray-700-text: var(--gm-gray-700);
+  --gm-gray-800: #3a3a3c; --gm-gray-800-rgb: 58 58 60; --gm-gray-800-text: var(--gm-gray-800);
+  --gm-gray-900: #1d1d1f; --gm-gray-900-rgb: 29 29 31; --gm-gray-900-text: var(--gm-gray-900);
+  --gm-black: #000000; --gm-black-rgb: 0 0 0; --gm-black-text: var(--gm-black);
+  /* Texto de los botones de peligro: coral-900 (9,6:1 sobre el gris de las etiquetas, 8,6:1 al pasar el ratón) */
+  --gm-btn-danger: var(--gm-coral-900);
+  /* Texto sobre el pastel sólido: negro en los dos modos */
+  --gm-on-pastel: #1d1d1f;
+  /* Vidriado (valores elegidos por Sara) */
+  --gm-glass-alpha: .18;
+  --gm-glass-border-alpha: .41;
+  --gm-glass-radius: 21px;
+  --gm-glass-blur: 7px;
+  --gm-glass-shadow: 0 4px 30px rgba(0, 0, 0, .1);
+}
+
+/* Escalas: 13 tonos de cada color, del 025 (casi blanco) al 975 (casi negro), calculados en OKLCH a partir
+   de cada pastel (mismo matiz, distinta luminosidad). El pastel y el tono de texto están dentro de su escala. */
+:root {
+  /* sky: pastel en el 300, texto en el 700 */
+  --gm-sky-025: #eefeff; --gm-sky-050: #ddfcff; --gm-sky-100: #b8f9ff; --gm-sky-200: #70f1fd; --gm-sky-300: #5cdfeb; --gm-sky-400: #3dc6d2; --gm-sky-500: #09acb8;
+  --gm-sky-600: #0a919b; --gm-sky-700: #20747b; --gm-sky-800: #045e65; --gm-sky-900: #02464b; --gm-sky-950: #013236; --gm-sky-975: #012225;
+  /* blue: pastel en el 400, texto en el 700 */
+  --gm-blue-025: #f7faff; --gm-blue-050: #f0f5fe; --gm-blue-100: #e1ecff; --gm-blue-200: #c8dcff; --gm-blue-300: #a9c8ff; --gm-blue-400: #8ab4ff; --gm-blue-500: #5b95ff;
+  --gm-blue-600: #3979f1; --gm-blue-700: #1f61d7; --gm-blue-800: #0c48b4; --gm-blue-900: #003290; --gm-blue-950: #00236b; --gm-blue-975: #00164d;
+  /* lavender: pastel en el 400, texto en el 700 */
+  --gm-lavender-025: #faf9fe; --gm-lavender-050: #f5f3fe; --gm-lavender-100: #ece8fe; --gm-lavender-200: #dcd4ff; --gm-lavender-300: #cabcff; --gm-lavender-400: #b9a3ff; --gm-lavender-500: #a17bff;
+  --gm-lavender-600: #8d57f6; --gm-lavender-700: #6d47e5; --gm-lavender-800: #5f23b8; --gm-lavender-900: #490795; --gm-lavender-950: #350170; --gm-lavender-975: #240051;
+  /* pink: pastel en el 300, texto en el 700 */
+  --gm-pink-025: #fff8fb; --gm-pink-050: #fef1f7; --gm-pink-100: #ffe2ef; --gm-pink-200: #ffc9e1; --gm-pink-300: #ffa6d1; --gm-pink-400: #ff7ec1; --gm-pink-500: #f054ab;
+  --gm-pink-600: #d33892; --gm-pink-700: #c71c6f; --gm-pink-800: #940061; --gm-pink-900: #700148; --gm-pink-950: #520034; --gm-pink-975: #3a0023;
+  /* peach: pastel en el 300, texto en el 700 */
+  --gm-peach-025: #fff9f5; --gm-peach-050: #fff2eb; --gm-peach-100: #ffe6d6; --gm-peach-200: #ffd0b1; --gm-peach-300: #ffb98a; --gm-peach-400: #f1995b; --gm-peach-500: #d58041;
+  --gm-peach-600: #bb6826; --gm-peach-700: #a75118; --gm-peach-800: #7f3f00; --gm-peach-900: #5f2e01; --gm-peach-950: #452001; --gm-peach-975: #311400;
+  /* lemon: pastel en el 100, texto en el 700 */
+  --gm-lemon-025: #fffae9; --gm-lemon-050: #fff5d5; --gm-lemon-100: #ffe38a; --gm-lemon-200: #f5d980; --gm-lemon-300: #e1c56d; --gm-lemon-400: #caaf56; --gm-lemon-500: #b1963c;
+  --gm-lemon-600: #987e1d; --gm-lemon-700: #856a13; --gm-lemon-800: #645004; --gm-lemon-900: #4b3b01; --gm-lemon-950: #362a00; --gm-lemon-975: #251c00;
+  /* mint: pastel en el 300, texto en el 700 */
+  --gm-mint-025: #eefff5; --gm-mint-050: #dcffeb; --gm-mint-100: #b2ffd6; --gm-mint-200: #99f1c3; --gm-mint-300: #8be3b6; --gm-mint-400: #6fc69b; --gm-mint-500: #55ad82;
+  --gm-mint-600: #3a946b; --gm-mint-700: #2c7851; --gm-mint-800: #006340; --gm-mint-900: #014a2f; --gm-mint-950: #013520; --gm-mint-975: #002415;
+  /* coral: pastel en el 400, texto en el 700 */
+  --gm-coral-025: #fff8f8; --gm-coral-050: #fef2f1; --gm-coral-100: #ffe4e3; --gm-coral-200: #ffcccb; --gm-coral-300: #ffafae; --gm-coral-400: #ff9b9b; --gm-coral-500: #fe5361;
+  --gm-coral-600: #e03549; --gm-coral-700: #cb1d1d; --gm-coral-800: #9c0226; --gm-coral-900: #76021b; --gm-coral-950: #580011; --gm-coral-975: #3e0009;
+  --gm-gray-025: #fbfbfd;  --gm-gray-050: #f9f9fb;  --gm-gray-950: #111112;  --gm-gray-975: #0a0a0a; /* el resto de grises, arriba */
+}
+
+/* En oscuro, el texto de color es el propio pastel */
+:root[data-theme="dark"],
+[data-theme="dark"] {
+  --gm-sky-text: var(--gm-sky);
+  --gm-blue-text: var(--gm-blue);
+  --gm-lavender-text: var(--gm-lavender);
+  --gm-pink-text: var(--gm-pink);
+  --gm-peach-text: var(--gm-peach);
+  --gm-lemon-text: var(--gm-lemon);
+  --gm-mint-text: var(--gm-mint);
+  --gm-coral-text: var(--gm-coral);
+  --gm-btn-danger: var(--gm-coral-200); /* 9,8:1 sobre el gris oscuro, 8:1 al pasar el ratón */
+  /* Grises: en oscuro, los muy oscuros escriben en gray-400 (7:1 o más) */
+  --gm-white-text: var(--gm-white);
+  --gm-gray-100-text: var(--gm-gray-100);
+  --gm-gray-200-text: var(--gm-gray-200);
+  --gm-gray-300-text: var(--gm-gray-300);
+  --gm-gray-400-text: var(--gm-gray-400);
+  --gm-gray-500-text: var(--gm-gray-400);
+  --gm-gray-600-text: var(--gm-gray-400);
+  --gm-gray-700-text: var(--gm-gray-400);
+  --gm-gray-800-text: var(--gm-gray-400);
+  --gm-gray-900-text: var(--gm-gray-400);
+  --gm-black-text: var(--gm-gray-400);
+}
+
+/* 1. Color */
+.gm-theme-sky      { --gm-theme: var(--gm-sky);      --gm-theme-rgb: var(--gm-sky-rgb);      --gm-theme-text: var(--gm-sky-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-blue     { --gm-theme: var(--gm-blue);     --gm-theme-rgb: var(--gm-blue-rgb);     --gm-theme-text: var(--gm-blue-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-lavender { --gm-theme: var(--gm-lavender); --gm-theme-rgb: var(--gm-lavender-rgb); --gm-theme-text: var(--gm-lavender-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-pink     { --gm-theme: var(--gm-pink);     --gm-theme-rgb: var(--gm-pink-rgb);     --gm-theme-text: var(--gm-pink-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-peach    { --gm-theme: var(--gm-peach);    --gm-theme-rgb: var(--gm-peach-rgb);    --gm-theme-text: var(--gm-peach-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-lemon    { --gm-theme: var(--gm-lemon);    --gm-theme-rgb: var(--gm-lemon-rgb);    --gm-theme-text: var(--gm-lemon-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-mint     { --gm-theme: var(--gm-mint);     --gm-theme-rgb: var(--gm-mint-rgb);     --gm-theme-text: var(--gm-mint-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-coral    { --gm-theme: var(--gm-coral);    --gm-theme-rgb: var(--gm-coral-rgb);    --gm-theme-text: var(--gm-coral-text); --gm-theme-on: var(--gm-on-pastel); }
+
+/* Negro, blanco y grises: del blanco al gray-500 llevan texto negro; del gray-600 al negro, blanco */
+.gm-theme-white { --gm-theme: var(--gm-white); --gm-theme-rgb: var(--gm-white-rgb); --gm-theme-text: var(--gm-white-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-gray-100 { --gm-theme: var(--gm-gray-100); --gm-theme-rgb: var(--gm-gray-100-rgb); --gm-theme-text: var(--gm-gray-100-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-gray-200 { --gm-theme: var(--gm-gray-200); --gm-theme-rgb: var(--gm-gray-200-rgb); --gm-theme-text: var(--gm-gray-200-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-gray-300 { --gm-theme: var(--gm-gray-300); --gm-theme-rgb: var(--gm-gray-300-rgb); --gm-theme-text: var(--gm-gray-300-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-gray-400 { --gm-theme: var(--gm-gray-400); --gm-theme-rgb: var(--gm-gray-400-rgb); --gm-theme-text: var(--gm-gray-400-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-gray-500 { --gm-theme: var(--gm-gray-500); --gm-theme-rgb: var(--gm-gray-500-rgb); --gm-theme-text: var(--gm-gray-500-text); --gm-theme-on: var(--gm-on-pastel); }
+.gm-theme-gray-600 { --gm-theme: var(--gm-gray-600); --gm-theme-rgb: var(--gm-gray-600-rgb); --gm-theme-text: var(--gm-gray-600-text); --gm-theme-on: #fff; }
+.gm-theme-gray-700 { --gm-theme: var(--gm-gray-700); --gm-theme-rgb: var(--gm-gray-700-rgb); --gm-theme-text: var(--gm-gray-700-text); --gm-theme-on: #fff; }
+.gm-theme-gray-800 { --gm-theme: var(--gm-gray-800); --gm-theme-rgb: var(--gm-gray-800-rgb); --gm-theme-text: var(--gm-gray-800-text); --gm-theme-on: #fff; }
+.gm-theme-gray-900 { --gm-theme: var(--gm-gray-900); --gm-theme-rgb: var(--gm-gray-900-rgb); --gm-theme-text: var(--gm-gray-900-text); --gm-theme-on: #fff; }
+.gm-theme-black { --gm-theme: var(--gm-black); --gm-theme-rgb: var(--gm-black-rgb); --gm-theme-text: var(--gm-black-text); --gm-theme-on: #fff; }
+
+/* 2. Uso */
+.gm-theme-solid {
+  color: var(--gm-theme-on);
+  background-color: var(--gm-theme);
+}
+/* Los enlaces dentro del sólido, en el mismo negro y subrayados */
+.gm-theme-solid a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+.gm-theme-glass {
+  border: 1px solid rgb(var(--gm-theme-rgb) / var(--gm-glass-border-alpha));
+  border-radius: var(--gm-glass-radius);
+  color: var(--gm-text);
+  background-color: rgb(var(--gm-theme-rgb) / var(--gm-glass-alpha));
+  box-shadow: var(--gm-glass-shadow);
+  -webkit-backdrop-filter: blur(var(--gm-glass-blur));
+  backdrop-filter: blur(var(--gm-glass-blur));
+}
+
+.gm-theme-text { color: var(--gm-theme-text); }
+
+/* Botones de color: mantienen su forma de píldora también en vidriado */
+.gm-btn.gm-theme-glass { border-radius: var(--gm-radius-pill); }

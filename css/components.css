@@ -1,9 +1,9 @@
 /* ==========================================================================
-   mallowglass · Componentes
+   glassmarshmallow · Componentes
    ========================================================================== */
 
 /* --- Botón ----------------------------------------------------------------- */
-.mg-btn {
+.gm-btn {
   display: inline-flex;
   min-height: 48px;
   align-items: center;
@@ -11,172 +11,297 @@
   gap: 7px;
   padding: 0 22px;
   border: 0;
-  border-radius: var(--mg-radius-pill);
-  color: var(--mg-on-primary);
-  background: var(--mg-primary);
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-on-primary);
+  background: var(--gm-primary);
   font-weight: 650;
   cursor: pointer;
   transition: transform .2s, box-shadow .2s, opacity .2s;
 }
-.mg-btn .mgi { font-size: 1.05em; line-height: 1; }
-.mg-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--mg-shadow-hover); }
-.mg-btn:disabled { cursor: not-allowed; opacity: .45; }
-.mg-btn--secondary { border: 1px solid var(--mg-line); color: var(--mg-text); background: var(--mg-surface-glass); }
-.mg-btn--ghost { color: var(--mg-text); background: transparent; }
-.mg-btn--ghost:hover:not(:disabled) { box-shadow: none; background: var(--mg-hover); }
-.mg-btn--sm { min-height: 38px; padding-inline: 16px; font-size: .84rem; }
+.gm-btn .gmi { font-size: 1.25em; line-height: 1; } /* más grande que el texto, pedido por Sara */
+.gm-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--gm-shadow-hover); }
+.gm-btn:disabled { cursor: not-allowed; opacity: .45; }
+.gm-btn--secondary { border: 1px solid var(--gm-line); color: var(--gm-text); background: var(--gm-surface-glass); }
+.gm-btn--ghost { color: var(--gm-text); background: transparent; }
+.gm-btn--ghost:hover:not(:disabled) { box-shadow: none; background: var(--gm-hover); }
+.gm-btn--sm { min-height: 38px; padding-inline: 16px; font-size: .84rem; }
+
+/* Botón píldora: pequeño, con el gris de las etiquetas (el .pill-button de My Book Box) */
+.gm-btn--pill {
+  min-height: 30px;
+  padding: 0 14px;
+  color: var(--gm-text);
+  background: var(--gm-tag);
+  font-size: .8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background .2s;
+}
+.gm-btn--pill:hover:not(:disabled) { box-shadow: none; transform: none; background: var(--gm-tag-hover); }
+.gm-btn--danger { color: var(--gm-btn-danger); }
+
+/* Botón de texto: sin fondo ni borde, en el color de los enlaces (el .text-button de My Book Box; con el color
+   de enlace en lugar del acento, que en claro solo llegaba a 3,6:1) */
+.gm-btn-text {
+  padding: 0;
+  border: 0;
+  color: var(--gm-link);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.gm-btn-text:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Volver a la sección anterior: «‹ Volver» (el .detail-back de My Book Box) */
+.gm-btn-back {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-text);
+  background: var(--gm-surface-glass);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+.gm-btn-back > span[aria-hidden] { font-size: 1.5rem; line-height: 1; }
 
 /* Botón redondo solo con icono (lleva aria-label) */
-.mg-icon-btn {
+.gm-icon-btn {
   display: grid;
   width: 42px;
   height: 42px;
   padding: 0;
-  border: 1px solid var(--mg-line);
+  border: 1px solid var(--gm-line);
   border-radius: 50%;
-  color: var(--mg-text);
-  background: var(--mg-surface-glass);
+  color: var(--gm-text);
+  background: var(--gm-surface-glass);
   place-items: center;
   cursor: pointer;
   transition: background .2s;
 }
-.mg-icon-btn:hover { background: var(--mg-hover); }
+.gm-icon-btn:hover { background: var(--gm-hover); }
+.gm-icon-btn .gmi { font-size: 1.25rem; }
 
 /* --- Tarjeta de cristal ----------------------------------------------------- */
-.mg-card {
+.gm-card {
   padding: 28px;
-  border: 1px solid var(--mg-surface-glass-border);
-  border-radius: var(--mg-radius-md);
-  background: var(--mg-surface);
-  box-shadow: var(--mg-shadow-sm);
-  -webkit-backdrop-filter: blur(var(--mg-blur));
-  backdrop-filter: blur(var(--mg-blur));
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
 }
-.mg-card > :last-child { margin-bottom: 0; }
+.gm-card > :last-child { margin-bottom: 0; }
 
-/* --- Campo de formulario ----------------------------------------------------- */
-.mg-field { display: grid; gap: 8px; }
-.mg-field > label { font-size: .84rem; font-weight: 650; }
-.mg-field input,
-.mg-field select,
-.mg-field textarea {
+/* --- WCAG 2.5.5 (AAA): zona que se pulsa de al menos 44 × 44 px ----------------
+   Si el elemento se ve más pequeño (botones pequeños, píldoras, botones redondos), una capa invisible amplía la
+   zona que se pulsa sin cambiar su aspecto. */
+.gm-btn, .gm-icon-btn, .gm-btn-back, .gm-btn-text, .gm-calendar__day { position: relative; }
+.gm-btn::after, .gm-icon-btn::after, .gm-btn-back::after, .gm-btn-text::after, .gm-calendar__day::after {
+  position: absolute;
+  top: min(0px, calc(50% - 22px));
+  right: min(0px, calc(50% - 22px));
+  bottom: min(0px, calc(50% - 22px));
+  left: min(0px, calc(50% - 22px));
+  content: "";
+}
+
+/* --- Formulario ----------------------------------------------------------------
+   Como el formulario de contacto del portfolio (su última versión): recuadro de cristal, etiquetas en negrita,
+   campos redondeados con relleno gris y anillo al escribir, casillas en lista y botones en píldora. */
+.gm-form {
+  display: grid;
+  gap: 1.15rem;
+  padding: 2.5rem 2rem;
+  border-radius: var(--gm-radius-md);
+  background: var(--gm-form-bg);
+  box-shadow: var(--gm-form-shadow);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+}
+.gm-form__intro { margin: 0; color: var(--gm-text-secondary); font-size: .9rem; }
+.gm-form__actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: .5rem; }
+
+/* --- Campo -------------------------------------------------------------------- */
+.gm-field { display: grid; gap: 6px; min-width: 0; margin: 0; padding: 0; border: 0; }
+.gm-field > label,
+.gm-field > legend { padding: 0; color: var(--gm-text); font-size: .95rem; font-weight: 700; }
+.gm-field input:not([type="checkbox"], [type="radio"]),
+.gm-field select,
+.gm-field textarea {
   width: 100%;
   min-height: 48px;
-  padding: 12px 14px;
-  border: 1px solid var(--mg-field-border);
-  border-radius: var(--mg-radius-sm);
-  color: var(--mg-text);
-  background: var(--mg-field-bg);
-  transition: border-color .2s, box-shadow .2s;
+  padding: .75rem .9rem;
+  border: 1px solid var(--gm-field-border);
+  border-radius: 12px;
+  color: var(--gm-text);
+  background-color: var(--gm-field-bg);
+  font: inherit;
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
 }
-.mg-field textarea { resize: vertical; }
-.mg-field input::placeholder,
-.mg-field textarea::placeholder { color: var(--mg-muted); }
-.mg-field input:focus,
-.mg-field select:focus,
-.mg-field textarea:focus { border-color: var(--mg-accent); box-shadow: 0 0 0 4px var(--mg-selection); }
-.mg-field__help { color: var(--mg-muted); font-size: .84rem; }
-.mg-field__error { color: var(--mg-danger); font-size: .84rem; }
-.mg-field [aria-invalid="true"] { border-color: var(--mg-danger); }
+.gm-field textarea { resize: vertical; }
+/* Desplegable igual que los campos de texto en todos los navegadores (Safari pinta el suyo si no) */
+.gm-field select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-inline-end: 2.6rem;
+  background-image: var(--gm-select-arrow);
+  background-repeat: no-repeat;
+  background-position: right .85rem center;
+  background-size: 1.1rem;
+  cursor: pointer;
+}
+.gm-field option { color: var(--gm-text); background-color: var(--gm-field-bg); }
+.gm-field input::placeholder,
+.gm-field textarea::placeholder { color: var(--gm-muted); }
+.gm-field input:not([type="checkbox"], [type="radio"]):focus,
+.gm-field select:focus,
+.gm-field textarea:focus {
+  border-color: var(--gm-field-focus);
+  outline: none;
+  background-color: var(--gm-field-bg-focus);
+  box-shadow: 0 0 0 4px var(--gm-field-ring);
+}
+.gm-field__help { margin: 0; color: var(--gm-text-secondary); font-size: .85rem; }
+.gm-field__error { margin: 0; color: var(--gm-danger); font-size: .85rem; font-weight: 600; }
+.gm-field [aria-invalid="true"] { border-color: var(--gm-danger); }
+
+/* Prefijo y número en la misma fila (un tercio y dos tercios) */
+.gm-input-group { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 8px; }
+.gm-input-group select { padding-inline: .5rem 2rem; background-position: right .5rem center; }
+
+/* Casillas y opciones en lista */
+.gm-check { display: grid; gap: 0; }
+.gm-check label { display: flex; min-height: 44px; /* WCAG 2.5.5 (AAA) */ align-items: center; gap: 10px; color: var(--gm-text-secondary); cursor: pointer; }
+.gm-check input { width: 1.05rem; height: 1.05rem; margin: 0; accent-color: var(--gm-field-focus); flex-shrink: 0; }
+
+/* Botón de envío: píldora turquesa con texto blanco, como el del portfolio (7,9:1, AAA) */
+.gm-btn--accent { color: #fff; background: var(--gm-accent-strong); }
+.gm-btn--accent:hover:not(:disabled) { background: var(--gm-accent-hover); }
+
+@media (max-width: 600px) {
+  .gm-form { padding: 1.75rem 1.25rem; }
+  .gm-form__actions .gm-btn { flex: 1; }
+}
 
 /* --- Aviso -------------------------------------------------------------------- */
-.mg-alert {
+.gm-alert {
   display: flex;
   align-items: flex-start;
   gap: 10px;
   padding: 14px 16px;
-  border-radius: var(--mg-radius-sm);
-  color: var(--mg-text);
-  background: var(--mg-fill-subtle);
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-text);
+  background: var(--gm-fill-subtle);
   font-size: .92rem;
 }
-.mg-alert .mgi { flex-shrink: 0; margin-top: 2px; }
-.mg-alert--success { color: var(--mg-success); background: var(--mg-success-bg); }
-.mg-alert--warning { color: var(--mg-warning); background: var(--mg-warning-bg); }
+.gm-alert .gmi { flex-shrink: 0; margin-top: 2px; }
+.gm-alert--success { color: var(--gm-success); background: var(--gm-success-bg); }
+.gm-alert--warning { color: var(--gm-warning); background: var(--gm-warning-bg); }
+.gm-alert--danger { color: var(--gm-danger); background: var(--gm-danger-bg); }
 
 /* --- Etiqueta ------------------------------------------------------------------- */
-.mg-tag {
+.gm-tag {
   display: inline-block;
   padding: 3px 10px;
-  border-radius: var(--mg-radius-pill);
-  color: var(--mg-text);
-  background: var(--mg-tag);
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-text);
+  background: var(--gm-tag);
   font-size: .75rem;
   font-weight: 600;
 }
 
 /* --- Bloque de código ------------------------------------------------------------ */
-.mg-code {
+.gm-code {
   display: block;
   overflow-x: auto;
   margin: 0;
   padding: 16px 18px;
-  border-radius: var(--mg-radius-sm);
-  color: var(--mg-text);
-  background: var(--mg-tag);
-  font-family: var(--mg-font-mono);
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-text);
+  background: var(--gm-tag);
+  font-family: var(--gm-font-mono);
   font-size: .86rem;
   line-height: 1.6;
   white-space: pre;
 }
 
 /* --- Barra de navegación (como My Book Box y My MTV Box) ------------------------- */
-.mg-navbar {
+.gm-navbar {
   position: sticky;
   z-index: 20;
   top: 0;
   display: flex;
-  height: var(--mg-header-height);
+  height: var(--gm-header-height);
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-inline: max(24px, calc((100% - var(--mg-container)) / 2));
-  border-bottom: 1px solid var(--mg-header-border);
-  background: var(--mg-header-bg);
-  box-shadow: var(--mg-header-shadow);
-  -webkit-backdrop-filter: var(--mg-header-filter);
-  backdrop-filter: var(--mg-header-filter);
+  padding-inline: max(24px, calc((100% - var(--gm-container)) / 2));
+  border-bottom: 1px solid var(--gm-header-border);
+  background: var(--gm-header-bg);
+  box-shadow: var(--gm-header-shadow);
+  -webkit-backdrop-filter: var(--gm-header-filter);
+  backdrop-filter: var(--gm-header-filter);
 }
-.mg-navbar__brand { display: inline-flex; min-width: max-content; align-items: center; gap: 10px; font-weight: 700; }
-.mg-navbar__logo { display: block; width: 48px; height: 48px; object-fit: contain; }
-.mg-navbar__nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 32px); font-size: .88rem; }
-.mg-navbar__nav a { color: var(--mg-nav-link); transition: color .2s; }
-.mg-navbar__nav a[aria-current="page"] { color: var(--mg-text); font-weight: 650; }
+.gm-navbar__brand { display: inline-flex; min-width: max-content; align-items: center; gap: 10px; font-weight: 700; }
+.gm-navbar__logo { display: block; width: 48px; height: 48px; object-fit: contain; }
+.gm-navbar__nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 32px); font-size: .88rem; }
+/* 44 px de alto para pulsarlos (WCAG 2.5.5, AAA) */
+.gm-navbar__nav a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; color: var(--gm-nav-link); transition: color .2s; }
+.gm-navbar__nav a[aria-current="page"] { color: var(--gm-text); font-weight: 650; }
 /* Al pasar el ratón: el degradado de las luces (en oscuro, el color del texto) */
-.mg-navbar__nav a:hover {
-  background: var(--mg-accent-gradient-text);
+.gm-navbar__nav a:hover {
+  background: var(--gm-accent-gradient-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
-.mg-navbar__actions { display: flex; align-items: center; gap: 12px; font-size: .84rem; }
+[data-theme="dark"] .gm-navbar__nav a:hover {
+  background: none;
+  color: var(--gm-text);
+  -webkit-text-fill-color: currentColor;
+}
+.gm-navbar__actions { display: flex; align-items: center; gap: 12px; font-size: .84rem; }
 /* Botón de tema: círculo suave; al pasar el ratón se tiñe con el degradado y el icono gira un poco */
-.mg-navbar__actions .mg-icon-btn {
+.gm-navbar__actions .gm-icon-btn {
   width: 38px;
   height: 38px;
-  border-color: var(--mg-toggle-border);
-  background: var(--mg-toggle-bg);
+  border-color: var(--gm-toggle-border);
+  background: var(--gm-toggle-bg);
   font-size: 1rem;
   transition: background .25s ease;
 }
-.mg-navbar__actions .mg-icon-btn:hover { background: var(--mg-accent-tint); }
-.mg-navbar__actions .mg-icon-btn .mgi { transition: transform .35s ease; }
-.mg-navbar__actions .mg-icon-btn:hover .mgi { transform: rotate(25deg) scale(1.08); }
+.gm-navbar__actions .gm-icon-btn:hover { background: var(--gm-accent-tint); }
+.gm-navbar__actions .gm-icon-btn .gmi { transition: transform .35s ease; }
+.gm-navbar__actions .gm-icon-btn:hover .gmi { transform: rotate(25deg) scale(1.08); }
 
 /* Barra inferior de pestañas para móvil (flotante y de cristal, como en iOS) */
-.mg-tabbar { display: none; }
+.gm-tabbar,
+.gm-tabbar-more { display: none; }
 
+/* Con Montserrat el menú es más ancho: más compacto en pantallas medianas, sin el nombre junto al logo en las
+   pequeñas, y la disposición del móvil (menú abajo) desde 860 px */
 @media (max-width: 1100px) {
-  .mg-navbar__nav { gap: 13px; font-size: .8rem; }
+  .gm-navbar__nav { gap: 13px; font-size: .8rem; }
 }
 
-@media (max-width: 700px) {
-  .mg-navbar { height: 62px; padding-inline: 15px; }
-  .mg-navbar__logo { width: 42px; height: 42px; }
-  .mg-navbar__nav { display: none; }
+@media (max-width: 1024px) {
+  .gm-navbar__brand > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
 
-  .mg-tabbar {
+@media (max-width: 860px) {
+  .gm-navbar__brand > span { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
+  .gm-navbar { height: 62px; padding-inline: 15px; }
+  .gm-navbar__logo { width: 42px; height: 42px; }
+  .gm-navbar__nav { display: none; }
+
+  .gm-tabbar {
     position: fixed;
     z-index: 25;
     right: 12px;
@@ -186,26 +311,257 @@
     height: 66px;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid var(--mg-surface-glass-border);
+    border: 1px solid var(--gm-surface-glass-border);
     border-radius: 22px;
-    background: var(--mg-tabbar-bg);
+    background: var(--gm-tabbar-bg);
     box-shadow: 0 12px 36px rgba(0, 0, 0, .16);
-    -webkit-backdrop-filter: var(--mg-header-filter);
-    backdrop-filter: var(--mg-header-filter);
+    -webkit-backdrop-filter: var(--gm-header-filter);
+    backdrop-filter: var(--gm-header-filter);
   }
-  .mg-tabbar a {
+  .gm-tabbar :is(a, button) {
     display: grid;
     min-width: 0;
     flex: 1;
     gap: 2px;
-    color: var(--mg-muted);
+    padding: 0;
+    border: 0;
+    color: var(--gm-muted);
+    background: transparent;
+    font: inherit;
     font-size: .64rem;
     white-space: nowrap;
+    cursor: pointer;
     place-items: center;
   }
-  .mg-tabbar a .mgi { font-size: 1.25rem; }
-  .mg-tabbar a[aria-current="page"] { color: var(--mg-text); }
+  .gm-tabbar :is(a, button) .gmi { font-size: 1.25rem; }
+  .gm-tabbar a[aria-current="page"],
+  .gm-tabbar button.is-active { color: var(--gm-text); }
+
+  /* Panel «Más»: las páginas que no caben en la barra (el .mobile-more de My Book Box). La barra tiene 4 botones
+     como mucho, contando «Más» */
+  .gm-tabbar-more {
+    position: fixed;
+    z-index: 26;
+    right: 12px;
+    bottom: calc(86px + env(safe-area-inset-bottom));
+    left: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--gm-surface-glass-border);
+    border-radius: 22px;
+    background: var(--gm-header-bg);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(22px);
+  }
+  .gm-tabbar-more.is-open { display: grid; }
+  .gm-tabbar-more a {
+    display: grid;
+    min-width: 0;
+    min-height: 58px;
+    gap: 4px;
+    padding: 7px 5px;
+    border-radius: 14px;
+    color: var(--gm-muted);
+    font-size: .68rem;
+    text-align: center;
+    place-items: center;
+  }
+  .gm-tabbar-more a .gmi { font-size: 1.25rem; }
+  .gm-tabbar-more a[aria-current="page"] { color: var(--gm-text); background: var(--gm-surface-soft); }
 
   /* Hueco al final de la página para que la barra no tape el contenido */
-  .mg-has-tabbar { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+  .gm-has-tabbar { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 }
+
+/* --- Tooltip -----------------------------------------------------------------
+   La burbuja del lector de My Book Box (.selection-popover) en pequeño: fondo #1d1d1f, texto blanco, borde fino
+   y sombra grande, en los dos modos. Sale al pasar el ratón y al llegar con el teclado, y se puede pasar el
+   ratón por encima sin que se cierre.
+   <span class="gm-tooltip">
+     <button type="button" class="gm-icon-btn" aria-label="Buscar" aria-describedby="tip-1">…</button>
+     <span class="gm-tooltip__bubble" role="tooltip" id="tip-1">Buscar en la biblioteca</span>
+   </span> */
+.gm-tooltip { position: relative; display: inline-flex; }
+.gm-tooltip__bubble {
+  position: absolute;
+  z-index: 40;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  width: max-content;
+  max-width: 240px;
+  padding: 7px 11px;
+  border: 1px solid var(--gm-line);
+  border-radius: 12px;
+  color: #fff;
+  background: #1d1d1f;
+  box-shadow: var(--gm-shadow-md);
+  font-size: .78rem;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: center;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 4px);
+  transition: opacity .15s, transform .15s, visibility .15s;
+}
+/* Puente invisible entre el botón y la burbuja, para poder llevar el ratón a la burbuja sin que se cierre */
+.gm-tooltip__bubble::before { position: absolute; right: 0; bottom: -10px; left: 0; height: 10px; content: ""; }
+.gm-tooltip:hover .gm-tooltip__bubble,
+.gm-tooltip:focus-within .gm-tooltip__bubble {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+/* Debajo del elemento */
+.gm-tooltip--bottom .gm-tooltip__bubble { top: calc(100% + 8px); bottom: auto; transform: translate(-50%, -4px); }
+.gm-tooltip--bottom .gm-tooltip__bubble::before { top: -10px; bottom: auto; }
+/* Junto a un borde: alineada al principio o al final del elemento en lugar de centrada */
+.gm-tooltip--start .gm-tooltip__bubble { left: 0; transform: translate(0, 4px); }
+.gm-tooltip--end .gm-tooltip__bubble { right: 0; left: auto; transform: translate(0, 4px); }
+.gm-tooltip--start:is(:hover, :focus-within) .gm-tooltip__bubble,
+.gm-tooltip--end:is(:hover, :focus-within) .gm-tooltip__bubble { transform: none; }
+/* Escape la oculta mientras el foco siga en el botón (lo pone el script de la documentación) */
+.gm-tooltip.is-dismissed .gm-tooltip__bubble { opacity: 0; visibility: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .gm-tooltip__bubble { transition: none; }
+}
+
+/* --- Calendario ---------------------------------------------------------------
+   Panel de cristal, mes en grande, días en círculos de 44 px, hoy en azul de
+   enlace y el día elegido relleno (negro en claro, blanco en oscuro). Los días de otros meses, en gris.
+   Hoy: aria-current="date". Elegido: aria-pressed="true". */
+.gm-calendar {
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  color: var(--gm-text);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+}
+.gm-calendar__header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.gm-calendar__title { margin: 0; font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; }
+.gm-calendar__title span { color: var(--gm-muted); font-weight: 500; }
+.gm-calendar__nav { display: flex; gap: 6px; }
+.gm-calendar__nav .gm-icon-btn { width: 36px; height: 36px; }
+.gm-calendar__nav .gm-icon-btn .gmi { font-size: 1.1rem; }
+.gm-calendar__grid { border-collapse: collapse; }
+.gm-calendar__grid th {
+  height: 30px;
+  padding: 0;
+  color: var(--gm-muted);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.gm-calendar__grid th abbr { text-decoration: none; }
+.gm-calendar__grid td { padding: 2px; text-align: center; }
+.gm-calendar__day {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--gm-text);
+  background: transparent;
+  font: inherit;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  place-items: center;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.gm-calendar__day:hover { background: var(--gm-hover); }
+.gm-calendar__day.is-outside { color: var(--gm-muted); }
+.gm-calendar__day[aria-current="date"] { color: var(--gm-link); font-weight: 700; }
+.gm-calendar__day[aria-pressed="true"] { color: var(--gm-on-primary); background: var(--gm-primary); font-weight: 700; }
+.gm-calendar__day:disabled { color: var(--gm-muted); opacity: .45; cursor: default; }
+/* Móvil: menos relleno para que quepan los días de 44 px (WCAG 2.5.5) */
+@media (max-width: 400px) {
+  .gm-calendar { padding: 10px; }
+  .gm-calendar__grid td { padding: 0; }
+}
+
+/* --- Menú desplegable ------------------------------------------------------------
+   Botón que abre una lista de opciones (idioma, tema, versión…), como los de la barra de la web.
+   <div class="gm-menu" data-gm-menu>
+     <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false">Tema</button>
+     <ul class="gm-menu__list" role="menu" hidden>
+       <li role="none"><button type="button" class="gm-menu__item" role="menuitemradio" aria-checked="true">…</button></li>
+     </ul>
+   </div>
+   El script opcional js/menu.js lo abre y lo cierra, y mueve el foco con el teclado. */
+.gm-menu { position: relative; display: inline-flex; }
+.gm-menu__trigger {
+  position: relative;
+  display: inline-flex;
+  min-height: 44px; /* WCAG 2.5.5 (AAA) */
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-nav-link);
+  background: transparent;
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.gm-menu__trigger:hover { color: var(--gm-text); background: var(--gm-hover); }
+.gm-menu__trigger .gmi { font-size: 1.35rem; } /* iconos de la barra más grandes (pedido por Sara) */
+.gm-menu__chevron { font-size: .7rem !important; opacity: .8; }
+.gm-menu__list {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 8px);
+  right: 0;
+  display: grid;
+  min-width: 190px;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-sm);
+  background: var(--gm-surface-solid);
+  box-shadow: var(--gm-shadow-md);
+  list-style: none;
+}
+.gm-menu__list[hidden] { display: none; }
+/* Alineado a la izquierda del botón (por defecto, a la derecha) */
+.gm-menu--start .gm-menu__list { right: auto; left: 0; }
+.gm-menu__item {
+  display: flex;
+  width: 100%;
+  min-height: 44px; /* WCAG 2.5.5 (AAA) */
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--gm-text);
+  background: transparent;
+  font: inherit;
+  font-size: .9rem;
+  text-align: left;
+  text-shadow: none;
+  cursor: pointer;
+}
+.gm-menu__item:hover,
+.gm-menu__item:focus-visible { background: var(--gm-hover); }
+.gm-menu__item:focus-visible { outline-offset: -2px; }
+.gm-menu__item > span { flex: 1; }
+.gm-menu__check { visibility: hidden; color: var(--gm-text); }
+.gm-menu__item[aria-checked="true"] { font-weight: 650; }
+.gm-menu__item[aria-checked="true"] .gm-menu__check { visibility: visible; }

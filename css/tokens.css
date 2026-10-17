@@ -1,89 +1,111 @@
 /* ==========================================================================
-   mallowglass · Variables (tokens)
-   Valores de partida: los de My Book Box y My MTV Box (estilo Apple).
+   glassmarshmallow · Variables (tokens)
+   Valores de My Book Box y My MTV Box en modo claro y oscuro: son los de todas las páginas.
+   La portada cambia algunos valores (los de portfolio-ia-template) en backdrop.css, solo donde está
+   el fondo de luces (.gm-backdrop).
    Modo claro por defecto; el oscuro con data-theme="dark" en <html>.
    ========================================================================== */
 
-:root {
+/* También en cualquier elemento con data-theme="light" (una parte clara dentro de una página oscura) */
+:root,
+[data-theme="light"] {
   /* Fondo, superficies y texto */
-  --mg-bg: #f5f5f7;
-  --mg-surface: rgba(255, 255, 255, .82);
-  --mg-surface-solid: #fff;
-  --mg-surface-glass: rgba(255, 255, 255, .86);
-  --mg-surface-glass-border: rgba(255, 255, 255, .8);
-  --mg-surface-soft: rgba(255, 255, 255, .6);
-  --mg-header-bg: rgba(255, 255, 255, .75);
-  --mg-text: #1d1d1f;
-  --mg-text-secondary: #3a3a3c;
-  --mg-muted: #5a5a5e; /* más oscuro que #6e6e73: sobre las luces del fondo, #6e6e73 se quedaba en 3,5:1 */
+  --gm-bg: #f5f5f7;
+  --gm-surface: rgba(255, 255, 255, .82);
+  --gm-surface-solid: #fff;
+  --gm-surface-glass: rgba(255, 255, 255, .86);
+  --gm-surface-glass-border: rgba(255, 255, 255, .8);
+  --gm-surface-soft: rgba(255, 255, 255, .6);
+  --gm-header-bg: rgba(245, 245, 247, .78);
+  --gm-text: #1d1d1f;
+  --gm-text-secondary: #3a3a3c;
+  --gm-muted: #48484a; /* gray-700: 7:1 o más sobre el fondo, las superficies y las etiquetas (WCAG AAA) */
 
   /* Líneas y rellenos */
-  --mg-line: rgba(0, 0, 0, .08);
-  --mg-line-strong: #bbb;
-  --mg-hover: rgba(0, 0, 0, .05);
-  --mg-fill-subtle: rgba(0, 0, 0, .025);
-  --mg-tag: #e8e8ed;
+  --gm-line: rgba(0, 0, 0, .08);
+  --gm-line-strong: #bbb;
+  --gm-hover: rgba(0, 0, 0, .05);
+  --gm-fill-subtle: rgba(0, 0, 0, .025);
+  --gm-tag: #e8e8ed;
+  --gm-tag-hover: #dcdce1;
 
   /* Campos de formulario: borde con contraste 3:1 (WCAG 2.2 AA) */
-  --mg-field-bg: #fff;
-  --mg-field-border: #8e8e93;
+  /* Campos como el formulario del portfolio: relleno gris claro y borde #86868b (3,6:1); al escribir, blanco con
+     anillo turquesa, como el portfolio */
+  --gm-field-bg: #f5f5f7;
+  --gm-field-bg-focus: #fff;
+  --gm-field-border: #86868b;
+  /* Flecha de los desplegables: nuestro icono chevron-expand */
+  --gm-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d1d1f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 9l5-5 5 5M7 15l5 5 5-5'/%3E%3C/svg%3E");
+  --gm-field-focus: #0e7490;
+  --gm-field-ring: rgba(14, 116, 144, .15);
+  /* Recuadro del formulario: cristal blanco al 78 % con sombra suave */
+  --gm-form-bg: rgba(255, 255, 255, .78);
+  --gm-form-shadow: 0 2px 12px rgba(0, 0, 0, .06);
 
   /* Acciones y acento */
-  --mg-primary: #1d1d1f;
-  --mg-on-primary: #fff;
-  /* Modo claro como portfolio-ia-template: colores de las luces del dibujo */
-  --mg-accent: #0e7490;   /* cian de la pantalla: foco, casillas y barras (3:1 sobre el fondo) */
-  --mg-link: #0b5f75;     /* cian oscuro: texto pequeño (4,9:1 en el punto más claro del fondo) */
-  --mg-link-hover: #0b5f75;
-  --mg-focus: #0e7490;
-  --mg-selection: rgba(14, 116, 144, .18);
+  --gm-primary: #1d1d1f;
+  --gm-on-primary: #fff;
+  /* Acento: el turquesa del portfolio (decidido por Sara). Enlaces: los de My Book Box */
+  --gm-accent: #0e7490;        /* 4,9:1 sobre el fondo: vale también para texto */
+  --gm-accent-strong: #0a5366; /* turquesa profundo: fondo de botones con texto blanco (7,9:1, AAA) */
+  --gm-accent-hover: #08414f;
+  --gm-link: #004b96;       /* 7:1 o más (WCAG AAA) */
+  --gm-link-hover: #004b96;
+  --gm-focus: #0e7490;
+  --gm-selection: rgba(14, 116, 144, .18);
   /* Degradados con el reparto del logo: misma diagonal (↗) y mismo orden de colores
      (celeste → azul → violeta → rosa → naranja), cada color en el tono más luminoso que cumple:
      - títulos grandes, 3:1 en el punto más claro del fondo */
-  --mg-accent-gradient: linear-gradient(45deg, #007eb5 0%, #1c6cff 25%, #8c57e9 50%, #b2588b 75%, #c55500 100%);
+  --gm-accent-gradient: linear-gradient(45deg, #007eb5 0%, #1c6cff 25%, #8c57e9 50%, #b2588b 75%, #c55500 100%);
   /*   - texto pequeño, 4,5:1 */
-  --mg-accent-gradient-text: linear-gradient(45deg, #00628d 0%, #004edd 25%, #6e2ce3 50%, #8e416d 75%, #994200 100%);
-  --mg-accent-tint: linear-gradient(45deg, rgba(69, 199, 255, .18), rgba(140, 87, 233, .16), rgba(255, 150, 70, .18)); /* fondos suaves, con los colores del logo */
+  --gm-accent-gradient-text: linear-gradient(45deg, #005981 0%, #0047c9 25%, #621ddc 50%, #813b63 75%, #8b3c00 100%); /* 7:1 (AAA) */
+  --gm-accent-tint: linear-gradient(45deg, rgba(69, 199, 255, .18), rgba(140, 87, 233, .16), rgba(255, 150, 70, .18)); /* fondos suaves, con los colores del logo */
 
   /* Estados */
-  --mg-danger: #c9342f;
-  --mg-success: #257247;
-  --mg-success-bg: #e9f8ef;
-  --mg-warning: #8a5a12;
-  --mg-warning-bg: #fdf1dc;
+  /* Estados con la paleta pastel (decidido por Sara): éxito en menta, aviso en limón y error en coral.
+     Texto en el tono 800 o 900 sobre el 050 de su escala: 7:1 o más (AAA) */
+  --gm-success: var(--gm-mint-900); /* 9,7:1 sobre su fondo (AAA) */
+  --gm-success-bg: var(--gm-mint-050);
+  --gm-warning: var(--gm-lemon-800);
+  --gm-warning-bg: var(--gm-lemon-050);
+  --gm-danger: var(--gm-coral-800);
+  --gm-danger-bg: var(--gm-coral-050);
 
   /* Sombras */
-  --mg-shadow-sm: 0 2px 12px rgba(0, 0, 0, .05);
-  --mg-shadow-md: 0 18px 50px rgba(0, 0, 0, .11);
-  --mg-shadow-hover: 0 8px 22px rgba(0, 0, 0, .18);
+  --gm-shadow-sm: 0 2px 12px rgba(0, 0, 0, .05);
+  --gm-shadow-md: 0 18px 50px rgba(0, 0, 0, .11);
+  --gm-shadow-hover: 0 8px 22px rgba(0, 0, 0, .18);
 
   /* Radios */
-  --mg-radius-sm: 12px;
-  --mg-radius-md: 20px;
-  --mg-radius-lg: 30px;
-  --mg-radius-pill: 999px;
+  --gm-radius-sm: 12px;
+  --gm-radius-md: 20px;
+  --gm-radius-lg: 30px;
+  --gm-radius-pill: 999px;
 
   /* Cristal */
-  --mg-blur: 20px;
-  --mg-blur-header: 24px;
+  --gm-blur: 20px;
+  --gm-blur-header: 24px;
 
-  /* Barra superior (claro: cristal blanco con sombra y sin línea, como la plantilla) */
-  --mg-header-filter: saturate(180%) blur(20px);
-  --mg-header-border: transparent;
-  --mg-header-shadow: 0 4px 30px rgba(0, 0, 0, .1);
-  --mg-nav-link: #1d1d1f;
-  /* Barra inferior del móvil: casi opaca, porque al final de la página queda sobre el negro del pie */
-  --mg-tabbar-bg: rgba(255, 255, 255, .92);
-  --mg-toggle-bg: rgba(0, 0, 0, .07);
-  --mg-toggle-border: transparent;
+  /* Barra superior: cristal gris claro con línea inferior, como My Book Box */
+  --gm-header-filter: blur(24px);
+  --gm-header-border: rgba(0, 0, 0, .08);
+  --gm-header-shadow: none;
+  --gm-nav-link: #1d1d1f;
+  /* Barra inferior del móvil: casi opaca */
+  --gm-tabbar-bg: rgba(245, 245, 247, .92);
+  --gm-toggle-bg: rgba(0, 0, 0, .07);
+  --gm-toggle-border: transparent;
 
   /* Tipografía */
-  --mg-font: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* como portfolio-ia-template */
-  --mg-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Montserrat en todo (decidido por Sara, licencia SIL Open Font License). Se carga aparte: Google Fonts o la
+     propia web; si no está, se usa la del sistema */
+  --gm-font: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --gm-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Maquetación */
-  --mg-container: 1240px;
-  --mg-header-height: 72px;
+  --gm-container: 1240px;
+  --gm-header-height: 72px;
 
   color-scheme: light;
 }
@@ -92,55 +114,69 @@
    Bootstrap): cualquier elemento con data-theme="dark" usa los colores oscuros */
 :root[data-theme="dark"],
 [data-theme="dark"] {
-  --mg-bg: #000;
-  --mg-surface: rgba(28, 28, 30, .82);
-  --mg-surface-solid: #1c1c1e;
-  --mg-surface-glass: rgba(44, 44, 46, .86);
-  --mg-surface-glass-border: rgba(255, 255, 255, .06);
-  --mg-surface-soft: rgba(44, 44, 46, .6);
-  --mg-header-bg: rgba(22, 22, 23, .72);
-  --mg-text: #f5f5f7;
-  --mg-text-secondary: #a1a1a6; /* párrafos en gris claro, como la plantilla */
-  --mg-muted: #a1a1a6; /* más claro que #98989d: sobre las luces del fondo, #98989d se quedaba en 4,4:1 */
+  --gm-bg: #000;
+  --gm-surface: rgba(28, 28, 30, .82);
+  --gm-surface-solid: #1c1c1e;
+  --gm-surface-glass: rgba(44, 44, 46, .86);
+  --gm-surface-glass-border: rgba(255, 255, 255, .06);
+  --gm-surface-soft: rgba(44, 44, 46, .6);
+  --gm-header-bg: rgba(22, 22, 23, .9); /* al 90 %: con el 78 % de My Book Box, lo claro que pasa por debajo dejaba el buscador en 3,1:1 */
+  --gm-text: #f5f5f7;
+  --gm-text-secondary: #d1d1d6;
+  --gm-muted: #b8b8bc; /* 7:1 o más sobre negro, superficies y etiquetas (WCAG AAA) */
 
-  --mg-line: rgba(255, 255, 255, .1);
-  --mg-line-strong: #545458;
-  --mg-hover: rgba(255, 255, 255, .08);
-  --mg-fill-subtle: rgba(255, 255, 255, .04);
-  --mg-tag: #2c2c2e;
+  --gm-line: rgba(255, 255, 255, .1);
+  --gm-line-strong: #545458;
+  --gm-hover: rgba(255, 255, 255, .08);
+  --gm-fill-subtle: rgba(255, 255, 255, .04);
+  --gm-tag: #2c2c2e;
+  --gm-tag-hover: #3a3a3c;
 
-  --mg-field-bg: #2c2c2e;
-  --mg-field-border: #8e8e93;
+  --gm-field-bg: #1d1d1f;
+  --gm-field-bg-focus: #1d1d1f;
+  --gm-field-border: #6e6e73; /* 3,9:1 sobre el recuadro del formulario */
+  /* Flecha de los desplegables: nuestro icono chevron-expand */
+  --gm-select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 9l5-5 5 5M7 15l5 5 5-5'/%3E%3C/svg%3E");
+  --gm-field-focus: #1cabb0;
+  --gm-field-ring: rgba(28, 171, 176, .45);
+  --gm-form-bg: rgba(255, 255, 255, .04);
+  --gm-form-shadow: none;
 
-  --mg-primary: #f5f5f7;
-  --mg-on-primary: #1d1d1f;
-  /* Modo oscuro como portfolio-ia-template: acento turquesa (4,6:1 en el punto más claro del fondo) */
-  --mg-accent: #1cabb0;
-  --mg-link: #ffffff;
-  --mg-link-hover: #1cabb0;
-  --mg-focus: #1cabb0;
-  --mg-selection: rgba(28, 171, 176, .35);
-  --mg-accent-gradient: linear-gradient(#f5f5f7, #f5f5f7); /* títulos grandes en blanco en oscuro */
-  --mg-accent-gradient-text: linear-gradient(#1cabb0, #1cabb0);
-  --mg-accent-tint: rgba(28, 171, 176, .3);
+  --gm-primary: #f5f5f7;
+  --gm-on-primary: #1d1d1f;
+  /* Acento en oscuro: el turquesa del portfolio (7,4:1 sobre negro) */
+  --gm-accent: #1cabb0;
+  --gm-accent-strong: #0a5366; /* con texto blanco: 7,9:1 (AAA) */
+  --gm-accent-hover: #08414f;
+  --gm-link: #79beff;       /* 7:1 o más (WCAG AAA) */
+  --gm-link-hover: #79beff;
+  --gm-focus: #1cabb0;
+  --gm-selection: rgba(28, 171, 176, .35);
+  --gm-accent-gradient: linear-gradient(#f5f5f7, #f5f5f7); /* títulos grandes en blanco en oscuro */
+  --gm-accent-gradient-text: linear-gradient(#1cabb0, #1cabb0);
+  --gm-accent-tint: rgba(28, 171, 176, .3);
+  /* Texto con degradado en oscuro: el turquesa liso */
+  --gm-gradient-text-dark: #1cabb0;
 
-  --mg-header-filter: saturate(180%) blur(20px);
-  --mg-header-border: rgba(255, 255, 255, .1);
-  --mg-header-shadow: none;
-  --mg-nav-link: rgba(245, 245, 247, .8);
-  --mg-tabbar-bg: rgba(22, 22, 23, .72);
-  --mg-toggle-bg: rgba(255, 255, 255, .12);
-  --mg-toggle-border: transparent;
+  --gm-header-filter: blur(24px);
+  --gm-header-border: rgba(255, 255, 255, .1);
+  --gm-header-shadow: none;
+  --gm-nav-link: rgba(245, 245, 247, .8);
+  --gm-tabbar-bg: rgba(22, 22, 23, .9); /* igual que la barra de arriba */
+  --gm-toggle-bg: rgba(255, 255, 255, .12);
+  --gm-toggle-border: transparent;
 
-  --mg-danger: #ff6961;
-  --mg-success: #30d158;
-  --mg-success-bg: rgba(48, 209, 88, .15);
-  --mg-warning: #ffd60a;
-  --mg-warning-bg: rgba(255, 214, 10, .14);
+  /* Estados en oscuro: el pastel sobre su propio color al 15 % (de 8,5:1 a 12,6:1) */
+  --gm-success: var(--gm-mint);
+  --gm-success-bg: rgb(var(--gm-mint-rgb) / .15);
+  --gm-warning: var(--gm-lemon);
+  --gm-warning-bg: rgb(var(--gm-lemon-rgb) / .15);
+  --gm-danger: var(--gm-coral);
+  --gm-danger-bg: rgb(var(--gm-coral-rgb) / .15);
 
-  --mg-shadow-sm: 0 2px 12px rgba(0, 0, 0, .4);
-  --mg-shadow-md: 0 18px 50px rgba(0, 0, 0, .6);
-  --mg-shadow-hover: 0 8px 22px rgba(0, 0, 0, .5);
+  --gm-shadow-sm: 0 2px 12px rgba(0, 0, 0, .4);
+  --gm-shadow-md: 0 18px 50px rgba(0, 0, 0, .6);
+  --gm-shadow-hover: 0 8px 22px rgba(0, 0, 0, .5);
 
   color-scheme: dark;
 }
