@@ -1,0 +1,56 @@
+<div class="doc">
+  <article class="doc__body" [attr.aria-busy]="loading()">
+    <header class="doc__header">
+      <h1>{{ doc()?.title || (titleKey() | t) }}</h1>
+      @if (doc()) {
+        <p class="doc__lead" [innerHTML]="lead()"></p>
+        <a class="gm-btn gm-btn--secondary gm-btn--sm doc__edit" [href]="editUrl()">
+          <i class="gmi gmi-box-arrow-up-right" aria-hidden="true"></i>{{ 'docsNav.viewOnGithub' | t }}
+        </a>
+      }
+    </header>
+
+    @if (doc(); as d) {
+      @if (d.toc.length) {
+        <details class="doc__toc-mobile">
+          <summary>{{ 'docsNav.onThisPage' | t }}</summary>
+          <ul>
+            @for (item of d.toc; track item.id) {
+              <li [class.is-sub]="item.level === 3"><a [href]="'#' + item.id" (click)="goTo($event, item.id)">{{ item.text }}</a></li>
+            }
+          </ul>
+        </details>
+      }
+      <div class="doc__content" [innerHTML]="content()" (click)="onContentClick($event)" (keydown)="onContentKeydown($event)" (mouseout)="onTooltipLeave($event)" (focusout)="onTooltipLeave($event)" (submit)="$event.preventDefault()"></div>
+    } @else if (!loading()) {
+      <p class="doc__soon gm-muted">{{ 'docsNav.comingSoon' | t }}</p>
+    }
+
+    <nav class="doc__pager" [attr.aria-label]="'docsNav.pager' | t">
+      @if (previous(); as p) {
+        <a class="doc__pager-link" [routerLink]="p.path">
+          <span class="doc__pager-label"><i class="gmi gmi-arrow-left" aria-hidden="true"></i>{{ 'docsNav.previous' | t }}</span>
+          <span class="doc__pager-title">{{ p.key | t }}</span>
+        </a>
+      }
+      @if (next(); as n) {
+        <a class="doc__pager-link doc__pager-link--next" [routerLink]="n.path">
+          <span class="doc__pager-label">{{ 'docsNav.next' | t }}<i class="gmi gmi-arrow-right" aria-hidden="true"></i></span>
+          <span class="doc__pager-title">{{ n.key | t }}</span>
+        </a>
+      }
+    </nav>
+    <span class="gm-visually-hidden" aria-live="polite">{{ announcement() }}</span>
+  </article>
+
+  @if (doc()?.toc?.length) {
+    <aside class="doc__toc" [attr.aria-label]="'docsNav.onThisPage' | t">
+      <p class="doc__toc-title">{{ 'docsNav.onThisPage' | t }}</p>
+      <ul>
+        @for (item of doc()!.toc; track item.id) {
+          <li [class.is-sub]="item.level === 3"><a [href]="'#' + item.id" (click)="goTo($event, item.id)">{{ item.text }}</a></li>
+        }
+      </ul>
+    </aside>
+  }
+</div>

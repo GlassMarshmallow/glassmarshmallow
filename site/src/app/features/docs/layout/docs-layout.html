@@ -1,0 +1,32 @@
+<div class="docs gm-container">
+  <button
+    type="button"
+    class="gm-btn gm-btn--secondary gm-btn--sm docs__menu-btn"
+    aria-controls="docs-sidebar"
+    [attr.aria-expanded]="menuOpen()"
+    (click)="menuOpen.set(!menuOpen())"
+  >
+    <i class="gmi gmi-list" aria-hidden="true"></i>{{ 'docsNav.browse' | t }}
+  </button>
+
+  <nav id="docs-sidebar" class="docs__sidebar" [class.is-open]="menuOpen()" [attr.aria-label]="'docsNav.menu' | t">
+    @for (section of sections; track section.id) {
+      <div class="docs__group">
+        <h2 class="docs__group-title">
+          <i class="gmi {{ section.icon }}" aria-hidden="true"></i>{{ 'docsNav.sections.' + section.id | t }}
+        </h2>
+        <ul>
+          @for (page of section.pages; track page.path) {
+            <li>
+              <a [routerLink]="'/docs/' + page.path" routerLinkActive ariaCurrentWhenActive="page">{{ pageTitleKey(page.path) | t }}</a>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </nav>
+
+  <div class="docs__main">
+    <router-outlet />
+  </div>
+</div>

@@ -1,0 +1,167 @@
+import { ChangeDetectionStrategy, Component, ElementRef, afterRenderEffect, computed, effect, inject, input, signal } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Router, RouterLink } from '@angular/router';
+import { I18nService } from '../../../../core/i18n/i18n.service';
+import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
+import { DOCS_PAGES, pageTitleKey } from '../../data/docs-nav';
+import { RenderedDoc, renderDoc } from '../../data/render-doc';
+// Script opcional del framework: los calendarios de los ejemplos funcionan de verdad
+import { initCalendars } from '../../../../../../../js/calendar.js';
+import { initMenus } from '../../../../../../../js/menu.js';
+
+const REPO = 'https://github.com/spyamuza/glassmarshmallow/blob/main/site/public/content/docs';
+
+/**
+ * Página de la documentación: lee el Markdown del idioma actual (public/content/docs/<idioma>/<sección>/<página>.md)
+ * y lo muestra con su índice («En esta página») y los enlaces a la página anterior y siguiente.
+ */
+@Component({
+  selector: 'app-doc-page',
+  host: { '(document:keydown.escape)': 'dismissTooltips()' },
+  imports: [RouterLink, TranslatePipe],
+  templateUrl: './doc-page.html',
+  styleUrl: './doc-page.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DocPage {
+  private readonly i18n = inject(I18nService);
+  private readonly sanitizer = inject(DomSanitizer);
+  private readonly router = inject(Router);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+
+  readonly section = input.required<string>();
+  readonly page = input.required<string>();
+
+  readonly path = computed(() => `${this.section()}/${this.page()}`);
+  readonly titleKey = computed(() => pageTitleKey(this.path()));
+  readonly doc = signal<RenderedDoc | null>(null);
+  readonly loading = signal(true);
+  readonly announcement = signal('');
+
+  /** HTML de nuestro propio Markdown (contenido de confianza, no de usuarios) */
+  readonly content = computed<SafeHtml>(() => this.sanitizer.bypassSecurityTrustHtml(this.doc()?.html ?? ''));
+  readonly lead = computed<SafeHtml>(() => this.sanitizer.bypassSecurityTrustHtml(this.doc()?.lead ?? ''));
+  readonly editUrl = computed(() => `${REPO}/${this.i18n.language()}/${this.path()}.md`);
+
+  readonly previous = computed(() => this.neighbour(-1));
+  readonly next = computed(() => this.neighbour(1));
+
+  constructor() {
+    // Cuando el contenido ya está en la página, pone en marcha los calendarios y menús de los ejemplos
+    afterRenderEffect(() => {
+      this.doc();
+      const content = this.host.nativeElement.querySelector('.doc__content');
+      if (content) {
+        initCalendars(content);
+        initMenus(content);
+      }
+    });
+
+    effect((onCleanup) => {
+      const lang = this.i18n.language();
+      const path = this.path();
+      let cancelled = false;
+      onCleanup(() => (cancelled = true));
+      this.loading.set(true);
+      fetch(`content/docs/${lang}/${path}.md`)
+        .then((response) => (response.ok ? response.text() : null))
+        .then((markdown) => {
+          if (cancelled) return;
+          // El servidor de desarrollo devuelve index.html si no existe el archivo: entonces no hay contenido
+          const valid = markdown && !markdown.trimStart().startsWith('<!doctype');
+          this.doc.set(valid ? renderDoc(markdown, { copy: this.i18n.t('docsNav.copy') }) : null);
+          this.loading.set(false);
+        })
+        .catch(() => {
+          if (cancelled) return;
+          this.doc.set(null);
+          this.loading.set(false);
+        });
+    });
+  }
+
+  private neighbour(step: number) {
+    const index = DOCS_PAGES.findIndex((p) => p.path === this.path());
+    const page = DOCS_PAGES[index + step];
+    return page ? { path: `/docs/${page.path}`, key: pageTitleKey(page.path) } : null;
+  }
+
+  /** Índice: baja hasta el apartado sin cambiar de página (con <base href="/">, «#id» saldría al inicio) */
+  goTo(event: Event, id: string) {
+    event.preventDefault();
+    const target = document.getElementById(id);
+    if (!target) return;
+    target.setAttribute('tabindex', '-1');
+    target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    target.focus({ preventScroll: true });
+    history.replaceState(null, '', `${location.pathname}#${id}`);
+  }
+
+  /** Clics dentro del contenido: copiar código, cambiar de pestaña y enlaces internos sin recargar */
+  async onContentClick(event: MouseEvent) {
+    const el = event.target as HTMLElement;
+    const copy = el.closest<HTMLButtonElement>('[data-copy]');
+    if (copy) {
+      const pre = copy.closest('.doc-code')?.querySelector<HTMLElement>('pre:not([hidden])');
+      try {
+        await navigator.clipboard.writeText(pre?.innerText ?? '');
+        const label = copy.querySelector('span');
+        if (label) {
+          label.textContent = this.i18n.t('docsNav.copied');
+          setTimeout(() => (label.textContent = this.i18n.t('docsNav.copy')), 2000);
+        }
+        this.announcement.set(this.i18n.t('docsNav.codeCopied'));
+      } catch {
+        /* sin portapapeles: el código se puede seleccionar */
+      }
+      return;
+    }
+    const tab = el.closest<HTMLButtonElement>('[role="tab"]');
+    if (tab) {
+      this.selectTab(tab);
+      return;
+    }
+    const link = el.closest<HTMLAnchorElement>('a[href^="/"]');
+    if (link) {
+      event.preventDefault();
+      this.router.navigateByUrl(link.getAttribute('href')!);
+    }
+  }
+
+  /**
+   * Tooltips de los ejemplos: Escape oculta el que está abierto (con el ratón encima o el foco dentro) hasta
+   * que el ratón sale o el foco se va, como pide WCAG 2.2 (contenido que se puede cerrar).
+   */
+  dismissTooltips() {
+    document.querySelectorAll('.gm-tooltip:hover, .gm-tooltip:focus-within').forEach((tip) => tip.classList.add('is-dismissed'));
+  }
+
+  onTooltipLeave(event: Event) {
+    const tip = (event.target as HTMLElement).closest('.gm-tooltip');
+    const next = (event as FocusEvent | MouseEvent).relatedTarget as Node | null;
+    if (tip && !(next && tip.contains(next))) tip.classList.remove('is-dismissed');
+  }
+
+  /** Flechas izquierda y derecha para moverse entre pestañas */
+  onContentKeydown(event: KeyboardEvent) {
+    const tab = (event.target as HTMLElement).closest<HTMLButtonElement>('[role="tab"]');
+    if (!tab || (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft')) return;
+    const tabs = Array.from(tab.parentElement!.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const index = tabs.indexOf(tab) + (event.key === 'ArrowRight' ? 1 : -1);
+    const next = tabs[(index + tabs.length) % tabs.length];
+    event.preventDefault();
+    this.selectTab(next);
+    next.focus();
+  }
+
+  private selectTab(tab: HTMLButtonElement) {
+    const tabs = tab.parentElement!.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+    tabs.forEach((t) => {
+      const selected = t === tab;
+      t.setAttribute('aria-selected', String(selected));
+      t.tabIndex = selected ? 0 : -1;
+      const panel = document.getElementById(t.getAttribute('aria-controls')!);
+      if (panel) panel.hidden = !selected;
+    });
+  }
+}
