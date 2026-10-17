@@ -1,0 +1,162 @@
+<section class="gm-container generator" aria-labelledby="palette-title">
+  <app-back-link path="/tools" section="nav.tools" />
+  <h1 id="palette-title">{{ 'palette.title' | t }}</h1>
+  <p class="generator__lead gm-muted">{{ 'palette.lead' | t }}</p>
+
+  <div class="generator__layout">
+    <!-- Página de ejemplo hecha con componentes del framework; la paleta entra por sus variables -->
+    <div class="preview-column">
+      <div
+        class="sim"
+        role="img"
+        [attr.aria-label]="'palette.previewLabel' | t"
+        [attr.data-theme]="previewTheme()"
+        [style]="previewStyle()"
+        inert
+      >
+        <div class="sim__nav">
+          <span class="sim__brand"><span class="sim__logo" aria-hidden="true"></span>{{ 'palette.simBrand' | t }}</span>
+          <span class="sim__links">
+            <span class="sim__link is-active">{{ 'palette.simHome' | t }}</span>
+            <span class="sim__link">{{ 'palette.simProduct' | t }}</span>
+            <span class="sim__link">{{ 'palette.simPricing' | t }}</span>
+          </span>
+          <span class="gm-btn gm-btn--sm">{{ 'palette.simStart' | t }}</span>
+        </div>
+
+        <div class="sim__hero">
+          <span class="gm-tag">{{ 'palette.simTag' | t }}</span>
+          <p class="sim__title">{{ sampleTitle() || ('palette.sampleTitle' | t) }}</p>
+          <p class="gm-muted sim__text">{{ sampleText() || ('palette.sampleText' | t) }}</p>
+          <span class="sim__actions">
+            <span class="gm-btn">{{ 'palette.simStart' | t }}</span>
+            <span class="gm-btn gm-btn--secondary">{{ 'palette.simMore' | t }}</span>
+          </span>
+        </div>
+
+        <div class="sim__cards">
+          @for (card of cards; track card.icon) {
+            <div class="gm-card sim__card">
+              <i class="gmi {{ card.icon }} sim__icon" aria-hidden="true"></i>
+              <p class="sim__card-title">{{ card.title | t }}</p>
+              <p class="gm-muted">{{ card.text | t }}</p>
+              <span class="gm-btn-text">{{ 'palette.simLink' | t }}</span>
+            </div>
+          }
+        </div>
+
+        <div class="gm-alert"><i class="gmi gmi-info-circle" aria-hidden="true"></i>{{ 'palette.simAlert' | t }}</div>
+
+        <div class="gm-form sim__form">
+          <div class="gm-field">
+            <span class="sim__label">{{ 'palette.simEmail' | t }}</span>
+            <span class="sim__input">nombre&#64;correo.com</span>
+          </div>
+          <span class="gm-btn">{{ 'palette.simSubscribe' | t }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gm-card controls">
+      <fieldset class="segmented">
+        <legend>{{ 'filter.previewMode' | t }}</legend>
+        <div class="segmented__options">
+          @for (option of themes; track option.value) {
+            <label class="segmented__option">
+              <input type="radio" name="palette-theme" [checked]="previewTheme() === option.value" (change)="previewTheme.set(option.value)" />
+              {{ option.label | t }}
+            </label>
+          }
+        </div>
+      </fieldset>
+
+      <app-color-picker [label]="'palette.base' | t" [alpha]="false" [(value)]="base" />
+
+      <fieldset class="segmented">
+        <legend>{{ 'palette.harmony' | t }}</legend>
+        <div class="segmented__options segmented__options--stack">
+          @for (option of harmonies; track option) {
+            <label class="segmented__option">
+              <input type="radio" name="palette-harmony" [checked]="harmony() === option" (change)="harmony.set(option)" />
+              {{ 'palette.harmonies.' + option | t }}
+            </label>
+          }
+        </div>
+      </fieldset>
+
+      <div>
+        <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm" (click)="random()">
+          <i class="gmi gmi-shuffle" aria-hidden="true"></i>{{ 'palette.random' | t }}
+        </button>
+      </div>
+
+      <div class="roles">
+        <p class="roles__title">{{ 'palette.rolesTitle' | t }}</p>
+        <ul class="roles__list">
+          @for (role of roles(); track role.id) {
+            <li class="roles__item">
+              <span class="roles__swatch" [style.background]="role.hex" aria-hidden="true"></span>
+              <span class="roles__name">{{ 'palette.roles.' + role.id | t }}</span>
+              <code class="roles__hex">{{ role.hex }}</code>
+              @if (role.ratio) {
+                <span class="roles__ratio gm-muted">{{ role.ratio }}:1 {{ grade(role.ratio) }}</span>
+              }
+            </li>
+          }
+        </ul>
+      </div>
+
+      <app-sample-texts [fields]="sampleFields()" />
+
+      <div class="code">
+        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code>{{ css() }}</code></pre>
+        <div>
+          <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
+            <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
+            {{ (copied() ? 'common.copied' : 'common.copyCss') | t }}
+          </button>
+        </div>
+      </div>
+      <span class="gm-visually-hidden" aria-live="polite">{{ announcement() }}</span>
+    </div>
+  </div>
+
+  <!-- Cómo se aplican los colores de la paleta -->
+  <section class="guide" aria-labelledby="palette-guide">
+    <h2 id="palette-guide">{{ 'palette.guideTitle' | t }}</h2>
+    <p class="gm-muted guide__lead">{{ 'palette.guideLead' | t }}</p>
+
+    <div class="ratio" aria-hidden="true">
+      <span class="ratio__part" [style.background]="color().background" [style.color]="color().text" style="flex: 60">60 %</span>
+      <span class="ratio__part" [style.background]="color().secondary" [style.color]="color().text" style="flex: 30">30 %</span>
+      <span class="ratio__part" [style.background]="color().primary" [style.color]="color().onPrimary" style="flex: 10">10 %</span>
+    </div>
+    <ul class="guide__rule">
+      <li><b>60 %</b> {{ 'palette.rule60' | t }}</li>
+      <li><b>30 %</b> {{ 'palette.rule30' | t }}</li>
+      <li><b>10 %</b> {{ 'palette.rule10' | t }}</li>
+    </ul>
+
+    <h3>{{ 'palette.whereTitle' | t }}</h3>
+    <ul class="where">
+      @for (role of roles(); track role.id) {
+        <li class="where__item">
+          <span class="roles__swatch" [style.background]="role.hex" aria-hidden="true"></span>
+          <span>
+            <b>{{ 'palette.roles.' + role.id | t }}</b>
+            <span class="gm-muted">{{ 'palette.where.' + role.id | t }}</span>
+          </span>
+        </li>
+      }
+    </ul>
+
+    <h3>{{ 'palette.rulesTitle' | t }}</h3>
+    <ul class="guide__list">
+      <li>{{ 'palette.ruleContrast' | t }}</li>
+      <li>{{ 'palette.ruleOnly' | t }}</li>
+      <li>{{ 'palette.ruleStates' | t }}</li>
+      <li>{{ 'palette.ruleModes' | t }}</li>
+      <li>{{ 'palette.ruleAccent' | t }}</li>
+    </ul>
+  </section>
+</section>

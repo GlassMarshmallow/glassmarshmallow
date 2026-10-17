@@ -11,4 +11,5 @@ export const TOOLS: Tool[] = [
   { id: 'gradient-generator', icon: 'gmi-palette', i18n: 'gradient' },
   { id: 'single-color-gradient', icon: 'gmi-circle-half', i18n: 'single' },
   { id: 'filter-generator', icon: 'gmi-moon', i18n: 'filter' },
+  { id: 'palette-generator', icon: 'gmi-palette-fill', i18n: 'palette' },
 ];

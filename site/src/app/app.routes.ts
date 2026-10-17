@@ -60,6 +60,11 @@ export const routes: Routes = [
             title: 'titles.filter',
             loadComponent: () => import('./features/public/pages/filter-generator/filter-generator').then((m) => m.FilterGenerator),
           },
+          {
+            path: 'palette-generator',
+            title: 'titles.palette',
+            loadComponent: () => import('./features/public/pages/palette-generator/palette-generator').then((m) => m.PaletteGenerator),
+          },
         ],
       },
       {
