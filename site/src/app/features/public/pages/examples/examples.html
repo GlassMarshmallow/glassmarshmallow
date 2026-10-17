@@ -1,0 +1,38 @@
+<section class="gm-container examples" aria-labelledby="examples-title">
+  <h1 id="examples-title">{{ 'examples.title' | t }}</h1>
+  <p class="examples__lead gm-muted">{{ 'examples.lead' | t }}</p>
+
+  <article class="gm-card examples__item" aria-labelledby="example-portfolio">
+    <!-- Las capturas en los dos modos; al pulsarlas se ven en grande -->
+    <ul class="examples__shots">
+      @for (shot of portfolioShots; track shot.src) {
+        <li [class.examples__shot--mobile]="shot.mobile">
+          <a class="examples__shot" [href]="shot.src" data-gm-zoom [attr.aria-label]="(shot.alt | t) + ' · ' + (shot.mode | t)">
+            <img [src]="shot.src" [width]="shot.mobile ? 740 : 1600" [height]="shot.mobile ? 1600 : 1000" loading="lazy" [alt]="shot.alt | t">
+          </a>
+          <span class="examples__mode gm-muted">{{ shot.mode | t }}</span>
+        </li>
+      }
+    </ul>
+
+    <div class="examples__text">
+      <h2 id="example-portfolio">{{ 'examples.portfolio.title' | t }}</h2>
+      <p>{{ 'examples.portfolio.text' | t }}</p>
+
+      <h3>{{ 'examples.pieces' | t }}</h3>
+      <ul class="examples__pieces">
+        @for (piece of portfolioPieces; track piece.path) {
+          <li><a [routerLink]="piece.path">{{ piece.key | t }}</a></li>
+        }
+      </ul>
+
+      @if (templateRepo) {
+        <a class="gm-btn" [href]="templateRepo">
+          <i class="gmi gmi-github" aria-hidden="true"></i>{{ 'examples.code' | t }}
+        </a>
+      } @else {
+        <p class="gm-muted examples__soon">{{ 'examples.soon' | t }}</p>
+      }
+    </div>
+  </article>
+</section>

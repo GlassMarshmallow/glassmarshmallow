@@ -76,7 +76,7 @@ export const routes: Routes = [
         path: 'examples',
         title: 'titles.examples',
         data: { heading: 'nav.examples' },
-        loadComponent: () => import('./shared/pages/coming-soon/coming-soon').then((m) => m.ComingSoon),
+        loadComponent: () => import('./features/public/pages/examples/examples').then((m) => m.Examples),
       },
       {
         path: 'icons',

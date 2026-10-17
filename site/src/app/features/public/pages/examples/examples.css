@@ -1,0 +1,25 @@
+.examples { padding-block: 72px 0; }
+.examples__lead { max-width: 680px; margin-bottom: 40px; font-size: 1.05rem; line-height: 1.6; }
+
+/* Cada ejemplo: las capturas arriba y el texto debajo (al lado en pantallas anchas) */
+.examples__item { display: grid; gap: 28px; padding: 24px; }
+@media (min-width: 1100px) {
+  .examples__item { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: start; }
+}
+
+/* Capturas: las dos de ordenador arriba y las dos de móvil debajo, más estrechas, cada una con su modo */
+.examples__shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.examples__shots li { display: grid; gap: 6px; justify-items: center; }
+.examples__shot { display: block; width: 100%; overflow: hidden; border: 1px solid var(--gm-line); border-radius: 12px; box-shadow: var(--gm-shadow-sm); cursor: zoom-in; }
+.examples__shot img { display: block; width: 100%; height: auto; }
+.examples__shot--mobile .examples__shot { width: 52%; border-radius: 16px; }
+.examples__mode { font-size: .85rem; }
+
+.examples__text h2 { margin: 0 0 8px; font-size: 1.4rem; }
+.examples__text h3 { margin: 24px 0 8px; font-size: 1rem; }
+.examples__text p { margin: 0; line-height: 1.6; }
+
+/* Las piezas, una debajo de otra (más de tres: en lista) */
+.examples__pieces { display: grid; gap: 4px; margin: 0 0 24px; padding-left: 1.2rem; }
+.examples__pieces a { display: inline-flex; min-height: 32px; align-items: center; color: var(--gm-link); text-decoration: underline; text-underline-offset: 3px; }
+.examples__soon { font-size: .9rem; }

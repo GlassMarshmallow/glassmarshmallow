@@ -223,6 +223,21 @@ export const en = {
     added: 'Color {n} added',
     removed: 'Color {n} removed',
   },
+  examples: {
+    title: 'Examples',
+    lead: 'Websites built with GlassMarshmallow, to see how the pieces look together and copy whatever helps you.',
+    pieces: 'Framework pieces it uses',
+    light: 'Light mode',
+    dark: 'Dark mode',
+    code: 'See the code on GitHub',
+    soon: 'The code will be published on GitHub with version 0.1.',
+    portfolio: {
+      title: 'AI portfolio template',
+      text: 'A portfolio with a chat that answers for you with AI and a smart form for people to tell you about their project. Built with Angular and .NET, in light and dark mode and accessible (WCAG 2.2 AA).',
+      shotDesktop: 'Home of the portfolio template on a computer: photo, greeting, chat and quick questions',
+      shotMobile: 'Home of the portfolio template on a phone',
+    },
+  },
   tools: {
     title: 'Tools',
     lead: 'Generators that give you CSS ready to copy and effects to add atmosphere to your backgrounds. Everything they create is relative, so it adapts to wherever you use it.',

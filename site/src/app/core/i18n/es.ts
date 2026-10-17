@@ -224,6 +224,21 @@ export const es: Dictionary = {
     added: 'Color {n} añadido',
     removed: 'Color {n} quitado',
   },
+  examples: {
+    title: 'Ejemplos',
+    lead: 'Webs hechas con GlassMarshmallow, para ver cómo quedan las piezas juntas y copiar lo que te sirva.',
+    pieces: 'Piezas del framework que usa',
+    light: 'Modo claro',
+    dark: 'Modo oscuro',
+    code: 'Ver el código en GitHub',
+    soon: 'El código se publicará en GitHub junto con la versión 0.1.',
+    portfolio: {
+      title: 'Plantilla de portfolio con IA',
+      text: 'Un portfolio con un chat que responde por ti con IA y un formulario inteligente para que te cuenten su proyecto. Hecho con Angular y .NET, en modo claro y oscuro y accesible (WCAG 2.2 AA).',
+      shotDesktop: 'Inicio de la plantilla de portfolio en el ordenador: foto, saludo, chat y preguntas rápidas',
+      shotMobile: 'Inicio de la plantilla de portfolio en el móvil',
+    },
+  },
   tools: {
     title: 'Herramientas',
     lead: 'Generadores que te dan el CSS listo para copiar y efectos para dar ambiente a tus fondos. Todo lo que crean es relativo, así que se adapta al sitio donde lo uses.',
