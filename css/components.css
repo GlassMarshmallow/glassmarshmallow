@@ -259,20 +259,25 @@
 .gm-error-summary__list a:hover { text-decoration-thickness: 2px; }
 
 /* --- Aviso -------------------------------------------------------------------- */
+/* El pastel del estado a media intensidad, con un borde del mismo pastel y el texto normal encima (elegido por
+   Sara): celeste para información, menta, limón y coral para éxito, advertencia y error. Texto de 12:1 o más
+   de día y de 7,5:1 o más de noche (AAA) */
 .gm-alert {
+  --gm-alert-rgb: var(--gm-sky-rgb);
   display: flex;
   align-items: flex-start;
   gap: 10px;
   padding: 14px 16px;
+  border: 1px solid rgb(var(--gm-alert-rgb) / .9);
   border-radius: var(--gm-radius-sm);
   color: var(--gm-text);
-  background: var(--gm-fill-subtle);
+  background: rgb(var(--gm-alert-rgb) / var(--gm-alert-alpha));
   font-size: .92rem;
 }
 .gm-alert .gmi { flex-shrink: 0; margin-top: 2px; }
-.gm-alert--success { color: var(--gm-success); background: var(--gm-success-bg); }
-.gm-alert--warning { color: var(--gm-warning); background: var(--gm-warning-bg); }
-.gm-alert--danger { color: var(--gm-danger); background: var(--gm-danger-bg); }
+.gm-alert--success { --gm-alert-rgb: var(--gm-mint-rgb); }
+.gm-alert--warning { --gm-alert-rgb: var(--gm-lemon-rgb); }
+.gm-alert--danger { --gm-alert-rgb: var(--gm-coral-rgb); }
 
 /* --- Etiqueta ------------------------------------------------------------------- */
 .gm-tag {

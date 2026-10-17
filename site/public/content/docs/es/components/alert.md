@@ -1,6 +1,6 @@
 # Aviso
 
-Un mensaje destacado dentro de la página: información, algo que salió bien, una advertencia o un error. Fondo suave, texto del color del estado y un icono.
+Un mensaje destacado dentro de la página: información, algo que salió bien, una advertencia o un error. El pastel del estado a media intensidad, con un borde del mismo color, el texto normal y un icono.
 
 ## Ejemplos
 
@@ -17,7 +17,7 @@ Un mensaje destacado dentro de la página: información, algo que salió bien, u
 
 | Clase | Para | Color |
 | --- | --- | --- |
-| `.gm-alert` | Información | Texto normal sobre gris |
+| `.gm-alert` | Información | Celeste |
 | `.gm-alert--success` | Algo salió bien | Menta |
 | `.gm-alert--warning` | Advertencia | Limón |
 | `.gm-alert--danger` | Error | Coral |

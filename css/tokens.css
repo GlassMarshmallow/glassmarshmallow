@@ -50,6 +50,8 @@
   --gm-accordion-icon-bg: rgba(0, 0, 0, .05);
   --gm-accordion-icon: #1d1d1f;
   --gm-accordion-chevron: #6e6e73;
+  /* Avisos: el pastel del estado a media intensidad (de noche, algo menos, para que el texto blanco llegue a 7:1) */
+  --gm-alert-alpha: .45;
 
   /* Acciones y acento */
   --gm-primary: #1d1d1f;
@@ -162,6 +164,8 @@
   --gm-accordion-icon-bg: rgba(28, 171, 176, .15);
   --gm-accordion-icon: #1cabb0;
   --gm-accordion-chevron: #1cabb0;
+  /* Avisos: el pastel del estado a media intensidad (de noche, algo menos, para que el texto blanco llegue a 7:1) */
+  --gm-alert-alpha: .35;
 
   --gm-primary: #f5f5f7;
   --gm-on-primary: #1d1d1f;
