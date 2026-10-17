@@ -1,0 +1,28 @@
+# Web de GlassMarshmallow (glassmarshmallow.com) + túnel de Cloudflare.
+# En el mini PC: ~/apps/glassmarshmallow. Se publica desde el Mac con deploy/publicar.sh.
+name: glassmarshmallow
+
+# La web no publica ningún puerto a internet: solo el túnel de Cloudflare llega a ella por la red interna
+# de Docker. En el propio servidor se puede abrir en http://localhost:8100 para comprobarlo.
+services:
+  web:
+    build: .
+    image: glassmarshmallow-web:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8100:80"
+    mem_limit: 64m
+
+  # Túnel con dominio propio. Necesita CLOUDFLARE_TUNNEL_TOKEN en el archivo .env (permisos 600).
+  # En Cloudflare, el nombre público glassmarshmallow.com apunta al servicio http://web:80.
+  # Arranque: docker compose --profile tunel up -d --build
+  cloudflared:
+    image: cloudflare/cloudflared:2025.9.1
+    profiles: ["tunel"]
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN:-}
+    depends_on:
+      - web
+    mem_limit: 128m
