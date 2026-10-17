@@ -1,0 +1,59 @@
+/* Misma estructura que los otros generadores */
+.generator { padding-block: 72px 0; }
+.generator__lead { max-width: 680px; margin-bottom: 40px; font-size: 1.05rem; line-height: 1.6; }
+.generator__layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: start; gap: 32px; }
+.preview-column { display: grid; gap: 14px; }
+
+/* Vista previa: fondo claro u oscuro con las formas de colores del generador de cristal */
+.preview {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  min-height: 460px;
+  padding: 32px;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-md);
+  color: var(--gm-text);
+  background: var(--gm-bg);
+  place-items: center;
+}
+.preview__shape { position: absolute; border-radius: 50%; }
+.preview__shape--cyan { top: 12%; left: 12%; width: 180px; height: 180px; background: #3cd2ff; }
+.preview__shape--violet { right: 10%; bottom: 14%; width: 220px; height: 220px; background: #8c64ff; }
+.preview__shape--amber { top: 18%; right: 24%; width: 110px; height: 110px; background: #ff9646; }
+.preview__filter { position: absolute; z-index: 1; inset: 0; }
+.preview__sample { position: relative; z-index: 2; max-width: 380px; text-align: center; }
+.preview__sample p { margin: 0; font-size: 1.05rem; }
+.preview__title { margin-bottom: 6px !important; font-size: clamp(1.8rem, 4vw, 2.6rem) !important; font-weight: 700; letter-spacing: -.03em; }
+.preview__small { margin-top: 10px !important; font-size: .82rem !important; }
+
+.sample-toggle { display: inline-flex; min-height: 44px; align-items: center; gap: 10px; justify-self: start; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.sample-toggle input { width: 20px; height: 20px; margin: 0; accent-color: var(--gm-accent); cursor: pointer; }
+
+.controls { display: grid; gap: 22px; }
+fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+legend { margin-bottom: 10px; padding: 0; font-size: .9rem; font-weight: 650; }
+
+/* Igual que en el generador de un color */
+.segmented__options { display: flex; flex-wrap: wrap; gap: 8px; }
+.segmented__option {
+  display: inline-flex; min-height: 44px; align-items: center; gap: 8px; padding: 0 14px;
+  border: 1px solid var(--gm-field-border); border-radius: var(--gm-radius-pill); font-size: .9rem; cursor: pointer;
+}
+.segmented__option:has(input:checked) { border-color: var(--gm-text); font-weight: 650; }
+.segmented__option:has(input:focus-visible) { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
+.segmented__option input { accent-color: var(--gm-accent); }
+
+.control { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; }
+.control label { font-size: .9rem; font-weight: 650; }
+.control output { color: var(--gm-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.control__help { grid-column: 1 / -1; font-size: .82rem; }
+.control input[type="range"] { grid-column: 1 / -1; width: 100%; min-height: 44px; accent-color: var(--gm-accent); }
+
+.code { display: grid; gap: 12px; }
+.code .gm-code { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+@media (max-width: 900px) {
+  .generator__layout { grid-template-columns: minmax(0, 1fr); }
+  .preview { min-height: 300px; }
+}

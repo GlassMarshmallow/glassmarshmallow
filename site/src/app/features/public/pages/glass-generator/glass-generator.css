@@ -8,7 +8,7 @@
   display: grid;
   min-height: 460px;
   overflow: hidden;
-  border-radius: var(--mg-radius-md);
+  border-radius: var(--gm-radius-md);
   background: linear-gradient(45deg, #1b2a4a, #2a1f4f 50%, #4a2a2a);
   place-items: center;
 }
@@ -35,8 +35,8 @@
 .controls { display: grid; gap: 22px; }
 .control { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; }
 .control label { font-size: .9rem; font-weight: 650; }
-.control output { color: var(--mg-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
-.control input[type="range"] { grid-column: 1 / -1; width: 100%; min-height: 24px; accent-color: var(--mg-accent); }
+.control output { color: var(--gm-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.control input[type="range"] { grid-column: 1 / -1; width: 100%; min-height: 44px; accent-color: var(--gm-accent); }
 
 .code { display: grid; gap: 12px; }
 .code__actions { display: flex; flex-wrap: wrap; gap: 10px; }

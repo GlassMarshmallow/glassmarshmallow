@@ -16,15 +16,15 @@ interface Option<T> {
 
 /** Direcciones del degradado lineal: hacia dónde se desvanece el color */
 const DIRECTIONS: (Option<number> & { icon: string })[] = [
-  { value: 315, label: 'single.dirUpLeft', icon: 'mgi-arrow-up-left' },
-  { value: 0, label: 'single.dirUp', icon: 'mgi-arrow-up' },
-  { value: 45, label: 'single.dirUpRight', icon: 'mgi-arrow-up-right' },
-  { value: 270, label: 'single.dirLeft', icon: 'mgi-arrow-left' },
+  { value: 315, label: 'single.dirUpLeft', icon: 'gmi-arrow-up-left' },
+  { value: 0, label: 'single.dirUp', icon: 'gmi-arrow-up' },
+  { value: 45, label: 'single.dirUpRight', icon: 'gmi-arrow-up-right' },
+  { value: 270, label: 'single.dirLeft', icon: 'gmi-arrow-left' },
   { value: -1, label: '', icon: '' },
-  { value: 90, label: 'single.dirRight', icon: 'mgi-arrow-right' },
-  { value: 225, label: 'single.dirDownLeft', icon: 'mgi-arrow-down-left' },
-  { value: 180, label: 'single.dirDown', icon: 'mgi-arrow-down' },
-  { value: 135, label: 'single.dirDownRight', icon: 'mgi-arrow-down-right' },
+  { value: 90, label: 'single.dirRight', icon: 'gmi-arrow-right' },
+  { value: 225, label: 'single.dirDownLeft', icon: 'gmi-arrow-down-left' },
+  { value: 180, label: 'single.dirDown', icon: 'gmi-arrow-down' },
+  { value: 135, label: 'single.dirDownRight', icon: 'gmi-arrow-down-right' },
 ];
 
 /** Origen del degradado radial */
@@ -41,9 +41,10 @@ const POSITIONS: Option<string>[] = [
 ];
 
 /** Generador de degradados de un solo color: el color se desvanece en una dirección o desde un punto. */
+import { BackLink } from '../../../../shared/components/back-link/back-link';
 @Component({
   selector: 'app-single-color-gradient',
-  imports: [ColorPicker, TranslatePipe],
+  imports: [ColorPicker, TranslatePipe, BackLink],
   templateUrl: './single-color-gradient.html',
   styleUrl: './single-color-gradient.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

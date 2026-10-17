@@ -9,8 +9,8 @@
 <dialog #dialog class="picker" [attr.aria-labelledby]="uid + '-title'">
   <div class="picker__head">
     <h2 [id]="uid + '-title'">{{ label() }}</h2>
-    <button type="button" class="mg-icon-btn" [attr.aria-label]="'common.close' | t" (click)="close()">
-      <i class="mgi mgi-x-lg" aria-hidden="true"></i>
+    <button type="button" class="gm-icon-btn" [attr.aria-label]="'common.close' | t" (click)="close()">
+      <i class="gmi gmi-x-lg" aria-hidden="true"></i>
     </button>
   </div>
 
@@ -62,7 +62,7 @@
         </div>
       }
 
-      <div class="mg-field hex">
+      <div class="gm-field hex">
         <label [for]="uid + '-hex'">{{ 'picker.code' | t }}</label>
         <input
           [id]="uid + '-hex'"
@@ -75,7 +75,7 @@
           (input)="onHexInput($event)"
         />
         @if (hexInvalid()) {
-          <span [id]="uid + '-hex-error'" class="mg-field__error">{{ 'picker.codeError' | t }}</span>
+          <span [id]="uid + '-hex-error'" class="gm-field__error">{{ 'picker.codeError' | t }}</span>
         }
       </div>
     </div>
@@ -91,7 +91,7 @@
           <span>
             {{ 'picker.textOn' | t: { color: (item.name | t) } }} <strong>{{ item.text }}:1</strong>
             <span class="contrast__badge" [class.contrast__badge--ok]="item.passes">
-              <i class="mgi" [class.mgi-check-lg]="item.passes" [class.mgi-x-lg]="!item.passes" aria-hidden="true"></i>
+              <i class="gmi" [class.gmi-check-lg]="item.passes" [class.gmi-x-lg]="!item.passes" aria-hidden="true"></i>
               {{ (item.passes ? 'picker.passes' : 'picker.fails') | t }}
             </span>
           </span>
@@ -101,6 +101,6 @@
   </div>
 
   <div class="picker__actions">
-    <button type="button" class="mg-btn" (click)="close()">{{ 'common.done' | t }}</button>
+    <button type="button" class="gm-btn" (click)="close()">{{ 'common.done' | t }}</button>
   </div>
 </dialog>

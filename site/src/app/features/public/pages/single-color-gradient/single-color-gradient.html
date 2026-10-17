@@ -1,6 +1,7 @@
-<section class="mg-container generator" aria-labelledby="single-title">
+<section class="gm-container generator" aria-labelledby="single-title">
+  <app-back-link path="/tools" section="nav.tools" />
   <h1 id="single-title">{{ 'single.title' | t }}</h1>
-  <p class="generator__lead mg-muted">{{ 'single.lead' | t }}</p>
+  <p class="generator__lead gm-muted">{{ 'single.lead' | t }}</p>
 
   <div class="generator__layout">
     <!-- Cuadrícula de fondo para que se note la transparencia -->
@@ -8,12 +9,12 @@
       <div class="preview">
         <div class="preview__gradient" [style.background]="gradient()"></div>
       </div>
-      <button type="button" class="mg-btn mg-btn--secondary mg-btn--sm" aria-haspopup="dialog" (click)="openFullscreen()">
-        <i class="mgi mgi-arrows-fullscreen" aria-hidden="true"></i>{{ 'single.fullscreen' | t }}
+      <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm" aria-haspopup="dialog" (click)="openFullscreen()">
+        <i class="gmi gmi-arrows-fullscreen" aria-hidden="true"></i>{{ 'single.fullscreen' | t }}
       </button>
     </div>
 
-    <div class="mg-card controls">
+    <div class="gm-card controls">
       <app-color-picker [label]="'single.color' | t" [alpha]="false" [(value)]="color" />
 
       <fieldset class="segmented">
@@ -42,7 +43,7 @@
                   [title]="dir.label | t"
                   (click)="angle.set(dir.value)"
                 >
-                  <i class="mgi {{ dir.icon }}" aria-hidden="true"></i>
+                  <i class="gmi {{ dir.icon }}" aria-hidden="true"></i>
                 </button>
               } @else {
                 <span class="pad__center" aria-hidden="true"></span>
@@ -71,7 +72,7 @@
           <input type="checkbox" [checked]="inverted()" (change)="inverted.set($any($event.target).checked)" aria-describedby="single-invert-help" />
           {{ 'single.invert' | t }}
         </label>
-        <p id="single-invert-help" class="invert__help mg-muted">{{ 'single.invertHelp' | t }}</p>
+        <p id="single-invert-help" class="invert__help gm-muted">{{ 'single.invertHelp' | t }}</p>
         <fieldset class="pad">
           <legend>{{ 'single.position' | t }}</legend>
           <div class="pad__grid">
@@ -93,7 +94,7 @@
           <label for="single-size">{{ 'single.radius' | t }}</label>
           <output for="single-size">{{ radius() }} %</output>
           <input id="single-size" type="range" min="10" max="150" [value]="radius()" (input)="setNumber(radius, $event)" aria-describedby="single-size-help" />
-          <span id="single-size-help" class="control__help mg-muted">{{ 'single.radiusHelp' | t }}</span>
+          <span id="single-size-help" class="control__help gm-muted">{{ 'single.radiusHelp' | t }}</span>
         </div>
       }
 
@@ -114,30 +115,30 @@
       </div>
 
       <div class="code">
-        <pre class="mg-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code>{{ css() }}</code></pre>
+        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code>{{ css() }}</code></pre>
         <div>
-          <button type="button" class="mg-btn mg-btn--sm" (click)="copy()">
-            <i class="mgi" [class.mgi-clipboard]="!copied()" [class.mgi-check]="copied()" aria-hidden="true"></i>
+          <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
+            <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
             {{ (copied() ? 'common.copied' : 'common.copyCss') | t }}
           </button>
         </div>
       </div>
-      <span class="mg-visually-hidden" aria-live="polite">{{ announcement() }}</span>
+      <span class="gm-visually-hidden" aria-live="polite">{{ announcement() }}</span>
     </div>
   </div>
 </section>
 
 <!-- Pantalla completa: el degradado sobre el fondo real de la web, para verlo como quedará -->
 <dialog #fullscreen class="fullscreen" [attr.aria-label]="'single.fullscreen' | t">
-  <div class="mg-backdrop fullscreen__backdrop" aria-hidden="true">
-    <span class="mg-backdrop__dots"></span>
-    <span class="mg-backdrop__grain"></span>
-    <span class="mg-backdrop__scanlines"></span>
-    <span class="mg-backdrop__curve"></span>
+  <div class="gm-backdrop gm-backdrop--contained fullscreen__backdrop" aria-hidden="true">
+    <span class="gm-backdrop__dots"></span>
+    <span class="gm-backdrop__grain"></span>
+    <span class="gm-backdrop__scanlines"></span>
+    <span class="gm-backdrop__curve"></span>
   </div>
   <div class="fullscreen__gradient" [style.background]="gradient()" aria-hidden="true"></div>
   <div class="fullscreen__bar">
     <span>{{ 'single.fullscreenHint' | t }}</span>
-    <button type="button" class="mg-btn mg-btn--sm" (click)="closeFullscreen()">{{ 'common.close' | t }}</button>
+    <button type="button" class="gm-btn gm-btn--sm" (click)="closeFullscreen()">{{ 'common.close' | t }}</button>
   </div>
 </dialog>

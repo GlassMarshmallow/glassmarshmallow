@@ -29,9 +29,11 @@ const PRESETS: Preset[] = [
 ];
 
 /** Generador de degradados: se eligen el tipo, el ángulo y los colores, y se copia el CSS. */
+import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
+import { BackLink } from '../../../../shared/components/back-link/back-link';
 @Component({
   selector: 'app-gradient-generator',
-  imports: [ColorPicker, TranslatePipe],
+  imports: [ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './gradient-generator.html',
   styleUrl: './gradient-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,6 +54,12 @@ export class GradientGenerator {
   readonly stops = signal<ColorStop[]>([]);
   readonly copied = signal(false);
   readonly showSample = signal(true);
+  readonly sampleTitle = signal('');
+  readonly sampleText = signal('');
+  readonly sampleFields = computed<SampleField[]>(() => [
+    { id: 'gradient-text-title', label: 'common.textTitle', placeholder: this.i18n.t('gradient.sampleTitle'), value: this.sampleTitle },
+    { id: 'gradient-text-body', label: 'common.textBody', placeholder: this.i18n.t('gradient.sampleText'), value: this.sampleText },
+  ]);
   readonly announcement = signal('');
   private nextId = 0;
   private resetTimer?: ReturnType<typeof setTimeout>;

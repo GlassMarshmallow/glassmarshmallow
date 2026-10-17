@@ -11,9 +11,11 @@ const toRgbList = (color: string): string => {
 };
 
 /** Generador de efecto cristal: se ajustan los valores, se ve el resultado y se copia el CSS. */
+import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
+import { BackLink } from '../../../../shared/components/back-link/back-link';
 @Component({
   selector: 'app-glass-generator',
-  imports: [ColorPicker, TranslatePipe],
+  imports: [ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './glass-generator.html',
   styleUrl: './glass-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,6 +28,12 @@ export class GlassGenerator {
   readonly outline = signal(30);
   readonly radius = signal(16);
   readonly copied = signal(false);
+  readonly sampleTitle = signal('');
+  readonly sampleText = signal('');
+  readonly sampleFields = computed<SampleField[]>(() => [
+    { id: 'glass-text-title', label: 'common.textTitle', placeholder: this.i18n.t('glass.sampleTitle'), value: this.sampleTitle },
+    { id: 'glass-text-body', label: 'common.textBody', placeholder: 'GlassMarshmallow', value: this.sampleText },
+  ]);
   private resetTimer?: ReturnType<typeof setTimeout>;
 
   private readonly rgb = computed(() => toRgbList(this.color()));

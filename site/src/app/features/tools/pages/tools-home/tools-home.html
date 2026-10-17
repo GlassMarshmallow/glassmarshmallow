@@ -1,0 +1,16 @@
+<section class="gm-container tools" aria-labelledby="tools-title">
+  <h1 id="tools-title">{{ 'tools.title' | t }}</h1>
+  <p class="tools__lead gm-muted">{{ 'tools.lead' | t }}</p>
+
+  <ul class="tools__list">
+    @for (tool of tools; track tool.id) {
+      <li>
+        <a class="gm-card tools__item" [routerLink]="['/tools', tool.id]">
+          <i class="gmi {{ tool.icon }} tools__icon" aria-hidden="true"></i>
+          <strong class="tools__name">{{ tool.i18n + '.title' | t }}</strong>
+          <span class="tools__text gm-muted">{{ tool.i18n + '.lead' | t: { max: 5 } }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</section>

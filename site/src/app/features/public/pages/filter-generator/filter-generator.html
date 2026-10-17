@@ -1,0 +1,66 @@
+<section class="gm-container generator" aria-labelledby="filter-title">
+  <app-back-link path="/tools" section="nav.tools" />
+  <h1 id="filter-title">{{ 'filter.title' | t }}</h1>
+  <p class="generator__lead gm-muted">{{ 'filter.lead' | t }}</p>
+
+  <div class="generator__layout">
+    <div class="preview-column">
+      <!-- Fondo de muestra con formas de colores (como en el generador de cristal), el filtro encima y el texto -->
+      <div class="preview" [attr.data-theme]="previewTheme()">
+        <span class="preview__shape preview__shape--cyan" aria-hidden="true"></span>
+        <span class="preview__shape preview__shape--violet" aria-hidden="true"></span>
+        <span class="preview__shape preview__shape--amber" aria-hidden="true"></span>
+        <div class="preview__filter" [style.background]="filter()" aria-hidden="true"></div>
+        @if (showSample()) {
+          <div class="preview__sample">
+            <p class="preview__title">{{ sampleTitle() || ('filter.sampleTitle' | t) }}</p>
+            <p>{{ sampleText() || ('filter.sampleText' | t) }}</p>
+            <p class="gm-muted preview__small">{{ sampleSmall() || ('filter.sampleSmall' | t) }}</p>
+          </div>
+        }
+      </div>
+      <label class="sample-toggle">
+        <input type="checkbox" [checked]="showSample()" (change)="toggleSample($event)" />
+        {{ 'filter.showSample' | t }}
+      </label>
+    </div>
+
+    <div class="gm-card controls">
+      <fieldset class="segmented">
+        <legend>{{ 'filter.previewMode' | t }}</legend>
+        <div class="segmented__options">
+          @for (option of themes; track option.value) {
+            <label class="segmented__option">
+              <input type="radio" name="filter-theme" [checked]="previewTheme() === option.value" (change)="previewTheme.set(option.value)" />
+              {{ option.label | t }}
+            </label>
+          }
+        </div>
+      </fieldset>
+
+      <app-color-picker [label]="'filter.color' | t" [alpha]="false" [(value)]="color" />
+
+      <div class="control">
+        <label for="filter-opacity">{{ 'filter.opacity' | t }}</label>
+        <output for="filter-opacity">{{ opacity() }} %</output>
+        <input id="filter-opacity" type="range" min="0" max="60" step="0.5" [value]="opacity()" (input)="setOpacity($event)" aria-describedby="filter-opacity-help" />
+        <span id="filter-opacity-help" class="control__help gm-muted">{{ 'filter.opacityHelp' | t }}</span>
+      </div>
+
+      @if (showSample()) {
+        <app-sample-texts [fields]="sampleFields()" />
+      }
+
+      <div class="code">
+        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code>{{ css() }}</code></pre>
+        <div>
+          <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
+            <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
+            {{ (copied() ? 'common.copied' : 'common.copyCss') | t }}
+          </button>
+        </div>
+      </div>
+      <span class="gm-visually-hidden" aria-live="polite">{{ announcement() }}</span>
+    </div>
+  </div>
+</section>
