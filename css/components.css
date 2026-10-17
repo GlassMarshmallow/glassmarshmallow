@@ -131,7 +131,7 @@
 .gm-field { display: grid; gap: 6px; min-width: 0; margin: 0; padding: 0; border: 0; }
 .gm-field > label,
 .gm-field > legend { padding: 0; color: var(--gm-text); font-size: .95rem; font-weight: 700; }
-.gm-field input:not([type="checkbox"], [type="radio"]),
+.gm-field input:not([type="checkbox"], [type="radio"], [type="range"]),
 .gm-field select,
 .gm-field textarea {
   width: 100%;
@@ -159,7 +159,7 @@
 .gm-field option { color: var(--gm-text); background-color: var(--gm-field-bg); }
 .gm-field input::placeholder,
 .gm-field textarea::placeholder { color: var(--gm-muted); }
-.gm-field input:not([type="checkbox"], [type="radio"]):focus,
+.gm-field input:not([type="checkbox"], [type="radio"], [type="range"]):focus,
 .gm-field select:focus,
 .gm-field textarea:focus {
   border-color: var(--gm-field-focus);
@@ -170,6 +170,52 @@
 .gm-field__help { margin: 0; color: var(--gm-text-secondary); font-size: .85rem; }
 .gm-field__error { margin: 0; color: var(--gm-danger); font-size: .85rem; font-weight: 600; }
 .gm-field [aria-invalid="true"] { border-color: var(--gm-danger); }
+
+/* --- Barra deslizante (range) ---------------------------------------------------
+   <input class="gm-range" type="range" min="0" max="100" value="40">
+   Tirador redondo (bolita) y la parte recorrida en el color de acento. Chrome y Safari no pintan la parte
+   recorrida solos: el script opcional js/range.js pone su tamaño en --gm-range-progress. */
+.gm-range {
+  --gm-range-progress: 0%;
+  width: 100%;
+  min-height: 44px; /* WCAG 2.5.5 (AAA) */
+  margin: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.gm-range:focus { outline: none; }
+.gm-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: var(--gm-radius-pill);
+  background: linear-gradient(90deg, var(--gm-accent) var(--gm-range-progress), var(--gm-tag) var(--gm-range-progress));
+}
+.gm-range::-moz-range-track { height: 6px; border-radius: var(--gm-radius-pill); background: var(--gm-tag); }
+.gm-range::-moz-range-progress { height: 6px; border-radius: var(--gm-radius-pill); background: var(--gm-accent); }
+/* La bolita: blanca, con un borde gris de 3,5:1 para que se vea también sobre blanco (WCAG 1.4.11) */
+.gm-range::-webkit-slider-thumb {
+  width: 22px;
+  height: 22px;
+  margin-top: -8px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--gm-field-border), 0 2px 6px rgba(0, 0, 0, .25);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.gm-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--gm-field-border), 0 2px 6px rgba(0, 0, 0, .25);
+}
+.gm-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 1px var(--gm-field-border), 0 0 0 4px var(--gm-focus); }
+.gm-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 1px var(--gm-field-border), 0 0 0 4px var(--gm-focus); }
+.gm-range:disabled { cursor: not-allowed; opacity: .45; }
 
 /* Prefijo y número en la misma fila (un tercio y dos tercios) */
 .gm-input-group { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 8px; }

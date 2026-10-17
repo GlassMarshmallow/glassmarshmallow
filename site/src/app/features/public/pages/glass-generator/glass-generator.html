@@ -19,22 +19,22 @@
       <div class="control">
         <label for="glass-transparency">{{ 'glass.transparency' | t }}</label>
         <output for="glass-transparency">{{ transparency() }} %</output>
-        <input id="glass-transparency" type="range" min="0" max="100" [value]="transparency()" (input)="setNumber(transparency, $event)" />
+        <input id="glass-transparency" class="gm-range" type="range" min="0" max="100" [value]="transparency()" (input)="setNumber(transparency, $event)" />
       </div>
       <div class="control">
         <label for="glass-blur">{{ 'glass.blur' | t }}</label>
         <output for="glass-blur">{{ blur() }} px</output>
-        <input id="glass-blur" type="range" min="0" max="40" [value]="blur()" (input)="setNumber(blur, $event)" />
+        <input id="glass-blur" class="gm-range" type="range" min="0" max="40" [value]="blur()" (input)="setNumber(blur, $event)" />
       </div>
       <div class="control">
         <label for="glass-outline">{{ 'glass.outline' | t }}</label>
         <output for="glass-outline">{{ outline() }} %</output>
-        <input id="glass-outline" type="range" min="0" max="100" [value]="outline()" (input)="setNumber(outline, $event)" />
+        <input id="glass-outline" class="gm-range" type="range" min="0" max="100" [value]="outline()" (input)="setNumber(outline, $event)" />
       </div>
       <div class="control">
         <label for="glass-radius">{{ 'glass.corners' | t }}</label>
         <output for="glass-radius">{{ radius() }} px</output>
-        <input id="glass-radius" type="range" min="0" max="48" [value]="radius()" (input)="setNumber(radius, $event)" />
+        <input id="glass-radius" class="gm-range" type="range" min="0" max="48" [value]="radius()" (input)="setNumber(radius, $event)" />
       </div>
       <app-color-picker [label]="'glass.color' | t" [alpha]="false" [(value)]="color" />
 

@@ -129,6 +129,7 @@ export const en = {
       'content/code': 'Code',
       'forms/rules': 'Form rules',
       'forms/field': 'Field',
+      'forms/range': 'Range',
       'forms/date-picker': 'Date picker',
       'forms/color-picker': 'Color picker',
       'components/alert': 'Alert',

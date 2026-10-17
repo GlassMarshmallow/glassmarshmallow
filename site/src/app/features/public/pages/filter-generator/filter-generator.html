@@ -43,7 +43,7 @@
       <div class="control">
         <label for="filter-opacity">{{ 'filter.opacity' | t }}</label>
         <output for="filter-opacity">{{ opacity() }} %</output>
-        <input id="filter-opacity" type="range" min="0" max="60" step="0.5" [value]="opacity()" (input)="setOpacity($event)" aria-describedby="filter-opacity-help" />
+        <input id="filter-opacity" class="gm-range" type="range" min="0" max="60" step="0.5" [value]="opacity()" (input)="setOpacity($event)" aria-describedby="filter-opacity-help" />
         <span id="filter-opacity-help" class="control__help gm-muted">{{ 'filter.opacityHelp' | t }}</span>
       </div>
 

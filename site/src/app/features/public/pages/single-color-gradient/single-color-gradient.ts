@@ -1,3 +1,4 @@
+import { RangeFill } from '../../../../shared/directives/range-fill';
 import { ChangeDetectionStrategy, Component, ElementRef, computed, inject, signal, viewChild } from '@angular/core';
 import { I18nService } from '../../../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
@@ -44,7 +45,7 @@ const POSITIONS: Option<string>[] = [
 import { BackLink } from '../../../../shared/components/back-link/back-link';
 @Component({
   selector: 'app-single-color-gradient',
-  imports: [ColorPicker, TranslatePipe, BackLink],
+  imports: [RangeFill, ColorPicker, TranslatePipe, BackLink],
   templateUrl: './single-color-gradient.html',
   styleUrl: './single-color-gradient.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -51,7 +51,7 @@ legend { margin-bottom: 10px; padding: 0; font-size: .9rem; font-weight: 650; }
 .control label { font-size: .9rem; font-weight: 650; }
 .control output { color: var(--gm-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
 .control__help { grid-column: 1 / -1; font-size: .82rem; }
-.control input[type="range"] { grid-column: 1 / -1; width: 100%; min-height: 44px; accent-color: var(--gm-accent); }
+.control input[type="range"] { grid-column: 1 / -1; width: 100%; }
 
 .code { display: grid; gap: 12px; }
 .code .gm-code { white-space: pre-wrap; overflow-wrap: anywhere; }

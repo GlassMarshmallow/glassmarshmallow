@@ -1,3 +1,4 @@
+import { RangeFill } from '../../../../shared/directives/range-fill';
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { I18nService } from '../../../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
@@ -33,7 +34,7 @@ import { SampleField, SampleTexts } from '../../../../shared/components/sample-t
 import { BackLink } from '../../../../shared/components/back-link/back-link';
 @Component({
   selector: 'app-gradient-generator',
-  imports: [ColorPicker, TranslatePipe, BackLink, SampleTexts],
+  imports: [RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './gradient-generator.html',
   styleUrl: './gradient-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

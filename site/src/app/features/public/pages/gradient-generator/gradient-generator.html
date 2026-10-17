@@ -49,7 +49,7 @@
         <div class="control">
           <label for="gradient-angle">{{ (type() === 'conic' ? 'gradient.startAngle' : 'gradient.angle') | t }}</label>
           <output for="gradient-angle">{{ angle() }}°</output>
-          <input id="gradient-angle" type="range" min="0" max="360" [value]="angle()" (input)="setAngle($event)" />
+          <input id="gradient-angle" class="gm-range" type="range" min="0" max="360" [value]="angle()" (input)="setAngle($event)" />
         </div>
       }
 
@@ -61,7 +61,7 @@
             <div class="stop__position">
               <label [for]="'stop-position-' + stop.id">{{ 'gradient.position' | t: { n: i + 1 } }}</label>
               <output [for]="'stop-position-' + stop.id">{{ stop.position }} %</output>
-              <input [id]="'stop-position-' + stop.id" type="range" min="0" max="100" [value]="stop.position" (input)="setStopPosition(stop.id, $event)" />
+              <input [id]="'stop-position-' + stop.id" class="gm-range" type="range" min="0" max="100" [value]="stop.position" (input)="setStopPosition(stop.id, $event)" />
             </div>
             <button type="button" class="gm-icon-btn stop__remove" [attr.aria-label]="'gradient.remove' | t: { n: i + 1 }"
               [disabled]="stops().length <= minStops" (click)="removeStop(stop.id, i)">

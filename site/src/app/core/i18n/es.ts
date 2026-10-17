@@ -130,6 +130,7 @@ export const es: Dictionary = {
       'content/code': 'Código',
       'forms/rules': 'Reglas de los formularios',
       'forms/field': 'Campo',
+      'forms/range': 'Barra deslizante',
       'forms/date-picker': 'Selector de fecha',
       'forms/color-picker': 'Selector de color',
       'components/alert': 'Aviso',

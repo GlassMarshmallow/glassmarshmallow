@@ -1,3 +1,4 @@
+import { RangeFill } from '../../../../shared/directives/range-fill';
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { ColorPicker } from '../../../../shared/components/color-picker/color-picker';
 import { I18nService } from '../../../../core/i18n/i18n.service';
@@ -15,7 +16,7 @@ import { SampleField, SampleTexts } from '../../../../shared/components/sample-t
 import { BackLink } from '../../../../shared/components/back-link/back-link';
 @Component({
   selector: 'app-glass-generator',
-  imports: [ColorPicker, TranslatePipe, BackLink, SampleTexts],
+  imports: [RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './glass-generator.html',
   styleUrl: './glass-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

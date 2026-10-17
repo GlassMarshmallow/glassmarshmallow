@@ -40,7 +40,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
   {
     id: 'forms',
     icon: 'gmi-pencil',
-    pages: ['rules', 'field', 'date-picker', 'color-picker'].map((p) => ({ path: `forms/${p}` })),
+    pages: ['rules', 'field', 'range', 'date-picker', 'color-picker'].map((p) => ({ path: `forms/${p}` })),
   },
   {
     id: 'components',

@@ -52,7 +52,7 @@ legend { margin-bottom: 10px; padding: 0; font-size: .9rem; font-weight: 650; }
 .control { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; }
 .control label { font-size: .9rem; font-weight: 650; }
 .control output, .stop output { color: var(--gm-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
-.control input[type="range"], .stop input[type="range"] { grid-column: 1 / -1; width: 100%; min-height: 44px; accent-color: var(--gm-accent); }
+.control input[type="range"], .stop input[type="range"] { grid-column: 1 / -1; width: 100%; }
 
 .stops { display: grid; gap: 14px; }
 .stop { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr) auto; align-items: center; gap: 12px; }

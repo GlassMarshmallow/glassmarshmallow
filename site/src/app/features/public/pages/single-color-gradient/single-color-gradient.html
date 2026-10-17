@@ -54,7 +54,7 @@
         <div class="control">
           <label for="single-angle">{{ 'gradient.angle' | t }}</label>
           <output for="single-angle">{{ angle() }}°</output>
-          <input id="single-angle" type="range" min="0" max="359" [value]="angle()" (input)="setNumber(angle, $event)" />
+          <input id="single-angle" class="gm-range" type="range" min="0" max="359" [value]="angle()" (input)="setNumber(angle, $event)" />
         </div>
       } @else {
         <fieldset class="segmented">
@@ -93,7 +93,7 @@
         <div class="control">
           <label for="single-size">{{ 'single.radius' | t }}</label>
           <output for="single-size">{{ radius() }} %</output>
-          <input id="single-size" type="range" min="10" max="150" [value]="radius()" (input)="setNumber(radius, $event)" aria-describedby="single-size-help" />
+          <input id="single-size" class="gm-range" type="range" min="10" max="150" [value]="radius()" (input)="setNumber(radius, $event)" aria-describedby="single-size-help" />
           <span id="single-size-help" class="control__help gm-muted">{{ 'single.radiusHelp' | t }}</span>
         </div>
       }
@@ -101,17 +101,17 @@
       <div class="control">
         <label for="single-start">{{ 'single.startOpacity' | t }}</label>
         <output for="single-start">{{ startOpacity() }} %</output>
-        <input id="single-start" type="range" min="0" max="100" [value]="startOpacity()" (input)="setNumber(startOpacity, $event)" />
+        <input id="single-start" class="gm-range" type="range" min="0" max="100" [value]="startOpacity()" (input)="setNumber(startOpacity, $event)" />
       </div>
       <div class="control">
         <label for="single-end">{{ 'single.endOpacity' | t }}</label>
         <output for="single-end">{{ endOpacity() }} %</output>
-        <input id="single-end" type="range" min="0" max="100" [value]="endOpacity()" (input)="setNumber(endOpacity, $event)" />
+        <input id="single-end" class="gm-range" type="range" min="0" max="100" [value]="endOpacity()" (input)="setNumber(endOpacity, $event)" />
       </div>
       <div class="control">
         <label for="single-extent">{{ 'single.extent' | t }}</label>
         <output for="single-extent">{{ extent() }} %</output>
-        <input id="single-extent" type="range" min="5" max="100" [value]="extent()" (input)="setNumber(extent, $event)" />
+        <input id="single-extent" class="gm-range" type="range" min="5" max="100" [value]="extent()" (input)="setNumber(extent, $event)" />
       </div>
 
       <div class="code">
