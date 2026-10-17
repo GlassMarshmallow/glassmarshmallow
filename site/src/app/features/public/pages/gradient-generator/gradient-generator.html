@@ -1,0 +1,88 @@
+<section class="mg-container generator" aria-labelledby="gradient-title">
+  <h1 id="gradient-title">{{ 'gradient.title' | t }}</h1>
+  <p class="generator__lead mg-muted">{{ 'gradient.lead' | t: { max: maxStops } }}</p>
+
+  <div class="generator__layout">
+    <div class="preview-column">
+      <div class="preview" [style.background]="gradient()">
+        @if (showSample()) {
+          <div class="preview__sample">
+            <p class="preview__title">{{ 'gradient.sampleTitle' | t }}</p>
+            <p>{{ 'gradient.sampleText' | t }}</p>
+          </div>
+        }
+      </div>
+      <label class="sample-toggle">
+        <input type="checkbox" [checked]="showSample()" (change)="toggleSample($event)" />
+        {{ 'gradient.showSample' | t }}
+      </label>
+
+      <div class="presets">
+        <h2 class="presets__title">{{ 'gradient.presets' | t }}</h2>
+        <div class="presets__list">
+          @for (preset of presets; track preset.name) {
+            <button type="button" class="preset" (click)="applyPreset(preset)">
+              <span class="preset__swatch" aria-hidden="true"
+                [style.background]="'linear-gradient(90deg, ' + preset.stops[0][0] + ', ' + preset.stops[preset.stops.length - 1][0] + ')'"></span>
+              {{ preset.name | t }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="mg-card controls">
+      <fieldset class="types">
+        <legend>{{ 'gradient.type' | t }}</legend>
+        <div class="types__options">
+          @for (option of types; track option.value) {
+            <label class="types__option">
+              <input type="radio" name="gradient-type" [value]="option.value" [checked]="type() === option.value" (change)="setType($event)" />
+              {{ option.label | t }}
+            </label>
+          }
+        </div>
+      </fieldset>
+
+      @if (usesAngle()) {
+        <div class="control">
+          <label for="gradient-angle">{{ (type() === 'conic' ? 'gradient.startAngle' : 'gradient.angle') | t }}</label>
+          <output for="gradient-angle">{{ angle() }}°</output>
+          <input id="gradient-angle" type="range" min="0" max="360" [value]="angle()" (input)="setAngle($event)" />
+        </div>
+      }
+
+      <fieldset class="stops">
+        <legend>{{ 'gradient.colors' | t }}</legend>
+        @for (stop of stops(); track stop.id; let i = $index) {
+          <div class="stop">
+            <app-color-picker class="stop__color" [label]="'gradient.color' | t: { n: i + 1 }" [value]="stop.color" (valueChange)="setStopColor(stop.id, $event)" />
+            <div class="stop__position">
+              <label [for]="'stop-position-' + stop.id">{{ 'gradient.position' | t: { n: i + 1 } }}</label>
+              <output [for]="'stop-position-' + stop.id">{{ stop.position }} %</output>
+              <input [id]="'stop-position-' + stop.id" type="range" min="0" max="100" [value]="stop.position" (input)="setStopPosition(stop.id, $event)" />
+            </div>
+            <button type="button" class="mg-icon-btn stop__remove" [attr.aria-label]="'gradient.remove' | t: { n: i + 1 }"
+              [disabled]="stops().length <= minStops" (click)="removeStop(stop.id, i)">
+              <i class="mgi mgi-x-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+        }
+        <button type="button" class="mg-btn mg-btn--secondary mg-btn--sm" [disabled]="stops().length >= maxStops" (click)="addStop()">
+          <i class="mgi mgi-plus-lg" aria-hidden="true"></i> {{ 'gradient.add' | t }}
+        </button>
+      </fieldset>
+
+      <div class="code">
+        <pre class="mg-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code>{{ css() }}</code></pre>
+        <div>
+          <button type="button" class="mg-btn mg-btn--sm" (click)="copy()">
+            <i class="mgi" [class.mgi-clipboard]="!copied()" [class.mgi-check]="copied()" aria-hidden="true"></i>
+            {{ (copied() ? 'common.copied' : 'common.copyCss') | t }}
+          </button>
+        </div>
+      </div>
+      <span class="mg-visually-hidden" aria-live="polite">{{ announcement() }}</span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+<section class="mg-container icons-page" aria-labelledby="icons-title">
+  <h1 id="icons-title">{{ 'icons.title' | t }}</h1>
+  <p class="icons-page__lead mg-muted">{{ 'icons.lead' | t: { line: lineCount, fill: fillCount } }}</p>
+
+  <div class="mg-field icons-page__search">
+    <label for="icon-search">{{ 'icons.search' | t }}</label>
+    <input id="icon-search" type="search" [placeholder]="'icons.searchPlaceholder' | t" (input)="onSearch($event)" />
+  </div>
+  <p class="mg-visually-hidden" aria-live="polite">{{ query() ? ('icons.found' | t: { count: resultCount() }) : '' }}</p>
+
+  @for (group of groups(); track group.category) {
+    <section class="category" [attr.aria-labelledby]="'cat-' + $index">
+      <h2 [id]="'cat-' + $index">
+        {{ group.category }} <span class="mg-muted category__count">{{ group.icons.length }}</span>
+      </h2>
+      <ul class="grid">
+        @for (icon of group.icons; track icon.name) {
+          <li class="grid__item">
+            <span class="grid__icons">
+              <i class="mgi mgi-{{ icon.name }}" aria-hidden="true"></i>
+              @if (icon.fill) {
+                <i class="mgi mgi-{{ icon.name }}-fill" aria-hidden="true"></i>
+              }
+            </span>
+            <code class="grid__name">{{ icon.name }}</code>
+          </li>
+        }
+      </ul>
+    </section>
+  } @empty {
+    <p class="mg-muted">{{ 'icons.empty' | t }}</p>
+  }
+</section>

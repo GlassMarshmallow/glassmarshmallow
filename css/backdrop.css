@@ -1,0 +1,95 @@
+/* ==========================================================================
+   mallowglass · Fondo de la web
+   Copia del fondo de portfolio-ia-template cuando no hay ilustración (scene-fallback / .hero.no-scene):
+   tres luces de color sobre el fondo, la cuadrícula de puntos y el efecto de televisor antiguo.
+   Diferencia pedida: en modo claro también van las líneas de televisor (más suaves).
+   Uso: <div class="mg-backdrop" aria-hidden="true"> con sus capas, al principio del <body>.
+   ========================================================================== */
+
+:root {
+  --mg-backdrop-bg: #f5f5f7;
+  /* Luces: turquesa arriba a la izquierda, violeta abajo a la derecha y ámbar arriba */
+  --mg-backdrop-lights:
+    radial-gradient(circle at 25% 35%, rgba(14, 116, 144, .16), transparent 45%),
+    radial-gradient(circle at 75% 65%, rgba(91, 63, 208, .14), transparent 50%),
+    radial-gradient(circle at 60% 20%, rgba(180, 83, 9, .1), transparent 40%);
+  --mg-backdrop-scanline: rgba(0, 0, 0, .05);
+  --mg-backdrop-vignette: none;
+  --mg-backdrop-curve: none;
+}
+
+:root[data-theme="dark"] {
+  --mg-backdrop-bg: #0a0a0a;
+  --mg-backdrop-lights:
+    radial-gradient(circle at 25% 35%, rgba(28, 171, 176, .28), transparent 45%),
+    radial-gradient(circle at 75% 65%, rgba(140, 100, 255, .24), transparent 50%),
+    radial-gradient(circle at 60% 20%, rgba(255, 150, 70, .14), transparent 40%);
+  --mg-backdrop-scanline: rgba(0, 0, 0, .65);
+  --mg-backdrop-vignette: block;
+  --mg-backdrop-curve: block;
+}
+
+.mg-backdrop,
+.mg-backdrop > * {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+.mg-backdrop {
+  z-index: -1;
+  overflow: hidden;
+  background: var(--mg-backdrop-lights), var(--mg-backdrop-bg);
+}
+
+/* El fondo opaco del <body> se pintaría encima de esta capa (z-index negativo) y la taparía:
+   con fondo de la web, el color lo pone <html> y el body queda transparente */
+html:has(.mg-backdrop) { background: var(--mg-backdrop-bg); }
+body:has(.mg-backdrop) { background: transparent; }
+
+/* Cuadrícula de puntos que se desvanece hacia los bordes */
+.mg-backdrop__dots {
+  background-image: radial-gradient(#e5e7eb4b 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: .35;
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 75%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 75%, transparent 100%);
+}
+
+/* Grano (quieto, como en la plantilla sin ilustración) */
+.mg-backdrop__grain {
+  inset: -50%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 -0.25'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: .16;
+  mix-blend-mode: screen;
+}
+
+/* Líneas horizontales finas, como una pantalla de televisor */
+.mg-backdrop__scanlines {
+  background: repeating-linear-gradient(transparent 0 2px, var(--mg-backdrop-scanline) 2px 4px);
+}
+
+/* Bordes oscurecidos (solo en oscuro, como en la plantilla) */
+.mg-backdrop__vignette {
+  display: var(--mg-backdrop-vignette);
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .7) 100%);
+}
+
+/* Esquinas oscurecidas y redondeadas, como la pantalla curva de una tele antigua (solo en oscuro) */
+.mg-backdrop__curve {
+  display: var(--mg-backdrop-curve);
+  border-radius: 6% / 9%;
+  box-shadow: inset 0 0 40px 18px rgba(0, 0, 0, .85), inset 0 0 0 2px rgba(28, 171, 176, .08);
+}
+
+/* En móvil, las esquinas oscurecidas sin redondear */
+@media (max-width: 767px) {
+  .mg-backdrop__curve { border-radius: 0; }
+}
+
+/* Pantallas táctiles: las capas al alto máximo de la ventana, para que no den saltos al aparecer
+   o desaparecer la barra del navegador */
+@media (pointer: coarse) {
+  .mg-backdrop,
+  .mg-backdrop > * { bottom: auto; height: 100vh; height: 100lvh; }
+  .mg-backdrop__grain { top: -50vh; top: -50lvh; height: 200vh; height: 200lvh; }
+}

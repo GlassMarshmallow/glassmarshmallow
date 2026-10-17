@@ -1,0 +1,12 @@
+<section class="hero mg-container" aria-labelledby="hero-title">
+  <img class="hero__logo" src="logo.svg" alt="" width="120" height="120" />
+  <h1 id="hero-title" class="mg-gradient-title mg-text-outline">Mallowglass</h1>
+  <p class="hero__lead mg-text-outline">{{ 'home.lead' | t }}</p>
+  <div class="hero__actions">
+    <app-copy-command [command]="installCommand" />
+    <a class="mg-btn" routerLink="/docs">
+      <i class="mgi mgi-book" aria-hidden="true"></i>{{ 'home.readDocs' | t }}
+    </a>
+  </div>
+  <p class="mg-muted mg-small">{{ 'home.currently' | t: { version } }}</p>
+</section>

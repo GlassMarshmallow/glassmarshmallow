@@ -1,0 +1,34 @@
+<dialog #dialog class="search" aria-labelledby="search-title">
+  <form class="search__form" role="search" (submit)="goToFirst($event)">
+    <h2 id="search-title" class="mg-visually-hidden">{{ 'search.title' | t }}</h2>
+    <i class="mgi mgi-search" aria-hidden="true"></i>
+    <label for="search-input" class="mg-visually-hidden">{{ 'search.label' | t }}</label>
+    <input
+      id="search-input"
+      type="search"
+      autocomplete="off"
+      [placeholder]="'search.placeholder' | t"
+      [value]="query()"
+      (input)="onInput($event)"
+    />
+    <button type="button" class="mg-icon-btn search__close" [attr.aria-label]="'common.close' | t" (click)="close()">
+      <i class="mgi mgi-x-lg" aria-hidden="true"></i>
+    </button>
+  </form>
+
+  @if (results().length) {
+    <ul class="search__results">
+      @for (result of results(); track result.path) {
+        <li>
+          <a [routerLink]="result.path" (click)="close()">
+            <span class="search__section">{{ result.sectionTitle }}</span>
+            <span class="search__title">{{ result.title }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="search__empty mg-muted">{{ 'search.empty' | t: { query: query() } }}</p>
+  }
+  <p class="mg-visually-hidden" aria-live="polite">{{ query() ? ('search.results' | t: { count: results().length }) : '' }}</p>
+</dialog>

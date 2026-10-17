@@ -1,0 +1,12 @@
+.icons-page { padding-block: 72px 110px; }
+.icons-page__lead { max-width: 680px; margin-bottom: 32px; font-size: 1.05rem; line-height: 1.6; }
+.icons-page__search { max-width: 420px; margin-bottom: 48px; }
+
+.category { margin-bottom: 48px; }
+.category h2 { margin: 0 0 18px; font-size: 1.4rem; }
+.category__count { font-size: 1rem; font-weight: 500; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.grid__item { display: grid; justify-items: center; gap: 12px; min-width: 0; padding: 22px 12px 16px; border: 1px solid var(--mg-line); border-radius: var(--mg-radius-sm); }
+.grid__icons { display: flex; gap: 16px; color: var(--mg-text); font-size: 30px; }
+.grid__name { max-width: 100%; overflow-wrap: anywhere; color: var(--mg-muted); font-size: .78rem; text-align: center; }

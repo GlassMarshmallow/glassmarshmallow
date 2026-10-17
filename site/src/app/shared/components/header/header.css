@@ -1,0 +1,42 @@
+/* Sin caja propia: así la cabecera «sticky» se queda fija durante toda la página */
+:host { display: contents; }
+
+.header__start { display: flex; min-width: 0; align-items: center; gap: clamp(16px, 3vw, 40px); }
+
+.header__search {
+  display: inline-flex;
+  width: min(100%, 320px);
+  min-height: 40px;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px 0 14px;
+  border: 1px solid var(--mg-line);
+  border-radius: var(--mg-radius-sm);
+  color: var(--mg-muted);
+  background: var(--mg-fill-subtle);
+  font: inherit;
+  font-size: .9rem;
+  cursor: pointer;
+}
+.header__search:hover { color: var(--mg-text); background: var(--mg-hover); }
+.header__search-text { flex: 1; text-align: left; }
+.header__kbd { padding: 2px 6px; border: 1px solid var(--mg-line); border-radius: 6px; font-family: var(--mg-font); font-size: .75rem; }
+
+.header__actions { gap: 4px; }
+.header__github { display: grid; width: 38px; height: 38px; border-radius: var(--mg-radius-sm); color: var(--mg-nav-link); place-items: center; text-shadow: none; }
+.header__github:hover { color: var(--mg-text); background: var(--mg-hover); }
+.header__lang { font-size: .8rem; }
+
+/* Pantallas medianas: el buscador solo con el icono */
+@media (max-width: 1100px) {
+  .header__search { width: auto; padding: 0 12px; }
+  .header__search-text,
+  .header__kbd { display: none; }
+}
+
+/* Móvil: la navegación va abajo; arriba quedan el logo, el buscador, el idioma y el tema */
+@media (max-width: 700px) {
+  .header__github,
+  .header__version { display: none; }
+  .header__search { min-height: 38px; border: 0; background: transparent; }
+}

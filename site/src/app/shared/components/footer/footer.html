@@ -1,0 +1,17 @@
+<!-- Siempre en tema oscuro: va sobre el negro que sube desde el pie, también en modo claro -->
+<footer class="footer mg-has-tabbar" data-theme="dark">
+  <div class="mg-container footer__inner">
+    <nav class="footer__links" [attr.aria-label]="'footer.nav' | t">
+      <a routerLink="/docs">{{ 'nav.docs' | t }}</a>
+      <a routerLink="/examples">{{ 'nav.examples' | t }}</a>
+      <a routerLink="/icons">{{ 'nav.icons' | t }}</a>
+      <a routerLink="/blog">{{ 'nav.blog' | t }}</a>
+      <a href="https://github.com/spyamuza">GitHub</a>
+    </nav>
+    <!-- Al desplegar: el nombre enlaza al portfolio (pendiente de dominio) -->
+    <p class="footer__credit mg-muted mg-small">
+      {{ 'footer.credit' | t }} <span class="footer__author mg-gradient-text">Sara Paez Yamuza</span>
+      · {{ 'footer.license' | t }} · {{ 'footer.version' | t: { version } }}
+    </p>
+  </div>
+</footer>

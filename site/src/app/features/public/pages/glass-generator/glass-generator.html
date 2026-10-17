@@ -1,0 +1,53 @@
+<section class="mg-container generator" aria-labelledby="generator-title">
+  <h1 id="generator-title">{{ 'glass.title' | t }}</h1>
+  <p class="generator__lead mg-muted">{{ 'glass.lead' | t }}</p>
+
+  <div class="generator__layout">
+    <!-- Muestra: fondo con las luces del portfolio y formas para que se note el desenfoque -->
+    <div class="preview" aria-hidden="true">
+      <span class="preview__shape preview__shape--cyan"></span>
+      <span class="preview__shape preview__shape--violet"></span>
+      <span class="preview__shape preview__shape--amber"></span>
+      <div class="preview__card" [style]="cardStyle()">
+        <strong>{{ 'glass.sampleTitle' | t }}</strong>
+        <span>Mallowglass</span>
+      </div>
+    </div>
+
+    <div class="mg-card controls">
+      <div class="control">
+        <label for="glass-transparency">{{ 'glass.transparency' | t }}</label>
+        <output for="glass-transparency">{{ transparency() }} %</output>
+        <input id="glass-transparency" type="range" min="0" max="100" [value]="transparency()" (input)="setNumber(transparency, $event)" />
+      </div>
+      <div class="control">
+        <label for="glass-blur">{{ 'glass.blur' | t }}</label>
+        <output for="glass-blur">{{ blur() }} px</output>
+        <input id="glass-blur" type="range" min="0" max="40" [value]="blur()" (input)="setNumber(blur, $event)" />
+      </div>
+      <div class="control">
+        <label for="glass-outline">{{ 'glass.outline' | t }}</label>
+        <output for="glass-outline">{{ outline() }} %</output>
+        <input id="glass-outline" type="range" min="0" max="100" [value]="outline()" (input)="setNumber(outline, $event)" />
+      </div>
+      <div class="control">
+        <label for="glass-radius">{{ 'glass.corners' | t }}</label>
+        <output for="glass-radius">{{ radius() }} px</output>
+        <input id="glass-radius" type="range" min="0" max="48" [value]="radius()" (input)="setNumber(radius, $event)" />
+      </div>
+      <app-color-picker [label]="'glass.color' | t" [alpha]="false" [(value)]="color" />
+
+      <div class="code">
+        <pre class="mg-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code>{{ css() }}</code></pre>
+        <div class="code__actions">
+          <button type="button" class="mg-btn mg-btn--sm" (click)="copy()">
+            <i class="mgi" [class.mgi-clipboard]="!copied()" [class.mgi-check]="copied()" aria-hidden="true"></i>
+            {{ (copied() ? 'common.copied' : 'common.copyCss') | t }}
+          </button>
+          <button type="button" class="mg-btn mg-btn--ghost mg-btn--sm" (click)="reset()">{{ 'glass.reset' | t }}</button>
+        </div>
+        <span class="mg-visually-hidden" aria-live="polite">{{ copied() ? ('common.cssCopied' | t) : '' }}</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,6 @@
+:host { display: flex; min-height: 100dvh; flex-direction: column; }
+/* El hueco para la barra inferior del móvil lo pone .mg-has-tabbar */
+/* Hueco libre al final del contenido, del alto del degradado negro del pie, para que ningún texto quede encima */
+main { flex: 1; padding-bottom: 220px; }
+main:focus { outline: none; }
+

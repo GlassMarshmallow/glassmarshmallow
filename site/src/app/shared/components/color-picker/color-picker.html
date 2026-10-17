@@ -1,0 +1,106 @@
+<button type="button" class="trigger" aria-haspopup="dialog" (click)="open()">
+  <span class="swatch" [style.--swatch]="value()" aria-hidden="true"></span>
+  <span class="trigger__text">
+    <span class="trigger__label">{{ label() }}</span>
+    <span class="trigger__value">{{ value() }}</span>
+  </span>
+</button>
+
+<dialog #dialog class="picker" [attr.aria-labelledby]="uid + '-title'">
+  <div class="picker__head">
+    <h2 [id]="uid + '-title'">{{ label() }}</h2>
+    <button type="button" class="mg-icon-btn" [attr.aria-label]="'common.close' | t" (click)="close()">
+      <i class="mgi mgi-x-lg" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="picker__body">
+    <div
+      #wheel
+      class="wheel"
+      [style.background]="wheelBackground()"
+      (pointerdown)="onWheelPointer($event)"
+      (pointermove)="onWheelPointer($event)"
+    >
+      <span
+        class="wheel__thumb"
+        role="slider"
+        tabindex="0"
+        [attr.aria-label]="'picker.wheel' | t"
+        aria-valuemin="0"
+        aria-valuemax="360"
+        [attr.aria-valuenow]="hsla().h"
+        [attr.aria-valuetext]="wheelValueText()"
+        [style.left.%]="thumb().x"
+        [style.top.%]="thumb().y"
+        [style.background]="hex()"
+        (keydown)="onWheelKey($event)"
+      ></span>
+    </div>
+
+    <div class="sliders">
+      <div class="slider">
+        <label [for]="uid + '-h'">{{ 'picker.hue' | t }}</label>
+        <output [for]="uid + '-h'">{{ hsla().h }}°</output>
+        <input [id]="uid + '-h'" type="range" min="0" max="359" [value]="hsla().h" [style.--track]="tracks().hue" (input)="setChannel('h', $event)" />
+      </div>
+      <div class="slider">
+        <label [for]="uid + '-s'">{{ 'picker.saturation' | t }}</label>
+        <output [for]="uid + '-s'">{{ hsla().s }} %</output>
+        <input [id]="uid + '-s'" type="range" min="0" max="100" [value]="hsla().s" [style.--track]="tracks().saturation" (input)="setChannel('s', $event)" />
+      </div>
+      <div class="slider">
+        <label [for]="uid + '-l'">{{ 'picker.lightness' | t }}</label>
+        <output [for]="uid + '-l'">{{ hsla().l }} %</output>
+        <input [id]="uid + '-l'" type="range" min="0" max="100" [value]="hsla().l" [style.--track]="tracks().lightness" (input)="setChannel('l', $event)" />
+      </div>
+      @if (alpha()) {
+        <div class="slider">
+          <label [for]="uid + '-a'">{{ 'picker.opacity' | t }}</label>
+          <output [for]="uid + '-a'">{{ (hsla().a * 100).toFixed(0) }} %</output>
+          <input [id]="uid + '-a'" class="slider--alpha" type="range" min="0" max="100" [value]="hsla().a * 100" [style.--track]="tracks().alpha" (input)="setChannel('a', $event)" />
+        </div>
+      }
+
+      <div class="mg-field hex">
+        <label [for]="uid + '-hex'">{{ 'picker.code' | t }}</label>
+        <input
+          [id]="uid + '-hex'"
+          type="text"
+          spellcheck="false"
+          autocomplete="off"
+          [value]="hexDraft()"
+          [attr.aria-invalid]="hexInvalid() || null"
+          [attr.aria-describedby]="hexInvalid() ? uid + '-hex-error' : null"
+          (input)="onHexInput($event)"
+        />
+        @if (hexInvalid()) {
+          <span [id]="uid + '-hex-error'" class="mg-field__error">{{ 'picker.codeError' | t }}</span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="contrast">
+    <h3>{{ (hsla().a < 1 ? 'picker.contrastOnWhite' : 'picker.contrast') | t }}</h3>
+    <div class="contrast__list">
+      @for (item of contrasts(); track item.name) {
+        <div class="contrast__item">
+          <!-- La muestra «Aa» va en CSS: es decorativa y puede no tener contraste a propósito -->
+          <span class="contrast__sample" [style.--swatch]="css()" [style.color]="item.color" aria-hidden="true"></span>
+          <span>
+            {{ 'picker.textOn' | t: { color: (item.name | t) } }} <strong>{{ item.text }}:1</strong>
+            <span class="contrast__badge" [class.contrast__badge--ok]="item.passes">
+              <i class="mgi" [class.mgi-check-lg]="item.passes" [class.mgi-x-lg]="!item.passes" aria-hidden="true"></i>
+              {{ (item.passes ? 'picker.passes' : 'picker.fails') | t }}
+            </span>
+          </span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="picker__actions">
+    <button type="button" class="mg-btn" (click)="close()">{{ 'common.done' | t }}</button>
+  </div>
+</dialog>

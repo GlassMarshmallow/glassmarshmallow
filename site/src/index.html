@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mallowglass</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="A CSS framework with glass surfaces, light and dark mode and WCAG 2.2 AA accessibility.">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Aplica el tema antes de pintar para evitar un destello; ThemeService toma el relevo al arrancar. -->
+  <script>
+    (function () {
+      var pref; try { pref = localStorage.getItem('mallowglass.theme'); } catch (e) {}
+      var dark = pref === 'dark' || (pref !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      // Idioma guardado (inglés por defecto); I18nService toma el relevo al arrancar
+      var lang; try { lang = localStorage.getItem('mallowglass.lang'); } catch (e) {}
+      document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+      var themeColor = document.querySelector('meta[name="theme-color"]');
+      if (themeColor) themeColor.setAttribute('content', dark ? '#000000' : '#f5f5f7');
+    })();
+  </script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

@@ -1,0 +1,120 @@
+/* ==========================================================================
+   mallowglass · Base: reset, texto, foco y utilidades de accesibilidad
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { min-height: 100%; background: var(--mg-bg); }
+
+body {
+  min-width: 320px;
+  min-height: 100dvh;
+  margin: 0;
+  color: var(--mg-text);
+  background: var(--mg-bg);
+  font-family: var(--mg-font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+::selection { background: var(--mg-selection); }
+
+h1, h2, h3, p { margin-top: 0; }
+/* Títulos como portfolio-ia-template: Montserrat en peso 800 */
+h1 { margin-bottom: .55rem; font-size: clamp(2.3rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: .5px; text-wrap: balance; }
+h2 { font-weight: 800; letter-spacing: .5px; text-wrap: balance; }
+
+code, pre { font-family: var(--mg-font-mono); }
+
+/* Foco: siempre visible, contorno de 2 px del color de acento */
+:focus-visible { outline: 2px solid var(--mg-focus); outline-offset: 3px; }
+
+/* Enlace «Saltar al contenido»: oculto hasta que recibe el foco */
+.mg-skip-link {
+  position: absolute;
+  z-index: 100;
+  top: -100px;
+  left: 16px;
+  padding: 10px 18px;
+  border-radius: var(--mg-radius-pill);
+  color: var(--mg-on-primary);
+  background: var(--mg-primary);
+  font-weight: 650;
+}
+.mg-skip-link:focus { top: 12px; }
+
+/* Solo para lectores de pantalla */
+.mg-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: -1px !important;
+}
+
+/* Texto con el degradado de acento (en oscuro, el color del texto) */
+.mg-gradient-text,
+.mg-gradient-title {
+  background: var(--mg-accent-gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  /* El color solo se pinta dentro de la caja: margen abajo para las letras que bajan de la línea
+     (g, p, y…), que si no salen cortadas con interlineados ajustados */
+  padding-bottom: .14em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+/* Títulos grandes (24 px o más): el degradado normal, que solo necesita 3:1 */
+.mg-gradient-title { background-image: var(--mg-accent-gradient); }
+
+/* En oscuro, sin degradado: color liso (el título en blanco y el texto de acento en turquesa).
+   Así la sombra negra del texto no tapa el color, que con background-clip queda por debajo */
+[data-theme="dark"] .mg-gradient-title,
+[data-theme="dark"] .mg-gradient-text {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+[data-theme="dark"] .mg-gradient-title { color: var(--mg-text); }
+[data-theme="dark"] .mg-gradient-text { color: var(--mg-accent); }
+
+/* Sombras negras del texto en oscuro, como portfolio-ia-template:
+   - enlaces: un halo fino para que se lean sobre las luces y las líneas del fondo
+   - .mg-text-outline (título y subtítulo del inicio): contorno negro y sombra difuminada */
+[data-theme="dark"] a:not(.mg-btn) { text-shadow: 0 0 2px rgba(0, 0, 0, .96); }
+[data-theme="dark"] .mg-text-outline {
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 2px 6px rgba(0, 0, 0, .9),
+    0 0 18px rgba(0, 0, 0, .8);
+}
+
+/* Texto */
+.mg-muted { color: var(--mg-muted); }
+.mg-small { font-size: .84rem; }
+/* Antetítulo al estilo de apple.com: gris, seminegrita y sin mayúsculas forzadas */
+.mg-eyebrow { margin-bottom: .5rem; color: var(--mg-muted); font-size: .9rem; font-weight: 600; letter-spacing: -.01em; }
+
+/* Contenedor */
+.mg-container { width: min(calc(100% - 48px), var(--mg-container)); margin-inline: auto; }
+.mg-container--narrow { max-width: 960px; }
+
+@media (max-width: 600px) {
+  .mg-container { width: calc(100% - 32px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

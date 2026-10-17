@@ -1,0 +1,211 @@
+/* ==========================================================================
+   mallowglass · Componentes
+   ========================================================================== */
+
+/* --- Botón ----------------------------------------------------------------- */
+.mg-btn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: var(--mg-radius-pill);
+  color: var(--mg-on-primary);
+  background: var(--mg-primary);
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+}
+.mg-btn .mgi { font-size: 1.05em; line-height: 1; }
+.mg-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--mg-shadow-hover); }
+.mg-btn:disabled { cursor: not-allowed; opacity: .45; }
+.mg-btn--secondary { border: 1px solid var(--mg-line); color: var(--mg-text); background: var(--mg-surface-glass); }
+.mg-btn--ghost { color: var(--mg-text); background: transparent; }
+.mg-btn--ghost:hover:not(:disabled) { box-shadow: none; background: var(--mg-hover); }
+.mg-btn--sm { min-height: 38px; padding-inline: 16px; font-size: .84rem; }
+
+/* Botón redondo solo con icono (lleva aria-label) */
+.mg-icon-btn {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--mg-line);
+  border-radius: 50%;
+  color: var(--mg-text);
+  background: var(--mg-surface-glass);
+  place-items: center;
+  cursor: pointer;
+  transition: background .2s;
+}
+.mg-icon-btn:hover { background: var(--mg-hover); }
+
+/* --- Tarjeta de cristal ----------------------------------------------------- */
+.mg-card {
+  padding: 28px;
+  border: 1px solid var(--mg-surface-glass-border);
+  border-radius: var(--mg-radius-md);
+  background: var(--mg-surface);
+  box-shadow: var(--mg-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--mg-blur));
+  backdrop-filter: blur(var(--mg-blur));
+}
+.mg-card > :last-child { margin-bottom: 0; }
+
+/* --- Campo de formulario ----------------------------------------------------- */
+.mg-field { display: grid; gap: 8px; }
+.mg-field > label { font-size: .84rem; font-weight: 650; }
+.mg-field input,
+.mg-field select,
+.mg-field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--mg-field-border);
+  border-radius: var(--mg-radius-sm);
+  color: var(--mg-text);
+  background: var(--mg-field-bg);
+  transition: border-color .2s, box-shadow .2s;
+}
+.mg-field textarea { resize: vertical; }
+.mg-field input::placeholder,
+.mg-field textarea::placeholder { color: var(--mg-muted); }
+.mg-field input:focus,
+.mg-field select:focus,
+.mg-field textarea:focus { border-color: var(--mg-accent); box-shadow: 0 0 0 4px var(--mg-selection); }
+.mg-field__help { color: var(--mg-muted); font-size: .84rem; }
+.mg-field__error { color: var(--mg-danger); font-size: .84rem; }
+.mg-field [aria-invalid="true"] { border-color: var(--mg-danger); }
+
+/* --- Aviso -------------------------------------------------------------------- */
+.mg-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--mg-radius-sm);
+  color: var(--mg-text);
+  background: var(--mg-fill-subtle);
+  font-size: .92rem;
+}
+.mg-alert .mgi { flex-shrink: 0; margin-top: 2px; }
+.mg-alert--success { color: var(--mg-success); background: var(--mg-success-bg); }
+.mg-alert--warning { color: var(--mg-warning); background: var(--mg-warning-bg); }
+
+/* --- Etiqueta ------------------------------------------------------------------- */
+.mg-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--mg-radius-pill);
+  color: var(--mg-text);
+  background: var(--mg-tag);
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+/* --- Bloque de código ------------------------------------------------------------ */
+.mg-code {
+  display: block;
+  overflow-x: auto;
+  margin: 0;
+  padding: 16px 18px;
+  border-radius: var(--mg-radius-sm);
+  color: var(--mg-text);
+  background: var(--mg-tag);
+  font-family: var(--mg-font-mono);
+  font-size: .86rem;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+/* --- Barra de navegación (como My Book Box y My MTV Box) ------------------------- */
+.mg-navbar {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: flex;
+  height: var(--mg-header-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-inline: max(24px, calc((100% - var(--mg-container)) / 2));
+  border-bottom: 1px solid var(--mg-header-border);
+  background: var(--mg-header-bg);
+  box-shadow: var(--mg-header-shadow);
+  -webkit-backdrop-filter: var(--mg-header-filter);
+  backdrop-filter: var(--mg-header-filter);
+}
+.mg-navbar__brand { display: inline-flex; min-width: max-content; align-items: center; gap: 10px; font-weight: 700; }
+.mg-navbar__logo { display: block; width: 48px; height: 48px; object-fit: contain; }
+.mg-navbar__nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 32px); font-size: .88rem; }
+.mg-navbar__nav a { color: var(--mg-nav-link); transition: color .2s; }
+.mg-navbar__nav a[aria-current="page"] { color: var(--mg-text); font-weight: 650; }
+/* Al pasar el ratón: el degradado de las luces (en oscuro, el color del texto) */
+.mg-navbar__nav a:hover {
+  background: var(--mg-accent-gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.mg-navbar__actions { display: flex; align-items: center; gap: 12px; font-size: .84rem; }
+/* Botón de tema: círculo suave; al pasar el ratón se tiñe con el degradado y el icono gira un poco */
+.mg-navbar__actions .mg-icon-btn {
+  width: 38px;
+  height: 38px;
+  border-color: var(--mg-toggle-border);
+  background: var(--mg-toggle-bg);
+  font-size: 1rem;
+  transition: background .25s ease;
+}
+.mg-navbar__actions .mg-icon-btn:hover { background: var(--mg-accent-tint); }
+.mg-navbar__actions .mg-icon-btn .mgi { transition: transform .35s ease; }
+.mg-navbar__actions .mg-icon-btn:hover .mgi { transform: rotate(25deg) scale(1.08); }
+
+/* Barra inferior de pestañas para móvil (flotante y de cristal, como en iOS) */
+.mg-tabbar { display: none; }
+
+@media (max-width: 1100px) {
+  .mg-navbar__nav { gap: 13px; font-size: .8rem; }
+}
+
+@media (max-width: 700px) {
+  .mg-navbar { height: 62px; padding-inline: 15px; }
+  .mg-navbar__logo { width: 42px; height: 42px; }
+  .mg-navbar__nav { display: none; }
+
+  .mg-tabbar {
+    position: fixed;
+    z-index: 25;
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    left: 12px;
+    display: flex;
+    height: 66px;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid var(--mg-surface-glass-border);
+    border-radius: 22px;
+    background: var(--mg-header-bg);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .16);
+    -webkit-backdrop-filter: var(--mg-header-filter);
+    backdrop-filter: var(--mg-header-filter);
+  }
+  .mg-tabbar a {
+    display: grid;
+    min-width: 0;
+    flex: 1;
+    gap: 2px;
+    color: var(--mg-muted);
+    font-size: .64rem;
+    white-space: nowrap;
+    place-items: center;
+  }
+  .mg-tabbar a .mgi { font-size: 1.25rem; }
+  .mg-tabbar a[aria-current="page"] { color: var(--mg-text); }
+
+  /* Hueco al final de la página para que la barra no tape el contenido */
+  .mg-has-tabbar { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+}

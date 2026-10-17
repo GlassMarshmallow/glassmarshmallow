@@ -1,0 +1,17 @@
+{
+  "name": "mallowglass",
+  "version": "0.1.0",
+  "description": "A CSS framework with glass surfaces, light and dark mode and WCAG 2.2 AA accessibility.",
+  "author": "Sara Paez Yamuza",
+  "license": "MIT",
+  "style": "dist/css/mallowglass.css",
+  "files": [
+    "css/*.css",
+    "dist/css/*.css"
+  ],
+  "scripts": {
+    "css": "node build/build-css.mjs",
+    "site": "npm --prefix site start",
+    "site:build": "npm --prefix site run build"
+  }
+}

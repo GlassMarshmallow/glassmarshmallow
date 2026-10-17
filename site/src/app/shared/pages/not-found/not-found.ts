@@ -1,0 +1,18 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '../../../core/i18n/translate.pipe';
+
+@Component({
+  selector: 'app-not-found',
+  imports: [RouterLink, TranslatePipe],
+  template: `
+    <section class="mg-container simple-page">
+      <h1>{{ 'notFound.title' | t }}</h1>
+      <p class="mg-muted">{{ 'notFound.text' | t }}</p>
+      <a class="mg-btn" routerLink="/">{{ 'common.backHome' | t }}</a>
+    </section>
+  `,
+  styles: `.simple-page { padding-block: 96px 120px; } .simple-page p { font-size: 1.1rem; margin-bottom: 28px; }`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class NotFound {}

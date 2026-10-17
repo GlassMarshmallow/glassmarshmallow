@@ -1,0 +1,11 @@
+.copy-command {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 6px 6px 18px;
+  border: 1px solid var(--mg-line);
+  border-radius: var(--mg-radius-pill);
+  background: var(--mg-surface-glass);
+}
+.copy-command__text { min-width: 0; font-size: .9rem; overflow-wrap: anywhere; }
