@@ -1,5 +1,7 @@
 .tools { padding-block: 72px 0; }
 .tools__lead { max-width: 680px; margin-bottom: 40px; font-size: 1.05rem; line-height: 1.6; }
+.tools__group { margin: 8px 0 18px; font-size: 1.4rem; }
+.tools__list + .tools__group { margin-top: 48px; }
 .tools__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
 .tools__list li { display: grid; }
 /* Cada herramienta es un .panel de My Book Box (gm-card) que sube un poco al pasar el ratón, como sus botones */

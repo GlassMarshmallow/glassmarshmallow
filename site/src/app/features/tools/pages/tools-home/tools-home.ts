@@ -12,5 +12,8 @@ import { TOOLS } from '../../data/tools';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolsHome {
-  readonly tools = TOOLS;
+  readonly groups = [
+    { id: 'generators', title: 'tools.generators', tools: TOOLS.filter((t) => t.group === 'generators') },
+    { id: 'effects', title: 'tools.effects', tools: TOOLS.filter((t) => t.group === 'effects') },
+  ];
 }

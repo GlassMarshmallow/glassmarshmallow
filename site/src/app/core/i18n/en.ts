@@ -68,6 +68,7 @@ export const en = {
     tools: 'Tools | GlassMarshmallow',
     filter: 'Filter generator | GlassMarshmallow',
     palette: 'Palette generator | GlassMarshmallow',
+    tv: 'TV effect | GlassMarshmallow',
     notFound: 'Page not found | GlassMarshmallow',
   },
   home: {
@@ -205,8 +206,11 @@ export const en = {
   },
   tools: {
     title: 'Tools',
-    lead: 'Generators that give you the CSS ready to copy. Everything they create is relative, so it adapts to wherever you use it.',
+    lead: 'Generators that give you CSS ready to copy and effects to add atmosphere to your backgrounds. Everything they create is relative, so it adapts to wherever you use it.',
+    generators: 'Generators',
+    effects: 'Effects',
   },
+
   filter: {
     title: 'Filter generator',
     lead: 'A layer of translucent color to darken or tint whatever is underneath. Try it in light and dark mode with your own text, and copy the CSS.',
@@ -288,6 +292,21 @@ export const en = {
     ruleStates: 'State colors (success, warning and danger) stay outside the palette: mint, lemon and coral in GlassMarshmallow.',
     ruleModes: 'Try it in light and dark mode: the CSS includes both, and dark is not just light inverted.',
     ruleAccent: 'Use the primary sparingly: if everything stands out, nothing does.',
+  },
+  tv: {
+    title: 'TV effect',
+    lead: 'Horizontal lines, grain, darkened edges and curved corners, like an old TV: the effect on this site’s home page in dark mode. Turn on the layers you want, adjust them and copy the CSS.',
+    usage: 'Add the efecto-tv class to the block you want (a hero, an image, a section)',
+    lines: 'Lines',
+    lineGap: 'Line spacing',
+    grain: 'Grain',
+    vignette: 'Vignette (darkened edges)',
+    vignetteStart: 'Where darkening starts',
+    curve: 'Curved corners',
+    curveRadius: 'Corner curve',
+    intensity: 'Strength',
+    sampleTitle: 'Channel 1',
+    sampleText: 'This is how text looks with the TV effect.',
   },
   single: {
     title: 'Single-color gradient',

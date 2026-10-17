@@ -69,6 +69,7 @@ export const es: Dictionary = {
     tools: 'Herramientas | GlassMarshmallow',
     filter: 'Generador de filtros | GlassMarshmallow',
     palette: 'Generador de paletas | GlassMarshmallow',
+    tv: 'Efecto de televisor | GlassMarshmallow',
     notFound: 'Página no encontrada | GlassMarshmallow',
   },
   home: {
@@ -206,8 +207,11 @@ export const es: Dictionary = {
   },
   tools: {
     title: 'Herramientas',
-    lead: 'Generadores que te dan el CSS listo para copiar. Todo lo que crean es relativo, así que se adapta al sitio donde lo uses.',
+    lead: 'Generadores que te dan el CSS listo para copiar y efectos para dar ambiente a tus fondos. Todo lo que crean es relativo, así que se adapta al sitio donde lo uses.',
+    generators: 'Generadores',
+    effects: 'Efectos',
   },
+
   filter: {
     title: 'Generador de filtros',
     lead: 'Una capa de color translúcido para oscurecer o teñir lo que haya debajo. Pruébala en modo claro y oscuro con tus propios textos y copia el CSS.',
@@ -289,6 +293,21 @@ export const es: Dictionary = {
     ruleStates: 'Los colores de estado (éxito, aviso y peligro) van aparte de la paleta: menta, limón y coral en GlassMarshmallow.',
     ruleModes: 'Pruébala en modo claro y oscuro: el CSS trae los dos y el oscuro no es el claro invertido.',
     ruleAccent: 'Usa el principal con moderación: si todo destaca, nada destaca.',
+  },
+  tv: {
+    title: 'Efecto de televisor',
+    lead: 'Líneas horizontales, grano, bordes oscurecidos y esquinas curvas, como una tele antigua: el efecto de la portada de esta web en modo oscuro. Activa las capas que quieras, ajústalas y copia el CSS.',
+    usage: 'Pon la clase efecto-tv en el bloque que quieras (una portada, una imagen, una sección)',
+    lines: 'Líneas',
+    lineGap: 'Separación de las líneas',
+    grain: 'Grano',
+    vignette: 'Viñeta (bordes oscurecidos)',
+    vignetteStart: 'Dónde empieza a oscurecer',
+    curve: 'Esquinas curvas',
+    curveRadius: 'Curva de las esquinas',
+    intensity: 'Intensidad',
+    sampleTitle: 'Canal 1',
+    sampleText: 'Así se ve el texto con el efecto de televisor.',
   },
   single: {
     title: 'Degradado de un color',

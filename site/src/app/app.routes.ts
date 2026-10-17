@@ -65,6 +65,11 @@ export const routes: Routes = [
             title: 'titles.palette',
             loadComponent: () => import('./features/public/pages/palette-generator/palette-generator').then((m) => m.PaletteGenerator),
           },
+          {
+            path: 'tv-effect',
+            title: 'titles.tv',
+            loadComponent: () => import('./features/public/pages/tv-effect/tv-effect').then((m) => m.TvEffect),
+          },
         ],
       },
       {
