@@ -8,8 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "icons:svg": "node scripts/copy-icons.mjs",
-    "prestart": "npm run icons:svg",
-    "prebuild": "npm run icons:svg"
+    "llms": "node ../build/build-llms.mjs",
+    "prestart": "npm run icons:svg && npm run llms",
+    "prebuild": "npm run icons:svg && npm run llms"
   },
   "private": true,
   "packageManager": "npm@11.6.2",

@@ -1,0 +1,90 @@
+# GlassMarshmallow
+
+> A CSS framework with glass surfaces, a pastel palette, light and dark mode and WCAG 2.2 AA (and AAA whenever possible) accessibility. Plain CSS with the `gm-` prefix, optional dependency-free scripts and its own icon set. Components in the Bootstrap style and utilities in the Tailwind style.
+
+All the documentation in a single file: [llms-full.txt](/llms-full.txt).
+
+## Getting started
+
+- [Introduction](/docs/getting-started/introduction): GlassMarshmallow is a CSS framework with glass surfaces, light and dark mode and WCAG 2.2 AA accessibility (and AAA whenever possible) from the first component.
+- [Install](/docs/getting-started/install): Use a package manager, a CDN or the source files to add GlassMarshmallow to your project.
+- [AI](/docs/getting-started/ai): GlassMarshmallow is ready for AI assistants (Claude, ChatGPT, Copilot…) to use it well: they have the documentation in a format they understand and step-by-step guides for the most common tasks.
+- [Approach](/docs/getting-started/approach): The ideas behind GlassMarshmallow that guide every decision. If you are going to use it or add to it, start here.
+- [CSS variables](/docs/getting-started/css-variables): All of GlassMarshmallow's look comes from CSS variables with the `--gm-` prefix. They change on their own with light and dark mode (`data-theme`), and you can change them for the whole site or for just one part.
+- [Accessibility](/docs/getting-started/accessibility): GlassMarshmallow follows **WCAG 2.2 at level AA** in light and dark mode, the level asked for by European and Spanish law, and also meets the AAA criteria for contrast, presentation, focus and target size. These are all the rules, grouped by the four principles of WCAG, with how the framework meets each one.
+- [All the rules (WCAG 2.2)](/docs/getting-started/wcag): The 86 success criteria of WCAG 2.2, at levels A, AA and AAA, explained in plain words. Check this list every time you add something new to the framework, so that it meets them from the start.
+
+## Color
+
+- [Palette](/docs/color/colors): A palette of eight pastel colors, plus black, white and grays, used solid or glazed. This page lists them; the next pages of this section explain how to use them.
+- [Light and dark mode](/docs/color/color-modes): GlassMarshmallow has a light and a dark mode. You choose it with the `data-theme` attribute, on the whole page or on any part of it, like `data-bs-theme` in Bootstrap.
+- [Text color](/docs/color/text): Change the color of the text with a class. Each color uses its text tone, which can be read in light and dark mode.
+- [Background](/docs/color/background): Paint the background of any element with a class. Unlike Bootstrap, each background class also sets the text color that can be read on it, so the result always meets AA.
+- [Color scheme](/docs/color/color-scheme): Set the color scheme of a single element, so the browser paints its own parts to match: native form controls, scrollbars and the background of an `<iframe>`.
+- [Theme](/docs/color/theme): Combine a color class with a use class to set the background, text and border of any element in one go, like Bootstrap's theme utilities.
+
+## Customize
+
+- [Typography](/docs/customize/typography): GlassMarshmallow uses **Montserrat** for all text and the system monospace font for code.
+- [Background](/docs/customize/background): The page background color comes from a variable that changes on its own with light and dark mode.
+
+## Layout
+
+- [Containers](/docs/layout/containers): The container centers the page content and leaves a margin on the sides. It is the first thing inside each section.
+- [Breakpoints](/docs/layout/breakpoints): The screen widths where the layout changes. You think of phones first and add from each breakpoint upwards, as in Bootstrap.
+- [Grid](/docs/layout/grid): To place pieces in columns. It has 12 columns, like Bootstrap's, but is built with CSS Grid: each child says how many of the 12 it spans, and that can change at each [breakpoint](/docs/layout/breakpoints).
+
+## Utilities
+
+- [Spacing](/docs/utilities/spacing): Margin (outside) and padding (inside) without writing CSS. As in Tailwind: the number is the scale, and **4 = 1 rem** (16 px).
+- [Sizing](/docs/utilities/sizing): Width, height and their minimums and maximums. Like Tailwind's [min-width](https://tailwindcss.com/docs/min-width) and max-width.
+- [Borders and radius](/docs/utilities/borders): Thin borders with the framework lines and rounded corners with its radii. They change on their own in dark mode.
+- [Shadows](/docs/utilities/shadows): The framework shadows, soft by day and deeper at night so they show on black.
+- [Effects](/docs/utilities/effects): Glass, background blur and opacity: what gives GlassMarshmallow its look.
+- [Animations](/docs/utilities/animations): Short movements so something appears, leaves or draws a little attention. **They all switch off on their own** if the person has asked for reduced motion in their system. Entering and leaving ones move only once: press **Replay** to see them again.
+- [Flex and alignment](/docs/utilities/flex): To lay pieces out in a row or a column and align them, without writing CSS.
+- [Display](/docs/utilities/display): Changes how an element is displayed, or hides it, depending on the screen size.
+
+## Content
+
+- [Page structure](/docs/content/structure): The HTML elements that divide a page into regions: header, menu, main content, sections, side content and footer. Screen readers show them as a map of the page, so people can jump straight to the part they want.
+- [Base and text](/docs/content/base): What GlassMarshmallow applies to the whole page when loaded, with no classes: the font, the colors, the headings, the focus and some accessibility rules.
+- [Code](/docs/content/code): To show code: inside the text, in a word, or in a multi-line block. With the system monospace font (`--gm-font-mono`).
+
+## Forms
+
+- [Form rules](/docs/forms/rules): What a form needs to be easy to fill in and accessible. Every form built with GlassMarshmallow must follow these rules. They come from the GOV.UK guidance, the W3C forms tutorial and usability studies, and each one names the WCAG 2.2 criterion it helps meet.
+- [Field](/docs/forms/field): Fields and forms like the contact form of the portfolio: a glass panel, labels in bold, rounded fields with a gray fill, a ring while you type, and choices in a list.
+- [Segmented control](/docs/forms/segmented): Options together in a gray bar; the chosen one sits in a white pill (black at night) with a shadow. It is the one from the My Book Box library.
+- [Range](/docs/forms/range): To pick a number in a range by dragging: volume, opacity, size… The thumb is a round dot and the filled part uses the accent color.
+- [Date picker](/docs/forms/date-picker): A calendar with a glass panel, the month in large type and the days in 44 px circles. Today is in blue and the chosen day is filled.
+- [Color picker](/docs/forms/color-picker): A button with the color swatch that opens a window to choose it: color wheel, hue, saturation, lightness and opacity bars, the color code and the contrast of white and black text on top. It is the one used by the tools on this site.
+
+## Components
+
+- [Accordion](/docs/components/accordion): A list of sections that open and close, all in one glass card and separated by a thin line. It is the one from the portfolio's skills section.
+- [Alert](/docs/components/alert): A highlighted message inside the page: information, something that went well, a warning or an error. The state pastel at medium strength, with a border of the same color, regular text and an icon.
+- [Avatar](/docs/components/avatar): The profile picture box, as a circle or a square with rounded corners. Without a photo, it shows the initials on a pastel or a silhouette.
+- [Button](/docs/components/button): Buttons for actions in forms, dialogs and pages, with the rounded shape of My Book Box. All of them meet WCAG 2.2 AA in light and dark mode.
+- [Card](/docs/components/card): A glass box to group content: translucent background with blur, thin border, rounded corners and a soft shadow. It is the My Book Box panel.
+- [Carousel](/docs/components/carousel): Images shown one at a time, inside a glass frame, with arrows on the sides and dots below. It is the one from the portfolio's projects section.
+- [Photo gallery](/docs/components/gallery): An album: photos in a grid, all the same size, with more columns on large screens and fewer on phones. Pressing one shows it large in a viewer with arrows to move to the next.
+- [Tag](/docs/components/tag): A small pill to label something: a category, a status, something new. It is the gray My Book Box tag.
+- [Navbar](/docs/components/navbar): The top bar, like the one in My Book Box and My MTV Box: logo and name on the left, the section links and, on the right, the actions (language, theme…). It is glass and sticks to the top when scrolling.
+- [Tab bar](/docs/components/tabbar): The phone's bottom bar, floating and glass, like in iOS and My Book Box. It replaces the [navbar](/docs/components/navbar) links below 860 px.
+- [Menu](/docs/components/menu): A button that opens a list of options, like the language, version and theme menus of the top bar. One option can be marked as chosen.
+- [Search](/docs/components/search): A text field with the magnifier inside and, below it, the results that match what is typed. It is the search box in the top bar of this site.
+- [Video player](/docs/components/player): The My MTV Box player: controls appear over the video on a black gradient, the buttons are round glass and the play button is white. While the video plays, the controls hide on their own.
+- [Progress](/docs/components/progress): How much of something is done: reading a book, uploading a file, the steps of a form. A thin line on gray with the done part in the accent color and a text below. It is the reading bar from My Book Box.
+- [Tooltip](/docs/components/tooltip): A small bubble with extra information about a button or a control. It uses the style of the reading bubble of My Book Box: dark background, white text and a soft shadow, in light and dark mode.
+
+## Helpers
+
+- [Visually hidden](/docs/helpers/visually-hidden): `.gm-visually-hidden` hides text visually but keeps it for screen readers. Use it to give context that the design shows but cannot be read.
+- [Skip link](/docs/helpers/skip-link): A link at the start of the page that goes straight to the content, skipping the menu. It is hidden until reached with the Tab key.
+- [Gradient text](/docs/helpers/gradient-text): Paints text with the framework's color gradient. At night it switches to a plain color, so it reads well on a dark background.
+- [Text outline](/docs/helpers/text-outline): `.gm-text-outline` adds, **in dark mode**, a thin black outline and a soft shadow to text. It keeps text readable over lights, images or the TV effect. In light mode it changes nothing.
+
+## Guides
+
+- [User experience](/docs/guides/ux): Rules so that what you build with GlassMarshmallow is easy to understand and use. Some are ours (we decided them while designing the framework) and others come from reference guides (GOV.UK, W3C, Nielsen Norman Group). For forms, see the [form rules](/docs/forms/rules) too.

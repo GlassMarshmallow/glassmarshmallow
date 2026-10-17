@@ -1,15 +1,18 @@
 # Introducción
 
-GlassMarshmallow es un framework CSS con superficies de cristal, modo claro y oscuro y accesibilidad WCAG 2.2 AA desde el primer componente.
+GlassMarshmallow es un framework CSS con superficies de cristal, modo claro y oscuro y accesibilidad WCAG 2.2 AA (y AAA siempre que se puede) desde el primer componente.
 
 > **GlassMarshmallow está en desarrollo (v0.1).** La documentación crece página a página junto con el framework.
 
 ## Qué incluye
 
-- **Variables de diseño**: colores, tipografía, radios, sombras y cristal como variables CSS con el prefijo `--gm-`.
-- **Estilos base**: tipografía, un foco siempre visible, el enlace «Saltar al contenido» y ayudantes como `gm-visually-hidden`.
-- **Componentes**: botones, tarjetas, campos, avisos, etiquetas, la barra de navegación y la barra de pestañas del móvil.
-- **Fondo**: luces de color, una cuadrícula de puntos y un efecto de televisor antiguo, en modo claro y oscuro.
+- **Variables de diseño**: colores (la paleta pastel con sus escalas), tipografía, radios, sombras y cristal como variables CSS con el prefijo `--gm-`.
+- **Estilos base**: textos, títulos, un foco siempre visible, «Saltar al contenido» y reglas de accesibilidad AAA ya puestas.
+- **Maquetación**: contenedores, puntos de corte y una cuadrícula de 12 columnas.
+- **Componentes**: botones, tarjetas, avisos, etiquetas, acordeón, carrusel, galería, imagen de perfil, menú, buscador, tooltip, reproductor de vídeo, barra de progreso, barra de navegación y barra de pestañas del móvil.
+- **Formularios**: campos, segmentado, barra deslizante, selector de fecha, selector de color y las reglas para hacer buenos formularios.
+- **Utilidades** al estilo Tailwind: espaciado, tamaños, bordes, sombras, efectos de cristal, animaciones, flex y mostrar u ocultar.
+- **Scripts opcionales**, sin dependencias, para los componentes que se mueven (menú, calendario, carrusel, reproductor…).
 - **Iconos**: en su propio paquete, [GlassMarshmallow Icons](/icons), con los mismos nombres que Bootstrap Icons.
 
 ## Empezar rápido
@@ -36,9 +39,10 @@ Copia esta página para empezar. Carga GlassMarshmallow y elige el modo de color
 
 ## Accesibilidad
 
-Todos los componentes cumplen **WCAG 2.2 AA** en modo claro y oscuro: el texto tiene un contraste mínimo de 4,5:1, el foco siempre se ve y todo se puede usar solo con el teclado.
+Todos los componentes cumplen **WCAG 2.2 AA** en modo claro y oscuro, y casi todo llega a **AAA**: el texto llega a 7:1, todo lo que se pulsa mide 44 px, el foco siempre se ve y todo se puede usar solo con el teclado. Más en [Accesibilidad](/docs/getting-started/accessibility).
 
 ## Siguientes pasos
 
 - [Instala GlassMarshmallow](/docs/getting-started/install) con un gestor de paquetes o desde un CDN.
-- Prueba las herramientas: [generador de cristal](/docs/tools/glass-generator), [generador de degradados](/docs/tools/gradient-generator) y [degradado de un color](/docs/tools/single-color-gradient).
+- Lee el [enfoque](/docs/getting-started/approach) del framework y las [guías de experiencia de usuario](/docs/guides/ux).
+- Prueba las [herramientas](/tools): generadores de cristal, degradados, filtros y paletas, y el efecto de televisor.
