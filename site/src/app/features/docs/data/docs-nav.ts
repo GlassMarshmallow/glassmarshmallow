@@ -45,7 +45,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
   {
     id: 'components',
     icon: 'gmi-window-stack',
-    pages: ['alert', 'button', 'card', 'tag', 'navbar', 'tabbar', 'menu', 'search', 'tooltip'].map((p) => ({ path: `components/${p}` })),
+    pages: ['alert', 'button', 'card', 'tag', 'navbar', 'tabbar', 'menu', 'search', 'player', 'tooltip'].map((p) => ({ path: `components/${p}` })),
   },
   {
     id: 'helpers',

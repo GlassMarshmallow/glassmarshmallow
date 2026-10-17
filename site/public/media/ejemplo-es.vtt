@@ -1,0 +1,10 @@
+WEBVTT
+
+00:00:00.500 --> 00:00:03.500
+Esto es un vídeo de ejemplo.
+
+00:00:04.000 --> 00:00:07.500
+Los subtítulos salen del archivo .vtt del vídeo.
+
+00:00:08.000 --> 00:00:11.500
+Puedes activarlos con el botón CC o con la tecla C.

@@ -141,6 +141,7 @@ export const es: Dictionary = {
       'components/tabbar': 'Barra de pestañas',
       'components/menu': 'Menú desplegable',
       'components/search': 'Buscador',
+      'components/player': 'Reproductor de vídeo',
       'components/tooltip': 'Tooltip',
       'helpers/visually-hidden': 'Texto oculto',
       'helpers/skip-link': 'Saltar al contenido',

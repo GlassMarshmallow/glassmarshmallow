@@ -13,7 +13,7 @@
 .doc__content ::ng-deep > ul,
 .doc__content ::ng-deep > ol { margin: 0 0 16px; color: var(--gm-text-secondary); }
 .doc__content ::ng-deep li + li { margin-top: 4px; }
-.doc__content ::ng-deep strong { color: var(--gm-text); }
+.doc__content ::ng-deep strong:not(.gm-player strong) { color: var(--gm-text); }
 /* Enlaces del texto (no los de los componentes de los ejemplos, como el resumen de errores, que llevan su color) */
 .doc__content ::ng-deep a:not([class]):not(.gm-error-summary a) { color: var(--gm-link); text-decoration: underline; text-underline-offset: 3px; }
 .doc__content ::ng-deep a:not([class]):not(.gm-error-summary a):hover { color: var(--gm-link-hover); }

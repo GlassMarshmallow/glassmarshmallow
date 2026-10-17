@@ -11,6 +11,7 @@ import { initMenus } from '../../../../../../../js/menu.js';
 import { initSearches } from '../../../../../../../js/search.js';
 import { initColorPickers } from '../../../../../../../js/color-picker.js';
 import { initRanges } from '../../../../../../../js/range.js';
+import { initPlayers } from '../../../../../../../js/player.js';
 
 const REPO = 'https://github.com/spyamuza/glassmarshmallow/blob/main/site/public/content/docs';
 
@@ -50,7 +51,7 @@ export class DocPage {
   readonly next = computed(() => this.neighbour(1));
 
   constructor() {
-    // Cuando el contenido ya está en la página, pone en marcha los calendarios, menús, buscadores, selectores de color y barras de los ejemplos
+    // Cuando el contenido ya está en la página, pone en marcha los calendarios, menús, buscadores, selectores de color, barras y reproductores de los ejemplos
     afterRenderEffect(() => {
       this.doc();
       const content = this.host.nativeElement.querySelector('.doc__content');
@@ -60,6 +61,7 @@ export class DocPage {
         initSearches(content);
         initColorPickers(content);
         initRanges(content);
+        initPlayers(content);
       }
     });
 

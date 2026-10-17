@@ -140,6 +140,7 @@ export const en = {
       'components/tabbar': 'Tab bar',
       'components/menu': 'Menu',
       'components/search': 'Search',
+      'components/player': 'Video player',
       'components/tooltip': 'Tooltip',
       'helpers/visually-hidden': 'Visually hidden',
       'helpers/skip-link': 'Skip link',
