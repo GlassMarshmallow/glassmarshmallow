@@ -6,6 +6,7 @@
     "start": "ng serve --port 4500",
     "build": "ng build",
     "build:site": "npm run prebuild && node scripts/build-site.mjs",
+    "deploy": "npm run build:site && npx wrangler@4.145.0 pages deploy dist/web/browser --project-name glassmarshmallow --branch main",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "icons:svg": "node scripts/copy-icons.mjs",
