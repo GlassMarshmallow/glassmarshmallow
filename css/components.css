@@ -1002,16 +1002,19 @@
    <span class="gm-avatar"><img src="foto.jpg" alt="Sara Paez"></span>                  foto en círculo
    <span class="gm-avatar gm-avatar--square">…</span>                                     cuadrado redondeado
    <span class="gm-avatar gm-theme-sky" role="img" aria-label="Sara Paez">SP</span>      iniciales en un pastel
+   <span class="gm-avatar gm-avatar--ring">…</span>                                       con el marco de las luces
    Tamaños: --sm (2 rem), normal (3 rem), --lg (5 rem) y --xl (8 rem). El redondeo y las letras van en
-   proporción al tamaño. Sin .gm-theme-*, las iniciales van sobre gris. */
+   proporción al tamaño. Sin .gm-theme-*, las iniciales van sobre gris.
+   Se personaliza con --gm-avatar-radius (redondeo) y, con marco, --gm-avatar-ring (color o degradado). */
 .gm-avatar {
   --gm-avatar-size: 3rem;
+  --gm-avatar-radius: 50%;
   position: relative;
   display: inline-grid;
   width: var(--gm-avatar-size);
   height: var(--gm-avatar-size);
   flex-shrink: 0;
-  border-radius: 50%;
+  border-radius: var(--gm-avatar-radius);
   color: var(--gm-theme-on, var(--gm-text));
   background: var(--gm-theme, var(--gm-tag));
   box-shadow: inset 0 0 0 1px var(--gm-line);
@@ -1024,7 +1027,14 @@
 }
 .gm-avatar > img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
 .gm-avatar > .gmi { font-size: calc(var(--gm-avatar-size) * .55); }
-.gm-avatar--square { border-radius: 22%; }
+.gm-avatar--square { --gm-avatar-radius: 22%; }
+/* Marco de color alrededor de la foto (el de la plantilla de portfolio): las luces del dibujo y una sombra suave.
+   El grosor va en proporción al tamaño */
+.gm-avatar--ring {
+  padding: max(2px, calc(var(--gm-avatar-size) * .02));
+  background: var(--gm-avatar-ring, var(--gm-lights-gradient));
+  box-shadow: var(--gm-bubble-shadow);
+}
 .gm-avatar--sm { --gm-avatar-size: 2rem; }
 .gm-avatar--lg { --gm-avatar-size: 5rem; }
 .gm-avatar--xl { --gm-avatar-size: 8rem; }
@@ -1568,6 +1578,8 @@
    La cola apunta a la derecha (--tail-end) o a la izquierda (--tail-start); su altura, en --gm-bubble-tail-y. */
 .gm-bubble {
   --gm-bubble-tail-y: 1.1rem;
+  /* La cola toma el color de --gm-bubble-color; si este es un degradado, pon un color en --gm-bubble-tail-color */
+  --gm-bubble-tail-color: var(--gm-bubble-color);
   position: relative;
   display: flex;
   min-height: 0;
@@ -1584,8 +1596,9 @@
   backdrop-filter: var(--gm-panel-filter);
   animation: gm-bubble-in .35s ease both;
 }
-.gm-bubble::after { opacity: 1; }
-.gm-bubble--error::after { background: var(--gm-danger); }
+.gm-bubble::after { background: var(--gm-bubble-color, var(--gm-lights-gradient)); opacity: 1; }
+/* Con --gm-bubble-color (un color o un degradado) cambian el borde y la cola a la vez */
+.gm-bubble--error { --gm-bubble-color: var(--gm-danger); }
 .gm-bubble__scroll {
   flex: 1;
   min-width: 0;
@@ -1632,14 +1645,14 @@
 .gm-bubble--tail-end::before {
   right: -6.5px;
   bottom: clamp(min(18px, calc(50% - 7px)), var(--gm-bubble-tail-y), max(calc(100% - 32px), calc(50% - 7px)));
-  border-color: var(--gm-bubble-tail-end);
+  border-color: var(--gm-bubble-tail-color, var(--gm-bubble-tail-end));
   border-top-width: 1px;
   border-right-width: 1px;
 }
 .gm-bubble--tail-start::before {
   top: var(--gm-bubble-tail-y);
   left: -6.5px;
-  border-color: var(--gm-bubble-tail-start);
+  border-color: var(--gm-bubble-tail-color, var(--gm-bubble-tail-start));
   border-bottom-width: 1px;
   border-left-width: 1px;
 }
@@ -1652,7 +1665,7 @@
 
 /* Puntos de «escribiendo…» */
 .gm-typing { display: inline-flex; gap: .3rem; padding: .35rem 0; }
-.gm-typing > span { width: .45rem; height: .45rem; border-radius: 50%; background: var(--gm-lights-gradient); animation: gm-typing 1.2s ease-in-out infinite; }
+.gm-typing > span { width: .45rem; height: .45rem; border-radius: 50%; background: var(--gm-typing-color, var(--gm-lights-gradient)); animation: gm-typing 1.2s ease-in-out infinite; }
 .gm-typing > span:nth-child(2) { animation-delay: .15s; }
 .gm-typing > span:nth-child(3) { animation-delay: .3s; }
 @keyframes gm-typing { 0%, 60%, 100% { opacity: .4; transform: none; } 30% { opacity: 1; transform: translateY(-5px); } }
