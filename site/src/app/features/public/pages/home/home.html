@@ -4,6 +4,46 @@
   <p class="hero__lead gm-text-outline">{{ 'home.lead' | t }}</p>
   <div class="hero__actions">
     <app-copy-command [command]="installCommand" />
+    <!-- Menú «Para agentes», como el «For Agents» de Bootstrap. Lo que necesita la web publicada (dominio,
+         repositorio público) se enseña solo cuando está en core/config/site.ts -->
+    <div #agents class="gm-menu home__agents" data-gm-menu>
+      <button type="button" class="gm-btn gm-btn--secondary gm-menu__trigger" aria-haspopup="menu" aria-expanded="false">
+        <i class="gmi gmi-stars" aria-hidden="true"></i>{{ 'home.agents' | t }}
+        <i class="gmi gmi-chevron-expand gm-menu__chevron" aria-hidden="true"></i>
+      </button>
+      <ul class="gm-menu__list home__agents-list" role="menu" [attr.aria-label]="'home.agents' | t" hidden>
+        @if (site.repoPublic) {
+          <li role="none">
+            <button type="button" class="gm-menu__item" role="menuitem" (click)="copySkill()">
+              <span>{{ (copied() ? 'home.skillCopied' : 'home.installSkill') | t }}</span>
+              <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
+            </button>
+          </li>
+        }
+        <li role="none">
+          <a class="gm-menu__item" role="menuitem" routerLink="/docs/getting-started/ai"><span>{{ 'home.aiDocs' | t }}</span></a>
+        </li>
+        @if (site.repoPublic) {
+          <li role="none">
+            <a class="gm-menu__item" role="menuitem" [href]="skillsUrl" target="_blank" rel="noopener">
+              <span>{{ 'home.allSkills' | t }}</span><i class="gmi gmi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </li>
+        }
+        @if (site.url) {
+          <li role="none">
+            <a class="gm-menu__item" role="menuitem" [href]="askChatGpt()" target="_blank" rel="noopener">
+              <span>{{ 'home.askChatGpt' | t }}</span><i class="gmi gmi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li role="none">
+            <a class="gm-menu__item" role="menuitem" [href]="askClaude()" target="_blank" rel="noopener">
+              <span>{{ 'home.askClaude' | t }}</span><i class="gmi gmi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
     <a class="gm-btn" routerLink="/docs">
       <i class="gmi gmi-book" aria-hidden="true"></i>{{ 'home.readDocs' | t }}
     </a>
