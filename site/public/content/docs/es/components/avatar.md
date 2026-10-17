@@ -39,6 +39,34 @@ Con las iniciales: añade un color de la paleta (`.gm-theme-sky`, `.gm-theme-min
 </div>
 ```
 
+## Con marco
+
+`.gm-avatar--ring`: la foto con un marco de color, como la de la plantilla de portfolio. Por defecto, con las luces del dibujo; el grosor va en proporción al tamaño.
+
+```html
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+</div>
+```
+
+## Personalizar
+
+| Variable | Qué cambia | Por defecto |
+| --- | --- | --- |
+| `--gm-avatar-size` | El tamaño | 3 rem |
+| `--gm-avatar-radius` | El redondeo de las esquinas | 50 % (círculo); 22 % con `--square` |
+| `--gm-avatar-ring` | El color del marco (un color o un degradado), con `--ring` | Las luces del dibujo |
+
+```html
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Ana López"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: linear-gradient(135deg, var(--gm-mint), var(--gm-sky), var(--gm-lavender))"><img src="media/perfil-4.jpg" alt="Diego Sanz"></span>
+  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
+  <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+</div>
+```
+
 ## Cambiar la foto
 
 En la página de perfil, un botón con el lápiz encima de la foto. Úsalo con los tamaños grandes (`--lg` y `--xl`): el botón mide 44 px.

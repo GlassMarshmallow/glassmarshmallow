@@ -47,6 +47,31 @@ Mientras llega la respuesta, `.gm-typing` con tres `<span>`: tres puntos que bot
 
 `.gm-bubble--error`: el borde en coral, el color de error.
 
+## Cambiar el color
+
+Con variables, en el bocadillo o en cualquier elemento que lo contenga:
+
+| Variable | Qué cambia | Por defecto |
+| --- | --- | --- |
+| `--gm-bubble-color` | El borde y la cola del bocadillo (un color o un degradado) | Las luces del dibujo |
+| `--gm-bubble-tail-color` | Solo la cola, si el borde es un degradado (la cola admite un color, no un degradado) | El de `--gm-bubble-color` |
+| `--gm-typing-color` | Los puntos de «pensando» | Las luces del dibujo |
+
+```html
+<div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
+  <div class="gm-bubble gm-bubble--tail-end" style="--gm-bubble-color: var(--gm-accent); max-width: 360px">
+    <div class="gm-bubble__scroll">Con el color de acento: rosa de día y azul de noche.</div>
+  </div>
+  <div class="gm-bubble gm-bubble--tail-start" style="--gm-bubble-color: linear-gradient(90deg, var(--gm-mint-700), var(--gm-sky-700)); --gm-bubble-tail-color: var(--gm-mint-700); max-width: 360px; margin-left: 16px">
+    <div class="gm-bubble__scroll">Con un degradado de menta a celeste; la cola, en menta.</div>
+  </div>
+  <div class="gm-bubble" style="--gm-bubble-color: var(--gm-accent); --gm-typing-color: var(--gm-accent); max-width: 120px">
+    <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="gm-visually-hidden">Pensando la respuesta…</span>
+  </div>
+</div>
+```
+
 ## Accesibilidad
 
 - El campo tiene su `<label>` (oculta a la vista) y el botón de enviar, su nombre.

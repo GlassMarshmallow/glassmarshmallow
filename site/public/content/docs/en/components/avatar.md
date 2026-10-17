@@ -39,6 +39,34 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 </div>
 ```
 
+## With a ring
+
+`.gm-avatar--ring`: the photo with a colored ring, like the one in the portfolio template. By default, with the lights of the illustration; the thickness is proportional to the size.
+
+```html
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+</div>
+```
+
+## Customize
+
+| Variable | What it changes | Default |
+| --- | --- | --- |
+| `--gm-avatar-size` | The size | 3 rem |
+| `--gm-avatar-radius` | How rounded the corners are | 50% (circle); 22% with `--square` |
+| `--gm-avatar-ring` | The ring color (a color or a gradient), with `--ring` | The lights of the illustration |
+
+```html
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Ana López"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: linear-gradient(135deg, var(--gm-mint), var(--gm-sky), var(--gm-lavender))"><img src="media/perfil-4.jpg" alt="Diego Sanz"></span>
+  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
+  <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+</div>
+```
+
 ## Changing the photo
 
 On the profile page, a button with the pencil on top of the photo. Use it with the large sizes (`--lg` and `--xl`): the button is 44 px.

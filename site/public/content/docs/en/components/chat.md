@@ -47,6 +47,31 @@ While the answer arrives, `.gm-typing` with three `<span>`s: three dots bouncing
 
 `.gm-bubble--error`: the border in coral, the error color.
 
+## Change the color
+
+With variables, on the bubble or on any element that contains it:
+
+| Variable | What it changes | Default |
+| --- | --- | --- |
+| `--gm-bubble-color` | The border and the tail of the bubble (a color or a gradient) | The lights of the illustration |
+| `--gm-bubble-tail-color` | Only the tail, if the border is a gradient (the tail takes a color, not a gradient) | The one in `--gm-bubble-color` |
+| `--gm-typing-color` | The "thinking" dots | The lights of the illustration |
+
+```html
+<div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
+  <div class="gm-bubble gm-bubble--tail-end" style="--gm-bubble-color: var(--gm-accent); max-width: 360px">
+    <div class="gm-bubble__scroll">With the accent color: pink by day and blue at night.</div>
+  </div>
+  <div class="gm-bubble gm-bubble--tail-start" style="--gm-bubble-color: linear-gradient(90deg, var(--gm-mint-700), var(--gm-sky-700)); --gm-bubble-tail-color: var(--gm-mint-700); max-width: 360px; margin-left: 16px">
+    <div class="gm-bubble__scroll">With a gradient from mint to sky; the tail, in mint.</div>
+  </div>
+  <div class="gm-bubble" style="--gm-bubble-color: var(--gm-accent); --gm-typing-color: var(--gm-accent); max-width: 120px">
+    <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="gm-visually-hidden">Thinking about the answer…</span>
+  </div>
+</div>
+```
+
 ## Accessibility
 
 - The field has its `<label>` (visually hidden) and the send button its name.
