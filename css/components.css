@@ -1910,6 +1910,10 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
   transition: transform .2s ease, color .2s ease;
 }
 .gm-socials :is(a, button):hover { color: var(--gm-accent); transform: scale(1.1); }
+/* Ajuste a ojo para que el correo, GitHub y LinkedIn se vean del mismo tamaño juntos: el sobre es apaisado y parece
+   pequeño; el cuadrado de LinkedIn, lleno, parece grande (también en el pie) */
+:is(.gm-socials, .gm-footer__socials) .gmi:is(.gmi-envelope, .gmi-envelope-fill) { transform: scale(1.15); }
+:is(.gm-socials, .gm-footer__socials) .gmi-linkedin { transform: scale(.9); }
 
 /* --- Lista de datos (etiqueta y valor, como un resumen) ---------------------------------
    <dl class="gm-dl"><div><dt>Nombre</dt><dd>Lucía Martín</dd></div>…</dl> */
