@@ -565,3 +565,74 @@
 .gm-menu__check { visibility: hidden; color: var(--gm-text); }
 .gm-menu__item[aria-checked="true"] { font-weight: 650; }
 .gm-menu__item[aria-checked="true"] .gm-menu__check { visibility: visible; }
+
+/* --- Buscador -----------------------------------------------------------------
+   Un campo de texto y, debajo, la lista de resultados (patrón «combobox» de WAI-ARIA):
+   <div class="gm-search" role="search" data-gm-search>
+     <div class="gm-search__field">
+       <i class="gmi gmi-search" aria-hidden="true"></i>
+       <label class="gm-visually-hidden" for="buscar">Buscar</label>
+       <input id="buscar" class="gm-search__input" type="search" role="combobox" aria-autocomplete="list"
+              aria-controls="buscar-lista" aria-expanded="false" placeholder="Buscar…" />
+     </div>
+     <ul id="buscar-lista" class="gm-search__results" role="listbox" aria-label="Resultados" hidden>
+       <li class="gm-search__option" role="option" data-href="/docs/button">
+         <span class="gm-search__title">Botón</span><span class="gm-search__section">Componentes</span>
+       </li>
+     </ul>
+   </div>
+   El script opcional js/search.js filtra la lista mientras se escribe y la maneja con el teclado. */
+.gm-search { position: relative; }
+.gm-search__field { position: relative; display: flex; align-items: center; }
+.gm-search__field > .gmi { position: absolute; left: 12px; color: var(--gm-muted); font-size: 1.35rem; pointer-events: none; }
+/* Los colores y el foco de los campos (.gm-field) */
+.gm-search__input {
+  width: 100%;
+  min-height: 44px; /* WCAG 2.5.5 (AAA) */
+  padding: 0 14px 0 44px;
+  border: 1px solid var(--gm-field-border);
+  border-radius: 12px;
+  color: var(--gm-text);
+  background-color: var(--gm-field-bg);
+  font: inherit;
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+.gm-search__input::placeholder { color: var(--gm-muted); }
+.gm-search__input:focus {
+  border-color: var(--gm-field-focus);
+  outline: none;
+  background-color: var(--gm-field-bg-focus);
+  box-shadow: 0 0 0 4px var(--gm-field-ring);
+}
+/* Sin la «x» propia de Safari y Chrome: Escape ya borra */
+.gm-search__input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+/* Resultados: la misma caja que la lista de los menús (.gm-menu__list) */
+.gm-search__results {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 8px);
+  left: 0;
+  display: grid;
+  width: max(100%, 320px);
+  margin: 0;
+  padding: 6px;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-sm);
+  background: var(--gm-surface-solid);
+  box-shadow: var(--gm-shadow-md);
+  list-style: none;
+}
+.gm-search__results[hidden],
+.gm-search__option[hidden],
+.gm-search__empty[hidden] { display: none; }
+.gm-search__option { display: grid; min-height: 44px; align-content: center; gap: 1px; padding: 6px 12px; border-radius: 8px; color: var(--gm-text); cursor: pointer; }
+.gm-search__option:hover,
+.gm-search__option.is-active { background: var(--gm-hover); }
+.gm-search__option.is-active { box-shadow: inset 0 0 0 2px var(--gm-focus); }
+.gm-search__title { font-weight: 650; }
+.gm-search__section { color: var(--gm-muted); font-size: .78rem; }
+.gm-search__empty { padding: 10px 12px; color: var(--gm-muted); font-size: .9rem; }
+/* Pantallas estrechas: la lista, tan ancha como el campo, para que no se salga */
+@media (max-width: 600px) {
+  .gm-search__results { width: 100%; }
+}

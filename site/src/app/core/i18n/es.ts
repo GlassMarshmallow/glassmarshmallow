@@ -34,7 +34,7 @@ export const es: Dictionary = {
     more: 'Más',
     moreMenu: 'Más páginas',
     github: 'GitHub',
-    search: 'Buscar en la documentación…',
+    search: 'Buscar…',
     searchShort: 'Buscar',
     version: 'Versión {version}',
     versionCurrent: 'v{version} (actual)',
@@ -45,7 +45,7 @@ export const es: Dictionary = {
     themeAuto: 'Automático',
   },
   search: {
-    title: 'Buscar en la documentación',
+    title: 'Buscar en la web',
     label: 'Buscar',
     placeholder: 'Escribe para buscar…',
     empty: 'No hay resultados para «{query}».',

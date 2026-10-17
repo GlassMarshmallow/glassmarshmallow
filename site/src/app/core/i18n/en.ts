@@ -33,7 +33,7 @@ export const en = {
     more: 'More',
     moreMenu: 'More pages',
     github: 'GitHub',
-    search: 'Search docs…',
+    search: 'Search…',
     searchShort: 'Search',
     version: 'Version {version}',
     versionCurrent: 'v{version} (current)',
@@ -44,7 +44,7 @@ export const en = {
     themeAuto: 'Auto',
   },
   search: {
-    title: 'Search the docs',
+    title: 'Search the site',
     label: 'Search',
     placeholder: 'Type to search…',
     empty: 'No results for “{query}”.',

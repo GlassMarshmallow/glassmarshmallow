@@ -11,12 +11,7 @@
     </nav>
   </div>
 
-  <button type="button" class="header__search" aria-haspopup="dialog" (click)="search().open()">
-    <i class="gmi gmi-search" aria-hidden="true"></i>
-    <span class="header__search-text">{{ 'nav.search' | t }}</span>
-    <span class="gm-visually-hidden header__search-short">{{ 'nav.searchShort' | t }}</span>
-    <kbd class="header__kbd" aria-hidden="true">⌘K</kbd>
-  </button>
+  <app-site-search />
 
   <div class="gm-navbar__actions header__actions">
     <!-- Logo de GitHub: Simple Icons (CC0) -->
@@ -60,4 +55,3 @@
   </button>
 </nav>
 
-<app-search-dialog />

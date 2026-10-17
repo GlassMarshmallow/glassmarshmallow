@@ -1,0 +1,57 @@
+<div class="gm-search site-search" role="search">
+  <!-- Móvil: la lupa muestra u oculta el campo -->
+  <button
+    type="button"
+    class="site-search__toggle"
+    [attr.aria-label]="'search.label' | t"
+    [attr.aria-expanded]="mobileOpen()"
+    aria-controls="site-search-box"
+    (click)="toggleMobile()"
+  >
+    <i class="gmi" [class.gmi-search]="!mobileOpen()" [class.gmi-x-lg]="mobileOpen()" aria-hidden="true"></i>
+  </button>
+
+  <div id="site-search-box" class="site-search__box" [class.is-open]="mobileOpen()">
+    <div class="gm-search__field">
+      <i class="gmi gmi-search" aria-hidden="true"></i>
+      <label for="site-search-input" class="gm-visually-hidden">{{ 'search.title' | t }}</label>
+      <input
+        #input
+        id="site-search-input"
+        class="gm-search__input"
+        type="search"
+        role="combobox"
+        autocomplete="off"
+        aria-autocomplete="list"
+        aria-controls="site-search-results"
+        [attr.aria-expanded]="expanded()"
+        [attr.aria-activedescendant]="active() >= 0 ? 'site-search-option-' + active() : null"
+        [placeholder]="'nav.search' | t"
+        [value]="query()"
+        (input)="onInput($event)"
+        (keydown)="onKeydown($event)"
+        (focus)="listOpen.set(true)"
+      />
+    </div>
+
+    <ul id="site-search-results" class="gm-search__results" role="listbox" [attr.aria-label]="'search.title' | t" [hidden]="!expanded()">
+      @for (result of results(); track result.path; let i = $index) {
+        <li
+          [id]="'site-search-option-' + i"
+          class="gm-search__option"
+          role="option"
+          [class.is-active]="active() === i"
+          [attr.aria-selected]="active() === i"
+          (pointerdown)="$event.preventDefault()"
+          (click)="go(result.path)"
+        >
+          <span class="gm-search__title">{{ result.title }}</span>
+          <span class="gm-search__section">{{ result.sectionTitle }}</span>
+        </li>
+      } @empty {
+        <li class="gm-search__empty" role="presentation">{{ 'search.empty' | t: { query: query() } }}</li>
+      }
+    </ul>
+  </div>
+  <p class="gm-visually-hidden" aria-live="polite">{{ expanded() ? ('search.results' | t: { count: results().length }) : '' }}</p>
+</div>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs';
@@ -6,7 +6,7 @@ import { I18nService, LANGUAGES, Language } from '../../../core/i18n/i18n.servic
 import { TranslatePipe } from '../../../core/i18n/translate.pipe';
 import { ThemePreference, ThemeService } from '../../../core/services/theme.service';
 import { MenuButton, MenuOption } from '../menu-button/menu-button';
-import { SearchDialog } from '../search-dialog/search-dialog';
+import { SiteSearch } from '../site-search/site-search';
 
 export const VERSION = '0.1';
 
@@ -28,7 +28,7 @@ interface NavItem {
  */
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, TranslatePipe, MenuButton, SearchDialog],
+  imports: [RouterLink, RouterLinkActive, TranslatePipe, MenuButton, SiteSearch],
   templateUrl: './header.html',
   styleUrl: './header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,7 +37,6 @@ export class Header {
   private readonly themeService = inject(ThemeService);
   private readonly i18n = inject(I18nService);
   private readonly router = inject(Router);
-  readonly search = viewChild.required(SearchDialog);
 
   readonly version = VERSION;
   readonly items: NavItem[] = [

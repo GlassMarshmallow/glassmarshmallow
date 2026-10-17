@@ -8,6 +8,7 @@ import { RenderedDoc, renderDoc } from '../../data/render-doc';
 // Script opcional del framework: los calendarios de los ejemplos funcionan de verdad
 import { initCalendars } from '../../../../../../../js/calendar.js';
 import { initMenus } from '../../../../../../../js/menu.js';
+import { initSearches } from '../../../../../../../js/search.js';
 
 const REPO = 'https://github.com/spyamuza/glassmarshmallow/blob/main/site/public/content/docs';
 
@@ -47,13 +48,14 @@ export class DocPage {
   readonly next = computed(() => this.neighbour(1));
 
   constructor() {
-    // Cuando el contenido ya está en la página, pone en marcha los calendarios y menús de los ejemplos
+    // Cuando el contenido ya está en la página, pone en marcha los calendarios, menús y buscadores de los ejemplos
     afterRenderEffect(() => {
       this.doc();
       const content = this.host.nativeElement.querySelector('.doc__content');
       if (content) {
         initCalendars(content);
         initMenus(content);
+        initSearches(content);
       }
     });
 
