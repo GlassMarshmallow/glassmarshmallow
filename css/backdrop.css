@@ -14,8 +14,15 @@
     radial-gradient(circle at 75% 65%, rgba(91, 63, 208, .14), transparent 50%),
     radial-gradient(circle at 60% 20%, rgba(180, 83, 9, .1), transparent 40%);
   --mg-backdrop-scanline: rgba(0, 0, 0, .05);
-  --mg-backdrop-vignette: none;
+  /* Viñeta blanca (elegida por Sara con el generador de un color): transparente en el centro y blanco
+     hacia los bordes, como la viñeta negra del modo oscuro */
+  --mg-backdrop-vignette: block;
+  /* Equivale a «circle 320px, 81 % → 100 %» tal como se veía en la vista previa del generador, pero relativo:
+     escala con la pantalla */
+  --mg-backdrop-vignette-bg: radial-gradient(circle farthest-corner at center, rgba(255, 255, 255, 0) 64%, rgba(255, 255, 255, 1) 80%);
   --mg-backdrop-curve: none;
+  /* Final de la página y pie: blanco en claro, negro en oscuro (canales RGB para poder darles opacidad) */
+  --mg-page-end-rgb: 255 255 255;
 }
 
 :root[data-theme="dark"] {
@@ -26,7 +33,9 @@
     radial-gradient(circle at 60% 20%, rgba(255, 150, 70, .14), transparent 40%);
   --mg-backdrop-scanline: rgba(0, 0, 0, .65);
   --mg-backdrop-vignette: block;
+  --mg-backdrop-vignette-bg: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .7) 100%);
   --mg-backdrop-curve: block;
+  --mg-page-end-rgb: 0 0 0;
 }
 
 .mg-backdrop,
@@ -68,10 +77,10 @@ body:has(.mg-backdrop) { background: transparent; }
   background: repeating-linear-gradient(transparent 0 2px, var(--mg-backdrop-scanline) 2px 4px);
 }
 
-/* Bordes oscurecidos (solo en oscuro, como en la plantilla) */
+/* Viñeta: bordes oscurecidos en oscuro (como la plantilla) y aclarados hacia blanco en claro */
 .mg-backdrop__vignette {
   display: var(--mg-backdrop-vignette);
-  background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .7) 100%);
+  background: var(--mg-backdrop-vignette-bg);
 }
 
 /* Esquinas oscurecidas y redondeadas, como la pantalla curva de una tele antigua (solo en oscuro) */

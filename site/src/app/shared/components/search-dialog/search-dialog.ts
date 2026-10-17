@@ -17,6 +17,7 @@ const PAGES: SearchItem[] = [
   { key: 'docs.title', section: 'nav.docs', path: '/docs' },
   { key: 'glass.title', section: 'docs.tools', path: '/docs/tools/glass-generator' },
   { key: 'gradient.title', section: 'docs.tools', path: '/docs/tools/gradient-generator' },
+  { key: 'single.title', section: 'docs.tools', path: '/docs/tools/single-color-gradient' },
   { key: 'nav.examples', section: 'nav.examples', path: '/examples' },
   { key: 'icons.title', section: 'nav.icons', path: '/icons' },
   { key: 'nav.blog', section: 'nav.blog', path: '/blog' },

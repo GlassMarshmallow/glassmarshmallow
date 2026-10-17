@@ -1,4 +1,4 @@
-.generator { padding-block: 72px 110px; }
+.generator { padding-block: 72px 0; }
 .generator__lead { max-width: 680px; margin-bottom: 40px; font-size: 1.05rem; line-height: 1.6; }
 .generator__layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: start; gap: 32px; }
 

@@ -13,7 +13,7 @@ import { TranslatePipe } from '../../../core/i18n/translate.pipe';
       <a class="mg-btn" routerLink="/">{{ 'common.backHome' | t }}</a>
     </section>
   `,
-  styles: `.simple-page { padding-block: 96px 120px; } .simple-page p { font-size: 1.1rem; margin-bottom: 28px; }`,
+  styles: `.simple-page { padding-block: 96px 0; } .simple-page p { font-size: 1.1rem; margin-bottom: 28px; }`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ComingSoon {

@@ -1,36 +1,12 @@
 :host { display: block; }
-/* Alto del degradado negro que sube desde el pie (el contenido deja ese hueco libre: ver public-layout.css) */
-.footer { --footer-fade-height: 280px; }
 .footer {
   position: relative;
-  padding-block: 40px 48px;
+  padding-block: 32px 36px;
   color: var(--mg-text);
-  background: #000;
+  /* Blanco en claro y negro en oscuro: continúa el degradado del final de la página */
+  background: rgb(var(--mg-page-end-rgb));
 }
-/* Degradado negro que sube desde el pie, como el final de la portada de Bootstrap. Va por encima del fondo
-   de la web y por debajo del contenido (z-index negativo sin crear contexto de apilamiento) */
-.footer::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  right: 0;
-  bottom: 100%;
-  left: 0;
-  height: var(--footer-fade-height);
-  pointer-events: none;
-  /* Curva suave (no lineal): casi transparente arriba y cada vez más negro hacia el pie, sin cortes */
-  background: linear-gradient(
-    to top,
-    rgb(0 0 0 / 1) 0%,
-    rgb(0 0 0 / .82) 12%,
-    rgb(0 0 0 / .62) 26%,
-    rgb(0 0 0 / .42) 42%,
-    rgb(0 0 0 / .25) 58%,
-    rgb(0 0 0 / .12) 74%,
-    rgb(0 0 0 / .04) 88%,
-    rgb(0 0 0 / 0) 100%
-  );
-}
+
 .footer__inner { display: grid; gap: 14px; }
 .footer__links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: .88rem; }
 .footer__links a { padding-block: 4px; color: var(--mg-text); }

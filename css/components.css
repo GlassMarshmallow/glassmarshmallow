@@ -188,7 +188,7 @@
     justify-content: space-around;
     border: 1px solid var(--mg-surface-glass-border);
     border-radius: 22px;
-    background: var(--mg-header-bg);
+    background: var(--mg-tabbar-bg);
     box-shadow: 0 12px 36px rgba(0, 0, 0, .16);
     -webkit-backdrop-filter: var(--mg-header-filter);
     backdrop-filter: var(--mg-header-filter);

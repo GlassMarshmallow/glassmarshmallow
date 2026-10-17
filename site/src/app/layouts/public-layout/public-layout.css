@@ -1,6 +1,33 @@
 :host { display: flex; min-height: 100dvh; flex-direction: column; }
 /* El hueco para la barra inferior del móvil lo pone .mg-has-tabbar */
-/* Hueco libre al final del contenido, del alto del degradado negro del pie, para que ningún texto quede encima */
-main { flex: 1; padding-bottom: 220px; }
+main { padding-bottom: 16px; }
 main:focus { outline: none; }
 
+
+/* Degradado que baja hasta el pie (blanco en claro, negro en oscuro) (como el final de la portada de Bootstrap). Ocupa el espacio libre:
+   si la página es corta, crece y el pie queda al final de la ventana sin scroll; si es larga, mide lo mínimo.
+   Curva suave en los dos extremos (smootherstep): empieza sin notarse y llega al color del pie sin escalón. */
+.page-end-fade {
+  flex: 1 0 80px;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgb(var(--mg-page-end-rgb) / 1.000) 0.00%,
+    rgb(var(--mg-page-end-rgb) / 0.998) 6.25%,
+    rgb(var(--mg-page-end-rgb) / 0.984) 12.50%,
+    rgb(var(--mg-page-end-rgb) / 0.951) 18.75%,
+    rgb(var(--mg-page-end-rgb) / 0.896) 25.00%,
+    rgb(var(--mg-page-end-rgb) / 0.820) 31.25%,
+    rgb(var(--mg-page-end-rgb) / 0.725) 37.50%,
+    rgb(var(--mg-page-end-rgb) / 0.616) 43.75%,
+    rgb(var(--mg-page-end-rgb) / 0.500) 50.00%,
+    rgb(var(--mg-page-end-rgb) / 0.384) 56.25%,
+    rgb(var(--mg-page-end-rgb) / 0.275) 62.50%,
+    rgb(var(--mg-page-end-rgb) / 0.180) 68.75%,
+    rgb(var(--mg-page-end-rgb) / 0.104) 75.00%,
+    rgb(var(--mg-page-end-rgb) / 0.049) 81.25%,
+    rgb(var(--mg-page-end-rgb) / 0.016) 87.50%,
+    rgb(var(--mg-page-end-rgb) / 0.002) 93.75%,
+    rgb(var(--mg-page-end-rgb) / 0.000) 100.00%
+  );
+}

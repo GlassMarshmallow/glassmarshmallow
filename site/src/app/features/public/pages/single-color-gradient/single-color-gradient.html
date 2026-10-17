@@ -1,0 +1,143 @@
+<section class="mg-container generator" aria-labelledby="single-title">
+  <h1 id="single-title">{{ 'single.title' | t }}</h1>
+  <p class="generator__lead mg-muted">{{ 'single.lead' | t }}</p>
+
+  <div class="generator__layout">
+    <!-- Cuadrícula de fondo para que se note la transparencia -->
+    <div class="preview-column">
+      <div class="preview">
+        <div class="preview__gradient" [style.background]="gradient()"></div>
+      </div>
+      <button type="button" class="mg-btn mg-btn--secondary mg-btn--sm" aria-haspopup="dialog" (click)="openFullscreen()">
+        <i class="mgi mgi-arrows-fullscreen" aria-hidden="true"></i>{{ 'single.fullscreen' | t }}
+      </button>
+    </div>
+
+    <div class="mg-card controls">
+      <app-color-picker [label]="'single.color' | t" [alpha]="false" [(value)]="color" />
+
+      <fieldset class="segmented">
+        <legend>{{ 'gradient.type' | t }}</legend>
+        <div class="segmented__options">
+          @for (option of types; track option.value) {
+            <label class="segmented__option">
+              <input type="radio" name="single-type" [checked]="type() === option.value" (change)="setType(option.value)" />
+              {{ option.label | t }}
+            </label>
+          }
+        </div>
+      </fieldset>
+
+      @if (type() === 'linear') {
+        <fieldset class="pad">
+          <legend>{{ 'single.direction' | t }}</legend>
+          <div class="pad__grid">
+            @for (dir of directions; track $index) {
+              @if (dir.icon) {
+                <button
+                  type="button"
+                  class="pad__btn"
+                  [attr.aria-pressed]="angle() === dir.value"
+                  [attr.aria-label]="dir.label | t"
+                  [title]="dir.label | t"
+                  (click)="angle.set(dir.value)"
+                >
+                  <i class="mgi {{ dir.icon }}" aria-hidden="true"></i>
+                </button>
+              } @else {
+                <span class="pad__center" aria-hidden="true"></span>
+              }
+            }
+          </div>
+        </fieldset>
+        <div class="control">
+          <label for="single-angle">{{ 'gradient.angle' | t }}</label>
+          <output for="single-angle">{{ angle() }}°</output>
+          <input id="single-angle" type="range" min="0" max="359" [value]="angle()" (input)="setNumber(angle, $event)" />
+        </div>
+      } @else {
+        <fieldset class="segmented">
+          <legend>{{ 'single.shape' | t }}</legend>
+          <div class="segmented__options">
+            @for (option of shapes; track option.value) {
+              <label class="segmented__option">
+                <input type="radio" name="single-shape" [checked]="shape() === option.value" (change)="shape.set(option.value)" />
+                {{ option.label | t }}
+              </label>
+            }
+          </div>
+        </fieldset>
+        <label class="invert">
+          <input type="checkbox" [checked]="inverted()" (change)="inverted.set($any($event.target).checked)" aria-describedby="single-invert-help" />
+          {{ 'single.invert' | t }}
+        </label>
+        <p id="single-invert-help" class="invert__help mg-muted">{{ 'single.invertHelp' | t }}</p>
+        <fieldset class="pad">
+          <legend>{{ 'single.position' | t }}</legend>
+          <div class="pad__grid">
+            @for (pos of positions; track pos.value) {
+              <button
+                type="button"
+                class="pad__btn pad__btn--dot"
+                [attr.aria-pressed]="position() === pos.value"
+                [attr.aria-label]="pos.label | t"
+                [title]="pos.label | t"
+                (click)="position.set(pos.value)"
+              >
+                <span class="pad__dot" aria-hidden="true"></span>
+              </button>
+            }
+          </div>
+        </fieldset>
+        <div class="control">
+          <label for="single-size">{{ 'single.radius' | t }}</label>
+          <output for="single-size">{{ radius() }} %</output>
+          <input id="single-size" type="range" min="10" max="150" [value]="radius()" (input)="setNumber(radius, $event)" aria-describedby="single-size-help" />
+          <span id="single-size-help" class="control__help mg-muted">{{ 'single.radiusHelp' | t }}</span>
+        </div>
+      }
+
+      <div class="control">
+        <label for="single-start">{{ 'single.startOpacity' | t }}</label>
+        <output for="single-start">{{ startOpacity() }} %</output>
+        <input id="single-start" type="range" min="0" max="100" [value]="startOpacity()" (input)="setNumber(startOpacity, $event)" />
+      </div>
+      <div class="control">
+        <label for="single-end">{{ 'single.endOpacity' | t }}</label>
+        <output for="single-end">{{ endOpacity() }} %</output>
+        <input id="single-end" type="range" min="0" max="100" [value]="endOpacity()" (input)="setNumber(endOpacity, $event)" />
+      </div>
+      <div class="control">
+        <label for="single-extent">{{ 'single.extent' | t }}</label>
+        <output for="single-extent">{{ extent() }} %</output>
+        <input id="single-extent" type="range" min="5" max="100" [value]="extent()" (input)="setNumber(extent, $event)" />
+      </div>
+
+      <div class="code">
+        <pre class="mg-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code>{{ css() }}</code></pre>
+        <div>
+          <button type="button" class="mg-btn mg-btn--sm" (click)="copy()">
+            <i class="mgi" [class.mgi-clipboard]="!copied()" [class.mgi-check]="copied()" aria-hidden="true"></i>
+            {{ (copied() ? 'common.copied' : 'common.copyCss') | t }}
+          </button>
+        </div>
+      </div>
+      <span class="mg-visually-hidden" aria-live="polite">{{ announcement() }}</span>
+    </div>
+  </div>
+</section>
+
+<!-- Pantalla completa: el degradado sobre el fondo real de la web, para verlo como quedará -->
+<dialog #fullscreen class="fullscreen" [attr.aria-label]="'single.fullscreen' | t">
+  <div class="mg-backdrop fullscreen__backdrop" aria-hidden="true">
+    <span class="mg-backdrop__dots"></span>
+    <span class="mg-backdrop__grain"></span>
+    <span class="mg-backdrop__scanlines"></span>
+    <span class="mg-backdrop__curve"></span>
+  </div>
+  <div class="fullscreen__gradient" [style.background]="gradient()" aria-hidden="true"></div>
+  <div class="fullscreen__bar">
+    <span>{{ 'single.fullscreenHint' | t }}</span>
+    <button type="button" class="mg-btn mg-btn--sm" (click)="closeFullscreen()">{{ 'common.close' | t }}</button>
+  </div>
+</dialog>

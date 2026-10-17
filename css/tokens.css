@@ -72,6 +72,8 @@
   --mg-header-border: transparent;
   --mg-header-shadow: 0 4px 30px rgba(0, 0, 0, .1);
   --mg-nav-link: #1d1d1f;
+  /* Barra inferior del móvil: casi opaca, porque al final de la página queda sobre el negro del pie */
+  --mg-tabbar-bg: rgba(255, 255, 255, .92);
   --mg-toggle-bg: rgba(0, 0, 0, .07);
   --mg-toggle-border: transparent;
 
@@ -126,6 +128,7 @@
   --mg-header-border: rgba(255, 255, 255, .1);
   --mg-header-shadow: none;
   --mg-nav-link: rgba(245, 245, 247, .8);
+  --mg-tabbar-bg: rgba(22, 22, 23, .72);
   --mg-toggle-bg: rgba(255, 255, 255, .12);
   --mg-toggle-border: transparent;
 

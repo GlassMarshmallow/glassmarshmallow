@@ -29,6 +29,12 @@ export const routes: Routes = [
           import('./features/public/pages/gradient-generator/gradient-generator').then((m) => m.GradientGenerator),
       },
       {
+        path: 'docs/tools/single-color-gradient',
+        title: 'titles.singleGradient',
+        loadComponent: () =>
+          import('./features/public/pages/single-color-gradient/single-color-gradient').then((m) => m.SingleColorGradient),
+      },
+      {
         path: 'examples',
         title: 'titles.examples',
         data: { heading: 'nav.examples' },

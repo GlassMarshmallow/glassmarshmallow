@@ -27,11 +27,18 @@ import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
             <span class="docs__tool-text">{{ 'docs.gradientText' | t }}</span>
           </a>
         </li>
+        <li>
+          <a class="mg-card docs__tool" routerLink="/docs/tools/single-color-gradient">
+            <i class="mgi mgi-circle-half" aria-hidden="true"></i>
+            <span class="docs__tool-title">{{ 'single.title' | t }}</span>
+            <span class="docs__tool-text">{{ 'docs.singleText' | t }}</span>
+          </a>
+        </li>
       </ul>
     </section>
   `,
   styles: `
-    .docs { padding-block: 72px 110px; }
+    .docs { padding-block: 72px 0; }
     .docs__lead { max-width: 640px; margin-bottom: 48px; color: var(--mg-text-secondary); font-size: 1.1rem; }
     .docs h2 { margin-bottom: 18px; font-size: 1.4rem; }
     .docs__tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
