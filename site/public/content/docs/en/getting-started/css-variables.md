@@ -59,6 +59,43 @@ These are the main ones. The pastel palette and its scales are in [Palette](/doc
 | `--gm-primary` | `#1d1d1f` | `#f5f5f7` |
 | `--gm-on-primary` | `#fff` | `#1d1d1f` |
 
+### Another accent color
+
+The accent is the color of accent buttons, keyboard focus, fields while typing, sliders and checkboxes. To change it for the whole site, give a value for each mode. For example, in lavender:
+
+```html-code
+<style>
+  :root {
+    --gm-accent: #6d47e5;          /* lavender 700: 5.6:1 on white */
+    --gm-accent-strong: #490795;   /* background of accent buttons, with white text (AAA) */
+    --gm-accent-hover: #350170;
+    --gm-focus: #6d47e5;
+    --gm-field-focus: #6d47e5;
+    --gm-field-ring: rgba(109, 71, 229, .15);
+  }
+  [data-theme="dark"] {
+    --gm-accent: #b9a3ff;          /* lavender: 8.9:1 on black */
+    --gm-accent-strong: #490795;
+    --gm-accent-hover: #350170;
+    --gm-focus: #b9a3ff;
+    --gm-field-focus: #b9a3ff;
+    --gm-field-ring: rgba(185, 163, 255, .45);
+  }
+</style>
+```
+
+This is how it looks (with the day values):
+
+```html
+<div data-theme="light" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 20px; border-radius: 12px; background: var(--gm-bg); --gm-accent: #6d47e5; --gm-accent-strong: #490795; --gm-accent-hover: #350170; --gm-focus: #6d47e5; --gm-field-focus: #6d47e5">
+  <button type="button" class="gm-btn gm-btn--accent">Send</button>
+  <input class="gm-range" type="range" min="0" max="100" value="60" aria-label="Volume" style="--gm-range-progress: 60%; width: 160px">
+  <div class="gm-check"><label><input type="checkbox" checked> I agree</label></div>
+</div>
+```
+
+Check the contrast: the accent on the background, 3:1 at least (4.5:1 if you use it for text); white text on `--gm-accent-strong`, 7:1.
+
 ## States
 
 | Variable | Light | Dark |

@@ -70,6 +70,7 @@ Con variables en la barra:
 | `--gm-header-border` | La línea de abajo |
 | `--gm-header-shadow` | La sombra |
 | `--gm-nav-link` | El color de los enlaces |
+| `--gm-nav-link-hover` | El color de los enlaces al pasar el ratón (un color o un degradado). Por defecto, de día el degradado de acento y de noche el color del texto |
 
 Para que el texto se lea bien sobre el nuevo fondo, lo más sencillo es fijar el modo de la barra con `data-theme`: una barra oscura en una página clara (`data-theme="dark"`) o un pastel con texto negro (`data-theme="light"`).
 
@@ -89,6 +90,27 @@ Para que el texto se lea bien sobre el nuevo fondo, lo más sencillo es fijar el
   </header>
 </div>
 ```
+
+### Al pasar el ratón
+
+Pasa el ratón por los enlaces: en la primera barra toman el color de acento (rosa de día, azul de noche); en la segunda, un degradado de lavanda a rosa.
+
+```html
+<div style="display: grid; gap: 16px">
+  <header class="gm-navbar gm-navbar--centered" style="position: relative; border-radius: 12px; --gm-nav-link-hover: var(--gm-accent)">
+    <nav class="gm-navbar__nav" aria-label="Ejemplo con el color de acento">
+      <a href="#" aria-current="page">Inicio</a><a href="#">Sobre mí</a><a href="#">Habilidades</a>
+    </nav>
+  </header>
+  <header class="gm-navbar gm-navbar--centered" data-theme="light" style="position: relative; border-radius: 12px; --gm-nav-link-hover: linear-gradient(90deg, var(--gm-lavender-700), var(--gm-pink-700))">
+    <nav class="gm-navbar__nav" aria-label="Ejemplo con degradado">
+      <a href="#" aria-current="page">Inicio</a><a href="#">Sobre mí</a><a href="#">Habilidades</a>
+    </nav>
+  </header>
+</div>
+```
+
+Para cambiar el color de acento de toda la web (también el de los botones, el foco y los campos), mira [Otro color de acento](/docs/getting-started/css-variables#otro-color-de-acento).
 
 Para toda la web, pon las variables en `:root` (y en `[data-theme="dark"]` las de noche), como en [Variables CSS](/docs/getting-started/css-variables).
 

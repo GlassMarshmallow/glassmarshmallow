@@ -59,6 +59,43 @@ Estas son las principales. La paleta pastel y sus escalas están en [Paleta](/do
 | `--gm-primary` | `#1d1d1f` | `#f5f5f7` |
 | `--gm-on-primary` | `#fff` | `#1d1d1f` |
 
+### Otro color de acento
+
+El acento es el color de los botones de acento, el foco del teclado, los campos al escribir, las barras deslizantes y las casillas. Para cambiarlo en toda la web, da un valor a cada modo. Por ejemplo, en lavanda:
+
+```html-code
+<style>
+  :root {
+    --gm-accent: #6d47e5;          /* lavanda 700: 5,6:1 sobre blanco */
+    --gm-accent-strong: #490795;   /* fondo de los botones de acento, con texto blanco (AAA) */
+    --gm-accent-hover: #350170;
+    --gm-focus: #6d47e5;
+    --gm-field-focus: #6d47e5;
+    --gm-field-ring: rgba(109, 71, 229, .15);
+  }
+  [data-theme="dark"] {
+    --gm-accent: #b9a3ff;          /* lavanda: 8,9:1 sobre negro */
+    --gm-accent-strong: #490795;
+    --gm-accent-hover: #350170;
+    --gm-focus: #b9a3ff;
+    --gm-field-focus: #b9a3ff;
+    --gm-field-ring: rgba(185, 163, 255, .45);
+  }
+</style>
+```
+
+Así se ve (con los valores de día):
+
+```html
+<div data-theme="light" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 20px; border-radius: 12px; background: var(--gm-bg); --gm-accent: #6d47e5; --gm-accent-strong: #490795; --gm-accent-hover: #350170; --gm-focus: #6d47e5; --gm-field-focus: #6d47e5">
+  <button type="button" class="gm-btn gm-btn--accent">Enviar</button>
+  <input class="gm-range" type="range" min="0" max="100" value="60" aria-label="Volumen" style="--gm-range-progress: 60%; width: 160px">
+  <div class="gm-check"><label><input type="checkbox" checked> Acepto</label></div>
+</div>
+```
+
+Comprueba el contraste: el acento sobre el fondo, 3:1 como mínimo (4,5:1 si lo usas para texto); el texto blanco sobre `--gm-accent-strong`, 7:1.
+
 ## Estados
 
 | Variable | Claro | Oscuro |

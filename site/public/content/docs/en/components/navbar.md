@@ -70,6 +70,7 @@ With variables on the bar:
 | `--gm-header-border` | The bottom line |
 | `--gm-header-shadow` | The shadow |
 | `--gm-nav-link` | The link color |
+| `--gm-nav-link-hover` | The link color on hover (a color or a gradient). By default, the accent gradient by day and the text color at night |
 
 So the text reads well on the new background, the easiest way is to fix the mode of the bar with `data-theme`: a dark bar on a light page (`data-theme="dark"`) or a pastel with black text (`data-theme="light"`).
 
@@ -89,6 +90,27 @@ So the text reads well on the new background, the easiest way is to fix the mode
   </header>
 </div>
 ```
+
+### On hover
+
+Hover over the links: in the first bar they take the accent color (pink by day, blue at night); in the second, a gradient from lavender to pink.
+
+```html
+<div style="display: grid; gap: 16px">
+  <header class="gm-navbar gm-navbar--centered" style="position: relative; border-radius: 12px; --gm-nav-link-hover: var(--gm-accent)">
+    <nav class="gm-navbar__nav" aria-label="Accent color example">
+      <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
+    </nav>
+  </header>
+  <header class="gm-navbar gm-navbar--centered" data-theme="light" style="position: relative; border-radius: 12px; --gm-nav-link-hover: linear-gradient(90deg, var(--gm-lavender-700), var(--gm-pink-700))">
+    <nav class="gm-navbar__nav" aria-label="Gradient example">
+      <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
+    </nav>
+  </header>
+</div>
+```
+
+To change the accent color of the whole site (also buttons, focus and fields), see [Another accent color](/docs/getting-started/css-variables#another-accent-color).
 
 For the whole site, put the variables in `:root` (and the night ones in `[data-theme="dark"]`), as in [CSS variables](/docs/getting-started/css-variables).
 
