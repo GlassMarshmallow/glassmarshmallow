@@ -12,7 +12,7 @@ export const VERSION = '0.1';
 
 /** Páginas que en la barra inferior del móvil van dentro de «Más»: la barra tiene 4 botones como mucho,
     contando «Más», como en My Book Box */
-const MORE_PATHS = ['/tools', '/examples', '/blog'];
+const MORE_PATHS = ['/tools', '/blog'];
 
 interface NavItem {
   path: string;
@@ -41,7 +41,6 @@ export class Header {
   readonly version = VERSION;
   readonly items: NavItem[] = [
     { path: '/docs', key: 'nav.docs', shortKey: 'nav.docsShort', icon: 'gmi-book' },
-    { path: '/examples', key: 'nav.examples', icon: 'gmi-grid' },
     { path: '/icons', key: 'nav.icons', icon: 'gmi-heart' },
     { path: '/tools', key: 'nav.tools', icon: 'gmi-palette' },
     { path: '/blog', key: 'nav.blog', icon: 'gmi-journal-text' },

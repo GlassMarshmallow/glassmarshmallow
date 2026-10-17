@@ -19,7 +19,6 @@ const PAGES: SearchItem[] = [
   ...DOCS_SECTIONS.flatMap((section) =>
     section.pages.map((page) => ({ key: pageTitleKey(page.path), section: `docsNav.sections.${section.id}`, path: `/docs/${page.path}` })),
   ),
-  { key: 'nav.examples', section: 'nav.examples', path: '/examples' },
   { key: 'icons.title', section: 'nav.icons', path: '/icons' },
   { key: 'tools.title', section: 'nav.tools', path: '/tools' },
   ...TOOLS.map((tool) => ({ key: `${tool.i18n}.title`, section: 'nav.tools', path: `/tools/${tool.id}` })),
