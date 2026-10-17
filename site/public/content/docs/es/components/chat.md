@@ -16,7 +16,7 @@ Una píldora de cristal con el campo y el botón de enviar. Al escribir, el bord
 
 ## Bocadillo de respuesta
 
-Cristal con el borde de las luces y, en oscuro, un brillo turquesa. La cola apunta a quien habla: `.gm-bubble--tail-end` (a la derecha) o `.gm-bubble--tail-start` (a la izquierda), a la altura de `--gm-bubble-tail-y`.
+Cristal con el borde de las luces y, en oscuro, un brillo turquesa. La cola apunta a quien habla: `.gm-bubble--tail-end` (a la derecha) o `.gm-bubble--tail-start` (a la izquierda), a la altura de `--gm-bubble-tail-y` (medida desde abajo en la de la derecha; en la de la izquierda, desde arriba, o desde abajo con `.gm-bubble--tail-bottom`).
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">

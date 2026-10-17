@@ -1641,6 +1641,11 @@
   border-bottom-width: 1px;
   border-left-width: 1px;
 }
+/* Cola a la izquierda medida desde abajo, como la de la derecha (cuando quien habla queda abajo, p. ej. una foto) */
+.gm-bubble--tail-start.gm-bubble--tail-bottom::before {
+  top: auto;
+  bottom: clamp(min(18px, calc(50% - 7px)), var(--gm-bubble-tail-y), max(calc(100% - 32px), calc(50% - 7px)));
+}
 @keyframes gm-bubble-in { from { opacity: 0; transform: translateY(8px) scale(.97); } }
 
 /* Puntos de «escribiendo…» */

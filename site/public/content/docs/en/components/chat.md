@@ -16,7 +16,7 @@ A glass pill with the field and the send button. While typing, the border takes 
 
 ## Answer bubble
 
-Glass with the lights border and, in dark mode, a turquoise glow. The tail points to the speaker: `.gm-bubble--tail-end` (right) or `.gm-bubble--tail-start` (left), at the height of `--gm-bubble-tail-y`.
+Glass with the lights border and, in dark mode, a turquoise glow. The tail points to the speaker: `.gm-bubble--tail-end` (right) or `.gm-bubble--tail-start` (left), at the height of `--gm-bubble-tail-y` (measured from the bottom on the right one; on the left one, from the top, or from the bottom with `.gm-bubble--tail-bottom`).
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
