@@ -66,6 +66,11 @@ export class DocPage {
         initPlayers(content);
         initCarousels(content);
         initGalleries(content);
+        // Tablas más anchas que la página: se desplazan de lado y tienen que poder enfocarse (WCAG 2.1.1)
+        content.querySelectorAll<HTMLTableElement>(':scope > table').forEach((table) => {
+          if (table.scrollWidth > table.clientWidth) table.tabIndex = 0;
+          else table.removeAttribute('tabindex');
+        });
       }
     });
 

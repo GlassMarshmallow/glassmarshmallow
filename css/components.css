@@ -1231,6 +1231,7 @@
   scrollbar-width: none;
 }
 .gm-carousel__track::-webkit-scrollbar { display: none; }
+.gm-carousel__track:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
 .gm-carousel__slide { position: relative; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
 .gm-carousel__slide > img,
 .gm-carousel__slide > video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; object-fit: cover; }

@@ -79,6 +79,8 @@ export function initCarousel(root, options = {}) {
   const next = viewport.querySelector('.gm-carousel__next');
   const dots = [...root.querySelectorAll('.gm-carousel__dot')];
   const pauseButton = root.querySelector('.gm-carousel__pause');
+  // La pista se desplaza de lado: se puede enfocar para moverla con el teclado (WCAG 2.1.1)
+  track.tabIndex = 0;
   // Mientras pasa solo, los lectores de pantalla no anuncian cada cambio (aria-live off)
   track.setAttribute('aria-live', interval && !paused ? 'off' : 'polite');
 

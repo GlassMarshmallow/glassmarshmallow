@@ -32,11 +32,11 @@ To make your own glass with other values, use the [glass generator](/tools/glass
 `gm-opacity-0`, `-25`, `-50`, `-75` and `-100`.
 
 ```html
-<div class="gm-flex gm-gap-2">
-  <div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-p-4 gm-opacity-100">100</div>
-  <div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-p-4 gm-opacity-75">75</div>
-  <div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-p-4 gm-opacity-50">50</div>
-  <div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-p-4 gm-opacity-25">25</div>
+<div class="gm-flex gm-gap-4">
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-opacity-100" style="width: 64px; height: 48px"></div><span class="gm-small">100</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-opacity-75" style="width: 64px; height: 48px"></div><span class="gm-small">75</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-opacity-50" style="width: 64px; height: 48px"></div><span class="gm-small">50</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-blue gm-theme-solid gm-rounded-sm gm-opacity-25" style="width: 64px; height: 48px"></div><span class="gm-small">25</span></div>
 </div>
 ```
 
