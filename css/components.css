@@ -189,6 +189,29 @@
   .gm-form__actions .gm-btn { flex: 1; }
 }
 
+/* --- Resumen de errores ----------------------------------------------------------
+   Arriba del formulario al enviarlo con errores: cuántos hay y un enlace a cada campo.
+   <div class="gm-error-summary" role="alert" tabindex="-1" aria-labelledby="errores-titulo">
+     <h2 class="gm-error-summary__title" id="errores-titulo">Hay 2 errores en el formulario</h2>
+     <ul class="gm-error-summary__list"><li><a href="#email">Escribe un correo completo…</a></li></ul>
+   </div>
+   Al aparecer, el foco va al resumen (tabindex="-1") para que se lea entero. */
+.gm-error-summary {
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border: 2px solid currentColor;
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-danger);
+  background: var(--gm-danger-bg);
+}
+.gm-error-summary:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
+.gm-error-summary__title { display: flex; align-items: center; gap: 8px; margin: 0; color: inherit; font-size: 1rem; font-weight: 700; letter-spacing: 0; }
+.gm-error-summary__list { display: grid; margin: 0; padding-left: 1.2rem; }
+/* Enlaces de 44 px de alto (WCAG 2.5.5, AAA), subrayados: no dependen solo del color */
+.gm-error-summary__list a { display: inline-flex; min-height: 44px; align-items: center; color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.gm-error-summary__list a:hover { text-decoration-thickness: 2px; }
+
 /* --- Aviso -------------------------------------------------------------------- */
 .gm-alert {
   display: flex;

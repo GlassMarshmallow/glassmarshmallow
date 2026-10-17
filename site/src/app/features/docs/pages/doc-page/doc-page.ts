@@ -125,6 +125,16 @@ export class DocPage {
       this.selectTab(tab);
       return;
     }
+    // Enlaces a un campo de la misma página (como los del resumen de errores): con <base href="/">, «#id»
+    // saldría al inicio, así que se lleva el foco al campo
+    const anchor = el.closest<HTMLAnchorElement>('a[href^="#"]');
+    if (anchor) {
+      event.preventDefault();
+      const target = document.getElementById(anchor.getAttribute('href')!.slice(1));
+      target?.scrollIntoView({ block: 'center' });
+      target?.focus();
+      return;
+    }
     const link = el.closest<HTMLAnchorElement>('a[href^="/"]');
     if (link) {
       event.preventDefault();

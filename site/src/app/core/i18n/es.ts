@@ -128,6 +128,7 @@ export const es: Dictionary = {
       'content/structure': 'Estructura de la página',
       'content/base': 'Base y textos',
       'content/code': 'Código',
+      'forms/rules': 'Reglas de los formularios',
       'forms/field': 'Campo',
       'forms/date-picker': 'Selector de fecha',
       'forms/color-picker': 'Selector de color',

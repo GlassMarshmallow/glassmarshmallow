@@ -127,6 +127,7 @@ export const en = {
       'content/structure': 'Page structure',
       'content/base': 'Base and text',
       'content/code': 'Code',
+      'forms/rules': 'Form rules',
       'forms/field': 'Field',
       'forms/date-picker': 'Date picker',
       'forms/color-picker': 'Color picker',

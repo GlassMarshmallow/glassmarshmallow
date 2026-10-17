@@ -52,7 +52,7 @@ Campos y formularios como el formulario de contacto del portfolio: recuadro de c
   </div>
 
   <fieldset class="gm-field">
-    <legend>¿Qué plazo te gustaría?</legend>
+    <legend>¿Qué plazo te gustaría? (opcional)</legend>
     <div class="gm-check">
       <label><input type="checkbox" name="timeline"> Urgente (en menos de 1 mes)</label>
       <label><input type="checkbox" name="timeline"> De 1 a 2 meses</label>
@@ -114,5 +114,5 @@ Marca el campo con `aria-invalid="true"` y enlaza el mensaje con `aria-described
 - Los bordes de los campos llegan a 3,5:1 en modo claro y 3,9:1 en oscuro (se pide 3:1).
 - Al escribir, el campo muestra un anillo y un borde turquesa (5,4:1 en claro, 6:1 en oscuro; para bordes se pide 3:1).
 - Usa `autocomplete` (name, email, tel…) para que el navegador pueda rellenar el formulario.
-- Marca los campos obligatorios en el texto (*) y con `required`, y dilo al principio del formulario.
+- Marca los campos obligatorios con * y `required`, y los opcionales con «(opcional)», y explica el * al principio del formulario. Más en [Reglas de los formularios](/docs/forms/rules).
 - El botón de enviar: texto blanco sobre turquesa profundo, 8,6:1 (AAA).
