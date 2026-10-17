@@ -37,37 +37,43 @@ export const routes: Routes = [
       {
         path: 'tools',
         children: [
-          { path: '', title: 'titles.tools', loadComponent: () => import('./features/tools/pages/tools-home/tools-home').then((m) => m.ToolsHome) },
+          { path: '', title: 'titles.tools', data: { description: 'seo.tools' }, loadComponent: () => import('./features/tools/pages/tools-home/tools-home').then((m) => m.ToolsHome) },
           {
             path: 'glass-generator',
             title: 'titles.glass',
+            data: { description: 'seo.glass', tool: 'glass' },
             loadComponent: () => import('./features/public/pages/glass-generator/glass-generator').then((m) => m.GlassGenerator),
           },
           {
             path: 'gradient-generator',
             title: 'titles.gradient',
+            data: { description: 'seo.gradient', tool: 'gradient' },
             loadComponent: () =>
               import('./features/public/pages/gradient-generator/gradient-generator').then((m) => m.GradientGenerator),
           },
           {
             path: 'single-color-gradient',
             title: 'titles.singleGradient',
+            data: { description: 'seo.singleGradient', tool: 'single' },
             loadComponent: () =>
               import('./features/public/pages/single-color-gradient/single-color-gradient').then((m) => m.SingleColorGradient),
           },
           {
             path: 'filter-generator',
             title: 'titles.filter',
+            data: { description: 'seo.filter', tool: 'filter' },
             loadComponent: () => import('./features/public/pages/filter-generator/filter-generator').then((m) => m.FilterGenerator),
           },
           {
             path: 'palette-generator',
             title: 'titles.palette',
+            data: { description: 'seo.palette', tool: 'palette' },
             loadComponent: () => import('./features/public/pages/palette-generator/palette-generator').then((m) => m.PaletteGenerator),
           },
           {
             path: 'tv-effect',
             title: 'titles.tv',
+            data: { description: 'seo.tv', tool: 'tv' },
             loadComponent: () => import('./features/public/pages/tv-effect/tv-effect').then((m) => m.TvEffect),
           },
         ],
@@ -75,12 +81,13 @@ export const routes: Routes = [
       {
         path: 'examples',
         title: 'titles.examples',
-        data: { heading: 'nav.examples' },
+        data: { heading: 'nav.examples', description: 'seo.examples' },
         loadComponent: () => import('./features/public/pages/examples/examples').then((m) => m.Examples),
       },
       {
         path: 'icons',
         title: 'titles.icons',
+        data: { description: 'seo.icons' },
         loadComponent: () => import('./features/public/pages/icons/icons').then((m) => m.Icons),
       },
       {
@@ -91,7 +98,7 @@ export const routes: Routes = [
       {
         path: 'blog',
         title: 'titles.blog',
-        data: { heading: 'nav.blog' },
+        data: { heading: 'nav.blog', description: 'seo.blog' },
         loadComponent: () => import('./shared/pages/coming-soon/coming-soon').then((m) => m.ComingSoon),
       },
       // Direcciones anteriores (en español)

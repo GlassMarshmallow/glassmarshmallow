@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, ElementRef, afterRenderEffect, computed, effect, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, PendingTasks, afterRenderEffect, computed, effect, inject, input, signal } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
-import { I18nService } from '../../../../core/i18n/i18n.service';
+import { I18nService, LANGUAGE_BASE } from '../../../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 import { DOCS_PAGES, pageTitleKey } from '../../data/docs-nav';
 import { RenderedDoc, renderDoc } from '../../data/render-doc';
+import { DOC_READER } from '../../data/doc-source';
+import { SeoService } from '../../../../core/seo/seo.service';
 // Script opcional del framework: los calendarios de los ejemplos funcionan de verdad
 import { initCalendars } from '../../../../../../../js/calendar.js';
 import { initMenus } from '../../../../../../../js/menu.js';
@@ -37,6 +39,9 @@ export class DocPage {
   private readonly sanitizer = inject(DomSanitizer);
   private readonly router = inject(Router);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly readDoc = inject(DOC_READER);
+  private readonly pending = inject(PendingTasks);
+  private readonly seo = inject(SeoService);
 
   readonly section = input.required<string>();
   readonly page = input.required<string>();
@@ -89,20 +94,23 @@ export class DocPage {
       let cancelled = false;
       onCleanup(() => (cancelled = true));
       this.loading.set(true);
-      fetch(`content/docs/${lang}/${path}.md`)
-        .then((response) => (response.ok ? response.text() : null))
+      // PendingTasks: al prerenderizar, Angular espera a que llegue el texto antes de escribir la página
+      const done = this.pending.add();
+      this.readDoc(lang, path)
         .then((markdown) => {
           if (cancelled) return;
-          // El servidor de desarrollo devuelve index.html si no existe el archivo: entonces no hay contenido
-          const valid = markdown && !markdown.trimStart().startsWith('<!doctype');
-          this.doc.set(valid ? renderDoc(markdown, { copy: this.i18n.t('docsNav.copy') }) : null);
+          const doc = markdown ? renderDoc(markdown, { copy: this.i18n.t('docsNav.copy'), lang }) : null;
+          this.doc.set(doc);
+          // Descripción para los buscadores: el primer párrafo de la página, sin etiquetas
+          if (doc?.lead) this.seo.setDescription(doc.lead.replace(/<[^>]+>/g, '').replace(/&[a-z]+;|&#\d+;/g, (e) => ({ '&amp;': '&', '&quot;': '"', '&#39;': "'", '&lt;': '<', '&gt;': '>' })[e] ?? e));
           this.loading.set(false);
         })
         .catch(() => {
           if (cancelled) return;
           this.doc.set(null);
           this.loading.set(false);
-        });
+        })
+        .finally(done);
     });
   }
 
@@ -177,7 +185,10 @@ export class DocPage {
     const link = el.closest<HTMLAnchorElement>('a[href^="/"]');
     if (link) {
       event.preventDefault();
-      this.router.navigateByUrl(link.getAttribute('href')!);
+      // En español los enlaces llevan «/es/» delante; el enrutador ya está dentro de /es/, así que se quita
+      const href = link.getAttribute('href')!;
+      const base = LANGUAGE_BASE[this.i18n.language()];
+      this.router.navigateByUrl(href.startsWith(base) ? `/${href.slice(base.length)}` : href);
     }
   }
 

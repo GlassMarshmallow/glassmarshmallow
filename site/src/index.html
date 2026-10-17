@@ -19,9 +19,8 @@
       var pref; try { pref = localStorage.getItem('glassmarshmallow.theme'); } catch (e) {}
       var dark = pref === 'dark' || (pref !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
       document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-      // Idioma guardado (inglés por defecto); I18nService toma el relevo al arrancar
-      var lang; try { lang = localStorage.getItem('glassmarshmallow.lang'); } catch (e) {}
-      document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+      // Idioma: el de la dirección (inglés en «/», español en «/es/»)
+      document.documentElement.lang = location.pathname.indexOf('/es/') === 0 || location.pathname === '/es' ? 'es' : 'en';
       var themeColor = document.querySelector('meta[name="theme-color"]');
       if (themeColor) themeColor.setAttribute('content', dark ? '#000000' : '#f5f5f7');
     })();

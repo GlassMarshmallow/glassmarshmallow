@@ -5,7 +5,7 @@
  * Mientras estén vacíos o en false, las opciones que los necesitan no se enseñan.
  */
 export const SITE = {
-  url: '',
+  url: 'https://glassmarshmallow.com',
   repo: 'https://github.com/GlassMarshmallow/glassmarshmallow',
   repoPublic: true,
   /** Plantilla de portfolio (página Ejemplos): true cuando su repositorio sea público */

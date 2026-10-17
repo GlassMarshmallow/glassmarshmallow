@@ -31,7 +31,8 @@ export class IconDetail {
 
   /** El SVG del icono, tal cual está en el archivo */
   readonly svg = resource({
-    params: () => (this.icon() ? this.svgUrl() : undefined),
+    // Al prerenderizar no se descarga (no hay servidor al que pedirlo): lo pide el navegador al abrir la página
+    params: () => (this.icon() && typeof window !== 'undefined' ? this.svgUrl() : undefined),
     loader: async ({ params }) => (await (await fetch(params)).text()).trim(),
   });
 

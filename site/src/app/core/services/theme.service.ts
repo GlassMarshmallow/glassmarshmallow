@@ -1,4 +1,4 @@
-import { computed, DestroyRef, effect, inject, Injectable, signal } from '@angular/core';
+import { computed, DestroyRef, DOCUMENT, effect, inject, Injectable, signal } from '@angular/core';
 
 export type ThemePreference = 'system' | 'light' | 'dark';
 export type Theme = 'light' | 'dark';
@@ -31,6 +31,8 @@ export class ThemeService {
     return preference === 'system' ? (this.systemDark() ? 'dark' : 'light') : preference;
   });
 
+  private readonly document = inject(DOCUMENT);
+
   constructor() {
     const onSystemChange = (event: MediaQueryListEvent) => this.systemDark.set(event.matches);
     this.media?.addEventListener('change', onSystemChange);
@@ -38,9 +40,10 @@ export class ThemeService {
 
     effect(() => {
       const theme = this.theme();
-      document.documentElement.dataset['theme'] = theme;
+      // (al prerenderizar no hay navegador: el script de index.html pone el tema antes de pintar)
+      this.document.documentElement.setAttribute('data-theme', theme);
       // La barra del navegador en móvil sigue al tema elegido
-      document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => meta.setAttribute('content', THEME_COLORS[theme]));
+      this.document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => meta.setAttribute('content', THEME_COLORS[theme]));
     });
   }
 

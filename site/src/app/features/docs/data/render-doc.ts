@@ -15,7 +15,13 @@ export interface RenderedDoc {
 
 export interface RenderLabels {
   copy: string;
+  /** Idioma de la página: en español, los enlaces internos («/docs/…») van a «/es/docs/…» */
+  lang?: string;
 }
+
+/** Enlaces internos de la página en español: dentro de /es/, para que los buscadores recorran esa versión */
+const localizeLinks = (html: string, lang?: string) =>
+  lang && lang !== 'en' ? html.replace(/href="\/(?!\/)/g, `href="/${lang}/`) : html;
 
 const escapeHtml = (text: string) =>
   text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -157,6 +163,6 @@ export function renderDoc(markdown: string, labels: RenderLabels): RenderedDoc {
 
   // El parser necesita las referencias de enlaces del Markdown original
   const list = Object.assign(out, { links: tokens.links }) as TokensList;
-  const html = marked.parser(list) as string;
-  return { title, lead, html, toc };
+  const html = localizeLinks(marked.parser(list) as string, labels.lang);
+  return { title, lead: localizeLinks(lead, labels.lang), html, toc };
 }

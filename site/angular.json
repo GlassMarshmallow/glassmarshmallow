@@ -17,6 +17,8 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
+            "server": "src/main.server.ts",
+            "outputMode": "static",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -50,6 +52,11 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "es": {
+              "baseHref": "/es/",
+              "outputPath": "dist/web-es",
+              "define": { "GM_LANG": "'es'" }
             }
           },
           "defaultConfiguration": "production"

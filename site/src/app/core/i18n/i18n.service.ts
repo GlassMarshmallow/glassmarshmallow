@@ -1,45 +1,44 @@
-import { Injectable, computed, effect, signal } from '@angular/core';
+import { DOCUMENT, Injectable, computed, effect, inject, signal } from '@angular/core';
 import { Dictionary, en } from './en';
 import { es } from './es';
 
 export type Language = 'en' | 'es';
 
-/** Debe coincidir con la clave que lee el script de index.html antes de arrancar. */
-const LANGUAGE_STORAGE_KEY = 'glassmarshmallow.lang';
+/**
+ * Cada idioma es una compilación propia de la web, con sus direcciones: inglés en «/» y español en «/es/»
+ * (así los buscadores encuentran las dos). La compilación española define GM_LANG = 'es' (angular.json).
+ */
+declare const GM_LANG: Language | undefined;
+export const BUILD_LANGUAGE: Language = typeof GM_LANG !== 'undefined' && GM_LANG === 'es' ? 'es' : 'en';
+/** Carpeta de cada idioma en la dirección */
+export const LANGUAGE_BASE: Record<Language, string> = { en: '/', es: '/es/' };
+
 const DICTIONARIES: Record<Language, Dictionary> = { en, es };
 export const LANGUAGES: { code: Language; label: string }[] = [
   { code: 'en', label: 'English' },
   { code: 'es', label: 'Español' },
 ];
 
-const readStoredLanguage = (): Language => {
-  try {
-    const value = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    return value === 'es' ? 'es' : 'en';
-  } catch {
-    return 'en';
-  }
-};
-
-/** Idioma de la web: inglés por defecto y español con el selector. Se recuerda en este dispositivo. */
+/** Idioma de la web: el de la compilación (la dirección). El selector lleva a la misma página en el otro idioma. */
 @Injectable({ providedIn: 'root' })
 export class I18nService {
-  readonly language = signal<Language>(readStoredLanguage());
+  private readonly document = inject(DOCUMENT);
+  readonly language = signal<Language>(BUILD_LANGUAGE);
   private readonly dictionary = computed(() => DICTIONARIES[this.language()]);
 
   constructor() {
     effect(() => {
-      document.documentElement.lang = this.language();
+      this.document.documentElement.lang = this.language();
     });
   }
 
+  /** Lleva a la misma página en el otro idioma (es otra compilación: carga la página entera) */
   setLanguage(language: Language) {
-    this.language.set(language);
-    try {
-      localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
-    } catch {
-      /* almacenamiento no disponible */
-    }
+    if (language === this.language()) return;
+    const location = this.document.defaultView?.location;
+    if (!location) return;
+    const path = location.pathname.slice(LANGUAGE_BASE[this.language()].length);
+    location.assign(`${LANGUAGE_BASE[language]}${path}${location.search}${location.hash}`);
   }
 
   /** Texto de la clave «sección.texto», con los {parámetros} sustituidos. */
