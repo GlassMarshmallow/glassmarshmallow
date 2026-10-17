@@ -1,33 +1,36 @@
-<section class="mg-container icons-page" aria-labelledby="icons-title">
+<section class="gm-container icons-page" aria-labelledby="icons-title">
   <h1 id="icons-title">{{ 'icons.title' | t }}</h1>
-  <p class="icons-page__lead mg-muted">{{ 'icons.lead' | t: { line: lineCount, fill: fillCount } }}</p>
+  <p class="icons-page__lead gm-muted">{{ 'icons.lead' | t: { line: lineCount, fill: fillCount } }}</p>
 
-  <div class="mg-field icons-page__search">
-    <label for="icon-search">{{ 'icons.search' | t }}</label>
-    <input id="icon-search" type="search" [placeholder]="'icons.searchPlaceholder' | t" (input)="onSearch($event)" />
-  </div>
-  <p class="mg-visually-hidden" aria-live="polite">{{ query() ? ('icons.found' | t: { count: resultCount() }) : '' }}</p>
-
-  @for (group of groups(); track group.category) {
-    <section class="category" [attr.aria-labelledby]="'cat-' + $index">
-      <h2 [id]="'cat-' + $index">
-        {{ group.category }} <span class="mg-muted category__count">{{ group.icons.length }}</span>
-      </h2>
-      <ul class="grid">
-        @for (icon of group.icons; track icon.name) {
-          <li class="grid__item">
-            <span class="grid__icons">
-              <i class="mgi mgi-{{ icon.name }}" aria-hidden="true"></i>
-              @if (icon.fill) {
-                <i class="mgi mgi-{{ icon.name }}-fill" aria-hidden="true"></i>
-              }
-            </span>
-            <code class="grid__name">{{ icon.name }}</code>
-          </li>
+  <div class="icons-page__filters">
+    <div class="gm-field icons-page__search">
+      <label for="icon-search">{{ 'icons.search' | t }}</label>
+      <input id="icon-search" type="search" [placeholder]="'icons.searchPlaceholder' | t" (input)="onSearch($event)" />
+    </div>
+    <div class="gm-field">
+      <label for="icon-category">{{ 'icons.category' | t }}</label>
+      <select id="icon-category" (change)="onCategory($event)">
+        <option value="">{{ 'icons.allCategories' | t }}</option>
+        @for (category of categories; track category) {
+          <option [value]="category">{{ category }}</option>
         }
-      </ul>
-    </section>
-  } @empty {
-    <p class="mg-muted">{{ 'icons.empty' | t }}</p>
+      </select>
+    </div>
+  </div>
+  <p class="icons-page__count gm-muted" aria-live="polite">{{ 'icons.found' | t: { count: icons().length } }}</p>
+
+  @if (icons().length) {
+    <ul class="grid">
+      @for (icon of icons(); track icon.name) {
+        <li>
+          <a class="tile" [routerLink]="['/icons', icon.name]">
+            <span class="tile__box"><i class="gmi gmi-{{ icon.name }}" aria-hidden="true"></i></span>
+            <span class="tile__name">{{ icon.name }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="gm-muted">{{ 'icons.empty' | t }}</p>
   }
 </section>

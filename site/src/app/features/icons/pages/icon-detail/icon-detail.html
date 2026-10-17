@@ -1,0 +1,73 @@
+<section class="gm-container icon" aria-labelledby="icon-title">
+  <app-back-link path="/icons" section="nav.icons" />
+
+  @if (icon(); as current) {
+    <p class="icon__category gm-muted">{{ current.category }}</p>
+    <h1 id="icon-title">{{ title() }}</h1>
+    <code class="icon__file">{{ current.name }}.svg</code>
+
+    <!-- Vista grande -->
+    <div class="gm-card icon__preview">
+      <i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i>
+    </div>
+
+    <h2>{{ 'icons.examples' | t }}</h2>
+    <div class="gm-card icon__examples">
+      <p class="icon__ex-heading"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i> {{ 'icons.exHeading' | t }}</p>
+      <p class="icon__ex-small"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i> {{ 'icons.exSmall' | t }}</p>
+      <p class="gm-muted">{{ 'icons.exInline' | t }} <i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i></p>
+      <p><a class="icon__ex-link" href="#" (click)="$event.preventDefault()">{{ 'icons.exLink' | t }} <i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i></a></p>
+      <div class="icon__ex-buttons">
+        <button type="button" class="gm-btn"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i>{{ 'icons.exButton' | t }}</button>
+        <button type="button" class="gm-btn gm-btn--secondary"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i>{{ 'icons.exButton' | t }}</button>
+      </div>
+    </div>
+
+    <h2>{{ 'icons.use' | t }}</h2>
+    <div class="gm-card icon__use">
+      <div class="icon__code">
+        <div class="icon__code-bar">
+          <h3>SVG</h3>
+          <div class="icon__code-actions">
+            <a class="gm-btn gm-btn--secondary gm-btn--sm" [href]="svgUrl()" [attr.download]="current.name + '.svg'">
+              <i class="gmi gmi-download" aria-hidden="true"></i>{{ 'icons.download' | t }}
+            </a>
+            <button type="button" class="gm-btn gm-btn--sm" (click)="copy('svg')" [disabled]="!svg.hasValue()">
+              <i class="gmi" [class.gmi-clipboard]="copied() !== 'svg'" [class.gmi-check]="copied() === 'svg'" aria-hidden="true"></i>
+              {{ (copied() === 'svg' ? 'common.copied' : 'common.copy') | t }}
+            </button>
+          </div>
+        </div>
+        <pre class="gm-code" tabindex="0" [attr.aria-label]="'icons.svgCode' | t"><code>{{ svg.value() ?? '…' }}</code></pre>
+      </div>
+      <div class="icon__code">
+        <div class="icon__code-bar">
+          <h3>{{ 'icons.fontHtml' | t }}</h3>
+          <button type="button" class="gm-btn gm-btn--sm" (click)="copy('html')">
+            <i class="gmi" [class.gmi-clipboard]="copied() !== 'html'" [class.gmi-check]="copied() === 'html'" aria-hidden="true"></i>
+            {{ (copied() === 'html' ? 'common.copied' : 'common.copy') | t }}
+          </button>
+        </div>
+        <pre class="gm-code" tabindex="0" [attr.aria-label]="'icons.fontHtml' | t"><code>{{ fontHtml() }}</code></pre>
+      </div>
+      <span class="gm-visually-hidden" aria-live="polite">{{ announcement() }}</span>
+    </div>
+
+    @if (related().length) {
+      <h2>{{ 'icons.related' | t }}</h2>
+      <ul class="icon__related">
+        @for (other of related(); track other.name) {
+          <li>
+            <a class="icon__tile" [routerLink]="['/icons', other.name]">
+              <span class="icon__tile-box"><i class="gmi gmi-{{ other.name }}" aria-hidden="true"></i></span>
+              <span class="icon__tile-name">{{ other.name }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    }
+  } @else {
+    <h1 id="icon-title">{{ 'icons.notFound' | t }}</h1>
+    <p class="gm-muted">{{ 'icons.notFoundText' | t: { name: name() } }}</p>
+  }
+</section>
