@@ -360,6 +360,12 @@
 .gm-navbar__actions .gm-icon-btn .gmi { transition: transform .35s ease; }
 .gm-navbar__actions .gm-icon-btn:hover .gmi { transform: rotate(25deg) scale(1.08); }
 
+/* Barra sin logo (la de la plantilla de portfolio): los enlaces en el centro y las acciones a la derecha */
+.gm-navbar--centered { justify-content: center; }
+.gm-navbar--centered .gm-navbar__actions { position: absolute; right: max(24px, calc((100% - var(--gm-container)) / 2)); }
+/* Botón que abre el menú a pantalla completa: solo en el móvil */
+.gm-navbar__menu { display: none; }
+
 /* Barra inferior de pestañas para móvil (flotante y de cristal, como en iOS) */
 .gm-tabbar,
 .gm-tabbar-more { display: none; }
@@ -445,6 +451,27 @@
 }
 
 @media (max-width: 860px) {
+  .gm-navbar__menu { display: grid; }
+  .gm-navbar--centered .gm-navbar__actions { right: 20px; }
+  /* Flotante: en el móvil no hay barra, solo los botones redondos de cristal sobre la página */
+  .gm-navbar--floating {
+    border-bottom: 0;
+    background: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    pointer-events: none;
+  }
+  .gm-navbar--floating .gm-navbar__actions { pointer-events: auto; }
+  .gm-navbar--floating .gm-navbar__actions .gm-icon-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-color: var(--gm-glass-btn-border);
+    background: var(--gm-glass-btn-bg);
+    box-shadow: var(--gm-glass-btn-shadow);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
   .gm-navbar__brand > span { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
   .gm-navbar { height: 62px; padding-inline: 15px; }
   .gm-navbar__logo { width: 42px; height: 42px; }
@@ -1123,6 +1150,30 @@
 /* Lista dentro del acordeón: un elemento debajo de otro (con más de 3, nunca seguidos en una frase) */
 .gm-accordion__list { display: grid; gap: .5rem; margin: 0; padding-left: 1.2rem; }
 .gm-accordion__list li::marker { color: var(--gm-muted); }
+/* Vista previa a la derecha del título (cerrado): unos logos en cuadritos y cuántos más hay */
+.gm-accordion__preview { display: flex; align-items: center; gap: .35rem; margin-left: auto; color: var(--gm-text-secondary); }
+.gm-accordion__preview + .gm-accordion__chevron { margin-left: 0; }
+.gm-accordion__preview-item { display: grid; width: 2rem; height: 2rem; border-radius: 8px; background: var(--gm-hover); font-size: 1.15rem; place-items: center; }
+.gm-accordion__preview-more { padding: 0 .35rem; color: var(--gm-muted); font-size: .8rem; font-weight: 600; }
+@media (max-width: 600px) {
+  .gm-accordion__preview-item:nth-child(n + 4), .gm-accordion__preview-more { display: none; }
+}
+@media (max-width: 420px) {
+  .gm-accordion__preview { display: none; }
+  .gm-accordion__preview + .gm-accordion__chevron { margin-left: auto; }
+}
+/* Lista con un logo o icono delante de cada elemento, uno debajo de otro. Es información, no botones: sin caja ni
+   efecto al pasar el ratón. Con --cascade (y style="--i: 0, 1, 2…") entran uno detrás de otro al abrir */
+.gm-accordion__list--icons { gap: .75rem; padding-left: 0; list-style: none; }
+.gm-accordion__list--icons li { display: flex; align-items: center; gap: .75rem; line-height: 1.3; }
+.gm-accordion__list-icon { display: grid; width: 2.25rem; flex: none; font-size: 1.5rem; place-items: center; }
+.gm-accordion__item[open] .gm-accordion__list--cascade li { animation: gm-list-in .45s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i, 0) * 40ms); }
+.gm-accordion__item[open] .gm-accordion__list--cascade .gm-accordion__list-icon { animation: gm-icon-pop .5s cubic-bezier(.34, 1.56, .64, 1) both; animation-delay: calc(var(--i, 0) * 40ms + 80ms); }
+@keyframes gm-list-in { from { opacity: 0; filter: blur(4px); transform: translateY(12px) scale(.96); } }
+@keyframes gm-icon-pop { from { opacity: 0; transform: scale(.3) rotate(-20deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .gm-accordion__item[open] .gm-accordion__list--cascade :is(li, .gm-accordion__list-icon) { animation: none; }
+}
 .gm-accordion__content > :first-child { margin-top: 0; }
 .gm-accordion__content > :last-child { margin-bottom: 0; }
 
@@ -1802,6 +1853,46 @@
 .gm-ticker--static .gm-ticker__track { width: auto; justify-content: center; animation: none; }
 @keyframes gm-ticker { to { transform: translateX(-50%); } }
 
+/* --- Sección con título centrado (Sobre mí, Habilidades) ------------------------------
+   <section class="gm-section"><div class="gm-container gm-container--narrow">
+     <h2 class="gm-section__title">Sobre mí</h2>
+     <p class="gm-section__text">Párrafo…</p>
+   </div></section> */
+.gm-section { padding-block: 6rem; }
+.gm-section__title { margin: 0 0 2rem; font-size: 2rem; text-align: center; }
+.gm-section__text { margin: 0 auto 1.2rem; color: var(--gm-text-secondary); font-size: 1.1rem; line-height: 1.7; }
+.gm-section__text strong { color: var(--gm-text); }
+@media (max-width: 600px) {
+  .gm-section { padding-block: 3.5rem; }
+  .gm-section__title { font-size: 1.7rem; }
+}
+
+/* --- Iconos sociales grandes (correo, redes) ------------------------------------------
+   <div class="gm-socials"><a href="…" aria-label="GitHub (se abre en una pestaña nueva)"><i class="gmi gmi-github" aria-hidden="true"></i></a>…</div>
+   Tamaño del icono: --gm-socials-size (36 px por defecto). Cada enlace mide 44 px como mínimo. */
+.gm-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; }
+.gm-socials :is(a, button) {
+  display: grid;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  color: var(--gm-text);
+  background: none;
+  font-size: var(--gm-socials-size, 36px);
+  place-items: center;
+  cursor: pointer;
+  transition: transform .2s ease, color .2s ease;
+}
+.gm-socials :is(a, button):hover { color: var(--gm-accent); transform: scale(1.1); }
+
+/* --- Lista de datos (etiqueta y valor, como un resumen) ---------------------------------
+   <dl class="gm-dl"><div><dt>Nombre</dt><dd>Lucía Martín</dd></div>…</dl> */
+.gm-dl { margin: 0; }
+.gm-dl > div { margin-bottom: .35rem; }
+.gm-dl dt { color: var(--gm-muted); font-weight: 600; }
+.gm-dl dd { margin: 0; overflow-wrap: anywhere; }
+
 /* --- Pie de página (el de la plantilla de portfolio) ----------------------------------
    <footer class="gm-footer">
      <div class="gm-container">
@@ -1865,6 +1956,7 @@
 [data-theme="dark"] :is(.gm-dialog__section > h3, .gm-prose h2) { color: var(--gm-sky); background: none; -webkit-text-fill-color: currentColor; }
 
 @media (prefers-reduced-motion: reduce) {
-  .gm-chip, .gm-chat-input__send, .gm-bubble, .gm-typing > span, .gm-ticker__track, .gm-fullscreen-menu { animation: none; transition: none; }
+  .gm-chip, .gm-chat-input__send, .gm-bubble, .gm-typing > span, .gm-ticker__track, .gm-fullscreen-menu, .gm-socials :is(a, button) { animation: none; transition: none; }
+  .gm-socials :is(a, button):hover { transform: none; }
   .gm-chip:hover:not(:disabled, [aria-disabled="true"]) { transform: none; }
 }
