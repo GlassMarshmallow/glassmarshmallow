@@ -1,13 +1,14 @@
 /*!
  * GlassMarshmallow · Franja de logos (opcional)
  * Hace funcionar el botón de pausa de <div class="gm-ticker"> (.gm-ticker__pause): para y reanuda la franja
- * (WCAG 2.2.2), cambia su icono y dice si está pulsado (aria-pressed). Sin dependencias.
+ * (WCAG 2.2.2) y cambia su icono. Es un botón conmutador: el nombre no cambia («Pausar la franja») y dice si está
+ * pulsado con aria-pressed (cambiar las dos cosas a la vez confunde a los lectores de pantalla). Sin dependencias.
  * Textos en español si <html lang="es">; en inglés si no. Se cambian con initTicker(root, { texts }).
  */
 
 const TEXTS = {
-  es: { pause: 'Pausar la franja', play: 'Reanudar la franja' },
-  en: { pause: 'Pause the strip', play: 'Resume the strip' },
+  es: { pause: 'Pausar la franja' },
+  en: { pause: 'Pause the strip' },
 };
 
 /** Pone en marcha el botón de pausa de una franja. Devuelve una función para quitarlo. */
@@ -20,7 +21,7 @@ export function initTicker(root, options = {}) {
   const render = () => {
     const paused = root.classList.contains('is-paused');
     button.setAttribute('aria-pressed', String(paused));
-    button.setAttribute('aria-label', paused ? t.play : t.pause);
+    button.setAttribute('aria-label', t.pause);
     button.innerHTML = `<i class="gmi ${paused ? 'gmi-play-fill' : 'gmi-pause-fill'}" aria-hidden="true"></i>`;
   };
   const onClick = () => {

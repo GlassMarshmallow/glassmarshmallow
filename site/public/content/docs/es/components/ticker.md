@@ -28,7 +28,7 @@ El contenido va **dos veces seguidas** dentro de `.gm-ticker__track`, para que l
 
 ## Pararla
 
-El botón redondo con el icono de pausa (`.gm-ticker__pause`) va al final de la franja, sin ocupar sitio. Con el script opcional, al pulsarlo la franja se para (`.is-paused`), el icono cambia a reproducir y el botón dice que está pulsado:
+El botón redondo con el icono de pausa (`.gm-ticker__pause`) va al final de la franja, sin ocupar sitio. Con el script opcional, al pulsarlo la franja se para (`.is-paused`), el icono cambia a reproducir y el botón dice que está pulsado (su nombre, «Pausar la franja», no cambia):
 
 ```html-code
 <script type="module">

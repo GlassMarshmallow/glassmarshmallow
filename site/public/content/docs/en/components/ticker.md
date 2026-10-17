@@ -28,7 +28,7 @@ The content goes **twice in a row** inside `.gm-ticker__track`, so the loop is s
 
 ## Pausing it
 
-The round button with the pause icon (`.gm-ticker__pause`) goes at the end of the strip, without taking up space. With the optional script, pressing it stops the strip (`.is-paused`), the icon changes to play and the button says it is pressed:
+The round button with the pause icon (`.gm-ticker__pause`) goes at the end of the strip, without taking up space. With the optional script, pressing it stops the strip (`.is-paused`), the icon changes to play and the button says it is pressed (its name, “Pause the strip”, does not change):
 
 ```html-code
 <script type="module">
