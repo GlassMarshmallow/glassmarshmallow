@@ -33,6 +33,11 @@ export const DOCS_SECTIONS: DocsSection[] = [
     pages: ['containers', 'breakpoints', 'grid'].map((p) => ({ path: `layout/${p}` })),
   },
   {
+    id: 'utilities',
+    icon: 'gmi-gear',
+    pages: ['spacing', 'sizing', 'borders', 'shadows', 'effects', 'animations', 'flex', 'display'].map((p) => ({ path: `utilities/${p}` })),
+  },
+  {
     id: 'content',
     icon: 'gmi-journal-text',
     pages: ['structure', 'base', 'code'].map((p) => ({ path: `content/${p}` })),

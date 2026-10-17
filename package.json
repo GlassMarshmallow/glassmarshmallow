@@ -12,6 +12,7 @@
     "js/*.d.ts"
   ],
   "scripts": {
+    "utilities": "node build/gen-utilities.mjs",
     "css": "node build/build-css.mjs",
     "site": "npm --prefix site start",
     "site:build": "npm --prefix site run build"
