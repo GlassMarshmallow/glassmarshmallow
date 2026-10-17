@@ -1486,14 +1486,16 @@
 
 /* --- Chip (las preguntas rápidas y «Quiero un proyecto») ----------------------
    <button type="button" class="gm-chip">¿Qué tecnologías usas?</button>
-   <button type="button" class="gm-chip gm-chip--accent"><i class="gmi gmi-stars" aria-hidden="true"></i>Quiero un proyecto</button> */
+   <button type="button" class="gm-chip gm-chip--accent"><i class="gmi gmi-stars" aria-hidden="true"></i>Quiero un proyecto</button>
+   Se personaliza con --gm-chip-border (el borde en reposo) y --gm-chip-color (el borde al pasar el ratón y el del
+   destacado: un color o un degradado). Sin borde: .gm-chip--borderless. */
 .gm-chip {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: .4rem;
   padding: .35rem .85rem;
-  border: 1px solid var(--gm-panel-border);
+  border: 1px solid var(--gm-chip-border, var(--gm-panel-border));
   border-radius: var(--gm-radius-pill);
   color: var(--gm-text);
   background: var(--gm-panel-bg);
@@ -1510,11 +1512,14 @@
 .gm-chip::before { position: absolute; top: min(0px, calc(50% - 22px)); right: 0; bottom: min(0px, calc(50% - 22px)); left: 0; content: ""; }
 .gm-chip .gmi { font-size: 1.15em; }
 .gm-chip:hover:not(:disabled, [aria-disabled="true"]) { border-color: transparent; transform: translateY(-2px); }
+.gm-chip::after { background: var(--gm-chip-color, var(--gm-lights-gradient)); }
 .gm-chip:hover:not(:disabled, [aria-disabled="true"])::after { opacity: 1; }
 .gm-chip:disabled, .gm-chip[aria-disabled="true"] { opacity: .5; cursor: default; }
 /* Destacado: el borde de las luces siempre */
 .gm-chip--accent { border-color: transparent; font-weight: 600; }
 .gm-chip--accent::after { opacity: 1; }
+/* Sin borde: solo el cristal (el texto ya dice qué es); al pasar el ratón sigue subiendo un poco */
+.gm-chip--borderless { --gm-chip-border: transparent; --gm-chip-color: transparent; }
 
 /* --- Chat: campo para preguntar --------------------------------------------------
    <form class="gm-chat-input" role="search">
