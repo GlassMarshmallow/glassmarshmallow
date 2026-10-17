@@ -43,6 +43,25 @@ El pie de foto (`.gm-carousel__caption`) es opcional.
 </figure>
 ```
 
+## Sin botones (fila deslizable)
+
+Como las preguntas rápidas del chat del portfolio: todo en una sola fila que se desliza de lado con el dedo, el ratón o el teclado, sin flechas ni puntos. El borde derecho se difumina para que se vea que hay más. Usa `.gm-scroll-row`; no necesita script.
+
+```html
+<div class="gm-scroll-row" role="group" aria-label="Preguntas rápidas" style="max-width: 340px">
+  <button type="button" class="gm-btn gm-btn--pill">¿Qué tecnologías usas?</button>
+  <button type="button" class="gm-btn gm-btn--pill">¿Cuánto cuesta una web?</button>
+  <button type="button" class="gm-btn gm-btn--pill">¿Haces tiendas online?</button>
+  <button type="button" class="gm-btn gm-btn--pill">¿Cuánto tardas?</button>
+</div>
+```
+
+Con `.gm-scroll-row--mobile`, solo se desliza en el móvil (767 px o menos); en pantallas grandes, las piezas bajan a la línea siguiente.
+
+```html-code
+<div class="gm-scroll-row gm-scroll-row--mobile" role="group" aria-label="Preguntas rápidas">…</div>
+```
+
 ## Script
 
 El framework da el aspecto. Sin el script, las diapositivas se pasan deslizando. El script opcional añade las flechas, los puntos y el paso automático:
@@ -64,3 +83,4 @@ Al cambiar de diapositiva, lanza `gm-carousel-change` con su número (empezando 
 - Si pasa solo, tiene botón de pausa y se para con el ratón o el teclado (WCAG 2.2.2). Mientras pasa solo, los lectores de pantalla no anuncian cada cambio.
 - El pie de foto es blanco con sombra sobre un degradado negro, para que se lea sobre cualquier imagen. Cada imagen lleva su `alt`.
 - No metas en un carrusel lo único importante: mucha gente solo ve la primera diapositiva.
+- En la fila deslizable, cada pieza se alcanza con Tab y la fila se desplaza sola hasta ella.

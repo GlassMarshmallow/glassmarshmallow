@@ -43,6 +43,25 @@ The caption (`.gm-carousel__caption`) is optional.
 </figure>
 ```
 
+## Without buttons (swipe row)
+
+Like the quick questions of the portfolio chat: everything in one row that slides sideways with a finger, the mouse or the keyboard, with no arrows or dots. The right edge fades out to show there is more. Use `.gm-scroll-row`; no script needed.
+
+```html
+<div class="gm-scroll-row" role="group" aria-label="Quick questions" style="max-width: 340px">
+  <button type="button" class="gm-btn gm-btn--pill">Which technologies do you use?</button>
+  <button type="button" class="gm-btn gm-btn--pill">How much does a website cost?</button>
+  <button type="button" class="gm-btn gm-btn--pill">Do you build online shops?</button>
+  <button type="button" class="gm-btn gm-btn--pill">How long does it take?</button>
+</div>
+```
+
+With `.gm-scroll-row--mobile`, it only slides on phones (767 px or less); on large screens, the items wrap to the next line.
+
+```html-code
+<div class="gm-scroll-row gm-scroll-row--mobile" role="group" aria-label="Quick questions">…</div>
+```
+
 ## Script
 
 The framework provides the look. Without the script, slides move by swiping. The optional script adds the arrows, the dots and autoplay:
@@ -64,3 +83,4 @@ When the slide changes, it fires `gm-carousel-change` with its number (starting 
 - With autoplay, there is a pause button and it stops with the mouse or the keyboard (WCAG 2.2.2). While autoplaying, screen readers do not announce every change.
 - The caption is white with a shadow on a black gradient, so it reads over any image. Every image has its `alt`.
 - Do not put the only important thing in a carousel: many people only see the first slide.
+- In the swipe row, every item is reachable with Tab and the row scrolls to it on its own.
