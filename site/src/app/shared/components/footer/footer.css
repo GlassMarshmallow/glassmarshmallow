@@ -15,3 +15,8 @@
 .footer__links a:hover { color: var(--gm-link-hover); text-decoration: underline; }
 .footer__credit { margin: 0; }
 .footer__author { color: var(--gm-text); font-weight: 600; }
+
+/* Móvil: la barra de pestañas flota abajo; el footer deja su hueco para que la última línea se vea */
+@media (max-width: 860px) {
+  .footer { padding-bottom: calc(36px + 96px + env(safe-area-inset-bottom)); }
+}
