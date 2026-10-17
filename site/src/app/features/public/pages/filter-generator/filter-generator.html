@@ -28,9 +28,9 @@
     <div class="gm-card controls">
       <fieldset class="segmented">
         <legend>{{ 'filter.previewMode' | t }}</legend>
-        <div class="segmented__options">
+        <div class="gm-segmented">
           @for (option of themes; track option.value) {
-            <label class="segmented__option">
+            <label>
               <input type="radio" name="filter-theme" [checked]="previewTheme() === option.value" (change)="previewTheme.set(option.value)" />
               {{ option.label | t }}
             </label>

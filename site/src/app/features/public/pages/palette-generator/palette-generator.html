@@ -60,9 +60,9 @@
     <div class="gm-card controls">
       <fieldset class="segmented">
         <legend>{{ 'filter.previewMode' | t }}</legend>
-        <div class="segmented__options">
+        <div class="gm-segmented">
           @for (option of themes; track option.value) {
-            <label class="segmented__option">
+            <label>
               <input type="radio" name="palette-theme" [checked]="previewTheme() === option.value" (change)="previewTheme.set(option.value)" />
               {{ option.label | t }}
             </label>
@@ -74,9 +74,9 @@
 
       <fieldset class="segmented">
         <legend>{{ 'palette.harmony' | t }}</legend>
-        <div class="segmented__options segmented__options--stack">
+        <div class="gm-segmented gm-segmented--stack">
           @for (option of harmonies; track option) {
-            <label class="segmented__option">
+            <label>
               <input type="radio" name="palette-harmony" [checked]="harmony() === option" (change)="harmony.set(option)" />
               {{ 'palette.harmonies.' + option | t }}
             </label>

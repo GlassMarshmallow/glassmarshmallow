@@ -35,9 +35,9 @@
     <div class="gm-card controls">
       <fieldset class="types">
         <legend>{{ 'gradient.type' | t }}</legend>
-        <div class="types__options">
+        <div class="gm-segmented">
           @for (option of types; track option.value) {
-            <label class="types__option">
+            <label>
               <input type="radio" name="gradient-type" [value]="option.value" [checked]="type() === option.value" (change)="setType($event)" />
               {{ option.label | t }}
             </label>

@@ -19,9 +19,9 @@
 
       <fieldset class="segmented">
         <legend>{{ 'gradient.type' | t }}</legend>
-        <div class="segmented__options">
+        <div class="gm-segmented">
           @for (option of types; track option.value) {
-            <label class="segmented__option">
+            <label>
               <input type="radio" name="single-type" [checked]="type() === option.value" (change)="setType(option.value)" />
               {{ option.label | t }}
             </label>
@@ -59,9 +59,9 @@
       } @else {
         <fieldset class="segmented">
           <legend>{{ 'single.shape' | t }}</legend>
-          <div class="segmented__options">
+          <div class="gm-segmented">
             @for (option of shapes; track option.value) {
-              <label class="segmented__option">
+              <label>
                 <input type="radio" name="single-shape" [checked]="shape() === option.value" (change)="shape.set(option.value)" />
                 {{ option.label | t }}
               </label>

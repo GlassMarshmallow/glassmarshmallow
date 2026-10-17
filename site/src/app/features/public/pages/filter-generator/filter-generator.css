@@ -34,15 +34,6 @@
 fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
 legend { margin-bottom: 10px; padding: 0; font-size: .9rem; font-weight: 650; }
 
-/* Igual que en el generador de un color */
-.segmented__options { display: flex; flex-wrap: wrap; gap: 8px; }
-.segmented__option {
-  display: inline-flex; min-height: 44px; align-items: center; gap: 8px; padding: 0 14px;
-  border: 1px solid var(--gm-field-border); border-radius: var(--gm-radius-pill); font-size: .9rem; cursor: pointer;
-}
-.segmented__option:has(input:checked) { border-color: var(--gm-text); font-weight: 650; }
-.segmented__option:has(input:focus-visible) { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
-.segmented__option input { accent-color: var(--gm-accent); }
 
 .control { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; }
 .control label { font-size: .9rem; font-weight: 650; }

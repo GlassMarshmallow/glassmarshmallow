@@ -985,3 +985,199 @@
   .gm-player__header, .gm-player__controls { transition: none; }
   .gm-player__spinner { animation-duration: 2.4s; }
 }
+
+/* --- Imagen de perfil (avatar) ------------------------------------------------
+   <span class="gm-avatar"><img src="foto.jpg" alt="Sara Paez"></span>                  foto en círculo
+   <span class="gm-avatar gm-avatar--square">…</span>                                     cuadrado redondeado
+   <span class="gm-avatar gm-theme-sky" role="img" aria-label="Sara Paez">SP</span>      iniciales en un pastel
+   Tamaños: --sm (2 rem), normal (3 rem), --lg (5 rem) y --xl (8 rem). El redondeo y las letras van en
+   proporción al tamaño. Sin .gm-theme-*, las iniciales van sobre gris. */
+.gm-avatar {
+  --gm-avatar-size: 3rem;
+  position: relative;
+  display: inline-grid;
+  width: var(--gm-avatar-size);
+  height: var(--gm-avatar-size);
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--gm-theme-on, var(--gm-text));
+  background: var(--gm-theme, var(--gm-tag));
+  box-shadow: inset 0 0 0 1px var(--gm-line);
+  font-size: calc(var(--gm-avatar-size) * .38);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .02em;
+  place-items: center;
+  user-select: none;
+}
+.gm-avatar > img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
+.gm-avatar > .gmi { font-size: calc(var(--gm-avatar-size) * .55); }
+.gm-avatar--square { border-radius: 22%; }
+.gm-avatar--sm { --gm-avatar-size: 2rem; }
+.gm-avatar--lg { --gm-avatar-size: 5rem; }
+.gm-avatar--xl { --gm-avatar-size: 8rem; }
+
+/* Botón para cambiar la foto (página de perfil): redondo, abajo a la derecha, 44 px como mínimo (AAA) */
+.gm-avatar__edit {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  display: grid;
+  width: max(44px, calc(var(--gm-avatar-size) * .32));
+  height: max(44px, calc(var(--gm-avatar-size) * .32));
+  padding: 0;
+  border: 3px solid var(--gm-bg);
+  border-radius: 50%;
+  color: var(--gm-on-primary);
+  background: var(--gm-primary);
+  font-size: 1.1rem;
+  place-items: center;
+  cursor: pointer;
+}
+.gm-avatar__edit:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 2px; }
+.gm-avatar--square .gm-avatar__edit { right: -8px; bottom: -8px; }
+
+/* Grupo de avatares montados (quién participa) */
+.gm-avatar-group { display: inline-flex; }
+.gm-avatar-group > .gm-avatar { box-shadow: 0 0 0 2px var(--gm-bg); }
+.gm-avatar-group > .gm-avatar + .gm-avatar { margin-left: calc(var(--gm-avatar-size) * -.28); }
+
+/* --- Acordeón (el de Habilidades del portfolio) ------------------------------
+   <div class="gm-accordion">
+     <details class="gm-accordion__item" name="faq">
+       <summary class="gm-accordion__summary">
+         <span class="gm-accordion__icon" aria-hidden="true"><i class="gmi gmi-palette"></i></span>   (opcional)
+         <span class="gm-accordion__text"><span class="gm-accordion__title">Título</span>
+           <span class="gm-accordion__meta">Detalle</span></span>                                 (opcional)
+         <i class="gmi gmi-chevron-down gm-accordion__chevron" aria-hidden="true"></i>
+       </summary>
+       <div class="gm-accordion__content">…</div>
+     </details>
+   </div>
+   Sin JavaScript: <details> y <summary> se abren con el ratón y el teclado. Con el mismo name en todos,
+   solo se abre uno a la vez. */
+.gm-accordion {
+  overflow: hidden;
+  border: 1px solid var(--gm-accordion-border);
+  border-radius: 18px;
+  background: var(--gm-accordion-bg);
+  box-shadow: var(--gm-accordion-shadow);
+  -webkit-backdrop-filter: var(--gm-accordion-filter);
+  backdrop-filter: var(--gm-accordion-filter);
+}
+.gm-accordion__item { interpolate-size: allow-keywords; }
+.gm-accordion__item + .gm-accordion__item { border-top: 1px solid var(--gm-line); }
+.gm-accordion__summary {
+  display: flex;
+  min-height: 44px; /* WCAG 2.5.5 (AAA) */
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color .2s ease;
+}
+.gm-accordion__summary::-webkit-details-marker { display: none; }
+.gm-accordion__summary:hover { background: var(--gm-hover); }
+/* El foco va por dentro: el acordeón recorta lo que sobresale */
+.gm-accordion__summary:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: -3px; border-radius: 18px; }
+.gm-accordion__icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--gm-accordion-icon);
+  background: var(--gm-accordion-icon-bg);
+  font-size: 1.2rem;
+  place-items: center;
+}
+.gm-accordion__text { display: flex; min-width: 0; flex-direction: column; }
+.gm-accordion__title { margin: 0 0 .1rem; font-size: 1.1rem; font-weight: 600; }
+.gm-accordion__meta { color: var(--gm-muted); font-size: .85rem; }
+.gm-accordion__chevron { flex-shrink: 0; margin-left: auto; color: var(--gm-accordion-chevron); font-size: 1.1rem; transition: transform .25s ease; }
+.gm-accordion__item[open] .gm-accordion__chevron { transform: rotate(180deg); }
+.gm-accordion__content { padding: .5rem 1.5rem 1.4rem; line-height: 1.6; }
+.gm-accordion__content > :first-child { margin-top: 0; }
+.gm-accordion__content > :last-child { margin-bottom: 0; }
+
+/* Se despliega suavemente (donde se puede; en el resto se abre de golpe) */
+.gm-accordion__item::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size .4s cubic-bezier(.2, .8, .2, 1), content-visibility .4s allow-discrete;
+}
+.gm-accordion__item[open]::details-content { block-size: auto; }
+
+@media (max-width: 480px) {
+  .gm-accordion__summary { padding: .9rem 1rem; }
+  .gm-accordion__content { padding: .25rem 1rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gm-accordion__item::details-content, .gm-accordion__summary, .gm-accordion__chevron { transition: none; }
+}
+
+/* --- Segmentado (el de My Book Box) ------------------------------------------
+   Opciones juntas en una barra gris; la elegida, en una píldora blanca (negra de noche) con sombra.
+   Para elegir un ajuste, con botones de opción (radio) dentro de un fieldset:
+   <fieldset class="gm-field"><legend>Vista</legend>
+     <div class="gm-segmented">
+       <label><input type="radio" name="vista" checked> Claro</label>
+       <label><input type="radio" name="vista"> Oscuro</label>
+     </div>
+   </fieldset>
+   Para filtrar, con botones: <div class="gm-segmented" role="group" aria-label="Filtrar">
+     <button type="button" class="is-active" aria-pressed="true">Todas</button>
+     <button type="button" aria-pressed="false">Libros <span class="gm-segmented__count">3</span></button></div>
+   2 o 3 opciones cortas, en fila; más de 3 o con textos largos, .gm-segmented--stack (en columna). */
+.gm-segmented {
+  display: inline-flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--gm-radius-pill);
+  background: var(--gm-tag);
+}
+.gm-segmented > a,
+.gm-segmented > button,
+.gm-segmented > label {
+  position: relative;
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-muted); /* 7,5:1 de día y 7,1:1 de noche sobre la barra (AAA) */
+  background: transparent;
+  font: inherit;
+  font-size: .86rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .2s, color .2s, box-shadow .2s;
+}
+/* Zona que se pulsa de 44 px de alto aunque la opción mida 34 (WCAG 2.5.5, como los botones) */
+.gm-segmented > a::after,
+.gm-segmented > button::after,
+.gm-segmented > label::after { position: absolute; top: min(0px, calc(50% - 22px)); right: 0; bottom: min(0px, calc(50% - 22px)); left: 0; content: ""; }
+.gm-segmented > :hover { color: var(--gm-text); }
+.gm-segmented > .is-active,
+.gm-segmented > [aria-pressed="true"],
+.gm-segmented > [aria-current="page"],
+.gm-segmented > label:has(input:checked) {
+  color: var(--gm-text);
+  background: var(--gm-surface-solid);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08), 0 1px 2px rgba(0, 0, 0, .06);
+}
+.gm-segmented > :focus-visible,
+.gm-segmented > label:has(input:focus-visible) { outline: 2px solid var(--gm-focus); outline-offset: 2px; }
+/* El círculo del radio no se ve: la píldora blanca ya dice cuál está elegida */
+.gm-segmented > label > input { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
+.gm-segmented__count { color: var(--gm-muted); font-size: .76rem; }
+.gm-segmented--small > a, .gm-segmented--small > button, .gm-segmented--small > label { min-height: 28px; padding: 0 12px; font-size: .78rem; }
+/* Más de 3 opciones o textos largos: una debajo de otra */
+.gm-segmented--stack { display: inline-flex; flex-direction: column; align-items: stretch; border-radius: 20px; }
+.gm-segmented--stack > a, .gm-segmented--stack > button, .gm-segmented--stack > label { min-height: 40px; border-radius: 16px; }
