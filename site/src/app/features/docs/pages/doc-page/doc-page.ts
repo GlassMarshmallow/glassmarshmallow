@@ -15,6 +15,7 @@ import { initPlayers } from '../../../../../../../js/player.js';
 import { initCarousels } from '../../../../../../../js/carousel.js';
 import { initGalleries } from '../../../../../../../js/gallery.js';
 import { initDialogs } from '../../../../../../../js/dialog.js';
+import { initTickers } from '../../../../../../../js/ticker.js';
 import { initFullscreenMenus } from '../../../../../../../js/fullscreen-menu.js';
 
 const REPO = 'https://github.com/spyamuza/glassmarshmallow/blob/main/site/public/content/docs';
@@ -72,7 +73,7 @@ export class DocPage {
         initGalleries(content);
         // Ventanas y menús a pantalla completa: se quitan los de la página anterior antes de poner los nuevos
         this.cleanups.forEach((stop) => stop());
-        this.cleanups = [...initDialogs(content), ...initFullscreenMenus(content)];
+        this.cleanups = [...initDialogs(content), ...initFullscreenMenus(content), ...initTickers(content)];
         // Tablas más anchas que la página: se desplazan de lado y tienen que poder enfocarse (WCAG 2.1.1)
         content.querySelectorAll<HTMLTableElement>(':scope > table').forEach((table) => {
           if (table.scrollWidth > table.clientWidth) table.tabIndex = 0;

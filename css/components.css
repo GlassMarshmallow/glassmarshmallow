@@ -1829,12 +1829,14 @@
 .gm-fullscreen-menu__links a[aria-current="page"] { color: var(--gm-accent); }
 
 /* --- Franja de logos que se desliza (la de tecnologías de la plantilla) ---------------
-   <div class="gm-ticker" aria-hidden="true"><div class="gm-ticker__track">
+   <div class="gm-ticker"><div class="gm-ticker__track" aria-hidden="true">
      <span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>Angular</span> … (dos copias seguidas)
-   </div></div>
+   </div>
+   <button type="button" class="gm-icon-btn gm-icon-btn--glass gm-ticker__pause" aria-pressed="false" aria-label="Pausar la franja">…</button></div>
    Decorativa: la información tiene que estar también en otro sitio. Se para con el ratón, con el foco,
-   con .is-paused y si la persona pide menos movimiento. --static: quieta y centrada. */
+   con .is-paused (el botón de pausa) y si la persona pide menos movimiento. --static: quieta y centrada. */
 .gm-ticker {
+  position: relative;
   overflow: hidden;
   border-top: 1px solid;
   border-bottom: 1px solid;
@@ -1848,6 +1850,10 @@
 .gm-ticker__item { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.4rem; color: var(--gm-text); font-size: .95rem; font-weight: 500; white-space: nowrap; }
 .gm-ticker__item :is(svg, .gmi) { width: 1.9rem; height: 1.3rem; fill: currentColor; font-size: 1.3rem; }
 .gm-ticker--static .gm-ticker__track { width: auto; justify-content: center; animation: none; }
+/* Botón para pararla (WCAG 2.2.2): redondo, de cristal, al final de la franja y sin ocupar sitio */
+.gm-ticker__pause { position: absolute; z-index: 1; top: 50%; right: .5rem; transform: translateY(-50%); }
+/* La franja recorta lo que sobresale: el contorno del foco va por dentro del botón para que se vea entero */
+.gm-ticker__pause:focus-visible { outline-offset: -4px; }
 @keyframes gm-ticker { to { transform: translateX(-50%); } }
 
 /* --- Sección con título centrado (Sobre mí, Habilidades) ------------------------------

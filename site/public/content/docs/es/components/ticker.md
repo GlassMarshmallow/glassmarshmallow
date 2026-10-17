@@ -7,11 +7,12 @@ Una franja que pasa despacio de derecha a izquierda con logos y nombres, como la
 El contenido va **dos veces seguidas** dentro de `.gm-ticker__track`, para que la vuelta sea continua.
 
 ```html
-<div class="gm-ticker" aria-hidden="true">
-  <div class="gm-ticker__track">
-    <span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>Angular</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>TypeScript</span><span class="gm-ticker__item"><i class="gmi gmi-database"></i>PostgreSQL</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>.NET</span><span class="gm-ticker__item"><i class="gmi gmi-palette"></i>Figma</span><span class="gm-ticker__item"><i class="gmi gmi-stars"></i>Ollama</span>
-    <span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>Angular</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>TypeScript</span><span class="gm-ticker__item"><i class="gmi gmi-database"></i>PostgreSQL</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>.NET</span><span class="gm-ticker__item"><i class="gmi gmi-palette"></i>Figma</span><span class="gm-ticker__item"><i class="gmi gmi-stars"></i>Ollama</span>
+<div class="gm-ticker">
+  <div class="gm-ticker__track" aria-hidden="true">
+    <span class="gm-ticker__item"><i class="gmi gmi-angular"></i>Angular</span><span class="gm-ticker__item"><i class="gmi gmi-typescript"></i>TypeScript</span><span class="gm-ticker__item"><i class="gmi gmi-database"></i>PostgreSQL</span><span class="gm-ticker__item"><i class="gmi gmi-dotnet"></i></span><span class="gm-ticker__item"><i class="gmi gmi-figma"></i>Figma</span><span class="gm-ticker__item"><i class="gmi gmi-ollama"></i>Ollama</span>
+    <span class="gm-ticker__item"><i class="gmi gmi-angular"></i>Angular</span><span class="gm-ticker__item"><i class="gmi gmi-typescript"></i>TypeScript</span><span class="gm-ticker__item"><i class="gmi gmi-database"></i>PostgreSQL</span><span class="gm-ticker__item"><i class="gmi gmi-dotnet"></i></span><span class="gm-ticker__item"><i class="gmi gmi-figma"></i>Figma</span><span class="gm-ticker__item"><i class="gmi gmi-ollama"></i>Ollama</span>
   </div>
+  <button type="button" class="gm-icon-btn gm-icon-btn--glass gm-ticker__pause" aria-pressed="false" aria-label="Pausar la franja"><i class="gmi gmi-pause-fill" aria-hidden="true"></i></button>
 </div>
 ```
 
@@ -21,16 +22,25 @@ El contenido va **dos veces seguidas** dentro de `.gm-ticker__track`, para que l
 
 ```html
 <div class="gm-ticker gm-ticker--static" aria-hidden="true">
-  <div class="gm-ticker__track"><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>Angular</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>TypeScript</span><span class="gm-ticker__item"><i class="gmi gmi-database"></i>PostgreSQL</span><span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>.NET</span><span class="gm-ticker__item"><i class="gmi gmi-palette"></i>Figma</span><span class="gm-ticker__item"><i class="gmi gmi-stars"></i>Ollama</span></div>
+  <div class="gm-ticker__track"><span class="gm-ticker__item"><i class="gmi gmi-angular"></i>Angular</span><span class="gm-ticker__item"><i class="gmi gmi-typescript"></i>TypeScript</span><span class="gm-ticker__item"><i class="gmi gmi-database"></i>PostgreSQL</span><span class="gm-ticker__item"><i class="gmi gmi-dotnet"></i></span><span class="gm-ticker__item"><i class="gmi gmi-figma"></i>Figma</span><span class="gm-ticker__item"><i class="gmi gmi-ollama"></i>Ollama</span></div>
 </div>
 ```
 
 ## Pararla
 
-Se para sola al pasar el ratón o con el foco dentro. Desde tu código, con `.is-paused` (por ejemplo, con un botón «Pausar»).
+El botón redondo con el icono de pausa (`.gm-ticker__pause`) va al final de la franja, sin ocupar sitio. Con el script opcional, al pulsarlo la franja se para (`.is-paused`), el icono cambia a reproducir y el botón dice que está pulsado:
+
+```html-code
+<script type="module">
+  import { initTickers } from 'glassmarshmallow/js/ticker.js';
+  initTickers();
+</script>
+```
+
+También se para sola al pasar el ratón o con el foco dentro, y no se mueve si la persona pide menos movimiento.
 
 ## Accesibilidad
 
-- Es **decorativa** (`aria-hidden="true"`): la misma información tiene que estar en otro sitio de la página (en la plantilla, la sección de Habilidades).
+- Los logos son **decorativos** (`aria-hidden="true"` en `.gm-ticker__track`): la misma información tiene que estar en otro sitio de la página (en la plantilla, la sección Habilidades).
+- Se mueve sola más de 5 segundos, así que lleva el botón para pararla, que se alcanza con el teclado y con el dedo (WCAG 2.2.2). Quieta (`--static`) no hace falta.
 - No se mueve si la persona pide menos movimiento (WCAG 2.3.3).
-- Si es lo único que se mueve y dura más de 5 segundos, ofrece un botón para pararla (`.is-paused`) (WCAG 2.2.2).
