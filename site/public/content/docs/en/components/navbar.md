@@ -27,7 +27,7 @@ On the site it sticks to the top (`position: sticky`); here it is shown inside t
 | `.gm-navbar` | The bar: glass, sticky, as wide as the container |
 | `.gm-navbar__brand` | Logo and name (link to home) |
 | `.gm-navbar__logo` | The logo, 48 px (42 px on phones) |
-| `.gm-navbar__nav` | The section links; the current page has `aria-current="page"` |
+| `.gm-navbar__nav` | The section links; the current page has `aria-current="page"` and is bold. On a one-page site, the section being viewed has `aria-current="location"` |
 | `.gm-navbar__actions` | Buttons on the right (language, theme, account…) |
 
 ## Without a logo and floating on phones

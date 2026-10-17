@@ -27,7 +27,7 @@ En la web va pegada arriba (`position: sticky`); aquí se ve dentro del recuadro
 | `.gm-navbar` | La barra: cristal, pegada arriba, con el mismo ancho que el contenedor |
 | `.gm-navbar__brand` | Logo y nombre (enlace al inicio) |
 | `.gm-navbar__logo` | El logo, de 48 px (42 px en el móvil) |
-| `.gm-navbar__nav` | Los enlaces de las secciones; la página actual lleva `aria-current="page"` |
+| `.gm-navbar__nav` | Los enlaces de las secciones; la página actual lleva `aria-current="page"` y va en negrita. En una web de una sola página, la sección que se está viendo lleva `aria-current="location"` |
 | `.gm-navbar__actions` | Botones de la derecha (idioma, tema, cuenta…) |
 
 ## Sin logo y flotante en el móvil

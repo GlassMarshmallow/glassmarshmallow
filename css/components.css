@@ -332,7 +332,8 @@
 .gm-navbar__nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 32px); font-size: var(--gm-nav-size, .88rem); }
 /* 44 px de alto para pulsarlos (WCAG 2.5.5, AAA) */
 .gm-navbar__nav a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; color: var(--gm-nav-link); transition: color .2s; }
-.gm-navbar__nav a[aria-current="page"] { color: var(--gm-text); font-weight: 650; }
+/* La página actual (aria-current="page") o, en una página de una sola pantalla, la sección que se ve (aria-current="location") */
+.gm-navbar__nav a:is([aria-current="page"], [aria-current="location"]) { color: var(--gm-text); font-weight: 650; }
 /* Al pasar el ratón o pulsar: --gm-nav-link-hover (un color o un degradado). Por defecto, el acento: de día el
    fuerte (rosa oscuro, AAA) y de noche el normal (en la plantilla, enlaces blancos que pasan a turquesa) */
 .gm-navbar__nav a:is(:hover, :active) {
@@ -1836,7 +1837,7 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 .gm-fullscreen-menu__links { display: flex; width: 100%; align-items: center; flex-direction: column; gap: 1.5rem; margin: 0; padding: 0; list-style: none; }
 .gm-fullscreen-menu__links a { display: inline-flex; min-height: 44px; align-items: center; color: var(--gm-text); font-size: 2rem; font-weight: 600; transition: color .2s; }
 .gm-fullscreen-menu__links a:hover,
-.gm-fullscreen-menu__links a[aria-current="page"] { color: var(--gm-accent); }
+.gm-fullscreen-menu__links a:is([aria-current="page"], [aria-current="location"]) { color: var(--gm-accent); }
 
 /* --- Franja de logos que se desliza (la de tecnologías de la plantilla) ---------------
    <div class="gm-ticker"><div class="gm-ticker__track" aria-hidden="true">
