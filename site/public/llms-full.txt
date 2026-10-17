@@ -3676,8 +3676,9 @@ With variables on the bar:
 | `--gm-header-filter` | The glass blur (`blur(24px)`; `none` to remove it) |
 | `--gm-header-border` | The bottom line |
 | `--gm-header-shadow` | The shadow |
+| `--gm-nav-size` | The link size (0.88 rem; 1 rem in the bar without a logo) |
 | `--gm-nav-link` | The link color |
-| `--gm-nav-link-hover` | The link color on hover (a color or a gradient). By default, the accent gradient by day and the text color at night |
+| `--gm-nav-link-hover` | The link color on hover (a color or a gradient). By default, the accent: the strong one by day (dark pink, 8.6:1) and the normal one at night (blue, or turquoise with `gm-accent-turquoise`) |
 
 So the text reads well on the new background, the easiest way is to fix the mode of the bar with `data-theme`: a dark bar on a light page (`data-theme="dark"`) or a pastel with black text (`data-theme="light"`).
 
@@ -3729,7 +3730,7 @@ Below 860 px, the `.gm-navbar__nav` links are hidden and move to the [tab bar](/
 
 - Links go in a named `<nav>` (`aria-label="Main"`) and the current page is marked with `aria-current="page"`, which also shows in bold.
 - Each link is 44 px tall (WCAG 2.5.5).
-- On hover, links take the gradient of the lights (in dark mode, the text color).
+- On hover or press, links take the accent color: dark pink by day and blue at night, both 7:1 or more (AAA).
 - Focused items are not hidden behind the bar: the page leaves room when scrolling (WCAG 2.4.12).
 
 <!-- /docs/components/tabbar -->

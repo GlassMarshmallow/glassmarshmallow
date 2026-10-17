@@ -128,7 +128,7 @@
   --gm-header-border: rgba(0, 0, 0, .08);
   --gm-header-shadow: none;
   --gm-nav-link: #1d1d1f;
-  --gm-nav-link-hover: var(--gm-accent-gradient-text); /* al pasar el ratón: un color o un degradado */
+  --gm-nav-link-hover: linear-gradient(var(--gm-accent-strong), var(--gm-accent-strong)); /* al pasar el ratón: el acento fuerte (rosa 800, 8,6:1) */
   /* Barra inferior del móvil: casi opaca */
   --gm-tabbar-bg: rgba(245, 245, 247, .92);
   --gm-toggle-bg: rgba(0, 0, 0, .07);
@@ -233,7 +233,7 @@
   --gm-header-border: rgba(255, 255, 255, .1);
   --gm-header-shadow: none;
   --gm-nav-link: rgba(245, 245, 247, .8);
-  --gm-nav-link-hover: linear-gradient(#f5f5f7, #f5f5f7);
+  --gm-nav-link-hover: linear-gradient(var(--gm-accent), var(--gm-accent)); /* de noche, el color de acento */
   --gm-tabbar-bg: rgba(22, 22, 23, .9); /* igual que la barra de arriba */
   --gm-toggle-bg: rgba(255, 255, 255, .12);
   --gm-toggle-border: transparent;

@@ -69,8 +69,9 @@ Con variables en la barra:
 | `--gm-header-filter` | El desenfoque del cristal (`blur(24px)`; `none` para quitarlo) |
 | `--gm-header-border` | La línea de abajo |
 | `--gm-header-shadow` | La sombra |
+| `--gm-nav-size` | El tamaño de los enlaces (0,88 rem; 1 rem en la barra sin logo) |
 | `--gm-nav-link` | El color de los enlaces |
-| `--gm-nav-link-hover` | El color de los enlaces al pasar el ratón (un color o un degradado). Por defecto, de día el degradado de acento y de noche el color del texto |
+| `--gm-nav-link-hover` | El color de los enlaces al pasar el ratón (un color o un degradado). Por defecto, el acento: de día el fuerte (rosa oscuro, 8,6:1) y de noche el normal (azul, o turquesa con `gm-accent-turquoise`) |
 
 Para que el texto se lea bien sobre el nuevo fondo, lo más sencillo es fijar el modo de la barra con `data-theme`: una barra oscura en una página clara (`data-theme="dark"`) o un pastel con texto negro (`data-theme="light"`).
 
@@ -122,5 +123,5 @@ Por debajo de 860 px, los enlaces de `.gm-navbar__nav` se esconden y pasan a la 
 
 - Los enlaces van en un `<nav>` con nombre (`aria-label="Principal"`) y la página actual se marca con `aria-current="page"`, que además se ve en negrita.
 - Cada enlace mide 44 px de alto (WCAG 2.5.5).
-- Al pasar el ratón, los enlaces toman el degradado de las luces (en oscuro, el color del texto).
+- Al pasar el ratón o pulsar, los enlaces toman el color de acento: rosa oscuro de día y azul de noche, los dos de 7:1 o más (AAA).
 - Lo que recibe el foco no queda tapado por la barra: la página deja el hueco al desplazarse (WCAG 2.4.12).

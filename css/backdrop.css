@@ -84,7 +84,8 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) h2 { font-weight: 800; lette
 /* Sombras negras del texto en oscuro, como portfolio-ia-template:
    - enlaces: un halo fino para que se lean sobre las luces y las líneas del fondo
    - .gm-text-outline (título y subtítulo del inicio): en base.css */
-html[data-theme="dark"]:has(.gm-backdrop:not(.gm-backdrop--contained)) a:not(.gm-btn) { text-shadow: 0 0 2px rgba(0, 0, 0, .96); }
+/*   (salvo en los enlaces de la barra al pasar el ratón: su color se pinta por debajo del texto y la sombra lo apagaría) */
+html[data-theme="dark"]:has(.gm-backdrop:not(.gm-backdrop--contained)) a:not(.gm-btn, .gm-navbar__nav a:is(:hover, :active)) { text-shadow: 0 0 2px rgba(0, 0, 0, .96); }
 
 .gm-backdrop,
 .gm-backdrop > * {

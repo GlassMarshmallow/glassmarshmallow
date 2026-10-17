@@ -329,13 +329,14 @@
 }
 .gm-navbar__brand { display: inline-flex; min-width: max-content; align-items: center; gap: 10px; font-weight: 700; }
 .gm-navbar__logo { display: block; width: 48px; height: 48px; object-fit: contain; }
-.gm-navbar__nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 32px); font-size: .88rem; }
+.gm-navbar__nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 32px); font-size: var(--gm-nav-size, .88rem); }
 /* 44 px de alto para pulsarlos (WCAG 2.5.5, AAA) */
 .gm-navbar__nav a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; color: var(--gm-nav-link); transition: color .2s; }
 .gm-navbar__nav a[aria-current="page"] { color: var(--gm-text); font-weight: 650; }
-/* Al pasar el ratón: --gm-nav-link-hover (un color o un degradado). Por defecto, de día el degradado de acento y de
-   noche el color del texto */
-.gm-navbar__nav a:hover {
+/* Al pasar el ratón o pulsar: --gm-nav-link-hover (un color o un degradado). Por defecto, el acento: de día el
+   fuerte (rosa oscuro, AAA) y de noche el normal (en la plantilla, enlaces blancos que pasan a turquesa) */
+.gm-navbar__nav a:is(:hover, :active) {
+  text-shadow: none;
   background: var(--gm-nav-link-hover);
   -webkit-background-clip: text;
   background-clip: text;
@@ -358,6 +359,8 @@
 
 /* Barra sin logo (la de la plantilla de portfolio): los enlaces en el centro y las acciones a la derecha */
 .gm-navbar--centered { justify-content: center; }
+/* Sus enlaces, como en la plantilla: 1 rem, en peso 500 y con 2 rem entre ellos (el tamaño se cambia con --gm-nav-size) */
+.gm-navbar--centered .gm-navbar__nav { gap: 2rem; font-size: var(--gm-nav-size, 1rem); font-weight: 500; }
 .gm-navbar--centered .gm-navbar__actions { position: absolute; right: max(24px, calc((100% - var(--gm-container)) / 2)); }
 /* Botón que abre el menú a pantalla completa: solo en el móvil */
 .gm-navbar__menu { display: none; }
