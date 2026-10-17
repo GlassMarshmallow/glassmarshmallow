@@ -1279,6 +1279,12 @@
 .gm-carousel__dot:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: -4px; border-radius: 8px; }
 .gm-carousel__pause { margin-left: 8px; }
 
+/* Sin botones: se pasa deslizando y la siguiente foto asoma por el lado para que se vea que hay más.
+   Sin data-gm-carousel; la pista lleva tabindex="0" para moverla con las flechas del teclado */
+.gm-carousel--peek .gm-carousel__track { grid-auto-columns: 85%; gap: 12px; scroll-padding-inline: 0; }
+.gm-carousel--peek .gm-carousel__track:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
+.gm-carousel--peek .gm-carousel__slide:last-child { scroll-snap-align: end; }
+
 @media (max-width: 600px) {
   .gm-carousel { gap: 12px; padding: 12px; }
   .gm-carousel__caption { padding-top: 32px; font-size: .9rem; }

@@ -43,7 +43,30 @@ El pie de foto (`.gm-carousel__caption`) es opcional.
 </figure>
 ```
 
-## Sin botones (fila deslizable)
+## Sin botones
+
+Con `.gm-carousel--peek` y sin `data-gm-carousel`: las fotos se pasan deslizando con el dedo, con el ratón o con las flechas del teclado, y la siguiente asoma por el lado para que se vea que hay más. Ponle `tabindex="0"` y un nombre a la pista para que se pueda usar con el teclado.
+
+```html
+<div class="gm-carousel gm-carousel--peek">
+  <div class="gm-carousel__track" tabindex="0" role="region" aria-label="Paisajes (desliza para ver más)">
+    <figure class="gm-carousel__slide">
+      <img src="media/album-2.jpg" alt="Cielo azul sobre colinas suaves">
+      <figcaption class="gm-carousel__caption">Mar de nubes</figcaption>
+    </figure>
+    <figure class="gm-carousel__slide">
+      <img src="media/album-5.jpg" alt="Cielo melocotón sobre montañas">
+      <figcaption class="gm-carousel__caption">Atardecer</figcaption>
+    </figure>
+    <figure class="gm-carousel__slide">
+      <img src="media/album-8.jpg" alt="Colinas rosas al anochecer">
+      <figcaption class="gm-carousel__caption">Anochecer</figcaption>
+    </figure>
+  </div>
+</div>
+```
+
+## Fila deslizable
 
 Como las preguntas rápidas del chat del portfolio: todo en una sola fila que se desliza de lado con el dedo, el ratón o el teclado, sin flechas ni puntos. El borde derecho se difumina para que se vea que hay más. Usa `.gm-scroll-row`; no necesita script.
 

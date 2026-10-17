@@ -94,15 +94,6 @@ html[data-theme="dark"]:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-text-
     0 2px 6px rgba(0, 0, 0, .9),
     0 0 18px rgba(0, 0, 0, .8);
 }
-/* En claro, el título del inicio lleva la misma sombra (pedido por Sara). Con el degradado recortado a las
-   letras, text-shadow quedaría por encima del color: se hace con drop-shadow, que va por fuera */
-html:not([data-theme="dark"]):has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-gradient-title.gm-text-outline {
-  filter:
-    drop-shadow(0 0 .6px #000)
-    drop-shadow(0 0 .6px #000)
-    drop-shadow(0 2px 6px rgba(0, 0, 0, .9))
-    drop-shadow(0 0 18px rgba(0, 0, 0, .8));
-}
 
 .gm-backdrop,
 .gm-backdrop > * {

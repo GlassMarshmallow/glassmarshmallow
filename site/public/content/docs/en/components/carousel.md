@@ -43,7 +43,30 @@ The caption (`.gm-carousel__caption`) is optional.
 </figure>
 ```
 
-## Without buttons (swipe row)
+## Without buttons
+
+With `.gm-carousel--peek` and no `data-gm-carousel`: photos move by swiping with a finger, the mouse or the arrow keys, and the next one peeks in from the side to show there is more. Give the track `tabindex="0"` and a name so it works with the keyboard.
+
+```html
+<div class="gm-carousel gm-carousel--peek">
+  <div class="gm-carousel__track" tabindex="0" role="region" aria-label="Landscapes (swipe to see more)">
+    <figure class="gm-carousel__slide">
+      <img src="media/album-2.jpg" alt="Blue sky over soft hills">
+      <figcaption class="gm-carousel__caption">Sea of clouds</figcaption>
+    </figure>
+    <figure class="gm-carousel__slide">
+      <img src="media/album-5.jpg" alt="Peach sky over mountains">
+      <figcaption class="gm-carousel__caption">Sunset</figcaption>
+    </figure>
+    <figure class="gm-carousel__slide">
+      <img src="media/album-8.jpg" alt="Pink hills at dusk">
+      <figcaption class="gm-carousel__caption">Dusk</figcaption>
+    </figure>
+  </div>
+</div>
+```
+
+## Swipe row
 
 Like the quick questions of the portfolio chat: everything in one row that slides sideways with a finger, the mouse or the keyboard, with no arrows or dots. The right edge fades out to show there is more. Use `.gm-scroll-row`; no script needed.
 
