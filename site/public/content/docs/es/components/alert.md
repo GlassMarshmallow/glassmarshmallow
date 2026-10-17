@@ -17,7 +17,7 @@ Un mensaje destacado dentro de la página: información, algo que salió bien, u
 
 | Clase | Para | Color |
 | --- | --- | --- |
-| `.gm-alert` | Información | Celeste |
+| `.gm-alert` | Información | Gris |
 | `.gm-alert--success` | Algo salió bien | Menta |
 | `.gm-alert--warning` | Advertencia | Limón |
 | `.gm-alert--danger` | Error | Coral |

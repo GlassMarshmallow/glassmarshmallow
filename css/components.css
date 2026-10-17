@@ -259,25 +259,28 @@
 .gm-error-summary__list a:hover { text-decoration-thickness: 2px; }
 
 /* --- Aviso -------------------------------------------------------------------- */
-/* El pastel del estado a media intensidad, con un borde del mismo pastel y el texto normal encima (elegido por
-   Sara): celeste para información, menta, limón y coral para éxito, advertencia y error. Texto de 12:1 o más
-   de día y de 7,5:1 o más de noche (AAA) */
+/* Información: gris, como el panel de My Book Box. Éxito, advertencia y error: el pastel del estado (menta,
+   limón y coral) a media intensidad con un borde del mismo pastel y el texto normal encima (elegido por Sara).
+   Texto de 12:1 o más de día y de 7,5:1 o más de noche (AAA) */
 .gm-alert {
-  --gm-alert-rgb: var(--gm-sky-rgb);
   display: flex;
   align-items: flex-start;
   gap: 10px;
   padding: 14px 16px;
-  border: 1px solid rgb(var(--gm-alert-rgb) / .9);
+  border: 1px solid transparent;
   border-radius: var(--gm-radius-sm);
   color: var(--gm-text);
-  background: rgb(var(--gm-alert-rgb) / var(--gm-alert-alpha));
+  background: var(--gm-fill-subtle);
   font-size: .92rem;
 }
 .gm-alert .gmi { flex-shrink: 0; margin-top: 2px; }
 .gm-alert--success { --gm-alert-rgb: var(--gm-mint-rgb); }
 .gm-alert--warning { --gm-alert-rgb: var(--gm-lemon-rgb); }
 .gm-alert--danger { --gm-alert-rgb: var(--gm-coral-rgb); }
+:is(.gm-alert--success, .gm-alert--warning, .gm-alert--danger) {
+  border-color: rgb(var(--gm-alert-rgb) / .9);
+  background: rgb(var(--gm-alert-rgb) / var(--gm-alert-alpha));
+}
 
 /* --- Etiqueta ------------------------------------------------------------------- */
 .gm-tag {

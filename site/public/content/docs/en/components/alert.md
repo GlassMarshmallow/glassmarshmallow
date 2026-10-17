@@ -17,7 +17,7 @@ A highlighted message inside the page: information, something that went well, a 
 
 | Class | For | Color |
 | --- | --- | --- |
-| `.gm-alert` | Information | Sky |
+| `.gm-alert` | Information | Gray |
 | `.gm-alert--success` | Something went well | Mint |
 | `.gm-alert--warning` | Warning | Lemon |
 | `.gm-alert--danger` | Error | Coral |
