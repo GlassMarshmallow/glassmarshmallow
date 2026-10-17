@@ -1,10 +1,10 @@
-<header class="mg-navbar header">
+<header class="gm-navbar header">
   <div class="header__start">
-    <a class="mg-navbar__brand" routerLink="/">
-      <img class="mg-navbar__logo" src="logo.svg" alt="" width="48" height="48" />
-      <span>Mallowglass</span>
+    <a class="gm-navbar__brand" routerLink="/">
+      <img class="gm-navbar__logo" src="logo.svg" alt="" width="48" height="48" />
+      <span>GlassMarshmallow</span>
     </a>
-    <nav class="mg-navbar__nav" [attr.aria-label]="'nav.main' | t">
+    <nav class="gm-navbar__nav" [attr.aria-label]="'nav.main' | t">
       @for (item of items; track item.path) {
         <a [routerLink]="item.path" routerLinkActive ariaCurrentWhenActive="page">{{ item.key | t }}</a>
       }
@@ -12,16 +12,16 @@
   </div>
 
   <button type="button" class="header__search" aria-haspopup="dialog" (click)="search().open()">
-    <i class="mgi mgi-search" aria-hidden="true"></i>
+    <i class="gmi gmi-search" aria-hidden="true"></i>
     <span class="header__search-text">{{ 'nav.search' | t }}</span>
-    <span class="mg-visually-hidden header__search-short">{{ 'nav.searchShort' | t }}</span>
+    <span class="gm-visually-hidden header__search-short">{{ 'nav.searchShort' | t }}</span>
     <kbd class="header__kbd" aria-hidden="true">⌘K</kbd>
   </button>
 
-  <div class="mg-navbar__actions header__actions">
+  <div class="gm-navbar__actions header__actions">
     <!-- Logo de GitHub: Simple Icons (CC0) -->
     <a class="header__github" href="https://github.com/spyamuza" [attr.aria-label]="'nav.github' | t" [title]="'nav.github' | t">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="currentColor">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor">
         <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
       </svg>
     </a>
@@ -29,25 +29,35 @@
       v{{ version }}
     </app-menu-button>
     <app-menu-button [label]="languageLabel()" [options]="languageOptions()" [selected]="language()" (picked)="setLanguage($event)">
-      <i class="mgi mgi-translate" aria-hidden="true"></i>
+      <i class="gmi gmi-translate" aria-hidden="true"></i>
       <span class="header__lang">{{ language().toUpperCase() }}</span>
     </app-menu-button>
     <app-menu-button [label]="themeLabel()" [options]="themeOptions()" [selected]="themePreference()" (picked)="setTheme($event)">
-      <i class="mgi {{ themeIcon() }}" aria-hidden="true"></i>
+      <i class="gmi {{ themeIcon() }}" aria-hidden="true"></i>
     </app-menu-button>
   </div>
 </header>
 
-<!-- Móvil: barra inferior de pestañas -->
-<nav class="mg-tabbar" [attr.aria-label]="'nav.mobile' | t">
-  <a routerLink="/" routerLinkActive [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">
-    <i class="mgi mgi-house" aria-hidden="true"></i>{{ 'nav.home' | t }}
-  </a>
-  @for (item of items; track item.path) {
+<!-- Móvil: barra inferior de pestañas. Lo que no cabe va en el panel «Más», como en My Book Box -->
+<nav id="mobile-more-menu" class="gm-tabbar-more" [class.is-open]="moreOpen()" [attr.aria-label]="'nav.moreMenu' | t" (keydown.escape)="closeMore()">
+  @for (item of moreItems(); track item.path) {
     <a [routerLink]="item.path" routerLinkActive ariaCurrentWhenActive="page">
-      <i class="mgi {{ item.icon }}" aria-hidden="true"></i>{{ (item.shortKey ?? item.key) | t }}
+      <i class="gmi {{ item.icon }}" aria-hidden="true"></i>{{ item.key | t }}
     </a>
   }
+</nav>
+<nav class="gm-tabbar" [attr.aria-label]="'nav.mobile' | t">
+  <a routerLink="/" routerLinkActive [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">
+    <i class="gmi gmi-house" aria-hidden="true"></i>{{ 'nav.home' | t }}
+  </a>
+  @for (item of tabItems(); track item.path) {
+    <a [routerLink]="item.path" routerLinkActive ariaCurrentWhenActive="page">
+      <i class="gmi {{ item.icon }}" aria-hidden="true"></i>{{ (item.shortKey ?? item.key) | t }}
+    </a>
+  }
+  <button type="button" [class.is-active]="moreActive()" [attr.aria-expanded]="moreOpen()" aria-controls="mobile-more-menu" (click)="toggleMore()">
+    <i class="gmi gmi-grid" aria-hidden="true"></i>{{ 'nav.more' | t }}
+  </button>
 </nav>
 
 <app-search-dialog />

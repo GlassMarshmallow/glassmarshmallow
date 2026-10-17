@@ -1,8 +1,8 @@
 <div class="copy-command">
   <code class="copy-command__text">{{ command() }}</code>
-  <button type="button" class="mg-btn mg-btn--secondary mg-btn--sm" (click)="copy()">
-    <i class="mgi" [class.mgi-clipboard]="!copied()" [class.mgi-check]="copied()" aria-hidden="true"></i>
+  <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm" (click)="copy()">
+    <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
     {{ (copied() ? 'common.copied' : 'common.copy') | t }}
   </button>
-  <span class="mg-visually-hidden" aria-live="polite">{{ copied() ? ('common.commandCopied' | t) : '' }}</span>
+  <span class="gm-visually-hidden" aria-live="polite">{{ copied() ? ('common.commandCopied' | t) : '' }}</span>
 </div>

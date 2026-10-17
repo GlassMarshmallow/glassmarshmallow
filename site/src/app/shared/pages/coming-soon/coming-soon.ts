@@ -7,10 +7,10 @@ import { TranslatePipe } from '../../../core/i18n/translate.pipe';
   selector: 'app-coming-soon',
   imports: [RouterLink, TranslatePipe],
   template: `
-    <section class="mg-container simple-page">
+    <section class="gm-container simple-page">
       <h1>{{ heading() | t }}</h1>
-      <p class="mg-muted">{{ 'common.comingSoon' | t }}</p>
-      <a class="mg-btn" routerLink="/">{{ 'common.backHome' | t }}</a>
+      <p class="gm-muted">{{ 'common.comingSoon' | t }}</p>
+      <a class="gm-btn" routerLink="/">{{ 'common.backHome' | t }}</a>
     </section>
   `,
   styles: `.simple-page { padding-block: 96px 0; } .simple-page p { font-size: 1.1rem; margin-bottom: 28px; }`,

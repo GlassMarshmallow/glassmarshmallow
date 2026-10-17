@@ -14,5 +14,5 @@ import { VERSION } from '../../../../shared/components/header/header';
 })
 export class Home {
   readonly version = VERSION;
-  readonly installCommand = 'npm install mallowglass';
+  readonly installCommand = 'npm install glassmarshmallow';
 }

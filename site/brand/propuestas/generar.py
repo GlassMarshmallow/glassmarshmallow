@@ -1,4 +1,4 @@
-"""Propuestas de logo de mallowglass: tres ideas × dos colores. Escribe los SVG en esta carpeta."""
+"""Propuestas de logo de glassmarshmallow: tres ideas × dos colores. Escribe los SVG en esta carpeta."""
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent

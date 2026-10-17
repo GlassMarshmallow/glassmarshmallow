@@ -1,8 +1,8 @@
 <dialog #dialog class="search" aria-labelledby="search-title">
   <form class="search__form" role="search" (submit)="goToFirst($event)">
-    <h2 id="search-title" class="mg-visually-hidden">{{ 'search.title' | t }}</h2>
-    <i class="mgi mgi-search" aria-hidden="true"></i>
-    <label for="search-input" class="mg-visually-hidden">{{ 'search.label' | t }}</label>
+    <h2 id="search-title" class="gm-visually-hidden">{{ 'search.title' | t }}</h2>
+    <i class="gmi gmi-search" aria-hidden="true"></i>
+    <label for="search-input" class="gm-visually-hidden">{{ 'search.label' | t }}</label>
     <input
       id="search-input"
       type="search"
@@ -11,8 +11,8 @@
       [value]="query()"
       (input)="onInput($event)"
     />
-    <button type="button" class="mg-icon-btn search__close" [attr.aria-label]="'common.close' | t" (click)="close()">
-      <i class="mgi mgi-x-lg" aria-hidden="true"></i>
+    <button type="button" class="gm-icon-btn search__close" [attr.aria-label]="'common.close' | t" (click)="close()">
+      <i class="gmi gmi-x-lg" aria-hidden="true"></i>
     </button>
   </form>
 
@@ -28,7 +28,7 @@
       }
     </ul>
   } @else {
-    <p class="search__empty mg-muted">{{ 'search.empty' | t: { query: query() } }}</p>
+    <p class="search__empty gm-muted">{{ 'search.empty' | t: { query: query() } }}</p>
   }
-  <p class="mg-visually-hidden" aria-live="polite">{{ query() ? ('search.results' | t: { count: results().length }) : '' }}</p>
+  <p class="gm-visually-hidden" aria-live="polite">{{ query() ? ('search.results' | t: { count: results().length }) : '' }}</p>
 </dialog>

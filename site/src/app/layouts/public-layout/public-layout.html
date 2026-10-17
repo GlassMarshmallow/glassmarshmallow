@@ -1,16 +1,19 @@
-<!-- Fondo de la web: el de portfolio-ia-template sin ilustración -->
-<div class="mg-backdrop" aria-hidden="true">
-  <span class="mg-backdrop__dots"></span>
-  <span class="mg-backdrop__grain"></span>
-  <span class="mg-backdrop__scanlines"></span>
-  <span class="mg-backdrop__vignette"></span>
-  <span class="mg-backdrop__curve"></span>
+<!-- Fondo de luces de portfolio-ia-template (sin ilustración): solo en la portada.
+     El resto de páginas usan el fondo liso -->
+@if (isHome()) {
+<div class="gm-backdrop" aria-hidden="true">
+  <span class="gm-backdrop__dots"></span>
+  <span class="gm-backdrop__grain"></span>
+  <span class="gm-backdrop__scanlines"></span>
+  <span class="gm-backdrop__vignette"></span>
+  <span class="gm-backdrop__curve"></span>
 </div>
-<a class="mg-skip-link" href="#contenido">{{ 'common.skipLink' | t }}</a>
+}
+<a class="gm-skip-link" href="#contenido">{{ 'common.skipLink' | t }}</a>
 <app-header />
 <main id="contenido" tabindex="-1">
   <router-outlet />
 </main>
-<!-- Degradado negro hasta el pie: ocupa el espacio libre entre el contenido y el pie -->
-<div class="page-end-fade" aria-hidden="true"></div>
+<!-- Portada: degradado hasta el pie que ocupa el espacio libre. En el resto, solo un hueco flexible -->
+<div [class.page-end-fade]="isHome()" class="page-end" aria-hidden="true"></div>
 <app-footer />

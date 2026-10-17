@@ -14,25 +14,53 @@ export const routes: Routes = [
       },
       {
         path: 'docs',
-        title: 'titles.docs',
-        loadComponent: () => import('./features/docs/pages/docs-home/docs-home').then((m) => m.DocsHome),
+        loadComponent: () => import('./features/docs/layout/docs-layout').then((m) => m.DocsLayout),
+        children: [
+          { path: '', pathMatch: 'full', redirectTo: 'getting-started/introduction' },
+          // Antes los colores estaban repartidos entre Personalizar y Utilidades
+          { path: 'customize/colors', redirectTo: '/docs/color/colors' },
+          { path: 'customize/color-modes', redirectTo: '/docs/color/color-modes' },
+          { path: 'utilities/colors', redirectTo: '/docs/color/text' },
+          { path: 'utilities/background', redirectTo: '/docs/color/background' },
+          { path: 'utilities/color-scheme', redirectTo: '/docs/color/color-scheme' },
+          { path: 'utilities/theme', redirectTo: '/docs/color/theme' },
+          // Antes las herramientas estaban dentro de la documentación
+          { path: 'tools/:tool', redirectTo: '/tools/:tool' },
+          {
+            // Páginas en Markdown (public/content/docs/<idioma>/<sección>/<página>.md)
+            path: ':section/:page',
+            title: (route) => `docsNav.pages.${route.params['section']}/${route.params['page']}`,
+            loadComponent: () => import('./features/docs/pages/doc-page/doc-page').then((m) => m.DocPage),
+          },
+        ],
       },
       {
-        path: 'docs/tools/glass-generator',
-        title: 'titles.glass',
-        loadComponent: () => import('./features/public/pages/glass-generator/glass-generator').then((m) => m.GlassGenerator),
-      },
-      {
-        path: 'docs/tools/gradient-generator',
-        title: 'titles.gradient',
-        loadComponent: () =>
-          import('./features/public/pages/gradient-generator/gradient-generator').then((m) => m.GradientGenerator),
-      },
-      {
-        path: 'docs/tools/single-color-gradient',
-        title: 'titles.singleGradient',
-        loadComponent: () =>
-          import('./features/public/pages/single-color-gradient/single-color-gradient').then((m) => m.SingleColorGradient),
+        path: 'tools',
+        children: [
+          { path: '', title: 'titles.tools', loadComponent: () => import('./features/tools/pages/tools-home/tools-home').then((m) => m.ToolsHome) },
+          {
+            path: 'glass-generator',
+            title: 'titles.glass',
+            loadComponent: () => import('./features/public/pages/glass-generator/glass-generator').then((m) => m.GlassGenerator),
+          },
+          {
+            path: 'gradient-generator',
+            title: 'titles.gradient',
+            loadComponent: () =>
+              import('./features/public/pages/gradient-generator/gradient-generator').then((m) => m.GradientGenerator),
+          },
+          {
+            path: 'single-color-gradient',
+            title: 'titles.singleGradient',
+            loadComponent: () =>
+              import('./features/public/pages/single-color-gradient/single-color-gradient').then((m) => m.SingleColorGradient),
+          },
+          {
+            path: 'filter-generator',
+            title: 'titles.filter',
+            loadComponent: () => import('./features/public/pages/filter-generator/filter-generator').then((m) => m.FilterGenerator),
+          },
+        ],
       },
       {
         path: 'examples',
@@ -46,6 +74,11 @@ export const routes: Routes = [
         loadComponent: () => import('./features/public/pages/icons/icons').then((m) => m.Icons),
       },
       {
+        path: 'icons/:name',
+        title: (route) => `icon:${route.params['name']}`,
+        loadComponent: () => import('./features/icons/pages/icon-detail/icon-detail').then((m) => m.IconDetail),
+      },
+      {
         path: 'blog',
         title: 'titles.blog',
         data: { heading: 'nav.blog' },
@@ -55,8 +88,9 @@ export const routes: Routes = [
       { path: 'documentacion', redirectTo: 'docs' },
       { path: 'ejemplos', redirectTo: 'examples' },
       { path: 'iconos', redirectTo: 'icons' },
-      { path: 'generador-de-cristal', redirectTo: 'docs/tools/glass-generator' },
-      { path: 'generador-de-degradados', redirectTo: 'docs/tools/gradient-generator' },
+      { path: 'generador-de-cristal', redirectTo: 'tools/glass-generator' },
+      { path: 'generador-de-degradados', redirectTo: 'tools/gradient-generator' },
+
       {
         path: '**',
         title: 'titles.notFound',

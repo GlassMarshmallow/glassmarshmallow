@@ -2,6 +2,7 @@ import { Injectable, effect, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
 import { I18nService } from './i18n.service';
+import { iconTitle } from '../../features/icons/data/icon-title';
 
 /** El título de cada ruta es una clave de traducción («titles.home»); cambia también al cambiar de idioma. */
 @Injectable({ providedIn: 'root' })
@@ -14,12 +15,20 @@ export class I18nTitleStrategy extends TitleStrategy {
     super();
     effect(() => {
       this.i18n.language();
-      this.title.setTitle(this.i18n.t(this.key));
+      this.title.setTitle(this.text());
     });
   }
 
   override updateTitle(snapshot: RouterStateSnapshot) {
     this.key = this.buildTitle(snapshot) ?? 'titles.home';
-    this.title.setTitle(this.i18n.t(this.key));
+    this.title.setTitle(this.text());
+  }
+
+  /** Las páginas de la documentación solo tienen su nombre: se les añade « | GlassMarshmallow» */
+  private text() {
+    // Ficha de un icono: «icon:volume-up» → «Volume up | GlassMarshmallow»
+    if (this.key.startsWith('icon:')) return `${iconTitle(this.key.slice(5))} | GlassMarshmallow`;
+    const title = this.i18n.t(this.key);
+    return this.key.startsWith('docsNav.pages.') ? `${title} | GlassMarshmallow` : title;
   }
 }

@@ -4,7 +4,7 @@ export type ThemePreference = 'system' | 'light' | 'dark';
 export type Theme = 'light' | 'dark';
 
 /** Debe coincidir con la clave que lee el script de index.html antes de arrancar. */
-const THEME_STORAGE_KEY = 'mallowglass.theme';
+const THEME_STORAGE_KEY = 'glassmarshmallow.theme';
 const THEME_COLORS: Record<Theme, string> = { light: '#f5f5f7', dark: '#000000' };
 
 const readStoredPreference = (): ThemePreference => {

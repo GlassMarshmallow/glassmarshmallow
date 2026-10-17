@@ -14,3 +14,20 @@
     drop-shadow(0 1px 0 rgba(255, 255, 255, .85))
     drop-shadow(0 -1px 0 rgba(255, 255, 255, .85));
 }
+
+/* Pie en la portada: blanco en claro y negro en oscuro, sin línea, para continuar el degradado del final.
+   Aquí y no en footer.css por el mismo motivo del encapsulado */
+html:has(.gm-backdrop:not(.gm-backdrop--contained)) .footer { border-top: 0; background: rgb(var(--gm-page-end-rgb)); }
+
+/* WCAG 2.5.5 (AAA): todo lo que se pulsa en la web, al menos 44 × 44 px.
+   Aquí y no en cada componente para tenerlo junto. Donde el aspecto debe quedarse igual, una capa invisible
+   amplía la zona que se pulsa (como en los botones del framework). */
+.header__search, .header__github, .doc-code__copy, .doc-code__tabs button { position: relative; }
+.header__search::after, .header__github::after, .doc-code__copy::after, .doc-code__tabs button::after {
+  position: absolute;
+  top: min(0px, calc(50% - 22px));
+  right: min(0px, calc(50% - 22px));
+  bottom: min(0px, calc(50% - 22px));
+  left: min(0px, calc(50% - 22px));
+  content: "";
+}

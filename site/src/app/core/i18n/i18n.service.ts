@@ -5,7 +5,7 @@ import { es } from './es';
 export type Language = 'en' | 'es';
 
 /** Debe coincidir con la clave que lee el script de index.html antes de arrancar. */
-const LANGUAGE_STORAGE_KEY = 'mallowglass.lang';
+const LANGUAGE_STORAGE_KEY = 'glassmarshmallow.lang';
 const DICTIONARIES: Record<Language, Dictionary> = { en, es };
 export const LANGUAGES: { code: Language; label: string }[] = [
   { code: 'en', label: 'English' },

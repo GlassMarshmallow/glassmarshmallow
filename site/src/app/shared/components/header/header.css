@@ -5,38 +5,53 @@
 
 .header__search {
   display: inline-flex;
-  width: min(100%, 320px);
+  width: min(100%, 240px); /* con Montserrat, 320 px no caben junto al menú */
   min-height: 40px;
   align-items: center;
   gap: 10px;
   padding: 0 8px 0 14px;
-  border: 1px solid var(--mg-line);
-  border-radius: var(--mg-radius-sm);
-  color: var(--mg-muted);
-  background: var(--mg-fill-subtle);
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-muted);
+  background: var(--gm-fill-subtle);
   font: inherit;
   font-size: .9rem;
   cursor: pointer;
 }
-.header__search:hover { color: var(--mg-text); background: var(--mg-hover); }
+.header__search:hover { color: var(--gm-text); background: var(--gm-hover); }
 .header__search-text { flex: 1; text-align: left; }
-.header__kbd { padding: 2px 6px; border: 1px solid var(--mg-line); border-radius: 6px; font-family: var(--mg-font); font-size: .75rem; }
+.header__kbd { padding: 2px 6px; border: 1px solid var(--gm-line); border-radius: 6px; font-family: var(--gm-font); font-size: .75rem; }
 
 .header__actions { gap: 4px; }
-.header__github { display: grid; width: 38px; height: 38px; border-radius: var(--mg-radius-sm); color: var(--mg-nav-link); place-items: center; text-shadow: none; }
-.header__github:hover { color: var(--mg-text); background: var(--mg-hover); }
+.header__github { display: grid; width: 38px; height: 38px; border-radius: var(--gm-radius-sm); color: var(--gm-nav-link); place-items: center; text-shadow: none; }
+.header__github:hover { color: var(--gm-text); background: var(--gm-hover); }
 .header__lang { font-size: .8rem; }
 
-/* Pantallas medianas: el buscador solo con el icono */
-@media (max-width: 1100px) {
+/* Pantallas medianas: el buscador solo con el icono (con Montserrat, más ancha, el menú no cabe antes) */
+@media (max-width: 1300px) {
   .header__search { width: auto; padding: 0 12px; }
   .header__search-text,
   .header__kbd { display: none; }
 }
 
 /* Móvil: la navegación va abajo; arriba quedan el logo, el buscador, el idioma y el tema */
-@media (max-width: 700px) {
+@media (max-width: 860px) {
   .header__github,
   .header__version { display: none; }
-  .header__search { min-height: 38px; border: 0; background: transparent; }
+  .header__search { min-height: 38px; padding: 0 8px; border: 0; background: transparent; }
+  /* El nombre (16 letras) no cabe junto a la lupa con el logo grande */
+  .gm-navbar__brand { gap: 6px; font-size: .88rem; }
+  .gm-navbar__logo { width: 32px; height: 32px; }
+  /* Con los iconos grandes: botones de la derecha más juntos */
+  .header__actions { gap: 0; }
+  .header__actions ::ng-deep .gm-menu__trigger { padding-inline: 4px; }
+  .header__search { padding: 0 4px; }
 }
+
+/* Móviles muy estrechos (menos de 360 px, como los de 320): solo el logo; el nombre queda para los lectores de pantalla */
+@media (max-width: 359px) {
+  .gm-navbar__brand > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* Iconos de la barra más grandes (pedido por Sara): lupa e iconos de los menús a 1,35 rem, GitHub a 24 px */
+.header__search .gmi { font-size: 1.35rem; }

@@ -3,12 +3,13 @@ import { ChangeDetectionStrategy, Component, ElementRef, inject, input, output, 
 export interface MenuOption {
   value: string;
   label: string;
-  /** Clase del icono de Mallowglass, por ejemplo «mgi-sun» */
+  /** Clase del icono de GlassMarshmallow, por ejemplo «gmi-sun» */
   icon?: string;
 }
 
 /**
- * Botón con menú desplegable de opciones (versión, idioma, tema), como los de la barra de Bootstrap.
+ * Botón con menú desplegable de opciones (versión, idioma, tema): el .gm-menu del framework con su
+ * funcionamiento en Angular (el framework tiene además js/menu.js para páginas sin Angular).
  * Mientras está abierto, el foco no sale del menú; se cierra con Escape o al pulsar fuera.
  */
 @Component({
@@ -17,6 +18,7 @@ export interface MenuOption {
   styleUrl: './menu-button.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
+    class: 'gm-menu',
     '(document:click)': 'onDocumentClick($event)',
   },
 })

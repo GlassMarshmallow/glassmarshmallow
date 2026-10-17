@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, ElementRef, computed, inject, signa
 import { Router, RouterLink } from '@angular/router';
 import { I18nService } from '../../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../../core/i18n/translate.pipe';
+import { DOCS_SECTIONS, pageTitleKey } from '../../../features/docs/data/docs-nav';
+import { TOOLS } from '../../../features/tools/data/tools';
 
 interface SearchItem {
   /** Clave del título de la página */
@@ -11,15 +13,16 @@ interface SearchItem {
   path: string;
 }
 
-/** Páginas que se pueden buscar. Crecerá con la documentación. */
+/** Páginas que se pueden buscar: las de la web y todas las de la documentación */
 const PAGES: SearchItem[] = [
   { key: 'nav.home', section: 'nav.home', path: '/' },
-  { key: 'docs.title', section: 'nav.docs', path: '/docs' },
-  { key: 'glass.title', section: 'docs.tools', path: '/docs/tools/glass-generator' },
-  { key: 'gradient.title', section: 'docs.tools', path: '/docs/tools/gradient-generator' },
-  { key: 'single.title', section: 'docs.tools', path: '/docs/tools/single-color-gradient' },
+  ...DOCS_SECTIONS.flatMap((section) =>
+    section.pages.map((page) => ({ key: pageTitleKey(page.path), section: `docsNav.sections.${section.id}`, path: `/docs/${page.path}` })),
+  ),
   { key: 'nav.examples', section: 'nav.examples', path: '/examples' },
   { key: 'icons.title', section: 'nav.icons', path: '/icons' },
+  { key: 'tools.title', section: 'nav.tools', path: '/tools' },
+  ...TOOLS.map((tool) => ({ key: `${tool.i18n}.title`, section: 'nav.tools', path: `/tools/${tool.id}` })),
   { key: 'nav.blog', section: 'nav.blog', path: '/blog' },
 ];
 
