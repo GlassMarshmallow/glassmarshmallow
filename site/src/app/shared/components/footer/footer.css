@@ -14,7 +14,7 @@
 .footer__links a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; /* WCAG 2.5.5 (AAA) */ padding-block: 4px; color: var(--gm-text); }
 .footer__links a:hover { color: var(--gm-link-hover); text-decoration: underline; }
 .footer__credit { margin: 0; }
-.footer__author { color: var(--gm-text); font-weight: 600; }
+.footer__author { color: var(--gm-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
 /* Móvil: la barra de pestañas flota abajo; el footer deja su hueco para que la última línea se vea */
 @media (max-width: 860px) {
