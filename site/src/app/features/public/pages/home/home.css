@@ -2,7 +2,7 @@
   display: grid;
   align-content: center;
   justify-items: center;
-  padding-block: 32px;
+  padding-block: 48px 16px; /* arriba lo mismo que abajo suman este margen y el degradado hasta el pie */
   text-align: center;
 }
 .hero__logo { width: clamp(88px, 12vw, 120px); height: auto; margin-bottom: 20px; }
