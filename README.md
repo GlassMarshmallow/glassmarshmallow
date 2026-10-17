@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/spyamuza/portfolio-ia-template">Example: AI portfolio template</a> ·
+  <a href="https://github.com/GlassMarshmallow/portfolio-ia-template">Example: AI portfolio template</a> ·
   Docs and icons: coming soon with v0.1
 </p>
 
