@@ -127,7 +127,7 @@ Comprueba el contraste: el acento sobre el fondo, 3:1 como mínimo (4,5:1 si lo 
 | `--gm-radius-lg` | `30px` | igual |
 | `--gm-radius-pill` | `999px` | igual |
 | `--gm-shadow-sm` | `0 2px 12px rgba(0, 0, 0, .05)` | `0 2px 12px rgba(0, 0, 0, .4)` |
-| `--gm-shadow-md` | `0 18px 50px rgba(0, 0, 0, .11)` | `0 18px 50px rgba(0, 0, 0, .6)` |
+| `--gm-shadow-md` | `0 .125rem .375rem rgba(0, 0, 0, .04), 0 .5rem 1.5rem rgba(0, 0, 0, .08)` | `0 .125rem .375rem rgba(0, 0, 0, .3), 0 .5rem 1.5rem rgba(0, 0, 0, .45)` |
 | `--gm-shadow-hover` | `0 8px 22px rgba(0, 0, 0, .18)` | `0 8px 22px rgba(0, 0, 0, .5)` |
 | `--gm-blur` | `20px` | igual |
 | `--gm-blur-header` | `24px` | igual |

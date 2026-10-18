@@ -127,7 +127,7 @@ Check the contrast: the accent on the background, 3:1 at least (4.5:1 if you use
 | `--gm-radius-lg` | `30px` | same |
 | `--gm-radius-pill` | `999px` | same |
 | `--gm-shadow-sm` | `0 2px 12px rgba(0, 0, 0, .05)` | `0 2px 12px rgba(0, 0, 0, .4)` |
-| `--gm-shadow-md` | `0 18px 50px rgba(0, 0, 0, .11)` | `0 18px 50px rgba(0, 0, 0, .6)` |
+| `--gm-shadow-md` | `0 .125rem .375rem rgba(0, 0, 0, .04), 0 .5rem 1.5rem rgba(0, 0, 0, .08)` | `0 .125rem .375rem rgba(0, 0, 0, .3), 0 .5rem 1.5rem rgba(0, 0, 0, .45)` |
 | `--gm-shadow-hover` | `0 8px 22px rgba(0, 0, 0, .18)` | `0 8px 22px rgba(0, 0, 0, .5)` |
 | `--gm-blur` | `20px` | same |
 | `--gm-blur-header` | `24px` | same |

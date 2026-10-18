@@ -30,6 +30,14 @@ En la web va pegada arriba (`position: sticky`); aquí se ve dentro del recuadro
 | `.gm-navbar__nav` | Los enlaces de las secciones; la página actual lleva `aria-current="page"` y va en negrita. En una web de una sola página, la sección que se está viendo lleva `aria-current="location"` |
 | `.gm-navbar__actions` | Botones de la derecha (idioma, tema, cuenta…) |
 
+## Logo de cristal
+
+Si el logo es de cristal (translúcido, con bordes de brillo, como el de GlassMarshmallow), sobre fondo claro casi no se ve. Añade `.gm-glass-logo`: de día le pone un borde blanco fino, una sombra en degradado detrás del cristal y la sombra mediana por fuera; de noche no cambia nada. Sirve también fuera de la barra, por ejemplo en una tarjeta.
+
+```html
+<img class="gm-navbar__logo gm-glass-logo" src="logo.svg" alt="" width="48" height="48">
+```
+
 ## Sin logo y flotante en el móvil
 
 La barra de la plantilla de portfolio. **En el ordenador**, sin logo: los enlaces en el centro y el botón de tema a la derecha (`.gm-navbar--centered`). **En el móvil**, sin barra: solo quedan los botones redondos de cristal flotando arriba a la derecha (`.gm-navbar--floating`), y el botón de menú (`.gm-navbar__menu`) abre el [menú a pantalla completa](/docs/components/fullscreen-menu).

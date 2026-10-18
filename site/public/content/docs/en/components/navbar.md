@@ -30,6 +30,14 @@ On the site it sticks to the top (`position: sticky`); here it is shown inside t
 | `.gm-navbar__nav` | The section links; the current page has `aria-current="page"` and is bold. On a one-page site, the section being viewed has `aria-current="location"` |
 | `.gm-navbar__actions` | Buttons on the right (language, theme, account…) |
 
+## Glass logo
+
+If the logo is made of glass (translucent, with shiny edges, like the GlassMarshmallow one), it barely shows on a light background. Add `.gm-glass-logo`: in light mode it gets a thin white border, a gradient shadow behind the glass and the medium shadow outside; in dark mode nothing changes. It also works outside the navbar, for example in a card.
+
+```html
+<img class="gm-navbar__logo gm-glass-logo" src="logo.svg" alt="" width="48" height="48">
+```
+
 ## Without a logo and floating on phones
 
 The bar of the portfolio template. **On computers**, without a logo: the links in the center and the theme button on the right (`.gm-navbar--centered`). **On phones**, no bar: only the round glass buttons remain, floating at the top right (`.gm-navbar--floating`), and the menu button (`.gm-navbar__menu`) opens the [full-screen menu](/docs/components/fullscreen-menu).
