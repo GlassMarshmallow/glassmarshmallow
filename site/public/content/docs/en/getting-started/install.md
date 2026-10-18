@@ -2,8 +2,6 @@
 
 Use a package manager, a CDN or the source files to add GlassMarshmallow to your project.
 
-> **Not published yet.** GlassMarshmallow v0.1 is still in development, so the npm package and the CDN links below don't work yet. They show how installing will work once it's released.
-
 ## Package managers
 
 Install the GlassMarshmallow CSS with your package manager of choice.

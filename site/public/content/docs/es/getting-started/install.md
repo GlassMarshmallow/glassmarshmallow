@@ -2,8 +2,6 @@
 
 Añade GlassMarshmallow a tu proyecto con un gestor de paquetes, un CDN o los archivos fuente.
 
-> **Todavía no está publicado.** GlassMarshmallow v0.1 sigue en desarrollo, así que el paquete de npm y los enlaces del CDN aún no funcionan. Muestran cómo será la instalación cuando se publique.
-
 ## Gestores de paquetes
 
 Instala el CSS de GlassMarshmallow con el gestor de paquetes que prefieras.
