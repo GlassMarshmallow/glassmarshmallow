@@ -10,11 +10,11 @@
 :root,
 [data-theme="light"] {
   --gm-backdrop-bg: #f5f5f7;
-  /* Luces: turquesa arriba a la izquierda, violeta abajo a la derecha y ámbar arriba */
+  /* Luces vivas (elegidas por Sara): cian arriba a la izquierda, violeta abajo a la derecha y naranja arriba */
   --gm-backdrop-lights:
-    radial-gradient(circle at 25% 35%, rgba(14, 116, 144, .16), transparent 45%),
-    radial-gradient(circle at 75% 65%, rgba(91, 63, 208, .14), transparent 50%),
-    radial-gradient(circle at 60% 20%, rgba(180, 83, 9, .1), transparent 40%);
+    radial-gradient(circle at 25% 35%, rgba(0, 210, 225, .42), transparent 45%),
+    radial-gradient(circle at 75% 65%, rgba(140, 80, 255, .4), transparent 50%),
+    radial-gradient(circle at 60% 20%, rgba(255, 140, 30, .34), transparent 40%);
   --gm-backdrop-scanline: transparent; /* sin líneas de televisor en claro */
   /* Viñeta blanca (elegida por Sara con el generador de un color): transparente en el centro y blanco
      hacia los bordes, como la viñeta negra del modo oscuro */
