@@ -329,6 +329,18 @@
 }
 .gm-navbar__brand { display: inline-flex; min-width: max-content; align-items: center; gap: 10px; font-weight: 700; }
 .gm-navbar__logo { display: block; width: 48px; height: 48px; object-fit: contain; }
+
+/* Logo de cristal sobre fondo claro (<img class="gm-glass-logo">): su recuadro translúcido y sus bordes de brillo no se
+   ven sobre blanco. De día lleva un borde blanco fino, una sombra en degradado detrás del cristal (de abajo a la
+   izquierda hacia arriba a la derecha, como los colores del logo) y la sombra mediana por fuera. La curva es la del
+   recuadro del logo (114/512). De noche, sin nada: el cristal ya se ve sobre el fondo oscuro. */
+.gm-glass-logo {
+  border: .05rem solid #fff;
+  border-radius: 22.3%;
+  background: linear-gradient(to top right, rgba(0, 0, 0, .35), rgba(0, 0, 0, 0) 75%);
+  box-shadow: var(--gm-shadow-md);
+}
+[data-theme="dark"] .gm-glass-logo { border-color: transparent; background: none; box-shadow: none; }
 .gm-navbar__nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 32px); font-size: var(--gm-nav-size, .88rem); }
 /* 44 px de alto para pulsarlos (WCAG 2.5.5, AAA) */
 .gm-navbar__nav a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; color: var(--gm-nav-link); transition: color .2s; }
