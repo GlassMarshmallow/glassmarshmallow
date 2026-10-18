@@ -7,6 +7,7 @@
 }
 .hero__logo { width: clamp(88px, 12vw, 120px); height: auto; margin-bottom: 20px; }
 .hero h1 { font-size: clamp(2.8rem, 7vw, 4rem); }
+.hero p { text-align: center; } /* el framework alinea los párrafos al inicio */
 .hero__lead { max-width: 640px; margin-bottom: 32px; color: var(--gm-text); font-size: clamp(1.1rem, 2.2vw, 1.35rem); line-height: 1.5; }
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px; margin-bottom: 18px; }
 .hero__actions app-copy-command { max-width: 100%; }
