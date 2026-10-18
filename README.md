@@ -16,7 +16,9 @@
 
 <p align="center">
   <a href="https://github.com/GlassMarshmallow/portfolio-ia-template">Example: AI portfolio template</a> ·
-  Docs and icons: coming soon with v0.1
+  <a href="https://glassmarshmallow.com/docs">Documentation</a> ·
+  <a href="https://glassmarshmallow.com/icons">Icons</a> ·
+  <a href="https://glassmarshmallow.com/tools">Tools</a>
 </p>
 
 ```sh
