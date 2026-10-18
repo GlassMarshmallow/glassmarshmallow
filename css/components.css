@@ -368,7 +368,11 @@
 }
 .gm-navbar__actions .gm-icon-btn:hover { background: var(--gm-accent-tint); }
 .gm-navbar__actions .gm-icon-btn .gmi { transition: transform .35s ease; }
-.gm-navbar__actions .gm-icon-btn:hover .gmi { transform: rotate(25deg) scale(1.08); }
+/* El icono gira un poco al pasar el ratón (el sol y la luna), salvo en el botón de menú */
+.gm-navbar__actions .gm-icon-btn:not(.gm-navbar__menu):hover .gmi { transform: rotate(25deg) scale(1.08); }
+/* Botón de menú: al pasar el ratón, el fondo y el icono se tiñen del color de acento */
+.gm-navbar__actions .gm-navbar__menu { transition: background .25s ease, color .25s ease; }
+.gm-navbar .gm-navbar__actions .gm-navbar__menu:hover { color: var(--gm-accent); background: var(--gm-accent-tint); }
 
 /* Barra sin logo (la de la plantilla de portfolio): los enlaces en el centro y las acciones a la derecha */
 .gm-navbar--centered { justify-content: center; }
