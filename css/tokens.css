@@ -111,7 +111,7 @@
 
   /* Sombras */
   --gm-shadow-sm: 0 2px 12px rgba(0, 0, 0, .05);
-  --gm-shadow-md: 0 18px 50px rgba(0, 0, 0, .11);
+  --gm-shadow-md: 0 .125rem .375rem rgba(0, 0, 0, .04), 0 .5rem 1.5rem rgba(0, 0, 0, .08); /* recogida: no se solapa con lo de al lado */
   --gm-shadow-hover: 0 8px 22px rgba(0, 0, 0, .18);
 
   /* Radios */
@@ -249,7 +249,7 @@
   --gm-danger-bg: rgb(var(--gm-coral-rgb) / .15);
 
   --gm-shadow-sm: 0 2px 12px rgba(0, 0, 0, .4);
-  --gm-shadow-md: 0 18px 50px rgba(0, 0, 0, .6);
+  --gm-shadow-md: 0 .125rem .375rem rgba(0, 0, 0, .3), 0 .5rem 1.5rem rgba(0, 0, 0, .45);
   --gm-shadow-hover: 0 8px 22px rgba(0, 0, 0, .5);
 
   color-scheme: dark;
