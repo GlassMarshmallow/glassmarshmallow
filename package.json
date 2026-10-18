@@ -4,6 +4,22 @@
   "description": "A CSS framework with glass surfaces, light and dark mode and WCAG 2.2 AA accessibility.",
   "author": "Sara Paez Yamuza",
   "license": "MIT",
+  "homepage": "https://glassmarshmallow.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GlassMarshmallow/glassmarshmallow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GlassMarshmallow/glassmarshmallow/issues"
+  },
+  "keywords": [
+    "css",
+    "css-framework",
+    "glassmorphism",
+    "dark-mode",
+    "accessibility",
+    "wcag"
+  ],
   "style": "dist/css/glassmarshmallow.css",
   "files": [
     "css/*.css",
@@ -15,6 +31,7 @@
     "utilities": "node build/gen-utilities.mjs",
     "css": "node build/build-css.mjs",
     "site": "npm --prefix site start",
-    "site:build": "npm --prefix site run build"
+    "site:build": "npm --prefix site run build",
+    "prepublishOnly": "npm run css"
   }
 }
