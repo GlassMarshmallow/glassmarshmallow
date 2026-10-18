@@ -17,7 +17,7 @@ services:
   # En Cloudflare, el nombre público glassmarshmallow.com apunta al servicio http://web:80.
   # Arranque: docker compose --profile tunel up -d --build
   cloudflared:
-    image: cloudflare/cloudflared:2025.9.1
+    image: cloudflare/cloudflared:2026.9.3
     profiles: ["tunel"]
     restart: unless-stopped
     command: tunnel --no-autoupdate run
