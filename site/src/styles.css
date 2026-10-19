@@ -33,7 +33,21 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .footer { border-top: 0; bac
   content: "";
 }
 
-/* Código para copiar con los colores de Visual Studio Code (ver app/shared/utils/highlight.ts): «Light+» en claro y
-   «Dark+» en oscuro. Aquí y no en cada componente porque el código se mete con innerHTML */
+/* Código para copiar coloreado como en Visual Studio Code (ver app/shared/utils/highlight.ts): «Dark+» en oscuro y, en
+   claro, los colores de «Light+» cambiados por los tonos 700–900 de la paleta del framework (pedido por Sara), todos
+   con 4,5:1 o más sobre el fondo claro. Aquí y no en cada componente porque el código se mete con innerHTML */
 code span[style*="--code-light"] { color: var(--code-light); }
+code span[style*="--code-light:#795E26" i] { color: var(--gm-lavender-800); } /* comandos y funciones (npm) */
+code span[style*="--code-light:#AF00DB" i] { color: var(--gm-lavender-700); } /* palabras de control */
+code span[style*="--code-light:#A31515" i] { color: var(--gm-pink-800); }     /* textos y argumentos (install …) */
+code span[style*="--code-light:#800000" i] { color: var(--gm-pink-900); }     /* etiquetas HTML */
+code span[style*="--code-light:#E50000" i],
+code span[style*="--code-light:#EE0000" i] { color: var(--gm-pink-700); }     /* atributos y propiedades CSS */
+code span[style*="--code-light:#0000FF" i],
+code span[style*="--code-light:#0451A5" i] { color: var(--gm-blue-800); }     /* palabras clave y valores CSS */
+code span[style*="--code-light:#001080" i] { color: var(--gm-blue-900); }     /* variables */
+code span[style*="--code-light:#267F99" i] { color: var(--gm-sky-800); }      /* tipos y clases */
+code span[style*="--code-light:#098658" i] { color: var(--gm-mint-800); }     /* números */
+code span[style*="--code-light:#008000" i] { color: var(--gm-muted); }        /* comentarios */
+code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /* el resto (signos, espacios) */
 [data-theme="dark"] code span[style*="--code-dark"] { color: var(--code-dark); }
