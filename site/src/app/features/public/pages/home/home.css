@@ -12,9 +12,17 @@
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px; margin-bottom: 18px; }
 .hero__actions app-copy-command { max-width: 100%; }
 
+/* En el ordenador, los dos botones siguen en la fila como si no estuvieran agrupados */
+.hero__buttons { display: contents; }
+
 /* Móvil: el nombre (16 letras) se encoge con la pantalla para caber en una línea */
 @media (max-width: 600px) {
   .hero h1 { font-size: 8.6vw; }
+
+  /* «Para agentes» y «Ver la documentación», uno debajo del otro y con el mismo ancho: el del más largo */
+  .hero__buttons { display: inline-grid; gap: 14px; }
+  .hero__buttons .gm-menu__trigger,
+  .hero__buttons > .gm-btn { width: 100%; justify-content: center; }
 }
 
 /* Menú «Para agentes»: la lista, centrada bajo el botón y con su ancho propio */
