@@ -283,6 +283,19 @@
   border-color: rgb(var(--gm-alert-rgb) / .9);
   background: rgb(var(--gm-alert-rgb) / var(--gm-alert-alpha));
 }
+/* Nota: sin color, sobre una superficie sólida con sombra suave (el recuadro .tg-hint de My Book Box), para
+   aclaraciones dentro de un texto */
+.gm-alert--note {
+  display: block;
+  padding: .875rem 1.125rem;
+  border: 0;
+  border-radius: .875rem;
+  background: var(--gm-surface-solid);
+  box-shadow: var(--gm-shadow-sm);
+  font-size: .88rem;
+  line-height: inherit;
+}
+.gm-alert--note p { margin: 0; color: inherit; }
 
 /* --- Etiqueta ------------------------------------------------------------------- */
 .gm-tag {
@@ -2032,6 +2045,153 @@ html:has(.gm-fullscreen-menu.is-open) { overflow: hidden; }
   .gm-sidenav { position: static; display: none; max-height: none; padding: 1.25rem; }
   .gm-sidenav.is-open { display: block; }
 }
+
+/* --- Fragmento de código (el de la documentación): ejemplo, barra con copiar y código ---
+   <div class="gm-snippet">
+     <div class="gm-snippet__example">…el resultado…</div>
+     <div class="gm-snippet__bar"><span class="gm-snippet__lang">html</span>
+       <button type="button" class="gm-snippet__copy"><i class="gmi gmi-clipboard" aria-hidden="true"></i><span>Copiar</span></button></div>
+     <pre class="gm-snippet__code" tabindex="0"><code>…</code></pre>
+   </div>
+   Con varios lenguajes, pestañas en vez del nombre: <div class="gm-snippet__tabs" role="tablist"> con
+   <button class="gm-snippet__tab" role="tab" aria-selected="true">HTML</button>… y un <pre> por pestaña. Copiar y
+   cambiar de pestaña lo hace tu código. Panel de cristal (el .panel de My Book Box) y pestañas como su control
+   segmentado; el ejemplo, blanco en claro y negro del todo en oscuro, como en Bootstrap. */
+.gm-snippet {
+  overflow: hidden;
+  margin: 0 0 1.25rem;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+}
+.gm-snippet__example {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--gm-line);
+  color: var(--gm-text);
+  background: rgb(var(--gm-page-end-rgb, 255 255 255));
+  line-height: 1.5;
+}
+.gm-snippet__example > :last-child { margin-bottom: 0; }
+.gm-snippet__bar {
+  display: flex;
+  min-height: 2.625rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .375rem .5rem .375rem .875rem;
+  border-bottom: 1px solid var(--gm-line);
+}
+.gm-snippet__lang { color: var(--gm-muted); font-size: .72rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+.gm-snippet__tabs { display: inline-flex; flex-wrap: wrap; gap: .25rem; margin-left: -.5rem; padding: .25rem; border-radius: var(--gm-radius-pill); background: var(--gm-tag); }
+.gm-snippet__tab,
+.gm-snippet__copy {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  gap: .375rem;
+  padding: 0 .625rem;
+  border: 0;
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-muted);
+  background: transparent;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s, color .2s, box-shadow .2s;
+}
+.gm-snippet__tab { min-height: 1.75rem; padding: 0 .75rem; }
+/* WCAG 2.5.5 (AAA): una capa invisible amplía la zona que se pulsa a 44 × 44 px sin cambiar el aspecto */
+.gm-snippet__tab, .gm-snippet__copy { position: relative; }
+.gm-snippet__tab::after,
+.gm-snippet__copy::after { position: absolute; inset: min(0px, calc(50% - 1.375rem)); content: ""; }
+.gm-snippet__tab:hover { color: var(--gm-text); }
+.gm-snippet__tab[aria-selected="true"] { color: var(--gm-text); background: var(--gm-surface-solid); box-shadow: 0 2px 8px rgba(0, 0, 0, .08), 0 1px 2px rgba(0, 0, 0, .06); }
+/* Copiar: el botón .library-action de My Book Box */
+.gm-snippet__copy {
+  min-height: 2.375rem;
+  justify-content: center;
+  padding-inline: .75rem;
+  border: 1px solid var(--gm-line);
+  color: var(--gm-text);
+  background: var(--gm-surface-glass);
+  font-size: .78rem;
+  font-weight: 650;
+  transition: background .2s, color .2s, transform .2s;
+}
+.gm-snippet__copy:hover { background: var(--gm-surface-solid); transform: translateY(-1px); }
+.gm-snippet__code { overflow-x: auto; margin: 0; padding: 1rem 1.125rem; color: var(--gm-text); font-size: .88rem; line-height: 1.6; }
+
+/* --- Índice de la página («En esta página») ---------------------------------------------
+   <div class="gm-toc-layout">
+     <article>…<details class="gm-toc gm-toc--collapsible"><summary>En esta página</summary><ul class="gm-toc__list">…</ul></details>…</article>
+     <aside class="gm-toc" aria-label="En esta página"><p class="gm-toc__title">En esta página</p>
+       <ul class="gm-toc__list"><li><a class="gm-toc__link" href="#ejemplo">Ejemplo</a></li><li class="gm-toc__sub">…</li></ul></aside>
+   </div>
+   En pantallas anchas, el índice va a la derecha (12,5 rem) y se queda a la vista al hacer scroll; por debajo de
+   1200 px se esconde y aparece el desplegable (gm-toc--collapsible) encima del texto. gm-toc__sub: un subapartado. */
+.gm-toc-layout { display: grid; grid-template-columns: minmax(0, 1fr) 12.5rem; align-items: start; gap: 2.5rem; }
+.gm-toc:not(.gm-toc--collapsible) {
+  position: sticky;
+  top: calc(var(--gm-header-height) + 1.25rem);
+  max-height: calc(100dvh - var(--gm-header-height) - 2.5rem);
+  overflow-y: auto;
+  font-size: .85rem;
+}
+.gm-toc__title { margin: 0 0 .5rem; color: var(--gm-text); font-weight: 700; }
+.gm-toc__list { display: grid; gap: .125rem; margin: 0; padding: 0; list-style: none; }
+/* 44 px de alto: WCAG 2.5.5 (AAA) */
+.gm-toc__link { display: flex; min-height: 2.75rem; align-items: center; padding: .1875rem 0; color: var(--gm-text-secondary); text-shadow: none; }
+.gm-toc__link:hover { color: var(--gm-text); }
+.gm-toc__sub .gm-toc__link { padding-left: .875rem; }
+.gm-toc--collapsible {
+  display: none;
+  margin-bottom: 1.5rem;
+  padding: .875rem 1.125rem;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+}
+.gm-toc--collapsible summary { font-weight: 650; cursor: pointer; }
+.gm-toc--collapsible .gm-toc__list { margin-top: .5rem; }
+@media (max-width: 75rem) {
+  .gm-toc-layout { grid-template-columns: minmax(0, 1fr); }
+  .gm-toc:not(.gm-toc--collapsible) { display: none; }
+  .gm-toc--collapsible { display: block; }
+}
+
+/* --- Anterior y siguiente (al final de una página de una serie) -------------------------
+   <nav class="gm-pager" aria-label="Más páginas">
+     <a class="gm-pager__link" href="…"><span class="gm-pager__label"><i class="gmi gmi-arrow-left" aria-hidden="true"></i>Anterior</span><span class="gm-pager__title">Botón</span></a>
+     <a class="gm-pager__link gm-pager__link--next" href="…"><span class="gm-pager__label">Siguiente<i class="gmi gmi-arrow-right" aria-hidden="true"></i></span><span class="gm-pager__title">Tarjeta</span></a>
+   </nav> */
+.gm-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.gm-pager__link {
+  display: grid;
+  gap: .25rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+  color: var(--gm-text);
+  text-shadow: none;
+  transition: transform .2s, background .2s;
+}
+.gm-pager__link:hover { background: var(--gm-surface-glass); transform: translateY(-1px); }
+.gm-pager__link--next { grid-column: 2; text-align: right; }
+.gm-pager__label { display: inline-flex; align-items: center; gap: .375rem; color: var(--gm-muted); font-size: .82rem; }
+.gm-pager__link--next .gm-pager__label { justify-content: flex-end; }
+.gm-pager__title { font-weight: 650; }
+@media (prefers-reduced-motion: reduce) { .gm-snippet__copy:hover, .gm-pager__link:hover { transform: none; } }
 
 /* --- Texto largo (privacidad, aviso legal, artículos) ---------------------------------
    <article class="gm-prose gm-prose--card"><h1>Privacidad</h1><p class="gm-prose__updated">Última actualización…</p>
