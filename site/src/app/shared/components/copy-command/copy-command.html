@@ -1,5 +1,5 @@
 <div class="copy-command">
-  <code class="copy-command__text">{{ command() }}</code>
+  <code class="copy-command__text" [innerHTML]="command() | highlight: 'sh'"></code>
   <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm" (click)="copy()">
     <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
     {{ (copied() ? 'common.copied' : 'common.copy') | t }}

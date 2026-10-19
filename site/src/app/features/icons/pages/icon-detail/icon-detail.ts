@@ -4,11 +4,12 @@ import { I18nService } from '../../../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 import { BackLink } from '../../../../shared/components/back-link/back-link';
 import { ICONS, iconTitle } from '../../data/icons';
+import { HighlightPipe } from '../../../../shared/utils/highlight';
 
 /** Ficha de un icono (/icons/<nombre>), como la de Bootstrap Icons: vista grande, ejemplos y el código. */
 @Component({
   selector: 'app-icon-detail',
-  imports: [RouterLink, TranslatePipe, BackLink],
+  imports: [HighlightPipe, RouterLink, TranslatePipe, BackLink],
   templateUrl: './icon-detail.html',
   styleUrl: './icon-detail.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

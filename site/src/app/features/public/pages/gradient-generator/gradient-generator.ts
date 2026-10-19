@@ -32,9 +32,10 @@ const PRESETS: Preset[] = [
 /** Generador de degradados: se eligen el tipo, el ángulo y los colores, y se copia el CSS. */
 import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
 import { BackLink } from '../../../../shared/components/back-link/back-link';
+import { HighlightPipe } from '../../../../shared/utils/highlight';
 @Component({
   selector: 'app-gradient-generator',
-  imports: [RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
+  imports: [HighlightPipe, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './gradient-generator.html',
   styleUrl: './gradient-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -38,7 +38,7 @@
             </button>
           </div>
         </div>
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'icons.svgCode' | t"><code>{{ svg.value() ?? '…' }}</code></pre>
+        <pre class="gm-code" tabindex="0" [attr.aria-label]="'icons.svgCode' | t"><code [innerHTML]="(svg.value() ?? '…') | highlight: 'html'"></code></pre>
       </div>
       <div class="icon__code">
         <div class="icon__code-bar">
@@ -48,7 +48,7 @@
             {{ (copied() === 'html' ? 'common.copied' : 'common.copy') | t }}
           </button>
         </div>
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'icons.fontHtml' | t"><code>{{ fontHtml() }}</code></pre>
+        <pre class="gm-code" tabindex="0" [attr.aria-label]="'icons.fontHtml' | t"><code [innerHTML]="fontHtml() | highlight: 'html'"></code></pre>
       </div>
       <span class="gm-visually-hidden" aria-live="polite">{{ announcement() }}</span>
     </div>

@@ -5,6 +5,7 @@ import { BackLink } from '../../../../shared/components/back-link/back-link';
 import { ColorPicker } from '../../../../shared/components/color-picker/color-picker';
 import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
 import { HARMONIES, Harmony, Mode, Role, generatePalette, randomColor, tokens } from './palette';
+import { HighlightPipe } from '../../../../shared/utils/highlight';
 
 /**
  * Generador de paletas: un color base y una armonía dan la paleta, cada color con su papel. Se ve aplicada a una
@@ -12,7 +13,7 @@ import { HARMONIES, Harmony, Mode, Role, generatePalette, randomColor, tokens } 
  */
 @Component({
   selector: 'app-palette-generator',
-  imports: [BackLink, ColorPicker, SampleTexts, TranslatePipe],
+  imports: [HighlightPipe, BackLink, ColorPicker, SampleTexts, TranslatePipe],
   templateUrl: './palette-generator.html',
   styleUrl: './palette-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

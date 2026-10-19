@@ -115,7 +115,7 @@
       </div>
 
       <div class="code">
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code>{{ css() }}</code></pre>
+        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
         <div>
           <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
             <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>

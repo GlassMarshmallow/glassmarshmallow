@@ -1,3 +1,4 @@
+import { highlight } from '../../../shared/utils/highlight';
 import { Marked, Token, TokensList, Tokens } from 'marked';
 
 export interface TocItem {
@@ -72,7 +73,7 @@ function codeBlock(blocks: { lang: string; tab?: string; text: string; codeOnly?
   const panels = blocks
     .map(
       (b, i) =>
-        `<pre class="doc-code__pre" tabindex="0"${tabs ? ` role="tabpanel" id="${id}-panel-${i}" aria-labelledby="${id}-tab-${i}"${i === 0 ? '' : ' hidden'}` : ''}><code>${escapeHtml(b.text)}</code></pre>`,
+        `<pre class="doc-code__pre" tabindex="0"${tabs ? ` role="tabpanel" id="${id}-panel-${i}" aria-labelledby="${id}-tab-${i}"${i === 0 ? '' : ' hidden'}` : ''}><code>${highlight(b.text, b.lang)}</code></pre>`,
     )
     .join('');
   // Código HTML: encima, el resultado (como los ejemplos de Bootstrap)

@@ -14,9 +14,10 @@ const toRgbList = (color: string): string => {
 /** Generador de efecto cristal: se ajustan los valores, se ve el resultado y se copia el CSS. */
 import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
 import { BackLink } from '../../../../shared/components/back-link/back-link';
+import { HighlightPipe } from '../../../../shared/utils/highlight';
 @Component({
   selector: 'app-glass-generator',
-  imports: [RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
+  imports: [HighlightPipe, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './glass-generator.html',
   styleUrl: './glass-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import { TranslatePipe } from '../../../core/i18n/translate.pipe';
+import { HighlightPipe } from '../../utils/highlight';
 
 /** Comando con un botón para copiarlo. Avisa «Copiado» una vez, también a los lectores de pantalla. */
 @Component({
   selector: 'app-copy-command',
-  imports: [TranslatePipe],
+  imports: [HighlightPipe, TranslatePipe],
   templateUrl: './copy-command.html',
   styleUrl: './copy-command.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -4,6 +4,7 @@ import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 import { BackLink } from '../../../../shared/components/back-link/back-link';
 import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
 import { RangeFill } from '../../../../shared/directives/range-fill';
+import { HighlightPipe } from '../../../../shared/utils/highlight';
 
 /**
  * Efecto de televisor antiguo (el de la portada en modo oscuro): líneas horizontales, grano, viñeta y esquinas
@@ -12,7 +13,7 @@ import { RangeFill } from '../../../../shared/directives/range-fill';
  */
 @Component({
   selector: 'app-tv-effect',
-  imports: [BackLink, SampleTexts, TranslatePipe, RangeFill],
+  imports: [HighlightPipe, BackLink, SampleTexts, TranslatePipe, RangeFill],
   templateUrl: './tv-effect.html',
   styleUrl: './tv-effect.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
