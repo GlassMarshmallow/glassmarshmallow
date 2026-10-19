@@ -5,7 +5,7 @@ Each part of a home page (About me, Skills, Contact…) is a section: some space
 ## Example
 
 ```html
-<section class="gm-section" style="padding-block: 2.5rem">
+<section class="gm-section gm-py-10">
   <div class="gm-container gm-container--narrow">
     <h2 class="gm-section__title">About me</h2>
     <p class="gm-section__text">Hi, I am <strong>Sara Paez Yamuza</strong> and I am a web developer. I like working on both sides of an application: what you see and what is behind it.</p>
@@ -28,7 +28,7 @@ Each part of a home page (About me, Skills, Contact…) is a section: some space
 Any component can go after the title, for example an [accordion](/docs/components/accordion):
 
 ```html
-<section class="gm-section" style="padding-block: 2.5rem">
+<section class="gm-section gm-py-10">
   <div class="gm-container gm-container--narrow">
     <h2 class="gm-section__title">Skills</h2>
     <div class="gm-accordion">

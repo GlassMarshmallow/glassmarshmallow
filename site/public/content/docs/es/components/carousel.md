@@ -71,7 +71,7 @@ Con `.gm-carousel--peek` y sin `data-gm-carousel`: las fotos se pasan deslizando
 Como las preguntas rápidas del chat del portfolio: todo en una sola fila que se desliza de lado con el dedo, el ratón o el teclado, sin flechas ni puntos. El borde derecho se difumina para que se vea que hay más. Usa `.gm-scroll-row`; no necesita script.
 
 ```html
-<div class="gm-scroll-row" role="group" aria-label="Preguntas rápidas" style="max-width: 340px">
+<div class="gm-scroll-row gm-max-w-xs" role="group" aria-label="Preguntas rápidas">
   <button type="button" class="gm-btn gm-btn--pill">¿Qué tecnologías usas?</button>
   <button type="button" class="gm-btn gm-btn--pill">¿Cuánto cuesta una web?</button>
   <button type="button" class="gm-btn gm-btn--pill">¿Haces tiendas online?</button>

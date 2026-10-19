@@ -7,7 +7,7 @@ A button that opens a list of options, like the language, version and theme menu
 Open it with the mouse or with the keyboard (Enter or Space on the button).
 
 ```html
-<div style="display: flex; align-items: flex-start; justify-content: flex-end; min-height: 230px">
+<div class="gm-flex gm-items-start gm-justify-end" style="min-height: 14.375rem">
   <div class="gm-menu" data-gm-menu>
     <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Theme: Auto">
       <i class="gmi gmi-circle-half" aria-hidden="true"></i>
@@ -27,7 +27,7 @@ Open it with the mouse or with the keyboard (Enter or Space on the button).
 The list opens aligned to the right of the button. Next to the left edge, add `.gm-menu--start`.
 
 ```html
-<div style="min-height: 190px">
+<div style="min-height: 11.875rem">
   <div class="gm-menu gm-menu--start" data-gm-menu>
     <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language: English">
       <i class="gmi gmi-translate" aria-hidden="true"></i> EN

@@ -20,13 +20,13 @@ Cristal con el borde cielo y, en oscuro, un brillo turquesa. La cola apunta a qu
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
-  <div class="gm-bubble gm-bubble--tail-end" style="max-width: 360px">
+  <div class="gm-bubble gm-bubble--tail-end gm-max-w-sm">
     <div class="gm-bubble__scroll" tabindex="0" role="region" aria-label="Respuesta">
       Trabajo sobre todo con Angular y .NET, y diseño en Figma. Puedes ver mis proyectos en <a href="#">GitHub</a>.
     </div>
     <button type="button" class="gm-bubble__close" aria-label="Cerrar la respuesta"><i class="gmi gmi-x" aria-hidden="true"></i></button>
   </div>
-  <div class="gm-bubble gm-bubble--tail-start" style="max-width: 360px; margin-left: 16px">
+  <div class="gm-bubble gm-bubble--tail-start gm-max-w-sm gm-ms-4">
     <div class="gm-bubble__scroll"><span class="gm-bubble__note">Seguimos donde lo dejamos</span>¿Para cuándo necesitas la web?</div>
   </div>
 </div>
@@ -37,7 +37,7 @@ Cristal con el borde cielo y, en oscuro, un brillo turquesa. La cola apunta a qu
 Mientras llega la respuesta, `.gm-typing` con tres `<span>`: tres puntos que botan, en cielo (turquesa en oscuro).
 
 ```html
-<div class="gm-bubble" style="max-width: 120px">
+<div class="gm-bubble" style="max-width: 7.5rem">
   <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
   <span class="gm-visually-hidden">Pensando la respuesta…</span>
 </div>
@@ -59,13 +59,13 @@ Con variables, en el bocadillo o en cualquier elemento que lo contenga:
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
-  <div class="gm-bubble gm-bubble--tail-end" style="--gm-bubble-color: var(--gm-accent); max-width: 360px">
+  <div class="gm-bubble gm-bubble--tail-end gm-max-w-sm" style="--gm-bubble-color: var(--gm-accent)">
     <div class="gm-bubble__scroll">Con el color de acento: rosa de día y azul de noche.</div>
   </div>
-  <div class="gm-bubble gm-bubble--tail-start" style="--gm-bubble-color: linear-gradient(90deg, var(--gm-mint-700), var(--gm-sky-700)); --gm-bubble-tail-color: var(--gm-mint-700); max-width: 360px; margin-left: 16px">
+  <div class="gm-bubble gm-bubble--tail-start gm-max-w-sm gm-ms-4" style="--gm-bubble-color: linear-gradient(90deg, var(--gm-mint-700), var(--gm-sky-700)); --gm-bubble-tail-color: var(--gm-mint-700)">
     <div class="gm-bubble__scroll">Con un degradado de menta a celeste; la cola, en menta.</div>
   </div>
-  <div class="gm-bubble" style="--gm-bubble-color: var(--gm-accent); --gm-typing-color: var(--gm-accent); max-width: 120px">
+  <div class="gm-bubble" style="--gm-bubble-color: var(--gm-accent); --gm-typing-color: var(--gm-accent); max-width: 7.5rem">
     <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
     <span class="gm-visually-hidden">Pensando la respuesta…</span>
   </div>

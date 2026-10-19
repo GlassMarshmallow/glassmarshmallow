@@ -5,7 +5,7 @@ Un mensaje destacado dentro de la página: información, algo que salió bien, u
 ## Ejemplos
 
 ```html
-<div style="display: grid; gap: 12px">
+<div class="gm-grid gm-gap-3">
   <div class="gm-alert"><i class="gmi gmi-info-circle" aria-hidden="true"></i><span>La versión 0.1 todavía no está publicada en npm.</span></div>
   <div class="gm-alert gm-alert--success" role="status"><i class="gmi gmi-check-circle" aria-hidden="true"></i><span>Cambios guardados.</span></div>
   <div class="gm-alert gm-alert--warning"><i class="gmi gmi-exclamation-triangle" aria-hidden="true"></i><span>Te quedan 2 días de prueba.</span></div>

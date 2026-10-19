@@ -8,11 +8,11 @@ To place pieces in columns. It has 12 columns, like Bootstrap's, but is built wi
 
 ```html
 <div class="gm-grid gm-gap-sm">
-  <div class="gm-col-8 gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">8 of 12</div>
-  <div class="gm-col-4 gm-theme-pink-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">4 of 12</div>
-  <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
-  <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
-  <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
+  <div class="gm-col-8 gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">8 of 12</div>
+  <div class="gm-col-4 gm-theme-pink-blue gm-theme-solid gm-p-4 gm-rounded-sm">4 of 12</div>
+  <div class="gm-col-4 gm-theme-mint gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
+  <div class="gm-col-4 gm-theme-mint gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
+  <div class="gm-col-4 gm-theme-mint gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
 </div>
 ```
 
@@ -22,9 +22,9 @@ With a prefix (`sm`, `md`, `lg`, `xl`), the column changes from that width. Here
 
 ```html
 <div class="gm-grid gm-gap-sm">
-  <div class="gm-md-col-6 gm-lg-col-4 gm-theme-lavender gm-theme-solid" style="padding: 16px; border-radius: 12px">A</div>
-  <div class="gm-md-col-6 gm-lg-col-4 gm-theme-pink gm-theme-solid" style="padding: 16px; border-radius: 12px">B</div>
-  <div class="gm-md-col-12 gm-lg-col-4 gm-theme-peach gm-theme-solid" style="padding: 16px; border-radius: 12px">C</div>
+  <div class="gm-md-col-6 gm-lg-col-4 gm-theme-lavender gm-theme-solid gm-p-4 gm-rounded-sm">A</div>
+  <div class="gm-md-col-6 gm-lg-col-4 gm-theme-pink gm-theme-solid gm-p-4 gm-rounded-sm">B</div>
+  <div class="gm-md-col-12 gm-lg-col-4 gm-theme-peach gm-theme-solid gm-p-4 gm-rounded-sm">C</div>
 </div>
 ```
 
@@ -34,10 +34,10 @@ Without counting: `.gm-cols-2`, `-3`, `-4` or `-6` split the space into equal co
 
 ```html
 <div class="gm-grid gm-cols-1 gm-sm-cols-2 gm-lg-cols-4 gm-gap-sm">
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">1</div>
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">2</div>
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">3</div>
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
+  <div class="gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">1</div>
+  <div class="gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">2</div>
+  <div class="gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">3</div>
+  <div class="gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
 </div>
 ```
 
@@ -46,7 +46,7 @@ Without counting: `.gm-cols-2`, `-3`, `-4` or `-6` split the space into equal co
 `.gm-grid--auto` fits as many columns of at least 240 px as there is room for, with no breakpoints. Ideal for cards. Change the minimum with `--gm-grid-min`.
 
 ```html
-<div class="gm-grid gm-grid--auto gm-gap-sm" style="--gm-grid-min: 160px">
+<div class="gm-grid gm-grid--auto gm-gap-sm" style="--gm-grid-min: 10rem">
   <div class="gm-card">One</div>
   <div class="gm-card">Two</div>
   <div class="gm-card">Three</div>
@@ -61,7 +61,7 @@ Without counting: `.gm-cols-2`, `-3`, `-4` or `-6` split the space into equal co
 
 ```html
 <div class="gm-grid">
-  <div class="gm-col-12 gm-md-col-6 gm-md-offset-3 gm-theme-lemon gm-theme-solid" style="padding: 16px; border-radius: 12px">Centered from md</div>
+  <div class="gm-col-12 gm-md-col-6 gm-md-offset-3 gm-theme-lemon gm-theme-solid gm-p-4 gm-rounded-sm">Centered from md</div>
 </div>
 ```
 

@@ -9,7 +9,7 @@ Envuelve el elemento y su burbuja en `.gm-tooltip`. La burbuja lleva `role="tool
 Aparece al pasar el ratón por el elemento y al llegar a él con el teclado. Si llevas el ratón a la burbuja, no se cierra.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; padding-top: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-center gm-items-center gm-gap-3 gm-pt-12">
   <span class="gm-tooltip">
     <button type="button" class="gm-icon-btn" aria-label="Buscar" aria-describedby="tip-1"><i class="gmi gmi-search" aria-hidden="true"></i></button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-1">Buscar en la biblioteca</span>
@@ -30,7 +30,7 @@ Aparece al pasar el ratón por el elemento y al llegar a él con el teclado. Si 
 Por defecto va arriba. Añade `.gm-tooltip--bottom` para ponerlo debajo.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; padding-bottom: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-center gm-items-center gm-gap-3 gm-pb-12">
   <span class="gm-tooltip gm-tooltip--bottom">
     <button type="button" class="gm-icon-btn" aria-label="Compartir" aria-describedby="tip-4"><i class="gmi gmi-share" aria-hidden="true"></i></button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-4">Compartir con alguien</span>
@@ -43,7 +43,7 @@ Por defecto va arriba. Añade `.gm-tooltip--bottom` para ponerlo debajo.
 Las burbujas centradas pueden salirse por el borde de la pantalla. Junto al borde izquierdo, añade `.gm-tooltip--start`; junto al derecho, `.gm-tooltip--end`.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-between gm-items-center gm-gap-3 gm-pt-12">
   <span class="gm-tooltip gm-tooltip--start">
     <button type="button" class="gm-icon-btn" aria-label="Volver" aria-describedby="tip-6"><i class="gmi gmi-arrow-left" aria-hidden="true"></i></button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-6">Volver a la biblioteca</span>
@@ -60,7 +60,7 @@ Las burbujas centradas pueden salirse por el borde de la pantalla. Junto al bord
 Un tooltip añade información; no sustituye al nombre del botón. En un botón con texto, úsalo para explicar algo más.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; padding-top: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-center gm-items-center gm-gap-3 gm-pt-12">
   <span class="gm-tooltip">
     <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm" aria-describedby="tip-5">Publicar</button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-5">Lo verá todo el que tenga el enlace</span>

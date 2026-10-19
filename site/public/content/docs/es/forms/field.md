@@ -7,7 +7,7 @@ Campos y formularios como el formulario de contacto del portfolio: recuadro de c
 ```html
 <form class="gm-form" aria-labelledby="contact-title">
   <div>
-    <h3 id="contact-title" style="margin: 0 0 4px">Contacta conmigo</h3>
+    <h3 class="gm-mt-0 gm-mx-0 gm-mb-1" id="contact-title">Contacta conmigo</h3>
   </div>
 
   <div class="gm-field">

@@ -13,7 +13,7 @@ Fields go one below the other, in the order people think of the answers. The lab
 **Wrong:** two fields per row and labels beside them.
 
 ```html
-<div class="gm-field" style="grid-template-columns: auto 1fr auto 1fr; align-items: center; gap: 8px; max-width: 560px">
+<div class="gm-field gm-items-center gm-gap-2 gm-max-w-xl" style="grid-template-columns: auto 1fr auto 1fr">
   <label for="bad-first-name">First name:</label>
   <input id="bad-first-name" type="text">
   <label for="bad-last-name">Last name:</label>
@@ -24,7 +24,7 @@ Fields go one below the other, in the order people think of the answers. The lab
 **Right:** one column and the label on top.
 
 ```html
-<div style="display: grid; gap: 1.15rem; max-width: 420px">
+<div class="gm-grid gm-gap-5 gm-max-w-md">
   <div class="gm-field">
     <label for="good-first-name">First name</label>
     <input id="good-first-name" type="text" autocomplete="given-name">
@@ -47,7 +47,7 @@ Several simple questions are better than one complicated one. Use closed questio
 Required fields have “(required)” written in the label and `required` on the field; optional ones, “(optional)”. Written in words it needs no explanation and screen readers read it the same way; not everyone knows what an asterisk means.
 
 ```html
-<div style="display: grid; gap: 1.15rem; max-width: 420px">
+<div class="gm-grid gm-gap-5 gm-max-w-md">
   <div class="gm-field">
     <label for="rules-email">Email (required)</label>
     <input id="rules-email" type="email" autocomplete="email" required>
@@ -68,7 +68,7 @@ Help goes as text below the label and is linked to the field with `aria-describe
 **Wrong:** help only in the placeholder.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="bad-id">ID number</label>
   <input id="bad-id" type="text" placeholder="8 digits and a letter, no spaces">
 </div>
@@ -77,7 +77,7 @@ Help goes as text below the label and is linked to the field with `aria-describe
 **Right:** help as text, linked to the field.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="good-id">ID number</label>
   <p class="gm-field__help" id="good-id-help">8 digits and a letter, no spaces. For example, 12345678Z.</p>
   <input id="good-id" type="text" aria-describedby="good-id-help">
@@ -93,7 +93,7 @@ The message says what happened and how to fix it, using the label's words. No bl
 **Wrong:** does not say what to do.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="bad-email">Email (required)</label>
   <input id="bad-email" type="email" value="sara@" aria-invalid="true" aria-describedby="bad-email-error">
   <p class="gm-field__error" id="bad-email-error">Invalid field.</p>
@@ -103,7 +103,7 @@ The message says what happened and how to fix it, using the label's words. No bl
 **Right:** says what is missing and gives an example.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="good-email">Email (required)</label>
   <input id="good-email" type="email" value="sara@" aria-invalid="true" aria-describedby="good-email-error">
   <p class="gm-field__error" id="good-email-error">Enter the full email address, for example sara@example.com.</p>
@@ -117,7 +117,7 @@ WCAG: 3.3.1 Error Identification, 3.3.3 Error Suggestion, 1.4.1 Use of Color.
 If there are errors on submit, a summary appears above the form with how many there are and a link to each field, as well as the message next to each one. Focus moves to the summary so screen readers read it in full.
 
 ```html
-<div class="gm-error-summary" role="alert" tabindex="-1" aria-labelledby="summary-title" style="max-width: 520px">
+<div class="gm-error-summary gm-max-w-lg" role="alert" tabindex="-1" aria-labelledby="summary-title">
   <h2 class="gm-error-summary__title" id="summary-title"><i class="gmi gmi-exclamation-circle" aria-hidden="true"></i>There are 2 errors in the form</h2>
   <ul class="gm-error-summary__list">
     <li><a href="#good-email">Enter the full email address, for example sara@example.com.</a></li>
@@ -141,7 +141,7 @@ WCAG: 3.3.1 Error Identification, 3.3.7 Redundant Entry (do not ask for the same
 On submit, say clearly that it worked, on the page and to screen readers (with `role="status"` or by moving focus to the message). If submitting has consequences (paying, deleting, signing), let people review the data first and undo or correct it afterwards.
 
 ```html
-<div class="gm-alert gm-alert--success" role="status" style="max-width: 520px">
+<div class="gm-alert gm-alert--success gm-max-w-lg" role="status">
   <i class="gmi gmi-check-circle" aria-hidden="true"></i>
   <span>Message sent. I will reply within 2 working days.</span>
 </div>
@@ -154,7 +154,7 @@ WCAG: 4.1.3 Status Messages, 3.3.4 and 3.3.6 Error Prevention.
 The submit button says what happens when pressed: “Send request”, “Create account”, “Pay €25”. Avoid a bare “OK” or “Submit” when it is not clear what is sent. If there is a button to clear the form, do not put it next to the submit button with the same look.
 
 ```html
-<div class="gm-form__actions" style="max-width: 420px">
+<div class="gm-form__actions gm-max-w-md">
   <button type="button" class="gm-btn gm-btn--accent">Send request</button>
 </div>
 ```

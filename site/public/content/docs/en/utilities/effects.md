@@ -33,10 +33,10 @@ To make your own glass with other values, use the [glass generator](/tools/glass
 
 ```html
 <div class="gm-flex gm-gap-4">
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-100" style="width: 64px; height: 48px"></div><span class="gm-small">100</span></div>
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-75" style="width: 64px; height: 48px"></div><span class="gm-small">75</span></div>
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-50" style="width: 64px; height: 48px"></div><span class="gm-small">50</span></div>
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-25" style="width: 64px; height: 48px"></div><span class="gm-small">25</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-100" style="width: 4rem; height: 3rem"></div><span class="gm-small">100</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-75" style="width: 4rem; height: 3rem"></div><span class="gm-small">75</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-50" style="width: 4rem; height: 3rem"></div><span class="gm-small">50</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-25" style="width: 4rem; height: 3rem"></div><span class="gm-small">25</span></div>
 </div>
 ```
 

@@ -7,7 +7,7 @@ The top bar, like the one in My Book Box and My MTV Box: logo and name on the le
 On the site it sticks to the top (`position: sticky`); here it is shown inside the frame.
 
 ```html
-<header class="gm-navbar" style="position: relative; border-radius: 12px">
+<header class="gm-navbar gm-relative gm-rounded-sm">
   <a class="gm-navbar__brand" href="#"><img class="gm-navbar__logo" src="logo.svg" alt="" width="48" height="48"><span>My site</span></a>
   <nav class="gm-navbar__nav" aria-label="Main">
     <a href="#" aria-current="page">Home</a>
@@ -43,7 +43,7 @@ If the logo is made of glass (translucent, with shiny edges, like the GlassMarsh
 The bar of the portfolio template. **On computers**, without a logo: the links in the center and the theme button on the right (`.gm-navbar--centered`). **On phones**, no bar: only the round glass buttons remain, floating at the top right (`.gm-navbar--floating`), and the menu button (`.gm-navbar__menu`) opens the [full-screen menu](/docs/components/fullscreen-menu).
 
 ```html
-<header class="gm-navbar gm-navbar--centered gm-navbar--floating" style="position: relative; border-radius: 12px">
+<header class="gm-navbar gm-navbar--centered gm-navbar--floating gm-relative gm-rounded-sm">
   <nav class="gm-navbar__nav" aria-label="Centered bar example">
     <a href="#" aria-current="page">Home</a>
     <a href="#">About me</a>
@@ -59,8 +59,8 @@ The bar of the portfolio template. **On computers**, without a logo: the links i
 This is how it looks on phones (make the window narrower than 860 px to see it in the top bar):
 
 ```html
-<div style="position: relative; height: 160px; overflow: hidden; border-radius: 12px; background: var(--gm-backdrop-lights), var(--gm-backdrop-bg)">
-  <div style="position: absolute; top: 12px; right: 12px; display: flex; gap: 12px">
+<div class="gm-relative gm-overflow-hidden gm-rounded-sm" style="height: 10rem; background: var(--gm-backdrop-lights), var(--gm-backdrop-bg)">
+  <div class="gm-absolute gm-flex gm-gap-3" style="top: 0.75rem; right: 0.75rem">
     <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Switch to dark mode"><i class="gmi gmi-moon" aria-hidden="true"></i></button>
     <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Open menu"><i class="gmi gmi-list" aria-hidden="true"></i></button>
   </div>
@@ -84,14 +84,14 @@ With variables on the bar:
 So the text reads well on the new background, the easiest way is to fix the mode of the bar with `data-theme`: a dark bar on a light page (`data-theme="dark"`) or a pastel with black text (`data-theme="light"`).
 
 ```html
-<div style="display: grid; gap: 16px">
-  <header class="gm-navbar gm-navbar--centered" data-theme="dark" style="position: relative; border-radius: 12px">
+<div class="gm-grid gm-gap-4">
+  <header class="gm-navbar gm-navbar--centered gm-relative gm-rounded-sm" data-theme="dark">
     <nav class="gm-navbar__nav" aria-label="Dark bar example">
       <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
     </nav>
     <div class="gm-navbar__actions"><button type="button" class="gm-icon-btn" aria-label="Switch to light mode"><i class="gmi gmi-sun" aria-hidden="true"></i></button></div>
   </header>
-  <header class="gm-navbar gm-navbar--centered" data-theme="light" style="position: relative; border-radius: 12px; --gm-header-bg: var(--gm-mint); --gm-header-border: transparent; --gm-header-shadow: 0 4px 24px rgba(0, 0, 0, .08)">
+  <header class="gm-navbar gm-navbar--centered gm-relative gm-rounded-sm" data-theme="light" style="--gm-header-bg: var(--gm-mint); --gm-header-border: transparent; --gm-header-shadow: 0 4px 24px rgba(0, 0, 0, .08)">
     <nav class="gm-navbar__nav" aria-label="Mint bar example">
       <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
     </nav>
@@ -105,13 +105,13 @@ So the text reads well on the new background, the easiest way is to fix the mode
 Hover over the links: in the first bar they take the accent color (pink by day, blue at night); in the second, a gradient from lavender to pink.
 
 ```html
-<div style="display: grid; gap: 16px">
-  <header class="gm-navbar gm-navbar--centered" style="position: relative; border-radius: 12px; --gm-nav-link-hover: var(--gm-accent)">
+<div class="gm-grid gm-gap-4">
+  <header class="gm-navbar gm-navbar--centered gm-relative gm-rounded-sm" style="--gm-nav-link-hover: var(--gm-accent)">
     <nav class="gm-navbar__nav" aria-label="Accent color example">
       <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
     </nav>
   </header>
-  <header class="gm-navbar gm-navbar--centered" data-theme="light" style="position: relative; border-radius: 12px; --gm-nav-link-hover: linear-gradient(90deg, var(--gm-lavender-700), var(--gm-pink-700))">
+  <header class="gm-navbar gm-navbar--centered gm-relative gm-rounded-sm" data-theme="light" style="--gm-nav-link-hover: linear-gradient(90deg, var(--gm-lavender-700), var(--gm-pink-700))">
     <nav class="gm-navbar__nav" aria-label="Gradient example">
       <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
     </nav>

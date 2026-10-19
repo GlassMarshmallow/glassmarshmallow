@@ -7,7 +7,7 @@ El contenedor centra el contenido de la página y le deja un margen a los lados.
 `.gm-container` mide como mucho 1240 px y deja 24 px a cada lado (16 px en el móvil).
 
 ```html
-<div class="gm-container" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+<div class="gm-container gm-py-4" style="outline: 2px dashed var(--gm-field-border)">
   Contenido centrado, con margen a los lados.
 </div>
 ```
@@ -17,7 +17,7 @@ El contenedor centra el contenido de la página y le deja un margen a los lados.
 `.gm-container--narrow`, de 960 px como máximo: para textos largos, formularios o artículos, que se leen mejor sin líneas muy largas.
 
 ```html
-<div class="gm-container gm-container--narrow" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+<div class="gm-container gm-container--narrow gm-py-4" style="outline: 2px dashed var(--gm-field-border)">
   Para leer cómodo.
 </div>
 ```
@@ -27,7 +27,7 @@ El contenedor centra el contenido de la página y le deja un margen a los lados.
 `.gm-container--fluid` llega hasta los bordes de la pantalla, pero mantiene el margen de los lados.
 
 ```html
-<div class="gm-container--fluid" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+<div class="gm-container--fluid gm-py-4" style="outline: 2px dashed var(--gm-field-border)">
   De borde a borde.
 </div>
 ```

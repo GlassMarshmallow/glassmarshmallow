@@ -66,11 +66,11 @@ To remove something smoothly: add the class and, when the animation ends (`anima
 <div class="gm-flex gm-gap-6 gm-flex-wrap gm-items-center">
   <button type="button" class="gm-btn gm-btn--sm gm-btn--secondary" data-replay><i class="gmi gmi-arrow-repeat" aria-hidden="true"></i>Replay</button>
   <i class="gmi gmi-arrow-down gm-animate-bounce" style="font-size: 1.6rem" aria-hidden="true"></i>
-  <div class="gm-field" style="max-width: 200px"><input class="gm-animate-shake" value="sara@" aria-label="Email (error example)" aria-invalid="true"></div>
+  <div class="gm-field" style="max-width: 12.5rem"><input class="gm-animate-shake" value="sara@" aria-label="Email (error example)" aria-invalid="true"></div>
   <i class="gmi gmi-heart-fill gm-animate-heartbeat gm-text-coral" style="font-size: 1.6rem" aria-hidden="true"></i>
-  <span style="position: relative; display: inline-flex; width: 14px; height: 14px">
-    <span class="gm-animate-ping" style="position: absolute; inset: 0; border-radius: 50%; background: var(--gm-mint)"></span>
-    <span style="position: relative; width: 14px; height: 14px; border-radius: 50%; background: var(--gm-mint)"></span>
+  <span class="gm-relative gm-inline-flex" style="width: 0.875rem; height: 0.875rem">
+    <span class="gm-animate-ping gm-absolute gm-inset-0 gm-rounded-full gm-bg-mint"></span>
+    <span class="gm-relative gm-rounded-full gm-bg-mint" style="width: 0.875rem; height: 0.875rem"></span>
   </span>
 </div>
 ```
@@ -87,8 +87,8 @@ To remove something smoothly: add the class and, when the animation ends (`anima
 ```html
 <div class="gm-flex gm-gap-6 gm-flex-wrap gm-items-center">
   <i class="gmi gmi-arrow-repeat gm-animate-spin" style="font-size: 1.6rem" aria-hidden="true"></i>
-  <div class="gm-bg-gray-200 gm-rounded-sm gm-animate-pulse" style="width: 140px; height: 20px"></div>
-  <div class="gm-rounded-sm gm-animate-shimmer" style="width: 200px; height: 20px"></div>
+  <div class="gm-bg-gray-200 gm-rounded-sm gm-animate-pulse" style="width: 8.75rem; height: 1.25rem"></div>
+  <div class="gm-rounded-sm gm-animate-shimmer" style="width: 12.5rem; height: 1.25rem"></div>
 </div>
 ```
 

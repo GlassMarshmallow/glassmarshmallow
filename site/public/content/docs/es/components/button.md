@@ -7,7 +7,7 @@ Botones para las acciones de formularios, diálogos y páginas, con la forma red
 `.gm-btn` es el botón principal: negro en modo claro y blanco en oscuro. Añade `.gm-btn--secondary` para un botón de cristal con borde, o `.gm-btn--ghost` para uno sin fondo.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn">Principal</button>
   <button type="button" class="gm-btn gm-btn--secondary">Secundario</button>
   <button type="button" class="gm-btn gm-btn--ghost">Transparente</button>
@@ -19,7 +19,7 @@ Botones para las acciones de formularios, diálogos y páginas, con la forma red
 Añade un color de la paleta (`.gm-theme-sky`, `.gm-theme-mint`…) y cómo usarlo: `.gm-theme-solid` para el pastel con el texto negro, o `.gm-theme-glass` para la versión vidriada. El botón mantiene su forma de píldora.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-theme-sky gm-theme-solid">Sólido</button>
   <button type="button" class="gm-btn gm-theme-sky gm-theme-glass">Vidriado</button>
 </div>
@@ -28,7 +28,7 @@ Añade un color de la paleta (`.gm-theme-sky`, `.gm-theme-mint`…) y cómo usar
 Todos los colores, sólidos:
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-btn--sm gm-theme-sky gm-theme-solid">Celeste</button>
   <button type="button" class="gm-btn gm-btn--sm gm-theme-blue gm-theme-solid">Azul</button>
   <button type="button" class="gm-btn gm-btn--sm gm-theme-lavender gm-theme-solid">Lavanda</button>
@@ -43,7 +43,7 @@ Todos los colores, sólidos:
 Y vidriados:
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-btn--sm gm-theme-sky gm-theme-glass">Celeste</button>
   <button type="button" class="gm-btn gm-btn--sm gm-theme-blue gm-theme-glass">Azul</button>
   <button type="button" class="gm-btn gm-btn--sm gm-theme-lavender gm-theme-glass">Lavanda</button>
@@ -62,7 +62,7 @@ El texto sobre el pastel siempre es negro (7,8:1 o más, AAA). Nunca uses texto 
 `.gm-btn--sm` lo hace más bajo (38 px) y con el texto más pequeño.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-btn--sm">Principal</button>
   <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm">Secundario</button>
 </div>
@@ -73,7 +73,7 @@ El texto sobre el pastel siempre es negro (7,8:1 o más, AAA). Nunca uses texto 
 Pon un icono antes o después del texto. Es decorativo, así que lleva `aria-hidden="true"`.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn"><i class="gmi gmi-download" aria-hidden="true"></i>Descargar</button>
   <button type="button" class="gm-btn gm-btn--secondary">Siguiente<i class="gmi gmi-arrow-right" aria-hidden="true"></i></button>
 </div>
@@ -84,7 +84,7 @@ Pon un icono antes o después del texto. Es decorativo, así que lleva `aria-hid
 `.gm-icon-btn` es un botón redondo de 42 px. Como no tiene texto, necesita `aria-label` con lo que hace.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-icon-btn" aria-label="Buscar"><i class="gmi gmi-search" aria-hidden="true"></i></button>
   <button type="button" class="gm-icon-btn" aria-label="Ajustes"><i class="gmi gmi-gear" aria-hidden="true"></i></button>
   <button type="button" class="gm-icon-btn" aria-label="Borrar"><i class="gmi gmi-trash" aria-hidden="true"></i></button>
@@ -96,7 +96,7 @@ Pon un icono antes o después del texto. Es decorativo, así que lleva `aria-hid
 `.gm-btn--pill` es un botón pequeño con el gris de las etiquetas, para acciones secundarias en listas y tarjetas. Añade `.gm-btn--danger` para las acciones que borran.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-btn--pill">Editar</button>
   <button type="button" class="gm-btn gm-btn--pill gm-btn--danger">Borrar</button>
 </div>
@@ -107,7 +107,7 @@ Pon un icono antes o después del texto. Es decorativo, así que lleva `aria-hid
 `.gm-btn-text` parece un enlace pero es un botón, para acciones pequeñas dentro de un texto.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn-text">Ver más</button>
 </div>
 ```
@@ -117,7 +117,7 @@ Pon un icono antes o después del texto. Es decorativo, así que lleva `aria-hid
 `.gm-btn-back` vuelve a la sección anterior. La flecha es decorativa; si el texto visible no dice adónde vuelve, añádelo con un texto oculto.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <a class="gm-btn-back" href="#"><span aria-hidden="true">‹</span> Volver<span class="gm-visually-hidden">: Herramientas</span></a>
 </div>
 ```
@@ -127,7 +127,7 @@ Pon un icono antes o después del texto. Es decorativo, así que lleva `aria-hid
 Las clases también funcionan en `<a>`. Usa `<a>` cuando lleva a otra página y `<button>` cuando hace algo en la misma.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <a class="gm-btn" href="#">Leer la documentación</a>
   <a class="gm-btn gm-btn--secondary" href="#">GitHub</a>
 </div>
@@ -138,7 +138,7 @@ Las clases también funcionan en `<a>`. Usa `<a>` cuando lleva a otra página y 
 Con el atributo `disabled` el botón se ve más claro y no se puede pulsar.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn" disabled>Principal</button>
   <button type="button" class="gm-btn gm-btn--secondary" disabled>Secundario</button>
 </div>

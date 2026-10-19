@@ -5,7 +5,7 @@ Change the color of the text with a class. Each color uses its text tone, which 
 ## Palette
 
 ```html
-<div style="display: grid; gap: 6px">
+<div class="gm-grid gm-gap-2">
   <div class="gm-text-sky">.gm-text-sky</div>
   <div class="gm-text-blue">.gm-text-blue</div>
   <div class="gm-text-lavender">.gm-text-lavender</div>
@@ -22,7 +22,7 @@ Change the color of the text with a class. Each color uses its text tone, which 
 Grays that would be too light to read in light mode use `gray-600`, and grays that would be too dark in dark mode use `gray-500`, so the text is always readable.
 
 ```html
-<div style="display: grid; gap: 6px">
+<div class="gm-grid gm-gap-2">
   <div class="gm-text-white">.gm-text-white</div>
   <div class="gm-text-gray-100">.gm-text-gray-100</div>
   <div class="gm-text-gray-200">.gm-text-gray-200</div>
@@ -42,7 +42,7 @@ Grays that would be too light to read in light mode use `gray-600`, and grays th
 The three text colors of the interface, which change with light and dark mode.
 
 ```html
-<div style="display: grid; gap: 6px">
+<div class="gm-grid gm-gap-2">
   <div class="gm-text-body">.gm-text-body</div>
   <div class="gm-text-secondary">.gm-text-secondary</div>
   <div class="gm-text-muted">.gm-text-muted</div>

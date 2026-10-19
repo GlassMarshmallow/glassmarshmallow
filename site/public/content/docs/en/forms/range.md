@@ -5,7 +5,7 @@ To pick a number in a range by dragging: volume, opacity, size… The thumb is a
 ## Example
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="example-volume">Volume</label>
   <input id="example-volume" class="gm-range" type="range" min="0" max="100" value="40">
 </div>
@@ -16,9 +16,9 @@ To pick a number in a range by dragging: volume, opacity, size… The thumb is a
 Show the value next to the label with an `<output>`. That way the exact number is known without guessing from the position.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
-  <div style="display: flex; justify-content: space-between; align-items: baseline">
-    <label for="example-opacity" style="font-weight: 700">Opacity</label>
+<div class="gm-field gm-max-w-md">
+  <div class="gm-flex gm-justify-between gm-items-baseline">
+    <label class="gm-font-bold" for="example-opacity">Opacity</label>
     <output id="example-opacity-value" for="example-opacity" class="gm-muted">70 %</output>
   </div>
   <input id="example-opacity" class="gm-range" type="range" min="0" max="100" value="70" oninput="document.getElementById('example-opacity-value').textContent = this.value + ' %'">
@@ -28,7 +28,7 @@ Show the value next to the label with an `<output>`. That way the exact number i
 ## Disabled
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="example-disabled">Brightness</label>
   <input id="example-disabled" class="gm-range" type="range" min="0" max="100" value="50" disabled>
 </div>

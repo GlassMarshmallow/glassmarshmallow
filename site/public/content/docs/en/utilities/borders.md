@@ -36,7 +36,7 @@ Thin borders with the framework lines and rounded corners with its radii. They c
   <div class="gm-theme-pink gm-theme-solid gm-p-4 gm-rounded-md">md</div>
   <div class="gm-theme-pink gm-theme-solid gm-p-4 gm-rounded-lg">lg</div>
   <div class="gm-theme-pink gm-theme-solid gm-px-6 gm-py-2 gm-rounded-pill">pill</div>
-  <div class="gm-theme-pink gm-theme-solid gm-rounded-full gm-flex gm-items-center gm-justify-center" style="width: 64px; height: 64px">full</div>
+  <div class="gm-theme-pink gm-theme-solid gm-rounded-full gm-flex gm-items-center gm-justify-center" style="width: 4rem; height: 4rem">full</div>
 </div>
 ```
 

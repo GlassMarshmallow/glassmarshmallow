@@ -9,7 +9,7 @@ Wrap the element and its bubble in `.gm-tooltip`. The bubble has `role="tooltip"
 It shows when you hover the element and when you reach it with the keyboard. Move the pointer onto the bubble and it stays open.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; padding-top: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-center gm-items-center gm-gap-3 gm-pt-12">
   <span class="gm-tooltip">
     <button type="button" class="gm-icon-btn" aria-label="Search" aria-describedby="tip-1"><i class="gmi gmi-search" aria-hidden="true"></i></button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-1">Search the library</span>
@@ -30,7 +30,7 @@ It shows when you hover the element and when you reach it with the keyboard. Mov
 By default it goes above. Add `.gm-tooltip--bottom` to put it below.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; padding-bottom: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-center gm-items-center gm-gap-3 gm-pb-12">
   <span class="gm-tooltip gm-tooltip--bottom">
     <button type="button" class="gm-icon-btn" aria-label="Share" aria-describedby="tip-4"><i class="gmi gmi-share" aria-hidden="true"></i></button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-4">Share with a friend</span>
@@ -43,7 +43,7 @@ By default it goes above. Add `.gm-tooltip--bottom` to put it below.
 Centered bubbles can go past the edge of the screen. Next to the left edge, add `.gm-tooltip--start`; next to the right one, `.gm-tooltip--end`.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-between gm-items-center gm-gap-3 gm-pt-12">
   <span class="gm-tooltip gm-tooltip--start">
     <button type="button" class="gm-icon-btn" aria-label="Back" aria-describedby="tip-6"><i class="gmi gmi-arrow-left" aria-hidden="true"></i></button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-6">Back to the library</span>
@@ -60,7 +60,7 @@ Centered bubbles can go past the edge of the screen. Next to the left edge, add 
 A tooltip adds information; it does not replace the name of the button. On a button with text, use it to explain something more.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; padding-top: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-center gm-items-center gm-gap-3 gm-pt-12">
   <span class="gm-tooltip">
     <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm" aria-describedby="tip-5">Publish</button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-5">Everyone with the link will see it</span>

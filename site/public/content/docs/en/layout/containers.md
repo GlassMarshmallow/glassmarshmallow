@@ -7,7 +7,7 @@ The container centers the page content and leaves a margin on the sides. It is t
 `.gm-container` is at most 1240 px wide and leaves 24 px on each side (16 px on phones).
 
 ```html
-<div class="gm-container" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+<div class="gm-container gm-py-4" style="outline: 2px dashed var(--gm-field-border)">
   Centered content, with a margin on the sides.
 </div>
 ```
@@ -17,7 +17,7 @@ The container centers the page content and leaves a margin on the sides. It is t
 `.gm-container--narrow`, at most 960 px: for long texts, forms or articles, which read better without very long lines.
 
 ```html
-<div class="gm-container gm-container--narrow" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+<div class="gm-container gm-container--narrow gm-py-4" style="outline: 2px dashed var(--gm-field-border)">
   Comfortable to read.
 </div>
 ```
@@ -27,7 +27,7 @@ The container centers the page content and leaves a margin on the sides. It is t
 `.gm-container--fluid` reaches the edges of the screen but keeps the side margin.
 
 ```html
-<div class="gm-container--fluid" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+<div class="gm-container--fluid gm-py-4" style="outline: 2px dashed var(--gm-field-border)">
   Edge to edge.
 </div>
 ```

@@ -87,9 +87,9 @@ El acento es el color de los botones de acento, el foco del teclado, los campos 
 Así se ve (con los valores de día):
 
 ```html
-<div data-theme="light" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 20px; border-radius: 12px; background: var(--gm-bg); --gm-accent: #6d47e5; --gm-accent-strong: #490795; --gm-accent-hover: #350170; --gm-focus: #6d47e5; --gm-field-focus: #6d47e5">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-5 gm-p-5 gm-rounded-sm gm-bg-body" data-theme="light" style="--gm-accent: #6d47e5; --gm-accent-strong: #490795; --gm-accent-hover: #350170; --gm-focus: #6d47e5; --gm-field-focus: #6d47e5">
   <button type="button" class="gm-btn gm-btn--accent">Enviar</button>
-  <input class="gm-range" type="range" min="0" max="100" value="60" aria-label="Volumen" style="--gm-range-progress: 60%; width: 160px">
+  <input class="gm-range" type="range" min="0" max="100" value="60" aria-label="Volumen" style="--gm-range-progress: 60%; width: 10rem">
   <div class="gm-check"><label><input type="checkbox" checked> Acepto</label></div>
 </div>
 ```

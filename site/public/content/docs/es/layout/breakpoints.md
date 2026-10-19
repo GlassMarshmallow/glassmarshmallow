@@ -16,10 +16,10 @@ Una clase con prefijo se aplica **desde** ese ancho en adelante. Sin prefijo, en
 
 ```html
 <div class="gm-grid gm-gap-sm">
-  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">1</div>
-  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-pink-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">2</div>
-  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">3</div>
-  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-peach gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
+  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">1</div>
+  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-pink-blue gm-theme-solid gm-p-4 gm-rounded-sm">2</div>
+  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-mint gm-theme-solid gm-p-4 gm-rounded-sm">3</div>
+  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-peach gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
 </div>
 ```
 

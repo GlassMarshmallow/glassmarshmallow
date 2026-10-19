@@ -39,12 +39,17 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 
 - [Spacing](/docs/utilities/spacing): Margin (outside) and padding (inside) without writing CSS. As in Tailwind: the number is the scale, and **4 = 1 rem** (16 px).
 - [Sizing](/docs/utilities/sizing): Width, height and their minimums and maximums. Like Tailwind's [min-width](https://tailwindcss.com/docs/min-width) and max-width.
+- [Position and layers](/docs/utilities/position): Where an element goes and what covers what. Like Tailwind's [position](https://tailwindcss.com/docs/position) and z-index.
+- [Overflow](/docs/utilities/overflow): What happens to whatever does not fit in its box: it shows, it is clipped or it can be scrolled. Like Tailwind's [overflow](https://tailwindcss.com/docs/overflow).
+- [Text](/docs/utilities/text): Size, weight, line height and shape of text. Like Tailwind's [typography](https://tailwindcss.com/docs/font-size) utilities. For color, see [Text color](/docs/color/text); to align it, `gm-text-start`, `gm-text-center` and `gm-text-end`.
+- [Images and video](/docs/utilities/media): The aspect ratio of a box and how an image or a video fills its space. Like Tailwind's [aspect-ratio](https://tailwindcss.com/docs/aspect-ratio) and object-fit.
 - [Borders and radius](/docs/utilities/borders): Thin borders with the framework lines and rounded corners with its radii. They change on their own in dark mode.
 - [Shadows](/docs/utilities/shadows): The framework shadows, soft by day and deeper at night so they show on black.
 - [Effects](/docs/utilities/effects): Glass, background blur and opacity: what gives GlassMarshmallow its look.
 - [Animations](/docs/utilities/animations): Short movements so something appears, leaves or draws a little attention. **They all switch off on their own** if the person has asked for reduced motion in their system. Entering and leaving ones move only once: press **Replay** to see them again.
 - [Flex and alignment](/docs/utilities/flex): To lay pieces out in a row or a column and align them, without writing CSS.
 - [Display](/docs/utilities/display): Changes how an element is displayed, or hides it, depending on the screen size.
+- [Interaction and visibility](/docs/utilities/interaction): How an element responds to the mouse and whether it is seen. Like Tailwind's [cursor](https://tailwindcss.com/docs/cursor), pointer-events, user-select and visibility.
 
 ## Content
 

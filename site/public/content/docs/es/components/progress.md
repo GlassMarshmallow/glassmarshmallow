@@ -5,7 +5,7 @@ Cuánto se lleva hecho de algo: lectura de un libro, subida de un archivo, pasos
 ## Ejemplo
 
 ```html
-<div class="gm-progress" style="max-width: 360px">
+<div class="gm-progress gm-max-w-sm">
   <progress class="gm-progress__bar" id="ejemplo-leido" max="100" value="45">45 %</progress>
   <label class="gm-progress__label" for="ejemplo-leido">45 % leído · página 162 de 360</label>
 </div>
@@ -16,7 +16,7 @@ Cuánto se lleva hecho de algo: lectura de un libro, subida de un archivo, pasos
 `.gm-progress--lg`, para cuando la barra es lo principal (una subida, una instalación).
 
 ```html
-<div class="gm-progress gm-progress--lg" style="max-width: 420px">
+<div class="gm-progress gm-progress--lg gm-max-w-md">
   <progress class="gm-progress__bar" id="ejemplo-subida" max="100" value="72">72 %</progress>
   <label class="gm-progress__label" for="ejemplo-subida">Subiendo «novela.epub»: 72 %</label>
 </div>
@@ -27,7 +27,7 @@ Cuánto se lleva hecho de algo: lectura de un libro, subida de un archivo, pasos
 Sin `value`, la barra enseña un tramo que va y viene: se está trabajando, pero no se sabe cuánto queda.
 
 ```html
-<div class="gm-progress" style="max-width: 360px">
+<div class="gm-progress gm-max-w-sm">
   <progress class="gm-progress__bar" id="ejemplo-cargando" max="100">Cargando</progress>
   <label class="gm-progress__label" for="ejemplo-cargando">Cargando la biblioteca…</label>
 </div>

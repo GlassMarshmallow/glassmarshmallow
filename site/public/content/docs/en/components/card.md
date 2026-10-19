@@ -5,8 +5,8 @@ A glass box to group content: translucent background with blur, thin border, rou
 ## Example
 
 ```html
-<div class="gm-card" style="max-width: 360px">
-  <h3 style="margin: 0 0 8px">Basic plan</h3>
+<div class="gm-card gm-max-w-sm">
+  <h3 class="gm-mt-0 gm-mx-0 gm-mb-2">Basic plan</h3>
   <p class="gm-muted">To get started: a one-page website with a contact form.</p>
   <button type="button" class="gm-btn gm-btn--sm">See details</button>
 </div>
@@ -17,10 +17,10 @@ A glass box to group content: translucent background with blur, thin border, rou
 With the [grid](/docs/layout/grid) (`.gm-grid--auto`), as many cards per row as fit.
 
 ```html
-<div class="gm-grid gm-grid--auto gm-gap-sm" style="--gm-grid-min: 200px">
-  <div class="gm-card"><i class="gmi gmi-stars" aria-hidden="true" style="font-size: 1.5rem"></i><h3 style="margin: 8px 0 4px">Fast</h3><p class="gm-muted">Ready in minutes.</p></div>
-  <div class="gm-card"><i class="gmi gmi-circle-half" aria-hidden="true" style="font-size: 1.5rem"></i><h3 style="margin: 8px 0 4px">Light and dark</h3><p class="gm-muted">Both modes, built in.</p></div>
-  <div class="gm-card"><i class="gmi gmi-heart" aria-hidden="true" style="font-size: 1.5rem"></i><h3 style="margin: 8px 0 4px">Accessible</h3><p class="gm-muted">WCAG 2.2 AA and AAA.</p></div>
+<div class="gm-grid gm-grid--auto gm-gap-sm" style="--gm-grid-min: 12.5rem">
+  <div class="gm-card"><i class="gmi gmi-stars" aria-hidden="true" style="font-size: 1.5rem"></i><h3 class="gm-mt-2 gm-mx-0 gm-mb-1">Fast</h3><p class="gm-muted">Ready in minutes.</p></div>
+  <div class="gm-card"><i class="gmi gmi-circle-half" aria-hidden="true" style="font-size: 1.5rem"></i><h3 class="gm-mt-2 gm-mx-0 gm-mb-1">Light and dark</h3><p class="gm-muted">Both modes, built in.</p></div>
+  <div class="gm-card"><i class="gmi gmi-heart" aria-hidden="true" style="font-size: 1.5rem"></i><h3 class="gm-mt-2 gm-mx-0 gm-mb-1">Accessible</h3><p class="gm-muted">WCAG 2.2 AA and AAA.</p></div>
 </div>
 ```
 
@@ -29,9 +29,9 @@ With the [grid](/docs/layout/grid) (`.gm-grid--auto`), as many cards per row as 
 If the whole card leads to another page, make the card the `<a>`. That avoids several repeated links.
 
 ```html
-<a class="gm-card" href="#" style="display: block; max-width: 360px; color: inherit">
+<a class="gm-card gm-block gm-max-w-sm" href="#" style="color: inherit">
   <strong>Palette generator</strong>
-  <p class="gm-muted" style="margin: 4px 0 0">Create an accessible palette from one color.</p>
+  <p class="gm-muted gm-mt-1 gm-mx-0 gm-mb-0">Create an accessible palette from one color.</p>
 </a>
 ```
 

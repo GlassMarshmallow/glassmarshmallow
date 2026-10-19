@@ -22,7 +22,7 @@ A glass pill for quick options, like the suggested questions of a chat. It is th
 Many chips in a row fit better in a [swipe row](/docs/components/carousel#swipe-row), as in the template:
 
 ```html
-<div class="gm-scroll-row" role="group" aria-label="Quick questions" style="max-width: 320px">
+<div class="gm-scroll-row gm-max-w-xs" role="group" aria-label="Quick questions">
   <button type="button" class="gm-chip">Which technologies do you use?</button>
   <button type="button" class="gm-chip">How much does a website cost?</button>
   <button type="button" class="gm-chip">Do you build online shops?</button>

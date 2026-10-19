@@ -5,7 +5,7 @@ Una píldora pequeña para marcar algo: una categoría, un estado, una novedad. 
 ## Ejemplo
 
 ```html
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<div class="gm-flex gm-flex-wrap gm-gap-2">
   <span class="gm-tag">Novela</span>
   <span class="gm-tag">Fantasía</span>
   <span class="gm-tag">2026</span>
@@ -17,7 +17,7 @@ Una píldora pequeña para marcar algo: una categoría, un estado, una novedad. 
 Con los colores de la paleta (`.gm-theme-…` y `.gm-theme-solid`), texto negro sobre el pastel.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<div class="gm-flex gm-flex-wrap gm-gap-2">
   <span class="gm-tag gm-theme-sky gm-theme-solid">Nuevo</span>
   <span class="gm-tag gm-theme-mint gm-theme-solid">Leído</span>
   <span class="gm-tag gm-theme-lemon gm-theme-solid">Pendiente</span>

@@ -71,7 +71,7 @@ With `.gm-carousel--peek` and no `data-gm-carousel`: photos move by swiping with
 Like the quick questions of the portfolio chat: everything in one row that slides sideways with a finger, the mouse or the keyboard, with no arrows or dots. The right edge fades out to show there is more. Use `.gm-scroll-row`; no script needed.
 
 ```html
-<div class="gm-scroll-row" role="group" aria-label="Quick questions" style="max-width: 340px">
+<div class="gm-scroll-row gm-max-w-xs" role="group" aria-label="Quick questions">
   <button type="button" class="gm-btn gm-btn--pill">Which technologies do you use?</button>
   <button type="button" class="gm-btn gm-btn--pill">How much does a website cost?</button>
   <button type="button" class="gm-btn gm-btn--pill">Do you build online shops?</button>

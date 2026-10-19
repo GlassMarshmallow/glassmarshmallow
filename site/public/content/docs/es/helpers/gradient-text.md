@@ -5,8 +5,8 @@ Pinta un texto con el degradado de colores del framework. De noche pasa a color 
 ## Ejemplo
 
 ```html
-<p style="font-size: 1.4rem; font-weight: 700; margin: 0">Hecho con <span class="gm-gradient-text">GlassMarshmallow</span></p>
-<h2 class="gm-gradient-title" style="margin: 8px 0 0">Título con degradado</h2>
+<p class="gm-font-bold gm-m-0" style="font-size: 1.4rem">Hecho con <span class="gm-gradient-text">GlassMarshmallow</span></p>
+<h2 class="gm-gradient-title gm-mt-2 gm-mx-0 gm-mb-0">Título con degradado</h2>
 ```
 
 ## Dos versiones

@@ -5,7 +5,7 @@ A highlighted message inside the page: information, something that went well, a 
 ## Examples
 
 ```html
-<div style="display: grid; gap: 12px">
+<div class="gm-grid gm-gap-3">
   <div class="gm-alert"><i class="gmi gmi-info-circle" aria-hidden="true"></i><span>Version 0.1 is not on npm yet.</span></div>
   <div class="gm-alert gm-alert--success" role="status"><i class="gmi gmi-check-circle" aria-hidden="true"></i><span>Changes saved.</span></div>
   <div class="gm-alert gm-alert--warning"><i class="gmi gmi-exclamation-triangle" aria-hidden="true"></i><span>You have 2 trial days left.</span></div>

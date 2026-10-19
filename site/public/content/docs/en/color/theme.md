@@ -15,8 +15,8 @@ The black, white and gray classes work the same way: `.gm-theme-white`, `.gm-the
 
 ```html
 <div class="gm-flex gm-gap-3 gm-flex-wrap">
-  <div class="gm-theme-pink-blue gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-pink-blue .gm-theme-solid</div>
-  <div class="gm-theme-pink-blue gm-theme-glass" style="padding: 12px 16px">.gm-theme-pink-blue .gm-theme-glass</div>
+  <div class="gm-theme-pink-blue gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-pink-blue .gm-theme-solid</div>
+  <div class="gm-theme-pink-blue gm-theme-glass gm-py-3 gm-px-4">.gm-theme-pink-blue .gm-theme-glass</div>
 </div>
 ```
 
@@ -35,33 +35,33 @@ With `class="gm-accent-turquoise"` on `<html>`, the night accent color is the tu
 `.gm-theme-solid` paints the pastel as the background, with black text in both light and dark mode.
 
 ```html
-<div style="display: grid; gap: 10px">
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-sky .gm-theme-solid</div>
-  <div class="gm-theme-blue gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-blue .gm-theme-solid</div>
-  <div class="gm-theme-lavender gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-lavender .gm-theme-solid</div>
-  <div class="gm-theme-pink gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-pink .gm-theme-solid</div>
-  <div class="gm-theme-peach gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-peach .gm-theme-solid</div>
-  <div class="gm-theme-lemon gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-lemon .gm-theme-solid</div>
-  <div class="gm-theme-mint gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-mint .gm-theme-solid</div>
-  <div class="gm-theme-coral gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-coral .gm-theme-solid</div>
+<div class="gm-grid gm-gap-3">
+  <div class="gm-theme-sky gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-sky .gm-theme-solid</div>
+  <div class="gm-theme-blue gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-blue .gm-theme-solid</div>
+  <div class="gm-theme-lavender gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-lavender .gm-theme-solid</div>
+  <div class="gm-theme-pink gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-pink .gm-theme-solid</div>
+  <div class="gm-theme-peach gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-peach .gm-theme-solid</div>
+  <div class="gm-theme-lemon gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-lemon .gm-theme-solid</div>
+  <div class="gm-theme-mint gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-mint .gm-theme-solid</div>
+  <div class="gm-theme-coral gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-coral .gm-theme-solid</div>
 </div>
 ```
 
 With grays, the text is black up to `gray-500` and white from `gray-600`:
 
 ```html
-<div style="display: grid; gap: 10px">
-  <div class="gm-theme-white gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-white .gm-theme-solid</div>
-  <div class="gm-theme-gray-100 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-100 .gm-theme-solid</div>
-  <div class="gm-theme-gray-200 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-200 .gm-theme-solid</div>
-  <div class="gm-theme-gray-300 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-300 .gm-theme-solid</div>
-  <div class="gm-theme-gray-400 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-400 .gm-theme-solid</div>
-  <div class="gm-theme-gray-500 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-500 .gm-theme-solid</div>
-  <div class="gm-theme-gray-600 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-600 .gm-theme-solid</div>
-  <div class="gm-theme-gray-700 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-700 .gm-theme-solid</div>
-  <div class="gm-theme-gray-800 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-800 .gm-theme-solid</div>
-  <div class="gm-theme-gray-900 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-900 .gm-theme-solid</div>
-  <div class="gm-theme-black gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-black .gm-theme-solid</div>
+<div class="gm-grid gm-gap-3">
+  <div class="gm-theme-white gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-white .gm-theme-solid</div>
+  <div class="gm-theme-gray-100 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-100 .gm-theme-solid</div>
+  <div class="gm-theme-gray-200 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-200 .gm-theme-solid</div>
+  <div class="gm-theme-gray-300 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-300 .gm-theme-solid</div>
+  <div class="gm-theme-gray-400 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-400 .gm-theme-solid</div>
+  <div class="gm-theme-gray-500 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-500 .gm-theme-solid</div>
+  <div class="gm-theme-gray-600 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-600 .gm-theme-solid</div>
+  <div class="gm-theme-gray-700 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-700 .gm-theme-solid</div>
+  <div class="gm-theme-gray-800 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-800 .gm-theme-solid</div>
+  <div class="gm-theme-gray-900 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-900 .gm-theme-solid</div>
+  <div class="gm-theme-black gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-black .gm-theme-solid</div>
 </div>
 ```
 
@@ -70,31 +70,31 @@ With grays, the text is black up to `gray-500` and white from `gray-600`:
 `.gm-theme-glass` is the glazed version: the color at 18 % over whatever is behind it, a 1 px border at 41 %, a 7 px blur, 21 px corners and a soft shadow. The text keeps the page color.
 
 ```html
-<div style="display: grid; gap: 10px">
-  <div class="gm-theme-sky gm-theme-glass" style="padding: 12px 16px">.gm-theme-sky .gm-theme-glass</div>
-  <div class="gm-theme-blue gm-theme-glass" style="padding: 12px 16px">.gm-theme-blue .gm-theme-glass</div>
-  <div class="gm-theme-lavender gm-theme-glass" style="padding: 12px 16px">.gm-theme-lavender .gm-theme-glass</div>
-  <div class="gm-theme-pink gm-theme-glass" style="padding: 12px 16px">.gm-theme-pink .gm-theme-glass</div>
-  <div class="gm-theme-peach gm-theme-glass" style="padding: 12px 16px">.gm-theme-peach .gm-theme-glass</div>
-  <div class="gm-theme-lemon gm-theme-glass" style="padding: 12px 16px">.gm-theme-lemon .gm-theme-glass</div>
-  <div class="gm-theme-mint gm-theme-glass" style="padding: 12px 16px">.gm-theme-mint .gm-theme-glass</div>
-  <div class="gm-theme-coral gm-theme-glass" style="padding: 12px 16px">.gm-theme-coral .gm-theme-glass</div>
+<div class="gm-grid gm-gap-3">
+  <div class="gm-theme-sky gm-theme-glass gm-py-3 gm-px-4">.gm-theme-sky .gm-theme-glass</div>
+  <div class="gm-theme-blue gm-theme-glass gm-py-3 gm-px-4">.gm-theme-blue .gm-theme-glass</div>
+  <div class="gm-theme-lavender gm-theme-glass gm-py-3 gm-px-4">.gm-theme-lavender .gm-theme-glass</div>
+  <div class="gm-theme-pink gm-theme-glass gm-py-3 gm-px-4">.gm-theme-pink .gm-theme-glass</div>
+  <div class="gm-theme-peach gm-theme-glass gm-py-3 gm-px-4">.gm-theme-peach .gm-theme-glass</div>
+  <div class="gm-theme-lemon gm-theme-glass gm-py-3 gm-px-4">.gm-theme-lemon .gm-theme-glass</div>
+  <div class="gm-theme-mint gm-theme-glass gm-py-3 gm-px-4">.gm-theme-mint .gm-theme-glass</div>
+  <div class="gm-theme-coral gm-theme-glass gm-py-3 gm-px-4">.gm-theme-coral .gm-theme-glass</div>
 </div>
 ```
 
 ```html
-<div style="display: grid; gap: 10px">
-  <div class="gm-theme-white gm-theme-glass" style="padding: 12px 16px">.gm-theme-white .gm-theme-glass</div>
-  <div class="gm-theme-gray-100 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-100 .gm-theme-glass</div>
-  <div class="gm-theme-gray-200 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-200 .gm-theme-glass</div>
-  <div class="gm-theme-gray-300 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-300 .gm-theme-glass</div>
-  <div class="gm-theme-gray-400 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-400 .gm-theme-glass</div>
-  <div class="gm-theme-gray-500 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-500 .gm-theme-glass</div>
-  <div class="gm-theme-gray-600 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-600 .gm-theme-glass</div>
-  <div class="gm-theme-gray-700 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-700 .gm-theme-glass</div>
-  <div class="gm-theme-gray-800 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-800 .gm-theme-glass</div>
-  <div class="gm-theme-gray-900 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-900 .gm-theme-glass</div>
-  <div class="gm-theme-black gm-theme-glass" style="padding: 12px 16px">.gm-theme-black .gm-theme-glass</div>
+<div class="gm-grid gm-gap-3">
+  <div class="gm-theme-white gm-theme-glass gm-py-3 gm-px-4">.gm-theme-white .gm-theme-glass</div>
+  <div class="gm-theme-gray-100 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-100 .gm-theme-glass</div>
+  <div class="gm-theme-gray-200 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-200 .gm-theme-glass</div>
+  <div class="gm-theme-gray-300 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-300 .gm-theme-glass</div>
+  <div class="gm-theme-gray-400 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-400 .gm-theme-glass</div>
+  <div class="gm-theme-gray-500 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-500 .gm-theme-glass</div>
+  <div class="gm-theme-gray-600 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-600 .gm-theme-glass</div>
+  <div class="gm-theme-gray-700 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-700 .gm-theme-glass</div>
+  <div class="gm-theme-gray-800 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-800 .gm-theme-glass</div>
+  <div class="gm-theme-gray-900 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-900 .gm-theme-glass</div>
+  <div class="gm-theme-black gm-theme-glass gm-py-3 gm-px-4">.gm-theme-black .gm-theme-glass</div>
 </div>
 ```
 
@@ -103,7 +103,7 @@ With grays, the text is black up to `gray-500` and white from `gray-600`:
 `.gm-theme-text` writes the text in the color of the palette, in a darker tone so it can be read on the light background.
 
 ```html
-<div style="display: grid; gap: 10px">
+<div class="gm-grid gm-gap-3">
   <div class="gm-theme-sky gm-theme-text">.gm-theme-sky .gm-theme-text</div>
   <div class="gm-theme-blue gm-theme-text">.gm-theme-blue .gm-theme-text</div>
   <div class="gm-theme-lavender gm-theme-text">.gm-theme-lavender .gm-theme-text</div>

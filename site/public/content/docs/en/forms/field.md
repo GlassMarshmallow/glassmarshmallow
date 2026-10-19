@@ -7,7 +7,7 @@ Fields and forms like the contact form of the portfolio: a glass panel, labels i
 ```html
 <form class="gm-form" aria-labelledby="contact-title">
   <div>
-    <h3 id="contact-title" style="margin: 0 0 4px">Contact me</h3>
+    <h3 class="gm-mt-0 gm-mx-0 gm-mb-1" id="contact-title">Contact me</h3>
   </div>
 
   <div class="gm-field">

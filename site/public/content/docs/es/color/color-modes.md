@@ -17,16 +17,16 @@ Todos los colores son variables CSS que cambian con el modo: fondo de la página
 Pon `data-theme` en cualquier elemento para cambiar solo ese elemento y todo lo que tiene dentro. Añade `.gm-bg-body` o `.gm-bg-surface` para que la zona se pinte con el fondo de su modo.
 
 ```html
-<div style="display: grid; gap: 12px">
-  <div data-theme="light" class="gm-bg-body" style="padding: 16px; border-radius: 12px">
+<div class="gm-grid gm-gap-3">
+  <div data-theme="light" class="gm-bg-body gm-p-4 gm-rounded-sm">
     <b>Siempre claro</b>
     <div class="gm-text-sky">.gm-text-sky</div>
-    <div class="gm-theme-sky gm-theme-glass" style="margin-top: 8px; padding: 10px 14px">.gm-theme-glass</div>
+    <div class="gm-theme-sky gm-theme-glass gm-mt-2 gm-py-3 gm-px-4">.gm-theme-glass</div>
   </div>
-  <div data-theme="dark" class="gm-bg-body" style="padding: 16px; border-radius: 12px">
+  <div data-theme="dark" class="gm-bg-body gm-p-4 gm-rounded-sm">
     <b>Siempre oscuro</b>
     <div class="gm-text-sky">.gm-text-sky</div>
-    <div class="gm-theme-sky gm-theme-glass" style="margin-top: 8px; padding: 10px 14px">.gm-theme-glass</div>
+    <div class="gm-theme-sky gm-theme-glass gm-mt-2 gm-py-3 gm-px-4">.gm-theme-glass</div>
   </div>
 </div>
 ```

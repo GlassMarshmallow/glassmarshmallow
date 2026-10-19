@@ -7,7 +7,7 @@ The profile picture box, as a circle or a square with rounded corners. Without a
 Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cropped to fill the box without stretching.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--lg gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
@@ -18,7 +18,7 @@ Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cro
 `.gm-avatar--sm` (2 rem), default (3 rem), `.gm-avatar--lg` (5 rem) and `.gm-avatar--xl` (8 rem). The rounding and the letters grow in proportion.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--sm"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
@@ -31,7 +31,7 @@ Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cro
 With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and give the name with `role="img"` and `aria-label`, because initials alone are not clear. Without a name, a silhouette.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--lg gm-theme-sky" role="img" aria-label="Sara Paez">SP</span>
   <span class="gm-avatar gm-avatar--lg gm-avatar--square gm-theme-lavender" role="img" aria-label="Sara Paez Yamuza">SP</span>
   <span class="gm-avatar gm-avatar--lg gm-theme-mint" role="img" aria-label="Diego Sanz">DS</span>
@@ -44,7 +44,7 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 `.gm-avatar--ring`: the photo with a colored ring, like the one in the portfolio template. By default, in sky (turquoise in dark mode); the thickness is proportional to the size.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
@@ -59,10 +59,10 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 | `--gm-avatar-ring` | The ring color (a color or a gradient), with `--ring` | Sky (turquoise in dark mode) |
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: linear-gradient(135deg, var(--gm-mint), var(--gm-sky), var(--gm-lavender))"><img src="media/perfil-4.jpg" alt="Diego Sanz"></span>
-  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 0.75rem"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```

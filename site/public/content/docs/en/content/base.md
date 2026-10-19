@@ -16,7 +16,7 @@ What GlassMarshmallow applies to the whole page when loaded, with no classes: th
 Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so no single word is left alone at the end.
 
 ```html
-<h1 style="margin: 0">Page title</h1>
+<h1 class="gm-m-0">Page title</h1>
 <h2>Section title</h2>
 <h3>Subsection title</h3>
 <p>Regular text, with comfortable line height for reading long paragraphs.</p>
@@ -32,7 +32,7 @@ Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so n
 
 ```html
 <p class="gm-eyebrow">New</p>
-<h3 style="margin-top: 0">GlassMarshmallow 0.1</h3>
+<h3 class="gm-mt-0">GlassMarshmallow 0.1</h3>
 <p class="gm-muted">Secondary text for descriptions and hints.</p>
 <p class="gm-small gm-muted">Small text: dates, notes, legal notices.</p>
 ```

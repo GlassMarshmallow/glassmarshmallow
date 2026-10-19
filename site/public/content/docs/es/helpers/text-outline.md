@@ -7,8 +7,8 @@
 Así se ve sobre un fondo con luces en modo oscuro:
 
 ```html
-<div data-theme="dark" style="display: grid; place-items: center; min-height: 160px; border-radius: 12px; color: #f5f5f7; background: radial-gradient(circle at 30% 40%, #1cabb0, transparent 55%), radial-gradient(circle at 70% 60%, #8c57e9, transparent 55%), #000">
-  <p class="gm-text-outline" style="margin: 0; font-size: 2rem; font-weight: 800">Se lee sobre las luces</p>
+<div class="gm-grid gm-rounded-sm" data-theme="dark" style="place-items: center; min-height: 10rem; color: #f5f5f7; background: radial-gradient(circle at 30% 40%, #1cabb0, transparent 55%), radial-gradient(circle at 70% 60%, #8c57e9, transparent 55%), #000">
+  <p class="gm-text-outline gm-m-0 gm-font-extrabold" style="font-size: 2rem">Se lee sobre las luces</p>
 </div>
 ```
 

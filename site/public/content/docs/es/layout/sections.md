@@ -5,7 +5,7 @@ Cada parte de una página de inicio (Sobre mí, Habilidades, Contacto…) es una
 ## Ejemplo
 
 ```html
-<section class="gm-section" style="padding-block: 2.5rem">
+<section class="gm-section gm-py-10">
   <div class="gm-container gm-container--narrow">
     <h2 class="gm-section__title">Sobre mí</h2>
     <p class="gm-section__text">Hola, me llamo <strong>Sara Paez Yamuza</strong> y soy desarrolladora web. Me gusta trabajar en los dos lados de una aplicación: lo que se ve y lo que hay detrás.</p>
@@ -28,7 +28,7 @@ Cada parte de una página de inicio (Sobre mí, Habilidades, Contacto…) es una
 Después del título puede ir cualquier componente, por ejemplo un [acordeón](/docs/components/accordion):
 
 ```html
-<section class="gm-section" style="padding-block: 2.5rem">
+<section class="gm-section gm-py-10">
   <div class="gm-container gm-container--narrow">
     <h2 class="gm-section__title">Habilidades</h2>
     <div class="gm-accordion">

@@ -22,7 +22,7 @@ Una píldora de cristal para opciones rápidas, como las preguntas sugeridas de 
 Muchos chips seguidos caben mejor en una [fila deslizable](/docs/components/carousel#fila-deslizable), como en la plantilla:
 
 ```html
-<div class="gm-scroll-row" role="group" aria-label="Preguntas rápidas" style="max-width: 320px">
+<div class="gm-scroll-row gm-max-w-xs" role="group" aria-label="Preguntas rápidas">
   <button type="button" class="gm-chip">¿Qué tecnologías usas?</button>
   <button type="button" class="gm-chip">¿Cuánto cuesta una web?</button>
   <button type="button" class="gm-chip">¿Haces tiendas online?</button>

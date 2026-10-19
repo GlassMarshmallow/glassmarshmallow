@@ -5,7 +5,7 @@ Para elegir un número dentro de un rango arrastrando: volumen, opacidad, tamañ
 ## Ejemplo
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="ejemplo-volumen">Volumen</label>
   <input id="ejemplo-volumen" class="gm-range" type="range" min="0" max="100" value="40">
 </div>
@@ -16,9 +16,9 @@ Para elegir un número dentro de un rango arrastrando: volumen, opacidad, tamañ
 Enseña el valor junto a la etiqueta con un `<output>`. Así se sabe el número exacto sin tener que adivinarlo por la posición.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
-  <div style="display: flex; justify-content: space-between; align-items: baseline">
-    <label for="ejemplo-opacidad" style="font-weight: 700">Opacidad</label>
+<div class="gm-field gm-max-w-md">
+  <div class="gm-flex gm-justify-between gm-items-baseline">
+    <label class="gm-font-bold" for="ejemplo-opacidad">Opacidad</label>
     <output id="ejemplo-opacidad-valor" for="ejemplo-opacidad" class="gm-muted">70 %</output>
   </div>
   <input id="ejemplo-opacidad" class="gm-range" type="range" min="0" max="100" value="70" oninput="document.getElementById('ejemplo-opacidad-valor').textContent = this.value + ' %'">
@@ -28,7 +28,7 @@ Enseña el valor junto a la etiqueta con un `<output>`. Así se sabe el número 
 ## Desactivada
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="ejemplo-desactivada">Brillo</label>
   <input id="ejemplo-desactivada" class="gm-range" type="range" min="0" max="100" value="50" disabled>
 </div>

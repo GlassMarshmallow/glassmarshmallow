@@ -7,8 +7,8 @@ Un campo de texto con la lupa dentro y, debajo, los resultados que coinciden con
 Escribe, por ejemplo, «color» o «botón».
 
 ```html
-<div style="min-height: 300px">
-  <div class="gm-search" role="search" data-gm-search data-results-text="{count} resultados" style="max-width: 320px">
+<div style="min-height: 18.75rem">
+  <div class="gm-search gm-max-w-xs" role="search" data-gm-search data-results-text="{count} resultados">
     <div class="gm-search__field">
       <i class="gmi gmi-search" aria-hidden="true"></i>
       <label class="gm-visually-hidden" for="ejemplo-buscar">Buscar en la documentación</label>

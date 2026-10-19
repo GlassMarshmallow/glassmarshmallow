@@ -5,7 +5,7 @@ How much of something is done: reading a book, uploading a file, the steps of a 
 ## Example
 
 ```html
-<div class="gm-progress" style="max-width: 360px">
+<div class="gm-progress gm-max-w-sm">
   <progress class="gm-progress__bar" id="example-read" max="100" value="45">45 %</progress>
   <label class="gm-progress__label" for="example-read">45 % read · page 162 of 360</label>
 </div>
@@ -16,7 +16,7 @@ How much of something is done: reading a book, uploading a file, the steps of a 
 `.gm-progress--lg`, when the bar is the main thing (an upload, an installation).
 
 ```html
-<div class="gm-progress gm-progress--lg" style="max-width: 420px">
+<div class="gm-progress gm-progress--lg gm-max-w-md">
   <progress class="gm-progress__bar" id="example-upload" max="100" value="72">72 %</progress>
   <label class="gm-progress__label" for="example-upload">Uploading “novel.epub”: 72 %</label>
 </div>
@@ -27,7 +27,7 @@ How much of something is done: reading a book, uploading a file, the steps of a 
 Without `value`, the bar shows a segment moving back and forth: work is happening, but how much is left is unknown.
 
 ```html
-<div class="gm-progress" style="max-width: 360px">
+<div class="gm-progress gm-max-w-sm">
   <progress class="gm-progress__bar" id="example-loading" max="100">Loading</progress>
   <label class="gm-progress__label" for="example-loading">Loading the library…</label>
 </div>

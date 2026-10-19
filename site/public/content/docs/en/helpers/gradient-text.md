@@ -5,8 +5,8 @@ Paints text with the framework's color gradient. At night it switches to a plain
 ## Example
 
 ```html
-<p style="font-size: 1.4rem; font-weight: 700; margin: 0">Made with <span class="gm-gradient-text">GlassMarshmallow</span></p>
-<h2 class="gm-gradient-title" style="margin: 8px 0 0">Gradient heading</h2>
+<p class="gm-font-bold gm-m-0" style="font-size: 1.4rem">Made with <span class="gm-gradient-text">GlassMarshmallow</span></p>
+<h2 class="gm-gradient-title gm-mt-2 gm-mx-0 gm-mb-0">Gradient heading</h2>
 ```
 
 ## Two versions

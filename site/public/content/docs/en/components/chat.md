@@ -20,13 +20,13 @@ Glass with a sky border and, in dark mode, a turquoise glow. The tail points to 
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
-  <div class="gm-bubble gm-bubble--tail-end" style="max-width: 360px">
+  <div class="gm-bubble gm-bubble--tail-end gm-max-w-sm">
     <div class="gm-bubble__scroll" tabindex="0" role="region" aria-label="Answer">
       I mostly work with Angular and .NET, and design in Figma. You can see my projects on <a href="#">GitHub</a>.
     </div>
     <button type="button" class="gm-bubble__close" aria-label="Close the answer"><i class="gmi gmi-x" aria-hidden="true"></i></button>
   </div>
-  <div class="gm-bubble gm-bubble--tail-start" style="max-width: 360px; margin-left: 16px">
+  <div class="gm-bubble gm-bubble--tail-start gm-max-w-sm gm-ms-4">
     <div class="gm-bubble__scroll"><span class="gm-bubble__note">Picking up where we left off</span>When do you need the website?</div>
   </div>
 </div>
@@ -37,7 +37,7 @@ Glass with a sky border and, in dark mode, a turquoise glow. The tail points to 
 While the answer arrives, `.gm-typing` with three `<span>`s: three dots bouncing, in sky (turquoise in dark mode).
 
 ```html
-<div class="gm-bubble" style="max-width: 120px">
+<div class="gm-bubble" style="max-width: 7.5rem">
   <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
   <span class="gm-visually-hidden">Thinking about the answer…</span>
 </div>
@@ -59,13 +59,13 @@ With variables, on the bubble or on any element that contains it:
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
-  <div class="gm-bubble gm-bubble--tail-end" style="--gm-bubble-color: var(--gm-accent); max-width: 360px">
+  <div class="gm-bubble gm-bubble--tail-end gm-max-w-sm" style="--gm-bubble-color: var(--gm-accent)">
     <div class="gm-bubble__scroll">With the accent color: pink by day and blue at night.</div>
   </div>
-  <div class="gm-bubble gm-bubble--tail-start" style="--gm-bubble-color: linear-gradient(90deg, var(--gm-mint-700), var(--gm-sky-700)); --gm-bubble-tail-color: var(--gm-mint-700); max-width: 360px; margin-left: 16px">
+  <div class="gm-bubble gm-bubble--tail-start gm-max-w-sm gm-ms-4" style="--gm-bubble-color: linear-gradient(90deg, var(--gm-mint-700), var(--gm-sky-700)); --gm-bubble-tail-color: var(--gm-mint-700)">
     <div class="gm-bubble__scroll">With a gradient from mint to sky; the tail, in mint.</div>
   </div>
-  <div class="gm-bubble" style="--gm-bubble-color: var(--gm-accent); --gm-typing-color: var(--gm-accent); max-width: 120px">
+  <div class="gm-bubble" style="--gm-bubble-color: var(--gm-accent); --gm-typing-color: var(--gm-accent); max-width: 7.5rem">
     <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
     <span class="gm-visually-hidden">Thinking about the answer…</span>
   </div>

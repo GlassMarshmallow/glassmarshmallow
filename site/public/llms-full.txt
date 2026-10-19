@@ -334,9 +334,9 @@ The accent is the color of accent buttons, keyboard focus, fields while typing, 
 This is how it looks (with the day values):
 
 ```html
-<div data-theme="light" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 20px; border-radius: 12px; background: var(--gm-bg); --gm-accent: #6d47e5; --gm-accent-strong: #490795; --gm-accent-hover: #350170; --gm-focus: #6d47e5; --gm-field-focus: #6d47e5">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-5 gm-p-5 gm-rounded-sm gm-bg-body" data-theme="light" style="--gm-accent: #6d47e5; --gm-accent-strong: #490795; --gm-accent-hover: #350170; --gm-focus: #6d47e5; --gm-field-focus: #6d47e5">
   <button type="button" class="gm-btn gm-btn--accent">Send</button>
-  <input class="gm-range" type="range" min="0" max="100" value="60" aria-label="Volume" style="--gm-range-progress: 60%; width: 160px">
+  <input class="gm-range" type="range" min="0" max="100" value="60" aria-label="Volume" style="--gm-range-progress: 60%; width: 10rem">
   <div class="gm-check"><label><input type="checkbox" checked> I agree</label></div>
 </div>
 ```
@@ -716,16 +716,16 @@ All the colors are CSS variables that change with the mode: page background, sur
 Put `data-theme` on any element to change only that element and everything inside it. Add `.gm-bg-body` or `.gm-bg-surface` so that the area is painted with the background of its mode.
 
 ```html
-<div style="display: grid; gap: 12px">
-  <div data-theme="light" class="gm-bg-body" style="padding: 16px; border-radius: 12px">
+<div class="gm-grid gm-gap-3">
+  <div data-theme="light" class="gm-bg-body gm-p-4 gm-rounded-sm">
     <b>Always light</b>
     <div class="gm-text-sky">.gm-text-sky</div>
-    <div class="gm-theme-sky gm-theme-glass" style="margin-top: 8px; padding: 10px 14px">.gm-theme-glass</div>
+    <div class="gm-theme-sky gm-theme-glass gm-mt-2 gm-py-3 gm-px-4">.gm-theme-glass</div>
   </div>
-  <div data-theme="dark" class="gm-bg-body" style="padding: 16px; border-radius: 12px">
+  <div data-theme="dark" class="gm-bg-body gm-p-4 gm-rounded-sm">
     <b>Always dark</b>
     <div class="gm-text-sky">.gm-text-sky</div>
-    <div class="gm-theme-sky gm-theme-glass" style="margin-top: 8px; padding: 10px 14px">.gm-theme-glass</div>
+    <div class="gm-theme-sky gm-theme-glass gm-mt-2 gm-py-3 gm-px-4">.gm-theme-glass</div>
   </div>
 </div>
 ```
@@ -759,7 +759,7 @@ Change the color of the text with a class. Each color uses its text tone, which 
 ## Palette
 
 ```html
-<div style="display: grid; gap: 6px">
+<div class="gm-grid gm-gap-2">
   <div class="gm-text-sky">.gm-text-sky</div>
   <div class="gm-text-blue">.gm-text-blue</div>
   <div class="gm-text-lavender">.gm-text-lavender</div>
@@ -776,7 +776,7 @@ Change the color of the text with a class. Each color uses its text tone, which 
 Grays that would be too light to read in light mode use `gray-600`, and grays that would be too dark in dark mode use `gray-500`, so the text is always readable.
 
 ```html
-<div style="display: grid; gap: 6px">
+<div class="gm-grid gm-gap-2">
   <div class="gm-text-white">.gm-text-white</div>
   <div class="gm-text-gray-100">.gm-text-gray-100</div>
   <div class="gm-text-gray-200">.gm-text-gray-200</div>
@@ -796,7 +796,7 @@ Grays that would be too light to read in light mode use `gray-600`, and grays th
 The three text colors of the interface, which change with light and dark mode.
 
 ```html
-<div style="display: grid; gap: 6px">
+<div class="gm-grid gm-gap-2">
   <div class="gm-text-body">.gm-text-body</div>
   <div class="gm-text-secondary">.gm-text-secondary</div>
   <div class="gm-text-muted">.gm-text-muted</div>
@@ -818,15 +818,15 @@ Paint the background of any element with a class. Unlike Bootstrap, each backgro
 The solid pastel, with black text in light and dark mode.
 
 ```html
-<div style="display: grid; gap: 8px">
-  <div class="gm-bg-sky" style="padding: 12px 16px; border-radius: 12px">.gm-bg-sky</div>
-  <div class="gm-bg-blue" style="padding: 12px 16px; border-radius: 12px">.gm-bg-blue</div>
-  <div class="gm-bg-lavender" style="padding: 12px 16px; border-radius: 12px">.gm-bg-lavender</div>
-  <div class="gm-bg-pink" style="padding: 12px 16px; border-radius: 12px">.gm-bg-pink</div>
-  <div class="gm-bg-peach" style="padding: 12px 16px; border-radius: 12px">.gm-bg-peach</div>
-  <div class="gm-bg-lemon" style="padding: 12px 16px; border-radius: 12px">.gm-bg-lemon</div>
-  <div class="gm-bg-mint" style="padding: 12px 16px; border-radius: 12px">.gm-bg-mint</div>
-  <div class="gm-bg-coral" style="padding: 12px 16px; border-radius: 12px">.gm-bg-coral</div>
+<div class="gm-grid gm-gap-2">
+  <div class="gm-bg-sky gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-sky</div>
+  <div class="gm-bg-blue gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-blue</div>
+  <div class="gm-bg-lavender gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-lavender</div>
+  <div class="gm-bg-pink gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-pink</div>
+  <div class="gm-bg-peach gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-peach</div>
+  <div class="gm-bg-lemon gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-lemon</div>
+  <div class="gm-bg-mint gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-mint</div>
+  <div class="gm-bg-coral gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-coral</div>
 </div>
 ```
 
@@ -835,18 +835,18 @@ The solid pastel, with black text in light and dark mode.
 Black text up to `gray-500` and white text from `gray-600`.
 
 ```html
-<div style="display: grid; gap: 8px">
-  <div class="gm-bg-white" style="padding: 12px 16px; border-radius: 12px">.gm-bg-white</div>
-  <div class="gm-bg-gray-100" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-100</div>
-  <div class="gm-bg-gray-200" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-200</div>
-  <div class="gm-bg-gray-300" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-300</div>
-  <div class="gm-bg-gray-400" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-400</div>
-  <div class="gm-bg-gray-500" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-500</div>
-  <div class="gm-bg-gray-600" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-600</div>
-  <div class="gm-bg-gray-700" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-700</div>
-  <div class="gm-bg-gray-800" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-800</div>
-  <div class="gm-bg-gray-900" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-900</div>
-  <div class="gm-bg-black" style="padding: 12px 16px; border-radius: 12px">.gm-bg-black</div>
+<div class="gm-grid gm-gap-2">
+  <div class="gm-bg-white gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-white</div>
+  <div class="gm-bg-gray-100 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-100</div>
+  <div class="gm-bg-gray-200 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-200</div>
+  <div class="gm-bg-gray-300 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-300</div>
+  <div class="gm-bg-gray-400 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-400</div>
+  <div class="gm-bg-gray-500 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-500</div>
+  <div class="gm-bg-gray-600 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-600</div>
+  <div class="gm-bg-gray-700 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-700</div>
+  <div class="gm-bg-gray-800 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-800</div>
+  <div class="gm-bg-gray-900 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-900</div>
+  <div class="gm-bg-black gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-black</div>
 </div>
 ```
 
@@ -857,10 +857,10 @@ The scales also include `gray-025`, `gray-050`, `gray-950` and `gray-975` (`.gm-
 They follow light and dark mode: the page background, the background of cards and panels, and no background.
 
 ```html
-<div style="display: grid; gap: 8px">
-  <div class="gm-bg-body" style="padding: 12px 16px; border-radius: 12px">.gm-bg-body</div>
-  <div class="gm-bg-surface" style="padding: 12px 16px; border-radius: 12px">.gm-bg-surface</div>
-  <div class="gm-bg-transparent" style="padding: 12px 16px; border-radius: 12px">.gm-bg-transparent</div>
+<div class="gm-grid gm-gap-2">
+  <div class="gm-bg-body gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-body</div>
+  <div class="gm-bg-surface gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-surface</div>
+  <div class="gm-bg-transparent gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-transparent</div>
 </div>
 ```
 
@@ -930,8 +930,8 @@ The black, white and gray classes work the same way: `.gm-theme-white`, `.gm-the
 
 ```html
 <div class="gm-flex gm-gap-3 gm-flex-wrap">
-  <div class="gm-theme-pink-blue gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-pink-blue .gm-theme-solid</div>
-  <div class="gm-theme-pink-blue gm-theme-glass" style="padding: 12px 16px">.gm-theme-pink-blue .gm-theme-glass</div>
+  <div class="gm-theme-pink-blue gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-pink-blue .gm-theme-solid</div>
+  <div class="gm-theme-pink-blue gm-theme-glass gm-py-3 gm-px-4">.gm-theme-pink-blue .gm-theme-glass</div>
 </div>
 ```
 
@@ -950,33 +950,33 @@ With `class="gm-accent-turquoise"` on `<html>`, the night accent color is the tu
 `.gm-theme-solid` paints the pastel as the background, with black text in both light and dark mode.
 
 ```html
-<div style="display: grid; gap: 10px">
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-sky .gm-theme-solid</div>
-  <div class="gm-theme-blue gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-blue .gm-theme-solid</div>
-  <div class="gm-theme-lavender gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-lavender .gm-theme-solid</div>
-  <div class="gm-theme-pink gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-pink .gm-theme-solid</div>
-  <div class="gm-theme-peach gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-peach .gm-theme-solid</div>
-  <div class="gm-theme-lemon gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-lemon .gm-theme-solid</div>
-  <div class="gm-theme-mint gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-mint .gm-theme-solid</div>
-  <div class="gm-theme-coral gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-coral .gm-theme-solid</div>
+<div class="gm-grid gm-gap-3">
+  <div class="gm-theme-sky gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-sky .gm-theme-solid</div>
+  <div class="gm-theme-blue gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-blue .gm-theme-solid</div>
+  <div class="gm-theme-lavender gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-lavender .gm-theme-solid</div>
+  <div class="gm-theme-pink gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-pink .gm-theme-solid</div>
+  <div class="gm-theme-peach gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-peach .gm-theme-solid</div>
+  <div class="gm-theme-lemon gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-lemon .gm-theme-solid</div>
+  <div class="gm-theme-mint gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-mint .gm-theme-solid</div>
+  <div class="gm-theme-coral gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-coral .gm-theme-solid</div>
 </div>
 ```
 
 With grays, the text is black up to `gray-500` and white from `gray-600`:
 
 ```html
-<div style="display: grid; gap: 10px">
-  <div class="gm-theme-white gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-white .gm-theme-solid</div>
-  <div class="gm-theme-gray-100 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-100 .gm-theme-solid</div>
-  <div class="gm-theme-gray-200 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-200 .gm-theme-solid</div>
-  <div class="gm-theme-gray-300 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-300 .gm-theme-solid</div>
-  <div class="gm-theme-gray-400 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-400 .gm-theme-solid</div>
-  <div class="gm-theme-gray-500 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-500 .gm-theme-solid</div>
-  <div class="gm-theme-gray-600 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-600 .gm-theme-solid</div>
-  <div class="gm-theme-gray-700 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-700 .gm-theme-solid</div>
-  <div class="gm-theme-gray-800 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-800 .gm-theme-solid</div>
-  <div class="gm-theme-gray-900 gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-gray-900 .gm-theme-solid</div>
-  <div class="gm-theme-black gm-theme-solid" style="padding: 12px 16px; border-radius: 12px">.gm-theme-black .gm-theme-solid</div>
+<div class="gm-grid gm-gap-3">
+  <div class="gm-theme-white gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-white .gm-theme-solid</div>
+  <div class="gm-theme-gray-100 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-100 .gm-theme-solid</div>
+  <div class="gm-theme-gray-200 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-200 .gm-theme-solid</div>
+  <div class="gm-theme-gray-300 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-300 .gm-theme-solid</div>
+  <div class="gm-theme-gray-400 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-400 .gm-theme-solid</div>
+  <div class="gm-theme-gray-500 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-500 .gm-theme-solid</div>
+  <div class="gm-theme-gray-600 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-600 .gm-theme-solid</div>
+  <div class="gm-theme-gray-700 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-700 .gm-theme-solid</div>
+  <div class="gm-theme-gray-800 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-800 .gm-theme-solid</div>
+  <div class="gm-theme-gray-900 gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-gray-900 .gm-theme-solid</div>
+  <div class="gm-theme-black gm-theme-solid gm-py-3 gm-px-4 gm-rounded-sm">.gm-theme-black .gm-theme-solid</div>
 </div>
 ```
 
@@ -985,31 +985,31 @@ With grays, the text is black up to `gray-500` and white from `gray-600`:
 `.gm-theme-glass` is the glazed version: the color at 18 % over whatever is behind it, a 1 px border at 41 %, a 7 px blur, 21 px corners and a soft shadow. The text keeps the page color.
 
 ```html
-<div style="display: grid; gap: 10px">
-  <div class="gm-theme-sky gm-theme-glass" style="padding: 12px 16px">.gm-theme-sky .gm-theme-glass</div>
-  <div class="gm-theme-blue gm-theme-glass" style="padding: 12px 16px">.gm-theme-blue .gm-theme-glass</div>
-  <div class="gm-theme-lavender gm-theme-glass" style="padding: 12px 16px">.gm-theme-lavender .gm-theme-glass</div>
-  <div class="gm-theme-pink gm-theme-glass" style="padding: 12px 16px">.gm-theme-pink .gm-theme-glass</div>
-  <div class="gm-theme-peach gm-theme-glass" style="padding: 12px 16px">.gm-theme-peach .gm-theme-glass</div>
-  <div class="gm-theme-lemon gm-theme-glass" style="padding: 12px 16px">.gm-theme-lemon .gm-theme-glass</div>
-  <div class="gm-theme-mint gm-theme-glass" style="padding: 12px 16px">.gm-theme-mint .gm-theme-glass</div>
-  <div class="gm-theme-coral gm-theme-glass" style="padding: 12px 16px">.gm-theme-coral .gm-theme-glass</div>
+<div class="gm-grid gm-gap-3">
+  <div class="gm-theme-sky gm-theme-glass gm-py-3 gm-px-4">.gm-theme-sky .gm-theme-glass</div>
+  <div class="gm-theme-blue gm-theme-glass gm-py-3 gm-px-4">.gm-theme-blue .gm-theme-glass</div>
+  <div class="gm-theme-lavender gm-theme-glass gm-py-3 gm-px-4">.gm-theme-lavender .gm-theme-glass</div>
+  <div class="gm-theme-pink gm-theme-glass gm-py-3 gm-px-4">.gm-theme-pink .gm-theme-glass</div>
+  <div class="gm-theme-peach gm-theme-glass gm-py-3 gm-px-4">.gm-theme-peach .gm-theme-glass</div>
+  <div class="gm-theme-lemon gm-theme-glass gm-py-3 gm-px-4">.gm-theme-lemon .gm-theme-glass</div>
+  <div class="gm-theme-mint gm-theme-glass gm-py-3 gm-px-4">.gm-theme-mint .gm-theme-glass</div>
+  <div class="gm-theme-coral gm-theme-glass gm-py-3 gm-px-4">.gm-theme-coral .gm-theme-glass</div>
 </div>
 ```
 
 ```html
-<div style="display: grid; gap: 10px">
-  <div class="gm-theme-white gm-theme-glass" style="padding: 12px 16px">.gm-theme-white .gm-theme-glass</div>
-  <div class="gm-theme-gray-100 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-100 .gm-theme-glass</div>
-  <div class="gm-theme-gray-200 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-200 .gm-theme-glass</div>
-  <div class="gm-theme-gray-300 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-300 .gm-theme-glass</div>
-  <div class="gm-theme-gray-400 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-400 .gm-theme-glass</div>
-  <div class="gm-theme-gray-500 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-500 .gm-theme-glass</div>
-  <div class="gm-theme-gray-600 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-600 .gm-theme-glass</div>
-  <div class="gm-theme-gray-700 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-700 .gm-theme-glass</div>
-  <div class="gm-theme-gray-800 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-800 .gm-theme-glass</div>
-  <div class="gm-theme-gray-900 gm-theme-glass" style="padding: 12px 16px">.gm-theme-gray-900 .gm-theme-glass</div>
-  <div class="gm-theme-black gm-theme-glass" style="padding: 12px 16px">.gm-theme-black .gm-theme-glass</div>
+<div class="gm-grid gm-gap-3">
+  <div class="gm-theme-white gm-theme-glass gm-py-3 gm-px-4">.gm-theme-white .gm-theme-glass</div>
+  <div class="gm-theme-gray-100 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-100 .gm-theme-glass</div>
+  <div class="gm-theme-gray-200 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-200 .gm-theme-glass</div>
+  <div class="gm-theme-gray-300 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-300 .gm-theme-glass</div>
+  <div class="gm-theme-gray-400 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-400 .gm-theme-glass</div>
+  <div class="gm-theme-gray-500 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-500 .gm-theme-glass</div>
+  <div class="gm-theme-gray-600 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-600 .gm-theme-glass</div>
+  <div class="gm-theme-gray-700 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-700 .gm-theme-glass</div>
+  <div class="gm-theme-gray-800 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-800 .gm-theme-glass</div>
+  <div class="gm-theme-gray-900 gm-theme-glass gm-py-3 gm-px-4">.gm-theme-gray-900 .gm-theme-glass</div>
+  <div class="gm-theme-black gm-theme-glass gm-py-3 gm-px-4">.gm-theme-black .gm-theme-glass</div>
 </div>
 ```
 
@@ -1018,7 +1018,7 @@ With grays, the text is black up to `gray-500` and white from `gray-600`:
 `.gm-theme-text` writes the text in the color of the palette, in a darker tone so it can be read on the light background.
 
 ```html
-<div style="display: grid; gap: 10px">
+<div class="gm-grid gm-gap-3">
   <div class="gm-theme-sky gm-theme-text">.gm-theme-sky .gm-theme-text</div>
   <div class="gm-theme-blue gm-theme-text">.gm-theme-blue .gm-theme-text</div>
   <div class="gm-theme-lavender gm-theme-text">.gm-theme-lavender .gm-theme-text</div>
@@ -1125,7 +1125,7 @@ The container centers the page content and leaves a margin on the sides. It is t
 `.gm-container` is at most 1240 px wide and leaves 24 px on each side (16 px on phones).
 
 ```html
-<div class="gm-container" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+<div class="gm-container gm-py-4" style="outline: 2px dashed var(--gm-field-border)">
   Centered content, with a margin on the sides.
 </div>
 ```
@@ -1135,7 +1135,7 @@ The container centers the page content and leaves a margin on the sides. It is t
 `.gm-container--narrow`, at most 960 px: for long texts, forms or articles, which read better without very long lines.
 
 ```html
-<div class="gm-container gm-container--narrow" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+<div class="gm-container gm-container--narrow gm-py-4" style="outline: 2px dashed var(--gm-field-border)">
   Comfortable to read.
 </div>
 ```
@@ -1145,7 +1145,7 @@ The container centers the page content and leaves a margin on the sides. It is t
 `.gm-container--fluid` reaches the edges of the screen but keeps the side margin.
 
 ```html
-<div class="gm-container--fluid" style="padding-block: 16px; outline: 2px dashed var(--gm-field-border)">
+<div class="gm-container--fluid gm-py-4" style="outline: 2px dashed var(--gm-field-border)">
   Edge to edge.
 </div>
 ```
@@ -1174,7 +1174,7 @@ Each part of a home page (About me, Skills, Contact…) is a section: some space
 ## Example
 
 ```html
-<section class="gm-section" style="padding-block: 2.5rem">
+<section class="gm-section gm-py-10">
   <div class="gm-container gm-container--narrow">
     <h2 class="gm-section__title">About me</h2>
     <p class="gm-section__text">Hi, I am <strong>Sara Paez Yamuza</strong> and I am a web developer. I like working on both sides of an application: what you see and what is behind it.</p>
@@ -1197,7 +1197,7 @@ Each part of a home page (About me, Skills, Contact…) is a section: some space
 Any component can go after the title, for example an [accordion](/docs/components/accordion):
 
 ```html
-<section class="gm-section" style="padding-block: 2.5rem">
+<section class="gm-section gm-py-10">
   <div class="gm-container gm-container--narrow">
     <h2 class="gm-section__title">Skills</h2>
     <div class="gm-accordion">
@@ -1240,10 +1240,10 @@ A prefixed class applies **from** that width upwards. Without a prefix, everywhe
 
 ```html
 <div class="gm-grid gm-gap-sm">
-  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">1</div>
-  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-pink-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">2</div>
-  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">3</div>
-  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-peach gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
+  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">1</div>
+  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-pink-blue gm-theme-solid gm-p-4 gm-rounded-sm">2</div>
+  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-mint gm-theme-solid gm-p-4 gm-rounded-sm">3</div>
+  <div class="gm-sm-col-6 gm-lg-col-3 gm-theme-peach gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
 </div>
 ```
 
@@ -1277,11 +1277,11 @@ To place pieces in columns. It has 12 columns, like Bootstrap's, but is built wi
 
 ```html
 <div class="gm-grid gm-gap-sm">
-  <div class="gm-col-8 gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">8 of 12</div>
-  <div class="gm-col-4 gm-theme-pink-blue gm-theme-solid" style="padding: 16px; border-radius: 12px">4 of 12</div>
-  <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
-  <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
-  <div class="gm-col-4 gm-theme-mint gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
+  <div class="gm-col-8 gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">8 of 12</div>
+  <div class="gm-col-4 gm-theme-pink-blue gm-theme-solid gm-p-4 gm-rounded-sm">4 of 12</div>
+  <div class="gm-col-4 gm-theme-mint gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
+  <div class="gm-col-4 gm-theme-mint gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
+  <div class="gm-col-4 gm-theme-mint gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
 </div>
 ```
 
@@ -1291,9 +1291,9 @@ With a prefix (`sm`, `md`, `lg`, `xl`), the column changes from that width. Here
 
 ```html
 <div class="gm-grid gm-gap-sm">
-  <div class="gm-md-col-6 gm-lg-col-4 gm-theme-lavender gm-theme-solid" style="padding: 16px; border-radius: 12px">A</div>
-  <div class="gm-md-col-6 gm-lg-col-4 gm-theme-pink gm-theme-solid" style="padding: 16px; border-radius: 12px">B</div>
-  <div class="gm-md-col-12 gm-lg-col-4 gm-theme-peach gm-theme-solid" style="padding: 16px; border-radius: 12px">C</div>
+  <div class="gm-md-col-6 gm-lg-col-4 gm-theme-lavender gm-theme-solid gm-p-4 gm-rounded-sm">A</div>
+  <div class="gm-md-col-6 gm-lg-col-4 gm-theme-pink gm-theme-solid gm-p-4 gm-rounded-sm">B</div>
+  <div class="gm-md-col-12 gm-lg-col-4 gm-theme-peach gm-theme-solid gm-p-4 gm-rounded-sm">C</div>
 </div>
 ```
 
@@ -1303,10 +1303,10 @@ Without counting: `.gm-cols-2`, `-3`, `-4` or `-6` split the space into equal co
 
 ```html
 <div class="gm-grid gm-cols-1 gm-sm-cols-2 gm-lg-cols-4 gm-gap-sm">
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">1</div>
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">2</div>
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">3</div>
-  <div class="gm-theme-sky gm-theme-solid" style="padding: 16px; border-radius: 12px">4</div>
+  <div class="gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">1</div>
+  <div class="gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">2</div>
+  <div class="gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">3</div>
+  <div class="gm-theme-sky gm-theme-solid gm-p-4 gm-rounded-sm">4</div>
 </div>
 ```
 
@@ -1315,7 +1315,7 @@ Without counting: `.gm-cols-2`, `-3`, `-4` or `-6` split the space into equal co
 `.gm-grid--auto` fits as many columns of at least 240 px as there is room for, with no breakpoints. Ideal for cards. Change the minimum with `--gm-grid-min`.
 
 ```html
-<div class="gm-grid gm-grid--auto gm-gap-sm" style="--gm-grid-min: 160px">
+<div class="gm-grid gm-grid--auto gm-gap-sm" style="--gm-grid-min: 10rem">
   <div class="gm-card">One</div>
   <div class="gm-card">Two</div>
   <div class="gm-card">Three</div>
@@ -1330,7 +1330,7 @@ Without counting: `.gm-cols-2`, `-3`, `-4` or `-6` split the space into equal co
 
 ```html
 <div class="gm-grid">
-  <div class="gm-col-12 gm-md-col-6 gm-md-offset-3 gm-theme-lemon gm-theme-solid" style="padding: 16px; border-radius: 12px">Centered from md</div>
+  <div class="gm-col-12 gm-md-col-6 gm-md-offset-3 gm-theme-lemon gm-theme-solid gm-p-4 gm-rounded-sm">Centered from md</div>
 </div>
 ```
 
@@ -1461,6 +1461,213 @@ So a block does not grow too much. `gm-max-w-prose` (65 characters) is the comfo
 
 `gm-min-w-0` is the fix when long text or a code block overflows a flex or grid row.
 
+<!-- /docs/utilities/position -->
+# Position and layers
+
+Where an element goes and what covers what. Like Tailwind's [position](https://tailwindcss.com/docs/position) and z-index.
+
+## Position
+
+| Class | Value |
+| --- | --- |
+| `gm-static` | The normal one: follows the page order |
+| `gm-relative` | Like normal, but its `gm-absolute` children are placed relative to it |
+| `gm-absolute` | Out of the page order, relative to the nearest `gm-relative` ancestor |
+| `gm-fixed` | Stuck to the window, even when scrolling |
+| `gm-sticky` | Normal until it reaches the edge while scrolling; then it sticks |
+
+All of them have a [breakpoint](/docs/layout/breakpoints) version: `gm-static gm-md-sticky`.
+
+## Offsets
+
+| Class | Value |
+| --- | --- |
+| `gm-inset-0` | Fills its container (top, bottom and sides at 0) |
+| `gm-inset-x-0` / `gm-inset-y-0` | Both sides / top and bottom at 0 |
+| `gm-top-0` / `gm-bottom-0` | Stuck to the top / bottom |
+| `gm-start-0` / `gm-end-0` | Stuck to the start / end of the line (left and right in English) |
+
+A tag in the corner of a card:
+
+```html
+<div class="gm-card gm-relative gm-max-w-xs">
+  <span class="gm-tag gm-theme-pink gm-theme-solid gm-absolute gm-top-0 gm-end-0 gm-m-3">New</span>
+  <h3 class="gm-mt-0">Card</h3>
+  <p class="gm-mb-0">The tag is placed relative to the card because the card has gm-relative.</p>
+</div>
+```
+
+## Layers
+
+`gm-z-0`, `gm-z-10`, `gm-z-20`, `gm-z-30`, `gm-z-40` and `gm-z-50` (and `gm-z-auto`): the highest number goes on top. They go in steps of 10 so something can fit in between. They only work on positioned elements (`gm-relative`, `gm-absolute`…), flex items and grid items.
+
+```html
+<div class="gm-relative gm-p-8 gm-max-w-sm">
+  <div class="gm-absolute gm-inset-0 gm-z-0 gm-rounded-sm gm-theme-sky gm-theme-solid"></div>
+  <p class="gm-relative gm-z-10 gm-m-0 gm-font-semibold">This text sits on top of the colored background: it has gm-z-10 and the background, gm-z-0.</p>
+</div>
+```
+
+## Accessibility
+
+- Whatever goes on top must not hide content people need to read or press (WCAG 2.4.11): leave room below it or make it closable.
+- `gm-fixed` and `gm-sticky` take space away on short screens or with large text: use them sparingly (a navigation bar) and test them at 200 % zoom.
+
+<!-- /docs/utilities/overflow -->
+# Overflow
+
+What happens to whatever does not fit in its box: it shows, it is clipped or it can be scrolled. Like Tailwind's [overflow](https://tailwindcss.com/docs/overflow).
+
+| Class | What does not fit… |
+| --- | --- |
+| `gm-overflow-visible` | Spills out of the box (the default) |
+| `gm-overflow-hidden` | Is clipped and cannot be seen |
+| `gm-overflow-clip` | Is clipped, like `hidden`, but the box cannot be scrolled, not even with code |
+| `gm-overflow-auto` | Can be scrolled, with a scrollbar only when needed |
+| `gm-overflow-scroll` | Can be scrolled, always with a scrollbar |
+
+Each one has a single-axis version: `gm-overflow-x-auto` (sideways only) and `gm-overflow-y-auto` (up and down only).
+
+A wide table that scrolls sideways on phones instead of widening the page:
+
+```html
+<div class="gm-overflow-x-auto gm-max-w-xs gm-border gm-rounded-sm" role="region" aria-label="Pricing table" tabindex="0">
+  <table class="gm-m-0">
+    <tr><th>Plan</th><th>Price</th><th>Users</th><th>Storage</th><th>Support</th></tr>
+    <tr><td>Basic</td><td>€0</td><td>1</td><td>1 GB</td><td>Email</td></tr>
+  </table>
+</div>
+```
+
+## Accessibility
+
+- If a box scrolls (`auto` or `scroll`), give it `tabindex="0"`, a `role="region"` and an `aria-label`: it can then be moved with the keyboard and screen readers say what it is (WCAG 2.1.1).
+- Do not clip text with `gm-overflow-hidden` if it disappears with large text: content must be readable in full at 200 % (WCAG 1.4.4).
+
+<!-- /docs/utilities/text -->
+# Text
+
+Size, weight, line height and shape of text. Like Tailwind's [typography](https://tailwindcss.com/docs/font-size) utilities. For color, see [Text color](/docs/color/text); to align it, `gm-text-start`, `gm-text-center` and `gm-text-end`.
+
+## Size
+
+In `rem`, so it grows if the person enlarges the text in their browser.
+
+| Class | Size | Class | Size |
+| --- | --- | --- | --- |
+| `gm-text-xs` | 0.75 rem | `gm-text-xl` | 1.25 rem |
+| `gm-text-sm` | 0.875 rem | `gm-text-2xl` | 1.5 rem |
+| `gm-text-base` | 1 rem | `gm-text-3xl` | 1.875 rem |
+| `gm-text-lg` | 1.125 rem | `gm-text-4xl` | 2.25 rem |
+
+They have a [breakpoint](/docs/layout/breakpoints) version: `gm-text-xl gm-md-text-3xl`.
+
+```html
+<p class="gm-text-sm gm-m-0">gm-text-sm: for notes and captions</p>
+<p class="gm-text-base gm-m-0">gm-text-base: normal text</p>
+<p class="gm-text-xl gm-m-0">gm-text-xl: to highlight a sentence</p>
+<p class="gm-text-3xl gm-m-0">gm-text-3xl: for a heading</p>
+```
+
+## Weight
+
+`gm-font-light` (300), `gm-font-normal` (400), `gm-font-medium` (500), `gm-font-semibold` (600), `gm-font-bold` (700) and `gm-font-extrabold` (800): every Montserrat weight.
+
+```html
+<p class="gm-m-0"><span class="gm-font-light">Light</span> · <span class="gm-font-normal">Normal</span> · <span class="gm-font-medium">Medium</span> · <span class="gm-font-semibold">Semibold</span> · <span class="gm-font-bold">Bold</span> · <span class="gm-font-extrabold">Extrabold</span></p>
+```
+
+## Line height
+
+| Class | Value | For |
+| --- | --- | --- |
+| `gm-leading-none` | 1 | Big numbers, icons |
+| `gm-leading-tight` | 1.25 | Headings |
+| `gm-leading-snug` | 1.375 | Multi-line headings |
+| `gm-leading-normal` | 1.5 | Normal text (the framework's) |
+| `gm-leading-relaxed` | 1.7 | Long texts |
+| `gm-leading-loose` | 2 | Very spaced |
+
+## Case, italics and underline
+
+| Class | Does |
+| --- | --- |
+| `gm-uppercase` / `gm-lowercase` / `gm-capitalize` | All caps / all lowercase / first letter of each word in caps |
+| `gm-normal-case` | As written |
+| `gm-italic` / `gm-not-italic` | Italic / not italic |
+| `gm-underline` / `gm-line-through` / `gm-no-underline` | Underlined / struck through / no line |
+
+```html
+<p class="gm-m-0"><span class="gm-uppercase gm-font-semibold gm-text-sm">New</span> · <span class="gm-italic">in italics</span> · <span class="gm-line-through">€29</span> €19</p>
+```
+
+## Line breaks
+
+| Class | Does |
+| --- | --- |
+| `gm-nowrap` | Does not wrap to the next line |
+| `gm-truncate` | A single line and, if it does not fit, it ends in "…" |
+| `gm-break-words` | Breaks very long words (addresses, emails) so they do not spill out |
+| `gm-text-balance` | Spreads the words so the lines are equally long (headings) |
+| `gm-text-pretty` | Avoids leaving a single word on the last line of a paragraph |
+
+```html
+<p class="gm-truncate gm-max-w-xs gm-m-0">This text is too long for one line, so it ends with an ellipsis.</p>
+```
+
+## Lists
+
+`gm-list-none` removes the bullets and indentation of a list: for menus or rows of links that are still a list for screen readers.
+
+```html
+<ul class="gm-list-none gm-flex gm-gap-4 gm-m-0">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Projects</a></li>
+  <li><a href="#">Contact</a></li>
+</ul>
+```
+
+## Accessibility
+
+- Do not use `gm-text-xs` for important text: at 0.75 rem it is hard to read. For normal text, 1 rem at least.
+- `gm-truncate` hides part of the text: if what is cut matters, show it in full somewhere else (a `title` is not enough, it does not reach keyboard or touch users).
+- `gm-uppercase` only changes how it looks: write normal text in the HTML so screen readers do not spell it out.
+- With `gm-list-none`, Safari stops announcing the list: if it matters that it is heard as a list, add `role="list"` to the `<ul>`.
+
+<!-- /docs/utilities/media -->
+# Images and video
+
+The aspect ratio of a box and how an image or a video fills its space. Like Tailwind's [aspect-ratio](https://tailwindcss.com/docs/aspect-ratio) and object-fit.
+
+## Aspect ratio
+
+| Class | Ratio |
+| --- | --- |
+| `gm-aspect-square` | 1 : 1 (square) |
+| `gm-aspect-video` | 16 : 9 (the video one) |
+| `gm-aspect-auto` | Its own |
+
+The box keeps its shape when the width changes, and its space is reserved before the image loads: the page does not jump while loading.
+
+## Fit
+
+| Class | The image… |
+| --- | --- |
+| `gm-object-cover` | Fills the whole box and whatever is left over is cropped |
+| `gm-object-contain` | Is seen whole inside the box, even if there is space left |
+
+```html
+<div class="gm-flex gm-gap-4 gm-flex-wrap">
+  <img class="gm-aspect-square gm-object-cover gm-rounded-sm gm-w-50 gm-max-w-xs" src="media/album-1.jpg" alt="Album cover (square, cropped)">
+  <img class="gm-aspect-video gm-object-cover gm-rounded-sm gm-w-50 gm-max-w-xs" src="media/album-2.jpg" alt="Album cover (16:9, cropped)">
+</div>
+```
+
+## Accessibility
+
+- Every image has an `alt`: what it shows, or `alt=""` if it is only decorative.
+- With `gm-object-cover`, check that the important part of the image (a face, some text) is not cropped out.
+
 <!-- /docs/utilities/borders -->
 # Borders and radius
 
@@ -1500,7 +1707,7 @@ Thin borders with the framework lines and rounded corners with its radii. They c
   <div class="gm-theme-pink gm-theme-solid gm-p-4 gm-rounded-md">md</div>
   <div class="gm-theme-pink gm-theme-solid gm-p-4 gm-rounded-lg">lg</div>
   <div class="gm-theme-pink gm-theme-solid gm-px-6 gm-py-2 gm-rounded-pill">pill</div>
-  <div class="gm-theme-pink gm-theme-solid gm-rounded-full gm-flex gm-items-center gm-justify-center" style="width: 64px; height: 64px">full</div>
+  <div class="gm-theme-pink gm-theme-solid gm-rounded-full gm-flex gm-items-center gm-justify-center" style="width: 4rem; height: 4rem">full</div>
 </div>
 ```
 
@@ -1566,10 +1773,10 @@ To make your own glass with other values, use the [glass generator](/tools/glass
 
 ```html
 <div class="gm-flex gm-gap-4">
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-100" style="width: 64px; height: 48px"></div><span class="gm-small">100</span></div>
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-75" style="width: 64px; height: 48px"></div><span class="gm-small">75</span></div>
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-50" style="width: 64px; height: 48px"></div><span class="gm-small">50</span></div>
-  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-25" style="width: 64px; height: 48px"></div><span class="gm-small">25</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-100" style="width: 4rem; height: 3rem"></div><span class="gm-small">100</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-75" style="width: 4rem; height: 3rem"></div><span class="gm-small">75</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-50" style="width: 4rem; height: 3rem"></div><span class="gm-small">50</span></div>
+  <div class="gm-grid gm-gap-1 gm-text-center"><div class="gm-theme-pink-blue gm-theme-solid gm-rounded-sm gm-opacity-25" style="width: 4rem; height: 3rem"></div><span class="gm-small">25</span></div>
 </div>
 ```
 
@@ -1647,11 +1854,11 @@ To remove something smoothly: add the class and, when the animation ends (`anima
 <div class="gm-flex gm-gap-6 gm-flex-wrap gm-items-center">
   <button type="button" class="gm-btn gm-btn--sm gm-btn--secondary" data-replay><i class="gmi gmi-arrow-repeat" aria-hidden="true"></i>Replay</button>
   <i class="gmi gmi-arrow-down gm-animate-bounce" style="font-size: 1.6rem" aria-hidden="true"></i>
-  <div class="gm-field" style="max-width: 200px"><input class="gm-animate-shake" value="sara@" aria-label="Email (error example)" aria-invalid="true"></div>
+  <div class="gm-field" style="max-width: 12.5rem"><input class="gm-animate-shake" value="sara@" aria-label="Email (error example)" aria-invalid="true"></div>
   <i class="gmi gmi-heart-fill gm-animate-heartbeat gm-text-coral" style="font-size: 1.6rem" aria-hidden="true"></i>
-  <span style="position: relative; display: inline-flex; width: 14px; height: 14px">
-    <span class="gm-animate-ping" style="position: absolute; inset: 0; border-radius: 50%; background: var(--gm-mint)"></span>
-    <span style="position: relative; width: 14px; height: 14px; border-radius: 50%; background: var(--gm-mint)"></span>
+  <span class="gm-relative gm-inline-flex" style="width: 0.875rem; height: 0.875rem">
+    <span class="gm-animate-ping gm-absolute gm-inset-0 gm-rounded-full gm-bg-mint"></span>
+    <span class="gm-relative gm-rounded-full gm-bg-mint" style="width: 0.875rem; height: 0.875rem"></span>
   </span>
 </div>
 ```
@@ -1668,8 +1875,8 @@ To remove something smoothly: add the class and, when the animation ends (`anima
 ```html
 <div class="gm-flex gm-gap-6 gm-flex-wrap gm-items-center">
   <i class="gmi gmi-arrow-repeat gm-animate-spin" style="font-size: 1.6rem" aria-hidden="true"></i>
-  <div class="gm-bg-gray-200 gm-rounded-sm gm-animate-pulse" style="width: 140px; height: 20px"></div>
-  <div class="gm-rounded-sm gm-animate-shimmer" style="width: 200px; height: 20px"></div>
+  <div class="gm-bg-gray-200 gm-rounded-sm gm-animate-pulse" style="width: 8.75rem; height: 1.25rem"></div>
+  <div class="gm-rounded-sm gm-animate-shimmer" style="width: 12.5rem; height: 1.25rem"></div>
 </div>
 ```
 
@@ -1794,6 +2001,55 @@ With a prefix, from that [breakpoint](/docs/layout/breakpoints). Resize the wind
 - `gm-hidden` hides it from everyone. To hide it only visually and keep it for screen readers, use [`gm-visually-hidden`](/docs/helpers/visually-hidden).
 - Do not hide on phones information that is given on desktop: phone users must be able to do the same.
 
+<!-- /docs/utilities/interaction -->
+# Interaction and visibility
+
+How an element responds to the mouse and whether it is seen. Like Tailwind's [cursor](https://tailwindcss.com/docs/cursor), pointer-events, user-select and visibility.
+
+## Cursor
+
+| Class | Cursor |
+| --- | --- |
+| `gm-cursor-pointer` | The hand, as on links |
+| `gm-cursor-default` | The arrow |
+| `gm-cursor-not-allowed` | Not allowed, for something that cannot be used right now |
+
+## Pointer and selection
+
+| Class | Does |
+| --- | --- |
+| `gm-pointer-events-none` | The element does not get the mouse or touches: they go to whatever is below (decorations on top of a button) |
+| `gm-pointer-events-auto` | Gets them again (a child inside a `pointer-events-none`) |
+| `gm-select-none` | Its text cannot be selected (buttons, icons) |
+| `gm-select-all` | One click selects all the text (codes to copy) |
+
+```html
+<p class="gm-m-0">Your code: <code class="gm-select-all">GM-2026-SARA</code> (one click selects all of it)</p>
+```
+
+## Visibility
+
+| Class | Does |
+| --- | --- |
+| `gm-invisible` | Not seen, but still takes its space (and screen readers do not read it either) |
+| `gm-visible` | Seen again |
+
+So that it takes no space, use [`gm-hidden`](/docs/utilities/display); to hide it only visually, [`gm-visually-hidden`](/docs/helpers/visually-hidden).
+
+```html
+<div class="gm-flex gm-gap-2">
+  <span class="gm-tag gm-theme-mint gm-theme-solid">One</span>
+  <span class="gm-tag gm-theme-mint gm-theme-solid gm-invisible">Two</span>
+  <span class="gm-tag gm-theme-mint gm-theme-solid">Three</span>
+</div>
+```
+
+## Accessibility
+
+- `gm-cursor-pointer` does not turn anything into a button: whatever is pressed must be a `<button>` or an `<a>`, so it works with the keyboard.
+- Do not use `gm-select-none` on text someone may want to copy (addresses, prices, codes).
+- With `gm-pointer-events-none` on something that looks like a button, nobody can use it with the mouse: if it is disabled, say so with `disabled` or `aria-disabled`.
+
 <!-- /docs/content/structure -->
 # Page structure
 
@@ -1881,7 +2137,7 @@ What GlassMarshmallow applies to the whole page when loaded, with no classes: th
 Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so no single word is left alone at the end.
 
 ```html
-<h1 style="margin: 0">Page title</h1>
+<h1 class="gm-m-0">Page title</h1>
 <h2>Section title</h2>
 <h3>Subsection title</h3>
 <p>Regular text, with comfortable line height for reading long paragraphs.</p>
@@ -1897,7 +2153,7 @@ Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so n
 
 ```html
 <p class="gm-eyebrow">New</p>
-<h3 style="margin-top: 0">GlassMarshmallow 0.1</h3>
+<h3 class="gm-mt-0">GlassMarshmallow 0.1</h3>
 <p class="gm-muted">Secondary text for descriptions and hints.</p>
 <p class="gm-small gm-muted">Small text: dates, notes, legal notices.</p>
 ```
@@ -2009,7 +2265,7 @@ Fields go one below the other, in the order people think of the answers. The lab
 **Wrong:** two fields per row and labels beside them.
 
 ```html
-<div class="gm-field" style="grid-template-columns: auto 1fr auto 1fr; align-items: center; gap: 8px; max-width: 560px">
+<div class="gm-field gm-items-center gm-gap-2 gm-max-w-xl" style="grid-template-columns: auto 1fr auto 1fr">
   <label for="bad-first-name">First name:</label>
   <input id="bad-first-name" type="text">
   <label for="bad-last-name">Last name:</label>
@@ -2020,7 +2276,7 @@ Fields go one below the other, in the order people think of the answers. The lab
 **Right:** one column and the label on top.
 
 ```html
-<div style="display: grid; gap: 1.15rem; max-width: 420px">
+<div class="gm-grid gm-gap-5 gm-max-w-md">
   <div class="gm-field">
     <label for="good-first-name">First name</label>
     <input id="good-first-name" type="text" autocomplete="given-name">
@@ -2043,7 +2299,7 @@ Several simple questions are better than one complicated one. Use closed questio
 Required fields have “(required)” written in the label and `required` on the field; optional ones, “(optional)”. Written in words it needs no explanation and screen readers read it the same way; not everyone knows what an asterisk means.
 
 ```html
-<div style="display: grid; gap: 1.15rem; max-width: 420px">
+<div class="gm-grid gm-gap-5 gm-max-w-md">
   <div class="gm-field">
     <label for="rules-email">Email (required)</label>
     <input id="rules-email" type="email" autocomplete="email" required>
@@ -2064,7 +2320,7 @@ Help goes as text below the label and is linked to the field with `aria-describe
 **Wrong:** help only in the placeholder.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="bad-id">ID number</label>
   <input id="bad-id" type="text" placeholder="8 digits and a letter, no spaces">
 </div>
@@ -2073,7 +2329,7 @@ Help goes as text below the label and is linked to the field with `aria-describe
 **Right:** help as text, linked to the field.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="good-id">ID number</label>
   <p class="gm-field__help" id="good-id-help">8 digits and a letter, no spaces. For example, 12345678Z.</p>
   <input id="good-id" type="text" aria-describedby="good-id-help">
@@ -2089,7 +2345,7 @@ The message says what happened and how to fix it, using the label's words. No bl
 **Wrong:** does not say what to do.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="bad-email">Email (required)</label>
   <input id="bad-email" type="email" value="sara@" aria-invalid="true" aria-describedby="bad-email-error">
   <p class="gm-field__error" id="bad-email-error">Invalid field.</p>
@@ -2099,7 +2355,7 @@ The message says what happened and how to fix it, using the label's words. No bl
 **Right:** says what is missing and gives an example.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="good-email">Email (required)</label>
   <input id="good-email" type="email" value="sara@" aria-invalid="true" aria-describedby="good-email-error">
   <p class="gm-field__error" id="good-email-error">Enter the full email address, for example sara@example.com.</p>
@@ -2113,7 +2369,7 @@ WCAG: 3.3.1 Error Identification, 3.3.3 Error Suggestion, 1.4.1 Use of Color.
 If there are errors on submit, a summary appears above the form with how many there are and a link to each field, as well as the message next to each one. Focus moves to the summary so screen readers read it in full.
 
 ```html
-<div class="gm-error-summary" role="alert" tabindex="-1" aria-labelledby="summary-title" style="max-width: 520px">
+<div class="gm-error-summary gm-max-w-lg" role="alert" tabindex="-1" aria-labelledby="summary-title">
   <h2 class="gm-error-summary__title" id="summary-title"><i class="gmi gmi-exclamation-circle" aria-hidden="true"></i>There are 2 errors in the form</h2>
   <ul class="gm-error-summary__list">
     <li><a href="#good-email">Enter the full email address, for example sara@example.com.</a></li>
@@ -2137,7 +2393,7 @@ WCAG: 3.3.1 Error Identification, 3.3.7 Redundant Entry (do not ask for the same
 On submit, say clearly that it worked, on the page and to screen readers (with `role="status"` or by moving focus to the message). If submitting has consequences (paying, deleting, signing), let people review the data first and undo or correct it afterwards.
 
 ```html
-<div class="gm-alert gm-alert--success" role="status" style="max-width: 520px">
+<div class="gm-alert gm-alert--success gm-max-w-lg" role="status">
   <i class="gmi gmi-check-circle" aria-hidden="true"></i>
   <span>Message sent. I will reply within 2 working days.</span>
 </div>
@@ -2150,7 +2406,7 @@ WCAG: 4.1.3 Status Messages, 3.3.4 and 3.3.6 Error Prevention.
 The submit button says what happens when pressed: “Send request”, “Create account”, “Pay €25”. Avoid a bare “OK” or “Submit” when it is not clear what is sent. If there is a button to clear the form, do not put it next to the submit button with the same look.
 
 ```html
-<div class="gm-form__actions" style="max-width: 420px">
+<div class="gm-form__actions gm-max-w-md">
   <button type="button" class="gm-btn gm-btn--accent">Send request</button>
 </div>
 ```
@@ -2176,7 +2432,7 @@ Fields and forms like the contact form of the portfolio: a glass panel, labels i
 ```html
 <form class="gm-form" aria-labelledby="contact-title">
   <div>
-    <h3 id="contact-title" style="margin: 0 0 4px">Contact me</h3>
+    <h3 class="gm-mt-0 gm-mx-0 gm-mb-1" id="contact-title">Contact me</h3>
   </div>
 
   <div class="gm-field">
@@ -2366,7 +2622,7 @@ To pick a number in a range by dragging: volume, opacity, size… The thumb is a
 ## Example
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="example-volume">Volume</label>
   <input id="example-volume" class="gm-range" type="range" min="0" max="100" value="40">
 </div>
@@ -2377,9 +2633,9 @@ To pick a number in a range by dragging: volume, opacity, size… The thumb is a
 Show the value next to the label with an `<output>`. That way the exact number is known without guessing from the position.
 
 ```html
-<div class="gm-field" style="max-width: 420px">
-  <div style="display: flex; justify-content: space-between; align-items: baseline">
-    <label for="example-opacity" style="font-weight: 700">Opacity</label>
+<div class="gm-field gm-max-w-md">
+  <div class="gm-flex gm-justify-between gm-items-baseline">
+    <label class="gm-font-bold" for="example-opacity">Opacity</label>
     <output id="example-opacity-value" for="example-opacity" class="gm-muted">70 %</output>
   </div>
   <input id="example-opacity" class="gm-range" type="range" min="0" max="100" value="70" oninput="document.getElementById('example-opacity-value').textContent = this.value + ' %'">
@@ -2389,7 +2645,7 @@ Show the value next to the label with an `<output>`. That way the exact number i
 ## Disabled
 
 ```html
-<div class="gm-field" style="max-width: 420px">
+<div class="gm-field gm-max-w-md">
   <label for="example-disabled">Brightness</label>
   <input id="example-disabled" class="gm-range" type="range" min="0" max="100" value="50" disabled>
 </div>
@@ -2735,7 +2991,7 @@ A highlighted message inside the page: information, something that went well, a 
 ## Examples
 
 ```html
-<div style="display: grid; gap: 12px">
+<div class="gm-grid gm-gap-3">
   <div class="gm-alert"><i class="gmi gmi-info-circle" aria-hidden="true"></i><span>Version 0.1 is not on npm yet.</span></div>
   <div class="gm-alert gm-alert--success" role="status"><i class="gmi gmi-check-circle" aria-hidden="true"></i><span>Changes saved.</span></div>
   <div class="gm-alert gm-alert--warning"><i class="gmi gmi-exclamation-triangle" aria-hidden="true"></i><span>You have 2 trial days left.</span></div>
@@ -2805,7 +3061,7 @@ The profile picture box, as a circle or a square with rounded corners. Without a
 Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cropped to fill the box without stretching.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--lg gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
@@ -2816,7 +3072,7 @@ Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cro
 `.gm-avatar--sm` (2 rem), default (3 rem), `.gm-avatar--lg` (5 rem) and `.gm-avatar--xl` (8 rem). The rounding and the letters grow in proportion.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--sm"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
@@ -2829,7 +3085,7 @@ Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cro
 With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and give the name with `role="img"` and `aria-label`, because initials alone are not clear. Without a name, a silhouette.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--lg gm-theme-sky" role="img" aria-label="Sara Paez">SP</span>
   <span class="gm-avatar gm-avatar--lg gm-avatar--square gm-theme-lavender" role="img" aria-label="Sara Paez Yamuza">SP</span>
   <span class="gm-avatar gm-avatar--lg gm-theme-mint" role="img" aria-label="Diego Sanz">DS</span>
@@ -2842,7 +3098,7 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 `.gm-avatar--ring`: the photo with a colored ring, like the one in the portfolio template. By default, in sky (turquoise in dark mode); the thickness is proportional to the size.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
@@ -2857,10 +3113,10 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 | `--gm-avatar-ring` | The ring color (a color or a gradient), with `--ring` | Sky (turquoise in dark mode) |
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: linear-gradient(135deg, var(--gm-mint), var(--gm-sky), var(--gm-lavender))"><img src="media/perfil-4.jpg" alt="Diego Sanz"></span>
-  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 0.75rem"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
@@ -2926,7 +3182,7 @@ Buttons for actions in forms, dialogs and pages, with the rounded shape of My Bo
 `.gm-btn` is the main button: black in light mode and white in dark mode. Add `.gm-btn--secondary` for a glass button with a border, or `.gm-btn--ghost` for one without background.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn">Primary</button>
   <button type="button" class="gm-btn gm-btn--secondary">Secondary</button>
   <button type="button" class="gm-btn gm-btn--ghost">Ghost</button>
@@ -2938,7 +3194,7 @@ Buttons for actions in forms, dialogs and pages, with the rounded shape of My Bo
 Add a color of the palette (`.gm-theme-sky`, `.gm-theme-mint`…) and how to use it: `.gm-theme-solid` for the pastel with black text, or `.gm-theme-glass` for the glazed version. The button keeps its pill shape.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-theme-sky gm-theme-solid">Solid</button>
   <button type="button" class="gm-btn gm-theme-sky gm-theme-glass">Glazed</button>
 </div>
@@ -2947,7 +3203,7 @@ Add a color of the palette (`.gm-theme-sky`, `.gm-theme-mint`…) and how to use
 All the colors, solid:
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-btn--sm gm-theme-sky gm-theme-solid">Sky</button>
   <button type="button" class="gm-btn gm-btn--sm gm-theme-blue gm-theme-solid">Blue</button>
   <button type="button" class="gm-btn gm-btn--sm gm-theme-lavender gm-theme-solid">Lavender</button>
@@ -2962,7 +3218,7 @@ All the colors, solid:
 And glazed:
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-btn--sm gm-theme-sky gm-theme-glass">Sky</button>
   <button type="button" class="gm-btn gm-btn--sm gm-theme-blue gm-theme-glass">Blue</button>
   <button type="button" class="gm-btn gm-btn--sm gm-theme-lavender gm-theme-glass">Lavender</button>
@@ -2981,7 +3237,7 @@ The text on the pastel is always black (7.8:1 or more, AAA). Never use white tex
 `.gm-btn--sm` makes it lower (38 px) and with smaller text.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-btn--sm">Primary</button>
   <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm">Secondary</button>
 </div>
@@ -2992,7 +3248,7 @@ The text on the pastel is always black (7.8:1 or more, AAA). Never use white tex
 Put an icon before or after the text. It is decorative, so it has `aria-hidden="true"`.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn"><i class="gmi gmi-download" aria-hidden="true"></i>Download</button>
   <button type="button" class="gm-btn gm-btn--secondary">Next<i class="gmi gmi-arrow-right" aria-hidden="true"></i></button>
 </div>
@@ -3003,7 +3259,7 @@ Put an icon before or after the text. It is decorative, so it has `aria-hidden="
 `.gm-icon-btn` is a round 42 px button. As it has no text, it needs `aria-label` with what it does.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-icon-btn" aria-label="Search"><i class="gmi gmi-search" aria-hidden="true"></i></button>
   <button type="button" class="gm-icon-btn" aria-label="Settings"><i class="gmi gmi-gear" aria-hidden="true"></i></button>
   <button type="button" class="gm-icon-btn" aria-label="Delete"><i class="gmi gmi-trash" aria-hidden="true"></i></button>
@@ -3015,7 +3271,7 @@ Put an icon before or after the text. It is decorative, so it has `aria-hidden="
 `.gm-btn--pill` is a small button with the gray of the tags, for secondary actions in lists and cards. Add `.gm-btn--danger` for actions that delete.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn gm-btn--pill">Edit</button>
   <button type="button" class="gm-btn gm-btn--pill gm-btn--danger">Delete</button>
 </div>
@@ -3026,7 +3282,7 @@ Put an icon before or after the text. It is decorative, so it has `aria-hidden="
 `.gm-btn-text` looks like a link but is a button, for small actions inside a text.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn-text">Show more</button>
 </div>
 ```
@@ -3036,7 +3292,7 @@ Put an icon before or after the text. It is decorative, so it has `aria-hidden="
 `.gm-btn-back` goes back to the previous section. The arrow is decorative; if the visible text does not say where it goes, add it with a visually hidden text.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <a class="gm-btn-back" href="#"><span aria-hidden="true">‹</span> Back<span class="gm-visually-hidden">: Tools</span></a>
 </div>
 ```
@@ -3046,7 +3302,7 @@ Put an icon before or after the text. It is decorative, so it has `aria-hidden="
 The classes also work on `<a>`. Use `<a>` when it goes to another page and `<button>` when it does something on the same page.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <a class="gm-btn" href="#">Read the docs</a>
   <a class="gm-btn gm-btn--secondary" href="#">GitHub</a>
 </div>
@@ -3057,7 +3313,7 @@ The classes also work on `<a>`. Use `<a>` when it goes to another page and `<but
 With the `disabled` attribute the button is paler and cannot be pressed.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
   <button type="button" class="gm-btn" disabled>Primary</button>
   <button type="button" class="gm-btn gm-btn--secondary" disabled>Secondary</button>
 </div>
@@ -3086,8 +3342,8 @@ A glass box to group content: translucent background with blur, thin border, rou
 ## Example
 
 ```html
-<div class="gm-card" style="max-width: 360px">
-  <h3 style="margin: 0 0 8px">Basic plan</h3>
+<div class="gm-card gm-max-w-sm">
+  <h3 class="gm-mt-0 gm-mx-0 gm-mb-2">Basic plan</h3>
   <p class="gm-muted">To get started: a one-page website with a contact form.</p>
   <button type="button" class="gm-btn gm-btn--sm">See details</button>
 </div>
@@ -3098,10 +3354,10 @@ A glass box to group content: translucent background with blur, thin border, rou
 With the [grid](/docs/layout/grid) (`.gm-grid--auto`), as many cards per row as fit.
 
 ```html
-<div class="gm-grid gm-grid--auto gm-gap-sm" style="--gm-grid-min: 200px">
-  <div class="gm-card"><i class="gmi gmi-stars" aria-hidden="true" style="font-size: 1.5rem"></i><h3 style="margin: 8px 0 4px">Fast</h3><p class="gm-muted">Ready in minutes.</p></div>
-  <div class="gm-card"><i class="gmi gmi-circle-half" aria-hidden="true" style="font-size: 1.5rem"></i><h3 style="margin: 8px 0 4px">Light and dark</h3><p class="gm-muted">Both modes, built in.</p></div>
-  <div class="gm-card"><i class="gmi gmi-heart" aria-hidden="true" style="font-size: 1.5rem"></i><h3 style="margin: 8px 0 4px">Accessible</h3><p class="gm-muted">WCAG 2.2 AA and AAA.</p></div>
+<div class="gm-grid gm-grid--auto gm-gap-sm" style="--gm-grid-min: 12.5rem">
+  <div class="gm-card"><i class="gmi gmi-stars" aria-hidden="true" style="font-size: 1.5rem"></i><h3 class="gm-mt-2 gm-mx-0 gm-mb-1">Fast</h3><p class="gm-muted">Ready in minutes.</p></div>
+  <div class="gm-card"><i class="gmi gmi-circle-half" aria-hidden="true" style="font-size: 1.5rem"></i><h3 class="gm-mt-2 gm-mx-0 gm-mb-1">Light and dark</h3><p class="gm-muted">Both modes, built in.</p></div>
+  <div class="gm-card"><i class="gmi gmi-heart" aria-hidden="true" style="font-size: 1.5rem"></i><h3 class="gm-mt-2 gm-mx-0 gm-mb-1">Accessible</h3><p class="gm-muted">WCAG 2.2 AA and AAA.</p></div>
 </div>
 ```
 
@@ -3110,9 +3366,9 @@ With the [grid](/docs/layout/grid) (`.gm-grid--auto`), as many cards per row as 
 If the whole card leads to another page, make the card the `<a>`. That avoids several repeated links.
 
 ```html
-<a class="gm-card" href="#" style="display: block; max-width: 360px; color: inherit">
+<a class="gm-card gm-block gm-max-w-sm" href="#" style="color: inherit">
   <strong>Palette generator</strong>
-  <p class="gm-muted" style="margin: 4px 0 0">Create an accessible palette from one color.</p>
+  <p class="gm-muted gm-mt-1 gm-mx-0 gm-mb-0">Create an accessible palette from one color.</p>
 </a>
 ```
 
@@ -3196,7 +3452,7 @@ With `.gm-carousel--peek` and no `data-gm-carousel`: photos move by swiping with
 Like the quick questions of the portfolio chat: everything in one row that slides sideways with a finger, the mouse or the keyboard, with no arrows or dots. The right edge fades out to show there is more. Use `.gm-scroll-row`; no script needed.
 
 ```html
-<div class="gm-scroll-row" role="group" aria-label="Quick questions" style="max-width: 340px">
+<div class="gm-scroll-row gm-max-w-xs" role="group" aria-label="Quick questions">
   <button type="button" class="gm-btn gm-btn--pill">Which technologies do you use?</button>
   <button type="button" class="gm-btn gm-btn--pill">How much does a website cost?</button>
   <button type="button" class="gm-btn gm-btn--pill">Do you build online shops?</button>
@@ -3256,13 +3512,13 @@ Glass with a sky border and, in dark mode, a turquoise glow. The tail points to 
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
-  <div class="gm-bubble gm-bubble--tail-end" style="max-width: 360px">
+  <div class="gm-bubble gm-bubble--tail-end gm-max-w-sm">
     <div class="gm-bubble__scroll" tabindex="0" role="region" aria-label="Answer">
       I mostly work with Angular and .NET, and design in Figma. You can see my projects on <a href="#">GitHub</a>.
     </div>
     <button type="button" class="gm-bubble__close" aria-label="Close the answer"><i class="gmi gmi-x" aria-hidden="true"></i></button>
   </div>
-  <div class="gm-bubble gm-bubble--tail-start" style="max-width: 360px; margin-left: 16px">
+  <div class="gm-bubble gm-bubble--tail-start gm-max-w-sm gm-ms-4">
     <div class="gm-bubble__scroll"><span class="gm-bubble__note">Picking up where we left off</span>When do you need the website?</div>
   </div>
 </div>
@@ -3273,7 +3529,7 @@ Glass with a sky border and, in dark mode, a turquoise glow. The tail points to 
 While the answer arrives, `.gm-typing` with three `<span>`s: three dots bouncing, in sky (turquoise in dark mode).
 
 ```html
-<div class="gm-bubble" style="max-width: 120px">
+<div class="gm-bubble" style="max-width: 7.5rem">
   <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
   <span class="gm-visually-hidden">Thinking about the answer…</span>
 </div>
@@ -3295,13 +3551,13 @@ With variables, on the bubble or on any element that contains it:
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
-  <div class="gm-bubble gm-bubble--tail-end" style="--gm-bubble-color: var(--gm-accent); max-width: 360px">
+  <div class="gm-bubble gm-bubble--tail-end gm-max-w-sm" style="--gm-bubble-color: var(--gm-accent)">
     <div class="gm-bubble__scroll">With the accent color: pink by day and blue at night.</div>
   </div>
-  <div class="gm-bubble gm-bubble--tail-start" style="--gm-bubble-color: linear-gradient(90deg, var(--gm-mint-700), var(--gm-sky-700)); --gm-bubble-tail-color: var(--gm-mint-700); max-width: 360px; margin-left: 16px">
+  <div class="gm-bubble gm-bubble--tail-start gm-max-w-sm gm-ms-4" style="--gm-bubble-color: linear-gradient(90deg, var(--gm-mint-700), var(--gm-sky-700)); --gm-bubble-tail-color: var(--gm-mint-700)">
     <div class="gm-bubble__scroll">With a gradient from mint to sky; the tail, in mint.</div>
   </div>
-  <div class="gm-bubble" style="--gm-bubble-color: var(--gm-accent); --gm-typing-color: var(--gm-accent); max-width: 120px">
+  <div class="gm-bubble" style="--gm-bubble-color: var(--gm-accent); --gm-typing-color: var(--gm-accent); max-width: 7.5rem">
     <span class="gm-typing" aria-hidden="true"><span></span><span></span><span></span></span>
     <span class="gm-visually-hidden">Thinking about the answer…</span>
   </div>
@@ -3340,7 +3596,7 @@ A glass pill for quick options, like the suggested questions of a chat. It is th
 Many chips in a row fit better in a [swipe row](/docs/components/carousel#swipe-row), as in the template:
 
 ```html
-<div class="gm-scroll-row" role="group" aria-label="Quick questions" style="max-width: 320px">
+<div class="gm-scroll-row gm-max-w-xs" role="group" aria-label="Quick questions">
   <button type="button" class="gm-chip">Which technologies do you use?</button>
   <button type="button" class="gm-chip">How much does a website cost?</button>
   <button type="button" class="gm-chip">Do you build online shops?</button>
@@ -3586,7 +3842,7 @@ A small pill to label something: a category, a status, something new. It is the 
 ## Example
 
 ```html
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<div class="gm-flex gm-flex-wrap gm-gap-2">
   <span class="gm-tag">Novel</span>
   <span class="gm-tag">Fantasy</span>
   <span class="gm-tag">2026</span>
@@ -3598,7 +3854,7 @@ A small pill to label something: a category, a status, something new. It is the 
 With the palette colors (`.gm-theme-…` and `.gm-theme-solid`), black text on the pastel.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<div class="gm-flex gm-flex-wrap gm-gap-2">
   <span class="gm-tag gm-theme-sky gm-theme-solid">New</span>
   <span class="gm-tag gm-theme-mint gm-theme-solid">Read</span>
   <span class="gm-tag gm-theme-lemon gm-theme-solid">Pending</span>
@@ -3626,7 +3882,7 @@ The top bar, like the one in My Book Box and My MTV Box: logo and name on the le
 On the site it sticks to the top (`position: sticky`); here it is shown inside the frame.
 
 ```html
-<header class="gm-navbar" style="position: relative; border-radius: 12px">
+<header class="gm-navbar gm-relative gm-rounded-sm">
   <a class="gm-navbar__brand" href="#"><img class="gm-navbar__logo" src="logo.svg" alt="" width="48" height="48"><span>My site</span></a>
   <nav class="gm-navbar__nav" aria-label="Main">
     <a href="#" aria-current="page">Home</a>
@@ -3662,7 +3918,7 @@ If the logo is made of glass (translucent, with shiny edges, like the GlassMarsh
 The bar of the portfolio template. **On computers**, without a logo: the links in the center and the theme button on the right (`.gm-navbar--centered`). **On phones**, no bar: only the round glass buttons remain, floating at the top right (`.gm-navbar--floating`), and the menu button (`.gm-navbar__menu`) opens the [full-screen menu](/docs/components/fullscreen-menu).
 
 ```html
-<header class="gm-navbar gm-navbar--centered gm-navbar--floating" style="position: relative; border-radius: 12px">
+<header class="gm-navbar gm-navbar--centered gm-navbar--floating gm-relative gm-rounded-sm">
   <nav class="gm-navbar__nav" aria-label="Centered bar example">
     <a href="#" aria-current="page">Home</a>
     <a href="#">About me</a>
@@ -3678,8 +3934,8 @@ The bar of the portfolio template. **On computers**, without a logo: the links i
 This is how it looks on phones (make the window narrower than 860 px to see it in the top bar):
 
 ```html
-<div style="position: relative; height: 160px; overflow: hidden; border-radius: 12px; background: var(--gm-backdrop-lights), var(--gm-backdrop-bg)">
-  <div style="position: absolute; top: 12px; right: 12px; display: flex; gap: 12px">
+<div class="gm-relative gm-overflow-hidden gm-rounded-sm" style="height: 10rem; background: var(--gm-backdrop-lights), var(--gm-backdrop-bg)">
+  <div class="gm-absolute gm-flex gm-gap-3" style="top: 0.75rem; right: 0.75rem">
     <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Switch to dark mode"><i class="gmi gmi-moon" aria-hidden="true"></i></button>
     <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Open menu"><i class="gmi gmi-list" aria-hidden="true"></i></button>
   </div>
@@ -3703,14 +3959,14 @@ With variables on the bar:
 So the text reads well on the new background, the easiest way is to fix the mode of the bar with `data-theme`: a dark bar on a light page (`data-theme="dark"`) or a pastel with black text (`data-theme="light"`).
 
 ```html
-<div style="display: grid; gap: 16px">
-  <header class="gm-navbar gm-navbar--centered" data-theme="dark" style="position: relative; border-radius: 12px">
+<div class="gm-grid gm-gap-4">
+  <header class="gm-navbar gm-navbar--centered gm-relative gm-rounded-sm" data-theme="dark">
     <nav class="gm-navbar__nav" aria-label="Dark bar example">
       <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
     </nav>
     <div class="gm-navbar__actions"><button type="button" class="gm-icon-btn" aria-label="Switch to light mode"><i class="gmi gmi-sun" aria-hidden="true"></i></button></div>
   </header>
-  <header class="gm-navbar gm-navbar--centered" data-theme="light" style="position: relative; border-radius: 12px; --gm-header-bg: var(--gm-mint); --gm-header-border: transparent; --gm-header-shadow: 0 4px 24px rgba(0, 0, 0, .08)">
+  <header class="gm-navbar gm-navbar--centered gm-relative gm-rounded-sm" data-theme="light" style="--gm-header-bg: var(--gm-mint); --gm-header-border: transparent; --gm-header-shadow: 0 4px 24px rgba(0, 0, 0, .08)">
     <nav class="gm-navbar__nav" aria-label="Mint bar example">
       <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
     </nav>
@@ -3724,13 +3980,13 @@ So the text reads well on the new background, the easiest way is to fix the mode
 Hover over the links: in the first bar they take the accent color (pink by day, blue at night); in the second, a gradient from lavender to pink.
 
 ```html
-<div style="display: grid; gap: 16px">
-  <header class="gm-navbar gm-navbar--centered" style="position: relative; border-radius: 12px; --gm-nav-link-hover: var(--gm-accent)">
+<div class="gm-grid gm-gap-4">
+  <header class="gm-navbar gm-navbar--centered gm-relative gm-rounded-sm" style="--gm-nav-link-hover: var(--gm-accent)">
     <nav class="gm-navbar__nav" aria-label="Accent color example">
       <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
     </nav>
   </header>
-  <header class="gm-navbar gm-navbar--centered" data-theme="light" style="position: relative; border-radius: 12px; --gm-nav-link-hover: linear-gradient(90deg, var(--gm-lavender-700), var(--gm-pink-700))">
+  <header class="gm-navbar gm-navbar--centered gm-relative gm-rounded-sm" data-theme="light" style="--gm-nav-link-hover: linear-gradient(90deg, var(--gm-lavender-700), var(--gm-pink-700))">
     <nav class="gm-navbar__nav" aria-label="Gradient example">
       <a href="#" aria-current="page">Home</a><a href="#">About me</a><a href="#">Skills</a>
     </nav>
@@ -3763,7 +4019,7 @@ The phone's bottom bar, floating and glass, like in iOS and My Book Box. It repl
 On the site it only appears on phones and floats over the page (`position: fixed`); here it is shown inside the frame.
 
 ```html
-<nav class="gm-tabbar" aria-label="Main (mobile)" style="position: relative; inset: auto; display: flex; max-width: 400px">
+<nav class="gm-tabbar gm-relative gm-flex gm-max-w-sm" aria-label="Main (mobile)" style="inset: auto">
   <a href="#" aria-current="page"><i class="gmi gmi-house" aria-hidden="true"></i>Home</a>
   <a href="#"><i class="gmi gmi-book" aria-hidden="true"></i>Docs</a>
   <a href="#"><i class="gmi gmi-heart" aria-hidden="true"></i>Icons</a>
@@ -3848,7 +4104,7 @@ A button that opens a list of options, like the language, version and theme menu
 Open it with the mouse or with the keyboard (Enter or Space on the button).
 
 ```html
-<div style="display: flex; align-items: flex-start; justify-content: flex-end; min-height: 230px">
+<div class="gm-flex gm-items-start gm-justify-end" style="min-height: 14.375rem">
   <div class="gm-menu" data-gm-menu>
     <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Theme: Auto">
       <i class="gmi gmi-circle-half" aria-hidden="true"></i>
@@ -3868,7 +4124,7 @@ Open it with the mouse or with the keyboard (Enter or Space on the button).
 The list opens aligned to the right of the button. Next to the left edge, add `.gm-menu--start`.
 
 ```html
-<div style="min-height: 190px">
+<div style="min-height: 11.875rem">
   <div class="gm-menu gm-menu--start" data-gm-menu>
     <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language: English">
       <i class="gmi gmi-translate" aria-hidden="true"></i> EN
@@ -3927,8 +4183,8 @@ A text field with the magnifier inside and, below it, the results that match wha
 Type, for example, “color” or “button”.
 
 ```html
-<div style="min-height: 300px">
-  <div class="gm-search" role="search" data-gm-search data-results-text="{count} results" style="max-width: 320px">
+<div style="min-height: 18.75rem">
+  <div class="gm-search gm-max-w-xs" role="search" data-gm-search data-results-text="{count} results">
     <div class="gm-search__field">
       <i class="gmi gmi-search" aria-hidden="true"></i>
       <label class="gm-visually-hidden" for="example-search">Search the docs</label>
@@ -4075,7 +4331,7 @@ How much of something is done: reading a book, uploading a file, the steps of a 
 ## Example
 
 ```html
-<div class="gm-progress" style="max-width: 360px">
+<div class="gm-progress gm-max-w-sm">
   <progress class="gm-progress__bar" id="example-read" max="100" value="45">45 %</progress>
   <label class="gm-progress__label" for="example-read">45 % read · page 162 of 360</label>
 </div>
@@ -4086,7 +4342,7 @@ How much of something is done: reading a book, uploading a file, the steps of a 
 `.gm-progress--lg`, when the bar is the main thing (an upload, an installation).
 
 ```html
-<div class="gm-progress gm-progress--lg" style="max-width: 420px">
+<div class="gm-progress gm-progress--lg gm-max-w-md">
   <progress class="gm-progress__bar" id="example-upload" max="100" value="72">72 %</progress>
   <label class="gm-progress__label" for="example-upload">Uploading “novel.epub”: 72 %</label>
 </div>
@@ -4097,7 +4353,7 @@ How much of something is done: reading a book, uploading a file, the steps of a 
 Without `value`, the bar shows a segment moving back and forth: work is happening, but how much is left is unknown.
 
 ```html
-<div class="gm-progress" style="max-width: 360px">
+<div class="gm-progress gm-max-w-sm">
   <progress class="gm-progress__bar" id="example-loading" max="100">Loading</progress>
   <label class="gm-progress__label" for="example-loading">Loading the library…</label>
 </div>
@@ -4179,7 +4435,7 @@ Wrap the element and its bubble in `.gm-tooltip`. The bubble has `role="tooltip"
 It shows when you hover the element and when you reach it with the keyboard. Move the pointer onto the bubble and it stays open.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; padding-top: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-center gm-items-center gm-gap-3 gm-pt-12">
   <span class="gm-tooltip">
     <button type="button" class="gm-icon-btn" aria-label="Search" aria-describedby="tip-1"><i class="gmi gmi-search" aria-hidden="true"></i></button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-1">Search the library</span>
@@ -4200,7 +4456,7 @@ It shows when you hover the element and when you reach it with the keyboard. Mov
 By default it goes above. Add `.gm-tooltip--bottom` to put it below.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; padding-bottom: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-center gm-items-center gm-gap-3 gm-pb-12">
   <span class="gm-tooltip gm-tooltip--bottom">
     <button type="button" class="gm-icon-btn" aria-label="Share" aria-describedby="tip-4"><i class="gmi gmi-share" aria-hidden="true"></i></button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-4">Share with a friend</span>
@@ -4213,7 +4469,7 @@ By default it goes above. Add `.gm-tooltip--bottom` to put it below.
 Centered bubbles can go past the edge of the screen. Next to the left edge, add `.gm-tooltip--start`; next to the right one, `.gm-tooltip--end`.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding-top: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-between gm-items-center gm-gap-3 gm-pt-12">
   <span class="gm-tooltip gm-tooltip--start">
     <button type="button" class="gm-icon-btn" aria-label="Back" aria-describedby="tip-6"><i class="gmi gmi-arrow-left" aria-hidden="true"></i></button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-6">Back to the library</span>
@@ -4230,7 +4486,7 @@ Centered bubbles can go past the edge of the screen. Next to the left edge, add 
 A tooltip adds information; it does not replace the name of the button. On a button with text, use it to explain something more.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; padding-top: 44px">
+<div class="gm-flex gm-flex-wrap gm-justify-center gm-items-center gm-gap-3 gm-pt-12">
   <span class="gm-tooltip">
     <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm" aria-describedby="tip-5">Publish</button>
     <span class="gm-tooltip__bubble" role="tooltip" id="tip-5">Everyone with the link will see it</span>
@@ -4328,8 +4584,8 @@ Paints text with the framework's color gradient. At night it switches to a plain
 ## Example
 
 ```html
-<p style="font-size: 1.4rem; font-weight: 700; margin: 0">Made with <span class="gm-gradient-text">GlassMarshmallow</span></p>
-<h2 class="gm-gradient-title" style="margin: 8px 0 0">Gradient heading</h2>
+<p class="gm-font-bold gm-m-0" style="font-size: 1.4rem">Made with <span class="gm-gradient-text">GlassMarshmallow</span></p>
+<h2 class="gm-gradient-title gm-mt-2 gm-mx-0 gm-mb-0">Gradient heading</h2>
 ```
 
 ## Two versions
@@ -4357,8 +4613,8 @@ At night, `.gm-gradient-text` is blue and `.gm-gradient-title` uses the text col
 This is how it looks over a background with lights in dark mode:
 
 ```html
-<div data-theme="dark" style="display: grid; place-items: center; min-height: 160px; border-radius: 12px; color: #f5f5f7; background: radial-gradient(circle at 30% 40%, #1cabb0, transparent 55%), radial-gradient(circle at 70% 60%, #8c57e9, transparent 55%), #000">
-  <p class="gm-text-outline" style="margin: 0; font-size: 2rem; font-weight: 800">Readable over the lights</p>
+<div class="gm-grid gm-rounded-sm" data-theme="dark" style="place-items: center; min-height: 10rem; color: #f5f5f7; background: radial-gradient(circle at 30% 40%, #1cabb0, transparent 55%), radial-gradient(circle at 70% 60%, #8c57e9, transparent 55%), #000">
+  <p class="gm-text-outline gm-m-0 gm-font-extrabold" style="font-size: 2rem">Readable over the lights</p>
 </div>
 ```
 

@@ -7,15 +7,15 @@ Pinta el fondo de cualquier elemento con una clase. A diferencia de Bootstrap, c
 El pastel sólido, con el texto negro en modo claro y oscuro.
 
 ```html
-<div style="display: grid; gap: 8px">
-  <div class="gm-bg-sky" style="padding: 12px 16px; border-radius: 12px">.gm-bg-sky</div>
-  <div class="gm-bg-blue" style="padding: 12px 16px; border-radius: 12px">.gm-bg-blue</div>
-  <div class="gm-bg-lavender" style="padding: 12px 16px; border-radius: 12px">.gm-bg-lavender</div>
-  <div class="gm-bg-pink" style="padding: 12px 16px; border-radius: 12px">.gm-bg-pink</div>
-  <div class="gm-bg-peach" style="padding: 12px 16px; border-radius: 12px">.gm-bg-peach</div>
-  <div class="gm-bg-lemon" style="padding: 12px 16px; border-radius: 12px">.gm-bg-lemon</div>
-  <div class="gm-bg-mint" style="padding: 12px 16px; border-radius: 12px">.gm-bg-mint</div>
-  <div class="gm-bg-coral" style="padding: 12px 16px; border-radius: 12px">.gm-bg-coral</div>
+<div class="gm-grid gm-gap-2">
+  <div class="gm-bg-sky gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-sky</div>
+  <div class="gm-bg-blue gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-blue</div>
+  <div class="gm-bg-lavender gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-lavender</div>
+  <div class="gm-bg-pink gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-pink</div>
+  <div class="gm-bg-peach gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-peach</div>
+  <div class="gm-bg-lemon gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-lemon</div>
+  <div class="gm-bg-mint gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-mint</div>
+  <div class="gm-bg-coral gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-coral</div>
 </div>
 ```
 
@@ -24,18 +24,18 @@ El pastel sólido, con el texto negro en modo claro y oscuro.
 Texto negro hasta el `gray-500` y blanco desde el `gray-600`.
 
 ```html
-<div style="display: grid; gap: 8px">
-  <div class="gm-bg-white" style="padding: 12px 16px; border-radius: 12px">.gm-bg-white</div>
-  <div class="gm-bg-gray-100" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-100</div>
-  <div class="gm-bg-gray-200" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-200</div>
-  <div class="gm-bg-gray-300" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-300</div>
-  <div class="gm-bg-gray-400" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-400</div>
-  <div class="gm-bg-gray-500" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-500</div>
-  <div class="gm-bg-gray-600" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-600</div>
-  <div class="gm-bg-gray-700" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-700</div>
-  <div class="gm-bg-gray-800" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-800</div>
-  <div class="gm-bg-gray-900" style="padding: 12px 16px; border-radius: 12px">.gm-bg-gray-900</div>
-  <div class="gm-bg-black" style="padding: 12px 16px; border-radius: 12px">.gm-bg-black</div>
+<div class="gm-grid gm-gap-2">
+  <div class="gm-bg-white gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-white</div>
+  <div class="gm-bg-gray-100 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-100</div>
+  <div class="gm-bg-gray-200 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-200</div>
+  <div class="gm-bg-gray-300 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-300</div>
+  <div class="gm-bg-gray-400 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-400</div>
+  <div class="gm-bg-gray-500 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-500</div>
+  <div class="gm-bg-gray-600 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-600</div>
+  <div class="gm-bg-gray-700 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-700</div>
+  <div class="gm-bg-gray-800 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-800</div>
+  <div class="gm-bg-gray-900 gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-gray-900</div>
+  <div class="gm-bg-black gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-black</div>
 </div>
 ```
 
@@ -46,10 +46,10 @@ Las escalas también tienen `gray-025`, `gray-050`, `gray-950` y `gray-975` (`.g
 Siguen el modo claro y oscuro: el fondo de la página, el de las tarjetas y paneles, y sin fondo.
 
 ```html
-<div style="display: grid; gap: 8px">
-  <div class="gm-bg-body" style="padding: 12px 16px; border-radius: 12px">.gm-bg-body</div>
-  <div class="gm-bg-surface" style="padding: 12px 16px; border-radius: 12px">.gm-bg-surface</div>
-  <div class="gm-bg-transparent" style="padding: 12px 16px; border-radius: 12px">.gm-bg-transparent</div>
+<div class="gm-grid gm-gap-2">
+  <div class="gm-bg-body gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-body</div>
+  <div class="gm-bg-surface gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-surface</div>
+  <div class="gm-bg-transparent gm-py-3 gm-px-4 gm-rounded-sm">.gm-bg-transparent</div>
 </div>
 ```
 

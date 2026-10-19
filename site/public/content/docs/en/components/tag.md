@@ -5,7 +5,7 @@ A small pill to label something: a category, a status, something new. It is the 
 ## Example
 
 ```html
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<div class="gm-flex gm-flex-wrap gm-gap-2">
   <span class="gm-tag">Novel</span>
   <span class="gm-tag">Fantasy</span>
   <span class="gm-tag">2026</span>
@@ -17,7 +17,7 @@ A small pill to label something: a category, a status, something new. It is the 
 With the palette colors (`.gm-theme-…` and `.gm-theme-solid`), black text on the pastel.
 
 ```html
-<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<div class="gm-flex gm-flex-wrap gm-gap-2">
   <span class="gm-tag gm-theme-sky gm-theme-solid">New</span>
   <span class="gm-tag gm-theme-mint gm-theme-solid">Read</span>
   <span class="gm-tag gm-theme-lemon gm-theme-solid">Pending</span>
