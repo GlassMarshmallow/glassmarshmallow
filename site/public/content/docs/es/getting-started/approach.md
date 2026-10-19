@@ -39,7 +39,7 @@ Las clases sin prefijo valen para todas las pantallas y las de prefijo (`gm-md-�
 
 - Todo empieza por **`gm-`**: clases (`.gm-btn`) y variables (`--gm-accent`). Así no choca con otras librerías.
 - Los componentes siguen el patrón **BEM**: bloque, parte y variante (`.gm-player__button--main`).
-- Las medidas son **relativas** (`rem`, `em`, `%`) para que todo crezca con el tamaño de letra de la persona.
+- Las medidas son **relativas** (`rem`, `em`, `%`) para que todo crezca con el tamaño de letra de la persona. Solo los detalles finos van en `px` (bordes de 1 px, sombras, desenfoques y el contorno del foco), para que sigan finos aunque la letra crezca, como en Bootstrap y Tailwind.
 
 ## Iconos propios
 

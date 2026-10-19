@@ -39,7 +39,7 @@ Unprefixed classes apply to every screen and prefixed ones (`gm-md-…`) are add
 
 - Everything starts with **`gm-`**: classes (`.gm-btn`) and variables (`--gm-accent`). That way it does not clash with other libraries.
 - Components follow the **BEM** pattern: block, element and modifier (`.gm-player__button--main`).
-- Sizes are **relative** (`rem`, `em`, `%`) so everything grows with the person's text size.
+- Sizes are **relative** (`rem`, `em`, `%`) so everything grows with the person's text size. Only the fine details are in `px` (1 px borders, shadows, blurs and the focus outline), so they stay thin when the text grows, as in Bootstrap and Tailwind.
 
 ## Own icons
 
