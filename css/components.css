@@ -322,6 +322,8 @@
   line-height: 1.6;
   white-space: pre;
 }
+/* Las líneas largas pasan a la siguiente en vez de desplazarse de lado (CSS generado, con valores largos) */
+.gm-code--wrap { white-space: pre-wrap; overflow-wrap: anywhere; }
 
 /* --- Barra de navegación (como My Book Box y My MTV Box) ------------------------- */
 .gm-navbar {
@@ -2235,6 +2237,44 @@ html:has(.gm-fullscreen-menu.is-open) { overflow: hidden; }
 .gm-pager__link--next .gm-pager__label { justify-content: flex-end; }
 .gm-pager__title { font-weight: 650; }
 @media (prefers-reduced-motion: reduce) { .gm-snippet__copy:hover, .gm-pager__link:hover { transform: none; } }
+
+/* --- Control deslizante con su nombre y su valor -----------------------------------------
+   <div class="gm-slider">
+     <label for="desenfoque">Desenfoque</label>
+     <output for="desenfoque">12 px</output>
+     <input id="desenfoque" class="gm-range" type="range" min="0" max="40" value="12">
+     <p class="gm-slider__help gm-muted">Opcional: una ayuda debajo.</p>
+   </div>
+   El nombre a la izquierda, el valor a la derecha (con cifras del mismo ancho, para que no baile al moverlo) y la
+   barra debajo, a todo el ancho. */
+.gm-slider { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .5rem; }
+.gm-slider label { font-size: .9rem; font-weight: 650; }
+.gm-slider output { color: var(--gm-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.gm-slider input[type="range"] { grid-column: 1 / -1; width: 100%; }
+.gm-slider__help { grid-column: 1 / -1; font-size: .82rem; }
+
+/* --- Herramienta: vista previa y controles (los generadores de esta web) ----------------
+   <div class="gm-tool">
+     <div class="gm-tool__preview">…la vista previa…</div>
+     <div class="gm-card gm-tool__controls">
+       <div class="gm-slider">…</div>
+       <fieldset class="gm-tool__group"><legend>Dirección</legend>…</fieldset>
+       <div class="gm-tool__code"><pre class="gm-code gm-code--wrap">…</pre><button class="gm-btn">Copiar</button></div>
+     </div>
+   </div>
+   La vista previa a la izquierda y los controles a la derecha; por debajo de 900 px, una debajo de la otra.
+   gm-tool__preview--sticky deja la vista previa a la vista mientras se bajan los controles. */
+.gm-tool { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: start; gap: 2rem; }
+.gm-tool__preview { display: grid; gap: .875rem; }
+.gm-tool__preview--sticky { position: sticky; top: calc(var(--gm-header-height) + 1rem); }
+.gm-tool__controls { display: grid; gap: 1.375rem; }
+.gm-tool__group { min-width: 0; margin: 0; padding: 0; border: 0; }
+.gm-tool__group > legend { margin-bottom: .625rem; padding: 0; font-size: .9rem; font-weight: 650; }
+.gm-tool__code { display: grid; gap: .75rem; }
+@media (max-width: 56.25rem) {
+  .gm-tool { grid-template-columns: minmax(0, 1fr); }
+  .gm-tool__preview--sticky { position: static; }
+}
 
 /* --- Texto largo (privacidad, aviso legal, artículos) ---------------------------------
    <article class="gm-prose gm-prose--card"><h1>Privacidad</h1><p class="gm-prose__updated">Última actualización…</p>
