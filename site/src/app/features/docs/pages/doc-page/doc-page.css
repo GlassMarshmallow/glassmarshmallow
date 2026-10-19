@@ -12,12 +12,14 @@
 .doc__content ::ng-deep > p,
 .doc__content ::ng-deep > ul,
 .doc__content ::ng-deep > ol { margin: 0 0 16px; color: var(--gm-text-secondary); }
-.doc__content ::ng-deep li + li { margin-top: 4px; }
-.doc__content ::ng-deep strong:not(.gm-player strong) { color: var(--gm-text); }
+/* Las listas, la negrita y el código del texto de la página; los de los ejemplos (.doc-code__example) se quedan como los
+   deja el framework, para que se vean igual que en cualquier web */
+.doc__content ::ng-deep li + li:not(.doc-code__example li) { margin-top: 4px; }
+.doc__content ::ng-deep strong:not(.gm-player strong):not(.doc-code__example strong) { color: var(--gm-text); }
 /* Enlaces del texto (no los de los ejemplos: cada componente, como la barra de navegación o el resumen de errores, lleva su estilo) */
 .doc__content ::ng-deep a:not([class]):not(.doc-code__example a) { color: var(--gm-link); text-decoration: underline; text-underline-offset: 3px; }
 .doc__content ::ng-deep a:not([class]):not(.doc-code__example a):hover { color: var(--gm-link-hover); }
-.doc__content ::ng-deep :not(pre) > code {
+.doc__content ::ng-deep :not(pre) > code:not(.doc-code__example code) {
   padding: .12em .35em;
   border-radius: 5px;
   color: var(--gm-text);
@@ -70,6 +72,10 @@
   border-bottom: 1px solid var(--gm-line);
   /* Como en Bootstrap: blanco en claro y negro del todo en oscuro, para ver los colores tal cual */
   background: rgb(var(--gm-page-end-rgb));
+  /* Lo que el texto de la página cambia (interlineado de 1,7) vuelve a ser lo del <body> del framework, para que el
+     ejemplo se vea igual que en cualquier web */
+  color: var(--gm-text);
+  line-height: 1.5;
 }
 .doc__content ::ng-deep .doc-code__example > :last-child { margin-bottom: 0; }
 .doc__content ::ng-deep .doc-code__example .gm-container { width: auto; }
