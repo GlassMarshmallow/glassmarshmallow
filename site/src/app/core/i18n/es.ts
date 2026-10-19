@@ -166,6 +166,7 @@ export const es: Dictionary = {
       'utilities/animations': 'Animaciones',
       'utilities/flex': 'Flex y alineación',
       'utilities/display': 'Mostrar y ocultar',
+      'utilities/arbitrary': 'Valores libres',
       'content/structure': 'Estructura de la página',
       'content/base': 'Base y textos',
       'content/code': 'Código',

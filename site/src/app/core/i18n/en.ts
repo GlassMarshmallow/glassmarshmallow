@@ -165,6 +165,7 @@ export const en = {
       'utilities/animations': 'Animations',
       'utilities/flex': 'Flex and alignment',
       'utilities/display': 'Display',
+      'utilities/arbitrary': 'Arbitrary values',
       'content/structure': 'Page structure',
       'content/base': 'Base and text',
       'content/code': 'Code',

@@ -50,6 +50,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 - [Flex and alignment](/docs/utilities/flex): To lay pieces out in a row or a column and align them, without writing CSS.
 - [Display](/docs/utilities/display): Changes how an element is displayed, or hides it, depending on the screen size.
 - [Interaction and visibility](/docs/utilities/interaction): How an element responds to the mouse and whether it is seen. Like Tailwind's [cursor](https://tailwindcss.com/docs/cursor), pointer-events, user-select and visibility.
+- [Arbitrary values](/docs/utilities/arbitrary): For when the utility scale does not have the value you need: write it in square brackets, like in Tailwind. `gm-z-[5]`, `gm-mt-[1.75rem]`, `gm-max-w-[52rem]`, `gm-bg-[#5cdfeb]`…
 
 ## Content
 
