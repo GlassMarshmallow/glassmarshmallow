@@ -72,7 +72,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 - [Card](/docs/components/card): A glass box to group content: translucent background with blur, thin border, rounded corners and a soft shadow. It is the My Book Box panel.
 - [Carousel](/docs/components/carousel): Images shown one at a time, inside a glass frame, with arrows on the sides and dots below. It is the one from the portfolio's projects section.
 - [Chat](/docs/components/chat): The chat pieces from the AI portfolio template: the field to ask, the answer bubble and the typing dots. The chat itself (asking the AI, writing the answer letter by letter) comes from your app; the framework provides the look.
-- [Chip](/docs/components/chip): A glass pill for quick options, like the suggested questions of a chat. It is the one from the AI portfolio template: the same glass as the accordion and, on hover, it rises a little and the border takes the lights of the illustration (turquoise in dark mode).
+- [Chip](/docs/components/chip): A glass pill for quick options, like the suggested questions of a chat. It is the one from the AI portfolio template: the same glass as the accordion and, on hover, it rises a little and the border turns sky (turquoise in dark mode).
 - [Dialog](/docs/components/dialog): A window that opens on top of the page to show information or ask for something, with the background dimmed behind it. It is the “About the AI” one from the portfolio template: the panel glass, sections separated by a thin line and colored headings.
 - [Footer](/docs/components/footer): The footer from the portfolio template: a heading, icon links (email and social), the legal links on one line and the name with the year. Centered, with a thin line above.
 - [Photo gallery](/docs/components/gallery): An album: photos in a grid, all the same size, with more columns on large screens and fewer on phones. Pressing one shows it large in a viewer with arrows to move to the next.
@@ -84,7 +84,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 - [Search](/docs/components/search): A text field with the magnifier inside and, below it, the results that match what is typed. It is the search box in the top bar of this site.
 - [Video player](/docs/components/player): The My MTV Box player: controls appear over the video on a black gradient, the buttons are round glass and the play button is white. While the video plays, the controls hide on their own.
 - [Progress](/docs/components/progress): How much of something is done: reading a book, uploading a file, the steps of a form. A thin line on gray with the done part in the accent color and a text below. It is the reading bar from My Book Box.
-- [Logo ticker](/docs/components/ticker): A strip that slowly moves from right to left with logos and names, like the technologies strip of the portfolio template. Dark glass (white by day) with a thin turquoise border above and below (by day, with the lights of the illustration).
+- [Logo ticker](/docs/components/ticker): A strip that slowly moves from right to left with logos and names, like the technologies strip of the portfolio template. Dark glass (white by day) with a thin border above and below, sky by day and turquoise at night.
 - [Tooltip](/docs/components/tooltip): A small bubble with extra information about a button or a control. It uses the style of the reading bubble of My Book Box: dark background, white text and a soft shadow, in light and dark mode.
 
 ## Helpers

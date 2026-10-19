@@ -83,6 +83,19 @@ Link the compiled file in your HTML, or import it from your own CSS.
 @import "glassmarshmallow/dist/css/glassmarshmallow.css";
 ```
 
+### The font (optional)
+
+GlassMarshmallow uses Montserrat. It comes in a separate file, `glassmarshmallow-font.min.css`, served from your own site (no Google Fonts). Add it before the framework if you want that font; if you prefer another one, leave it out and change `--gm-font` (see [Typography](/docs/customize/typography)).
+
+```html:HTML
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow-font.min.css">
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow.min.css">
+```
+```css:CSS
+@import "glassmarshmallow/dist/css/glassmarshmallow-font.css";
+@import "glassmarshmallow/dist/css/glassmarshmallow.css";
+```
+
 If you only need some parts, import the source files one by one. `tokens.css` always goes first.
 
 ```css
@@ -1164,7 +1177,7 @@ Each part of a home page (About me, Skills, Contact…) is a section: some space
 <section class="gm-section" style="padding-block: 2.5rem">
   <div class="gm-container gm-container--narrow">
     <h2 class="gm-section__title">About me</h2>
-    <p class="gm-section__text">Hi, I am <strong>Lucía Martín</strong> and I am a web developer. I like working on both sides of an application: what you see and what is behind it.</p>
+    <p class="gm-section__text">Hi, I am <strong>Sara Paez Yamuza</strong> and I am a web developer. I like working on both sides of an application: what you see and what is behind it.</p>
     <p class="gm-section__text">I love taking part in projects from the idea until they are up and running.</p>
   </div>
 </section>
@@ -1895,8 +1908,8 @@ Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so n
 
 ```html
 <dl class="gm-dl">
-  <div><dt>Name</dt><dd>Lucía Martín</dd></div>
-  <div><dt>Email</dt><dd>lucia@example.com</dd></div>
+  <div><dt>Name</dt><dd>Sara Paez Yamuza</dd></div>
+  <div><dt>Email</dt><dd>sara@example.com</dd></div>
   <div><dt>Project</dt><dd>An online ceramics shop, with card payment and shipping all over Spain.</dd></div>
 </dl>
 ```
@@ -2793,8 +2806,8 @@ Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cro
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
-  <span class="gm-avatar gm-avatar--lg gm-avatar--square"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--lg gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -2804,10 +2817,10 @@ Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cro
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--sm"><img src="media/perfil-3.jpg" alt="Ana López"></span>
-  <span class="gm-avatar"><img src="media/perfil-3.jpg" alt="Ana López"></span>
-  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-3.jpg" alt="Ana López"></span>
-  <span class="gm-avatar gm-avatar--xl"><img src="media/perfil-3.jpg" alt="Ana López"></span>
+  <span class="gm-avatar gm-avatar--sm"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--xl"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -2818,7 +2831,7 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
   <span class="gm-avatar gm-avatar--lg gm-theme-sky" role="img" aria-label="Sara Paez">SP</span>
-  <span class="gm-avatar gm-avatar--lg gm-avatar--square gm-theme-lavender" role="img" aria-label="Marta Gil">MG</span>
+  <span class="gm-avatar gm-avatar--lg gm-avatar--square gm-theme-lavender" role="img" aria-label="Sara Paez Yamuza">SP</span>
   <span class="gm-avatar gm-avatar--lg gm-theme-mint" role="img" aria-label="Diego Sanz">DS</span>
   <span class="gm-avatar gm-avatar--lg" role="img" aria-label="No profile picture"><i class="gmi gmi-person-fill" aria-hidden="true"></i></span>
 </div>
@@ -2826,12 +2839,12 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 
 ## With a ring
 
-`.gm-avatar--ring`: the photo with a colored ring, like the one in the portfolio template. By default, with the lights of the illustration; the thickness is proportional to the size.
+`.gm-avatar--ring`: the photo with a colored ring, like the one in the portfolio template. By default, in sky (turquoise in dark mode); the thickness is proportional to the size.
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
-  <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -2841,14 +2854,14 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 | --- | --- | --- |
 | `--gm-avatar-size` | The size | 3 rem |
 | `--gm-avatar-radius` | How rounded the corners are | 50% (circle); 22% with `--square` |
-| `--gm-avatar-ring` | The ring color (a color or a gradient), with `--ring` | The lights of the illustration |
+| `--gm-avatar-ring` | The ring color (a color or a gradient), with `--ring` | Sky (turquoise in dark mode) |
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Ana López"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: linear-gradient(135deg, var(--gm-mint), var(--gm-sky), var(--gm-lavender))"><img src="media/perfil-4.jpg" alt="Diego Sanz"></span>
-  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
-  <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -2857,8 +2870,8 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 To show the photo large when it is pressed: the box is a link to the large photo with `data-gm-zoom`, and the [gallery](/docs/components/gallery) script opens it in its viewer, without arrows or counter. A magnifier cursor shows on hover.
 
 ```html
-<a class="gm-avatar gm-avatar--xl gm-avatar--ring" href="media/perfil-1.jpg" data-gm-zoom aria-label="Enlarge Lucía Martín's photo">
-  <img src="media/perfil-1.jpg" alt="Lucía Martín">
+<a class="gm-avatar gm-avatar--xl gm-avatar--ring" href="media/perfil-1.jpg" data-gm-zoom aria-label="Enlarge Sara Paez Yamuza's photo">
+  <img src="media/perfil-1.jpg" alt="Sara Paez Yamuza">
 </a>
 ```
 
@@ -2887,7 +2900,7 @@ On the profile page, a button with the pencil on top of the photo. Use it with t
 Several stacked photos, for example to show who is taking part. The last one can say how many more there are.
 
 ```html
-<div class="gm-avatar-group" role="group" aria-label="Lucía, Pablo, Ana and 5 more people take part">
+<div class="gm-avatar-group" role="group" aria-label="Sara Paez Yamuza and 7 more people take part">
   <span class="gm-avatar"><img src="media/perfil-1.jpg" alt=""></span>
   <span class="gm-avatar"><img src="media/perfil-2.jpg" alt=""></span>
   <span class="gm-avatar"><img src="media/perfil-3.jpg" alt=""></span>
@@ -2897,7 +2910,7 @@ Several stacked photos, for example to show who is taking part. The last one can
 
 ## Accessibility
 
-- A photo with the name next to it (in a list of people) is decorative: `alt=""`. On its own, it carries the name: `alt="Lucía Martín"`.
+- A photo with the name next to it (in a list of people) is decorative: `alt=""`. On its own, it carries the name: `alt="Sara Paez Yamuza"`.
 - Initials go with `role="img"` and an `aria-label` with the full name.
 - In a group, the group's `aria-label` says who takes part and the photos have `alt=""`.
 - Initials are black on the pastel (7.8:1 or more, AAA); without a color, regular text on gray.
@@ -3227,7 +3240,7 @@ The chat pieces from the AI portfolio template: the field to ask, the answer bub
 
 ## Field to ask
 
-A glass pill with the field and the send button. While typing, the border takes the lights and a soft ring appears.
+A glass pill with the field and the send button. While typing, the border turns sky and a soft ring appears.
 
 ```html
 <form class="gm-chat-input" role="search" aria-label="Ask me about my work">
@@ -3239,7 +3252,7 @@ A glass pill with the field and the send button. While typing, the border takes 
 
 ## Answer bubble
 
-Glass with the lights border and, in dark mode, a turquoise glow. The tail points to the speaker: `.gm-bubble--tail-end` (right) or `.gm-bubble--tail-start` (left), at the height of `--gm-bubble-tail-y` (measured from the bottom on the right one; on the left one, from the top, or from the bottom with `.gm-bubble--tail-bottom`).
+Glass with a sky border and, in dark mode, a turquoise glow. The tail points to the speaker: `.gm-bubble--tail-end` (right) or `.gm-bubble--tail-start` (left), at the height of `--gm-bubble-tail-y` (measured from the bottom on the right one; on the left one, from the top, or from the bottom with `.gm-bubble--tail-bottom`).
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
@@ -3257,7 +3270,7 @@ Glass with the lights border and, in dark mode, a turquoise glow. The tail point
 
 ## Thinking
 
-While the answer arrives, `.gm-typing` with three `<span>`s: three dots bouncing with the lights of the illustration.
+While the answer arrives, `.gm-typing` with three `<span>`s: three dots bouncing, in sky (turquoise in dark mode).
 
 ```html
 <div class="gm-bubble" style="max-width: 120px">
@@ -3276,9 +3289,9 @@ With variables, on the bubble or on any element that contains it:
 
 | Variable | What it changes | Default |
 | --- | --- | --- |
-| `--gm-bubble-color` | The border and the tail of the bubble (a color or a gradient) | The lights of the illustration |
+| `--gm-bubble-color` | The border and the tail of the bubble (a color or a gradient) | Sky (turquoise in dark mode) |
 | `--gm-bubble-tail-color` | Only the tail, if the border is a gradient (the tail takes a color, not a gradient) | The one in `--gm-bubble-color` |
-| `--gm-typing-color` | The "thinking" dots | The lights of the illustration |
+| `--gm-typing-color` | The "thinking" dots | Sky (turquoise in dark mode) |
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
@@ -3305,7 +3318,7 @@ With variables, on the bubble or on any element that contains it:
 <!-- /docs/components/chip -->
 # Chip
 
-A glass pill for quick options, like the suggested questions of a chat. It is the one from the AI portfolio template: the same glass as the accordion and, on hover, it rises a little and the border takes the lights of the illustration (turquoise in dark mode).
+A glass pill for quick options, like the suggested questions of a chat. It is the one from the AI portfolio template: the same glass as the accordion and, on hover, it rises a little and the border turns sky (turquoise in dark mode).
 
 ## Example
 
@@ -3320,7 +3333,7 @@ A glass pill for quick options, like the suggested questions of a chat. It is th
 
 ## Accent
 
-`.gm-chip--accent` always has the lights border and semibold text: for the main action of the group.
+`.gm-chip--accent` always has the colored border and semibold text: for the main action of the group.
 
 ## On phones
 
@@ -3339,7 +3352,7 @@ Many chips in a row fit better in a [swipe row](/docs/components/carousel#swipe-
 | Variable | What it changes | Default |
 | --- | --- | --- |
 | `--gm-chip-border` | The border at rest | The panel gray |
-| `--gm-chip-color` | The border on hover and on the accent chip (a color or a gradient) | The lights of the illustration |
+| `--gm-chip-color` | The border on hover and on the accent chip (a color or a gradient) | Sky (turquoise in dark mode) |
 
 With the accent color at rest and on hover, and with a pastel gradient on hover:
 
@@ -4109,7 +4122,7 @@ document.querySelector('#read').value = 60;
 <!-- /docs/components/ticker -->
 # Logo ticker
 
-A strip that slowly moves from right to left with logos and names, like the technologies strip of the portfolio template. Dark glass (white by day) with a thin turquoise border above and below (by day, with the lights of the illustration).
+A strip that slowly moves from right to left with logos and names, like the technologies strip of the portfolio template. Dark glass (white by day) with a thin border above and below, sky by day and turquoise at night.
 
 ## Example
 
