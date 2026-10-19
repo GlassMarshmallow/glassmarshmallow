@@ -1,8 +1,8 @@
-<div class="gm-search site-search" role="search">
+<div class="gm-search gm-search--navbar site-search" role="search">
   <!-- Móvil: la lupa muestra u oculta el campo -->
   <button
     type="button"
-    class="site-search__toggle"
+    class="gm-search__toggle"
     [attr.aria-label]="'search.label' | t"
     [attr.aria-expanded]="mobileOpen()"
     aria-controls="site-search-box"
@@ -11,7 +11,7 @@
     <i class="gmi" [class.gmi-search]="!mobileOpen()" [class.gmi-x-lg]="mobileOpen()" aria-hidden="true"></i>
   </button>
 
-  <div id="site-search-box" class="site-search__box" [class.is-open]="mobileOpen()">
+  <div id="site-search-box" class="gm-search__panel" [class.is-open]="mobileOpen()">
     <div class="gm-search__field">
       <i class="gmi gmi-search" aria-hidden="true"></i>
       <label for="site-search-input" class="gm-visually-hidden">{{ 'search.title' | t }}</label>

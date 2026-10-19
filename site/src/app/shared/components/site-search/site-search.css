@@ -1,46 +1,12 @@
-/* El aspecto viene del framework (.gm-search); aquí solo lo propio de la cabecera */
+/* El buscador es el del framework (.gm-search, con la variante gm-search--navbar para el móvil); aquí solo el ancho
+   que tiene en la cabecera de esta web */
 :host { display: contents; }
 
-.site-search { width: 240px; } /* con Montserrat, 320 px no caben junto al menú */
-.site-search .gm-search__input { font-size: .9rem; }
-
-/* La lupa para abrirlo solo existe en móvil */
-.site-search__toggle { display: none; }
-
-@media (max-width: 1300px) {
-  .site-search { width: 180px; }
+/* Con Montserrat, 20 rem no caben junto al menú */
+@media (min-width: 53.8125rem) {
+  .site-search { width: 15rem; }
+  .site-search .gm-search__input { font-size: .9rem; }
 }
-
-/* Móvil: la lupa en la barra y el campo, a todo el ancho, debajo de ella */
-@media (max-width: 860px) {
-  .site-search { position: static; width: auto; }
-  .site-search__toggle {
-    position: relative;
-    display: grid;
-    min-width: 32px;
-    min-height: 44px;
-    padding: 0;
-    border: 0;
-    border-radius: var(--gm-radius-sm);
-    color: var(--gm-nav-link);
-    background: transparent;
-    place-items: center;
-    cursor: pointer;
-  }
-  .site-search__toggle .gmi { font-size: 1.35rem; }
-  /* Zona que se pulsa de 44 px aunque el botón sea más estrecho (WCAG 2.5.5, como los botones del framework) */
-  .site-search__toggle::after { position: absolute; inset: 0 -6px; content: ""; }
-  .site-search__box {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    display: none;
-    padding: 10px 16px 12px;
-    border-bottom: 1px solid var(--gm-header-border);
-    background: var(--gm-surface-solid);
-  }
-  .site-search__box.is-open { display: block; }
-  .site-search .gm-search__input { font-size: 1rem; }
-  .site-search .gm-search__results { position: static; width: 100%; max-width: none; margin-top: 8px; box-shadow: none; }
+@media (min-width: 53.8125rem) and (max-width: 81.25rem) {
+  .site-search { width: 11.25rem; }
 }
