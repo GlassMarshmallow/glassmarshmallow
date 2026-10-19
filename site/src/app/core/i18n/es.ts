@@ -201,6 +201,7 @@ export const es: Dictionary = {
       'components/toc': 'Índice de la página',
       'components/pager': 'Anterior y siguiente',
       'components/snippet': 'Fragmento de código',
+      'components/tool': 'Herramienta',
       'components/tooltip': 'Tooltip',
       'helpers/visually-hidden': 'Texto oculto',
       'helpers/skip-link': 'Saltar al contenido',

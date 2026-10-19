@@ -25,6 +25,19 @@ Enseña el valor junto a la etiqueta con un `<output>`. Así se sabe el número 
 </div>
 ```
 
+## Con nombre y valor en una línea
+
+`gm-slider` coloca el nombre a la izquierda, el valor a la derecha (con cifras del mismo ancho, para que no baile al moverlo) y la barra debajo. Es el de los generadores de esta web. `gm-slider__help` añade una ayuda debajo.
+
+```html
+<div class="gm-slider gm-max-w-md">
+  <label for="ejemplo-desenfoque">Desenfoque</label>
+  <output id="ejemplo-desenfoque-valor" for="ejemplo-desenfoque">12 px</output>
+  <input id="ejemplo-desenfoque" class="gm-range" type="range" min="0" max="40" value="12" oninput="document.getElementById('ejemplo-desenfoque-valor').textContent = this.value + ' px'">
+  <p class="gm-slider__help gm-muted gm-m-0">Cuánto se difumina lo que hay detrás del cristal.</p>
+</div>
+```
+
 ## Desactivada
 
 ```html

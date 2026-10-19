@@ -25,6 +25,19 @@ Show the value next to the label with an `<output>`. That way the exact number i
 </div>
 ```
 
+## Name and value on one line
+
+`gm-slider` puts the name on the left, the value on the right (with equal-width digits, so it does not jump while moving) and the bar below. It is the one in this site's generators. `gm-slider__help` adds a hint below.
+
+```html
+<div class="gm-slider gm-max-w-md">
+  <label for="example-blur">Blur</label>
+  <output id="example-blur-value" for="example-blur">12 px</output>
+  <input id="example-blur" class="gm-range" type="range" min="0" max="40" value="12" oninput="document.getElementById('example-blur-value').textContent = this.value + ' px'">
+  <p class="gm-slider__help gm-muted gm-m-0">How much whatever is behind the glass is blurred.</p>
+</div>
+```
+
 ## Disabled
 
 ```html

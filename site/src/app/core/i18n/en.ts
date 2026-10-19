@@ -200,6 +200,7 @@ export const en = {
       'components/toc': 'Table of contents',
       'components/pager': 'Previous and next',
       'components/snippet': 'Code snippet',
+      'components/tool': 'Tool',
       'components/tooltip': 'Tooltip',
       'helpers/visually-hidden': 'Visually hidden',
       'helpers/skip-link': 'Skip link',

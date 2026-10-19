@@ -21,6 +21,14 @@ npm run build</code></pre>
 
 Si prefieres que las líneas largas bajen a la siguiente en lugar de desplazarse, añade `style="white-space: pre-wrap"`.
 
+## Líneas largas
+
+`gm-code--wrap` hace que las líneas largas pasen a la siguiente en vez de desplazarse de lado: para código generado con valores muy largos (degradados, sombras) que se lee mejor entero.
+
+```html
+<pre class="gm-code gm-code--wrap"><code>background: linear-gradient(135deg, rgb(92 223 235 / .9) 0%, rgb(185 163 255 / .9) 50%, rgb(255 166 209 / .9) 100%);</code></pre>
+```
+
 ## Accesibilidad
 
 - Pon `tabindex="0"` en los bloques que pueden desplazarse de lado, para poder moverlos con el teclado (WCAG 2.1.1).
