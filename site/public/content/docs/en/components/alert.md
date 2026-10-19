@@ -22,6 +22,16 @@ A highlighted message inside the page: information, something that went well, a 
 | `.gm-alert--warning` | Warning | Lemon |
 | `.gm-alert--danger` | Error | Coral |
 
+## Note
+
+`.gm-alert--note`: no color or icon, on a white surface (black at night) with a soft shadow. For clarifications inside a text, like the notes in this documentation.
+
+```html
+<div class="gm-alert gm-alert--note">
+  <p><strong>Tip:</strong> you can also import only the parts you use.</p>
+</div>
+```
+
 ## Accessibility
 
 - Color is not enough: the icon and the text also say what kind of alert it is (“Changes saved”, “Could not…”) (WCAG 1.4.1).

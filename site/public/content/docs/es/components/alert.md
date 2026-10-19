@@ -22,6 +22,16 @@ Un mensaje destacado dentro de la página: información, algo que salió bien, u
 | `.gm-alert--warning` | Advertencia | Limón |
 | `.gm-alert--danger` | Error | Coral |
 
+## Nota
+
+`.gm-alert--note`: sin color ni icono, sobre una superficie blanca (negra de noche) con sombra suave. Para aclaraciones dentro de un texto, como las notas de esta documentación.
+
+```html
+<div class="gm-alert gm-alert--note">
+  <p><strong>Consejo:</strong> también puedes importar solo las partes que uses.</p>
+</div>
+```
+
 ## Accesibilidad
 
 - El color no basta: el icono y el texto también dicen qué tipo de aviso es («Cambios guardados», «No se ha podido…») (WCAG 1.4.1).
