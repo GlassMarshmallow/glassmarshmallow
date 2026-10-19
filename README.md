@@ -30,6 +30,8 @@ npm install glassmarshmallow
 <link rel="stylesheet" href="dist/css/glassmarshmallow.min.css">
 ```
 
+Need a value the utility scale does not have? Write it in brackets (`gm-z-[5]`, `gm-mt-[1.75rem]`) and run `npx glassmarshmallow build`: it writes only those classes into `glassmarshmallow.extra.css` ([arbitrary values](https://glassmarshmallow.com/docs/utilities/arbitrary)).
+
 Icons live in their own project, `glassmarshmallow-icons` (published with v0.1).
 
 ## Structure
@@ -42,6 +44,7 @@ Organised like [Bootstrap](https://github.com/twbs/bootstrap):
 | `fonts/` | Montserrat (SIL Open Font License), for the optional `glassmarshmallow-font.css` |
 | `dist/` | Compiled files (`npm run css`) |
 | `site/` | The documentation website (Angular) |
+| `bin/` | `npx glassmarshmallow build`, for arbitrary values |
 | `build/` | Build scripts |
 | `skills/` | Step-by-step guides for AI coding agents (see `AGENTS.md`) |
 

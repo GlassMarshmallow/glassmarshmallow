@@ -21,13 +21,17 @@
     "wcag"
   ],
   "style": "dist/css/glassmarshmallow.css",
+  "bin": {
+    "glassmarshmallow": "bin/glassmarshmallow.mjs"
+  },
   "files": [
     "css/*.css",
     "dist/css/*.css",
     "fonts/*",
     "dist/fonts/*",
     "js/*.js",
-    "js/*.d.ts"
+    "js/*.d.ts",
+    "bin/*.mjs"
   ],
   "scripts": {
     "utilities": "node build/gen-utilities.mjs",
