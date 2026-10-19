@@ -43,8 +43,8 @@ Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so n
 
 ```html
 <dl class="gm-dl">
-  <div><dt>Name</dt><dd>Lucía Martín</dd></div>
-  <div><dt>Email</dt><dd>lucia@example.com</dd></div>
+  <div><dt>Name</dt><dd>Sara Paez Yamuza</dd></div>
+  <div><dt>Email</dt><dd>sara@example.com</dd></div>
   <div><dt>Project</dt><dd>An online ceramics shop, with card payment and shipping all over Spain.</dd></div>
 </dl>
 ```

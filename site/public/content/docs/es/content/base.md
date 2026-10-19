@@ -43,8 +43,8 @@ Letras juntas, como en My Book Box, y con las líneas equilibradas (`text-wrap: 
 
 ```html
 <dl class="gm-dl">
-  <div><dt>Nombre</dt><dd>Lucía Martín</dd></div>
-  <div><dt>Correo</dt><dd>lucia@ejemplo.com</dd></div>
+  <div><dt>Nombre</dt><dd>Sara Paez Yamuza</dd></div>
+  <div><dt>Correo</dt><dd>sara@ejemplo.com</dd></div>
   <div><dt>Proyecto</dt><dd>Una tienda online de cerámica, con pago con tarjeta y envíos a toda España.</dd></div>
 </dl>
 ```

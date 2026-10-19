@@ -8,8 +8,8 @@ Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cro
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
-  <span class="gm-avatar gm-avatar--lg gm-avatar--square"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--lg gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -19,10 +19,10 @@ Circle (`.gm-avatar`) or rounded square (`.gm-avatar--square`). The photo is cro
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--sm"><img src="media/perfil-3.jpg" alt="Ana López"></span>
-  <span class="gm-avatar"><img src="media/perfil-3.jpg" alt="Ana López"></span>
-  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-3.jpg" alt="Ana López"></span>
-  <span class="gm-avatar gm-avatar--xl"><img src="media/perfil-3.jpg" alt="Ana López"></span>
+  <span class="gm-avatar gm-avatar--sm"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--xl"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -33,7 +33,7 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
   <span class="gm-avatar gm-avatar--lg gm-theme-sky" role="img" aria-label="Sara Paez">SP</span>
-  <span class="gm-avatar gm-avatar--lg gm-avatar--square gm-theme-lavender" role="img" aria-label="Marta Gil">MG</span>
+  <span class="gm-avatar gm-avatar--lg gm-avatar--square gm-theme-lavender" role="img" aria-label="Sara Paez Yamuza">SP</span>
   <span class="gm-avatar gm-avatar--lg gm-theme-mint" role="img" aria-label="Diego Sanz">DS</span>
   <span class="gm-avatar gm-avatar--lg" role="img" aria-label="No profile picture"><i class="gmi gmi-person-fill" aria-hidden="true"></i></span>
 </div>
@@ -41,12 +41,12 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 
 ## With a ring
 
-`.gm-avatar--ring`: the photo with a colored ring, like the one in the portfolio template. By default, with the lights of the illustration; the thickness is proportional to the size.
+`.gm-avatar--ring`: the photo with a colored ring, like the one in the portfolio template. By default, in sky (turquoise in dark mode); the thickness is proportional to the size.
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
-  <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -56,14 +56,14 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 | --- | --- | --- |
 | `--gm-avatar-size` | The size | 3 rem |
 | `--gm-avatar-radius` | How rounded the corners are | 50% (circle); 22% with `--square` |
-| `--gm-avatar-ring` | The ring color (a color or a gradient), with `--ring` | The lights of the illustration |
+| `--gm-avatar-ring` | The ring color (a color or a gradient), with `--ring` | Sky (turquoise in dark mode) |
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Ana López"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: linear-gradient(135deg, var(--gm-mint), var(--gm-sky), var(--gm-lavender))"><img src="media/perfil-4.jpg" alt="Diego Sanz"></span>
-  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
-  <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -72,8 +72,8 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 To show the photo large when it is pressed: the box is a link to the large photo with `data-gm-zoom`, and the [gallery](/docs/components/gallery) script opens it in its viewer, without arrows or counter. A magnifier cursor shows on hover.
 
 ```html
-<a class="gm-avatar gm-avatar--xl gm-avatar--ring" href="media/perfil-1.jpg" data-gm-zoom aria-label="Enlarge Lucía Martín's photo">
-  <img src="media/perfil-1.jpg" alt="Lucía Martín">
+<a class="gm-avatar gm-avatar--xl gm-avatar--ring" href="media/perfil-1.jpg" data-gm-zoom aria-label="Enlarge Sara Paez Yamuza's photo">
+  <img src="media/perfil-1.jpg" alt="Sara Paez Yamuza">
 </a>
 ```
 
@@ -102,7 +102,7 @@ On the profile page, a button with the pencil on top of the photo. Use it with t
 Several stacked photos, for example to show who is taking part. The last one can say how many more there are.
 
 ```html
-<div class="gm-avatar-group" role="group" aria-label="Lucía, Pablo, Ana and 5 more people take part">
+<div class="gm-avatar-group" role="group" aria-label="Sara Paez Yamuza and 7 more people take part">
   <span class="gm-avatar"><img src="media/perfil-1.jpg" alt=""></span>
   <span class="gm-avatar"><img src="media/perfil-2.jpg" alt=""></span>
   <span class="gm-avatar"><img src="media/perfil-3.jpg" alt=""></span>
@@ -112,7 +112,7 @@ Several stacked photos, for example to show who is taking part. The last one can
 
 ## Accessibility
 
-- A photo with the name next to it (in a list of people) is decorative: `alt=""`. On its own, it carries the name: `alt="Lucía Martín"`.
+- A photo with the name next to it (in a list of people) is decorative: `alt=""`. On its own, it carries the name: `alt="Sara Paez Yamuza"`.
 - Initials go with `role="img"` and an `aria-label` with the full name.
 - In a group, the group's `aria-label` says who takes part and the photos have `alt=""`.
 - Initials are black on the pastel (7.8:1 or more, AAA); without a color, regular text on gray.

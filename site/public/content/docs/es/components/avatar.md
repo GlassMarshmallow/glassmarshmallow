@@ -8,8 +8,8 @@ Círculo (`.gm-avatar`) o cuadrado redondeado (`.gm-avatar--square`). La foto se
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
-  <span class="gm-avatar gm-avatar--lg gm-avatar--square"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--lg gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -19,10 +19,10 @@ Círculo (`.gm-avatar`) o cuadrado redondeado (`.gm-avatar--square`). La foto se
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--sm"><img src="media/perfil-3.jpg" alt="Ana López"></span>
-  <span class="gm-avatar"><img src="media/perfil-3.jpg" alt="Ana López"></span>
-  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-3.jpg" alt="Ana López"></span>
-  <span class="gm-avatar gm-avatar--xl"><img src="media/perfil-3.jpg" alt="Ana López"></span>
+  <span class="gm-avatar gm-avatar--sm"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--lg"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--xl"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -33,7 +33,7 @@ Con las iniciales: añade un color de la paleta (`.gm-theme-sky`, `.gm-theme-min
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
   <span class="gm-avatar gm-avatar--lg gm-theme-sky" role="img" aria-label="Sara Paez">SP</span>
-  <span class="gm-avatar gm-avatar--lg gm-avatar--square gm-theme-lavender" role="img" aria-label="Marta Gil">MG</span>
+  <span class="gm-avatar gm-avatar--lg gm-avatar--square gm-theme-lavender" role="img" aria-label="Sara Paez Yamuza">SP</span>
   <span class="gm-avatar gm-avatar--lg gm-theme-mint" role="img" aria-label="Diego Sanz">DS</span>
   <span class="gm-avatar gm-avatar--lg" role="img" aria-label="Sin foto de perfil"><i class="gmi gmi-person-fill" aria-hidden="true"></i></span>
 </div>
@@ -41,12 +41,12 @@ Con las iniciales: añade un color de la paleta (`.gm-theme-sky`, `.gm-theme-min
 
 ## Con marco
 
-`.gm-avatar--ring`: la foto con un marco de color, como la de la plantilla de portfolio. Por defecto, con las luces del dibujo; el grosor va en proporción al tamaño.
+`.gm-avatar--ring`: la foto con un marco de color, como la de la plantilla de portfolio. Por defecto, en cielo (turquesa en oscuro); el grosor va en proporción al tamaño.
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
-  <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring gm-avatar--square"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -56,14 +56,14 @@ Con las iniciales: añade un color de la paleta (`.gm-theme-sky`, `.gm-theme-min
 | --- | --- | --- |
 | `--gm-avatar-size` | El tamaño | 3 rem |
 | `--gm-avatar-radius` | El redondeo de las esquinas | 50 % (círculo); 22 % con `--square` |
-| `--gm-avatar-ring` | El color del marco (un color o un degradado), con `--ring` | Las luces del dibujo |
+| `--gm-avatar-ring` | El color del marco (un color o un degradado), con `--ring` | Cielo (turquesa en oscuro) |
 
 ```html
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
-  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Ana López"></span>
+  <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: var(--gm-accent)"><img src="media/perfil-3.jpg" alt="Sara Paez Yamuza"></span>
   <span class="gm-avatar gm-avatar--xl gm-avatar--ring" style="--gm-avatar-ring: linear-gradient(135deg, var(--gm-mint), var(--gm-sky), var(--gm-lavender))"><img src="media/perfil-4.jpg" alt="Diego Sanz"></span>
-  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Lucía Martín"></span>
-  <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Pablo Ruiz"></span>
+  <span class="gm-avatar gm-avatar--xl" style="--gm-avatar-radius: 12px"><img src="media/perfil-1.jpg" alt="Sara Paez Yamuza"></span>
+  <span class="gm-avatar" style="--gm-avatar-size: 6rem; --gm-avatar-radius: 35%"><img src="media/perfil-2.jpg" alt="Sara Paez Yamuza"></span>
 </div>
 ```
 
@@ -72,8 +72,8 @@ Con las iniciales: añade un color de la paleta (`.gm-theme-sky`, `.gm-theme-min
 Para que la foto se vea en grande al pulsarla: la casilla es un enlace a la foto grande con `data-gm-zoom`, y el script de la [galería](/docs/components/gallery) la abre en su visor, sin flechas ni contador. Al pasar el ratón sale la lupa.
 
 ```html
-<a class="gm-avatar gm-avatar--xl gm-avatar--ring" href="media/perfil-1.jpg" data-gm-zoom aria-label="Ampliar la foto de Lucía Martín">
-  <img src="media/perfil-1.jpg" alt="Lucía Martín">
+<a class="gm-avatar gm-avatar--xl gm-avatar--ring" href="media/perfil-1.jpg" data-gm-zoom aria-label="Ampliar la foto de Sara Paez Yamuza">
+  <img src="media/perfil-1.jpg" alt="Sara Paez Yamuza">
 </a>
 ```
 
@@ -102,7 +102,7 @@ En la página de perfil, un botón con el lápiz encima de la foto. Úsalo con l
 Varias fotos montadas, por ejemplo para enseñar quién participa. El último puede decir cuántos más hay.
 
 ```html
-<div class="gm-avatar-group" role="group" aria-label="Participan Lucía, Pablo, Ana y 5 personas más">
+<div class="gm-avatar-group" role="group" aria-label="Participan Sara Paez Yamuza y 7 personas más">
   <span class="gm-avatar"><img src="media/perfil-1.jpg" alt=""></span>
   <span class="gm-avatar"><img src="media/perfil-2.jpg" alt=""></span>
   <span class="gm-avatar"><img src="media/perfil-3.jpg" alt=""></span>
@@ -112,7 +112,7 @@ Varias fotos montadas, por ejemplo para enseñar quién participa. El último pu
 
 ## Accesibilidad
 
-- Una foto con nombre al lado (en una lista de personas) es decorativa: `alt=""`. Sola, lleva el nombre: `alt="Lucía Martín"`.
+- Una foto con nombre al lado (en una lista de personas) es decorativa: `alt=""`. Sola, lleva el nombre: `alt="Sara Paez Yamuza"`.
 - Las iniciales van con `role="img"` y `aria-label` con el nombre completo.
 - En un grupo, el `aria-label` del grupo dice quién participa y las fotos llevan `alt=""`.
 - Las iniciales son negras sobre el pastel (7,8:1 o más, AAA); sin color, el texto normal sobre gris.

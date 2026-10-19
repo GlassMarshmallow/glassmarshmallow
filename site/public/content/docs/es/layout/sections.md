@@ -8,7 +8,7 @@ Cada parte de una página de inicio (Sobre mí, Habilidades, Contacto…) es una
 <section class="gm-section" style="padding-block: 2.5rem">
   <div class="gm-container gm-container--narrow">
     <h2 class="gm-section__title">Sobre mí</h2>
-    <p class="gm-section__text">Hola, me llamo <strong>Lucía Martín</strong> y soy desarrolladora web. Me gusta trabajar en los dos lados de una aplicación: lo que se ve y lo que hay detrás.</p>
+    <p class="gm-section__text">Hola, me llamo <strong>Sara Paez Yamuza</strong> y soy desarrolladora web. Me gusta trabajar en los dos lados de una aplicación: lo que se ve y lo que hay detrás.</p>
     <p class="gm-section__text">Me ilusiona participar en proyectos desde la idea hasta que están funcionando.</p>
   </div>
 </section>

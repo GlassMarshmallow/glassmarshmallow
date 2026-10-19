@@ -8,7 +8,7 @@ Each part of a home page (About me, Skills, Contact…) is a section: some space
 <section class="gm-section" style="padding-block: 2.5rem">
   <div class="gm-container gm-container--narrow">
     <h2 class="gm-section__title">About me</h2>
-    <p class="gm-section__text">Hi, I am <strong>Lucía Martín</strong> and I am a web developer. I like working on both sides of an application: what you see and what is behind it.</p>
+    <p class="gm-section__text">Hi, I am <strong>Sara Paez Yamuza</strong> and I am a web developer. I like working on both sides of an application: what you see and what is behind it.</p>
     <p class="gm-section__text">I love taking part in projects from the idea until they are up and running.</p>
   </div>
 </section>
