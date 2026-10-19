@@ -1,6 +1,6 @@
 // Junta los archivos de css/ en uno solo (dist/css/glassmarshmallow.css) y crea la versión minificada.
 // Uso: node build/build-css.mjs
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -29,4 +29,12 @@ const css = bundle('glassmarshmallow.css') + '\n';
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, 'glassmarshmallow.css'), css);
 writeFileSync(join(outDir, 'glassmarshmallow.min.css'), minify(css) + '\n');
+// La letra (opcional) va aparte, con su archivo en dist/fonts (el CSS la busca en ../fonts)
+const font = readFileSync(join(srcDir, 'glassmarshmallow-font.css'), 'utf8');
+writeFileSync(join(outDir, 'glassmarshmallow-font.css'), font);
+writeFileSync(join(outDir, 'glassmarshmallow-font.min.css'), minify(font) + '\n');
+mkdirSync(join(root, 'dist', 'fonts'), { recursive: true });
+for (const file of ['montserrat-latin.woff2', 'OFL.txt']) {
+  copyFileSync(join(root, 'fonts', file), join(root, 'dist', 'fonts', file));
+}
 console.log(`dist/css/glassmarshmallow.css (${Math.round(css.length / 1024)} kB) y glassmarshmallow.min.css`);
