@@ -7,7 +7,6 @@ import { HighlightPipe } from '../../utils/highlight';
   selector: 'app-copy-command',
   imports: [HighlightPipe, TranslatePipe],
   templateUrl: './copy-command.html',
-  styleUrl: './copy-command.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CopyCommand {

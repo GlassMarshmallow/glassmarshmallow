@@ -1,7 +1,7 @@
 :host { display: block; }
 .footer {
   position: relative;
-  padding-block: 32px 36px;
+  padding-block: 2rem 2.25rem;
   color: var(--gm-text);
   /* Fondo de la página con una línea arriba, como My Book Box */
   border-top: 1px solid var(--gm-line);
@@ -9,14 +9,14 @@
 }
 /* En la portada cambia el fondo: ver styles.css */
 
-.footer__inner { display: grid; gap: 14px; }
-.footer__links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: .88rem; }
-.footer__links a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; /* WCAG 2.5.5 (AAA) */ padding-block: 4px; color: var(--gm-text); }
+.footer__inner { display: grid; gap: 0.875rem; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: .88rem; }
+.footer__links a { display: inline-flex; min-width: 2.75rem; min-height: 2.75rem; align-items: center; /* WCAG 2.5.5 (AAA) */ padding-block: 0.25rem; color: var(--gm-text); }
 .footer__links a:hover { color: var(--gm-link-hover); text-decoration: underline; }
 .footer__credit { margin: 0; }
-.footer__author { color: var(--gm-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.footer__author { color: var(--gm-text); font-weight: 600; text-decoration: underline; text-underline-offset: 0.1875rem; }
 
 /* Móvil: la barra de pestañas flota abajo; el footer deja su hueco para que la última línea se vea */
-@media (max-width: 860px) {
-  .footer { padding-bottom: calc(36px + 96px + env(safe-area-inset-bottom)); }
+@media (max-width: 53.75rem) {
+  .footer { padding-bottom: calc(2.25rem + 6rem + env(safe-area-inset-bottom)); }
 }

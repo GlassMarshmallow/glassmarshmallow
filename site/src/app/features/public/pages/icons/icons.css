@@ -1,20 +1,18 @@
-.icons-page { padding-block: 72px 0; }
-.icons-page__lead { max-width: 680px; margin-bottom: 32px; font-size: 1.05rem; line-height: 1.6; }
-.icons-page__filters { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 260px); gap: 16px; }
-.icons-page__count { margin: 14px 0 28px; font-size: .88rem; }
+.icons-page__filters { display: grid; grid-template-columns: minmax(0, 26.25rem) minmax(0, 16.25rem); gap: 1rem; }
+.icons-page__count { margin: 0.875rem 0 1.75rem; font-size: .88rem; }
 
 /* Casillas como las de Bootstrap Icons; la caja es la tarjeta .tg-hint de My Book Box */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 24px 16px; margin: 0; padding: 0; list-style: none; }
-.tile { display: grid; justify-items: center; gap: 8px; color: var(--gm-text); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(6.875rem, 1fr)); gap: 1.5rem 1rem; margin: 0; padding: 0; list-style: none; }
+.tile { display: grid; justify-items: center; gap: 0.5rem; color: var(--gm-text); }
 .tile__box {
-  display: grid; width: 100%; aspect-ratio: 4 / 3; border-radius: 14px;
-  background: var(--gm-surface-solid); box-shadow: var(--gm-shadow-sm); font-size: 28px; place-items: center;
+  display: grid; width: 100%; aspect-ratio: 4 / 3; border-radius: 0.875rem;
+  background: var(--gm-surface-solid); box-shadow: var(--gm-shadow-sm); font-size: 1.75rem; place-items: center;
   transition: transform .2s;
 }
 .tile:hover .tile__box { transform: translateY(-1px); }
 .tile__name { max-width: 100%; color: var(--gm-muted); font-size: .78rem; overflow-wrap: anywhere; text-align: center; }
 
-@media (max-width: 700px) {
+@media (max-width: 43.75rem) {
   .icons-page__filters { grid-template-columns: minmax(0, 1fr); }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(5.625rem, 1fr)); }
 }

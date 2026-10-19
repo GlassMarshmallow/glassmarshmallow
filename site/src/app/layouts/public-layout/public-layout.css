@@ -1,18 +1,18 @@
 :host { display: flex; min-height: 100dvh; flex-direction: column; }
 /* El hueco para la barra inferior del móvil lo pone .gm-has-tabbar */
-main { padding-bottom: 16px; }
+main { padding-bottom: 1rem; }
 main:focus { outline: none; }
 /* Portada: el bloque principal, centrado en alto en el hueco libre entre la cabecera y el pie (que se sigue
    viendo en la pantalla). El hueco hasta el pie es corto, pero su degradado sube por detrás del contenido */
 .main--home { position: relative; z-index: 1; display: grid; flex: 1 0 auto; align-content: center; padding-bottom: 0; }
-.main--home + .page-end { flex: 0 0 32px; }
+.main--home + .page-end { flex: 0 0 2rem; }
 
 
 /* Degradado que baja hasta el pie (blanco en claro, negro en oscuro) (como el final de la portada de Bootstrap). Ocupa el espacio libre:
    si la página es corta, crece y el pie queda al final de la ventana sin scroll; si es larga, mide lo mínimo.
    Curva suave en los dos extremos (smootherstep): empieza sin notarse y llega al color del pie sin escalón. */
 /* Hueco entre el contenido y el pie: crece para que el pie quede al final de la ventana */
-.page-end { flex: 1 0 80px; }
+.page-end { flex: 1 0 5rem; }
 .page-end-fade { position: relative; pointer-events: none; }
 /* El degradado sube por detrás del final del contenido (sin ocupar sitio ni tapar el texto), para que el paso al
    pie sea largo y suave en los dos modos: hasta el negro en oscuro y hasta el blanco en claro */
@@ -22,7 +22,7 @@ main:focus { outline: none; }
   right: 0;
   bottom: 0;
   left: 0;
-  height: 280px;
+  height: 17.5rem;
   content: "";
   background: linear-gradient(
     to top,
