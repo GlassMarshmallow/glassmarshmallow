@@ -138,7 +138,7 @@
   /* Tipografía */
   /* Montserrat en todo (decidido por Sara, licencia SIL Open Font License). Se carga aparte, con el archivo opcional
      glassmarshmallow-font.css (o la que pongas aquí); si no está, se usa la del sistema */
-  --gm-font: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --gm-font: "Montserrat", "Montserrat Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --gm-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Maquetación */
