@@ -1,7 +1,7 @@
 // Construye la web completa para publicarla: inglés en «/» y español en «/es/», con sitemap.xml y robots.txt.
 // Resultado en dist/web/browser (es la carpeta que se sube al servidor).
 import { execSync } from 'node:child_process';
-import { cpSync, existsSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -17,14 +17,16 @@ const es = join(out, 'es');
 rmSync(es, { recursive: true, force: true });
 cpSync(join(site, 'dist/web-es/browser'), es, { recursive: true });
 
-// Páginas: cada carpeta con index.html del inglés (las del español son las mismas, con /es/ delante)
+// Páginas: cada carpeta con index.html del inglés (las del español son las mismas, con /es/ delante). Las
+// direcciones antiguas que solo redirigen a otra página (meta refresh) no van al sitemap: no tienen contenido propio
+const redirects = (dir) => readFileSync(join(dir, 'index.html'), 'utf8').includes('http-equiv="refresh"');
 const pages = [];
 const walk = (dir) => {
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
     if (path === es) continue;
     if (statSync(path).isDirectory()) walk(path);
-    else if (name === 'index.html') pages.push(relative(out, dir).split('\\').join('/'));
+    else if (name === 'index.html' && !redirects(dir)) pages.push(relative(out, dir).split('\\').join('/'));
   }
 };
 walk(out);
