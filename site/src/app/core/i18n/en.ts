@@ -53,7 +53,7 @@ export const en = {
   footer: {
     nav: 'Footer',
     credit: 'Designed and built by',
-    team: 'Sara Paez Yamuza',
+    team: 'the GlassMarshmallow team',
     license: 'MIT License',
     version: 'Version {version}',
   },

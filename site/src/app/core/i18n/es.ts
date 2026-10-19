@@ -54,7 +54,7 @@ export const es: Dictionary = {
   footer: {
     nav: 'Pie de página',
     credit: 'Diseñado y desarrollado por',
-    team: 'Sara Paez Yamuza',
+    team: 'el equipo de GlassMarshmallow',
     license: 'Licencia MIT',
     version: 'Versión {version}',
   },
