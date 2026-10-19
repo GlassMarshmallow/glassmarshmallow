@@ -9,13 +9,15 @@ GlassMarshmallow usa **Montserrat** para todo el texto y la fuente de ancho fijo
 | `--gm-font` | Montserrat (si no carga: la del sistema) | Todo el texto |
 | `--gm-font-mono` | `ui-monospace`, SF Mono, Menlo | Código |
 
-Montserrat viene de Google Fonts. Cárgala en el `<head>` con los pesos que usa el framework:
+Montserrat viene con el framework, en un archivo aparte y **opcional**: `glassmarshmallow-font.css`. Se sirve desde tu propia web, sin Google Fonts: un solo archivo de 35 KB con todos los pesos (300–800) y los caracteres del español. Añádelo junto al CSS del framework y precarga la letra en el `<head>`, para que llegue antes que el primer dibujo de la página y el texto no cambie de letra al cargar:
 
 ```html-code
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="node_modules/glassmarshmallow/dist/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow-font.min.css">
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow.min.css">
 ```
+
+El CSS busca la letra en `../fonts/`: si copias los archivos a tu proyecto, mantén las carpetas `css` y `fonts` una al lado de la otra. Montserrat tiene licencia [SIL Open Font License](https://openfontlicense.org) (va en `fonts/OFL.txt`): se puede usar gratis, también en proyectos comerciales.
 
 ## Tamaños
 
@@ -34,7 +36,7 @@ En la portada, los títulos `h1` y `h2` pasan a peso 800.
 
 ## Cambiar la fuente
 
-Cambia la variable. Si usas otra fuente, comprueba que se lee bien y que el diseño no se rompe (Montserrat es ancha: otras pueden dejar más hueco).
+No añadas `glassmarshmallow-font.css` (así no se descarga Montserrat) y cambia la variable. Si usas otra fuente, comprueba que se lee bien y que el diseño no se rompe (Montserrat es ancha: otras pueden dejar más hueco).
 
 ```html-code
 <style>

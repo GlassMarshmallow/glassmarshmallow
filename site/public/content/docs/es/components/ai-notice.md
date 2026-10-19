@@ -7,7 +7,7 @@ Una nota pequeña junto a un chat o cualquier cosa hecha con IA, para que quien 
 ```html
 <p class="gm-ai-notice">
   Respuestas generadas con IA a partir de mi perfil; pueden contener errores.
-  <button type="button" class="gm-ai-notice__link" data-gm-dialog-open="ejemplo-info-ia">Más información</button>
+  <button type="button" class="gm-ai-notice__link" data-gm-dialog-open="ejemplo-info-ia">Más información sobre la IA</button>
 </p>
 <dialog class="gm-dialog" id="ejemplo-info-ia" aria-labelledby="ejemplo-info-ia-titulo">
   <div class="gm-dialog__body">
@@ -20,7 +20,7 @@ Una nota pequeña junto a un chat o cualquier cosa hecha con IA, para que quien 
 </dialog>
 ```
 
-«Más información» abre una [ventana](/docs/components/dialog) que explica qué IA es, qué pasa con lo que se escribe y cómo pedir que se borre.
+«Más información sobre la IA» abre una [ventana](/docs/components/dialog) que explica qué IA es, qué pasa con lo que se escribe y cómo pedir que se borre.
 
 ## Por qué
 
@@ -31,3 +31,4 @@ Una nota pequeña junto a un chat o cualquier cosa hecha con IA, para que quien 
 
 - Texto gris de 7:1 o más sobre el fondo (AAA), pequeño pero legible.
 - El enlace está dentro de la frase, subrayado, y es un botón porque abre una ventana (no lleva a otra página).
+- Su texto dice de qué trata (*sobre la IA*), no solo «Más información»: así lo entienden los lectores de pantalla fuera de la frase (WCAG 2.4.4) y los buscadores, que marcan los enlaces genéricos.

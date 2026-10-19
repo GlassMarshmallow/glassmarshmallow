@@ -7,7 +7,7 @@ A small note next to a chat or anything made with AI, so people know the answers
 ```html
 <p class="gm-ai-notice">
   Answers generated with AI from my profile; they may contain mistakes.
-  <button type="button" class="gm-ai-notice__link" data-gm-dialog-open="example-ai-info">More information</button>
+  <button type="button" class="gm-ai-notice__link" data-gm-dialog-open="example-ai-info">More about the AI</button>
 </p>
 <dialog class="gm-dialog" id="example-ai-info" aria-labelledby="example-ai-info-title">
   <div class="gm-dialog__body">
@@ -20,7 +20,7 @@ A small note next to a chat or anything made with AI, so people know the answers
 </dialog>
 ```
 
-“More information” opens a [dialog](/docs/components/dialog) explaining which AI it is, what happens to what people write and how to ask for it to be deleted.
+“More about the AI” opens a [dialog](/docs/components/dialog) explaining which AI it is, what happens to what people write and how to ask for it to be deleted.
 
 ## Why
 
@@ -31,3 +31,4 @@ A small note next to a chat or anything made with AI, so people know the answers
 
 - Gray text of 7:1 or more on the background (AAA), small but readable.
 - The link sits inside the sentence, underlined, and is a button because it opens a dialog (it does not go to another page).
+- Its text says what it is about (*the AI*), not just “More information”: screen readers understand it outside the sentence (WCAG 2.4.4) and search engines, which flag generic links, too.

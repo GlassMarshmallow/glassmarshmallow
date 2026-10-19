@@ -9,13 +9,15 @@ GlassMarshmallow uses **Montserrat** for all text and the system monospace font 
 | `--gm-font` | Montserrat (if it does not load: the system font) | All text |
 | `--gm-font-mono` | `ui-monospace`, SF Mono, Menlo | Code |
 
-Montserrat comes from Google Fonts. Load it in the `<head>` with the weights the framework uses:
+Montserrat comes with the framework, in a separate, **optional** file: `glassmarshmallow-font.css`. It is served from your own site, without Google Fonts: a single 35 KB file with every weight (300–800) and the Latin characters. Add it next to the framework CSS and preload the font in the `<head>`, so it arrives before the page is first painted and the text does not change font while loading:
 
 ```html-code
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="node_modules/glassmarshmallow/dist/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow-font.min.css">
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow.min.css">
 ```
+
+The CSS looks for the font in `../fonts/`: if you copy the files into your project, keep the `css` and `fonts` folders side by side. Montserrat is licensed under the [SIL Open Font License](https://openfontlicense.org) (in `fonts/OFL.txt`): free to use, commercial projects included.
 
 ## Sizes
 
@@ -34,7 +36,7 @@ On the home page, `h1` and `h2` headings switch to weight 800.
 
 ## Changing the font
 
-Change the variable. If you use another font, check that it reads well and the design does not break (Montserrat is wide: others may leave more space).
+Do not add `glassmarshmallow-font.css` (so Montserrat is not downloaded) and change the variable. If you use another font, check that it reads well and the design does not break (Montserrat is wide: others may leave more space).
 
 ```html-code
 <style>
