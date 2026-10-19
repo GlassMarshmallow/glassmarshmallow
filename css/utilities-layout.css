@@ -1,8 +1,8 @@
 /* ==========================================================================
    glassmarshmallow · Utilidades (al estilo Tailwind)
    GENERADO por build/gen-utilities.mjs: no editar a mano; cambia el generador y vuelve a ejecutarlo.
-   Espaciado (4 = 1 rem), mostrar y ocultar, flex, alineación de texto y anchos llevan versión por punto de
-   corte: gm-md-mt-6 se aplica desde 860 px. El resto, sin versión por punto de corte.
+   Espaciado (4 = 1 rem), mostrar y ocultar, flex, alineación de texto, anchos, posición y tamaño de letra llevan
+   versión por punto de corte: gm-md-mt-6 se aplica desde 860 px. El resto, sin versión por punto de corte.
    ========================================================================== */
 
 .gm-m-0 { margin: 0; }
@@ -205,6 +205,19 @@
 .gm-w-full { width: 100%; }
 .gm-w-auto { width: auto; }
 .gm-w-fit { width: fit-content; }
+.gm-static { position: static; }
+.gm-relative { position: relative; }
+.gm-absolute { position: absolute; }
+.gm-fixed { position: fixed; }
+.gm-sticky { position: sticky; }
+.gm-text-xs { font-size: .75rem; }
+.gm-text-sm { font-size: .875rem; }
+.gm-text-base { font-size: 1rem; }
+.gm-text-lg { font-size: 1.125rem; }
+.gm-text-xl { font-size: 1.25rem; }
+.gm-text-2xl { font-size: 1.5rem; }
+.gm-text-3xl { font-size: 1.875rem; }
+.gm-text-4xl { font-size: 2.25rem; }
 
 /* Tamaños */
 .gm-w-25 { width: 25%; }
@@ -234,6 +247,84 @@
 .gm-flex-none { flex: none; }
 .gm-grow { flex-grow: 1; }
 .gm-shrink-0 { flex-shrink: 0; }
+/* Posición: distancias y capas */
+.gm-inset-0 { inset: 0; }
+.gm-inset-x-0 { inset-inline: 0; }
+.gm-inset-y-0 { inset-block: 0; }
+.gm-top-0 { top: 0; }
+.gm-bottom-0 { bottom: 0; }
+.gm-start-0 { inset-inline-start: 0; }
+.gm-end-0 { inset-inline-end: 0; }
+.gm-z-0 { z-index: 0; }
+.gm-z-10 { z-index: 10; }
+.gm-z-20 { z-index: 20; }
+.gm-z-30 { z-index: 30; }
+.gm-z-40 { z-index: 40; }
+.gm-z-50 { z-index: 50; }
+.gm-z-auto { z-index: auto; }
+/* Desbordamiento */
+.gm-overflow-auto { overflow: auto; }
+.gm-overflow-hidden { overflow: hidden; }
+.gm-overflow-clip { overflow: clip; }
+.gm-overflow-visible { overflow: visible; }
+.gm-overflow-scroll { overflow: scroll; }
+.gm-overflow-x-auto { overflow-x: auto; }
+.gm-overflow-x-hidden { overflow-x: hidden; }
+.gm-overflow-x-clip { overflow-x: clip; }
+.gm-overflow-x-visible { overflow-x: visible; }
+.gm-overflow-x-scroll { overflow-x: scroll; }
+.gm-overflow-y-auto { overflow-y: auto; }
+.gm-overflow-y-hidden { overflow-y: hidden; }
+.gm-overflow-y-clip { overflow-y: clip; }
+.gm-overflow-y-visible { overflow-y: visible; }
+.gm-overflow-y-scroll { overflow-y: scroll; }
+/* Texto: grosor */
+.gm-font-light { font-weight: 300; }
+.gm-font-normal { font-weight: 400; }
+.gm-font-medium { font-weight: 500; }
+.gm-font-semibold { font-weight: 600; }
+.gm-font-bold { font-weight: 700; }
+.gm-font-extrabold { font-weight: 800; }
+/* Texto: interlineado */
+.gm-leading-none { line-height: 1; }
+.gm-leading-tight { line-height: 1.25; }
+.gm-leading-snug { line-height: 1.375; }
+.gm-leading-normal { line-height: 1.5; }
+.gm-leading-relaxed { line-height: 1.7; }
+.gm-leading-loose { line-height: 2; }
+/* Texto: mayúsculas, cursiva, subrayado y cortes de línea */
+.gm-uppercase { text-transform: uppercase; }
+.gm-lowercase { text-transform: lowercase; }
+.gm-capitalize { text-transform: capitalize; }
+.gm-normal-case { text-transform: none; }
+.gm-italic { font-style: italic; }
+.gm-not-italic { font-style: normal; }
+.gm-underline { text-decoration-line: underline; }
+.gm-line-through { text-decoration-line: line-through; }
+.gm-no-underline { text-decoration-line: none; }
+.gm-nowrap { white-space: nowrap; }
+.gm-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gm-break-words { overflow-wrap: anywhere; }
+.gm-text-balance { text-wrap: balance; }
+.gm-text-pretty { text-wrap: pretty; }
+/* Listas: sin viñetas ni sangría (para menús, enlaces seguidos…) */
+.gm-list-none { padding-inline-start: 0; list-style: none; }
+/* Imágenes y vídeos: proporción y ajuste */
+.gm-aspect-square { aspect-ratio: 1 / 1; }
+.gm-aspect-video { aspect-ratio: 16 / 9; }
+.gm-aspect-auto { aspect-ratio: auto; }
+.gm-object-cover { object-fit: cover; }
+.gm-object-contain { object-fit: contain; }
+/* Interacción y visibilidad */
+.gm-cursor-pointer { cursor: pointer; }
+.gm-cursor-default { cursor: default; }
+.gm-cursor-not-allowed { cursor: not-allowed; }
+.gm-pointer-events-none { pointer-events: none; }
+.gm-pointer-events-auto { pointer-events: auto; }
+.gm-select-none { -webkit-user-select: none; user-select: none; }
+.gm-select-all { -webkit-user-select: all; user-select: all; }
+.gm-visible { visibility: visible; }
+.gm-invisible { visibility: hidden; }
 /* Bordes y radios */
 .gm-border { border: 1px solid var(--gm-line); }
 .gm-border-strong { border: 1px solid var(--gm-line-strong); }
@@ -553,6 +644,19 @@
   .gm-sm-w-full { width: 100%; }
   .gm-sm-w-auto { width: auto; }
   .gm-sm-w-fit { width: fit-content; }
+  .gm-sm-static { position: static; }
+  .gm-sm-relative { position: relative; }
+  .gm-sm-absolute { position: absolute; }
+  .gm-sm-fixed { position: fixed; }
+  .gm-sm-sticky { position: sticky; }
+  .gm-sm-text-xs { font-size: .75rem; }
+  .gm-sm-text-sm { font-size: .875rem; }
+  .gm-sm-text-base { font-size: 1rem; }
+  .gm-sm-text-lg { font-size: 1.125rem; }
+  .gm-sm-text-xl { font-size: 1.25rem; }
+  .gm-sm-text-2xl { font-size: 1.5rem; }
+  .gm-sm-text-3xl { font-size: 1.875rem; }
+  .gm-sm-text-4xl { font-size: 2.25rem; }
 }
 
 @media (min-width: 860px) {
@@ -756,6 +860,19 @@
   .gm-md-w-full { width: 100%; }
   .gm-md-w-auto { width: auto; }
   .gm-md-w-fit { width: fit-content; }
+  .gm-md-static { position: static; }
+  .gm-md-relative { position: relative; }
+  .gm-md-absolute { position: absolute; }
+  .gm-md-fixed { position: fixed; }
+  .gm-md-sticky { position: sticky; }
+  .gm-md-text-xs { font-size: .75rem; }
+  .gm-md-text-sm { font-size: .875rem; }
+  .gm-md-text-base { font-size: 1rem; }
+  .gm-md-text-lg { font-size: 1.125rem; }
+  .gm-md-text-xl { font-size: 1.25rem; }
+  .gm-md-text-2xl { font-size: 1.5rem; }
+  .gm-md-text-3xl { font-size: 1.875rem; }
+  .gm-md-text-4xl { font-size: 2.25rem; }
 }
 
 @media (min-width: 1100px) {
@@ -959,6 +1076,19 @@
   .gm-lg-w-full { width: 100%; }
   .gm-lg-w-auto { width: auto; }
   .gm-lg-w-fit { width: fit-content; }
+  .gm-lg-static { position: static; }
+  .gm-lg-relative { position: relative; }
+  .gm-lg-absolute { position: absolute; }
+  .gm-lg-fixed { position: fixed; }
+  .gm-lg-sticky { position: sticky; }
+  .gm-lg-text-xs { font-size: .75rem; }
+  .gm-lg-text-sm { font-size: .875rem; }
+  .gm-lg-text-base { font-size: 1rem; }
+  .gm-lg-text-lg { font-size: 1.125rem; }
+  .gm-lg-text-xl { font-size: 1.25rem; }
+  .gm-lg-text-2xl { font-size: 1.5rem; }
+  .gm-lg-text-3xl { font-size: 1.875rem; }
+  .gm-lg-text-4xl { font-size: 2.25rem; }
 }
 
 @media (min-width: 1300px) {
@@ -1162,4 +1292,17 @@
   .gm-xl-w-full { width: 100%; }
   .gm-xl-w-auto { width: auto; }
   .gm-xl-w-fit { width: fit-content; }
+  .gm-xl-static { position: static; }
+  .gm-xl-relative { position: relative; }
+  .gm-xl-absolute { position: absolute; }
+  .gm-xl-fixed { position: fixed; }
+  .gm-xl-sticky { position: sticky; }
+  .gm-xl-text-xs { font-size: .75rem; }
+  .gm-xl-text-sm { font-size: .875rem; }
+  .gm-xl-text-base { font-size: 1rem; }
+  .gm-xl-text-lg { font-size: 1.125rem; }
+  .gm-xl-text-xl { font-size: 1.25rem; }
+  .gm-xl-text-2xl { font-size: 1.5rem; }
+  .gm-xl-text-3xl { font-size: 1.875rem; }
+  .gm-xl-text-4xl { font-size: 2.25rem; }
 }

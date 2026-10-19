@@ -1,5 +1,5 @@
-// Genera css/utilities-layout.css: las utilidades al estilo Tailwind (espaciado, tamaños, bordes, sombras,
-// efectos, animaciones, flex y mostrar u ocultar), con prefijo gm- y, las que lo necesitan, por punto de corte.
+// Genera css/utilities-layout.css: las utilidades al estilo Tailwind (espaciado, tamaños, posición, desbordamiento,
+// texto, imágenes, interacción, bordes, sombras, efectos, animaciones, flex y mostrar u ocultar), con prefijo gm- y, las que lo necesitan, por punto de corte.
 // Uso: node build/gen-utilities.mjs (después, npm run css para el archivo final).
 import { writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -17,6 +17,9 @@ const BREAKPOINTS = [
 
 /** Escala de espaciado: el número es la clase (gm-mt-4) y el valor, en rem (4 → 1 rem, como Tailwind) */
 const SPACE = { 0: '0', 1: '.25rem', 2: '.5rem', 3: '.75rem', 4: '1rem', 5: '1.25rem', 6: '1.5rem', 8: '2rem', 10: '2.5rem', 12: '3rem', 16: '4rem' };
+
+/** Tamaños de letra: gm-text-lg… (los de Tailwind, en rem) */
+const TEXT_SIZES = { xs: '.75rem', sm: '.875rem', base: '1rem', lg: '1.125rem', xl: '1.25rem', '2xl': '1.5rem', '3xl': '1.875rem', '4xl': '2.25rem' };
 
 const rule = (name, body) => `.${name} { ${body} }`;
 
@@ -57,6 +60,10 @@ function responsive() {
   out.push(rule('text-start', 'text-align: start;'), rule('text-center', 'text-align: center;'), rule('text-end', 'text-align: end;'));
   // Anchos más usados
   out.push(rule('w-full', 'width: 100%;'), rule('w-auto', 'width: auto;'), rule('w-fit', 'width: fit-content;'));
+  // Posición
+  for (const value of ['static', 'relative', 'absolute', 'fixed', 'sticky']) out.push(rule(value, `position: ${value};`));
+  // Tamaño de letra (en rem, como Tailwind)
+  for (const [name, value] of Object.entries(TEXT_SIZES)) out.push(rule(`text-${name}`, `font-size: ${value};`));
   return out;
 }
 
@@ -78,6 +85,49 @@ function fixed() {
   }
   // Flex: crecer y encoger
   out.push('/* Flex: crecer y encoger */', rule('flex-1', 'flex: 1 1 0%;'), rule('flex-auto', 'flex: 1 1 auto;'), rule('flex-none', 'flex: none;'), rule('grow', 'flex-grow: 1;'), rule('shrink-0', 'flex-shrink: 0;'));
+  // Posición: dónde se coloca y en qué capa
+  out.push(
+    '/* Posición: distancias y capas */',
+    rule('inset-0', 'inset: 0;'), rule('inset-x-0', 'inset-inline: 0;'), rule('inset-y-0', 'inset-block: 0;'),
+    rule('top-0', 'top: 0;'), rule('bottom-0', 'bottom: 0;'), rule('start-0', 'inset-inline-start: 0;'), rule('end-0', 'inset-inline-end: 0;'),
+  );
+  for (const value of [0, 10, 20, 30, 40, 50]) out.push(rule(`z-${value}`, `z-index: ${value};`));
+  out.push(rule('z-auto', 'z-index: auto;'));
+  // Desbordamiento
+  out.push('/* Desbordamiento */');
+  for (const value of ['auto', 'hidden', 'clip', 'visible', 'scroll']) out.push(rule(`overflow-${value}`, `overflow: ${value};`));
+  for (const axis of ['x', 'y']) for (const value of ['auto', 'hidden', 'clip', 'visible', 'scroll']) out.push(rule(`overflow-${axis}-${value}`, `overflow-${axis}: ${value};`));
+  // Texto: grosor, interlineado, mayúsculas, estilo, decoración y cortes de línea
+  out.push('/* Texto: grosor */');
+  for (const [name, value] of [['light', 300], ['normal', 400], ['medium', 500], ['semibold', 600], ['bold', 700], ['extrabold', 800]]) out.push(rule(`font-${name}`, `font-weight: ${value};`));
+  out.push('/* Texto: interlineado */');
+  for (const [name, value] of [['none', 1], ['tight', 1.25], ['snug', 1.375], ['normal', 1.5], ['relaxed', 1.7], ['loose', 2]]) out.push(rule(`leading-${name}`, `line-height: ${value};`));
+  out.push(
+    '/* Texto: mayúsculas, cursiva, subrayado y cortes de línea */',
+    rule('uppercase', 'text-transform: uppercase;'), rule('lowercase', 'text-transform: lowercase;'),
+    rule('capitalize', 'text-transform: capitalize;'), rule('normal-case', 'text-transform: none;'),
+    rule('italic', 'font-style: italic;'), rule('not-italic', 'font-style: normal;'),
+    rule('underline', 'text-decoration-line: underline;'), rule('line-through', 'text-decoration-line: line-through;'),
+    rule('no-underline', 'text-decoration-line: none;'),
+    rule('nowrap', 'white-space: nowrap;'), rule('truncate', 'overflow: hidden; text-overflow: ellipsis; white-space: nowrap;'),
+    rule('break-words', 'overflow-wrap: anywhere;'), rule('text-balance', 'text-wrap: balance;'), rule('text-pretty', 'text-wrap: pretty;'),
+    '/* Listas: sin viñetas ni sangría (para menús, enlaces seguidos…) */',
+    rule('list-none', 'padding-inline-start: 0; list-style: none;'),
+  );
+  // Imágenes y vídeos: proporción y cómo llenan su caja
+  out.push(
+    '/* Imágenes y vídeos: proporción y ajuste */',
+    rule('aspect-square', 'aspect-ratio: 1 / 1;'), rule('aspect-video', 'aspect-ratio: 16 / 9;'), rule('aspect-auto', 'aspect-ratio: auto;'),
+    rule('object-cover', 'object-fit: cover;'), rule('object-contain', 'object-fit: contain;'),
+  );
+  // Interacción y visibilidad
+  out.push(
+    '/* Interacción y visibilidad */',
+    rule('cursor-pointer', 'cursor: pointer;'), rule('cursor-default', 'cursor: default;'), rule('cursor-not-allowed', 'cursor: not-allowed;'),
+    rule('pointer-events-none', 'pointer-events: none;'), rule('pointer-events-auto', 'pointer-events: auto;'),
+    rule('select-none', '-webkit-user-select: none; user-select: none;'), rule('select-all', '-webkit-user-select: all; user-select: all;'),
+    rule('visible', 'visibility: visible;'), rule('invisible', 'visibility: hidden;'),
+  );
   // Bordes y radios (los del framework)
   out.push(
     '/* Bordes y radios */',
@@ -168,8 +218,8 @@ const parts = [
   `/* ==========================================================================
    glassmarshmallow · Utilidades (al estilo Tailwind)
    GENERADO por build/gen-utilities.mjs: no editar a mano; cambia el generador y vuelve a ejecutarlo.
-   Espaciado (4 = 1 rem), mostrar y ocultar, flex, alineación de texto y anchos llevan versión por punto de
-   corte: gm-md-mt-6 se aplica desde 860 px. El resto, sin versión por punto de corte.
+   Espaciado (4 = 1 rem), mostrar y ocultar, flex, alineación de texto, anchos, posición y tamaño de letra llevan
+   versión por punto de corte: gm-md-mt-6 se aplica desde 860 px. El resto, sin versión por punto de corte.
    ========================================================================== */`,
   '',
   ...prefix(base, ''),
