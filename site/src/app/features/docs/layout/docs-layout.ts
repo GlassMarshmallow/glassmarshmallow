@@ -10,7 +10,6 @@ import { DOCS_SECTIONS, pageTitleKey } from '../data/docs-nav';
   selector: 'app-docs-layout',
   imports: [RouterLink, RouterLinkActive, RouterOutlet, TranslatePipe],
   templateUrl: './docs-layout.html',
-  styleUrl: './docs-layout.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocsLayout {

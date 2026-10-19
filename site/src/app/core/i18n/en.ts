@@ -196,6 +196,7 @@ export const en = {
       'components/search': 'Search',
       'components/player': 'Video player',
       'components/progress': 'Progress',
+      'components/sidenav': 'Side navigation',
       'components/tooltip': 'Tooltip',
       'helpers/visually-hidden': 'Visually hidden',
       'helpers/skip-link': 'Skip link',

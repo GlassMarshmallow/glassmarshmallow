@@ -1,7 +1,8 @@
-<div class="docs gm-container">
+<!-- Menú lateral del framework (gm-sidenav): aquí solo se abre y se cierra en el móvil -->
+<div class="gm-sidenav-layout gm-container">
   <button
     type="button"
-    class="gm-btn gm-btn--secondary gm-btn--sm docs__menu-btn"
+    class="gm-btn gm-btn--secondary gm-btn--sm gm-sidenav__toggle"
     aria-controls="docs-sidebar"
     [attr.aria-expanded]="menuOpen()"
     (click)="menuOpen.set(!menuOpen())"
@@ -9,16 +10,16 @@
     <i class="gmi gmi-list" aria-hidden="true"></i>{{ 'docsNav.browse' | t }}
   </button>
 
-  <nav id="docs-sidebar" class="docs__sidebar" [class.is-open]="menuOpen()" [attr.aria-label]="'docsNav.menu' | t">
+  <nav id="docs-sidebar" class="gm-sidenav" [class.is-open]="menuOpen()" [attr.aria-label]="'docsNav.menu' | t">
     @for (section of sections; track section.id) {
-      <div class="docs__group">
-        <h2 class="docs__group-title">
+      <div class="gm-sidenav__group">
+        <h2 class="gm-sidenav__title">
           <i class="gmi {{ section.icon }}" aria-hidden="true"></i>{{ 'docsNav.sections.' + section.id | t }}
         </h2>
-        <ul>
+        <ul class="gm-sidenav__list">
           @for (page of section.pages; track page.path) {
             <li>
-              <a [routerLink]="'/docs/' + page.path" routerLinkActive ariaCurrentWhenActive="page">{{ pageTitleKey(page.path) | t }}</a>
+              <a class="gm-sidenav__link" [routerLink]="'/docs/' + page.path" routerLinkActive ariaCurrentWhenActive="page">{{ pageTitleKey(page.path) | t }}</a>
             </li>
           }
         </ul>
@@ -26,7 +27,7 @@
     }
   </nav>
 
-  <div class="docs__main">
+  <div class="gm-sidenav-layout__main">
     <router-outlet />
   </div>
 </div>

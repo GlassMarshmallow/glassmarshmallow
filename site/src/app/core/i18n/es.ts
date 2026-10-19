@@ -197,6 +197,7 @@ export const es: Dictionary = {
       'components/search': 'Buscador',
       'components/player': 'Reproductor de vídeo',
       'components/progress': 'Barra de progreso',
+      'components/sidenav': 'Menú lateral',
       'components/tooltip': 'Tooltip',
       'helpers/visually-hidden': 'Texto oculto',
       'helpers/skip-link': 'Saltar al contenido',
