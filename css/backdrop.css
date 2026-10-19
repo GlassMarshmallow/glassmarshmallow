@@ -79,7 +79,7 @@ html[data-theme="dark"]:has(.gm-backdrop:not(.gm-backdrop--contained)) {
 
 /* Títulos de la portada: Montserrat en peso 800 */
 html:has(.gm-backdrop:not(.gm-backdrop--contained)) h1,
-html:has(.gm-backdrop:not(.gm-backdrop--contained)) h2 { font-weight: 800; letter-spacing: .5px; }
+html:has(.gm-backdrop:not(.gm-backdrop--contained)) h2 { font-weight: 800; letter-spacing: .03125rem; }
 
 /* Sombras negras del texto en oscuro, como portfolio-ia-template:
    - enlaces: un halo fino para que se lean sobre las luces y las líneas del fondo
@@ -117,8 +117,8 @@ body:has(.gm-backdrop:not(.gm-backdrop--contained)) { background: transparent; }
 
 /* Cuadrícula de puntos que se desvanece hacia los bordes */
 .gm-backdrop__dots {
-  background-image: radial-gradient(#e5e7eb4b 1px, transparent 1px);
-  background-size: 16px 16px;
+  background-image: radial-gradient(#e5e7eb4b .0625rem, transparent .0625rem);
+  background-size: 1rem 1rem;
   opacity: .35;
   -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 75%, transparent 100%);
   mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 75%, transparent 100%);
@@ -134,7 +134,7 @@ body:has(.gm-backdrop:not(.gm-backdrop--contained)) { background: transparent; }
 
 /* Líneas horizontales finas, como una pantalla de televisor */
 .gm-backdrop__scanlines {
-  background: repeating-linear-gradient(transparent 0 2px, var(--gm-backdrop-scanline) 2px 4px);
+  background: repeating-linear-gradient(transparent 0 .125rem, var(--gm-backdrop-scanline) .125rem .25rem);
 }
 
 /* Viñeta: bordes oscurecidos en oscuro (como la plantilla) y aclarados hacia blanco en claro */
@@ -151,7 +151,7 @@ body:has(.gm-backdrop:not(.gm-backdrop--contained)) { background: transparent; }
 }
 
 /* En móvil, las esquinas oscurecidas sin redondear */
-@media (max-width: 767px) {
+@media (max-width: 47.9375rem) {
   .gm-backdrop__curve { border-radius: 0; }
 }
 

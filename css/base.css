@@ -7,7 +7,7 @@
 html { min-height: 100%; background: var(--gm-bg); }
 
 body {
-  min-width: 320px;
+  min-width: 20rem;
   min-height: 100dvh;
   margin: 0;
   color: var(--gm-text);
@@ -38,27 +38,27 @@ code, pre { font-family: var(--gm-font-mono); }
 .gm-skip-link {
   position: absolute;
   z-index: 100;
-  top: -100px;
-  left: 16px;
-  padding: 10px 18px;
+  top: -6.25rem;
+  left: 1rem;
+  padding: .625rem 1.125rem;
   border-radius: var(--gm-radius-pill);
   color: var(--gm-on-primary);
   background: var(--gm-primary);
   font-weight: 650;
 }
-.gm-skip-link:focus { top: 12px; }
+.gm-skip-link:focus { top: .75rem; }
 
 /* Solo para lectores de pantalla */
 .gm-visually-hidden {
   position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
+  width: .0625rem !important;
+  height: .0625rem !important;
   overflow: hidden !important;
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
   padding: 0 !important;
-  margin: -1px !important;
+  margin: -.0625rem !important;
 }
 
 /* Texto con el degradado de acento (en oscuro, el color del texto) */
@@ -107,11 +107,11 @@ code, pre { font-family: var(--gm-font-mono); }
 .gm-eyebrow { margin-bottom: .5rem; color: var(--gm-muted); font-size: .9rem; font-weight: 600; letter-spacing: -.01em; }
 
 /* Contenedor */
-.gm-container { width: min(calc(100% - 48px), var(--gm-container)); margin-inline: auto; }
-.gm-container--narrow { max-width: 960px; }
+.gm-container { width: min(calc(100% - 3rem), var(--gm-container)); margin-inline: auto; }
+.gm-container--narrow { max-width: 60rem; }
 
-@media (max-width: 600px) {
-  .gm-container { width: calc(100% - 32px); }
+@media (max-width: 37.5rem) {
+  .gm-container { width: calc(100% - 2rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -121,9 +121,9 @@ code, pre { font-family: var(--gm-font-mono); }
 /* --- WCAG 2.2 nivel AAA -------------------------------------------------------- */
 /* 2.4.12 Foco no tapado: lo que recibe el foco queda entero a la vista, por debajo de la barra de arriba y por
    encima de la del móvil */
-html { scroll-padding-top: calc(var(--gm-header-height) + 16px); }
-@media (max-width: 860px) {
-  html { scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+html { scroll-padding-top: calc(var(--gm-header-height) + 1rem); }
+@media (max-width: 53.75rem) {
+  html { scroll-padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
 }
 
 /* 1.4.8 Presentación visual: líneas de 80 caracteres como mucho y sin justificar */

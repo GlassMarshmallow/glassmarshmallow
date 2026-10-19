@@ -43,7 +43,7 @@
   /* Vidriado (valores elegidos por Sara) */
   --gm-glass-alpha: .18;
   --gm-glass-border-alpha: .41;
-  --gm-glass-radius: 21px;
+  --gm-glass-radius: 1.3125rem;
   --gm-glass-blur: 7px;
   --gm-glass-shadow: 0 4px 30px rgba(0, 0, 0, .1);
 }

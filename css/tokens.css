@@ -116,10 +116,10 @@
   --gm-shadow-hover: 0 8px 22px rgba(0, 0, 0, .18);
 
   /* Radios */
-  --gm-radius-sm: 12px;
-  --gm-radius-md: 20px;
-  --gm-radius-lg: 30px;
-  --gm-radius-pill: 999px;
+  --gm-radius-sm: .75rem;
+  --gm-radius-md: 1.25rem;
+  --gm-radius-lg: 1.875rem;
+  --gm-radius-pill: 62.4375rem;
 
   /* Cristal */
   --gm-blur: 20px;
@@ -143,13 +143,13 @@
   --gm-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Maquetación */
-  --gm-container: 1240px;
+  --gm-container: 77.5rem;
   /* Puntos de corte (solo para leerlos desde JavaScript: en @media hay que escribir el número) */
-  --gm-breakpoint-sm: 600px;
-  --gm-breakpoint-md: 860px;
-  --gm-breakpoint-lg: 1100px;
-  --gm-breakpoint-xl: 1300px;
-  --gm-header-height: 72px;
+  --gm-breakpoint-sm: 37.5rem;
+  --gm-breakpoint-md: 53.75rem;
+  --gm-breakpoint-lg: 68.75rem;
+  --gm-breakpoint-xl: 81.25rem;
+  --gm-header-height: 4.5rem;
 
   color-scheme: light;
 }

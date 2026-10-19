@@ -219,7 +219,7 @@ const parts = [
    glassmarshmallow · Utilidades (al estilo Tailwind)
    GENERADO por build/gen-utilities.mjs: no editar a mano; cambia el generador y vuelve a ejecutarlo.
    Espaciado (4 = 1 rem), mostrar y ocultar, flex, alineación de texto, anchos, posición y tamaño de letra llevan
-   versión por punto de corte: gm-md-mt-6 se aplica desde 860 px. El resto, sin versión por punto de corte.
+   versión por punto de corte: gm-md-mt-6 se aplica desde 860 px (53,75 rem). El resto, sin versión por punto de corte.
    ========================================================================== */`,
   '',
   ...prefix(base, ''),
@@ -227,7 +227,7 @@ const parts = [
   ...prefix(fixed(), ''),
 ];
 for (const [name, width] of BREAKPOINTS) {
-  parts.push('', `@media (min-width: ${width}px) {`, ...prefix(base, `${name}-`).map((r) => `  ${r}`), '}');
+  parts.push('', `@media (min-width: ${width / 16}rem) {`, ...prefix(base, `${name}-`).map((r) => `  ${r}`), '}');
 }
 writeFileSync(join(root, 'css', 'utilities-layout.css'), parts.join('\n') + '\n');
 console.log(`css/utilities-layout.css (${base.length} clases por punto de corte)`);

@@ -2,7 +2,7 @@
    glassmarshmallow · Utilidades (al estilo Tailwind)
    GENERADO por build/gen-utilities.mjs: no editar a mano; cambia el generador y vuelve a ejecutarlo.
    Espaciado (4 = 1 rem), mostrar y ocultar, flex, alineación de texto, anchos, posición y tamaño de letra llevan
-   versión por punto de corte: gm-md-mt-6 se aplica desde 860 px. El resto, sin versión por punto de corte.
+   versión por punto de corte: gm-md-mt-6 se aplica desde 860 px (53,75 rem). El resto, sin versión por punto de corte.
    ========================================================================== */
 
 .gm-m-0 { margin: 0; }
@@ -443,7 +443,7 @@
   .gm-animate-on-scroll { animation: gm-slide-up linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 37.5rem) {
   .gm-sm-m-0 { margin: 0; }
   .gm-sm-m-1 { margin: .25rem; }
   .gm-sm-m-2 { margin: .5rem; }
@@ -659,7 +659,7 @@
   .gm-sm-text-4xl { font-size: 2.25rem; }
 }
 
-@media (min-width: 860px) {
+@media (min-width: 53.75rem) {
   .gm-md-m-0 { margin: 0; }
   .gm-md-m-1 { margin: .25rem; }
   .gm-md-m-2 { margin: .5rem; }
@@ -875,7 +875,7 @@
   .gm-md-text-4xl { font-size: 2.25rem; }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 68.75rem) {
   .gm-lg-m-0 { margin: 0; }
   .gm-lg-m-1 { margin: .25rem; }
   .gm-lg-m-2 { margin: .5rem; }
@@ -1091,7 +1091,7 @@
   .gm-lg-text-4xl { font-size: 2.25rem; }
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 81.25rem) {
   .gm-xl-m-0 { margin: 0; }
   .gm-xl-m-1 { margin: .25rem; }
   .gm-xl-m-2 { margin: .5rem; }

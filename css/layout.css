@@ -14,12 +14,12 @@
    (tantas como quepan de 240 px como mínimo) o .gm-cols-2 / -3 / -4 (con prefijo por punto de corte). */
 
 /* Contenedor que llega a los bordes de la pantalla (con el mismo margen lateral que .gm-container) */
-.gm-container--fluid { width: calc(100% - 48px); max-width: none; margin-inline: auto; }
-@media (max-width: 600px) { .gm-container--fluid { width: calc(100% - 32px); } }
+.gm-container--fluid { width: calc(100% - 3rem); max-width: none; margin-inline: auto; }
+@media (max-width: 37.5rem) { .gm-container--fluid { width: calc(100% - 2rem); } }
 
 .gm-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gm-gap, 1.5rem); }
 .gm-grid > * { min-width: 0; grid-column: auto / span 12; }
-.gm-grid--auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--gm-grid-min, 240px)), 1fr)); }
+.gm-grid--auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--gm-grid-min, 15rem)), 1fr)); }
 .gm-grid--auto > * { grid-column: auto; }
 .gm-gap-0 { --gm-gap: 0; }
 .gm-gap-sm { --gm-gap: .75rem; }
@@ -56,7 +56,7 @@
 .gm-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } .gm-cols-4 > * { grid-column: auto; }
 .gm-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); } .gm-cols-6 > * { grid-column: auto; }
 
-@media (min-width: 600px) {
+@media (min-width: 37.5rem) {
   .gm-sm-col-1 { grid-column: auto / span 1; }
   .gm-sm-col-2 { grid-column: auto / span 2; }
   .gm-sm-col-3 { grid-column: auto / span 3; }
@@ -88,7 +88,7 @@
   .gm-sm-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); } .gm-sm-cols-6 > * { grid-column: auto; }
 }
 
-@media (min-width: 860px) {
+@media (min-width: 53.75rem) {
   .gm-md-col-1 { grid-column: auto / span 1; }
   .gm-md-col-2 { grid-column: auto / span 2; }
   .gm-md-col-3 { grid-column: auto / span 3; }
@@ -120,7 +120,7 @@
   .gm-md-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); } .gm-md-cols-6 > * { grid-column: auto; }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 68.75rem) {
   .gm-lg-col-1 { grid-column: auto / span 1; }
   .gm-lg-col-2 { grid-column: auto / span 2; }
   .gm-lg-col-3 { grid-column: auto / span 3; }
@@ -152,7 +152,7 @@
   .gm-lg-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); } .gm-lg-cols-6 > * { grid-column: auto; }
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 81.25rem) {
   .gm-xl-col-1 { grid-column: auto / span 1; }
   .gm-xl-col-2 { grid-column: auto / span 2; }
   .gm-xl-col-3 { grid-column: auto / span 3; }
