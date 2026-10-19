@@ -77,8 +77,13 @@ export class Header {
 
   readonly language = this.i18n.language;
   readonly languageOptions = computed<MenuOption[]>(() => LANGUAGES.map((l) => ({ value: l.code, label: l.label })));
+  // El nombre que se oye empieza por lo que se ve en el botón («ES»), para que quien lo maneja con la voz pueda
+  // decir «pulsa ES» (WCAG 2.5.3); lo mismo en la versión («v0.1.3»)
   readonly languageLabel = computed(() =>
-    this.i18n.t('nav.language', { language: LANGUAGES.find((l) => l.code === this.language())!.label }),
+    this.i18n.t('nav.language', {
+      code: this.language().toUpperCase(),
+      language: LANGUAGES.find((l) => l.code === this.language())!.label,
+    }),
   );
 
   readonly themePreference = this.themeService.preference;
