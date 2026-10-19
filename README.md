@@ -26,6 +26,7 @@ npm install glassmarshmallow
 ```
 
 ```html
+<link rel="stylesheet" href="dist/css/glassmarshmallow-font.min.css"> <!-- optional: the Montserrat font, self-hosted -->
 <link rel="stylesheet" href="dist/css/glassmarshmallow.min.css">
 ```
 
@@ -38,6 +39,7 @@ Organised like [Bootstrap](https://github.com/twbs/bootstrap):
 | Folder | Content |
 | --- | --- |
 | `css/` | Source: tokens, base, components and background |
+| `fonts/` | Montserrat (SIL Open Font License), for the optional `glassmarshmallow-font.css` |
 | `dist/` | Compiled files (`npm run css`) |
 | `site/` | The documentation website (Angular) |
 | `build/` | Build scripts |

@@ -30,6 +30,19 @@ Enlaza el archivo compilado en tu HTML o impórtalo desde tu propio CSS.
 @import "glassmarshmallow/dist/css/glassmarshmallow.css";
 ```
 
+### La letra (opcional)
+
+GlassMarshmallow usa Montserrat. Viene incluida en un archivo aparte, `glassmarshmallow-font.min.css`, que la sirve desde tu propia web (sin Google Fonts). Añádelo antes del framework si quieres esa letra; si prefieres otra, no lo añadas y cambia `--gm-font` (ver [Tipografía](/docs/customize/typography)).
+
+```html:HTML
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow-font.min.css">
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow.min.css">
+```
+```css:CSS
+@import "glassmarshmallow/dist/css/glassmarshmallow-font.css";
+@import "glassmarshmallow/dist/css/glassmarshmallow.css";
+```
+
 Si solo necesitas algunas partes, importa los archivos fuente uno a uno. `tokens.css` siempre va primero.
 
 ```css

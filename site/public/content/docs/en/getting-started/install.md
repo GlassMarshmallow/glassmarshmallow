@@ -30,6 +30,19 @@ Link the compiled file in your HTML, or import it from your own CSS.
 @import "glassmarshmallow/dist/css/glassmarshmallow.css";
 ```
 
+### The font (optional)
+
+GlassMarshmallow uses Montserrat. It comes in a separate file, `glassmarshmallow-font.min.css`, served from your own site (no Google Fonts). Add it before the framework if you want that font; if you prefer another one, leave it out and change `--gm-font` (see [Typography](/docs/customize/typography)).
+
+```html:HTML
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow-font.min.css">
+<link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow.min.css">
+```
+```css:CSS
+@import "glassmarshmallow/dist/css/glassmarshmallow-font.css";
+@import "glassmarshmallow/dist/css/glassmarshmallow.css";
+```
+
 If you only need some parts, import the source files one by one. `tokens.css` always goes first.
 
 ```css
