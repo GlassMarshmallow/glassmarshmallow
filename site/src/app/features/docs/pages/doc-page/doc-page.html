@@ -1,4 +1,5 @@
-<div class="doc">
+<!-- Índice de la página, anterior y siguiente: componentes del framework (gm-toc, gm-pager) -->
+<div class="gm-toc-layout">
   <article class="doc__body" [attr.aria-busy]="loading()">
     <header class="doc__header">
       <h1>{{ doc()?.title || (titleKey() | t) }}</h1>
@@ -12,11 +13,11 @@
 
     @if (doc(); as d) {
       @if (d.toc.length) {
-        <details class="doc__toc-mobile">
+        <details class="gm-toc gm-toc--collapsible">
           <summary>{{ 'docsNav.onThisPage' | t }}</summary>
-          <ul>
+          <ul class="gm-toc__list">
             @for (item of d.toc; track item.id) {
-              <li [class.is-sub]="item.level === 3"><a [href]="'#' + item.id" (click)="goTo($event, item.id)">{{ item.text }}</a></li>
+              <li [class.gm-toc__sub]="item.level === 3"><a class="gm-toc__link" [href]="'#' + item.id" (click)="goTo($event, item.id)">{{ item.text }}</a></li>
             }
           </ul>
         </details>
@@ -26,17 +27,17 @@
       <p class="doc__soon gm-muted">{{ 'docsNav.comingSoon' | t }}</p>
     }
 
-    <nav class="doc__pager" [attr.aria-label]="'docsNav.pager' | t">
+    <nav class="gm-pager doc__pager" [attr.aria-label]="'docsNav.pager' | t">
       @if (previous(); as p) {
-        <a class="doc__pager-link" [routerLink]="p.path">
-          <span class="doc__pager-label"><i class="gmi gmi-arrow-left" aria-hidden="true"></i>{{ 'docsNav.previous' | t }}</span>
-          <span class="doc__pager-title">{{ p.key | t }}</span>
+        <a class="gm-pager__link" [routerLink]="p.path">
+          <span class="gm-pager__label"><i class="gmi gmi-arrow-left" aria-hidden="true"></i>{{ 'docsNav.previous' | t }}</span>
+          <span class="gm-pager__title">{{ p.key | t }}</span>
         </a>
       }
       @if (next(); as n) {
-        <a class="doc__pager-link doc__pager-link--next" [routerLink]="n.path">
-          <span class="doc__pager-label">{{ 'docsNav.next' | t }}<i class="gmi gmi-arrow-right" aria-hidden="true"></i></span>
-          <span class="doc__pager-title">{{ n.key | t }}</span>
+        <a class="gm-pager__link gm-pager__link--next" [routerLink]="n.path">
+          <span class="gm-pager__label">{{ 'docsNav.next' | t }}<i class="gmi gmi-arrow-right" aria-hidden="true"></i></span>
+          <span class="gm-pager__title">{{ n.key | t }}</span>
         </a>
       }
     </nav>
@@ -44,11 +45,11 @@
   </article>
 
   @if (doc()?.toc?.length) {
-    <aside class="doc__toc" [attr.aria-label]="'docsNav.onThisPage' | t">
-      <p class="doc__toc-title">{{ 'docsNav.onThisPage' | t }}</p>
-      <ul>
+    <aside class="gm-toc" [attr.aria-label]="'docsNav.onThisPage' | t">
+      <p class="gm-toc__title">{{ 'docsNav.onThisPage' | t }}</p>
+      <ul class="gm-toc__list">
         @for (item of doc()!.toc; track item.id) {
-          <li [class.is-sub]="item.level === 3"><a [href]="'#' + item.id" (click)="goTo($event, item.id)">{{ item.text }}</a></li>
+          <li [class.gm-toc__sub]="item.level === 3"><a class="gm-toc__link" [href]="'#' + item.id" (click)="goTo($event, item.id)">{{ item.text }}</a></li>
         }
       </ul>
     </aside>

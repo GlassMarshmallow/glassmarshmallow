@@ -136,7 +136,7 @@ export class DocPage {
     const el = event.target as HTMLElement;
     const copy = el.closest<HTMLButtonElement>('[data-copy]');
     if (copy) {
-      const pre = copy.closest('.doc-code')?.querySelector<HTMLElement>('pre:not([hidden])');
+      const pre = copy.closest('.gm-snippet')?.querySelector<HTMLElement>('pre:not([hidden])');
       try {
         await navigator.clipboard.writeText(pre?.innerText ?? '');
         const label = copy.querySelector('span');
@@ -153,7 +153,7 @@ export class DocPage {
     // Botón «Repetir» de los ejemplos de animaciones: vuelve a lanzar las animaciones de su ejemplo
     const replay = el.closest<HTMLButtonElement>('[data-replay]');
     if (replay) {
-      const example = replay.closest('.doc-code__example') ?? replay.parentElement;
+      const example = replay.closest('.gm-snippet__example') ?? replay.parentElement;
       example?.querySelectorAll<HTMLElement>('[class*="gm-animate-"], .gm-stagger > *').forEach((item) => {
         item.style.animation = 'none';
         void item.offsetWidth; // fuerza al navegador a aplicar el cambio antes de quitarlo

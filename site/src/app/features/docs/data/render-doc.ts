@@ -63,23 +63,23 @@ function codeBlock(blocks: { lang: string; tab?: string; text: string; codeOnly?
   const id = `code-${blockId++}`;
   const tabs = blocks.length > 1 || !!blocks[0].tab;
   const bar = tabs
-    ? `<div class="doc-code__tabs" role="tablist">${blocks
+    ? `<div class="gm-snippet__tabs" role="tablist">${blocks
         .map(
           (b, i) =>
-            `<button type="button" role="tab" id="${id}-tab-${i}" aria-controls="${id}-panel-${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${escapeHtml(b.tab ?? b.lang)}</button>`,
+            `<button type="button" class="gm-snippet__tab" role="tab" id="${id}-tab-${i}" aria-controls="${id}-panel-${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${escapeHtml(b.tab ?? b.lang)}</button>`,
         )
         .join('')}</div>`
-    : `<span class="doc-code__lang">${escapeHtml(blocks[0].lang || 'code')}</span>`;
+    : `<span class="gm-snippet__lang">${escapeHtml(blocks[0].lang || 'code')}</span>`;
   const panels = blocks
     .map(
       (b, i) =>
-        `<pre class="doc-code__pre" tabindex="0"${tabs ? ` role="tabpanel" id="${id}-panel-${i}" aria-labelledby="${id}-tab-${i}"${i === 0 ? '' : ' hidden'}` : ''}><code>${highlight(b.text, b.lang)}</code></pre>`,
+        `<pre class="gm-snippet__code" tabindex="0"${tabs ? ` role="tabpanel" id="${id}-panel-${i}" aria-labelledby="${id}-tab-${i}"${i === 0 ? '' : ' hidden'}` : ''}><code>${highlight(b.text, b.lang)}</code></pre>`,
     )
     .join('');
   // Código HTML: encima, el resultado (como los ejemplos de Bootstrap)
   const example = blocks[0].lang === 'html' && !blocks[0].codeOnly ? examplePreview(blocks[0].text) : '';
-  const preview = example ? `<div class="doc-code__example">${example}</div>` : '';
-  return `<div class="doc-code">${preview}<div class="doc-code__bar">${bar}<button type="button" class="doc-code__copy" data-copy><i class="gmi gmi-clipboard" aria-hidden="true"></i><span>${escapeHtml(labels.copy)}</span></button></div>${panels}</div>`;
+  const preview = example ? `<div class="gm-snippet__example">${example}</div>` : '';
+  return `<div class="gm-snippet">${preview}<div class="gm-snippet__bar">${bar}<button type="button" class="gm-snippet__copy" data-copy><i class="gmi gmi-clipboard" aria-hidden="true"></i><span>${escapeHtml(labels.copy)}</span></button></div>${panels}</div>`;
 }
 
 /**
@@ -157,7 +157,7 @@ export function renderDoc(markdown: string, labels: RenderLabels): RenderedDoc {
         return `<h${depth}>${text}</h${depth}>\n`;
       },
       blockquote({ tokens: inner }) {
-        return `<div class="doc-callout">${this.parser.parse(inner)}</div>\n`;
+        return `<div class="gm-alert gm-alert--note">${this.parser.parse(inner)}</div>\n`;
       },
     },
   });

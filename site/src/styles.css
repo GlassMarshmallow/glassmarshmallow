@@ -21,10 +21,10 @@
 html:has(.gm-backdrop:not(.gm-backdrop--contained)) .footer { border-top: 0; background: rgb(var(--gm-page-end-rgb)); }
 
 /* WCAG 2.5.5 (AAA): todo lo que se pulsa en la web, al menos 44 × 44 px.
-   Aquí y no en cada componente para tenerlo junto. Donde el aspecto debe quedarse igual, una capa invisible
+   (Los del fragmento de código ya lo traen del framework: gm-snippet.) Donde el aspecto debe quedarse igual, una capa invisible
    amplía la zona que se pulsa (como en los botones del framework). */
-.header__github, .doc-code__copy, .doc-code__tabs button { position: relative; }
-.header__github::after, .doc-code__copy::after, .doc-code__tabs button::after {
+.header__github { position: relative; }
+.header__github::after {
   position: absolute;
   top: min(0px, calc(50% - 22px));
   right: min(0px, calc(50% - 22px));

@@ -1,64 +1,46 @@
-.doc { display: grid; grid-template-columns: minmax(0, 1fr) 200px; align-items: start; gap: 40px; }
+/* Página de la documentación. El índice («En esta página»), los fragmentos de código, las notas y «Anterior /
+   Siguiente» son componentes del framework (gm-toc, gm-snippet, gm-alert--note, gm-pager); aquí queda solo lo propio
+   de esta web: la cabecera y el texto del Markdown. */
 
-.doc__header { margin-bottom: 28px; }
-.doc__header h1 { margin-bottom: 10px; font-size: clamp(2rem, 4vw, 2.6rem); }
-.doc__lead { max-width: 720px; margin-bottom: 18px; color: var(--gm-text-secondary); font-size: 1.15rem; line-height: 1.55; }
+.doc__header { margin-bottom: 1.75rem; }
+.doc__header h1 { margin-bottom: .625rem; font-size: clamp(2rem, 4vw, 2.6rem); }
+.doc__lead { max-width: 45rem; margin-bottom: 1.125rem; color: var(--gm-text-secondary); font-size: 1.15rem; line-height: 1.55; }
 .doc__soon { font-size: 1.05rem; }
 
-/* Contenido del Markdown */
-.doc__content { max-width: 760px; line-height: 1.7; }
-.doc__content ::ng-deep > h2 { margin: 44px 0 14px; font-size: 1.7rem; scroll-margin-top: calc(var(--gm-header-height) + 16px); }
-.doc__content ::ng-deep > h3 { margin: 30px 0 10px; font-size: 1.2rem; scroll-margin-top: calc(var(--gm-header-height) + 16px); }
+/* Contenido del Markdown, en una columna de lectura (47,5 rem) */
+.doc__content { max-width: 47.5rem; line-height: 1.7; }
+.doc__content ::ng-deep > h2 { margin: 2.75rem 0 .875rem; font-size: 1.7rem; scroll-margin-top: calc(var(--gm-header-height) + 1rem); }
+.doc__content ::ng-deep > h3 { margin: 1.875rem 0 .625rem; font-size: 1.2rem; scroll-margin-top: calc(var(--gm-header-height) + 1rem); }
 .doc__content ::ng-deep > p,
 .doc__content ::ng-deep > ul,
-.doc__content ::ng-deep > ol { margin: 0 0 16px; color: var(--gm-text-secondary); }
-/* Las listas, la negrita y el código del texto de la página; los de los ejemplos (.doc-code__example) se quedan como los
-   deja el framework, para que se vean igual que en cualquier web */
-.doc__content ::ng-deep li + li:not(.doc-code__example li) { margin-top: 4px; }
-.doc__content ::ng-deep strong:not(.gm-player strong):not(.doc-code__example strong) { color: var(--gm-text); }
+.doc__content ::ng-deep > ol { margin: 0 0 1rem; color: var(--gm-text-secondary); }
+/* Las listas, la negrita y el código del texto de la página; los de los ejemplos (.gm-snippet__example) se quedan como
+   los deja el framework, para que se vean igual que en cualquier web */
+.doc__content ::ng-deep li + li:not(.gm-snippet__example li) { margin-top: .25rem; }
+.doc__content ::ng-deep strong:not(.gm-player strong):not(.gm-snippet__example strong) { color: var(--gm-text); }
 /* Enlaces del texto (no los de los ejemplos: cada componente, como la barra de navegación o el resumen de errores, lleva su estilo) */
-.doc__content ::ng-deep a:not([class]):not(.doc-code__example a) { color: var(--gm-link); text-decoration: underline; text-underline-offset: 3px; }
-.doc__content ::ng-deep a:not([class]):not(.doc-code__example a):hover { color: var(--gm-link-hover); }
-.doc__content ::ng-deep :not(pre) > code:not(.doc-code__example code) {
+.doc__content ::ng-deep a:not([class]):not(.gm-snippet__example a) { color: var(--gm-link); text-decoration: underline; text-underline-offset: 3px; }
+.doc__content ::ng-deep a:not([class]):not(.gm-snippet__example a):hover { color: var(--gm-link-hover); }
+.doc__content ::ng-deep :not(pre) > code:not(.gm-snippet__example code) {
   padding: .12em .35em;
-  border-radius: 5px;
+  border-radius: .3125rem;
   color: var(--gm-text);
   background: var(--gm-tag);
   font-size: .9em;
 }
-.doc__content ::ng-deep > table { display: block; overflow-x: auto; width: 100%; margin: 0 0 20px; border-collapse: collapse; font-size: .92rem; }
+.doc__content ::ng-deep > table { display: block; overflow-x: auto; width: 100%; margin: 0 0 1.25rem; border-collapse: collapse; font-size: .92rem; }
 .doc__content ::ng-deep > table th,
-.doc__content ::ng-deep > table td { padding: 8px 12px; border-bottom: 1px solid var(--gm-line); text-align: left; vertical-align: top; }
+.doc__content ::ng-deep > table td { padding: .5rem .75rem; border-bottom: 1px solid var(--gm-line); text-align: left; vertical-align: top; }
 .doc__content ::ng-deep > table th { color: var(--gm-text); }
 
-/* Nota: el recuadro de aviso .tg-hint de My Book Box (superficie sólida y sombra suave, sin color) */
-.doc__content ::ng-deep .doc-callout {
-  margin: 0 0 20px;
-  padding: 14px 18px;
-  border-radius: 14px;
-  color: var(--gm-text);
-  background: var(--gm-surface-solid);
-  box-shadow: var(--gm-shadow-sm);
-  font-size: .88rem;
-}
-.doc__content ::ng-deep .doc-callout p { margin: 0; color: inherit; }
-.doc__content ::ng-deep .doc-callout strong { color: var(--gm-text); }
+/* La nota del Markdown («> …») es gm-alert--note; su negrita, en el color del texto */
+.doc__content ::ng-deep > .gm-alert--note { margin: 0 0 1.25rem; }
+.doc__content ::ng-deep .gm-alert--note strong { color: var(--gm-text); }
 
-/* Bloques de código: panel de cristal (el .panel de My Book Box); pestañas como su control segmentado */
-.doc__content ::ng-deep .doc-code {
-  overflow: hidden;
-  margin: 0 0 20px;
-  border: 1px solid var(--gm-surface-glass-border);
-  border-radius: var(--gm-radius-md);
-  background: var(--gm-surface);
-  box-shadow: var(--gm-shadow-sm);
-  -webkit-backdrop-filter: blur(var(--gm-blur));
-  backdrop-filter: blur(var(--gm-blur));
-}
 /* Dibujos explicativos (sin código debajo): mismo recuadro que los ejemplos */
 .doc__content ::ng-deep .doc-diagram {
-  margin: 0 0 20px;
-  padding: 24px;
+  margin: 0 0 1.25rem;
+  padding: 1.5rem;
   border: 1px solid var(--gm-line);
   border-radius: var(--gm-radius-md);
   background: rgb(var(--gm-page-end-rgb));
@@ -66,120 +48,8 @@
 /* Las etiquetas del esquema van sobre el pastel, sin el fondo gris del código */
 .doc__content ::ng-deep .doc-diagram code { padding: 0; color: inherit; background: none; }
 
-/* Resultado del código HTML, dentro del mismo panel y separado por una línea */
-.doc__content ::ng-deep .doc-code__example {
-  padding: 24px;
-  border-bottom: 1px solid var(--gm-line);
-  /* Como en Bootstrap: blanco en claro y negro del todo en oscuro, para ver los colores tal cual */
-  background: rgb(var(--gm-page-end-rgb));
-  /* Lo que el texto de la página cambia (interlineado de 1,7) vuelve a ser lo del <body> del framework, para que el
-     ejemplo se vea igual que en cualquier web */
-  color: var(--gm-text);
-  line-height: 1.5;
-}
-.doc__content ::ng-deep .doc-code__example > :last-child { margin-bottom: 0; }
-.doc__content ::ng-deep .doc-code__example .gm-container { width: auto; }
-.doc__content ::ng-deep .doc-code__bar {
-  display: flex;
-  min-height: 42px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 6px 8px 6px 14px;
-  border-bottom: 1px solid var(--gm-line);
-}
-.doc__content ::ng-deep .doc-code__lang { color: var(--gm-muted); font-size: .72rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
-.doc__content ::ng-deep .doc-code__tabs { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-left: -8px; padding: 4px; border-radius: var(--gm-radius-pill); background: var(--gm-tag); }
-.doc__content ::ng-deep .doc-code__tabs button,
-.doc__content ::ng-deep .doc-code__copy {
-  display: inline-flex;
-  min-height: 32px;
-  align-items: center;
-  gap: 6px;
-  padding: 0 10px;
-  border: 0;
-  border-radius: var(--gm-radius-pill);
-  color: var(--gm-muted);
-  background: transparent;
-  font: inherit;
-  font-size: .82rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background .2s, color .2s, box-shadow .2s;
-}
-.doc__content ::ng-deep .doc-code__tabs button { min-height: 28px; padding: 0 12px; }
-/* Copiar: el botón .library-action de My Book Box */
-.doc__content ::ng-deep .doc-code__copy {
-  min-height: 38px;
-  justify-content: center;
-  padding-inline: 12px;
-  border: 1px solid var(--gm-line);
-  color: var(--gm-text);
-  background: var(--gm-surface-glass);
-  font-size: .78rem;
-  font-weight: 650;
-  transition: background .2s, color .2s, transform .2s;
-}
-.doc__content ::ng-deep .doc-code__tabs button:hover { color: var(--gm-text); }
-.doc__content ::ng-deep .doc-code__copy:hover { background: var(--gm-surface-solid); transform: translateY(-1px); }
-.doc__content ::ng-deep .doc-code__tabs button[aria-selected="true"] { color: var(--gm-text); background: var(--gm-surface-solid); box-shadow: 0 2px 8px rgba(0, 0, 0, .08), 0 1px 2px rgba(0, 0, 0, .06); }
-.doc__content ::ng-deep .doc-code__pre { overflow-x: auto; margin: 0; padding: 16px 18px; color: var(--gm-text); font-size: .88rem; line-height: 1.6; }
+/* En los ejemplos, el contenedor ocupa lo que le deja el panel */
+.doc__content ::ng-deep .gm-snippet__example .gm-container { width: auto; }
 
-/* Índice de la página (columna derecha, fijo al hacer scroll) */
-.doc__toc {
-  position: sticky;
-  top: calc(var(--gm-header-height) + 20px);
-  max-height: calc(100dvh - var(--gm-header-height) - 40px);
-  overflow-y: auto;
-  font-size: .85rem;
-}
-.doc__toc-title { margin: 0 0 8px; color: var(--gm-text); font-weight: 700; }
-.doc__toc ul,
-.doc__toc-mobile ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
-.doc__toc a,
-.doc__toc-mobile a { display: flex; min-height: 44px; align-items: center; padding: 3px 0; /* 44 px: WCAG 2.5.5 (AAA) */ color: var(--gm-text-secondary); text-shadow: none; }
-.doc__toc a:hover,
-.doc__toc-mobile a:hover { color: var(--gm-text); }
-.is-sub a { padding-left: 14px; }
-
-.doc__toc-mobile {
-  display: none;
-  margin-bottom: 24px;
-  padding: 14px 18px;
-  border: 1px solid var(--gm-surface-glass-border);
-  border-radius: var(--gm-radius-md);
-  background: var(--gm-surface);
-  box-shadow: var(--gm-shadow-sm);
-  -webkit-backdrop-filter: blur(var(--gm-blur));
-  backdrop-filter: blur(var(--gm-blur));
-}
-.doc__toc-mobile summary { font-weight: 650; cursor: pointer; }
-.doc__toc-mobile ul { margin-top: 8px; }
-
-/* Anterior y siguiente */
-.doc__pager { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 760px; margin-top: 48px; }
-.doc__pager-link {
-  display: grid;
-  gap: 4px;
-  padding: 16px 20px;
-  border: 1px solid var(--gm-surface-glass-border);
-  border-radius: var(--gm-radius-md);
-  background: var(--gm-surface);
-  box-shadow: var(--gm-shadow-sm);
-  -webkit-backdrop-filter: blur(var(--gm-blur));
-  backdrop-filter: blur(var(--gm-blur));
-  color: var(--gm-text);
-  text-shadow: none;
-  transition: transform .2s, background .2s;
-}
-.doc__pager-link:hover { background: var(--gm-surface-glass); transform: translateY(-1px); }
-.doc__pager-link--next { grid-column: 2; text-align: right; }
-.doc__pager-label { display: inline-flex; align-items: center; gap: 6px; color: var(--gm-muted); font-size: .82rem; }
-.doc__pager-link--next .doc__pager-label { justify-content: flex-end; }
-.doc__pager-title { font-weight: 650; }
-
-@media (max-width: 1200px) {
-  .doc { grid-template-columns: minmax(0, 1fr); }
-  .doc__toc { display: none; }
-  .doc__toc-mobile { display: block; }
-}
+/* «Anterior / Siguiente», con el mismo ancho que el texto */
+.doc__pager { max-width: 47.5rem; margin-top: 3rem; }
