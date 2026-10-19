@@ -9,7 +9,7 @@ GlassMarshmallow usa **Montserrat** para todo el texto y la fuente de ancho fijo
 | `--gm-font` | Montserrat (si no carga: la del sistema) | Todo el texto |
 | `--gm-font-mono` | `ui-monospace`, SF Mono, Menlo | Código |
 
-Montserrat viene con el framework, en un archivo aparte y **opcional**: `glassmarshmallow-font.css`. Se sirve desde tu propia web, sin Google Fonts: un solo archivo de 35 KB con todos los pesos (300–800) y los caracteres del español. Añádelo junto al CSS del framework y precarga la letra en el `<head>`, para que llegue antes que el primer dibujo de la página y el texto no cambie de letra al cargar:
+Montserrat viene con el framework, en un archivo aparte y **opcional**: `glassmarshmallow-font.css`. Se sirve desde tu propia web, sin Google Fonts: un solo archivo de 35 KB con todos los pesos (300–800) y los caracteres del español. Añádelo junto al CSS del framework y precarga la letra en el `<head>`, para que llegue antes que el primer dibujo de la página. Si con una conexión lenta no llega a tiempo, esa visita se ve con una letra de reserva con sus mismas medidas (Arial ajustada) y el texto no salta al cargar:
 
 ```html-code
 <link rel="preload" href="node_modules/glassmarshmallow/dist/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>

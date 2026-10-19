@@ -9,7 +9,7 @@ GlassMarshmallow uses **Montserrat** for all text and the system monospace font 
 | `--gm-font` | Montserrat (if it does not load: the system font) | All text |
 | `--gm-font-mono` | `ui-monospace`, SF Mono, Menlo | Code |
 
-Montserrat comes with the framework, in a separate, **optional** file: `glassmarshmallow-font.css`. It is served from your own site, without Google Fonts: a single 35 KB file with every weight (300–800) and the Latin characters. Add it next to the framework CSS and preload the font in the `<head>`, so it arrives before the page is first painted and the text does not change font while loading:
+Montserrat comes with the framework, in a separate, **optional** file: `glassmarshmallow-font.css`. It is served from your own site, without Google Fonts: a single 35 KB file with every weight (300–800) and the Latin characters. Add it next to the framework CSS and preload the font in the `<head>`, so it arrives before the page is first painted. If it does not make it in time on a slow connection, that visit uses a fallback font with the same measurements (adjusted Arial) and the text does not jump while loading:
 
 ```html-code
 <link rel="preload" href="node_modules/glassmarshmallow/dist/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
