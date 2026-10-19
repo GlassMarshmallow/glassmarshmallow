@@ -772,6 +772,49 @@
   .gm-search__results { width: 100%; }
 }
 
+/* En la barra de navegación (gm-search--navbar): en el ordenador, el campo en la barra; en el móvil, una lupa
+   (gm-search__toggle) que despliega el campo a todo el ancho debajo de la barra (gm-search__panel, con .is-open).
+   <div class="gm-search gm-search--navbar" role="search">
+     <button type="button" class="gm-search__toggle" aria-label="Buscar" aria-expanded="false" aria-controls="panel-buscar">
+       <i class="gmi gmi-search" aria-hidden="true"></i></button>
+     <div id="panel-buscar" class="gm-search__panel"><div class="gm-search__field">…</div><ul class="gm-search__results">…</ul></div>
+   </div>
+   Abrir y cerrar el panel lo hace tu código. */
+.gm-search__toggle { display: none; }
+@media (max-width: 53.75rem) {
+  .gm-search--navbar { position: static; width: auto; }
+  .gm-search__toggle {
+    position: relative;
+    display: grid;
+    min-width: 2rem;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--gm-radius-sm);
+    color: var(--gm-nav-link);
+    background: transparent;
+    place-items: center;
+    cursor: pointer;
+  }
+  .gm-search__toggle .gmi { font-size: 1.35rem; }
+  /* Zona que se pulsa de 44 px aunque el botón sea más estrecho (WCAG 2.5.5) */
+  .gm-search__toggle::after { position: absolute; inset: 0 -.375rem; content: ""; }
+  .gm-search--navbar .gm-search__panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    padding: .625rem 1rem .75rem;
+    border-bottom: 1px solid var(--gm-header-border);
+    background: var(--gm-surface-solid);
+  }
+  .gm-search--navbar .gm-search__panel.is-open { display: block; }
+  /* 16 px en el móvil: con menos, el iPhone amplía la página al escribir */
+  .gm-search--navbar .gm-search__input { font-size: 1rem; }
+  .gm-search--navbar .gm-search__results { position: static; width: 100%; max-width: none; margin-top: .5rem; box-shadow: none; }
+}
+
 /* --- Selector de color --------------------------------------------------------
    Un botón con la muestra del color que abre una ventana con el círculo de color, las barras de tono,
    saturación, luminosidad y opacidad, el código y el contraste de un texto blanco y uno negro encima.
