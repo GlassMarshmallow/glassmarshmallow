@@ -97,6 +97,10 @@
   backdrop-filter: blur(var(--gm-blur));
 }
 .gm-card > :last-child { margin-bottom: 0; }
+/* Tarjeta que es un enlace (<a class="gm-card gm-card--link">): sube un poco al pasar el ratón, como los botones */
+.gm-card--link { color: var(--gm-text); transition: transform .2s; }
+.gm-card--link:hover { transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { .gm-card--link:hover { transform: none; } }
 
 /* --- WCAG 2.5.5 (AAA): zona que se pulsa de al menos 44 × 44 px ----------------
    Si el elemento se ve más pequeño (botones pequeños, píldoras, botones redondos), una capa invisible amplía la
@@ -2275,6 +2279,29 @@ html:has(.gm-fullscreen-menu.is-open) { overflow: hidden; }
   .gm-tool { grid-template-columns: minmax(0, 1fr); }
   .gm-tool__preview--sticky { position: static; }
 }
+
+/* --- Página interior: hueco arriba y entradilla ---------------------------------------
+   <section class="gm-container gm-page"><h1>Iconos</h1><p class="gm-lead gm-muted">Una frase que explica la página.</p>…</section>
+   gm-page deja el hueco de arriba de las páginas interiores (las que no son la portada); gm-lead es la entradilla de
+   debajo del título: un poco más grande y en una columna cómoda de leer. */
+.gm-page { padding-block: 4.5rem 0; }
+.gm-lead { max-width: 42.5rem; margin-bottom: 2.5rem; font-size: 1.05rem; line-height: 1.6; }
+
+/* --- Comando para copiar (el «npm install» de la portada) --------------------------------
+   <div class="gm-command"><code class="gm-command__text">npm install glassmarshmallow</code>
+     <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm">Copiar</button></div>
+   Copiar lo hace tu código. Si no cabe, el comando pasa a la línea siguiente. */
+.gm-command {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: .75rem;
+  padding: .375rem .375rem .375rem 1.125rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-pill);
+  background: var(--gm-surface-glass);
+}
+.gm-command__text { min-width: 0; font-size: .9rem; overflow-wrap: anywhere; }
 
 /* --- Texto largo (privacidad, aviso legal, artículos) ---------------------------------
    <article class="gm-prose gm-prose--card"><h1>Privacidad</h1><p class="gm-prose__updated">Última actualización…</p>
