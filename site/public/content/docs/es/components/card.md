@@ -26,10 +26,10 @@ Con la [cuadrícula](/docs/layout/grid) (`.gm-grid--auto`), tantas tarjetas por 
 
 ## Toda la tarjeta como enlace
 
-Si toda la tarjeta lleva a otra página, que la tarjeta sea el `<a>`. Así no hay varios enlaces repetidos.
+Si toda la tarjeta lleva a otra página, que la tarjeta sea el `<a>`. Así no hay varios enlaces repetidos. Con `gm-card--link`, el texto va en su color normal (no el de los enlaces) y la tarjeta sube un poco al pasar el ratón, como las de Herramientas.
 
 ```html
-<a class="gm-card gm-block gm-max-w-sm" href="#" style="color: inherit">
+<a class="gm-card gm-card--link gm-block gm-max-w-sm" href="#">
   <strong>Generador de paletas</strong>
   <p class="gm-muted gm-mt-1 gm-mx-0 gm-mb-0">Crea una paleta accesible a partir de un color.</p>
 </a>

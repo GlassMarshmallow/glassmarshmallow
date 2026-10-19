@@ -32,6 +32,19 @@ The container centers the page content and leaves a margin on the sides. It is t
 </div>
 ```
 
+## Inner page
+
+`gm-page` leaves the top space of the pages that are not the home page (4.5 rem) and `gm-lead` is the lead paragraph below the title: a bit bigger and in a comfortable reading column (42.5 rem).
+
+```html
+<section class="gm-container gm-page gm-pt-0">
+  <h1>Icons</h1>
+  <p class="gm-lead gm-muted gm-mb-0">More than 300 free icons, outline and filled, with the same names as Bootstrap Icons.</p>
+</section>
+```
+
+In the example, `gm-pt-0` removes the top space so it fits in the box.
+
 ## Changing the width
 
 The maximum width is the `--gm-container` variable. Change it for the whole site or only inside a section:

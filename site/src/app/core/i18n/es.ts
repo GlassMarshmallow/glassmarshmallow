@@ -179,6 +179,7 @@ export const es: Dictionary = {
       'components/ai-notice': 'Aviso de IA',
       'components/chat': 'Chat',
       'components/chip': 'Chip',
+      'components/command': 'Comando para copiar',
       'components/dialog': 'Ventana',
       'components/footer': 'Pie de página',
       'components/fullscreen-menu': 'Menú a pantalla completa',

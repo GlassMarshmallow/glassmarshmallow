@@ -28,8 +28,10 @@ With the [grid](/docs/layout/grid) (`.gm-grid--auto`), as many cards per row as 
 
 If the whole card leads to another page, make the card the `<a>`. That avoids several repeated links.
 
+With `gm-card--link`, the text keeps its normal color (not the link color) and the card rises a little on hover, like the ones in Tools.
+
 ```html
-<a class="gm-card gm-block gm-max-w-sm" href="#" style="color: inherit">
+<a class="gm-card gm-card--link gm-block gm-max-w-sm" href="#">
   <strong>Palette generator</strong>
   <p class="gm-muted gm-mt-1 gm-mx-0 gm-mb-0">Create an accessible palette from one color.</p>
 </a>

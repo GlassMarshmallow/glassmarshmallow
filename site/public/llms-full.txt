@@ -1150,6 +1150,19 @@ The container centers the page content and leaves a margin on the sides. It is t
 </div>
 ```
 
+## Inner page
+
+`gm-page` leaves the top space of the pages that are not the home page (4.5 rem) and `gm-lead` is the lead paragraph below the title: a bit bigger and in a comfortable reading column (42.5 rem).
+
+```html
+<section class="gm-container gm-page gm-pt-0">
+  <h1>Icons</h1>
+  <p class="gm-lead gm-muted gm-mb-0">More than 300 free icons, outline and filled, with the same names as Bootstrap Icons.</p>
+</section>
+```
+
+In the example, `gm-pt-0` removes the top space so it fits in the box.
+
 ## Changing the width
 
 The maximum width is the `--gm-container` variable. Change it for the whole site or only inside a section:
@@ -2243,6 +2256,14 @@ npm run build</code></pre>
 
 If you prefer long lines to wrap instead of scrolling, add `style="white-space: pre-wrap"`.
 
+## Long lines
+
+`gm-code--wrap` wraps long lines onto the next one instead of scrolling sideways: for generated code with very long values (gradients, shadows) that reads better whole.
+
+```html
+<pre class="gm-code gm-code--wrap"><code>background: linear-gradient(135deg, rgb(92 223 235 / .9) 0%, rgb(185 163 255 / .9) 50%, rgb(255 166 209 / .9) 100%);</code></pre>
+```
+
 ## Accessibility
 
 - Add `tabindex="0"` to blocks that can scroll sideways, so they can be moved with the keyboard (WCAG 2.1.1).
@@ -2642,6 +2663,19 @@ Show the value next to the label with an `<output>`. That way the exact number i
 </div>
 ```
 
+## Name and value on one line
+
+`gm-slider` puts the name on the left, the value on the right (with equal-width digits, so it does not jump while moving) and the bar below. It is the one in this site's generators. `gm-slider__help` adds a hint below.
+
+```html
+<div class="gm-slider gm-max-w-md">
+  <label for="example-blur">Blur</label>
+  <output id="example-blur-value" for="example-blur">12 px</output>
+  <input id="example-blur" class="gm-range" type="range" min="0" max="40" value="12" oninput="document.getElementById('example-blur-value').textContent = this.value + ' px'">
+  <p class="gm-slider__help gm-muted gm-m-0">How much whatever is behind the glass is blurred.</p>
+</div>
+```
+
 ## Disabled
 
 ```html
@@ -3008,6 +3042,16 @@ A highlighted message inside the page: information, something that went well, a 
 | `.gm-alert--warning` | Warning | Lemon |
 | `.gm-alert--danger` | Error | Coral |
 
+## Note
+
+`.gm-alert--note`: no color or icon, on a white surface (black at night) with a soft shadow. For clarifications inside a text, like the notes in this documentation.
+
+```html
+<div class="gm-alert gm-alert--note">
+  <p><strong>Tip:</strong> you can also import only the parts you use.</p>
+</div>
+```
+
 ## Accessibility
 
 - Color is not enough: the icon and the text also say what kind of alert it is (“Changes saved”, “Could not…”) (WCAG 1.4.1).
@@ -3365,8 +3409,10 @@ With the [grid](/docs/layout/grid) (`.gm-grid--auto`), as many cards per row as 
 
 If the whole card leads to another page, make the card the `<a>`. That avoids several repeated links.
 
+With `gm-card--link`, the text keeps its normal color (not the link color) and the card rises a little on hover, like the ones in Tools.
+
 ```html
-<a class="gm-card gm-block gm-max-w-sm" href="#" style="color: inherit">
+<a class="gm-card gm-card--link gm-block gm-max-w-sm" href="#">
   <strong>Palette generator</strong>
   <p class="gm-muted gm-mt-1 gm-mx-0 gm-mb-0">Create an accessible palette from one color.</p>
 </a>
@@ -3640,6 +3686,27 @@ With `disabled`, or with `aria-disabled="true"` if it must stay focusable (for e
 - They are `<button>` elements with text: they say what they do.
 - They look smaller than 44 px, but the touch area reaches 44 px (WCAG 2.5.5).
 - Text reaches 7:1 on the glass in both modes; the border, 3:1. If you change the border color, keep it at 3:1; without a border, the text is enough to tell what it is.
+
+<!-- /docs/components/command -->
+# Copy command
+
+A glass pill with a command and its copy button, like the `npm install` on this site's home page.
+
+## Example
+
+```html
+<div class="gm-command">
+  <code class="gm-command__text">npm install glassmarshmallow</code>
+  <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm"><i class="gmi gmi-clipboard" aria-hidden="true"></i>Copy</button>
+</div>
+```
+
+Copying is up to your code (with `navigator.clipboard.writeText`). If the command does not fit, it wraps to the next line instead of spilling out.
+
+## Accessibility
+
+- When copying, change the button text ("Copied") and tell screen readers too with an `aria-live` region.
+- The command can be selected by hand: if the clipboard is not available, it can still be copied.
 
 <!-- /docs/components/dialog -->
 # Dialog
@@ -4375,6 +4442,203 @@ document.querySelector('#read').value = 60;
 - If progress changes on its own (an upload), announce the end with a status message (`role="status"`), not every change.
 - No motion if the person asks for it (`prefers-reduced-motion`).
 
+<!-- /docs/components/sidenav -->
+# Side navigation
+
+The menu of sections next to the content, like the one in this documentation. On desktop it stays in view while scrolling; below 900 px it hides behind a button.
+
+## Example
+
+```html
+<nav class="gm-sidenav is-open gm-static gm-max-w-xs" aria-label="Documentation">
+  <div class="gm-sidenav__group">
+    <h2 class="gm-sidenav__title"><i class="gmi gmi-book" aria-hidden="true"></i>Getting started</h2>
+    <ul class="gm-sidenav__list">
+      <li><a class="gm-sidenav__link" href="#" aria-current="page">Introduction</a></li>
+      <li><a class="gm-sidenav__link" href="#">Install</a></li>
+    </ul>
+  </div>
+  <div class="gm-sidenav__group">
+    <h2 class="gm-sidenav__title"><i class="gmi gmi-palette" aria-hidden="true"></i>Color</h2>
+    <ul class="gm-sidenav__list">
+      <li><a class="gm-sidenav__link" href="#">Palette</a></li>
+      <li><a class="gm-sidenav__link" href="#">Light and dark mode</a></li>
+    </ul>
+  </div>
+</nav>
+```
+
+In the example it has `gm-static` so it stays in place and `is-open` so it also shows on phones; on a page it goes inside `gm-sidenav-layout`.
+
+## With the content next to it
+
+`gm-sidenav-layout` puts the menu on the left (13.75 rem) and the content on the right. On narrow screens the menu moves to the top, hidden, and the `gm-sidenav__toggle` button opens it: your code adds `.is-open` to the menu and `aria-expanded="true"` to the button.
+
+```html-code
+<div class="gm-sidenav-layout gm-container">
+  <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm gm-sidenav__toggle" aria-controls="docs-menu" aria-expanded="false">
+    <i class="gmi gmi-list" aria-hidden="true"></i>Browse docs
+  </button>
+  <nav id="docs-menu" class="gm-sidenav" aria-label="Documentation">…</nav>
+  <main class="gm-sidenav-layout__main">…</main>
+</div>
+```
+
+| Class | What it is |
+| --- | --- |
+| `gm-sidenav-layout` | The grid: menu and content |
+| `gm-sidenav-layout__main` | The content (it can shrink without overflowing) |
+| `gm-sidenav__toggle` | The button that opens the menu on phones (hidden on desktop) |
+| `gm-sidenav` | The menu: white panel in light mode and black in dark mode, fixed while scrolling |
+| `gm-sidenav__group` / `__title` / `__list` / `__link` | Each section, its title with an icon, its list and its links |
+
+## Accessibility
+
+- It is a `<nav>` with an `aria-label`, and each section has a heading and a list: screen readers can go through it in parts.
+- The current page has `aria-current="page"`: it is announced and shown in the text color and semibold, not by color alone.
+- Links are 44 px tall (WCAG 2.5.5) and the gray reaches 7:1 (AAA).
+- On phones, the button says with `aria-expanded` whether the menu is open and with `aria-controls` what it opens.
+
+<!-- /docs/components/toc -->
+# Table of contents
+
+"On this page": the sections of a long page, to jump to each one. On wide screens it sits in a column on the right and stays in view while scrolling; below 1200 px it becomes a dropdown above the text.
+
+## Example
+
+```html
+<aside class="gm-toc gm-static gm-block" aria-label="On this page">
+  <p class="gm-toc__title">On this page</p>
+  <ul class="gm-toc__list">
+    <li><a class="gm-toc__link" href="#">Example</a></li>
+    <li class="gm-toc__sub"><a class="gm-toc__link" href="#">With tabs</a></li>
+    <li><a class="gm-toc__link" href="#">Accessibility</a></li>
+  </ul>
+</aside>
+```
+
+`gm-toc__sub` indents a subsection. In the example it has `gm-static` so it stays in place and `gm-block` so it also shows on narrow screens.
+
+## Dropdown (phones)
+
+`gm-toc--collapsible` on a `<details>`: it opens and closes with no code.
+
+```html
+<details class="gm-toc gm-toc--collapsible gm-block">
+  <summary>On this page</summary>
+  <ul class="gm-toc__list">
+    <li><a class="gm-toc__link" href="#">Example</a></li>
+    <li><a class="gm-toc__link" href="#">Accessibility</a></li>
+  </ul>
+</details>
+```
+
+In the example it has `gm-block` so it also shows on wide screens.
+
+## With the text next to it
+
+`gm-toc-layout` puts the text on the left and the table of contents on the right (12.5 rem). It holds both: the column and the dropdown, and each one shows at its screen size.
+
+```html-code
+<div class="gm-toc-layout">
+  <article>
+    <details class="gm-toc gm-toc--collapsible">…</details>
+    …the text…
+  </article>
+  <aside class="gm-toc" aria-label="On this page">…</aside>
+</div>
+```
+
+## Accessibility
+
+- The column is an `<aside>` with an `aria-label`; the dropdown, a `<details>` the browser already makes accessible.
+- Links are 44 px tall (WCAG 2.5.5).
+- Each section of the text needs an `id` that matches its link.
+
+<!-- /docs/components/pager -->
+# Previous and next
+
+Two glass cards at the end of a page that belongs to a series (documentation, a course, a step-by-step tutorial), with the name of the previous and the next page.
+
+## Example
+
+```html
+<nav class="gm-pager" aria-label="More pages">
+  <a class="gm-pager__link" href="#">
+    <span class="gm-pager__label"><i class="gmi gmi-arrow-left" aria-hidden="true"></i>Previous</span>
+    <span class="gm-pager__title">Button</span>
+  </a>
+  <a class="gm-pager__link gm-pager__link--next" href="#">
+    <span class="gm-pager__label">Next<i class="gmi gmi-arrow-right" aria-hidden="true"></i></span>
+    <span class="gm-pager__title">Card</span>
+  </a>
+</nav>
+```
+
+`gm-pager__link--next` always goes in the right column, even when there is no previous page (on the first page).
+
+## Accessibility
+
+- It is a `<nav>` with its own `aria-label`, different from the main navigation's.
+- Each link says where it goes (the page name), not just "Next".
+- The arrows are decorative (`aria-hidden`): the word already says it.
+
+<!-- /docs/components/snippet -->
+# Code snippet
+
+A piece of code to copy, with its result above it when needed: the one in this documentation. A glass panel, a bar with the language (or tabs) and the copy button.
+
+## Example
+
+```html
+<div class="gm-snippet">
+  <div class="gm-snippet__example">
+    <button type="button" class="gm-btn">Button</button>
+  </div>
+  <div class="gm-snippet__bar">
+    <span class="gm-snippet__lang">html</span>
+    <button type="button" class="gm-snippet__copy"><i class="gmi gmi-clipboard" aria-hidden="true"></i><span>Copy</span></button>
+  </div>
+  <pre class="gm-snippet__code" tabindex="0"><code>&lt;button type="button" class="gm-btn"&gt;Button&lt;/button&gt;</code></pre>
+</div>
+```
+
+Without `gm-snippet__example`, it is just the code with its bar.
+
+## With tabs
+
+For the same example in several languages or package managers: `gm-snippet__tabs` with a `gm-snippet__tab` per option and a `<pre>` per tab (the hidden ones with `hidden`). Switching tabs and copying is up to your code.
+
+```html
+<div class="gm-snippet">
+  <div class="gm-snippet__bar">
+    <div class="gm-snippet__tabs" role="tablist">
+      <button type="button" class="gm-snippet__tab" role="tab" aria-selected="true">npm</button>
+      <button type="button" class="gm-snippet__tab" role="tab" aria-selected="false">pnpm</button>
+    </div>
+    <button type="button" class="gm-snippet__copy"><i class="gmi gmi-clipboard" aria-hidden="true"></i><span>Copy</span></button>
+  </div>
+  <pre class="gm-snippet__code" tabindex="0" role="tabpanel"><code>npm install glassmarshmallow</code></pre>
+</div>
+```
+
+| Class | What it is |
+| --- | --- |
+| `gm-snippet` | The glass panel |
+| `gm-snippet__example` | The result, on white (black at night) to see the colors as they are |
+| `gm-snippet__bar` | The bar: language or tabs on the left and copy on the right |
+| `gm-snippet__lang` | The language name, in small caps |
+| `gm-snippet__tabs` / `gm-snippet__tab` | The tabs, like a segmented control |
+| `gm-snippet__copy` | The copy button |
+| `gm-snippet__code` | The `<pre>` with the code (it scrolls sideways if it does not fit) |
+
+## Accessibility
+
+- The code can be reached with the keyboard (`tabindex="0"` on the `<pre>`) and scrolled sideways when long.
+- The tabs and the copy button are 44 × 44 px where you press them, even if they look smaller (WCAG 2.5.5).
+- When copying, tell screen readers ("Code copied") with an `aria-live` region.
+- Tabs have `role="tab"` and `aria-selected`; each code block, `role="tabpanel"`.
+
 <!-- /docs/components/ticker -->
 # Logo ticker
 
@@ -4422,6 +4686,57 @@ It also stops on its own on hover or with focus inside, and it does not move if 
 - The logos are **decorative** (`aria-hidden="true"` on `.gm-ticker__track`): the same information must be elsewhere on the page (in the template, the Skills section).
 - It moves on its own for more than 5 seconds, so it has the button to stop it, reachable with the keyboard and by touch (WCAG 2.2.2). When static (`--static`) it is not needed.
 - It does not move if the person asks for reduced motion (WCAG 2.3.3).
+
+<!-- /docs/components/tool -->
+# Tool
+
+The layout of this site's generators: a preview and, next to it, the controls that change it and the code to copy. Below 900 px, the preview goes on top and the controls below.
+
+## Example
+
+```html
+<div class="gm-tool">
+  <div class="gm-tool__preview">
+    <div class="gm-flex gm-items-center gm-justify-center gm-rounded-md gm-border gm-p-8 gm-theme-lavender gm-theme-solid">
+      <p class="gm-m-0 gm-font-bold gm-text-xl">Preview</p>
+    </div>
+  </div>
+  <div class="gm-card gm-tool__controls">
+    <div class="gm-slider">
+      <label for="tool-size">Size</label>
+      <output for="tool-size">24 px</output>
+      <input id="tool-size" class="gm-range" type="range" min="8" max="64" value="24">
+    </div>
+    <fieldset class="gm-tool__group">
+      <legend>Shape</legend>
+      <div class="gm-flex gm-gap-2">
+        <button type="button" class="gm-btn gm-btn--sm">Round</button>
+        <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm">Square</button>
+      </div>
+    </fieldset>
+    <div class="gm-tool__code">
+      <pre class="gm-code gm-code--wrap"><code>font-size: 1.5rem;</code></pre>
+    </div>
+  </div>
+</div>
+```
+
+| Class | What it is |
+| --- | --- |
+| `gm-tool` | The two columns: preview (a bit wider) and controls |
+| `gm-tool__preview` | The preview column (with whatever goes below it, like a button) |
+| `gm-tool__preview--sticky` | The preview stays in view while scrolling through the controls (on desktop) |
+| `gm-tool__controls` | The controls, spaced out; with `gm-card`, in a card |
+| `gm-tool__group` | A `<fieldset>` with no border or padding, with its `<legend>` as a heading |
+| `gm-tool__code` | The generated code and its buttons |
+
+Controls are usually [sliders with their value](/docs/forms/range) (`gm-slider`) and the code, a [code block](/docs/content/code) with `gm-code--wrap`.
+
+## Accessibility
+
+- Every control has its name (`<label>` or `<legend>`) and its value in view (`<output>`).
+- If the preview is only a picture, give it `aria-hidden="true"` and explain what changes in text.
+- The HTML order is the screen order: first the preview, then the controls.
 
 <!-- /docs/components/tooltip -->
 # Tooltip

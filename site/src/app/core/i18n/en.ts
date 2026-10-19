@@ -178,6 +178,7 @@ export const en = {
       'components/ai-notice': 'AI notice',
       'components/chat': 'Chat',
       'components/chip': 'Chip',
+      'components/command': 'Copy command',
       'components/dialog': 'Dialog',
       'components/footer': 'Footer',
       'components/fullscreen-menu': 'Fullscreen menu',
