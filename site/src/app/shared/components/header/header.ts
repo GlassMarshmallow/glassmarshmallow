@@ -8,7 +8,9 @@ import { ThemePreference, ThemeService } from '../../../core/services/theme.serv
 import { MenuButton, MenuOption } from '../menu-button/menu-button';
 import { SiteSearch } from '../site-search/site-search';
 
-export const VERSION = '0.1';
+// La versión del framework sale de su package.json (la misma que se publica en npm): al subirla, la web la muestra sola
+import { version as packageVersion } from '../../../../../../package.json';
+export const VERSION = packageVersion;
 
 /** Páginas que en la barra inferior del móvil van dentro de «Más»: la barra tiene 4 botones como mucho,
     contando «Más», como en My Book Box */
