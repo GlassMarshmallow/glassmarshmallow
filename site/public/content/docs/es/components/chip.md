@@ -1,6 +1,6 @@
 # Chip
 
-Una píldora de cristal para opciones rápidas, como las preguntas sugeridas de un chat. Es la de la plantilla de portfolio con IA: el mismo cristal que el acordeón y, al pasar el ratón, sube un poco y el borde toma las luces del dibujo (turquesa en oscuro).
+Una píldora de cristal para opciones rápidas, como las preguntas sugeridas de un chat. Es la de la plantilla de portfolio con IA: el mismo cristal que el acordeón y, al pasar el ratón, sube un poco y el borde toma el color cielo (turquesa en oscuro).
 
 ## Ejemplo
 
@@ -15,7 +15,7 @@ Una píldora de cristal para opciones rápidas, como las preguntas sugeridas de 
 
 ## Destacado
 
-`.gm-chip--accent` lleva siempre el borde de las luces y la letra en seminegrita: para la acción principal del grupo.
+`.gm-chip--accent` lleva siempre el borde de color y la letra en seminegrita: para la acción principal del grupo.
 
 ## En el móvil
 
@@ -34,7 +34,7 @@ Muchos chips seguidos caben mejor en una [fila deslizable](/docs/components/caro
 | Variable | Qué cambia | Por defecto |
 | --- | --- | --- |
 | `--gm-chip-border` | El borde en reposo | El gris de los paneles |
-| `--gm-chip-color` | El borde al pasar el ratón y el del destacado (un color o un degradado) | Las luces del dibujo |
+| `--gm-chip-color` | El borde al pasar el ratón y el del destacado (un color o un degradado) | Cielo (turquesa en oscuro) |
 
 Con color de acento en reposo y al pasar el ratón, y con un degradado pastel al pasar el ratón:
 

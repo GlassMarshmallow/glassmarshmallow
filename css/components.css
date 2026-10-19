@@ -1043,7 +1043,7 @@
    <span class="gm-avatar"><img src="foto.jpg" alt="Sara Paez"></span>                  foto en círculo
    <span class="gm-avatar gm-avatar--square">…</span>                                     cuadrado redondeado
    <span class="gm-avatar gm-theme-sky" role="img" aria-label="Sara Paez">SP</span>      iniciales en un pastel
-   <span class="gm-avatar gm-avatar--ring">…</span>                                       con el marco de las luces
+   <span class="gm-avatar gm-avatar--ring">…</span>                                       con el marco de color (cielo; turquesa en oscuro)
    Tamaños: --sm (2 rem), normal (3 rem), --lg (5 rem) y --xl (8 rem). El redondeo y las letras van en
    proporción al tamaño. Sin .gm-theme-*, las iniciales van sobre gris.
    Se personaliza con --gm-avatar-radius (redondeo) y, con marco, --gm-avatar-ring (color o degradado). */
@@ -1073,7 +1073,7 @@
 a.gm-avatar[data-gm-zoom] { cursor: zoom-in; transition: transform .2s ease; }
 a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 @media (prefers-reduced-motion: reduce) { a.gm-avatar[data-gm-zoom]:hover { transform: none; } }
-/* Marco de color alrededor de la foto (el de la plantilla de portfolio): las luces del dibujo y una sombra suave.
+/* Marco de color alrededor de la foto (el de la plantilla de portfolio): cielo (turquesa en oscuro) y una sombra suave.
    El grosor va en proporción al tamaño */
 .gm-avatar--ring {
   padding: max(2px, calc(var(--gm-avatar-size) * .02));
@@ -1537,8 +1537,8 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 
 /* ==========================================================================
    Piezas de la plantilla de portfolio con IA (portfolio-ia-template)
-   Todas usan el cristal de los paneles (--gm-panel-*) y, en claro, el borde con las luces del dibujo
-   (--gm-lights-gradient; en oscuro, turquesa liso).
+   Todas usan el cristal de los paneles (--gm-panel-*) y el borde de un solo color
+   (--gm-lights-gradient: cielo en claro, turquesa en oscuro).
    ========================================================================== */
 
 /* Borde con degradado sobre un fondo translúcido: una capa encima recortada con una máscara */
@@ -1590,7 +1590,7 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 .gm-chip::after { background: var(--gm-chip-color, var(--gm-lights-gradient)); }
 .gm-chip:hover:not(:disabled, [aria-disabled="true"])::after { opacity: 1; }
 .gm-chip:disabled, .gm-chip[aria-disabled="true"] { opacity: .5; cursor: default; }
-/* Destacado: el borde de las luces siempre */
+/* Destacado: el borde de color siempre */
 .gm-chip--accent { border-color: transparent; font-weight: 600; }
 .gm-chip--accent::after { opacity: 1; }
 /* Sin borde: solo el cristal (el texto ya dice qué es); al pasar el ratón sigue subiendo un poco */
@@ -1938,7 +1938,7 @@ html:has(.gm-fullscreen-menu.is-open) { overflow: hidden; }
 :is(.gm-socials, .gm-footer__socials) .gmi-linkedin { transform: scale(.9); }
 
 /* --- Lista de datos (etiqueta y valor, como un resumen) ---------------------------------
-   <dl class="gm-dl"><div><dt>Nombre</dt><dd>Lucía Martín</dd></div>…</dl> */
+   <dl class="gm-dl"><div><dt>Nombre</dt><dd>Sara Paez Yamuza</dd></div>…</dl> */
 .gm-dl { margin: 0; }
 .gm-dl > div { margin-bottom: .35rem; }
 .gm-dl dt { color: var(--gm-muted); font-weight: 600; }

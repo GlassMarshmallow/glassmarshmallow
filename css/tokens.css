@@ -56,13 +56,14 @@
   --gm-panel-border: #86868b;
   --gm-panel-filter: saturate(180%) blur(20px);
   --gm-panel-shadow: 0 4px 24px rgba(0, 0, 0, .06);
-  /* Borde con las luces del dibujo (turquesa, violeta y ámbar); en oscuro, turquesa liso */
-  --gm-lights-gradient: linear-gradient(90deg, #0e7490, #5b3fd0, #b45309);
+  /* Borde de los chips, el chat, el bocadillo y el marco de los avatares: un solo color, cielo 600 (3:1 o más sobre
+     el fondo claro, WCAG 1.4.11; pedido por Sara); en oscuro, turquesa. Se llama «lights» por el degradado que fue */
+  --gm-lights-gradient: linear-gradient(#0a919b, #0a919b);
   /* Bocadillo del chat */
   --gm-bubble-bg: #fff;
   --gm-bubble-shadow: 0 6px 24px rgba(0, 0, 0, .08);
-  --gm-bubble-tail-start: #0e7490;
-  --gm-bubble-tail-end: #b45309;
+  --gm-bubble-tail-start: #0a919b;
+  --gm-bubble-tail-end: #0a919b;
   --gm-bubble-tail-bg: #fff;
   /* Ventana */
   --gm-dialog-bg: rgba(255, 255, 255, .95);
@@ -76,7 +77,7 @@
   /* Franja de logos */
   --gm-ticker-bg: rgba(255, 255, 255, .8);
   --gm-ticker-fade: #fcfcfd; /* el cristal de la franja sobre el fondo: donde se desvanecen los logos, junto al botón de pausa */
-  --gm-ticker-border: linear-gradient(90deg, rgba(14, 116, 144, .45), rgba(91, 63, 208, .45), rgba(180, 83, 9, .45)) 1;
+  --gm-ticker-border: linear-gradient(rgba(10, 145, 155, .45), rgba(10, 145, 155, .45)) 1; /* cielo 600, como los bordes del chat */
   /* Avisos: el pastel del estado a media intensidad (de noche, algo menos, para que el texto blanco llegue a 7:1) */
   --gm-alert-alpha: .45;
 

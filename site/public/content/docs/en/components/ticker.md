@@ -1,6 +1,6 @@
 # Logo ticker
 
-A strip that slowly moves from right to left with logos and names, like the technologies strip of the portfolio template. Dark glass (white by day) with a thin turquoise border above and below (by day, with the lights of the illustration).
+A strip that slowly moves from right to left with logos and names, like the technologies strip of the portfolio template. Dark glass (white by day) with a thin border above and below, sky by day and turquoise at night.
 
 ## Example
 

@@ -4,7 +4,7 @@ Las piezas del chat de la plantilla de portfolio con IA: el campo para preguntar
 
 ## Campo para preguntar
 
-Una píldora de cristal con el campo y el botón de enviar. Al escribir, el borde toma las luces y aparece un anillo suave.
+Una píldora de cristal con el campo y el botón de enviar. Al escribir, el borde toma el color cielo y aparece un anillo suave.
 
 ```html
 <form class="gm-chat-input" role="search" aria-label="Pregúntame sobre mi trabajo">
@@ -16,7 +16,7 @@ Una píldora de cristal con el campo y el botón de enviar. Al escribir, el bord
 
 ## Bocadillo de respuesta
 
-Cristal con el borde de las luces y, en oscuro, un brillo turquesa. La cola apunta a quien habla: `.gm-bubble--tail-end` (a la derecha) o `.gm-bubble--tail-start` (a la izquierda), a la altura de `--gm-bubble-tail-y` (medida desde abajo en la de la derecha; en la de la izquierda, desde arriba, o desde abajo con `.gm-bubble--tail-bottom`).
+Cristal con el borde cielo y, en oscuro, un brillo turquesa. La cola apunta a quien habla: `.gm-bubble--tail-end` (a la derecha) o `.gm-bubble--tail-start` (a la izquierda), a la altura de `--gm-bubble-tail-y` (medida desde abajo en la de la derecha; en la de la izquierda, desde arriba, o desde abajo con `.gm-bubble--tail-bottom`).
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
@@ -34,7 +34,7 @@ Cristal con el borde de las luces y, en oscuro, un brillo turquesa. La cola apun
 
 ## Pensando
 
-Mientras llega la respuesta, `.gm-typing` con tres `<span>`: tres puntos que botan con las luces del dibujo.
+Mientras llega la respuesta, `.gm-typing` con tres `<span>`: tres puntos que botan, en cielo (turquesa en oscuro).
 
 ```html
 <div class="gm-bubble" style="max-width: 120px">
@@ -53,9 +53,9 @@ Con variables, en el bocadillo o en cualquier elemento que lo contenga:
 
 | Variable | Qué cambia | Por defecto |
 | --- | --- | --- |
-| `--gm-bubble-color` | El borde y la cola del bocadillo (un color o un degradado) | Las luces del dibujo |
+| `--gm-bubble-color` | El borde y la cola del bocadillo (un color o un degradado) | Cielo (turquesa en oscuro) |
 | `--gm-bubble-tail-color` | Solo la cola, si el borde es un degradado (la cola admite un color, no un degradado) | El de `--gm-bubble-color` |
-| `--gm-typing-color` | Los puntos de «pensando» | Las luces del dibujo |
+| `--gm-typing-color` | Los puntos de «pensando» | Cielo (turquesa en oscuro) |
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">

@@ -4,7 +4,7 @@ The chat pieces from the AI portfolio template: the field to ask, the answer bub
 
 ## Field to ask
 
-A glass pill with the field and the send button. While typing, the border takes the lights and a soft ring appears.
+A glass pill with the field and the send button. While typing, the border turns sky and a soft ring appears.
 
 ```html
 <form class="gm-chat-input" role="search" aria-label="Ask me about my work">
@@ -16,7 +16,7 @@ A glass pill with the field and the send button. While typing, the border takes 
 
 ## Answer bubble
 
-Glass with the lights border and, in dark mode, a turquoise glow. The tail points to the speaker: `.gm-bubble--tail-end` (right) or `.gm-bubble--tail-start` (left), at the height of `--gm-bubble-tail-y` (measured from the bottom on the right one; on the left one, from the top, or from the bottom with `.gm-bubble--tail-bottom`).
+Glass with a sky border and, in dark mode, a turquoise glow. The tail points to the speaker: `.gm-bubble--tail-end` (right) or `.gm-bubble--tail-start` (left), at the height of `--gm-bubble-tail-y` (measured from the bottom on the right one; on the left one, from the top, or from the bottom with `.gm-bubble--tail-bottom`).
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">
@@ -34,7 +34,7 @@ Glass with the lights border and, in dark mode, a turquoise glow. The tail point
 
 ## Thinking
 
-While the answer arrives, `.gm-typing` with three `<span>`s: three dots bouncing with the lights of the illustration.
+While the answer arrives, `.gm-typing` with three `<span>`s: three dots bouncing, in sky (turquoise in dark mode).
 
 ```html
 <div class="gm-bubble" style="max-width: 120px">
@@ -53,9 +53,9 @@ With variables, on the bubble or on any element that contains it:
 
 | Variable | What it changes | Default |
 | --- | --- | --- |
-| `--gm-bubble-color` | The border and the tail of the bubble (a color or a gradient) | The lights of the illustration |
+| `--gm-bubble-color` | The border and the tail of the bubble (a color or a gradient) | Sky (turquoise in dark mode) |
 | `--gm-bubble-tail-color` | Only the tail, if the border is a gradient (the tail takes a color, not a gradient) | The one in `--gm-bubble-color` |
-| `--gm-typing-color` | The "thinking" dots | The lights of the illustration |
+| `--gm-typing-color` | The "thinking" dots | Sky (turquoise in dark mode) |
 
 ```html
 <div class="gm-flex gm-flex-col gm-gap-6 gm-p-4">

@@ -1,6 +1,6 @@
 # Chip
 
-A glass pill for quick options, like the suggested questions of a chat. It is the one from the AI portfolio template: the same glass as the accordion and, on hover, it rises a little and the border takes the lights of the illustration (turquoise in dark mode).
+A glass pill for quick options, like the suggested questions of a chat. It is the one from the AI portfolio template: the same glass as the accordion and, on hover, it rises a little and the border turns sky (turquoise in dark mode).
 
 ## Example
 
@@ -15,7 +15,7 @@ A glass pill for quick options, like the suggested questions of a chat. It is th
 
 ## Accent
 
-`.gm-chip--accent` always has the lights border and semibold text: for the main action of the group.
+`.gm-chip--accent` always has the colored border and semibold text: for the main action of the group.
 
 ## On phones
 
@@ -34,7 +34,7 @@ Many chips in a row fit better in a [swipe row](/docs/components/carousel#swipe-
 | Variable | What it changes | Default |
 | --- | --- | --- |
 | `--gm-chip-border` | The border at rest | The panel gray |
-| `--gm-chip-color` | The border on hover and on the accent chip (a color or a gradient) | The lights of the illustration |
+| `--gm-chip-color` | The border on hover and on the accent chip (a color or a gradient) | Sky (turquoise in dark mode) |
 
 With the accent color at rest and on hover, and with a pastel gradient on hover:
 
