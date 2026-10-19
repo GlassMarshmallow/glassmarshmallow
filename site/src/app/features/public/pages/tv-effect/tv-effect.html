@@ -3,8 +3,8 @@
   <h1 id="tv-title">{{ 'tv.title' | t }}</h1>
   <p class="generator__lead gm-muted">{{ 'tv.lead' | t }}</p>
 
-  <div class="generator__layout">
-    <div class="preview-column">
+  <div class="gm-tool">
+    <div class="gm-tool__preview gm-tool__preview--sticky">
       <!-- Fondo de luces como el de la portada, el texto y, encima, las dos capas del efecto -->
       <div class="preview" [attr.data-theme]="previewTheme()">
         <div class="preview__sample">
@@ -16,8 +16,8 @@
       </div>
     </div>
 
-    <div class="gm-card controls">
-      <fieldset class="gm-field">
+    <div class="gm-card gm-tool__controls">
+      <fieldset class="gm-tool__group gm-field">
         <legend>{{ 'filter.previewMode' | t }}</legend>
         <div class="gm-segmented">
           @for (option of themes; track option.value) {
@@ -26,15 +26,15 @@
         </div>
       </fieldset>
 
-      <fieldset class="layer">
+      <fieldset class="gm-tool__group layer">
         <legend><label class="layer__toggle"><input type="checkbox" [checked]="lines()" (change)="toggle(lines, $event)" /> {{ 'tv.lines' | t }}</label></legend>
         @if (lines()) {
-          <div class="control">
+          <div class="gm-slider">
             <label for="tv-line-opacity">{{ 'tv.intensity' | t }}</label>
             <output for="tv-line-opacity">{{ lineOpacity() }} %</output>
             <input id="tv-line-opacity" class="gm-range" type="range" min="5" max="100" [value]="lineOpacity()" (input)="setNumber(lineOpacity, $event)" />
           </div>
-          <div class="control">
+          <div class="gm-slider">
             <label for="tv-line-gap">{{ 'tv.lineGap' | t }}</label>
             <output for="tv-line-gap">{{ lineGap() }} px</output>
             <input id="tv-line-gap" class="gm-range" type="range" min="1" max="8" [value]="lineGap()" (input)="setNumber(lineGap, $event)" />
@@ -42,10 +42,10 @@
         }
       </fieldset>
 
-      <fieldset class="layer">
+      <fieldset class="gm-tool__group layer">
         <legend><label class="layer__toggle"><input type="checkbox" [checked]="grain()" (change)="toggle(grain, $event)" /> {{ 'tv.grain' | t }}</label></legend>
         @if (grain()) {
-          <div class="control">
+          <div class="gm-slider">
             <label for="tv-grain">{{ 'tv.intensity' | t }}</label>
             <output for="tv-grain">{{ grainOpacity() }} %</output>
             <input id="tv-grain" class="gm-range" type="range" min="2" max="50" [value]="grainOpacity()" (input)="setNumber(grainOpacity, $event)" />
@@ -53,15 +53,15 @@
         }
       </fieldset>
 
-      <fieldset class="layer">
+      <fieldset class="gm-tool__group layer">
         <legend><label class="layer__toggle"><input type="checkbox" [checked]="vignette()" (change)="toggle(vignette, $event)" /> {{ 'tv.vignette' | t }}</label></legend>
         @if (vignette()) {
-          <div class="control">
+          <div class="gm-slider">
             <label for="tv-vignette">{{ 'tv.intensity' | t }}</label>
             <output for="tv-vignette">{{ vignetteStrength() }} %</output>
             <input id="tv-vignette" class="gm-range" type="range" min="5" max="100" [value]="vignetteStrength()" (input)="setNumber(vignetteStrength, $event)" />
           </div>
-          <div class="control">
+          <div class="gm-slider">
             <label for="tv-vignette-start">{{ 'tv.vignetteStart' | t }}</label>
             <output for="tv-vignette-start">{{ vignetteStart() }} %</output>
             <input id="tv-vignette-start" class="gm-range" type="range" min="0" max="90" [value]="vignetteStart()" (input)="setNumber(vignetteStart, $event)" />
@@ -69,15 +69,15 @@
         }
       </fieldset>
 
-      <fieldset class="layer">
+      <fieldset class="gm-tool__group layer">
         <legend><label class="layer__toggle"><input type="checkbox" [checked]="curve()" (change)="toggle(curve, $event)" /> {{ 'tv.curve' | t }}</label></legend>
         @if (curve()) {
-          <div class="control">
+          <div class="gm-slider">
             <label for="tv-curve">{{ 'tv.intensity' | t }}</label>
             <output for="tv-curve">{{ curveStrength() }} %</output>
             <input id="tv-curve" class="gm-range" type="range" min="5" max="100" [value]="curveStrength()" (input)="setNumber(curveStrength, $event)" />
           </div>
-          <div class="control">
+          <div class="gm-slider">
             <label for="tv-curve-radius">{{ 'tv.curveRadius' | t }}</label>
             <output for="tv-curve-radius">{{ curveRadius() }} %</output>
             <input id="tv-curve-radius" class="gm-range" type="range" min="0" max="20" [value]="curveRadius()" (input)="setNumber(curveRadius, $event)" />
@@ -87,8 +87,8 @@
 
       <app-sample-texts [fields]="sampleFields()" />
 
-      <div class="code">
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
+      <div class="gm-tool__code">
+        <pre class="gm-code gm-code--wrap" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
         <div>
           <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
             <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>

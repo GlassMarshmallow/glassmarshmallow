@@ -3,8 +3,8 @@
   <h1 id="filter-title">{{ 'filter.title' | t }}</h1>
   <p class="generator__lead gm-muted">{{ 'filter.lead' | t }}</p>
 
-  <div class="generator__layout">
-    <div class="preview-column">
+  <div class="gm-tool">
+    <div class="gm-tool__preview">
       <!-- Fondo de muestra con formas de colores (como en el generador de cristal), el filtro encima y el texto -->
       <div class="preview" [attr.data-theme]="previewTheme()">
         <span class="preview__shape preview__shape--cyan" aria-hidden="true"></span>
@@ -25,8 +25,8 @@
       </label>
     </div>
 
-    <div class="gm-card controls">
-      <fieldset class="segmented">
+    <div class="gm-card gm-tool__controls">
+      <fieldset class="gm-tool__group segmented">
         <legend>{{ 'filter.previewMode' | t }}</legend>
         <div class="gm-segmented">
           @for (option of themes; track option.value) {
@@ -40,19 +40,19 @@
 
       <app-color-picker [label]="'filter.color' | t" [alpha]="false" [(value)]="color" />
 
-      <div class="control">
+      <div class="gm-slider">
         <label for="filter-opacity">{{ 'filter.opacity' | t }}</label>
         <output for="filter-opacity">{{ opacity() }} %</output>
         <input id="filter-opacity" class="gm-range" type="range" min="0" max="60" step="0.5" [value]="opacity()" (input)="setOpacity($event)" aria-describedby="filter-opacity-help" />
-        <span id="filter-opacity-help" class="control__help gm-muted">{{ 'filter.opacityHelp' | t }}</span>
+        <span id="filter-opacity-help" class="gm-slider__help gm-muted">{{ 'filter.opacityHelp' | t }}</span>
       </div>
 
       @if (showSample()) {
         <app-sample-texts [fields]="sampleFields()" />
       }
 
-      <div class="code">
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
+      <div class="gm-tool__code">
+        <pre class="gm-code gm-code--wrap" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
         <div>
           <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
             <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>

@@ -51,3 +51,8 @@ code span[style*="--code-light:#098658" i] { color: var(--gm-mint-800); }     /*
 code span[style*="--code-light:#008000" i] { color: var(--gm-muted); }        /* comentarios */
 code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /* el resto (signos, espacios) */
 [data-theme="dark"] code span[style*="--code-dark"] { color: var(--code-dark); }
+
+/* Generadores (herramientas): el hueco de arriba y la entradilla, iguales en todos. La estructura de dentro es la del
+   framework (gm-tool, gm-slider) */
+.generator { padding-block: 4.5rem 0; }
+.generator__lead { max-width: 42.5rem; margin-bottom: 2.5rem; font-size: 1.05rem; line-height: 1.6; }

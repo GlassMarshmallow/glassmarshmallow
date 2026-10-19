@@ -3,9 +3,9 @@
   <h1 id="single-title">{{ 'single.title' | t }}</h1>
   <p class="generator__lead gm-muted">{{ 'single.lead' | t }}</p>
 
-  <div class="generator__layout">
+  <div class="gm-tool">
     <!-- Cuadrícula de fondo para que se note la transparencia -->
-    <div class="preview-column">
+    <div class="gm-tool__preview preview-column">
       <div class="preview">
         <div class="preview__gradient" [style.background]="gradient()"></div>
       </div>
@@ -14,10 +14,10 @@
       </button>
     </div>
 
-    <div class="gm-card controls">
+    <div class="gm-card gm-tool__controls">
       <app-color-picker [label]="'single.color' | t" [alpha]="false" [(value)]="color" />
 
-      <fieldset class="segmented">
+      <fieldset class="gm-tool__group segmented">
         <legend>{{ 'gradient.type' | t }}</legend>
         <div class="gm-segmented">
           @for (option of types; track option.value) {
@@ -30,7 +30,7 @@
       </fieldset>
 
       @if (type() === 'linear') {
-        <fieldset class="pad">
+        <fieldset class="gm-tool__group pad">
           <legend>{{ 'single.direction' | t }}</legend>
           <div class="pad__grid">
             @for (dir of directions; track $index) {
@@ -51,13 +51,13 @@
             }
           </div>
         </fieldset>
-        <div class="control">
+        <div class="gm-slider">
           <label for="single-angle">{{ 'gradient.angle' | t }}</label>
           <output for="single-angle">{{ angle() }}°</output>
           <input id="single-angle" class="gm-range" type="range" min="0" max="359" [value]="angle()" (input)="setNumber(angle, $event)" />
         </div>
       } @else {
-        <fieldset class="segmented">
+        <fieldset class="gm-tool__group segmented">
           <legend>{{ 'single.shape' | t }}</legend>
           <div class="gm-segmented">
             @for (option of shapes; track option.value) {
@@ -73,7 +73,7 @@
           {{ 'single.invert' | t }}
         </label>
         <p id="single-invert-help" class="invert__help gm-muted">{{ 'single.invertHelp' | t }}</p>
-        <fieldset class="pad">
+        <fieldset class="gm-tool__group pad">
           <legend>{{ 'single.position' | t }}</legend>
           <div class="pad__grid">
             @for (pos of positions; track pos.value) {
@@ -90,32 +90,32 @@
             }
           </div>
         </fieldset>
-        <div class="control">
+        <div class="gm-slider">
           <label for="single-size">{{ 'single.radius' | t }}</label>
           <output for="single-size">{{ radius() }} %</output>
           <input id="single-size" class="gm-range" type="range" min="10" max="150" [value]="radius()" (input)="setNumber(radius, $event)" aria-describedby="single-size-help" />
-          <span id="single-size-help" class="control__help gm-muted">{{ 'single.radiusHelp' | t }}</span>
+          <span id="single-size-help" class="gm-slider__help gm-muted">{{ 'single.radiusHelp' | t }}</span>
         </div>
       }
 
-      <div class="control">
+      <div class="gm-slider">
         <label for="single-start">{{ 'single.startOpacity' | t }}</label>
         <output for="single-start">{{ startOpacity() }} %</output>
         <input id="single-start" class="gm-range" type="range" min="0" max="100" [value]="startOpacity()" (input)="setNumber(startOpacity, $event)" />
       </div>
-      <div class="control">
+      <div class="gm-slider">
         <label for="single-end">{{ 'single.endOpacity' | t }}</label>
         <output for="single-end">{{ endOpacity() }} %</output>
         <input id="single-end" class="gm-range" type="range" min="0" max="100" [value]="endOpacity()" (input)="setNumber(endOpacity, $event)" />
       </div>
-      <div class="control">
+      <div class="gm-slider">
         <label for="single-extent">{{ 'single.extent' | t }}</label>
         <output for="single-extent">{{ extent() }} %</output>
         <input id="single-extent" class="gm-range" type="range" min="5" max="100" [value]="extent()" (input)="setNumber(extent, $event)" />
       </div>
 
-      <div class="code">
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
+      <div class="gm-tool__code">
+        <pre class="gm-code gm-code--wrap" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
         <div>
           <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
             <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>

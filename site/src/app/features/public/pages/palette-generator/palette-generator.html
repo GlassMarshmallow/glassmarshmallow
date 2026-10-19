@@ -3,9 +3,9 @@
   <h1 id="palette-title">{{ 'palette.title' | t }}</h1>
   <p class="generator__lead gm-muted">{{ 'palette.lead' | t }}</p>
 
-  <div class="generator__layout">
+  <div class="gm-tool">
     <!-- Página de ejemplo hecha con componentes del framework; la paleta entra por sus variables -->
-    <div class="preview-column">
+    <div class="gm-tool__preview">
       <div
         class="sim"
         role="img"
@@ -57,8 +57,8 @@
       </div>
     </div>
 
-    <div class="gm-card controls">
-      <fieldset class="segmented">
+    <div class="gm-card gm-tool__controls">
+      <fieldset class="gm-tool__group segmented">
         <legend>{{ 'filter.previewMode' | t }}</legend>
         <div class="gm-segmented">
           @for (option of themes; track option.value) {
@@ -72,7 +72,7 @@
 
       <app-color-picker [label]="'palette.base' | t" [alpha]="false" [(value)]="base" />
 
-      <fieldset class="segmented">
+      <fieldset class="gm-tool__group segmented">
         <legend>{{ 'palette.harmony' | t }}</legend>
         <div class="gm-segmented gm-segmented--stack">
           @for (option of harmonies; track option) {
@@ -108,8 +108,8 @@
 
       <app-sample-texts [fields]="sampleFields()" />
 
-      <div class="code">
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
+      <div class="gm-tool__code">
+        <pre class="gm-code gm-code--wrap" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
         <div>
           <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
             <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
