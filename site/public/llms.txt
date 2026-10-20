@@ -45,6 +45,8 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 - [Images and video](/docs/utilities/media): The aspect ratio of a box and how an image or a video fills its space. Like Tailwind's [aspect-ratio](https://tailwindcss.com/docs/aspect-ratio) and object-fit.
 - [Borders and radius](/docs/utilities/borders): Thin borders with the framework lines and rounded corners with its radii. They change on their own in dark mode.
 - [Shadows](/docs/utilities/shadows): The framework shadows, soft by day and deeper at night so they show on black.
+- [Gradients](/docs/utilities/gradients): Build your own gradients with classes: a **direction** (or a shape) and the start, middle and end **colors**. Like Tailwind's. To do it by eye and copy the result, there is the [gradient generator](/tools/gradient-generator).
+- [Filters](/docs/utilities/filters): They change how an element looks (blurred, brighter, gray…) or what shows **behind** it. They can be combined: `gm-brightness-110 gm-saturate-150`. Like Tailwind's.
 - [Effects](/docs/utilities/effects): Glass, background blur and opacity: what gives GlassMarshmallow its look.
 - [Animations](/docs/utilities/animations): Short movements so something appears, leaves or draws a little attention. **They all switch off on their own** if the person has asked for reduced motion in their system. Entering and leaving ones move only once: press **Replay** to see them again.
 - [Flex and alignment](/docs/utilities/flex): To lay pieces out in a row or a column and align them, without writing CSS.

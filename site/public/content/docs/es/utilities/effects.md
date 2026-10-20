@@ -25,7 +25,7 @@ Cristal, desenfoque del fondo y opacidad: lo que da a GlassMarshmallow su aspect
 </div>
 ```
 
-Para generar tu propio cristal con otros valores, usa el [generador de cristal](/tools/glass-generator).
+Para generar tu propio cristal con otros valores, usa el [generador de cristal](/tools/glass-generator), o constrúyelo con los [filtros del fondo](/docs/utilities/filters) (`gm-backdrop-blur-*`, `gm-backdrop-saturate-*`).
 
 ## Opacidad
 

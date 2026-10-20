@@ -161,6 +161,8 @@ export const en = {
       'utilities/interaction': 'Interaction and visibility',
       'utilities/borders': 'Borders and radius',
       'utilities/shadows': 'Shadows',
+      'utilities/gradients': 'Gradients',
+      'utilities/filters': 'Filters',
       'utilities/effects': 'Effects',
       'utilities/animations': 'Animations',
       'utilities/flex': 'Flex and alignment',

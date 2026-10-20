@@ -19,6 +19,23 @@ Thin borders with the framework lines and rounded corners with its radii. They c
 </div>
 ```
 
+## To build with
+
+| Class | What it sets |
+| --- | --- |
+| `gm-border-s` / `gm-border-e` / `gm-border-x` / `gm-border-y` | Only at the start / the end of the line / on the sides / top and bottom |
+| `gm-border-2` / `gm-border-4` | A 2 / 4 px border |
+| `gm-border-solid` / `-dashed` / `-dotted` | Solid / dashed / dotted |
+| `gm-border-sky`, `gm-border-pink`, `gm-border-accent`… | The border color (the same colors as the [gradients](/docs/utilities/gradients)) |
+
+```html
+<div class="gm-flex gm-gap-4 gm-flex-wrap">
+  <div class="gm-border-2 gm-border-dashed gm-border-pink gm-rounded-sm gm-p-4">dashed</div>
+  <div class="gm-border-s gm-border-4 gm-border-accent gm-p-4">start only</div>
+  <div class="gm-border gm-border-dotted gm-border-line-strong gm-rounded-sm gm-p-4">dotted</div>
+</div>
+```
+
 ## Radius
 
 | Class | Radius |
@@ -37,6 +54,17 @@ Thin borders with the framework lines and rounded corners with its radii. They c
   <div class="gm-theme-pink gm-theme-solid gm-p-4 gm-rounded-lg">lg</div>
   <div class="gm-theme-pink gm-theme-solid gm-px-6 gm-py-2 gm-rounded-pill">pill</div>
   <div class="gm-theme-pink gm-theme-solid gm-rounded-full gm-flex gm-items-center gm-justify-center" style="width: 4rem; height: 4rem">full</div>
+</div>
+```
+
+### Corner by corner
+
+`gm-rounded-{side}-{size}`: the sides are `t` (top), `b` (bottom), `s` (start) and `e` (end), and each corner, `ts`, `te`, `bs` and `be`; the sizes, `none`, `sm`, `md`, `lg`, `pill` and `full`.
+
+```html
+<div class="gm-flex gm-gap-4 gm-flex-wrap">
+  <div class="gm-theme-lavender gm-theme-solid gm-p-4 gm-rounded-t-lg">gm-rounded-t-lg</div>
+  <div class="gm-theme-lavender gm-theme-solid gm-p-4 gm-rounded-ts-lg gm-rounded-be-lg">ts and be</div>
 </div>
 ```
 

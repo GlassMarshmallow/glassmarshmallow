@@ -162,6 +162,8 @@ export const es: Dictionary = {
       'utilities/interaction': 'Interacción y visibilidad',
       'utilities/borders': 'Bordes y radios',
       'utilities/shadows': 'Sombras',
+      'utilities/gradients': 'Degradados',
+      'utilities/filters': 'Filtros',
       'utilities/effects': 'Efectos',
       'utilities/animations': 'Animaciones',
       'utilities/flex': 'Flex y alineación',

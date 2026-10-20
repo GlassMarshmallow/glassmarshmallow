@@ -35,7 +35,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
   {
     id: 'utilities',
     icon: 'gmi-gear',
-    pages: ['spacing', 'sizing', 'position', 'overflow', 'text', 'media', 'borders', 'shadows', 'effects', 'animations', 'flex', 'display', 'interaction', 'arbitrary'].map((p) => ({ path: `utilities/${p}` })),
+    pages: ['spacing', 'sizing', 'position', 'overflow', 'text', 'media', 'borders', 'shadows', 'gradients', 'filters', 'effects', 'animations', 'flex', 'display', 'interaction', 'arbitrary'].map((p) => ({ path: `utilities/${p}` })),
   },
   {
     id: 'content',

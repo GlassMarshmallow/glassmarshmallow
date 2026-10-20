@@ -10,7 +10,7 @@
     "test": "ng test",
     "icons:svg": "node scripts/copy-icons.mjs",
     "llms": "node ../build/build-llms.mjs",
-    "values": "node ../bin/glassmarshmallow.mjs build --content src --out src/glassmarshmallow.extra.css",
+    "values": "node ../bin/glassmarshmallow.mjs build --content src --content public/content --out src/glassmarshmallow.extra.css",
     "prestart": "npm run icons:svg && npm run llms",
     "prebuild": "npm run icons:svg && npm run llms && npm run values"
   },

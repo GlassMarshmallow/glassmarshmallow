@@ -1703,6 +1703,23 @@ Thin borders with the framework lines and rounded corners with its radii. They c
 </div>
 ```
 
+## To build with
+
+| Class | What it sets |
+| --- | --- |
+| `gm-border-s` / `gm-border-e` / `gm-border-x` / `gm-border-y` | Only at the start / the end of the line / on the sides / top and bottom |
+| `gm-border-2` / `gm-border-4` | A 2 / 4 px border |
+| `gm-border-solid` / `-dashed` / `-dotted` | Solid / dashed / dotted |
+| `gm-border-sky`, `gm-border-pink`, `gm-border-accent`… | The border color (the same colors as the [gradients](/docs/utilities/gradients)) |
+
+```html
+<div class="gm-flex gm-gap-4 gm-flex-wrap">
+  <div class="gm-border-2 gm-border-dashed gm-border-pink gm-rounded-sm gm-p-4">dashed</div>
+  <div class="gm-border-s gm-border-4 gm-border-accent gm-p-4">start only</div>
+  <div class="gm-border gm-border-dotted gm-border-line-strong gm-rounded-sm gm-p-4">dotted</div>
+</div>
+```
+
 ## Radius
 
 | Class | Radius |
@@ -1721,6 +1738,17 @@ Thin borders with the framework lines and rounded corners with its radii. They c
   <div class="gm-theme-pink gm-theme-solid gm-p-4 gm-rounded-lg">lg</div>
   <div class="gm-theme-pink gm-theme-solid gm-px-6 gm-py-2 gm-rounded-pill">pill</div>
   <div class="gm-theme-pink gm-theme-solid gm-rounded-full gm-flex gm-items-center gm-justify-center" style="width: 4rem; height: 4rem">full</div>
+</div>
+```
+
+### Corner by corner
+
+`gm-rounded-{side}-{size}`: the sides are `t` (top), `b` (bottom), `s` (start) and `e` (end), and each corner, `ts`, `te`, `bs` and `be`; the sizes, `none`, `sm`, `md`, `lg`, `pill` and `full`.
+
+```html
+<div class="gm-flex gm-gap-4 gm-flex-wrap">
+  <div class="gm-theme-lavender gm-theme-solid gm-p-4 gm-rounded-t-lg">gm-rounded-t-lg</div>
+  <div class="gm-theme-lavender gm-theme-solid gm-p-4 gm-rounded-ts-lg gm-rounded-be-lg">ts and be</div>
 </div>
 ```
 
@@ -1748,7 +1776,153 @@ The framework shadows, soft by day and deeper at night so they show on black.
 </div>
 ```
 
+## Inner and colored
+
+| Class | Shadow |
+| --- | --- |
+| `gm-shadow-inner` | Inwards, like a hollow |
+| `gm-shadow-sky` / `-blue` / `-lavender` / `-pink` / `-peach` / `-lemon` / `-mint` / `-coral` | A glow in the palette color |
+
+```html
+<div class="gm-flex gm-gap-6 gm-flex-wrap gm-p-4">
+  <div class="gm-bg-surface gm-rounded-sm gm-p-6 gm-shadow-inner">inner</div>
+  <div class="gm-bg-surface gm-rounded-sm gm-p-6 gm-shadow-pink">pink</div>
+  <div class="gm-bg-surface gm-rounded-sm gm-p-6 gm-shadow-mint">mint</div>
+</div>
+```
+
+Any other shadow, with an [arbitrary value](/docs/utilities/arbitrary): `gm-shadow-[0_0_0_4px_var(--gm-focus)]`.
+
+## Ring
+
+`gm-ring` draws a ring around (2 px, in the accent color) that follows the corners and does not clash with the shadow. Its width, `gm-ring-1` / `-2` / `-4`; its offset, `gm-ring-offset-0` / `-2` / `-4`; its color, `gm-ring-sky`, `gm-ring-mint`… (the same colors as the [gradients](/docs/utilities/gradients)).
+
+```html
+<div class="gm-flex gm-gap-6 gm-flex-wrap gm-p-4">
+  <button type="button" class="gm-btn gm-ring">Ring</button>
+  <button type="button" class="gm-btn gm-btn--secondary gm-ring gm-ring-4 gm-ring-mint gm-ring-offset-2">Thicker and offset</button>
+</div>
+```
+
 Shadows decorate: what separates a piece from the background so it can be understood must be a border or a contrasting background, not just the shadow.
+
+<!-- /docs/utilities/gradients -->
+# Gradients
+
+Build your own gradients with classes: a **direction** (or a shape) and the start, middle and end **colors**. Like Tailwind's. To do it by eye and copy the result, there is the [gradient generator](/tools/gradient-generator).
+
+## Direction and colors
+
+```html
+<div class="gm-bg-linear-to-r gm-from-sky gm-to-lavender gm-rounded-md gm-p-8"></div>
+```
+
+| Class | What it does |
+| --- | --- |
+| `gm-bg-linear-to-t` / `-tr` / `-r` / `-br` / `-b` / `-bl` / `-l` / `-tl` | Gradient towards the top, top right, right… |
+| `gm-bg-radial` | Circular, from the center |
+| `gm-bg-conic` | Conic, turning around the center |
+| `gm-from-…` | The start color |
+| `gm-via-…` | A middle color (optional) |
+| `gm-to-…` | The end color (transparent if not set) |
+| `gm-bg-none` | Removes the gradient |
+
+The colors are the palette ones (`sky`, `blue`, `lavender`, `pink`, `peach`, `lemon`, `mint`, `coral`), `white`, `black`, `transparent`, `current` (the text color) and the page ones (`body`, `surface`, `text`, `accent`, `line`). Any other one, with an [arbitrary value](/docs/utilities/arbitrary): `gm-from-[#5cdfeb]`.
+
+## With a middle color
+
+```html
+<div class="gm-bg-linear-to-r gm-from-sky gm-via-pink gm-to-mint gm-rounded-md gm-p-8"></div>
+```
+
+## Where each color starts and ends
+
+`gm-from-25%`, `gm-via-60%`, `gm-to-75%`…: from 0 to 100 in steps of 10 (plus 25 and 75). Before `gm-from-25%`, everything is the first color; after `gm-to-75%`, everything is the last.
+
+```html
+<div class="gm-bg-linear-to-r gm-from-sky gm-from-25% gm-to-lavender gm-to-75% gm-rounded-md gm-p-8"></div>
+```
+
+## Circular
+
+The lights behind the home page are circular gradients from a color to transparent.
+
+```html
+<div class="gm-bg-radial gm-from-pink gm-to-transparent gm-to-70% gm-rounded-md gm-p-16"></div>
+```
+
+## How to: a fade with no step
+
+To make something blend into the page (like the end of this site), the gradient goes from the page color to transparent. With only two colors you can see where it starts: a "step" shows. The trick is a middle color halfway, at half opacity, a bit before the middle: it starts unnoticed and reaches the page color smoothly.
+
+```html-code
+<div class="gm-absolute gm-inset-x-0 gm-bottom-0 gm-h-[17.5rem] gm-pointer-events-none
+            gm-bg-linear-to-t gm-from-body gm-via-[color-mix(in_srgb,var(--gm-bg)_50%,transparent)] gm-via-30% gm-to-transparent"></div>
+```
+
+It works in both modes: `gm-from-body` is the page background in light and dark, and the middle one is that same color at half (`color-mix(…)`).
+
+## Accessibility
+
+- If you put text on a gradient, check the contrast at the **lightest** and the **darkest** point of the background, not just one.
+- A gradient is decoration: do not use it as the only way to convey information.
+
+<!-- /docs/utilities/filters -->
+# Filters
+
+They change how an element looks (blurred, brighter, gray…) or what shows **behind** it. They can be combined: `gm-brightness-110 gm-saturate-150`. Like Tailwind's.
+
+## On the element itself
+
+| Class | What it does |
+| --- | --- |
+| `gm-filter-blur-sm` / `-md` / `-lg` / `-xl` | Blurs the element (4, 12, 24 and 48 px) |
+| `gm-brightness-50` … `gm-brightness-150` | Darker or lighter (50, 75, 90, 95, 100, 105, 110, 125, 150 %) |
+| `gm-contrast-50` … `gm-contrast-150` | Less or more contrast |
+| `gm-saturate-0` … `gm-saturate-200` | Less or more color (`0`: gray) |
+| `gm-grayscale` / `gm-grayscale-0` | Gray / with its color |
+| `gm-invert` / `gm-sepia` | Inverted colors / sepia tone |
+| `gm-drop-shadow-sm` / `gm-drop-shadow` / `gm-drop-shadow-lg` | A shadow with the shape of the content (icons, images with transparency) |
+| `gm-filter-none` | No filters |
+
+```html
+<div class="gm-flex gm-gap-4 gm-flex-wrap gm-items-center">
+  <img class="gm-rounded-sm gm-w-[6rem]" src="media/album-3.jpg" alt="Original cover">
+  <img class="gm-rounded-sm gm-w-[6rem] gm-grayscale" src="media/album-3.jpg" alt="Cover in gray">
+  <img class="gm-rounded-sm gm-w-[6rem] gm-brightness-125 gm-saturate-150" src="media/album-3.jpg" alt="Brighter, more colorful cover">
+  <img class="gm-rounded-sm gm-w-[6rem] gm-filter-blur-sm" src="media/album-3.jpg" alt="Blurred cover">
+</div>
+```
+
+## How to: blurred lights
+
+The colored lights in the generators are circles with a big blur:
+
+```html
+<div class="gm-relative gm-overflow-hidden gm-rounded-md gm-h-[12rem] gm-bg-[#1b2a4a]">
+  <span class="gm-absolute gm-top-[15%] gm-start-[10%] gm-w-[8rem] gm-h-[8rem] gm-rounded-full gm-bg-sky gm-filter-blur-lg"></span>
+  <span class="gm-absolute gm-bottom-[10%] gm-end-[15%] gm-w-[10rem] gm-h-[10rem] gm-rounded-full gm-bg-lavender gm-filter-blur-lg"></span>
+</div>
+```
+
+## On what is behind
+
+They need a somewhat transparent background to show: this is how [glass](/docs/utilities/effects) is built.
+
+| Class | What it does |
+| --- | --- |
+| `gm-backdrop-blur-sm` / `-md` / `-lg` / `-xl` | Blurs what is behind (7, 12, 20 and 32 px; `gm-blur-*` is the same with the short name) |
+| `gm-backdrop-saturate-100` … `gm-backdrop-saturate-200` | More color behind (iOS glass uses 180) |
+| `gm-backdrop-brightness-75` … `gm-backdrop-brightness-125` | Darker or lighter behind |
+
+```html-code
+<div class="gm-bg-[rgb(255_255_255_/_.4)] gm-backdrop-blur-lg gm-backdrop-saturate-180 gm-rounded-md gm-p-6">Glass built from parts</div>
+```
+
+## Accessibility
+
+- Do not put text on something blurred or low-contrast without checking it reads (4.5:1).
+- `gm-grayscale` or `gm-saturate-0` can show something disabled, but say it in text or with `disabled` too: color alone is not enough.
 
 <!-- /docs/utilities/effects -->
 # Effects
@@ -1778,7 +1952,7 @@ Glass, background blur and opacity: what gives GlassMarshmallow its look.
 </div>
 ```
 
-To make your own glass with other values, use the [glass generator](/tools/glass-generator).
+To make your own glass with other values, use the [glass generator](/tools/glass-generator), or build it with the [backdrop filters](/docs/utilities/filters) (`gm-backdrop-blur-*`, `gm-backdrop-saturate-*`).
 
 ## Opacity
 

@@ -25,7 +25,7 @@ Glass, background blur and opacity: what gives GlassMarshmallow its look.
 </div>
 ```
 
-To make your own glass with other values, use the [glass generator](/tools/glass-generator).
+To make your own glass with other values, use the [glass generator](/tools/glass-generator), or build it with the [backdrop filters](/docs/utilities/filters) (`gm-backdrop-blur-*`, `gm-backdrop-saturate-*`).
 
 ## Opacity
 
