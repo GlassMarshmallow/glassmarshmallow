@@ -1960,6 +1960,7 @@ To lay pieces out in a row or a column and align them, without writing CSS.
 | --- | --- |
 | `gm-items-start` / `-center` / `-end` / `-stretch` / `-baseline` | Alignment on the other axis (in a row, vertically) |
 | `gm-justify-start` / `-center` / `-end` | Where they gather on the main axis |
+| `gm-content-start` / `-center` / `-end` / `-between` / `-stretch` | Where the rows go when there is spare height (in a grid or a multi-line flex) |
 | `gm-justify-between` / `-around` / `-evenly` | How free space is shared |
 
 ```html
@@ -1996,6 +1997,24 @@ Changes how an element is displayed, or hides it, depending on the screen size.
 | `gm-inline` / `gm-inline-block` | Inline |
 | `gm-flex` / `gm-inline-flex` | Flex |
 | `gm-grid` | Grid |
+
+## Only `display`
+
+`gm-grid` is also the [12-column grid](/docs/layout/grid): its children span all 12 unless they have `gm-col-…`. For a simple grid, or to change only `display` and nothing else, use `gm-d-…`, with the same names as Bootstrap:
+
+| Class | `display` |
+| --- | --- |
+| `gm-d-none` / `gm-d-block` / `gm-d-inline` / `gm-d-inline-block` | none / block / inline / inline-block |
+| `gm-d-flex` / `gm-d-inline-flex` | flex / inline-flex |
+| `gm-d-grid` / `gm-d-inline-grid` | grid / inline-grid (no columns: one per row, or the ones you set) |
+| `gm-d-contents` | contents (the box disappears and its children belong to the parent) |
+
+```html
+<div class="gm-d-grid gm-gap-2">
+  <span class="gm-tag gm-theme-sky gm-theme-solid">One</span>
+  <span class="gm-tag gm-theme-sky gm-theme-solid">Two</span>
+</div>
+```
 
 ## By screen size
 
@@ -2109,8 +2128,38 @@ It reads HTML, Markdown, JavaScript, TypeScript, Angular, React, Vue, Svelte, As
 | `gm-shadow-[…]`, `gm-opacity-[…]`, `gm-blur-[…]` | Shadow, opacity and background blur |
 | `gm-grid-cols-[…]`, `gm-grid-rows-[…]`, `gm-col-span-[…]`, `gm-basis-[…]`, `gm-order-[…]` | Grid and flex |
 | `gm-aspect-[…]`, `gm-duration-[…]`, `gm-delay-[…]` | Aspect ratio and animation timing |
+| `gm-translate-[…]`, `gm-scale-[…]`, `gm-rotate-[…]`, `gm-transition-[…]` | Move, scale, rotate and transitions |
+| `gm-cursor-[…]`, `gm-d-[…]`, `gm-content-[…]`, `gm-grid-min-[…]` | Cursor, `display`, the text of `::before` / `::after` and the minimum width of `gm-grid--auto` |
 
 Inside the brackets, **`_` is a space**: `gm-grid-cols-[1fr_2fr]` writes `grid-template-columns: 1fr 2fr`. They also work with [breakpoints](/docs/layout/breakpoints): `gm-md-max-w-[52rem]`.
+
+## Variants: when it applies
+
+Before the utility, one or more variants with `:` say **when** the class applies, like in Tailwind. This way hover effects, dark mode, states and the `::before` / `::after` layers are written without CSS.
+
+```html-code
+<button class="gm-btn gm-hover:bg-[var(--gm-hover)] gm-focus-visible:shadow-[0_0_0_3px_var(--gm-focus)]">…</button>
+<button class="gm-pressed:bg-[var(--gm-primary)] gm-pressed:text-[var(--gm-on-primary)]" aria-pressed="false">…</button>
+<p class="gm-text-[#3a3a3c] gm-dark:text-[#d1d1d6]">…</p>
+<a class="gm-before:content-[→] gm-before:me-[.5rem]" href="…">Next</a>
+```
+
+| Variant | Applies… |
+| --- | --- |
+| `gm-hover:` | on hover |
+| `gm-focus:` / `gm-focus-visible:` / `gm-focus-within:` | on focus / on keyboard focus / when something inside has focus |
+| `gm-active:` / `gm-disabled:` / `gm-checked:` | while pressing / when disabled / when checked |
+| `gm-first:` / `gm-last:` / `gm-odd:` / `gm-even:` | to the first / the last / the odd / the even of its siblings |
+| `gm-pressed:` / `gm-selected:` / `gm-expanded:` / `gm-current:` / `gm-invalid:` | with `aria-pressed`, `aria-selected`, `aria-expanded` or `aria-invalid` set to `true`, or with `aria-current` |
+| `gm-before:` / `gm-after:` / `gm-placeholder:` | on the `::before` layer, on `::after` or on a field's placeholder |
+| `gm-dark:` / `gm-light:` | in dark / light mode (`data-theme`) |
+| `gm-group-hover:` / `gm-group-focus-within:` | when the ancestor with the `gm-group` class is hovered or focused |
+| `gm-motion-safe:` / `gm-motion-reduce:` | if the person has not asked for less motion / if they have |
+
+- They can be combined: `gm-dark:hover:bg-[…]` (in dark mode, on hover).
+- With a breakpoint, the breakpoint goes first: `gm-md-hover:translate-[0_-1px]`.
+- `gm-before:` and `gm-after:` already draw the layer; its text is set with `gm-before:content-[…]` (no quotes: the program adds them).
+- Hover movements are better with `gm-motion-safe:`, to respect people who ask for less motion.
 
 ## Example
 
@@ -3888,6 +3937,21 @@ For email and social links outside the footer (for example, on the home page): `
 
 GitHub and LinkedIn are in the GlassMarshmallow icons (`gmi-github`, `gmi-linkedin`), with their official shape: brands do not allow their logo to be redrawn. For other brands, use their official SVG or the one from [Simple Icons](https://simpleicons.org) (free license), with `fill="currentColor"` so it takes the text color.
 
+## Simple footer
+
+`gm-site-footer`: a row of links and the credits below, on the page background with a line on top. It is the one on this site. Over the full-page lights background (`gm-backdrop`), it turns white in light mode and black in dark mode, with no line, to continue the gradient at the end. With `gm-has-tabbar` it leaves room for the phone tab bar.
+
+```html
+<footer class="gm-site-footer">
+  <div class="gm-site-footer__inner">
+    <nav class="gm-site-footer__links" aria-label="Footer">
+      <a href="#">Docs</a><a href="#">Examples</a><a href="#">Icons</a>
+    </nav>
+    <p class="gm-site-footer__credit gm-muted gm-small">Designed and built by <a class="gm-site-footer__author" href="#">Sara Paez Yamuza</a> · MIT License</p>
+  </div>
+</footer>
+```
+
 ## Accessibility
 
 - Icon-only links have an `aria-label` (“Send an email”, “GitHub, opens in a new tab”).
@@ -4130,6 +4194,29 @@ Hover over the links: in the first bar they take the accent color (pink by day, 
 To change the accent color of the whole site (also buttons, focus and fields), see [Another accent color](/docs/getting-started/css-variables#another-accent-color).
 
 For the whole site, put the variables in `:root` (and the night ones in `[data-theme="dark"]`), as in [CSS variables](/docs/getting-started/css-variables).
+
+## Like the one on this site
+
+This documentation's bar combines parts that work for any site with many pages:
+
+- `gm-navbar__start`: the brand and the links together on the left; the rest (search, actions) stays on the right.
+- `gm-navbar__icon`: an icon link in the actions, like the GitHub one, with a 44 px target.
+- `gm-glass-logo--backdrop`: the glass logo with the home page lights behind it in light mode, instead of the shadow.
+- `gm-navbar--dense`: on phones, brand, logo and buttons closer together so search, language and theme fit; below 360 px, only the logo (screen readers still read the name).
+
+```html-code
+<header class="gm-navbar gm-navbar--dense">
+  <div class="gm-navbar__start">
+    <a class="gm-navbar__brand" href="/"><img class="gm-navbar__logo gm-glass-logo gm-glass-logo--backdrop" src="logo.svg" alt=""><span>GlassMarshmallow</span></a>
+    <nav class="gm-navbar__nav" aria-label="Main">…</nav>
+  </div>
+  <div class="gm-search gm-search--navbar" role="search">…</div>
+  <div class="gm-navbar__actions">
+    <a class="gm-navbar__icon" href="https://github.com/…" aria-label="GitHub"><svg aria-hidden="true">…</svg></a>
+    …
+  </div>
+</header>
+```
 
 ## On phones
 
@@ -4929,6 +5016,28 @@ An icon-only button: sighted people see the cross; screen reader users hear “D
 - To hide something from everyone: use `hidden` or `display: none`.
 - To hide something only from screen readers (a decorative icon): use `aria-hidden="true"`.
 - If the text would help everyone, better to show it.
+
+<!-- /docs/helpers/hit-area -->
+# Hit area
+
+`gm-hit-area` enlarges the area you can press up to 44 × 44 px without changing how it looks: for icon links or buttons that look smaller. It is what the framework buttons already do inside.
+
+## Example
+
+```html
+<a class="gm-hit-area gm-inline-flex gm-p-1" href="#" aria-label="GitHub"><i class="gmi gmi-github" aria-hidden="true"></i></a>
+```
+
+It looks the size of the icon, but responds to touch in a 44 px square around it.
+
+## How it works
+
+An invisible layer (`::after`) sticks out of the element as much as needed to reach 44 px wide and tall, centered. If the element is already bigger, the layer does not enlarge it.
+
+## Accessibility
+
+- WCAG 2.5.5 (AAA) asks for 44 × 44 px for anything pressed; WCAG 2.5.8 (AA), 24 × 24 px at least.
+- Leave space between two nearby hit areas: if they overlap, a finger may press the wrong one.
 
 <!-- /docs/helpers/skip-link -->
 # Skip link

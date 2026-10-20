@@ -47,6 +47,21 @@ For email and social links outside the footer (for example, on the home page): `
 
 GitHub and LinkedIn are in the GlassMarshmallow icons (`gmi-github`, `gmi-linkedin`), with their official shape: brands do not allow their logo to be redrawn. For other brands, use their official SVG or the one from [Simple Icons](https://simpleicons.org) (free license), with `fill="currentColor"` so it takes the text color.
 
+## Simple footer
+
+`gm-site-footer`: a row of links and the credits below, on the page background with a line on top. It is the one on this site. Over the full-page lights background (`gm-backdrop`), it turns white in light mode and black in dark mode, with no line, to continue the gradient at the end. With `gm-has-tabbar` it leaves room for the phone tab bar.
+
+```html
+<footer class="gm-site-footer">
+  <div class="gm-site-footer__inner">
+    <nav class="gm-site-footer__links" aria-label="Footer">
+      <a href="#">Docs</a><a href="#">Examples</a><a href="#">Icons</a>
+    </nav>
+    <p class="gm-site-footer__credit gm-muted gm-small">Designed and built by <a class="gm-site-footer__author" href="#">Sara Paez Yamuza</a> · MIT License</p>
+  </div>
+</footer>
+```
+
 ## Accessibility
 
 - Icon-only links have an `aria-label` (“Send an email”, “GitHub, opens in a new tab”).

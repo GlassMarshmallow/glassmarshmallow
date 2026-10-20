@@ -205,6 +205,7 @@ export const en = {
       'components/tool': 'Tool',
       'components/tooltip': 'Tooltip',
       'helpers/visually-hidden': 'Visually hidden',
+      'helpers/hit-area': 'Hit area',
       'helpers/skip-link': 'Skip link',
       'helpers/gradient-text': 'Gradient text',
       'helpers/text-outline': 'Text outline',

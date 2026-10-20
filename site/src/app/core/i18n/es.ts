@@ -206,6 +206,7 @@ export const es: Dictionary = {
       'components/tool': 'Herramienta',
       'components/tooltip': 'Tooltip',
       'helpers/visually-hidden': 'Texto oculto',
+      'helpers/hit-area': 'Zona táctil',
       'helpers/skip-link': 'Saltar al contenido',
       'helpers/gradient-text': 'Texto con degradado',
       'helpers/text-outline': 'Contorno de texto',

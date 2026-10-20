@@ -123,6 +123,29 @@ To change the accent color of the whole site (also buttons, focus and fields), s
 
 For the whole site, put the variables in `:root` (and the night ones in `[data-theme="dark"]`), as in [CSS variables](/docs/getting-started/css-variables).
 
+## Like the one on this site
+
+This documentation's bar combines parts that work for any site with many pages:
+
+- `gm-navbar__start`: the brand and the links together on the left; the rest (search, actions) stays on the right.
+- `gm-navbar__icon`: an icon link in the actions, like the GitHub one, with a 44 px target.
+- `gm-glass-logo--backdrop`: the glass logo with the home page lights behind it in light mode, instead of the shadow.
+- `gm-navbar--dense`: on phones, brand, logo and buttons closer together so search, language and theme fit; below 360 px, only the logo (screen readers still read the name).
+
+```html-code
+<header class="gm-navbar gm-navbar--dense">
+  <div class="gm-navbar__start">
+    <a class="gm-navbar__brand" href="/"><img class="gm-navbar__logo gm-glass-logo gm-glass-logo--backdrop" src="logo.svg" alt=""><span>GlassMarshmallow</span></a>
+    <nav class="gm-navbar__nav" aria-label="Main">…</nav>
+  </div>
+  <div class="gm-search gm-search--navbar" role="search">…</div>
+  <div class="gm-navbar__actions">
+    <a class="gm-navbar__icon" href="https://github.com/…" aria-label="GitHub"><svg aria-hidden="true">…</svg></a>
+    …
+  </div>
+</header>
+```
+
 ## On phones
 
 Below 860 px, the `.gm-navbar__nav` links are hidden and move to the [tab bar](/docs/components/tabbar) at the bottom. Between 860 and 1024 px the name next to the logo is hidden so everything fits.

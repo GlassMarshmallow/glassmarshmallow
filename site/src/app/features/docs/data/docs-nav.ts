@@ -55,7 +55,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
   {
     id: 'helpers',
     icon: 'gmi-link',
-    pages: ['visually-hidden', 'skip-link', 'gradient-text', 'text-outline'].map((p) => ({ path: `helpers/${p}` })),
+    pages: ['visually-hidden', 'hit-area', 'skip-link', 'gradient-text', 'text-outline'].map((p) => ({ path: `helpers/${p}` })),
   },
   {
     id: 'guides',

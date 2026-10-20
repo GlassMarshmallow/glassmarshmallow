@@ -19,6 +19,7 @@ To lay pieces out in a row or a column and align them, without writing CSS.
 | --- | --- |
 | `gm-items-start` / `-center` / `-end` / `-stretch` / `-baseline` | Alignment on the other axis (in a row, vertically) |
 | `gm-justify-start` / `-center` / `-end` | Where they gather on the main axis |
+| `gm-content-start` / `-center` / `-end` / `-between` / `-stretch` | Where the rows go when there is spare height (in a grid or a multi-line flex) |
 | `gm-justify-between` / `-around` / `-evenly` | How free space is shared |
 
 ```html

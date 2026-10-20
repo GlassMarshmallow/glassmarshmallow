@@ -102,6 +102,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 ## Helpers
 
 - [Visually hidden](/docs/helpers/visually-hidden): `.gm-visually-hidden` hides text visually but keeps it for screen readers. Use it to give context that the design shows but cannot be read.
+- [Hit area](/docs/helpers/hit-area): `gm-hit-area` enlarges the area you can press up to 44 × 44 px without changing how it looks: for icon links or buttons that look smaller. It is what the framework buttons already do inside.
 - [Skip link](/docs/helpers/skip-link): A link at the start of the page that goes straight to the content, skipping the menu. It is hidden until reached with the Tab key.
 - [Gradient text](/docs/helpers/gradient-text): Paints text with the framework's color gradient. At night it switches to a plain color, so it reads well on a dark background.
 - [Text outline](/docs/helpers/text-outline): `.gm-text-outline` adds, **in dark mode**, a thin black outline and a soft shadow to text. It keeps text readable over lights, images or the TV effect. In light mode it changes nothing.

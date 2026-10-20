@@ -123,6 +123,29 @@ Para cambiar el color de acento de toda la web (también el de los botones, el f
 
 Para toda la web, pon las variables en `:root` (y en `[data-theme="dark"]` las de noche), como en [Variables CSS](/docs/getting-started/css-variables).
 
+## Como la de esta web
+
+La barra de esta documentación junta piezas que sirven para cualquier web con muchas páginas:
+
+- `gm-navbar__start`: la marca y los enlaces juntos a la izquierda; lo demás (buscador, acciones) queda a la derecha.
+- `gm-navbar__icon`: un enlace con icono en las acciones, como el de GitHub, con la zona que se pulsa de 44 px.
+- `gm-glass-logo--backdrop`: el logo de cristal con el fondo de luces de la portada detrás en claro, en vez de la sombra.
+- `gm-navbar--dense`: en el móvil, marca, logo y botones más juntos para que quepan el buscador, el idioma y el tema; por debajo de 360 px, solo el logo (el nombre lo siguen leyendo los lectores de pantalla).
+
+```html-code
+<header class="gm-navbar gm-navbar--dense">
+  <div class="gm-navbar__start">
+    <a class="gm-navbar__brand" href="/"><img class="gm-navbar__logo gm-glass-logo gm-glass-logo--backdrop" src="logo.svg" alt=""><span>GlassMarshmallow</span></a>
+    <nav class="gm-navbar__nav" aria-label="Principal">…</nav>
+  </div>
+  <div class="gm-search gm-search--navbar" role="search">…</div>
+  <div class="gm-navbar__actions">
+    <a class="gm-navbar__icon" href="https://github.com/…" aria-label="GitHub"><svg aria-hidden="true">…</svg></a>
+    …
+  </div>
+</header>
+```
+
 ## En el móvil
 
 Por debajo de 860 px, los enlaces de `.gm-navbar__nav` se esconden y pasan a la [barra de pestañas](/docs/components/tabbar) de abajo. Entre 860 y 1024 px se esconde el nombre junto al logo para que quepa todo.

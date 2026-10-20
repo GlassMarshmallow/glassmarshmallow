@@ -20,6 +20,7 @@ Para poner piezas en fila o en columna y alinearlas, sin escribir CSS.
 | `gm-items-start` / `-center` / `-end` / `-stretch` / `-baseline` | Alineación en el otro eje (en una fila, en alto) |
 | `gm-justify-start` / `-center` / `-end` | Hacia dónde se juntan en el eje principal |
 | `gm-justify-between` / `-around` / `-evenly` | Cómo se reparte el espacio libre |
+| `gm-content-start` / `-center` / `-end` / `-between` / `-stretch` | Dónde van las filas cuando sobra alto (en una cuadrícula o un flex de varias líneas) |
 
 ```html
 <div class="gm-flex gm-items-center gm-justify-between gm-border gm-rounded-sm gm-p-3">

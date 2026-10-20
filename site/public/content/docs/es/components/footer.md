@@ -47,6 +47,21 @@ Para el correo y las redes fuera del pie (por ejemplo, en la portada): `.gm-soci
 
 GitHub y LinkedIn están en los iconos de GlassMarshmallow (`gmi-github`, `gmi-linkedin`), con su forma oficial: las marcas no permiten redibujar su logo. Para otras marcas, usa su SVG oficial o el de [Simple Icons](https://simpleicons.org) (licencia libre), con `fill="currentColor"` para que tome el color del texto.
 
+## Pie sencillo
+
+`gm-site-footer`: una fila de enlaces y debajo los créditos, sobre el fondo de la página con una línea arriba. Es el de esta web. Sobre el fondo de luces a toda la página (`gm-backdrop`), pasa a blanco en claro y negro en oscuro, sin línea, para continuar el degradado del final. Con `gm-has-tabbar` deja sitio a la barra de pestañas del móvil.
+
+```html
+<footer class="gm-site-footer">
+  <div class="gm-site-footer__inner">
+    <nav class="gm-site-footer__links" aria-label="Pie">
+      <a href="#">Docs</a><a href="#">Ejemplos</a><a href="#">Iconos</a>
+    </nav>
+    <p class="gm-site-footer__credit gm-muted gm-small">Diseñado y desarrollado por <a class="gm-site-footer__author" href="#">Sara Paez Yamuza</a> · Licencia MIT</p>
+  </div>
+</footer>
+```
+
 ## Accesibilidad
 
 - Los enlaces con solo icono llevan `aria-label` («Enviar un correo», «GitHub, se abre en una pestaña nueva»).
