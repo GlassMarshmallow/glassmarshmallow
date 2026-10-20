@@ -11,10 +11,10 @@ import { parseColor } from '../../../../shared/utils/color';
  */
 import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
 import { BackLink } from '../../../../shared/components/back-link/back-link';
-import { HighlightPipe } from '../../../../shared/utils/highlight';
+import { CodeOutput } from '../../../../shared/components/code-output/code-output';
 @Component({
   selector: 'app-filter-generator',
-  imports: [HighlightPipe, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
+  imports: [CodeOutput, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './filter-generator.html',
   styleUrl: './filter-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,9 +41,6 @@ export class FilterGenerator {
     { id: 'filter-text-body', label: 'common.textBody', placeholder: this.i18n.t('filter.sampleText'), value: this.sampleText },
     { id: 'filter-text-small', label: 'common.textSmall', placeholder: this.i18n.t('filter.sampleSmall'), value: this.sampleSmall },
   ]);
-  readonly copied = signal(false);
-  readonly announcement = signal('');
-  private resetTimer?: ReturnType<typeof setTimeout>;
 
   readonly filter = computed(() => {
     const c = parseColor(this.color()) ?? { r: 0, g: 0, b: 0 };
@@ -58,17 +55,5 @@ export class FilterGenerator {
 
   toggleSample(event: Event) {
     this.showSample.set((event.target as HTMLInputElement).checked);
-  }
-
-  async copy() {
-    try {
-      await navigator.clipboard.writeText(this.css());
-      this.copied.set(true);
-      this.announcement.set(this.i18n.t('common.cssCopied'));
-      clearTimeout(this.resetTimer);
-      this.resetTimer = setTimeout(() => this.copied.set(false), 2000);
-    } catch {
-      this.copied.set(false);
-    }
   }
 }

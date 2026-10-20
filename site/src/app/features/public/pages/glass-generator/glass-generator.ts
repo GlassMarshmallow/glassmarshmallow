@@ -14,10 +14,10 @@ const toRgbList = (color: string): string => {
 /** Generador de efecto cristal: se ajustan los valores, se ve el resultado y se copia el CSS. */
 import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
 import { BackLink } from '../../../../shared/components/back-link/back-link';
-import { HighlightPipe } from '../../../../shared/utils/highlight';
+import { CodeOutput } from '../../../../shared/components/code-output/code-output';
 @Component({
   selector: 'app-glass-generator',
-  imports: [HighlightPipe, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
+  imports: [CodeOutput, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './glass-generator.html',
   styleUrl: './glass-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,26 +29,25 @@ export class GlassGenerator {
   readonly color = signal('#ffffff');
   readonly outline = signal(30);
   readonly radius = signal(16);
-  readonly copied = signal(false);
   readonly sampleTitle = signal('');
   readonly sampleText = signal('');
   readonly sampleFields = computed<SampleField[]>(() => [
     { id: 'glass-text-title', label: 'common.textTitle', placeholder: this.i18n.t('glass.sampleTitle'), value: this.sampleTitle },
     { id: 'glass-text-body', label: 'common.textBody', placeholder: 'GlassMarshmallow', value: this.sampleText },
   ]);
-  private resetTimer?: ReturnType<typeof setTimeout>;
 
   private readonly rgb = computed(() => toRgbList(this.color()));
 
   /** Las mismas declaraciones que se copian, para pintar la tarjeta de muestra. */
-  private readonly declarations = computed(() => [
-    `background: rgba(${this.rgb()}, ${this.transparency() / 100});`,
-    `border-radius: ${this.radius()}px;`,
-    `box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);`,
-    `backdrop-filter: blur(${this.blur()}px);`,
-    `-webkit-backdrop-filter: blur(${this.blur()}px);`,
-    `border: 1px solid rgba(${this.rgb()}, ${this.outline() / 100});`,
+  private readonly entries = computed<[string, string][]>(() => [
+    ['background', `rgba(${this.rgb()}, ${this.transparency() / 100})`],
+    ['border-radius', `${this.radius()}px`],
+    ['box-shadow', '0 4px 30px rgba(0, 0, 0, 0.1)'],
+    ['backdrop-filter', `blur(${this.blur()}px)`],
+    ['-webkit-backdrop-filter', `blur(${this.blur()}px)`],
+    ['border', `1px solid rgba(${this.rgb()}, ${this.outline() / 100})`],
   ]);
+  private readonly declarations = computed(() => this.entries().map(([property, value]) => `${property}: ${value};`));
 
   readonly cardStyle = computed(() => this.declarations().join(' '));
   readonly css = computed(() => [`/* ${this.i18n.t('common.generatedWith')} */`, ...this.declarations()].join('\n'));
@@ -63,17 +62,5 @@ export class GlassGenerator {
     this.color.set('#ffffff');
     this.outline.set(30);
     this.radius.set(16);
-  }
-
-  async copy() {
-    try {
-      await navigator.clipboard.writeText(this.css());
-      this.copied.set(true);
-      clearTimeout(this.resetTimer);
-      this.resetTimer = setTimeout(() => this.copied.set(false), 2000);
-    } catch {
-      // Sin permiso para el portapapeles: el código se puede seleccionar a mano
-      this.copied.set(false);
-    }
   }
 }

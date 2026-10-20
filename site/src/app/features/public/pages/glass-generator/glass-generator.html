@@ -40,17 +40,9 @@
 
       <app-sample-texts [fields]="sampleFields()" />
 
-      <div class="gm-tool__code">
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
-        <div class="code__actions">
-          <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
-            <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
-            {{ (copied() ? 'common.copied' : 'common.copyCss') | t }}
-          </button>
-          <button type="button" class="gm-btn gm-btn--ghost gm-btn--sm" (click)="reset()">{{ 'glass.reset' | t }}</button>
-        </div>
-        <span class="gm-visually-hidden" aria-live="polite">{{ copied() ? ('common.cssCopied' | t) : '' }}</span>
-      </div>
+      <app-code-output [css]="css()" className="glass">
+        <button type="button" class="gm-btn gm-btn--ghost gm-btn--sm" (click)="reset()">{{ 'glass.reset' | t }}</button>
+      </app-code-output>
     </div>
   </div>
 </section>

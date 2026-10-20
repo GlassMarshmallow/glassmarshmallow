@@ -1,5 +1,5 @@
 import { RangeFill } from '../../../../shared/directives/range-fill';
-import { HighlightPipe } from '../../../../shared/utils/highlight';
+import { CodeOutput } from '../../../../shared/components/code-output/code-output';
 import { ChangeDetectionStrategy, Component, ElementRef, computed, inject, signal, viewChild } from '@angular/core';
 import { I18nService } from '../../../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
@@ -46,7 +46,7 @@ const POSITIONS: Option<string>[] = [
 import { BackLink } from '../../../../shared/components/back-link/back-link';
 @Component({
   selector: 'app-single-color-gradient',
-  imports: [HighlightPipe, RangeFill, ColorPicker, TranslatePipe, BackLink],
+  imports: [CodeOutput, RangeFill, ColorPicker, TranslatePipe, BackLink],
   templateUrl: './single-color-gradient.html',
   styleUrl: './single-color-gradient.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -79,9 +79,6 @@ export class SingleColorGradient {
   readonly extent = signal(100);
   /** Radial invertido: transparente en el centro y el color hacia los bordes (sombra hacia dentro) */
   readonly inverted = signal(false);
-  readonly copied = signal(false);
-  readonly announcement = signal('');
-  private resetTimer?: ReturnType<typeof setTimeout>;
 
   private readonly rgb = computed(() => {
     const c = parseColor(this.color()) ?? { r: 140, g: 87, b: 233 };
@@ -121,17 +118,5 @@ export class SingleColorGradient {
 
   closeFullscreen() {
     this.fullscreen().nativeElement.close();
-  }
-
-  async copy() {
-    try {
-      await navigator.clipboard.writeText(this.css());
-      this.copied.set(true);
-      this.announcement.set(this.i18n.t('common.cssCopied'));
-      clearTimeout(this.resetTimer);
-      this.resetTimer = setTimeout(() => this.copied.set(false), 2000);
-    } catch {
-      this.copied.set(false);
-    }
   }
 }

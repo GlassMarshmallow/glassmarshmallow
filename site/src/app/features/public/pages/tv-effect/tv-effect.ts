@@ -4,7 +4,7 @@ import { TranslatePipe } from '../../../../core/i18n/translate.pipe';
 import { BackLink } from '../../../../shared/components/back-link/back-link';
 import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
 import { RangeFill } from '../../../../shared/directives/range-fill';
-import { HighlightPipe } from '../../../../shared/utils/highlight';
+import { CodeOutput } from '../../../../shared/components/code-output/code-output';
 
 /**
  * Efecto de televisor antiguo (el de la portada en modo oscuro): líneas horizontales, grano, viñeta y esquinas
@@ -13,7 +13,7 @@ import { HighlightPipe } from '../../../../shared/utils/highlight';
  */
 @Component({
   selector: 'app-tv-effect',
-  imports: [HighlightPipe, BackLink, SampleTexts, TranslatePipe, RangeFill],
+  imports: [CodeOutput, BackLink, SampleTexts, TranslatePipe, RangeFill],
   templateUrl: './tv-effect.html',
   styleUrl: './tv-effect.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -48,9 +48,6 @@ export class TvEffect {
     { id: 'tv-text-body', label: 'common.textBody', placeholder: this.i18n.t('tv.sampleText'), value: this.sampleText },
   ]);
 
-  readonly copied = signal(false);
-  readonly announcement = signal('');
-  private resetTimer?: ReturnType<typeof setTimeout>;
 
   private readonly em = (px: number) => `${+(px / 16).toFixed(4)}em`;
 
@@ -109,17 +106,5 @@ export class TvEffect {
 
   toggle(target: { set: (v: boolean) => void }, event: Event) {
     target.set((event.target as HTMLInputElement).checked);
-  }
-
-  async copy() {
-    try {
-      await navigator.clipboard.writeText(this.css());
-      this.copied.set(true);
-      this.announcement.set(this.i18n.t('common.cssCopied'));
-      clearTimeout(this.resetTimer);
-      this.resetTimer = setTimeout(() => this.copied.set(false), 2000);
-    } catch {
-      this.copied.set(false);
-    }
   }
 }

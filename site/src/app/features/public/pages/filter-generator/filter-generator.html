@@ -51,16 +51,7 @@
         <app-sample-texts [fields]="sampleFields()" />
       }
 
-      <div class="gm-tool__code">
-        <pre class="gm-code gm-code--wrap" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
-        <div>
-          <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
-            <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
-            {{ (copied() ? 'common.copied' : 'common.copyCss') | t }}
-          </button>
-        </div>
-      </div>
-      <span class="gm-visually-hidden" aria-live="polite">{{ announcement() }}</span>
+      <app-code-output [css]="css()" className="overlay" />
     </div>
   </div>
 </section>

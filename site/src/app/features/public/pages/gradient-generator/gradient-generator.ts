@@ -32,10 +32,10 @@ const PRESETS: Preset[] = [
 /** Generador de degradados: se eligen el tipo, el ángulo y los colores, y se copia el CSS. */
 import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
 import { BackLink } from '../../../../shared/components/back-link/back-link';
-import { HighlightPipe } from '../../../../shared/utils/highlight';
+import { CodeOutput } from '../../../../shared/components/code-output/code-output';
 @Component({
   selector: 'app-gradient-generator',
-  imports: [HighlightPipe, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
+  imports: [CodeOutput, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './gradient-generator.html',
   styleUrl: './gradient-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -54,7 +54,6 @@ export class GradientGenerator {
   readonly type = signal<GradientType>('linear');
   readonly angle = signal(45);
   readonly stops = signal<ColorStop[]>([]);
-  readonly copied = signal(false);
   readonly showSample = signal(true);
   readonly sampleTitle = signal('');
   readonly sampleText = signal('');
@@ -64,7 +63,6 @@ export class GradientGenerator {
   ]);
   readonly announcement = signal('');
   private nextId = 0;
-  private resetTimer?: ReturnType<typeof setTimeout>;
 
   readonly gradient = computed(() => {
     const stops = [...this.stops()]
@@ -129,18 +127,5 @@ export class GradientGenerator {
     if (this.stops().length <= MIN_STOPS) return;
     this.stops.update((stops) => stops.filter((stop) => stop.id !== id));
     this.announcement.set(this.i18n.t('gradient.removed', { n: index + 1 }));
-  }
-
-  async copy() {
-    try {
-      await navigator.clipboard.writeText(this.css());
-      this.copied.set(true);
-      this.announcement.set(this.i18n.t('common.cssCopied'));
-      clearTimeout(this.resetTimer);
-      this.resetTimer = setTimeout(() => this.copied.set(false), 2000);
-    } catch {
-      // Sin permiso para el portapapeles: el código se puede seleccionar a mano
-      this.copied.set(false);
-    }
   }
 }
