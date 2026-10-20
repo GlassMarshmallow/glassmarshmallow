@@ -10,6 +10,7 @@
 //
 // Dentro de los corchetes, «_» es un espacio: gm-grid-cols-[1fr_2fr] → grid-template-columns: 1fr 2fr.
 // Con variantes, solo cuando se cumple: gm-hover:bg-[…], gm-dark:text-[…], gm-pressed:bg-[…], gm-before:content-[→].
+// Cualquier propiedad sin utilidad, con gm-[propiedad:valor] (también con variantes: gm-light:[filter:none]).
 import { existsSync, readdirSync, readFileSync, statSync, watch, writeFileSync } from 'node:fs';
 import { extname, join, relative, resolve } from 'node:path';
 
@@ -43,7 +44,11 @@ const UTILITIES = {
   leading: (v) => ({ 'line-height': v }),
   tracking: (v) => ({ 'letter-spacing': v }),
   // Fondo, bordes y efectos
-  bg: (v) => (isColor(v) ? { 'background-color': v } : { background: v }),
+  // Con pista de tipo, como en Tailwind: gm-bg-[length:2rem_2rem] (tamaño) o gm-bg-[position:top] (posición)
+  bg: (v) => (v.startsWith('length:') ? { 'background-size': v.slice(7) }
+    : v.startsWith('position:') ? { 'background-position': v.slice(9) }
+    : /^(url\(|(repeating-)?(linear|radial|conic)-gradient\()/.test(v) ? { 'background-image': v }
+    : isColor(v) ? { 'background-color': v } : { background: v }),
   rounded: (v) => ({ 'border-radius': v }),
   border: (v) => (isColor(v) ? { 'border-color': v } : { 'border-width': v, 'border-style': 'solid' }),
   shadow: (v) => ({ 'box-shadow': v }),
@@ -89,7 +94,9 @@ const VARIANTS = {
   // Capas que dibuja el CSS
   before: { element: '::before' }, after: { element: '::after' }, placeholder: { element: '::placeholder' },
   // Modo de color (data-theme en <html> o en una parte de la página)
-  dark: { parent: '[data-theme="dark"] ' }, light: { parent: '[data-theme="light"] ' },
+  dark: { parent: '[data-theme="dark"] ' },
+  // Claro: con data-theme="light" o sin decir nada (el modo por defecto del framework)
+  light: { parent: ':is([data-theme="light"], :root:not([data-theme="dark"])) ' },
   // Cuando se pasa el ratón o se enfoca el antepasado con la clase gm-group
   'group-hover': { parent: '.gm-group:hover ' }, 'group-focus-within': { parent: '.gm-group:focus-within ' },
   // Si la persona ha pedido menos movimiento (o no)
@@ -99,6 +106,9 @@ const VARIANTS = {
 const NAMES = Object.keys(UTILITIES).sort((a, b) => b.length - a.length);
 const VARIANT_NAMES = Object.keys(VARIANTS).sort((a, b) => b.length - a.length).map((n) => n.replace(/-/g, '\\-')).join('|');
 const CLASS = new RegExp(`gm-(?:(${Object.keys(BREAKPOINTS).join('|')})-)?((?:(?:${VARIANT_NAMES}):)*)(${NAMES.map((n) => n.replace(/-/g, '\\-')).join('|')})-\\[([^\\]\\s"'\`<>]+)\\]`, 'g');
+
+// gm-[propiedad:valor] (con punto de corte y variantes delante, como las demás): cualquier propiedad de CSS
+const PROPERTY = new RegExp(`gm-(?:(${Object.keys(BREAKPOINTS).join('|')})-)?((?:(?:${VARIANT_NAMES}):)*)\\[(-?[a-z][a-z-]*):([^\\]\\s"'\`<>]+)\\]`, 'g');
 
 const EXTENSIONS = new Set(['.html', '.htm', '.md', '.mdx', '.js', '.mjs', '.jsx', '.ts', '.tsx', '.vue', '.svelte', '.astro', '.php', '.njk', '.liquid', '.hbs', '.twig', '.erb']);
 const IGNORE = new Set(['node_modules', 'dist', 'build', '.git', '.angular', '.next', '.nuxt', '.svelte-kit', '.astro', 'coverage', 'vendor']);
@@ -129,18 +139,25 @@ function files(dirs) {
 function build(dirs, outFile) {
   const found = new Map();
   for (const file of files(dirs)) {
-    for (const match of readFileSync(file, 'utf8').matchAll(CLASS)) {
+    const text = readFileSync(file, 'utf8');
+    for (const match of text.matchAll(CLASS)) {
       const [name, bp = '', variantList, util, raw] = match;
       const value = cleanValue(raw);
       if (value) found.set(name, { bp, variants: variantList.split(':').filter(Boolean), util, value });
+    }
+    // Propiedades libres: gm-[mask-type:luminance], gm-light:[filter:none]
+    for (const match of text.matchAll(PROPERTY)) {
+      const [name, bp = '', variantList, prop, raw] = match;
+      const value = cleanValue(raw);
+      if (value) found.set(name, { bp, variants: variantList.split(':').filter(Boolean), util: '[property]', prop, value });
     }
   }
   const rules = { '': [] };
   for (const bp of Object.keys(BREAKPOINTS)) rules[bp] = [];
   // Primero las clases sin variante y luego las que tienen, para que la variante gane cuando se cumple
   const entries = [...found].sort(([a, x], [b, y]) => x.variants.length - y.variants.length || a.localeCompare(b));
-  for (const [name, { bp, variants, util, value }] of entries) {
-    const props = UTILITIES[util](value);
+  for (const [name, { bp, variants, util, prop, value }] of entries) {
+    const props = util === '[property]' ? { [prop]: value } : UTILITIES[util](value);
     const parts = variants.map((v) => VARIANTS[v]);
     // ::before y ::after necesitan un contenido para dibujarse
     if (parts.some((p) => p.element === '::before' || p.element === '::after') && util !== 'content') props.content = 'var(--gm-content, "")';
