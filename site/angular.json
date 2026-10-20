@@ -30,6 +30,7 @@
               "../css/glassmarshmallow-font.css",
               "../css/glassmarshmallow.css",
               "../../glassmarshmallow-icons/font/glassmarshmallow-icons.css",
+              "src/glassmarshmallow.extra.css",
               "src/styles.css"
             ]
           },

@@ -3,15 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 4500",
+    "start": "npm run values -- --watch & ng serve --port 4500",
     "build": "ng build",
     "build:site": "npm run prebuild && node scripts/build-site.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "icons:svg": "node scripts/copy-icons.mjs",
     "llms": "node ../build/build-llms.mjs",
+    "values": "node ../bin/glassmarshmallow.mjs build --content src --out src/glassmarshmallow.extra.css",
     "prestart": "npm run icons:svg && npm run llms",
-    "prebuild": "npm run icons:svg && npm run llms"
+    "prebuild": "npm run icons:svg && npm run llms && npm run values"
   },
   "private": true,
   "packageManager": "npm@11.6.2",

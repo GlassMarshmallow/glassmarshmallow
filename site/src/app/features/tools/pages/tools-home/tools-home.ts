@@ -8,7 +8,6 @@ import { TOOLS } from '../../data/tools';
   selector: 'app-tools-home',
   imports: [RouterLink, TranslatePipe],
   templateUrl: './tools-home.html',
-  styleUrl: './tools-home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolsHome {
