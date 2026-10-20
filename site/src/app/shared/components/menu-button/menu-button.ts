@@ -15,7 +15,6 @@ export interface MenuOption {
 @Component({
   selector: 'app-menu-button',
   templateUrl: './menu-button.html',
-  styleUrl: './menu-button.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'gm-menu',

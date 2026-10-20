@@ -1,15 +1,16 @@
-<footer class="footer gm-has-tabbar">
-  <div class="gm-container footer__inner">
-    <nav class="footer__links" [attr.aria-label]="'footer.nav' | t">
+<!-- El pie sencillo del framework (gm-site-footer) -->
+<footer class="gm-site-footer gm-has-tabbar">
+  <div class="gm-container gm-site-footer__inner">
+    <nav class="gm-site-footer__links" [attr.aria-label]="'footer.nav' | t">
       <a routerLink="/docs">{{ 'nav.docs' | t }}</a>
       <a routerLink="/examples">{{ 'nav.examples' | t }}</a>
       <a routerLink="/icons">{{ 'nav.icons' | t }}</a>
       <a routerLink="/blog">{{ 'nav.blog' | t }}</a>
       <a href="https://github.com/GlassMarshmallow">GitHub</a>
     </nav>
-    <p class="footer__credit gm-muted gm-small">
-      {{ 'footer.credit' | t }} <a class="footer__author" href="https://github.com/GlassMarshmallow">{{ 'footer.team' | t }}</a>
-      · <a class="footer__author" href="https://sarapaezyamuza.com">Sara Paez Yamuza</a>
+    <p class="gm-site-footer__credit gm-muted gm-small">
+      {{ 'footer.credit' | t }} <a class="gm-site-footer__author" href="https://github.com/GlassMarshmallow">{{ 'footer.team' | t }}</a>
+      · <a class="gm-site-footer__author" href="https://sarapaezyamuza.com">Sara Paez Yamuza</a>
       · {{ 'footer.license' | t }} · {{ 'footer.version' | t: { version } }}
     </p>
   </div>

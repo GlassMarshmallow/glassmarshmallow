@@ -32,7 +32,8 @@ interface NavItem {
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive, TranslatePipe, MenuButton, SiteSearch],
   templateUrl: './header.html',
-  styleUrl: './header.css',
+  // Sin caja propia (display: contents): así la cabecera «sticky» se queda fija durante toda la página
+  host: { class: 'gm-d-contents' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {

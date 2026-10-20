@@ -7,7 +7,7 @@ import { VERSION } from '../header/header';
   selector: 'app-footer',
   imports: [RouterLink, TranslatePipe],
   templateUrl: './footer.html',
-  styleUrl: './footer.css',
+  host: { class: 'gm-d-block' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Footer {
