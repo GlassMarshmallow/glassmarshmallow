@@ -9,6 +9,7 @@
 //   npx glassmarshmallow build --watch            vuelve a escribirlo cada vez que se guarda un archivo
 //
 // Dentro de los corchetes, «_» es un espacio: gm-grid-cols-[1fr_2fr] → grid-template-columns: 1fr 2fr.
+// Con variantes, solo cuando se cumple: gm-hover:bg-[…], gm-dark:text-[…], gm-pressed:bg-[…], gm-before:content-[→].
 import { existsSync, readdirSync, readFileSync, statSync, watch, writeFileSync } from 'node:fs';
 import { extname, join, relative, resolve } from 'node:path';
 
@@ -50,16 +51,48 @@ const UTILITIES = {
   blur: (v) => ({ '-webkit-backdrop-filter': `blur(${v})`, 'backdrop-filter': `blur(${v})` }),
   // Cuadrícula y flex
   'grid-cols': (v) => ({ 'grid-template-columns': v }), 'grid-rows': (v) => ({ 'grid-template-rows': v }),
+  // Ancho mínimo de las columnas de .gm-grid--auto
+  'grid-min': (v) => ({ '--gm-grid-min': v }),
   'col-span': (v) => ({ 'grid-column': `span ${v} / span ${v}` }),
   basis: (v) => ({ 'flex-basis': v }), order: (v) => ({ order: v }),
   // Imágenes y animaciones
   aspect: (v) => ({ 'aspect-ratio': v }),
   duration: (v) => ({ 'animation-duration': v, 'transition-duration': v }),
   delay: (v) => ({ 'animation-delay': v, 'transition-delay': v }),
+  // Movimiento, interacción y capas ::before / ::after
+  translate: (v) => ({ translate: v }), scale: (v) => ({ scale: v }), rotate: (v) => ({ rotate: v }),
+  transition: (v) => ({ transition: v }),
+  cursor: (v) => ({ cursor: v }),
+  d: (v) => ({ display: v }),
+  // El texto de ::before / ::after: entre comillas salvo none, var(), attr() o counter()
+  // En una variable, para que las demás clases de la misma capa no lo borren (como --tw-content en Tailwind)
+  content: (v) => ({ '--gm-content': /^(none|normal|var\(|attr\(|counter)/.test(v) ? v : `"${v.replace(/"/g, '\\"').replace(/[^\x20-\x7e]/gu, (c) => `\\${c.codePointAt(0).toString(16)} `)}"`, content: 'var(--gm-content)' }),
+};
+
+/** Variantes: cuándo se aplica la clase (gm-hover:bg-[…], gm-dark:text-[…], gm-md-hover:…). Como las de Tailwind */
+const VARIANTS = {
+  // Estados del elemento
+  hover: { pseudo: ':hover' }, focus: { pseudo: ':focus' }, 'focus-visible': { pseudo: ':focus-visible' },
+  'focus-within': { pseudo: ':focus-within' }, active: { pseudo: ':active' }, disabled: { pseudo: ':disabled' },
+  checked: { pseudo: ':checked' }, first: { pseudo: ':first-child' }, last: { pseudo: ':last-child' },
+  odd: { pseudo: ':nth-child(odd)' }, even: { pseudo: ':nth-child(even)' },
+  // Estados de accesibilidad (ARIA)
+  pressed: { pseudo: '[aria-pressed="true"]' }, selected: { pseudo: '[aria-selected="true"]' },
+  expanded: { pseudo: '[aria-expanded="true"]' }, current: { pseudo: '[aria-current]:not([aria-current="false"])' },
+  invalid: { pseudo: '[aria-invalid="true"]' },
+  // Capas que dibuja el CSS
+  before: { element: '::before' }, after: { element: '::after' }, placeholder: { element: '::placeholder' },
+  // Modo de color (data-theme en <html> o en una parte de la página)
+  dark: { parent: '[data-theme="dark"] ' }, light: { parent: '[data-theme="light"] ' },
+  // Cuando se pasa el ratón o se enfoca el antepasado con la clase gm-group
+  'group-hover': { parent: '.gm-group:hover ' }, 'group-focus-within': { parent: '.gm-group:focus-within ' },
+  // Si la persona ha pedido menos movimiento (o no)
+  'motion-safe': { media: '(prefers-reduced-motion: no-preference)' }, 'motion-reduce': { media: '(prefers-reduced-motion: reduce)' },
 };
 // Los nombres más largos primero, para que «max-w» no se lea como «m»
 const NAMES = Object.keys(UTILITIES).sort((a, b) => b.length - a.length);
-const CLASS = new RegExp(`gm-(?:(${Object.keys(BREAKPOINTS).join('|')})-)?(${NAMES.map((n) => n.replace(/-/g, '\\-')).join('|')})-\\[([^\\]\\s"'\`<>]+)\\]`, 'g');
+const VARIANT_NAMES = Object.keys(VARIANTS).sort((a, b) => b.length - a.length).map((n) => n.replace(/-/g, '\\-')).join('|');
+const CLASS = new RegExp(`gm-(?:(${Object.keys(BREAKPOINTS).join('|')})-)?((?:(?:${VARIANT_NAMES}):)*)(${NAMES.map((n) => n.replace(/-/g, '\\-')).join('|')})-\\[([^\\]\\s"'\`<>]+)\\]`, 'g');
 
 const EXTENSIONS = new Set(['.html', '.htm', '.md', '.mdx', '.js', '.mjs', '.jsx', '.ts', '.tsx', '.vue', '.svelte', '.astro', '.php', '.njk', '.liquid', '.hbs', '.twig', '.erb']);
 const IGNORE = new Set(['node_modules', 'dist', 'build', '.git', '.angular', '.next', '.nuxt', '.svelte-kit', '.astro', 'coverage', 'vendor']);
@@ -90,25 +123,36 @@ function build(dirs, outFile) {
   const found = new Map();
   for (const file of files(dirs)) {
     for (const match of readFileSync(file, 'utf8').matchAll(CLASS)) {
-      const [name, bp = '', util, raw] = match;
+      const [name, bp = '', variantList, util, raw] = match;
       const value = cleanValue(raw);
-      if (value) found.set(name, { bp, util, value });
+      if (value) found.set(name, { bp, variants: variantList.split(':').filter(Boolean), util, value });
     }
   }
   const rules = { '': [] };
   for (const bp of Object.keys(BREAKPOINTS)) rules[bp] = [];
-  for (const [name, { bp, util, value }] of [...found].sort(([a], [b]) => a.localeCompare(b))) {
+  // Primero las clases sin variante y luego las que tienen, para que la variante gane cuando se cumple
+  const entries = [...found].sort(([a, x], [b, y]) => x.variants.length - y.variants.length || a.localeCompare(b));
+  for (const [name, { bp, variants, util, value }] of entries) {
     const props = UTILITIES[util](value);
+    const parts = variants.map((v) => VARIANTS[v]);
+    // ::before y ::after necesitan un contenido para dibujarse
+    if (parts.some((p) => p.element === '::before' || p.element === '::after') && util !== 'content') props.content = 'var(--gm-content, "")';
     const body = Object.entries(props).map(([p, v]) => `${p}: ${v};`).join(' ');
-    rules[bp].push(`.${escapeClass(name)} { ${body} }`);
+    const parent = parts.map((p) => p.parent ?? '').join('');
+    const pseudo = parts.map((p) => p.pseudo ?? '').join('');
+    const element = parts.map((p) => p.element ?? '').join('');
+    const selector = `${parent}.${escapeClass(name)}${pseudo}`;
+    let rule = `${selector}${element} { ${body} }`;
     // Con columnas propias, cada hijo ocupa una (en .gm-grid ocupan las 12 si no llevan gm-col-…)
-    if (util === 'grid-cols') rules[bp].push(`.${escapeClass(name)} > * { grid-column: auto; }`);
+    if (util === 'grid-cols') rule += `\n${selector} > * { grid-column: auto; }`;
+    for (const media of parts.filter((p) => p.media).map((p) => p.media)) rule = `@media ${media} { ${rule.replace(/\n/g, ' ')} }`;
+    rules[bp].push(rule);
   }
   let css = `/* GlassMarshmallow · arbitrary values. GENERATED by "npx glassmarshmallow build": do not edit by hand.
    Link it after glassmarshmallow.css. ${found.size} classes. */\n`;
   css += rules[''].join('\n') + '\n';
   for (const [bp, width] of Object.entries(BREAKPOINTS)) {
-    if (rules[bp].length) css += `@media (min-width: ${width}) {\n${rules[bp].map((r) => `  ${r}`).join('\n')}\n}\n`;
+    if (rules[bp].length) css += `@media (min-width: ${width}) {\n${rules[bp].map((r) => `  ${r.replace(/\n/g, '\n  ')}`).join('\n')}\n}\n`;
   }
   const previous = existsSync(outFile) ? readFileSync(outFile, 'utf8') : '';
   if (css !== previous) writeFileSync(outFile, css);
