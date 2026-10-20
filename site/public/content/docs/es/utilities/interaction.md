@@ -40,6 +40,28 @@ Para que no ocupe sitio, usa [`gm-hidden`](/docs/utilities/display); para escond
 </div>
 ```
 
+## Scroll y formularios
+
+| Clase | Qué hace |
+| --- | --- |
+| `gm-scroll-smooth` / `gm-scroll-auto` | Desplazamiento suave (o normal) al ir a un ancla |
+| `gm-scroll-mt-4` … `gm-scroll-mt-24` | Hueco arriba al llegar a un ancla (para que no lo tape una barra fija) |
+| `gm-snap-x` / `gm-snap-y` / `gm-snap-proximity` | La caja se detiene en sus hijos al desplazarse (de lado / de arriba abajo / solo si están cerca) |
+| `gm-snap-start` / `-center` / `-end` | Dónde se detiene en cada hijo |
+| `gm-touch-none` / `gm-touch-manipulation` | Sin gestos táctiles / sin el retraso del doble toque |
+| `gm-resize` / `gm-resize-y` / `gm-resize-none` | Si un campo de texto se puede agrandar |
+| `gm-accent-sky`, `gm-accent-pink`… | El color de casillas, botones de opción y barras del navegador |
+| `gm-caret-pink`, `gm-caret-accent`… | El color del cursor al escribir |
+
+```html
+<div class="gm-flex gm-gap-3 gm-overflow-x-auto gm-snap-x gm-max-w-sm gm-pb-2" role="region" aria-label="Fotos" tabindex="0">
+  <img class="gm-snap-start gm-w-[8rem] gm-rounded-sm" src="media/album-1.jpg" alt="Portada 1">
+  <img class="gm-snap-start gm-w-[8rem] gm-rounded-sm" src="media/album-2.jpg" alt="Portada 2">
+  <img class="gm-snap-start gm-w-[8rem] gm-rounded-sm" src="media/album-3.jpg" alt="Portada 3">
+  <img class="gm-snap-start gm-w-[8rem] gm-rounded-sm" src="media/album-4.jpg" alt="Portada 4">
+</div>
+```
+
 ## Accesibilidad
 
 - `gm-cursor-pointer` no convierte nada en botón: lo que se pulsa tiene que ser un `<button>` o un `<a>`, para que funcione con el teclado.

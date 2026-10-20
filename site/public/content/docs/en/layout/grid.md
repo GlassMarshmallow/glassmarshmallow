@@ -67,7 +67,29 @@ Without counting: `.gm-cols-2`, `-3`, `-4` or `-6` split the space into equal co
 
 ## Spacing
 
-The gap between columns is 1.5 rem. Change it with `.gm-gap-0`, `.gm-gap-sm` (0.75 rem) or `.gm-gap-lg` (2.5 rem), or with the `--gm-gap` variable.
+The gap between columns is 1.5 rem. Change it with the usual [spacing](/docs/utilities/spacing), `gm-gap-0` … `gm-gap-16` (the same scale as margins and padding), or with the `--gm-gap` variable. `gm-gap-sm` and `gm-gap-lg` still work: they are `gm-gap-3` and `gm-gap-10`.
+
+## To build with (like Tailwind)
+
+`gm-grid` works like Bootstrap rows and columns: always 12 columns and each child says how many it spans. If you prefer to say **how many columns the grid has**, like in Tailwind, use `gm-d-grid` with `gm-grid-cols-*`:
+
+```html
+<div class="gm-d-grid gm-grid-cols-1 gm-md-grid-cols-3 gm-gap-4">
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3 gm-md-col-span-2">gm-md-col-span-2</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3">1</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3">1</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3 gm-md-col-span-2">gm-md-col-span-2</div>
+</div>
+```
+
+| Class | What it does |
+| --- | --- |
+| `gm-grid-cols-1` … `gm-grid-cols-12` / `gm-grid-cols-none` | How many equal columns it has |
+| `gm-col-span-1` … `gm-col-span-12` / `gm-col-span-full` | How many a child spans / all of them |
+| `gm-grid-rows-1` … `gm-grid-rows-6` / `gm-row-span-1` … `gm-row-span-6` / `-full` | The same with rows |
+| `gm-grid-flow-row` / `-col` / `-dense` | How children are placed (by rows, by columns, filling gaps) |
+
+All of them have a breakpoint version (`gm-md-grid-cols-3`). For columns of other widths, an [arbitrary value](/docs/utilities/arbitrary): `gm-grid-cols-[1fr_2fr]`.
 
 ## Classes
 
@@ -79,7 +101,7 @@ The gap between columns is 1.5 rem. Change it with `.gm-gap-0`, `.gm-gap-sm` (0.
 | `.gm-offset-1` … `.gm-offset-11` | Empty columns before the child |
 | `.gm-cols-1`, `-2`, `-3`, `-4`, `-6` | Equal columns |
 | `.gm-grid--auto` | As many columns as fit (`--gm-grid-min`, 240 px) |
-| `.gm-gap-0`, `-sm`, `-lg` | Gap between columns |
+| `.gm-gap-0` … `.gm-gap-16` | Gap between columns |
 | `.gm-sm-…`, `.gm-md-…`, `.gm-lg-…`, `.gm-xl-…` | The same, from that breakpoint |
 
 ## Accessibility

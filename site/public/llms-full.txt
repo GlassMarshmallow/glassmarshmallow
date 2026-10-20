@@ -1349,7 +1349,29 @@ Without counting: `.gm-cols-2`, `-3`, `-4` or `-6` split the space into equal co
 
 ## Spacing
 
-The gap between columns is 1.5 rem. Change it with `.gm-gap-0`, `.gm-gap-sm` (0.75 rem) or `.gm-gap-lg` (2.5 rem), or with the `--gm-gap` variable.
+The gap between columns is 1.5 rem. Change it with the usual [spacing](/docs/utilities/spacing), `gm-gap-0` … `gm-gap-16` (the same scale as margins and padding), or with the `--gm-gap` variable. `gm-gap-sm` and `gm-gap-lg` still work: they are `gm-gap-3` and `gm-gap-10`.
+
+## To build with (like Tailwind)
+
+`gm-grid` works like Bootstrap rows and columns: always 12 columns and each child says how many it spans. If you prefer to say **how many columns the grid has**, like in Tailwind, use `gm-d-grid` with `gm-grid-cols-*`:
+
+```html
+<div class="gm-d-grid gm-grid-cols-1 gm-md-grid-cols-3 gm-gap-4">
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3 gm-md-col-span-2">gm-md-col-span-2</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3">1</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3">1</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3 gm-md-col-span-2">gm-md-col-span-2</div>
+</div>
+```
+
+| Class | What it does |
+| --- | --- |
+| `gm-grid-cols-1` … `gm-grid-cols-12` / `gm-grid-cols-none` | How many equal columns it has |
+| `gm-col-span-1` … `gm-col-span-12` / `gm-col-span-full` | How many a child spans / all of them |
+| `gm-grid-rows-1` … `gm-grid-rows-6` / `gm-row-span-1` … `gm-row-span-6` / `-full` | The same with rows |
+| `gm-grid-flow-row` / `-col` / `-dense` | How children are placed (by rows, by columns, filling gaps) |
+
+All of them have a breakpoint version (`gm-md-grid-cols-3`). For columns of other widths, an [arbitrary value](/docs/utilities/arbitrary): `gm-grid-cols-[1fr_2fr]`.
 
 ## Classes
 
@@ -1361,7 +1383,7 @@ The gap between columns is 1.5 rem. Change it with `.gm-gap-0`, `.gm-gap-sm` (0.
 | `.gm-offset-1` … `.gm-offset-11` | Empty columns before the child |
 | `.gm-cols-1`, `-2`, `-3`, `-4`, `-6` | Equal columns |
 | `.gm-grid--auto` | As many columns as fit (`--gm-grid-min`, 240 px) |
-| `.gm-gap-0`, `-sm`, `-lg` | Gap between columns |
+| `.gm-gap-0` … `.gm-gap-16` | Gap between columns |
 | `.gm-sm-…`, `.gm-md-…`, `.gm-lg-…`, `.gm-xl-…` | The same, from that breakpoint |
 
 ## Accessibility
@@ -1628,6 +1650,22 @@ They have a [breakpoint](/docs/layout/breakpoints) version: `gm-text-xl gm-md-te
 <p class="gm-truncate gm-max-w-xs gm-m-0">This text is too long for one line, so it ends with an ellipsis.</p>
 ```
 
+## Underline, columns and spaces
+
+| Class | What it does |
+| --- | --- |
+| `gm-decoration-sky`, `gm-decoration-accent`… | The color of the underline |
+| `gm-decoration-1` / `-2` / `-4` | Its thickness (1, 2, 4 px) |
+| `gm-decoration-solid` / `-dashed` / `-dotted` / `-wavy` / `-double` | Its style |
+| `gm-underline-offset-1` / `-2` / `-4` / `-8` | Its distance from the letters |
+| `gm-columns-1` … `gm-columns-4` / `gm-break-inside-avoid` | Text in columns / keep a block from splitting between two |
+| `gm-whitespace-normal` / `-pre` / `-pre-wrap` | How it treats spaces and line breaks |
+| `gm-hyphens-auto` / `gm-break-all` | Hyphenates words / breaks at any letter |
+
+```html
+<p class="gm-m-0"><a class="gm-underline gm-decoration-pink gm-decoration-2 gm-decoration-wavy gm-underline-offset-4" href="#">A link with the underline you want</a></p>
+```
+
 ## Lists
 
 `gm-list-none` removes the bullets and indentation of a list: for menus or rows of links that are still a list for screen readers.
@@ -1675,6 +1713,10 @@ The box keeps its shape when the width changes, and its space is reserved before
   <img class="gm-aspect-video gm-object-cover gm-rounded-sm gm-w-50 gm-max-w-xs" src="media/album-2.jpg" alt="Album cover (16:9, cropped)">
 </div>
 ```
+
+## Position inside the box
+
+`gm-object-center` / `-top` / `-bottom` / `-left` / `-right`: with `gm-object-cover`, which part of the image stays in view (for example, `gm-object-top` so a face is not cut off).
 
 ## Accessibility
 
@@ -1867,6 +1909,39 @@ It works in both modes: `gm-from-body` is the page background in light and dark,
 - If you put text on a gradient, check the contrast at the **lightest** and the **darkest** point of the background, not just one.
 - A gradient is decoration: do not use it as the only way to convey information.
 
+<!-- /docs/utilities/backgrounds -->
+# Backgrounds
+
+How a background image or [gradient](/docs/utilities/gradients) is placed. The background color is in [Background color](/docs/color/background).
+
+| Class | What it does |
+| --- | --- |
+| `gm-bg-cover` / `gm-bg-contain` / `gm-bg-auto` | Fills the box, cropping / shows whole / its own size |
+| `gm-bg-center` / `-top` / `-bottom` / `-left` / `-right` | Where it is placed |
+| `gm-bg-repeat` / `-no-repeat` / `-repeat-x` / `-repeat-y` | Whether it repeats (and which way) |
+| `gm-bg-fixed` / `-local` / `-scroll` | Whether it stays still while scrolling |
+| `gm-bg-clip-border` / `-padding` / `-content` | How far the background reaches (border, padding or content) |
+| `gm-bg-clip-text` | The background only shows through the letters |
+
+The image, with an [arbitrary value](/docs/utilities/arbitrary): `gm-bg-[url(/img/photo.jpg)]`.
+
+```html
+<div class="gm-bg-[url(/media/album-4.jpg)] gm-bg-cover gm-bg-center gm-rounded-md gm-h-[10rem]" role="img" aria-label="Album cover"></div>
+```
+
+## How to: a checkered pattern
+
+Two repeating gradients: the one in the generators to show transparency.
+
+```html
+<div class="gm-bg-[repeating-conic-gradient(#d6d6da_0_25%,#f5f5f7_0_50%)] gm-bg-[length:1.5rem_1.5rem] gm-rounded-md gm-h-[8rem]"></div>
+```
+
+## Accessibility
+
+- Screen readers do not see a background image: if it says something, give it `role="img"` and an `aria-label`, or use an `<img>` with `alt`.
+- With `gm-bg-clip-text` the letters are the background: check they read (4.5:1) across the whole text.
+
 <!-- /docs/utilities/filters -->
 # Filters
 
@@ -1924,6 +1999,50 @@ They need a somewhat transparent background to show: this is how [glass](/docs/u
 - Do not put text on something blurred or low-contrast without checking it reads (4.5:1).
 - `gm-grayscale` or `gm-saturate-0` can show something disabled, but say it in text or with `disabled` too: color alone is not enough.
 
+<!-- /docs/utilities/masks -->
+# Masks and blending
+
+Fade an element towards a side or in a circle, and blend its colors with what is behind. Like in Tailwind.
+
+## Masks
+
+| Class | What it does |
+| --- | --- |
+| `gm-mask-to-t` / `-r` / `-b` / `-l` | Fades towards the top, right, bottom or left |
+| `gm-mask-radial` | Fades towards the edges, in a circle |
+| `gm-mask-from-0%` … `gm-mask-from-90%` | How far it shows whole before it starts fading (0, 25, 50, 60, 70, 75, 80, 90) |
+| `gm-mask-none` | No mask |
+
+```html
+<div class="gm-flex gm-gap-4 gm-flex-wrap">
+  <img class="gm-w-[10rem] gm-rounded-sm gm-mask-to-b gm-mask-from-50%" src="media/album-5.jpg" alt="Cover fading towards the bottom">
+  <img class="gm-w-[10rem] gm-mask-radial gm-mask-from-60%" src="media/album-6.jpg" alt="Cover fading towards the edges">
+</div>
+```
+
+The portfolio drawing in light mode blends into the page like this: it fades at the top and bottom so you cannot see where it ends.
+
+## Blending
+
+| Class | What it does |
+| --- | --- |
+| `gm-mix-blend-multiply` / `-screen` / `-overlay` / `-soft-light` / `-hard-light` / `-difference` / `-luminosity` / `-color` / `-normal` | Blends the element with what is behind it |
+| `gm-bg-blend-…` (the same names) | Blends the background layers of one element (an image with a gradient) |
+| `gm-isolate` | The children's blending stays inside this element |
+
+```html
+<div class="gm-isolate gm-relative gm-rounded-md gm-overflow-hidden gm-h-[8rem] gm-bg-[url(/media/album-7.jpg)] gm-bg-cover gm-bg-center">
+  <div class="gm-absolute gm-inset-0 gm-bg-pink gm-mix-blend-multiply"></div>
+</div>
+```
+
+The TV effect is built like this: lines and grain on top of the content, with `gm-mix-blend-*` so they show without covering it.
+
+## Accessibility
+
+- Faded content is harder to read: do not use it on text that has to be read.
+- Check text contrast after blending, not before: the colors change.
+
 <!-- /docs/utilities/effects -->
 # Effects
 
@@ -1971,6 +2090,52 @@ To make your own glass with other values, use the [glass generator](/tools/glass
 
 - Text on glass must reach its contrast against what is behind at the worst point: measure it on a screenshot.
 - Lowering opacity lowers text contrast: do not use it on text people need to read.
+
+<!-- /docs/utilities/transforms -->
+# Transforms and transitions
+
+Rotate, scale and move elements, and make changes smooth. They combine on their own: `gm-rotate-6 gm-scale-110`. Like in Tailwind.
+
+## Rotate, scale and move
+
+| Class | What it does |
+| --- | --- |
+| `gm-rotate-0` / `-1` / `-2` / `-3` / `-6` / `-12` / `-45` / `-90` / `-180` | Rotates that many degrees |
+| `gm-scale-0` / `-50` / `-75` / `-90` / `-95` / `-100` / `-105` / `-110` / `-125` / `-150` | Scales (100: its size) |
+| `gm-translate-x-…` / `gm-translate-y-…` | Moves sideways / up and down, with the spacing scale (`gm-translate-y-1`: 0.25 rem) |
+| `gm-origin-center` / `-top` / `-bottom-right`… | Where it rotates or scales from |
+
+The other way, with an [arbitrary value](/docs/utilities/arbitrary): `gm-rotate-[-6deg]`, `gm-translate-[0_-1px]`.
+
+```html
+<div class="gm-flex gm-gap-6 gm-flex-wrap gm-p-6">
+  <div class="gm-theme-pink gm-theme-solid gm-rounded-sm gm-p-4 gm-rotate-6">gm-rotate-6</div>
+  <div class="gm-theme-mint gm-theme-solid gm-rounded-sm gm-p-4 gm-scale-90">gm-scale-90</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-4 gm-translate-y-2">gm-translate-y-2</div>
+</div>
+```
+
+## Transitions
+
+| Class | What changes smoothly |
+| --- | --- |
+| `gm-transition` | Colors, shadow, opacity and movement |
+| `gm-transition-colors` / `-opacity` / `-transform` / `-shadow` / `-none` | Only that |
+| `gm-duration-150` … `gm-duration-1000` / `gm-delay-100` … `gm-delay-1000` | How long / how long it waits (in [animations](/docs/utilities/animations)) |
+| `gm-ease-linear` / `-in` / `-out` / `-in-out` / `-bounce` | With which curve (`-bounce` overshoots a little and comes back) |
+
+## How to: a card that rises on hover
+
+With the arbitrary value [variants](/docs/utilities/arbitrary): it only moves if the person has not asked for less motion.
+
+```html-code
+<a class="gm-card gm-motion-safe:transition-[translate_.2s] gm-hover:translate-[0_-2px]" href="…">…</a>
+```
+
+## Accessibility
+
+- If someone asks for less motion, the framework removes its animations; for what you build, use `gm-motion-safe:`.
+- Do not move content that is being read, and let nothing spin or grow by itself without the person doing something.
 
 <!-- /docs/utilities/animations -->
 # Animations
@@ -2144,6 +2309,21 @@ To lay pieces out in a row or a column and align them, without writing CSS.
 </div>
 ```
 
+## A single item and shortcuts
+
+| Class | What it does |
+| --- | --- |
+| `gm-self-start` / `-center` / `-end` / `-stretch` / `-baseline` / `-auto` | Places only that child on the cross axis |
+| `gm-justify-self-start` / `-center` / `-end` / `-stretch` / `-auto` | Places only that child in a grid, sideways |
+| `gm-justify-items-start` / `-center` / `-end` / `-stretch` | Every child of a grid, sideways |
+| `gm-place-items-*` / `gm-place-content-*` / `gm-place-self-*` | Shortcuts: both axes at once (`gm-place-items-center` centers in the cell) |
+
+```html
+<div class="gm-d-grid gm-place-items-center gm-border gm-rounded-sm gm-h-[8rem]">
+  <span class="gm-tag gm-theme-sky gm-theme-solid">Centered with gm-place-items-center</span>
+</div>
+```
+
 ## Grow and shrink
 
 | Class | What it does |
@@ -2250,6 +2430,28 @@ So that it takes no space, use [`gm-hidden`](/docs/utilities/display); to hide i
 </div>
 ```
 
+## Scroll and forms
+
+| Class | What it does |
+| --- | --- |
+| `gm-scroll-smooth` / `gm-scroll-auto` | Smooth (or normal) scrolling when going to an anchor |
+| `gm-scroll-mt-4` … `gm-scroll-mt-24` | Space on top when reaching an anchor (so a fixed bar does not cover it) |
+| `gm-snap-x` / `gm-snap-y` / `gm-snap-proximity` | The box stops on its children while scrolling (sideways / up and down / only when close) |
+| `gm-snap-start` / `-center` / `-end` | Where it stops on each child |
+| `gm-touch-none` / `gm-touch-manipulation` | No touch gestures / no double-tap delay |
+| `gm-resize` / `gm-resize-y` / `gm-resize-none` | Whether a text field can be resized |
+| `gm-accent-sky`, `gm-accent-pink`… | The color of checkboxes, radio buttons and browser bars |
+| `gm-caret-pink`, `gm-caret-accent`… | The color of the typing cursor |
+
+```html
+<div class="gm-flex gm-gap-3 gm-overflow-x-auto gm-snap-x gm-max-w-sm gm-pb-2" role="region" aria-label="Photos" tabindex="0">
+  <img class="gm-snap-start gm-w-[8rem] gm-rounded-sm" src="media/album-1.jpg" alt="Cover 1">
+  <img class="gm-snap-start gm-w-[8rem] gm-rounded-sm" src="media/album-2.jpg" alt="Cover 2">
+  <img class="gm-snap-start gm-w-[8rem] gm-rounded-sm" src="media/album-3.jpg" alt="Cover 3">
+  <img class="gm-snap-start gm-w-[8rem] gm-rounded-sm" src="media/album-4.jpg" alt="Cover 4">
+</div>
+```
+
 ## Accessibility
 
 - `gm-cursor-pointer` does not turn anything into a button: whatever is pressed must be a `<button>` or an `<a>`, so it works with the keyboard.
@@ -2307,6 +2509,16 @@ It reads HTML, Markdown, JavaScript, TypeScript, Angular, React, Vue, Svelte, As
 
 Inside the brackets, **`_` is a space**: `gm-grid-cols-[1fr_2fr]` writes `grid-template-columns: 1fr 2fr`. They also work with [breakpoints](/docs/layout/breakpoints): `gm-md-max-w-[52rem]`.
 
+## Any property
+
+For a CSS property with no utility, write it whole in brackets: `gm-[property:value]`. Also with breakpoints and variants.
+
+```html-code
+<p class="gm-[text-wrap:balance] gm-light:[-webkit-text-fill-color:currentColor] gm-md-hover:[text-decoration-line:underline]">…</p>
+```
+
+For backgrounds, a type hint says which part of the background it is: `gm-bg-[length:1.5rem_1.5rem]` (size), `gm-bg-[position:top]` (position); `gm-bg-[url(…)]` and gradients are the image.
+
 ## Variants: when it applies
 
 Before the utility, one or more variants with `:` say **when** the class applies, like in Tailwind. This way hover effects, dark mode, states and the `::before` / `::after` layers are written without CSS.
@@ -2344,6 +2556,10 @@ Before the utility, one or more variants with `:` say **when** the class applies
 </div>
 <div class="gm-grid gm-grid-cols-[1fr_2fr] gm-md-grid-cols-[1fr_1fr_1fr] gm-gap-[.875rem]">…</div>
 ```
+
+## Images with Angular, Vite and other bundlers
+
+If the generated CSS goes through a bundler (Angular, Vite, webpack…), it looks for the `url(…)` images at build time and fails if it cannot find them. Use paths that start with `/` (`gm-bg-[url(/img/photo.jpg)]`): they are left as they are and looked up on the site when the page opens.
 
 ## When to use them
 

@@ -46,8 +46,11 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 - [Borders and radius](/docs/utilities/borders): Thin borders with the framework lines and rounded corners with its radii. They change on their own in dark mode.
 - [Shadows](/docs/utilities/shadows): The framework shadows, soft by day and deeper at night so they show on black.
 - [Gradients](/docs/utilities/gradients): Build your own gradients with classes: a **direction** (or a shape) and the start, middle and end **colors**. Like Tailwind's. To do it by eye and copy the result, there is the [gradient generator](/tools/gradient-generator).
+- [Backgrounds](/docs/utilities/backgrounds): How a background image or [gradient](/docs/utilities/gradients) is placed. The background color is in [Background color](/docs/color/background).
 - [Filters](/docs/utilities/filters): They change how an element looks (blurred, brighter, gray…) or what shows **behind** it. They can be combined: `gm-brightness-110 gm-saturate-150`. Like Tailwind's.
+- [Masks and blending](/docs/utilities/masks): Fade an element towards a side or in a circle, and blend its colors with what is behind. Like in Tailwind.
 - [Effects](/docs/utilities/effects): Glass, background blur and opacity: what gives GlassMarshmallow its look.
+- [Transforms and transitions](/docs/utilities/transforms): Rotate, scale and move elements, and make changes smooth. They combine on their own: `gm-rotate-6 gm-scale-110`. Like in Tailwind.
 - [Animations](/docs/utilities/animations): Short movements so something appears, leaves or draws a little attention. **They all switch off on their own** if the person has asked for reduced motion in their system. Entering and leaving ones move only once: press **Replay** to see them again.
 - [Flex and alignment](/docs/utilities/flex): To lay pieces out in a row or a column and align them, without writing CSS.
 - [Display](/docs/utilities/display): Changes how an element is displayed, or hides it, depending on the screen size.

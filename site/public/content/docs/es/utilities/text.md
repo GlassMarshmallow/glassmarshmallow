@@ -68,6 +68,22 @@ Tienen versión por [punto de corte](/docs/layout/breakpoints): `gm-text-xl gm-m
 <p class="gm-truncate gm-max-w-xs gm-m-0">Este texto es demasiado largo para una línea, así que termina en puntos suspensivos.</p>
 ```
 
+## Subrayado, columnas y espacios
+
+| Clase | Qué hace |
+| --- | --- |
+| `gm-decoration-sky`, `gm-decoration-accent`… | El color de la línea del subrayado |
+| `gm-decoration-1` / `-2` / `-4` | Su grosor (1, 2, 4 px) |
+| `gm-decoration-solid` / `-dashed` / `-dotted` / `-wavy` / `-double` | Su estilo |
+| `gm-underline-offset-1` / `-2` / `-4` / `-8` | Su separación de las letras |
+| `gm-columns-1` … `gm-columns-4` / `gm-break-inside-avoid` | El texto en columnas / que un bloque no se parta entre dos |
+| `gm-whitespace-normal` / `-pre` / `-pre-wrap` | Cómo trata los espacios y saltos de línea |
+| `gm-hyphens-auto` / `gm-break-all` | Parte las palabras con guion / por cualquier letra |
+
+```html
+<p class="gm-m-0"><a class="gm-underline gm-decoration-pink gm-decoration-2 gm-decoration-wavy gm-underline-offset-4" href="#">Un enlace con el subrayado a tu gusto</a></p>
+```
+
 ## Listas
 
 `gm-list-none` quita las viñetas y la sangría de una lista: para menús o enlaces seguidos que siguen siendo una lista para los lectores de pantalla.

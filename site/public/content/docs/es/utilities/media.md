@@ -26,6 +26,10 @@ La caja guarda su forma aunque cambie el ancho, y el hueco ya está reservado an
 </div>
 ```
 
+## Posición dentro de la caja
+
+`gm-object-center` / `-top` / `-bottom` / `-left` / `-right`: con `gm-object-cover`, qué parte de la imagen se queda a la vista (por ejemplo, `gm-object-top` para no cortar una cara).
+
 ## Accesibilidad
 
 - Toda imagen lleva `alt`: lo que se ve en ella, o `alt=""` si es solo de adorno.

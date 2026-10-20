@@ -48,6 +48,16 @@ It reads HTML, Markdown, JavaScript, TypeScript, Angular, React, Vue, Svelte, As
 
 Inside the brackets, **`_` is a space**: `gm-grid-cols-[1fr_2fr]` writes `grid-template-columns: 1fr 2fr`. They also work with [breakpoints](/docs/layout/breakpoints): `gm-md-max-w-[52rem]`.
 
+## Any property
+
+For a CSS property with no utility, write it whole in brackets: `gm-[property:value]`. Also with breakpoints and variants.
+
+```html-code
+<p class="gm-[text-wrap:balance] gm-light:[-webkit-text-fill-color:currentColor] gm-md-hover:[text-decoration-line:underline]">…</p>
+```
+
+For backgrounds, a type hint says which part of the background it is: `gm-bg-[length:1.5rem_1.5rem]` (size), `gm-bg-[position:top]` (position); `gm-bg-[url(…)]` and gradients are the image.
+
 ## Variants: when it applies
 
 Before the utility, one or more variants with `:` say **when** the class applies, like in Tailwind. This way hover effects, dark mode, states and the `::before` / `::after` layers are written without CSS.
@@ -85,6 +95,10 @@ Before the utility, one or more variants with `:` say **when** the class applies
 </div>
 <div class="gm-grid gm-grid-cols-[1fr_2fr] gm-md-grid-cols-[1fr_1fr_1fr] gm-gap-[.875rem]">…</div>
 ```
+
+## Images with Angular, Vite and other bundlers
+
+If the generated CSS goes through a bundler (Angular, Vite, webpack…), it looks for the `url(…)` images at build time and fails if it cannot find them. Use paths that start with `/` (`gm-bg-[url(/img/photo.jpg)]`): they are left as they are and looked up on the site when the page opens.
 
 ## When to use them
 

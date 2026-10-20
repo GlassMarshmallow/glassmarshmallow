@@ -48,6 +48,16 @@ Lee archivos HTML, Markdown, JavaScript, TypeScript, Angular, React, Vue, Svelte
 
 Dentro de los corchetes, **`_` es un espacio**: `gm-grid-cols-[1fr_2fr]` escribe `grid-template-columns: 1fr 2fr`. También funcionan con los [puntos de corte](/docs/layout/breakpoints): `gm-md-max-w-[52rem]`.
 
+## Cualquier propiedad
+
+Para una propiedad de CSS que no tiene utilidad, escríbela entera entre corchetes: `gm-[propiedad:valor]`. También con punto de corte y variantes.
+
+```html-code
+<p class="gm-[text-wrap:balance] gm-light:[-webkit-text-fill-color:currentColor] gm-md-hover:[text-decoration-line:underline]">…</p>
+```
+
+En los fondos, una pista de tipo dice qué parte del fondo es: `gm-bg-[length:1.5rem_1.5rem]` (tamaño), `gm-bg-[position:top]` (posición); `gm-bg-[url(…)]` y los degradados son la imagen.
+
 ## Variantes: cuándo se aplica
 
 Delante de la utilidad, una o varias variantes con `:` dicen **cuándo** se aplica la clase, como en Tailwind. Así se escriben sin CSS los efectos al pasar el ratón, el modo oscuro, los estados y las capas `::before` / `::after`.
@@ -85,6 +95,10 @@ Delante de la utilidad, una o varias variantes con `:` dicen **cuándo** se apli
 </div>
 <div class="gm-grid gm-grid-cols-[1fr_2fr] gm-md-grid-cols-[1fr_1fr_1fr] gm-gap-[.875rem]">…</div>
 ```
+
+## Imágenes con Angular, Vite y otros empaquetadores
+
+Si el CSS generado pasa por un empaquetador (Angular, Vite, webpack…), este busca al compilar las imágenes de `url(…)` y falla si no las encuentra. Usa rutas que empiecen por `/` (`gm-bg-[url(/img/foto.jpg)]`): se dejan tal cual y se buscan en la web al abrir la página.
 
 ## Cuándo usarlos
 

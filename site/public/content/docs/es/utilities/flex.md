@@ -29,6 +29,21 @@ Para poner piezas en fila o en columna y alinearlas, sin escribir CSS.
 </div>
 ```
 
+## Un solo elemento y atajos
+
+| Clase | Qué hace |
+| --- | --- |
+| `gm-self-start` / `-center` / `-end` / `-stretch` / `-baseline` / `-auto` | Coloca solo ese hijo en el otro eje |
+| `gm-justify-self-start` / `-center` / `-end` / `-stretch` / `-auto` | Coloca solo ese hijo en una cuadrícula, de lado |
+| `gm-justify-items-start` / `-center` / `-end` / `-stretch` | Todos los hijos de una cuadrícula, de lado |
+| `gm-place-items-*` / `gm-place-content-*` / `gm-place-self-*` | Atajos: en los dos ejes a la vez (`gm-place-items-center` centra en la celda) |
+
+```html
+<div class="gm-d-grid gm-place-items-center gm-border gm-rounded-sm gm-h-[8rem]">
+  <span class="gm-tag gm-theme-sky gm-theme-solid">Centrado con gm-place-items-center</span>
+</div>
+```
+
 ## Crecer y encoger
 
 | Clase | Qué hace |

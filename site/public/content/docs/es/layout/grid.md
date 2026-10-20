@@ -67,7 +67,29 @@ Sin contar: `.gm-cols-2`, `-3`, `-4` o `-6` reparten el espacio en columnas igua
 
 ## Separación
 
-El hueco entre columnas es de 1,5 rem. Cámbialo con `.gm-gap-0`, `.gm-gap-sm` (0,75 rem) o `.gm-gap-lg` (2,5 rem), o con la variable `--gm-gap`.
+El hueco entre columnas es de 1,5 rem. Cámbialo con las [separaciones](/docs/utilities/spacing) de siempre, `gm-gap-0` … `gm-gap-16` (la misma escala que los márgenes y rellenos), o con la variable `--gm-gap`. `gm-gap-sm` y `gm-gap-lg` siguen funcionando: son `gm-gap-3` y `gm-gap-10`.
+
+## Para construir (como Tailwind)
+
+`gm-grid` funciona como las filas y columnas de Bootstrap: siempre 12 columnas y cada hijo dice cuántas ocupa. Si prefieres decir **cuántas columnas tiene la cuadrícula**, como en Tailwind, usa `gm-d-grid` con `gm-grid-cols-*`:
+
+```html
+<div class="gm-d-grid gm-grid-cols-1 gm-md-grid-cols-3 gm-gap-4">
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3 gm-md-col-span-2">gm-md-col-span-2</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3">1</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3">1</div>
+  <div class="gm-theme-sky gm-theme-solid gm-rounded-sm gm-p-3 gm-md-col-span-2">gm-md-col-span-2</div>
+</div>
+```
+
+| Clase | Qué hace |
+| --- | --- |
+| `gm-grid-cols-1` … `gm-grid-cols-12` / `gm-grid-cols-none` | Cuántas columnas iguales tiene |
+| `gm-col-span-1` … `gm-col-span-12` / `gm-col-span-full` | Cuántas ocupa un hijo / todas |
+| `gm-grid-rows-1` … `gm-grid-rows-6` / `gm-row-span-1` … `gm-row-span-6` / `-full` | Lo mismo con las filas |
+| `gm-grid-flow-row` / `-col` / `-dense` | Cómo se colocan los hijos (por filas, por columnas, rellenando huecos) |
+
+Todas tienen versión por punto de corte (`gm-md-grid-cols-3`). Para columnas de otros anchos, un [valor libre](/docs/utilities/arbitrary): `gm-grid-cols-[1fr_2fr]`.
 
 ## Clases
 
@@ -79,7 +101,7 @@ El hueco entre columnas es de 1,5 rem. Cámbialo con `.gm-gap-0`, `.gm-gap-sm` (
 | `.gm-offset-1` … `.gm-offset-11` | Columnas vacías antes del hijo |
 | `.gm-cols-1`, `-2`, `-3`, `-4`, `-6` | Columnas iguales |
 | `.gm-grid--auto` | Tantas columnas como quepan (`--gm-grid-min`, 240 px) |
-| `.gm-gap-0`, `-sm`, `-lg` | Separación entre columnas |
+| `.gm-gap-0` … `.gm-gap-16` | Separación entre columnas |
 | `.gm-sm-…`, `.gm-md-…`, `.gm-lg-…`, `.gm-xl-…` | Lo mismo, desde ese punto de corte |
 
 ## Accesibilidad

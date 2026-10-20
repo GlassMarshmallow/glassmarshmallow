@@ -68,6 +68,22 @@ They have a [breakpoint](/docs/layout/breakpoints) version: `gm-text-xl gm-md-te
 <p class="gm-truncate gm-max-w-xs gm-m-0">This text is too long for one line, so it ends with an ellipsis.</p>
 ```
 
+## Underline, columns and spaces
+
+| Class | What it does |
+| --- | --- |
+| `gm-decoration-sky`, `gm-decoration-accent`… | The color of the underline |
+| `gm-decoration-1` / `-2` / `-4` | Its thickness (1, 2, 4 px) |
+| `gm-decoration-solid` / `-dashed` / `-dotted` / `-wavy` / `-double` | Its style |
+| `gm-underline-offset-1` / `-2` / `-4` / `-8` | Its distance from the letters |
+| `gm-columns-1` … `gm-columns-4` / `gm-break-inside-avoid` | Text in columns / keep a block from splitting between two |
+| `gm-whitespace-normal` / `-pre` / `-pre-wrap` | How it treats spaces and line breaks |
+| `gm-hyphens-auto` / `gm-break-all` | Hyphenates words / breaks at any letter |
+
+```html
+<p class="gm-m-0"><a class="gm-underline gm-decoration-pink gm-decoration-2 gm-decoration-wavy gm-underline-offset-4" href="#">A link with the underline you want</a></p>
+```
+
 ## Lists
 
 `gm-list-none` removes the bullets and indentation of a list: for menus or rows of links that are still a list for screen readers.

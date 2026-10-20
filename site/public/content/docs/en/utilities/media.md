@@ -26,6 +26,10 @@ The box keeps its shape when the width changes, and its space is reserved before
 </div>
 ```
 
+## Position inside the box
+
+`gm-object-center` / `-top` / `-bottom` / `-left` / `-right`: with `gm-object-cover`, which part of the image stays in view (for example, `gm-object-top` so a face is not cut off).
+
 ## Accessibility
 
 - Every image has an `alt`: what it shows, or `alt=""` if it is only decorative.

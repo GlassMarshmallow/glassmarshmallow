@@ -29,6 +29,21 @@ To lay pieces out in a row or a column and align them, without writing CSS.
 </div>
 ```
 
+## A single item and shortcuts
+
+| Class | What it does |
+| --- | --- |
+| `gm-self-start` / `-center` / `-end` / `-stretch` / `-baseline` / `-auto` | Places only that child on the cross axis |
+| `gm-justify-self-start` / `-center` / `-end` / `-stretch` / `-auto` | Places only that child in a grid, sideways |
+| `gm-justify-items-start` / `-center` / `-end` / `-stretch` | Every child of a grid, sideways |
+| `gm-place-items-*` / `gm-place-content-*` / `gm-place-self-*` | Shortcuts: both axes at once (`gm-place-items-center` centers in the cell) |
+
+```html
+<div class="gm-d-grid gm-place-items-center gm-border gm-rounded-sm gm-h-[8rem]">
+  <span class="gm-tag gm-theme-sky gm-theme-solid">Centered with gm-place-items-center</span>
+</div>
+```
+
 ## Grow and shrink
 
 | Class | What it does |
