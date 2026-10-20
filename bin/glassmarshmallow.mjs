@@ -51,6 +51,12 @@ const UTILITIES = {
   blur: (v) => ({ '-webkit-backdrop-filter': `blur(${v})`, 'backdrop-filter': `blur(${v})` }),
   // Cuadrícula y flex
   'grid-cols': (v) => ({ 'grid-template-columns': v }), 'grid-rows': (v) => ({ 'grid-template-rows': v }),
+  // Degradados: el color de inicio, el intermedio y el final (con gm-bg-linear-to-…, gm-bg-radial o gm-bg-conic)
+  from: (v) => ({ '--gm-gradient-from': `${v} var(--gm-gradient-from-position, 0%)`, '--gm-gradient-stops': 'var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%)' }),
+  via: (v) => ({ '--gm-gradient-via': `${v} var(--gm-gradient-via-position, 50%)`, '--gm-gradient-stops': 'var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%)' }),
+  to: (v) => ({ '--gm-gradient-to': `${v} var(--gm-gradient-to-position, 100%)` }),
+  // Color del anillo (gm-ring)
+  'ring-color': (v) => ({ '--gm-ring-color': v }),
   // Ancho mínimo de las columnas de .gm-grid--auto
   'grid-min': (v) => ({ '--gm-grid-min': v }),
   'col-span': (v) => ({ 'grid-column': `span ${v} / span ${v}` }),
@@ -103,7 +109,8 @@ const escapeClass = (name) => name.replace(/[^a-zA-Z0-9_-]/g, (c) => `\\${c}`);
 /** El valor, con «_» como espacio. Se rechaza lo que podría romper el CSS */
 function cleanValue(raw) {
   const value = raw.replace(/_/g, ' ');
-  return /[;{}\\]/.test(value) ? null : value;
+  // «…» es un hueco en un texto de ejemplo, no un valor
+  return /[;{}\\…]/.test(value) ? null : value;
 }
 
 function files(dirs) {
