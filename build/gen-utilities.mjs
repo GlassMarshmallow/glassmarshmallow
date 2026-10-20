@@ -52,10 +52,17 @@ function responsive() {
   for (const [name, value] of [['hidden', 'none'], ['block', 'block'], ['inline', 'inline'], ['inline-block', 'inline-block'], ['flex', 'flex'], ['inline-flex', 'inline-flex'], ['grid', 'grid']]) {
     out.push(rule(name, `display: ${value};`));
   }
+  // Solo «display», sin nada más (gm-grid es además la cuadrícula de 12 columnas: para una cuadrícula simple,
+  // gm-d-grid). Los mismos nombres que Bootstrap (d-flex, d-grid…)
+  for (const value of ['none', 'block', 'inline', 'inline-block', 'flex', 'inline-flex', 'grid', 'inline-grid', 'contents']) {
+    out.push(rule(`d-${value}`, `display: ${value};`));
+  }
   // Flex
   out.push(rule('flex-row', 'flex-direction: row;'), rule('flex-col', 'flex-direction: column;'), rule('flex-wrap', 'flex-wrap: wrap;'), rule('flex-nowrap', 'flex-wrap: nowrap;'));
   for (const [name, value] of [['start', 'flex-start'], ['center', 'center'], ['end', 'flex-end'], ['stretch', 'stretch'], ['baseline', 'baseline']]) out.push(rule(`items-${name}`, `align-items: ${value};`));
   for (const [name, value] of [['start', 'flex-start'], ['center', 'center'], ['end', 'flex-end'], ['between', 'space-between'], ['around', 'space-around'], ['evenly', 'space-evenly']]) out.push(rule(`justify-${name}`, `justify-content: ${value};`));
+  // Filas de una cuadrícula o de un flex con varias líneas
+  for (const [name, value] of [['start', 'start'], ['center', 'center'], ['end', 'end'], ['between', 'space-between'], ['stretch', 'stretch']]) out.push(rule(`content-${name}`, `align-content: ${value};`));
   // Texto
   out.push(rule('text-start', 'text-align: start;'), rule('text-center', 'text-align: center;'), rule('text-end', 'text-align: end;'));
   // Anchos más usados
