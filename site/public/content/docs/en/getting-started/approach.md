@@ -33,6 +33,7 @@ Unprefixed classes apply to every screen and prefixed ones (`gm-md-…`) are add
 ## Plain CSS, optional JavaScript
 
 - The framework is **plain CSS**: no Sass, no build step, no extra packages.
+- It all goes in a **CSS layer** (`@layer glassmarshmallow`), so your own CSS always wins without fighting specificity ([Install](/docs/getting-started/install/)).
 - Components that move (menu, calendar, carousel…) have an **optional script** with no dependencies. Without it, the component still shows and, whenever possible, works in a basic way.
 
 ## Names

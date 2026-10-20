@@ -83,6 +83,21 @@ Link the compiled file in your HTML, or import it from your own CSS.
 @import "glassmarshmallow/dist/css/glassmarshmallow.css";
 ```
 
+### Your CSS always wins
+
+All the framework is inside a **CSS layer** called `glassmarshmallow` (`@layer`). Your own CSS, outside any layer, always wins over it, whatever its specificity and wherever you link it: a simple `.card { padding: 2rem; }` is enough to change a framework style, with no `!important` or long selectors.
+
+```css:CSS
+/* Wins over .gm-card, even though .gm-card is linked later */
+.gm-card { border-radius: 0; }
+```
+
+If you also use layers, say the order once, at the top of your CSS. The later layer wins:
+
+```css:CSS
+@layer glassmarshmallow, my-styles;
+```
+
 ### The font (optional)
 
 GlassMarshmallow uses Montserrat. It comes in a separate file, `glassmarshmallow-font.min.css`, served from your own site (no Google Fonts). Add it before the framework if you want that font; if you prefer another one, leave it out and change `--gm-font` (see [Typography](/docs/customize/typography)).
@@ -232,6 +247,7 @@ Unprefixed classes apply to every screen and prefixed ones (`gm-md-…`) are add
 ## Plain CSS, optional JavaScript
 
 - The framework is **plain CSS**: no Sass, no build step, no extra packages.
+- It all goes in a **CSS layer** (`@layer glassmarshmallow`), so your own CSS always wins without fighting specificity ([Install](/docs/getting-started/install/)).
 - Components that move (menu, calendar, carousel…) have an **optional script** with no dependencies. Without it, the component still shows and, whenever possible, works in a basic way.
 
 ## Names
@@ -1879,7 +1895,7 @@ The colors are the palette ones (`sky`, `blue`, `lavender`, `pink`, `peach`, `le
 
 ## Where each color starts and ends
 
-`gm-from-25%`, `gm-via-60%`, `gm-to-75%`…: from 0 to 100 in steps of 10 (plus 25 and 75). Before `gm-from-25%`, everything is the first color; after `gm-to-75%`, everything is the last.
+`gm-from-25%`, `gm-via-60%`, `gm-to-75%`…: from 0 to 100 in steps of 10 (plus 25 and 75); any other one in brackets, with an [arbitrary value](/docs/utilities/arbitrary): `gm-from-[12.5%]`. Before `gm-from-25%`, everything is the first color; after `gm-to-75%`, everything is the last.
 
 ```html
 <div class="gm-bg-linear-to-r gm-from-sky gm-from-25% gm-to-lavender gm-to-75% gm-rounded-md gm-p-8"></div>
@@ -2477,6 +2493,8 @@ It creates `glassmarshmallow.extra.css` with the classes it finds in the current
 <link rel="stylesheet" href="node_modules/glassmarshmallow/dist/css/glassmarshmallow.min.css">
 <link rel="stylesheet" href="glassmarshmallow.extra.css">
 ```
+
+Its classes go in the framework's layer (`@layer glassmarshmallow`), after the rest, so they win over the framework's own classes. Your own CSS, outside layers, still wins over both.
 
 If you do not use arbitrary values, you do not need it: the framework works the same without the program.
 

@@ -2,11 +2,11 @@
  * GlassMarshmallow v0.1 · Licencia MIT
  * Diseñado y desarrollado por Sara Paez Yamuza
  */
-@import "./tokens.css";
-@import "./base.css";
-@import "./layout.css";
-@import "./components.css";
-@import "./theme.css";
-@import "./utilities.css";
-@import "./utilities-layout.css";
-@import "./backdrop.css";
+@import "./tokens.css" layer(glassmarshmallow);
+@import "./base.css" layer(glassmarshmallow);
+@import "./layout.css" layer(glassmarshmallow);
+@import "./components.css" layer(glassmarshmallow);
+@import "./theme.css" layer(glassmarshmallow);
+@import "./utilities.css" layer(glassmarshmallow);
+@import "./utilities-layout.css" layer(glassmarshmallow);
+@import "./backdrop.css" layer(glassmarshmallow);

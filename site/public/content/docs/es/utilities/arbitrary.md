@@ -17,6 +17,8 @@ Crea `glassmarshmallow.extra.css` con las clases que encuentre en la carpeta en 
 <link rel="stylesheet" href="glassmarshmallow.extra.css">
 ```
 
+Sus clases van en la capa del framework (`@layer glassmarshmallow`), después de todo lo demás, así que ganan a las clases propias del framework. Tu CSS, fuera de las capas, sigue ganando a las dos.
+
 Si no usas valores libres, no hace falta: el framework funciona igual sin el programa.
 
 ## Opciones

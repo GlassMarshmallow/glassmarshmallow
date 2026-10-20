@@ -17,6 +17,8 @@ It creates `glassmarshmallow.extra.css` with the classes it finds in the current
 <link rel="stylesheet" href="glassmarshmallow.extra.css">
 ```
 
+Its classes go in the framework's layer (`@layer glassmarshmallow`), after the rest, so they win over the framework's own classes. Your own CSS, outside layers, still wins over both.
+
 If you do not use arbitrary values, you do not need it: the framework works the same without the program.
 
 ## Options

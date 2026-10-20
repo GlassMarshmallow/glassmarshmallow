@@ -33,6 +33,7 @@ Las clases sin prefijo valen para todas las pantallas y las de prefijo (`gm-md-�
 ## CSS normal, JavaScript opcional
 
 - El framework es **CSS normal**: no hace falta Sass, ni compilar, ni ningún paquete más.
+- Todo va en una **capa de CSS** (`@layer glassmarshmallow`), así que tu propio CSS gana siempre sin pelearse con la especificidad ([Instalación](/docs/getting-started/install/)).
 - Los componentes que se mueven (menú, calendario, carrusel…) tienen un **script opcional**, sin dependencias. Sin él, el componente se ve y, siempre que se puede, funciona de forma básica.
 
 ## Nombres

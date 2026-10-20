@@ -8,10 +8,11 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const srcDir = join(root, 'css');
 const outDir = join(root, 'dist', 'css');
 
-/** Sustituye cada @import "./archivo.css" por el contenido del archivo. */
+/** Sustituye cada @import "./archivo.css" por el contenido del archivo (dentro de su capa si lleva layer(…)). */
 function bundle(file) {
   const css = readFileSync(join(srcDir, file), 'utf8');
-  return css.replace(/@import\s+"\.\/([^"]+)";/g, (_, name) => bundle(name).trim());
+  return css.replace(/@import\s+"\.\/([^"]+)"(?:\s+layer\(([\w-]+)\))?;/g, (_, name, layer) =>
+    layer ? `@layer ${layer} {\n${bundle(name).trim()}\n}` : bundle(name).trim());
 }
 
 // Minificado sencillo: sin comentarios (salvo los que empiezan por /*!), espacios ni saltos de línea sobrantes.

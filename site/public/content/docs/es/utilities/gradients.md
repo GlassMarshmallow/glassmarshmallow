@@ -28,7 +28,7 @@ Los colores son los de la paleta (`sky`, `blue`, `lavender`, `pink`, `peach`, `l
 
 ## Dónde empieza y acaba cada color
 
-`gm-from-25%`, `gm-via-60%`, `gm-to-75%`…: de 0 a 100 en pasos de 10 (y 25 y 75). Antes de `gm-from-25%`, todo es del primer color; después de `gm-to-75%`, todo es del último.
+`gm-from-25%`, `gm-via-60%`, `gm-to-75%`…: de 0 a 100 en pasos de 10 (y 25 y 75); cualquier otro entre corchetes, con un [valor libre](/docs/utilities/arbitrary): `gm-from-[12.5%]`. Antes de `gm-from-25%`, todo es del primer color; después de `gm-to-75%`, todo es del último.
 
 ```html
 <div class="gm-bg-linear-to-r gm-from-sky gm-from-25% gm-to-lavender gm-to-75% gm-rounded-md gm-p-8"></div>
