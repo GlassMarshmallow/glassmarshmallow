@@ -21,6 +21,15 @@ const SPACE = { 0: '0', 1: '.25rem', 2: '.5rem', 3: '.75rem', 4: '1rem', 5: '1.2
 /** Tamaños de letra: gm-text-lg… (los de Tailwind, en rem) */
 const TEXT_SIZES = { xs: '.75rem', sm: '.875rem', base: '1rem', lg: '1.125rem', xl: '1.25rem', '2xl': '1.5rem', '3xl': '1.875rem', '4xl': '2.25rem' };
 
+/** Colores con los que se construye (degradados, bordes, anillos): la paleta y los de la página */
+const PALETTE = ['sky', 'blue', 'lavender', 'pink', 'peach', 'lemon', 'mint', 'coral'];
+const BUILD_COLORS = {
+  ...Object.fromEntries(PALETTE.map((c) => [c, `var(--gm-${c})`])),
+  white: 'var(--gm-white)', black: 'var(--gm-black)', transparent: 'transparent', current: 'currentColor',
+  body: 'var(--gm-bg)', surface: 'var(--gm-surface-solid)', text: 'var(--gm-text)', accent: 'var(--gm-accent)',
+  line: 'var(--gm-line)', 'line-strong': 'var(--gm-line-strong)',
+};
+
 const rule = (name, body) => `.${name} { ${body} }`;
 
 /** Clases que también tienen versión por punto de corte (gm-md-…) */
@@ -144,8 +153,83 @@ function fixed() {
     rule('rounded-md', 'border-radius: var(--gm-radius-md);'), rule('rounded-lg', 'border-radius: var(--gm-radius-lg);'),
     rule('rounded-pill', 'border-radius: var(--gm-radius-pill);'), rule('rounded-full', 'border-radius: 50%;'),
   );
+  // Bordes para construir: lados, grosores, estilo, color y esquinas una a una
+  out.push(
+    '/* Bordes: lados, grosor, estilo y color */',
+    rule('border-s', 'border-inline-start: 1px solid var(--gm-line);'), rule('border-e', 'border-inline-end: 1px solid var(--gm-line);'),
+    rule('border-x', 'border-inline: 1px solid var(--gm-line);'), rule('border-y', 'border-block: 1px solid var(--gm-line);'),
+    rule('border-2', 'border: 2px solid var(--gm-line);'), rule('border-4', 'border: 4px solid var(--gm-line);'),
+    rule('border-solid', 'border-style: solid;'), rule('border-dashed', 'border-style: dashed;'), rule('border-dotted', 'border-style: dotted;'),
+  );
+  for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`border-${name}`, `border-color: ${value};`));
+  const RADII = { none: '0', sm: 'var(--gm-radius-sm)', md: 'var(--gm-radius-md)', lg: 'var(--gm-radius-lg)', pill: 'var(--gm-radius-pill)', full: '50%' };
+  const CORNERS = {
+    t: ['start-start', 'start-end'], b: ['end-start', 'end-end'], s: ['start-start', 'end-start'], e: ['start-end', 'end-end'],
+    ts: ['start-start'], te: ['start-end'], bs: ['end-start'], be: ['end-end'],
+  };
+  out.push('/* Esquinas una a una (t arriba, b abajo, s inicio, e final; ts, te, bs y be, cada esquina) */');
+  for (const [side, corners] of Object.entries(CORNERS)) {
+    for (const [size, value] of Object.entries(RADII)) out.push(rule(`rounded-${side}-${size}`, corners.map((c) => `border-${c}-radius: ${value};`).join(' ')));
+  }
   // Sombras (las del framework, que cambian con el modo oscuro)
   out.push('/* Sombras */', rule('shadow-none', 'box-shadow: none;'), rule('shadow-sm', 'box-shadow: var(--gm-shadow-sm);'), rule('shadow', 'box-shadow: var(--gm-shadow-sm);'), rule('shadow-md', 'box-shadow: var(--gm-shadow-md);'), rule('shadow-lg', 'box-shadow: var(--gm-shadow-hover);'));
+  // Las variables con las que se construyen degradados, filtros y anillos no se heredan: así el hijo de un elemento
+  // con filtro o degradado no se lleva el del padre (como Tailwind, con @property … inherits: false)
+  for (const name of ['gradient-from', 'gradient-via', 'gradient-to', 'gradient-stops', 'gradient-from-position', 'gradient-via-position',
+    'gradient-to-position', 'gradient-shape', 'f-blur', 'f-brightness', 'f-contrast', 'f-saturate', 'f-grayscale', 'f-invert', 'f-sepia',
+    'f-drop-shadow', 'b-blur', 'b-saturate', 'b-brightness', 'ring-width', 'ring-color', 'ring-offset']) {
+    out.push(`@property --gm-${name} { syntax: "*"; inherits: false; }`);
+  }
+  // Sombras para construir: hacia dentro y de color (un resplandor del color de la paleta)
+  out.push(rule('shadow-inner', 'box-shadow: inset 0 2px 6px rgba(0, 0, 0, .08);'));
+  for (const c of PALETTE) out.push(rule(`shadow-${c}`, `box-shadow: 0 .5rem 1.5rem rgb(var(--gm-${c}-rgb) / .5);`));
+  // Anillo alrededor (con outline: no choca con la sombra y sigue las esquinas)
+  out.push(
+    '/* Anillos: gm-ring (2 px, color de acento), su grosor, su color y su separación */',
+    rule('ring', 'outline: var(--gm-ring-width, 2px) solid var(--gm-ring-color, var(--gm-accent)); outline-offset: var(--gm-ring-offset, 0px);'),
+  );
+  for (const w of [1, 2, 4]) out.push(rule(`ring-${w}`, `--gm-ring-width: ${w}px;`));
+  for (const o of [0, 2, 4]) out.push(rule(`ring-offset-${o}`, `--gm-ring-offset: ${o}px;`));
+  for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`ring-${name}`, `--gm-ring-color: ${value};`));
+  // Degradados: dirección (o forma) y colores de inicio, intermedio y final, en cualquier orden
+  out.push('/* Degradados: gm-bg-linear-to-… / gm-bg-radial / gm-bg-conic con gm-from-…, gm-via-… y gm-to-… */');
+  for (const [name, dir] of Object.entries({ t: 'top', tr: 'top right', r: 'right', br: 'bottom right', b: 'bottom', bl: 'bottom left', l: 'left', tl: 'top left' })) {
+    out.push(rule(`bg-linear-to-${name}`, `background-image: linear-gradient(to ${dir}, var(--gm-gradient-stops));`));
+  }
+  out.push(rule('bg-radial', 'background-image: radial-gradient(var(--gm-gradient-shape, circle at center), var(--gm-gradient-stops));'));
+  out.push(rule('bg-conic', 'background-image: conic-gradient(var(--gm-gradient-stops));'));
+  out.push(rule('bg-none', 'background-image: none;'));
+  // El final es transparente si no se dice otro; el intermedio, solo si se pone
+  const STOPS2 = 'var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%)';
+  const STOPS3 = 'var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%)';
+  for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`from-${name}`, `--gm-gradient-from: ${value} var(--gm-gradient-from-position, 0%); --gm-gradient-stops: ${STOPS2};`));
+  for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`via-${name}`, `--gm-gradient-via: ${value} var(--gm-gradient-via-position, 50%); --gm-gradient-stops: ${STOPS3};`));
+  for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`to-${name}`, `--gm-gradient-to: ${value} var(--gm-gradient-to-position, 100%);`));
+  for (const pos of [0, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100]) {
+    for (const stop of ['from', 'via', 'to']) out.push(rule(`${stop}-${pos}\\%`, `--gm-gradient-${stop}-position: ${pos}%;`));
+  }
+  // Filtros del propio elemento: se pueden juntar (gm-brightness-110 gm-saturate-150)
+  const FILTER = 'filter: var(--gm-f-blur,) var(--gm-f-brightness,) var(--gm-f-contrast,) var(--gm-f-saturate,) var(--gm-f-grayscale,) var(--gm-f-invert,) var(--gm-f-sepia,) var(--gm-f-drop-shadow,);';
+  out.push('/* Filtros del elemento (se juntan entre sí) */');
+  for (const [name, value] of [['sm', '4px'], ['md', '12px'], ['lg', '24px'], ['xl', '48px']]) out.push(rule(`filter-blur-${name}`, `--gm-f-blur: blur(${value}); ${FILTER}`));
+  for (const v of [50, 75, 90, 95, 100, 105, 110, 125, 150]) out.push(rule(`brightness-${v}`, `--gm-f-brightness: brightness(${v / 100}); ${FILTER}`));
+  for (const v of [50, 75, 100, 125, 150]) out.push(rule(`contrast-${v}`, `--gm-f-contrast: contrast(${v / 100}); ${FILTER}`));
+  for (const v of [0, 50, 100, 150, 200]) out.push(rule(`saturate-${v}`, `--gm-f-saturate: saturate(${v / 100}); ${FILTER}`));
+  out.push(
+    rule('grayscale', `--gm-f-grayscale: grayscale(1); ${FILTER}`), rule('grayscale-0', `--gm-f-grayscale: grayscale(0); ${FILTER}`),
+    rule('invert', `--gm-f-invert: invert(1); ${FILTER}`), rule('sepia', `--gm-f-sepia: sepia(1); ${FILTER}`),
+    rule('drop-shadow-sm', `--gm-f-drop-shadow: drop-shadow(0 1px 2px rgba(0, 0, 0, .15)); ${FILTER}`),
+    rule('drop-shadow', `--gm-f-drop-shadow: drop-shadow(0 4px 8px rgba(0, 0, 0, .2)); ${FILTER}`),
+    rule('drop-shadow-lg', `--gm-f-drop-shadow: drop-shadow(0 10px 20px rgba(0, 0, 0, .25)); ${FILTER}`),
+    rule('filter-none', 'filter: none;'),
+  );
+  // Filtros del fondo (lo que hay detrás): desenfoque, saturación y brillo, también juntos
+  const BACKDROP = 'var(--gm-b-blur,) var(--gm-b-saturate,) var(--gm-b-brightness,)';
+  const backdrop = `-webkit-backdrop-filter: ${BACKDROP}; backdrop-filter: ${BACKDROP};`;
+  out.push('/* Filtros del fondo (lo que se ve detrás; gm-blur-* es el mismo desenfoque con el nombre corto) */');
+  for (const [name, value] of [['sm', '7px'], ['md', '12px'], ['lg', '20px'], ['xl', '32px']]) out.push(rule(`backdrop-blur-${name}`, `--gm-b-blur: blur(${value}); ${backdrop}`));
+  for (const v of [100, 125, 150, 180, 200]) out.push(rule(`backdrop-saturate-${v}`, `--gm-b-saturate: saturate(${v / 100}); ${backdrop}`));
+  for (const v of [75, 90, 100, 110, 125]) out.push(rule(`backdrop-brightness-${v}`, `--gm-b-brightness: brightness(${v / 100}); ${backdrop}`));
   // Efectos: cristal, desenfoque y opacidad
   out.push(
     '/* Efectos: cristal, desenfoque del fondo y opacidad */',
