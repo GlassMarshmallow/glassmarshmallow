@@ -399,6 +399,37 @@
 /* Botón que abre el menú a pantalla completa: solo en el móvil */
 .gm-navbar__menu { display: none; }
 
+/* La marca y los enlaces juntos a la izquierda (la barra de la web de GlassMarshmallow): <div class="gm-navbar__start">
+   con el logo y el <nav> dentro; lo demás (buscador, acciones) queda a la derecha */
+.gm-navbar__start { display: flex; min-width: 0; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); }
+/* Enlace con icono en las acciones (como el de GitHub): cuadrado suave que se tiñe al pasar el ratón, con la zona que
+   se pulsa de 44 px aunque se vea más pequeño (WCAG 2.5.5) */
+.gm-navbar__icon {
+  position: relative;
+  display: grid;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-nav-link);
+  place-items: center;
+  text-shadow: none;
+}
+.gm-navbar__icon:hover { color: var(--gm-text); background: var(--gm-hover); }
+.gm-navbar__icon::after { position: absolute; inset: min(0px, calc(50% - 1.375rem)); content: ""; }
+/* Logo de cristal con el fondo de luces de la portada detrás en claro (en vez de la sombra), como en esta web */
+:root:not([data-theme="dark"]) .gm-glass-logo--backdrop { background: var(--gm-backdrop-lights), var(--gm-backdrop-bg); box-shadow: none; }
+/* Barra apretada en el móvil (gm-navbar--dense): marca, logo y acciones más juntos para que quepan el buscador, el
+   idioma y el tema; por debajo de 360 px, solo el logo (el nombre lo siguen leyendo los lectores de pantalla) */
+@media (max-width: 53.75rem) {
+  .gm-navbar--dense .gm-navbar__brand { gap: .375rem; font-size: .88rem; }
+  .gm-navbar--dense .gm-navbar__logo { width: 2rem; height: 2rem; }
+  .gm-navbar--dense .gm-navbar__actions { gap: 0; }
+  .gm-navbar--dense .gm-navbar__actions .gm-menu__trigger { padding-inline: .25rem; }
+}
+@media (max-width: 22.4375rem) {
+  .gm-navbar--dense .gm-navbar__brand > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
 /* Barra inferior de pestañas para móvil (flotante y de cristal, como en iOS) */
 .gm-tabbar,
 .gm-tabbar-more { display: none; }
@@ -2028,6 +2059,42 @@ html:has(.gm-fullscreen-menu.is-open) { overflow: hidden; }
 .gm-footer__bottom strong { color: var(--gm-text); }
 .gm-footer__credit { max-inline-size: none; margin: .5rem 0 0; color: var(--gm-muted); font-size: .8rem; text-align: center; }
 .gm-footer__credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+/* --- Pie sencillo (el de la web de GlassMarshmallow) -------------------------------------
+   <footer class="gm-site-footer">
+     <div class="gm-container gm-site-footer__inner">
+       <nav class="gm-site-footer__links" aria-label="Pie"><a href="…">Docs</a>…</nav>
+       <p class="gm-site-footer__credit gm-muted gm-small">Diseñado por <a class="gm-site-footer__author" href="…">Nombre</a> · Licencia MIT</p>
+     </div>
+   </footer>
+   Una fila de enlaces y debajo los créditos, sobre el fondo de la página con una línea arriba (como My Book Box).
+   Con el fondo de luces a toda la página (.gm-backdrop), el pie es blanco en claro y negro en oscuro y sin línea,
+   para continuar el degradado del final. Con .gm-has-tabbar deja sitio a la barra de pestañas del móvil. */
+.gm-site-footer {
+  position: relative;
+  padding-block: 2rem 2.25rem;
+  border-top: 1px solid var(--gm-line);
+  color: var(--gm-text);
+  background: var(--gm-bg);
+}
+html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top: 0; background: rgb(var(--gm-page-end-rgb)); }
+.gm-site-footer__inner { display: grid; gap: .875rem; }
+.gm-site-footer__links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-size: .88rem; }
+/* 44 px de alto y de ancho como mínimo (WCAG 2.5.5, AAA) */
+.gm-site-footer__links a { display: inline-flex; min-width: 2.75rem; min-height: 2.75rem; align-items: center; padding-block: .25rem; color: var(--gm-text); }
+.gm-site-footer__links a:hover { color: var(--gm-link-hover); text-decoration: underline; }
+.gm-site-footer__credit { margin: 0; }
+.gm-site-footer__author { color: var(--gm-text); font-weight: 600; text-decoration: underline; text-underline-offset: .1875rem; }
+@media (max-width: 53.75rem) {
+  .gm-site-footer.gm-has-tabbar { padding-bottom: calc(2.25rem + 6rem + env(safe-area-inset-bottom)); }
+}
+
+/* --- Zona que se pulsa de 44 × 44 px -----------------------------------------------------
+   <a class="gm-hit-area" href="…"><i class="gmi gmi-github" aria-label="GitHub"></i></a>
+   Para algo que se pulsa y se ve más pequeño de 44 px: una capa invisible amplía la zona sin cambiar el aspecto
+   (WCAG 2.5.5, AAA). Es lo que ya hacen los botones del framework. */
+.gm-hit-area { position: relative; }
+.gm-hit-area::after { position: absolute; inset: min(0px, calc(50% - 1.375rem)); content: ""; }
 
 /* --- Menú lateral (el de la documentación de GlassMarshmallow) -------------------------
    <div class="gm-sidenav-layout">
