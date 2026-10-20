@@ -76,6 +76,17 @@ function responsive() {
   out.push(rule('text-start', 'text-align: start;'), rule('text-center', 'text-align: center;'), rule('text-end', 'text-align: end;'));
   // Anchos más usados
   out.push(rule('w-full', 'width: 100%;'), rule('w-auto', 'width: auto;'), rule('w-fit', 'width: fit-content;'));
+  // Cuadrícula para construir (como Tailwind): con gm-d-grid, cuántas columnas y filas, y cuántas ocupa cada hijo.
+  // gm-grid sigue siendo la cuadrícula de 12 columnas (como las filas y columnas de Bootstrap)
+  for (let n = 1; n <= 12; n++) out.push(rule(`grid-cols-${n}`, `grid-template-columns: repeat(${n}, minmax(0, 1fr));`));
+  out.push(rule('grid-cols-none', 'grid-template-columns: none;'));
+  for (let n = 1; n <= 12; n++) out.push(rule(`col-span-${n}`, `grid-column: span ${n} / span ${n};`));
+  out.push(rule('col-span-full', 'grid-column: 1 / -1;'));
+  for (let n = 1; n <= 6; n++) out.push(rule(`grid-rows-${n}`, `grid-template-rows: repeat(${n}, minmax(0, 1fr));`));
+  out.push(rule('grid-rows-none', 'grid-template-rows: none;'));
+  for (let n = 1; n <= 6; n++) out.push(rule(`row-span-${n}`, `grid-row: span ${n} / span ${n};`));
+  out.push(rule('row-span-full', 'grid-row: 1 / -1;'));
+  for (const [name, value] of [['row', 'row'], ['col', 'column'], ['dense', 'dense'], ['row-dense', 'row dense'], ['col-dense', 'column dense']]) out.push(rule(`grid-flow-${name}`, `grid-auto-flow: ${value};`));
   // Posición
   for (const value of ['static', 'relative', 'absolute', 'fixed', 'sticky']) out.push(rule(value, `position: ${value};`));
   // Tamaño de letra (en rem, como Tailwind)
@@ -239,6 +250,88 @@ function fixed() {
     out.push(rule(`blur-${name}`, `-webkit-backdrop-filter: blur(${value}); backdrop-filter: blur(${value});`));
   }
   for (const value of [0, 25, 50, 75, 100]) out.push(rule(`opacity-${value}`, `opacity: ${value / 100};`));
+  // Transformaciones: girar, escalar y mover (propiedades sueltas: se juntan solas) y su punto de giro
+  out.push('/* Transformaciones */');
+  for (const v of [0, 1, 2, 3, 6, 12, 45, 90, 180]) out.push(rule(`rotate-${v}`, `rotate: ${v}deg;`));
+  for (const v of [0, 50, 75, 90, 95, 100, 105, 110, 125, 150]) out.push(rule(`scale-${v}`, `scale: ${v / 100};`));
+  for (const name of ['tx', 'ty']) out.push(`@property --gm-${name} { syntax: "*"; inherits: false; }`);
+  for (const [key, value] of Object.entries(SPACE)) {
+    out.push(rule(`translate-x-${key}`, `--gm-tx: ${value}; translate: var(--gm-tx, 0) var(--gm-ty, 0);`));
+    out.push(rule(`translate-y-${key}`, `--gm-ty: ${value}; translate: var(--gm-tx, 0) var(--gm-ty, 0);`));
+  }
+  for (const [name, value] of [['center', 'center'], ['top', 'top'], ['bottom', 'bottom'], ['left', 'left'], ['right', 'right'], ['top-left', 'top left'], ['top-right', 'top right'], ['bottom-left', 'bottom left'], ['bottom-right', 'bottom right']]) {
+    out.push(rule(`origin-${name}`, `transform-origin: ${value};`));
+  }
+  // Transiciones: qué cambia suave y con qué curva
+  out.push(
+    '/* Transiciones: qué y con qué curva (la duración, con gm-duration-*) */',
+    rule('transition-none', 'transition: none;'),
+    rule('transition-colors', 'transition: color .2s, background-color .2s, border-color .2s, outline-color .2s, fill .2s, stroke .2s;'),
+    rule('transition-opacity', 'transition: opacity .2s;'),
+    rule('transition-transform', 'transition: transform .2s, translate .2s, scale .2s, rotate .2s;'),
+    rule('transition-shadow', 'transition: box-shadow .2s;'),
+    rule('ease-linear', 'transition-timing-function: linear; animation-timing-function: linear;'),
+    rule('ease-in', 'transition-timing-function: cubic-bezier(.4, 0, 1, 1); animation-timing-function: cubic-bezier(.4, 0, 1, 1);'),
+    rule('ease-out', 'transition-timing-function: cubic-bezier(0, 0, .2, 1); animation-timing-function: cubic-bezier(0, 0, .2, 1);'),
+    rule('ease-in-out', 'transition-timing-function: cubic-bezier(.4, 0, .2, 1); animation-timing-function: cubic-bezier(.4, 0, .2, 1);'),
+    rule('ease-bounce', 'transition-timing-function: cubic-bezier(.34, 1.56, .64, 1); animation-timing-function: cubic-bezier(.34, 1.56, .64, 1);'),
+  );
+  // Fondos: tamaño, posición, repetición, fijación y recorte
+  out.push('/* Fondos */');
+  for (const v of ['auto', 'cover', 'contain']) out.push(rule(`bg-${v}`, `background-size: ${v};`));
+  for (const [name, value] of [['center', 'center'], ['top', 'top'], ['bottom', 'bottom'], ['left', 'left'], ['right', 'right']]) out.push(rule(`bg-${name}`, `background-position: ${value};`));
+  for (const [name, value] of [['repeat', 'repeat'], ['no-repeat', 'no-repeat'], ['repeat-x', 'repeat-x'], ['repeat-y', 'repeat-y']]) out.push(rule(`bg-${name}`, `background-repeat: ${value};`));
+  for (const v of ['fixed', 'local', 'scroll']) out.push(rule(`bg-${v}`, `background-attachment: ${v};`));
+  out.push(
+    rule('bg-clip-border', 'background-clip: border-box;'), rule('bg-clip-padding', 'background-clip: padding-box;'), rule('bg-clip-content', 'background-clip: content-box;'),
+    rule('bg-clip-text', '-webkit-background-clip: text; background-clip: text; color: transparent;'),
+  );
+  // Alineación de un solo elemento y atajos de place-*
+  out.push('/* Alineación de un solo elemento (self) y atajos (place) */');
+  for (const v of ['auto', 'start', 'center', 'end', 'stretch', 'baseline']) out.push(rule(`self-${v}`, `align-self: ${v};`));
+  for (const v of ['auto', 'start', 'center', 'end', 'stretch']) out.push(rule(`justify-self-${v}`, `justify-self: ${v};`));
+  for (const v of ['start', 'center', 'end', 'stretch']) out.push(rule(`justify-items-${v}`, `justify-items: ${v};`));
+  for (const v of ['start', 'center', 'end', 'stretch']) out.push(rule(`place-items-${v}`, `place-items: ${v};`));
+  for (const v of ['start', 'center', 'end', 'between', 'stretch']) out.push(rule(`place-content-${v}`, `place-content: ${v === 'between' ? 'space-between' : v};`));
+  for (const v of ['auto', 'start', 'center', 'end', 'stretch']) out.push(rule(`place-self-${v}`, `place-self: ${v};`));
+  // Texto: subrayado (color, grosor, separación, estilo), columnas y espacios
+  out.push('/* Texto: subrayado, columnas y espacios */');
+  for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`decoration-${name}`, `text-decoration-color: ${value};`));
+  for (const v of [1, 2, 4]) out.push(rule(`decoration-${v}`, `text-decoration-thickness: ${v}px;`));
+  for (const v of ['solid', 'dashed', 'dotted', 'wavy', 'double']) out.push(rule(`decoration-${v}`, `text-decoration-style: ${v};`));
+  for (const v of [1, 2, 4, 8]) out.push(rule(`underline-offset-${v}`, `text-underline-offset: ${v}px;`));
+  for (const v of [1, 2, 3, 4]) out.push(rule(`columns-${v}`, `columns: ${v};`));
+  out.push(
+    rule('break-inside-avoid', 'break-inside: avoid;'), rule('hyphens-auto', 'hyphens: auto;'), rule('break-all', 'word-break: break-all;'),
+    rule('whitespace-normal', 'white-space: normal;'), rule('whitespace-pre', 'white-space: pre;'), rule('whitespace-pre-wrap', 'white-space: pre-wrap;'),
+  );
+  // Imágenes: dónde se coloca dentro de su caja
+  for (const [name, value] of [['center', 'center'], ['top', 'top'], ['bottom', 'bottom'], ['left', 'left'], ['right', 'right']]) out.push(rule(`object-${name}`, `object-position: ${value};`));
+  // Scroll e interacción
+  out.push(
+    '/* Scroll e interacción */',
+    rule('scroll-smooth', 'scroll-behavior: smooth;'), rule('scroll-auto', 'scroll-behavior: auto;'),
+    rule('snap-x', 'scroll-snap-type: x mandatory;'), rule('snap-y', 'scroll-snap-type: y mandatory;'), rule('snap-proximity', 'scroll-snap-type: var(--gm-snap-axis, both) proximity;'),
+    rule('snap-start', 'scroll-snap-align: start;'), rule('snap-center', 'scroll-snap-align: center;'), rule('snap-end', 'scroll-snap-align: end;'),
+    rule('touch-none', 'touch-action: none;'), rule('touch-manipulation', 'touch-action: manipulation;'),
+    rule('resize', 'resize: both;'), rule('resize-y', 'resize: vertical;'), rule('resize-none', 'resize: none;'),
+  );
+  for (const v of [0, 4, 8, 16, 20, 24]) out.push(rule(`scroll-mt-${v}`, `scroll-margin-top: ${v / 4}rem;`));
+  for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`accent-${name}`, `accent-color: ${value};`), rule(`caret-${name}`, `caret-color: ${value};`));
+  // Máscaras: desvanecer un elemento hacia un lado o en círculo (desde dónde, con gm-mask-from-*)
+  out.push('/* Máscaras: el elemento se desvanece hacia un lado (o en círculo) desde --gm-mask-from */', '@property --gm-mask-from { syntax: "*"; inherits: false; }');
+  for (const [name, dir] of Object.entries({ t: 'top', r: 'right', b: 'bottom', l: 'left' })) {
+    out.push(rule(`mask-to-${name}`, `-webkit-mask-image: linear-gradient(to ${dir}, #000 var(--gm-mask-from, 0%), transparent); mask-image: linear-gradient(to ${dir}, #000 var(--gm-mask-from, 0%), transparent);`));
+  }
+  out.push(rule('mask-radial', '-webkit-mask-image: radial-gradient(closest-side, #000 var(--gm-mask-from, 0%), transparent); mask-image: radial-gradient(closest-side, #000 var(--gm-mask-from, 0%), transparent);'));
+  out.push(rule('mask-none', '-webkit-mask-image: none; mask-image: none;'));
+  for (const v of [0, 25, 50, 60, 70, 75, 80, 90]) out.push(rule(`mask-from-${v}\\%`, `--gm-mask-from: ${v}%;`));
+  // Mezcla de colores (con lo de detrás, o entre los fondos de un mismo elemento)
+  out.push('/* Mezcla de colores */');
+  for (const v of ['normal', 'multiply', 'screen', 'overlay', 'soft-light', 'hard-light', 'difference', 'luminosity', 'color']) {
+    out.push(rule(`mix-blend-${v}`, `mix-blend-mode: ${v};`), rule(`bg-blend-${v}`, `background-blend-mode: ${v};`));
+  }
+  out.push(rule('isolate', 'isolation: isolate;'));
   // Animaciones (base.css las quita todas si la persona pide menos movimiento)
   const EASE = 'cubic-bezier(.2, .8, .2, 1)';
   const BOUNCE = 'cubic-bezier(.34, 1.56, .64, 1)';

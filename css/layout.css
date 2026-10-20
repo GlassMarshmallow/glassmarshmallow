@@ -21,7 +21,7 @@
 .gm-grid > * { min-width: 0; grid-column: auto / span 12; }
 .gm-grid--auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--gm-grid-min, 15rem)), 1fr)); }
 .gm-grid--auto > * { grid-column: auto; }
-.gm-gap-0 { --gm-gap: 0; }
+/* Sin separación: gm-gap-0 (de las utilidades, con la misma escala que márgenes y rellenos: gm-gap-1 … gm-gap-16) */
 .gm-gap-sm { --gm-gap: .75rem; }
 .gm-gap-lg { --gm-gap: 2.5rem; }
 
