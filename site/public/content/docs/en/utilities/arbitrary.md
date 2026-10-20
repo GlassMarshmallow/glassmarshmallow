@@ -43,8 +43,38 @@ It reads HTML, Markdown, JavaScript, TypeScript, Angular, React, Vue, Svelte, As
 | `gm-shadow-[…]`, `gm-opacity-[…]`, `gm-blur-[…]` | Shadow, opacity and background blur |
 | `gm-grid-cols-[…]`, `gm-grid-rows-[…]`, `gm-col-span-[…]`, `gm-basis-[…]`, `gm-order-[…]` | Grid and flex |
 | `gm-aspect-[…]`, `gm-duration-[…]`, `gm-delay-[…]` | Aspect ratio and animation timing |
+| `gm-translate-[…]`, `gm-scale-[…]`, `gm-rotate-[…]`, `gm-transition-[…]` | Move, scale, rotate and transitions |
+| `gm-cursor-[…]`, `gm-d-[…]`, `gm-content-[…]`, `gm-grid-min-[…]` | Cursor, `display`, the text of `::before` / `::after` and the minimum width of `gm-grid--auto` |
 
 Inside the brackets, **`_` is a space**: `gm-grid-cols-[1fr_2fr]` writes `grid-template-columns: 1fr 2fr`. They also work with [breakpoints](/docs/layout/breakpoints): `gm-md-max-w-[52rem]`.
+
+## Variants: when it applies
+
+Before the utility, one or more variants with `:` say **when** the class applies, like in Tailwind. This way hover effects, dark mode, states and the `::before` / `::after` layers are written without CSS.
+
+```html-code
+<button class="gm-btn gm-hover:bg-[var(--gm-hover)] gm-focus-visible:shadow-[0_0_0_3px_var(--gm-focus)]">…</button>
+<button class="gm-pressed:bg-[var(--gm-primary)] gm-pressed:text-[var(--gm-on-primary)]" aria-pressed="false">…</button>
+<p class="gm-text-[#3a3a3c] gm-dark:text-[#d1d1d6]">…</p>
+<a class="gm-before:content-[→] gm-before:me-[.5rem]" href="…">Next</a>
+```
+
+| Variant | Applies… |
+| --- | --- |
+| `gm-hover:` | on hover |
+| `gm-focus:` / `gm-focus-visible:` / `gm-focus-within:` | on focus / on keyboard focus / when something inside has focus |
+| `gm-active:` / `gm-disabled:` / `gm-checked:` | while pressing / when disabled / when checked |
+| `gm-first:` / `gm-last:` / `gm-odd:` / `gm-even:` | to the first / the last / the odd / the even of its siblings |
+| `gm-pressed:` / `gm-selected:` / `gm-expanded:` / `gm-current:` / `gm-invalid:` | with `aria-pressed`, `aria-selected`, `aria-expanded` or `aria-invalid` set to `true`, or with `aria-current` |
+| `gm-before:` / `gm-after:` / `gm-placeholder:` | on the `::before` layer, on `::after` or on a field's placeholder |
+| `gm-dark:` / `gm-light:` | in dark / light mode (`data-theme`) |
+| `gm-group-hover:` / `gm-group-focus-within:` | when the ancestor with the `gm-group` class is hovered or focused |
+| `gm-motion-safe:` / `gm-motion-reduce:` | if the person has not asked for less motion / if they have |
+
+- They can be combined: `gm-dark:hover:bg-[…]` (in dark mode, on hover).
+- With a breakpoint, the breakpoint goes first: `gm-md-hover:translate-[0_-1px]`.
+- `gm-before:` and `gm-after:` already draw the layer; its text is set with `gm-before:content-[…]` (no quotes: the program adds them).
+- Hover movements are better with `gm-motion-safe:`, to respect people who ask for less motion.
 
 ## Example
 

@@ -10,6 +10,24 @@ Changes how an element is displayed, or hides it, depending on the screen size.
 | `gm-flex` / `gm-inline-flex` | Flex |
 | `gm-grid` | Grid |
 
+## Only `display`
+
+`gm-grid` is also the [12-column grid](/docs/layout/grid): its children span all 12 unless they have `gm-col-…`. For a simple grid, or to change only `display` and nothing else, use `gm-d-…`, with the same names as Bootstrap:
+
+| Class | `display` |
+| --- | --- |
+| `gm-d-none` / `gm-d-block` / `gm-d-inline` / `gm-d-inline-block` | none / block / inline / inline-block |
+| `gm-d-flex` / `gm-d-inline-flex` | flex / inline-flex |
+| `gm-d-grid` / `gm-d-inline-grid` | grid / inline-grid (no columns: one per row, or the ones you set) |
+| `gm-d-contents` | contents (the box disappears and its children belong to the parent) |
+
+```html
+<div class="gm-d-grid gm-gap-2">
+  <span class="gm-tag gm-theme-sky gm-theme-solid">One</span>
+  <span class="gm-tag gm-theme-sky gm-theme-solid">Two</span>
+</div>
+```
+
 ## By screen size
 
 With a prefix, from that [breakpoint](/docs/layout/breakpoints). Resize the window to see it:
