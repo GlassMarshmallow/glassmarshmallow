@@ -11,9 +11,7 @@ import { TranslatePipe } from '../../../core/i18n/translate.pipe';
       <span aria-hidden="true">‹</span> {{ 'common.back' | t }}<span class="gm-visually-hidden">: {{ section() | t }}</span>
     </a>
   `,
-  styles: `
-    :host { display: block; margin-bottom: 22px; }
-  `,
+  host: { class: 'gm-d-block gm-mb-[1.375rem]' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BackLink {
