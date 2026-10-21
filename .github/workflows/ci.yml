@@ -12,14 +12,14 @@ jobs:
     timeout-minutes: 30
     steps:
       # Los dos repositorios uno al lado del otro: la documentación usa los iconos de ../glassmarshmallow-icons
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: glassmarshmallow
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           repository: GlassMarshmallow/glassmarshmallow-icons
           path: glassmarshmallow-icons
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
