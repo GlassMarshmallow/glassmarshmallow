@@ -1,6 +1,6 @@
 # Card
 
-A glass box to group content: translucent background with blur, thin border, rounded corners and a soft shadow. It is the My Book Box panel.
+A glass box to group content: translucent background with blur, thin border, rounded corners and a soft shadow.
 
 ## Example
 

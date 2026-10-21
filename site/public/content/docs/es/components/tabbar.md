@@ -1,6 +1,6 @@
 # Barra de pestañas
 
-La barra de abajo del móvil, flotante y de cristal, como en iOS y en My Book Box. Sustituye a los enlaces de la [barra de navegación](/docs/components/navbar) por debajo de 860 px.
+La barra de abajo del móvil, flotante y de cristal, como en iOS. Sustituye a los enlaces de la [barra de navegación](/docs/components/navbar) por debajo de 860 px.
 
 ## Ejemplo
 

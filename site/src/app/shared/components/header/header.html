@@ -33,7 +33,7 @@
   </div>
 </header>
 
-<!-- Móvil: barra inferior de pestañas. Lo que no cabe va en el panel «Más», como en My Book Box -->
+<!-- Móvil: barra inferior de pestañas. Lo que no cabe va en el panel «Más» -->
 <nav id="mobile-more-menu" class="gm-tabbar-more" [class.is-open]="moreOpen()" [attr.aria-label]="'nav.moreMenu' | t" (keydown.escape)="closeMore()">
   @for (item of moreItems(); track item.path) {
     <a [routerLink]="item.path" routerLinkActive ariaCurrentWhenActive="page">

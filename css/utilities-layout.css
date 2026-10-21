@@ -1009,7 +1009,7 @@
 .gm-delay-500 { animation-delay: 500ms; transition-delay: 500ms; }
 .gm-delay-700 { animation-delay: 700ms; transition-delay: 700ms; }
 .gm-delay-1000 { animation-delay: 1000ms; transition-delay: 1000ms; }
-/* Cascada (la de las tecnologías del portfolio): cada hijo entra 40 ms después del anterior. Por defecto con
+/* Cascada: cada hijo entra 40 ms después del anterior. Por defecto con
    blur-in; para otra, pon su clase gm-animate-… en los hijos */
 .gm-stagger > * { animation: gm-blur-in .45s cubic-bezier(.2, .8, .2, 1) both; }
 .gm-stagger > :nth-child(2) { animation-delay: 40ms; }
@@ -1031,7 +1031,7 @@
 .gm-stagger > :nth-child(18) { animation-delay: 680ms; }
 .gm-stagger > :nth-child(19) { animation-delay: 720ms; }
 .gm-stagger > :nth-child(20) { animation-delay: 760ms; }
-/* Cuenta atrás (el botón de «siguiente episodio» de My MTV Box): se llena en --gm-countdown, 10 s por defecto */
+/* Cuenta atrás (un botón de «siguiente episodio»): se llena en --gm-countdown, 10 s por defecto */
 .gm-countdown { position: relative; overflow: hidden; isolation: isolate; }
 .gm-countdown::before { position: absolute; z-index: -1; inset: 0; width: 0; background: var(--gm-countdown-fill, rgb(255 255 255 / .35)); content: ""; animation: gm-countdown var(--gm-countdown, 10s) linear forwards; }
 @keyframes gm-countdown { to { width: 100%; } }

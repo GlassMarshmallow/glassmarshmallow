@@ -22,7 +22,7 @@ interface Preset {
 const MIN_STOPS = 2;
 const MAX_STOPS = 6;
 
-/** Degradados de partida con los colores del portfolio. */
+/** Degradados de partida. */
 const PRESETS: Preset[] = [
   { name: 'gradient.presetLights', type: 'linear', angle: 45, stops: [['#3cd2ff', 0], ['#8c64ff', 50], ['#ff9646', 100]] },
   { name: 'gradient.presetTitles', type: 'linear', angle: 90, stops: [['#0891b2', 0], ['#8b5cf6', 50], ['#ea580c', 100]] },

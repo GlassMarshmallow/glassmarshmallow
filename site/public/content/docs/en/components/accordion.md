@@ -1,6 +1,6 @@
 # Accordion
 
-A list of sections that open and close, all in one glass card and separated by a thin line. It is the one from the portfolio's skills section.
+A list of sections that open and close, all in one glass card and separated by a thin line.
 
 ## Example
 
@@ -44,7 +44,7 @@ With the same `name` on every `<details>`, only one opens at a time.
 
 ## With icon and detail
 
-Like in the portfolio: an icon in a circle on the left and a detail line under the title.
+An icon in a circle on the left and a detail line under the title.
 
 ```html
 <div class="gm-accordion">
@@ -91,7 +91,7 @@ Like in the portfolio: an icon in a circle on the left and a detail line under t
 
 ## With preview and logo list
 
-Like Skills in the portfolio template: closed, a few logos on the right (`.gm-accordion__preview`) and how many more there are; open, the list with a logo before each item, one below the other (`.gm-accordion__list--icons`). With `--cascade` and `style="--i: 0"`, `1`, `2`… the items come in one after the other when it opens.
+To show a list of skills or tools: closed, a few logos on the right (`.gm-accordion__preview`) and how many more there are; open, the list with a logo before each item, one below the other (`.gm-accordion__list--icons`). With `--cascade` and `style="--i: 0"`, `1`, `2`… the items come in one after the other when it opens.
 
 ```html
 <div class="gm-accordion">

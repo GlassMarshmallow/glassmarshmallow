@@ -1,6 +1,6 @@
 # Navbar
 
-The top bar, like the one in My Book Box and My MTV Box: logo and name on the left, the section links and, on the right, the actions (language, theme…). It is glass and sticks to the top when scrolling.
+The top bar: logo and name on the left, the section links and, on the right, the actions (language, theme…). It is glass and sticks to the top when scrolling.
 
 ## Example
 
@@ -40,7 +40,7 @@ If the logo is made of glass (translucent, with shiny edges, like the GlassMarsh
 
 ## Without a logo and floating on phones
 
-The bar of the portfolio template. **On computers**, without a logo: the links in the center and the theme button on the right (`.gm-navbar--centered`). **On phones**, no bar: only the round glass buttons remain, floating at the top right (`.gm-navbar--floating`), and the menu button (`.gm-navbar__menu`) opens the [full-screen menu](/docs/components/fullscreen-menu).
+For single-page sites. **On computers**, without a logo: the links in the center and the theme button on the right (`.gm-navbar--centered`). **On phones**, no bar: only the round glass buttons remain, floating at the top right (`.gm-navbar--floating`), and the menu button (`.gm-navbar__menu`) opens the [full-screen menu](/docs/components/fullscreen-menu).
 
 ```html
 <header class="gm-navbar gm-navbar--centered gm-navbar--floating gm-relative gm-rounded-sm">

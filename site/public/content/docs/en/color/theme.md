@@ -24,7 +24,7 @@ Switch between light and dark mode to see it turn from pink to blue.
 
 ## Turquoise accent at night
 
-With `class="gm-accent-turquoise"` on `<html>`, the night accent color is the turquoise of the portfolio template (`#1cabb0`, 7.4:1 on black) instead of blue; by day it stays pink. It changes focus, fields, selection, accordion icons and accent buttons.
+With `class="gm-accent-turquoise"` on `<html>`, the night accent color is turquoise (`#1cabb0`, 7.4:1 on black) instead of blue; by day it stays pink. It changes focus, fields, selection, accordion icons and accent buttons.
 
 ```html
 <html lang="en" class="gm-accent-turquoise" data-theme="dark">

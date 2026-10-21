@@ -13,7 +13,7 @@ import { version as packageVersion } from '../../../../../../package.json';
 export const VERSION = packageVersion;
 
 /** Páginas que en la barra inferior del móvil van dentro de «Más»: la barra tiene 4 botones como mucho,
-    contando «Más», como en My Book Box */
+    contando «Más» */
 const MORE_PATHS = ['/tools', '/examples', '/blog'];
 
 interface NavItem {
@@ -50,7 +50,7 @@ export class Header {
     { path: '/blog', key: 'nav.blog', icon: 'gmi-journal-text' },
   ];
 
-  /** Móvil: en la barra van las primeras; el resto, en el panel «Más» (como My Book Box) */
+  /** Móvil: en la barra van las primeras; el resto, en el panel «Más» */
   readonly tabItems = computed(() => this.items.filter((item) => !MORE_PATHS.includes(item.path)));
   readonly moreItems = computed(() => this.items.filter((item) => MORE_PATHS.includes(item.path)));
   readonly moreOpen = signal(false);

@@ -1,6 +1,6 @@
 # Secciones
 
-Cada parte de una página de inicio (Sobre mí, Habilidades, Contacto…) es una sección: un hueco arriba y abajo, el título centrado y el texto debajo, en un contenedor estrecho para que las líneas no sean demasiado largas. Es como en la plantilla de portfolio.
+Cada parte de una página de inicio (Sobre mí, Habilidades, Contacto…) es una sección: un hueco arriba y abajo, el título centrado y el texto debajo, en un contenedor estrecho para que las líneas no sean demasiado largas.
 
 ## Ejemplo
 

@@ -348,7 +348,7 @@ function fixed() {
   anim('slide-right', 'from { opacity: 0; transform: translateX(16px); }', `.45s ${EASE} both`);
   anim('zoom-in', 'from { opacity: 0; transform: scale(.94); }', `.35s ${EASE} both`);
   anim('pop', 'from { opacity: 0; transform: scale(.9); }', `.4s ${BOUNCE} both`);
-  // Del portfolio: las tecnologías suben, se enfocan y su logo aparece girando con un rebote
+  // Entradas: subir y enfocarse desde borroso, y aparecer girando con un rebote
   anim('blur-in', 'from { opacity: 0; transform: translateY(12px) scale(.96); filter: blur(4px); }', `.45s ${EASE} both`);
   anim('spin-in', 'from { opacity: 0; transform: scale(.3) rotate(-20deg); }', `.5s ${BOUNCE} both`);
   out.push('/* Salir */');
@@ -371,16 +371,16 @@ function fixed() {
   out.push('/* Duración y retardo (de animaciones y transiciones) */');
   for (const ms of [150, 200, 300, 500, 700, 1000]) out.push(rule(`duration-${ms}`, `animation-duration: ${ms}ms; transition-duration: ${ms}ms;`));
   for (const ms of [100, 200, 300, 500, 700, 1000]) out.push(rule(`delay-${ms}`, `animation-delay: ${ms}ms; transition-delay: ${ms}ms;`));
-  // Cascada del portfolio: los hijos entran uno detrás de otro (40 ms entre cada uno)
+  // Cascada: los hijos entran uno detrás de otro (40 ms entre cada uno)
   out.push(
-    '/* Cascada (la de las tecnologías del portfolio): cada hijo entra 40 ms después del anterior. Por defecto con',
+    '/* Cascada: cada hijo entra 40 ms después del anterior. Por defecto con',
     '   blur-in; para otra, pon su clase gm-animate-… en los hijos */',
     rule('stagger > *', `animation: gm-blur-in .45s ${EASE} both;`),
   );
   for (let n = 2; n <= 20; n++) out.push(rule(`stagger > :nth-child(${n})`, `animation-delay: ${(n - 1) * 40}ms;`));
-  // Cuenta atrás de My MTV Box: el botón se llena de izquierda a derecha en --gm-countdown (10 s por defecto)
+  // Cuenta atrás: el botón se llena de izquierda a derecha en --gm-countdown (10 s por defecto)
   out.push(
-    '/* Cuenta atrás (el botón de «siguiente episodio» de My MTV Box): se llena en --gm-countdown, 10 s por defecto */',
+    '/* Cuenta atrás (un botón de «siguiente episodio»): se llena en --gm-countdown, 10 s por defecto */',
     rule('countdown', 'position: relative; overflow: hidden; isolation: isolate;'),
     rule('countdown::before', 'position: absolute; z-index: -1; inset: 0; width: 0; background: var(--gm-countdown-fill, rgb(255 255 255 / .35)); content: ""; animation: gm-countdown var(--gm-countdown, 10s) linear forwards;'),
     '@keyframes gm-countdown { to { width: 100%; } }',

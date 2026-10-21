@@ -1,6 +1,6 @@
 # Franja de logos
 
-Una franja que pasa despacio de derecha a izquierda con logos y nombres, como la de tecnologías de la plantilla de portfolio. Cristal oscuro (blanco de día) con un borde fino arriba y abajo, cielo de día y turquesa de noche.
+Una franja que pasa despacio de derecha a izquierda con logos y nombres, por ejemplo las tecnologías de un proyecto. Cristal oscuro (blanco de día) con un borde fino arriba y abajo, cielo de día y turquesa de noche.
 
 ## Ejemplo
 

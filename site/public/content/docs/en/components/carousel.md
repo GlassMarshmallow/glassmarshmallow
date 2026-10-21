@@ -1,6 +1,6 @@
 # Carousel
 
-Images shown one at a time, inside a glass frame, with arrows on the sides and dots below. It is the one from the portfolio's projects section.
+Images shown one at a time, inside a glass frame, with arrows on the sides and dots below.
 
 ## Example
 
@@ -68,7 +68,7 @@ With `.gm-carousel--peek` and no `data-gm-carousel`: photos move by swiping with
 
 ## Swipe row
 
-Like the quick questions of the portfolio chat: everything in one row that slides sideways with a finger, the mouse or the keyboard, with no arrows or dots. The right edge fades out to show there is more. Use `.gm-scroll-row`; no script needed.
+For quick options, like the suggested questions of a chat: everything in one row that slides sideways with a finger, the mouse or the keyboard, with no arrows or dots. The right edge fades out to show there is more. Use `.gm-scroll-row`; no script needed.
 
 ```html
 <div class="gm-scroll-row gm-max-w-xs" role="group" aria-label="Quick questions">

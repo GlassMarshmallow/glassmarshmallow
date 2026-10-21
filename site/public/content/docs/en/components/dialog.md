@@ -1,6 +1,6 @@
 # Dialog
 
-A window that opens on top of the page to show information or ask for something, with the background dimmed behind it. It is the “About the AI” one from the portfolio template: the panel glass, sections separated by a thin line and colored headings.
+A window that opens on top of the page to show information or ask for something, with the background dimmed behind it. It has the panel glass, sections separated by a thin line and colored headings.
 
 ## Example
 

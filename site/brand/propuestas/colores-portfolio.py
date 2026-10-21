@@ -1,4 +1,4 @@
-"""Logo de paneles de cristal (elegido el 17/10/2026) con los colores del portfolio: tres versiones."""
+"""Logo de paneles de cristal (elegido el 17/10/2026) con tres luces de color: tres versiones."""
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -19,12 +19,12 @@ def logo(bg_defs, bg_fill, back, front, front_opacity, front_stroke, stroke_opac
 
 
 VERSIONS = {
-    # Las tres luces del dibujo del portfolio (scene-animation.ts): pantalla, penumbra y lámpara
+    # Las tres luces: cian, violeta y ámbar
     'luces': logo('<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">'
                   '<stop offset="0" stop-color="#3cd2ff"/><stop offset=".5" stop-color="#8c64ff"/>'
                   '<stop offset="1" stop-color="#ff9646"/></linearGradient>',
                   'url(#bg)', '#fff', '#fff', .38, '#fff', .9),
-    # Degradado vivo de los títulos del portfolio (--accent-gradient-vivid)
+    # Degradado vivo de turquesa, violeta y naranja
     'vivo': logo('<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">'
                  '<stop offset="0" stop-color="#0891b2"/><stop offset=".5" stop-color="#8b5cf6"/>'
                  '<stop offset="1" stop-color="#ea580c"/></linearGradient>',

@@ -6,10 +6,6 @@ The ideas behind GlassMarshmallow that guide every decision. If you are going to
 
 GlassMarshmallow's look comes from two things: **glass surfaces** (translucent background, blur and a thin border) and a **pastel palette** of 8 colors, plus black, white and grays. Everything else is restrained: Montserrat, light backgrounds by day and black at night, and a single accent color: pink by day and blue at night.
 
-## Designs from real projects
-
-Every component comes from a project that already exists and works: the portfolio, My Book Box or My MTV Box. Styles are not invented: they are taken from there, adjusted to be accessible and added to the framework so all projects share them.
-
 ## Accessible from the start
 
 - **WCAG 2.2 AA always**, in light and dark mode, and **AAA whenever possible**: 7:1 text, 44 px targets, visible and unobscured focus.

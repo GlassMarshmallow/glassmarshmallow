@@ -1,6 +1,6 @@
 # Ventana
 
-Una ventana que se abre encima de la página para enseñar información o pedir algo, con el fondo oscurecido detrás. Es la de «Información sobre la IA» de la plantilla de portfolio: el cristal de los paneles, apartados separados por una línea fina y títulos de color.
+Una ventana que se abre encima de la página para enseñar información o pedir algo, con el fondo oscurecido detrás. Tiene el cristal de los paneles, apartados separados por una línea fina y títulos de color.
 
 ## Ejemplo
 

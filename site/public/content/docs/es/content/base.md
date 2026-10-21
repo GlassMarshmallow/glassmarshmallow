@@ -13,7 +13,7 @@ Lo que GlassMarshmallow pone a toda la página al cargarlo, sin clases: la fuent
 
 ## Títulos
 
-Letras juntas, como en My Book Box, y con las líneas equilibradas (`text-wrap: balance`) para que no quede una palabra sola abajo.
+Letras juntas y con las líneas equilibradas (`text-wrap: balance`) para que no quede una palabra sola abajo.
 
 ```html
 <h1 class="gm-m-0">Título de la página</h1>

@@ -1,6 +1,6 @@
 # Footer
 
-The footer from the portfolio template: a heading, icon links (email and social), the legal links on one line and the name with the year. Centered, with a thin line above.
+A footer with a heading, icon links (email and social), the legal links on one line and the name with the year. Centered, with a thin line above.
 
 ## Example
 

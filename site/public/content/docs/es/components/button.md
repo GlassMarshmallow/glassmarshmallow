@@ -1,6 +1,6 @@
 # Botón
 
-Botones para las acciones de formularios, diálogos y páginas, con la forma redondeada de My Book Box. Todos cumplen WCAG 2.2 AA en modo claro y oscuro.
+Botones para las acciones de formularios, diálogos y páginas, con formas redondeadas. Todos cumplen WCAG 2.2 AA en modo claro y oscuro.
 
 ## Variantes
 

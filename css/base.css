@@ -25,7 +25,7 @@ img { max-width: 100%; }
 ::selection { background: var(--gm-selection); }
 
 h1, h2, h3, p { margin-top: 0; }
-/* Títulos como My Book Box: letras juntas. La portada los cambia en backdrop.css */
+/* Títulos con las letras juntas. La portada los cambia en backdrop.css */
 h1 { margin-bottom: .55rem; font-size: clamp(2.3rem, 5vw, 3.2rem); line-height: 1.1; letter-spacing: -.055em; text-wrap: balance; }
 h2 { letter-spacing: -.025em; text-wrap: balance; }
 

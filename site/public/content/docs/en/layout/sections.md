@@ -1,6 +1,6 @@
 # Sections
 
-Each part of a home page (About me, Skills, Contact…) is a section: some space above and below, the title centered and the text below it, in a narrow container so lines are not too long. As in the portfolio template.
+Each part of a home page (About me, Skills, Contact…) is a section: some space above and below, the title centered and the text below it, in a narrow container so lines are not too long.
 
 ## Example
 

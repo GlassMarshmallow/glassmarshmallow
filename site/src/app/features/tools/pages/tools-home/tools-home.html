@@ -4,7 +4,7 @@
 
   @for (group of groups; track group.id; let first = $first) {
     <h2 class="gm-mx-0 gm-mb-[1.125rem] gm-text-[1.4rem]" [class.gm-mt-2]="first" [class.gm-mt-12]="!first" [id]="'tools-' + group.id">{{ group.title | t }}</h2>
-    <!-- Tarjetas de 16,25 rem como mínimo; cada herramienta es un .panel de My Book Box (gm-card) que sube un poco al
+    <!-- Tarjetas de 16,25 rem como mínimo; cada herramienta es una tarjeta (gm-card) que sube un poco al
          pasar el ratón, como sus botones -->
     <ul class="gm-grid gm-grid--auto gm-grid-min-[16.25rem] gm-gap-5 gm-m-0 gm-list-none" [attr.aria-labelledby]="'tools-' + group.id">
       @for (tool of group.tools; track tool.id) {

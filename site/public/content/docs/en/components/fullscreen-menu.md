@@ -1,6 +1,6 @@
 # Fullscreen menu
 
-The mobile menu from the portfolio template: a round glass button with the hamburger opens the links in large type, filling the whole screen over a nearly opaque background. It is another way to navigate on phones, for sites with few sections; the other is the [tab bar](/docs/components/tabbar).
+A mobile menu: a round glass button with the hamburger opens the links in large type, filling the whole screen over a nearly opaque background. It is another way to navigate on phones, for sites with few sections; the other is the [tab bar](/docs/components/tabbar).
 
 ## Example
 

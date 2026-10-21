@@ -1,6 +1,6 @@
 # Video player
 
-The My MTV Box player: controls appear over the video on a black gradient, the buttons are round glass and the play button is white. While the video plays, the controls hide on their own.
+A video player: controls appear over the video on a black gradient, the buttons are round glass and the play button is white. While the video plays, the controls hide on their own.
 
 ## Example
 

@@ -5,9 +5,9 @@ description: Add a new component to the GlassMarshmallow framework (CSS in css/c
 
 # Create a GlassMarshmallow component
 
-Every design used in a project that is not in GlassMarshmallow yet is added to the framework so all projects share it. Do not invent styles: take them from the project where the design comes from.
+Every design that is not in GlassMarshmallow yet is added to the framework so all projects share it. Do not invent styles: start from a design that already exists and works.
 
-1. **Find the source.** Locate the design in the project (portfolio, My Book Box, My MTV Box…) and copy its values (sizes, colors, radius, shadows). Write in a comment where it comes from.
+1. **Find the source.** Locate the design and copy its values (sizes, colors, radius, shadows) instead of making them up.
 
 2. **CSS in `css/components.css`**, in its own section with a comment showing the markup:
    - classes with the `gm-` prefix and BEM: `.gm-name`, `.gm-name__part`, `.gm-name--variant`;

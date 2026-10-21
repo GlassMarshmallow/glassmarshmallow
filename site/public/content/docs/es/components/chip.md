@@ -1,6 +1,6 @@
 # Chip
 
-Una píldora de cristal para opciones rápidas, como las preguntas sugeridas de un chat. Es la de la plantilla de portfolio con IA: el mismo cristal que el acordeón y, al pasar el ratón, sube un poco y el borde toma el color cielo (turquesa en oscuro).
+Una píldora de cristal para opciones rápidas, como las preguntas sugeridas de un chat. Tiene el mismo cristal que el acordeón y, al pasar el ratón, sube un poco y el borde toma el color cielo (turquesa en oscuro).
 
 ## Ejemplo
 

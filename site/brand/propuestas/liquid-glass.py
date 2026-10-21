@@ -1,6 +1,6 @@
 """Logo de paneles al estilo «Liquid Glass» de Apple: Default, Clear y Clear Colored.
 
-Colores: luces del dibujo del portfolio (cian #3cd2ff, violeta #8c64ff, ámbar #ff9646), en diagonal inversa (↗).
+Colores: tres luces (cian #3cd2ff, violeta #8c64ff, ámbar #ff9646), en diagonal inversa (↗).
 """
 from pathlib import Path
 

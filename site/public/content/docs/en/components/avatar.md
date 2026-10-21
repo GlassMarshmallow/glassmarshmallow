@@ -41,7 +41,7 @@ With initials: add a palette color (`.gm-theme-sky`, `.gm-theme-mint`…) and gi
 
 ## With a ring
 
-`.gm-avatar--ring`: the photo with a colored ring, like the one in the portfolio template. By default, in sky (turquoise in dark mode); the thickness is proportional to the size.
+`.gm-avatar--ring`: the photo with a colored ring. By default, in sky (turquoise in dark mode); the thickness is proportional to the size.
 
 ```html
 <div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">

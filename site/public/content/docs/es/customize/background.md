@@ -10,7 +10,7 @@ El color de fondo de la página sale de una variable que cambia sola con el modo
 | `--gm-surface` | blanco al 82 % | gris oscuro al 82 % | Tarjetas y paneles de cristal |
 | `--gm-surface-solid` | `#fff` | `#1c1c1e` | Paneles opacos (menús, ventanas) |
 
-El fondo gris muy claro de día y negro de noche es el de My Book Box: las tarjetas blancas (o grises de noche) destacan sobre él sin necesidad de bordes fuertes.
+El fondo gris muy claro de día y negro de noche es el del framework: las tarjetas blancas (o grises de noche) destacan sobre él sin necesidad de bordes fuertes.
 
 ## Cambiar el fondo
 

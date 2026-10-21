@@ -18,7 +18,7 @@ Fade an element towards a side or in a circle, and blend its colors with what is
 </div>
 ```
 
-The portfolio drawing in light mode blends into the page like this: it fades at the top and bottom so you cannot see where it ends.
+An image blends into the page like this: it fades at the top and bottom so you cannot see where it ends.
 
 ## Blending
 

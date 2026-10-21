@@ -250,7 +250,7 @@ export const es: Dictionary = {
     showSample: 'Mostrar el texto de ejemplo',
     presets: 'Degradados de partida',
     presetLights: 'Luces del dibujo',
-    presetTitles: 'Títulos del portfolio',
+    presetTitles: 'Turquesa, violeta y naranja',
     presetCyan: 'Cian y turquesa',
     presetApplied: 'Degradado «{name}» aplicado',
     type: 'Tipo',

@@ -2,7 +2,7 @@
   <app-back-link path="/icons" section="nav.icons" />
 
   @if (icon(); as current) {
-    <!-- Categoría: el antetítulo de My Book Box -->
+    <!-- Categoría, encima del título -->
     <p class="gm-mb-2 gm-text-[.9rem] gm-font-semibold gm-tracking-[-.01em] gm-muted">{{ current.category }}</p>
     <h1 id="icon-title" class="gm-mb-[.375rem]">{{ title() }}</h1>
     <code class="gm-muted gm-text-[1rem]">{{ current.name }}.svg</code>

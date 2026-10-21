@@ -1,7 +1,7 @@
 /*!
  * GlassMarshmallow · Reproductor de vídeo (opcional)
  * Convierte <div class="gm-player" data-gm-player><video …></video></div> en el reproductor del framework
- * (el de My MTV Box). Sin dependencias.
+ * Sin dependencias.
  *
  * - Quita los controles del navegador y pone: reproducir y pausa, 10 s atrás y adelante, sonido y volumen,
  *   tiempo, línea de tiempo, subtítulos (si el vídeo tiene <track kind="subtitles|captions">) y pantalla completa.

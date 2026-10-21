@@ -1,6 +1,6 @@
 # Field
 
-Fields and forms like the contact form of the portfolio: a glass panel, labels in bold, rounded fields with a gray fill, a ring while you type, and choices in a list.
+Fields and forms: a glass panel, labels in bold, rounded fields with a gray fill, a ring while you type, and choices in a list.
 
 ## Complete form
 

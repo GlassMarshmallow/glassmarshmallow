@@ -163,7 +163,7 @@
 /* Botones de color: mantienen su forma de píldora también en vidriado */
 .gm-btn.gm-theme-glass { border-radius: var(--gm-radius-pill); }
 
-/* Acento turquesa de noche (el de la plantilla de portfolio): <html class="gm-accent-turquoise">.
+/* Acento turquesa de noche: <html class="gm-accent-turquoise">.
    De día sigue el rosa. Gana también al fondo de luces (gm-backdrop), que cambia el acento de la portada. */
 html.gm-accent-turquoise[data-theme="dark"],
 html.gm-accent-turquoise[data-theme="dark"]:has(.gm-backdrop:not(.gm-backdrop--contained)) {

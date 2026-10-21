@@ -1,6 +1,6 @@
 # Barra de navegación
 
-La barra de arriba, como la de My Book Box y My MTV Box: el logo y el nombre a la izquierda, los enlaces de las secciones y, a la derecha, las acciones (idioma, tema…). Es de cristal y se queda pegada arriba al bajar por la página.
+La barra de arriba: el logo y el nombre a la izquierda, los enlaces de las secciones y, a la derecha, las acciones (idioma, tema…). Es de cristal y se queda pegada arriba al bajar por la página.
 
 ## Ejemplo
 
@@ -40,7 +40,7 @@ Si el logo es de cristal (translúcido, con bordes de brillo, como el de GlassMa
 
 ## Sin logo y flotante en el móvil
 
-La barra de la plantilla de portfolio. **En el ordenador**, sin logo: los enlaces en el centro y el botón de tema a la derecha (`.gm-navbar--centered`). **En el móvil**, sin barra: solo quedan los botones redondos de cristal flotando arriba a la derecha (`.gm-navbar--floating`), y el botón de menú (`.gm-navbar__menu`) abre el [menú a pantalla completa](/docs/components/fullscreen-menu).
+Para webs de una sola página. **En el ordenador**, sin logo: los enlaces en el centro y el botón de tema a la derecha (`.gm-navbar--centered`). **En el móvil**, sin barra: solo quedan los botones redondos de cristal flotando arriba a la derecha (`.gm-navbar--floating`), y el botón de menú (`.gm-navbar__menu`) abre el [menú a pantalla completa](/docs/components/fullscreen-menu).
 
 ```html
 <header class="gm-navbar gm-navbar--centered gm-navbar--floating gm-relative gm-rounded-sm">

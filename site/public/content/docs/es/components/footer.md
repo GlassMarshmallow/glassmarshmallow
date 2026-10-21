@@ -1,6 +1,6 @@
 # Pie de página
 
-El pie de la plantilla de portfolio: un título, los enlaces con icono (correo y redes), los enlaces legales en una línea y el nombre con el año. Centrado, con una línea fina encima.
+Un pie con un título, los enlaces con icono (correo y redes), los enlaces legales en una línea y el nombre con el año. Centrado, con una línea fina encima.
 
 ## Ejemplo
 

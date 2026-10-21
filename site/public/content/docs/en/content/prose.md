@@ -1,6 +1,6 @@
 # Long text
 
-`.gm-prose` formats long text pages, like privacy or the legal notice: headings, paragraphs with good line height, lists and links. With `.gm-prose--card`, the text sits in a glass card, as in the portfolio template.
+`.gm-prose` formats long text pages, like privacy or the legal notice: headings, paragraphs with good line height, lists and links. With `.gm-prose--card`, the text sits in a glass card.
 
 ## Example
 

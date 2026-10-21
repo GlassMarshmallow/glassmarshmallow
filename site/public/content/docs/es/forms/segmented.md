@@ -1,6 +1,6 @@
 # Segmentado
 
-Opciones juntas en una barra gris; la elegida va en una píldora blanca (negra de noche) con sombra. Es el de la biblioteca de My Book Box.
+Opciones juntas en una barra gris; la elegida va en una píldora blanca (negra de noche) con sombra.
 
 ## Para elegir un ajuste
 

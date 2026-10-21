@@ -1,6 +1,6 @@
 # Chip
 
-A glass pill for quick options, like the suggested questions of a chat. It is the one from the AI portfolio template: the same glass as the accordion and, on hover, it rises a little and the border turns sky (turquoise in dark mode).
+A glass pill for quick options, like the suggested questions of a chat. It has the same glass as the accordion and, on hover, it rises a little and the border turns sky (turquoise in dark mode).
 
 ## Example
 

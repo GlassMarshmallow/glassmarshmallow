@@ -1,6 +1,6 @@
 # Acordeón
 
-Una lista de apartados que se abren y se cierran, todos en una misma tarjeta de cristal y separados por una línea fina. Es el de la sección de habilidades del portfolio.
+Una lista de apartados que se abren y se cierran, todos en una misma tarjeta de cristal y separados por una línea fina.
 
 ## Ejemplo
 
@@ -44,7 +44,7 @@ Con el mismo `name` en todos los `<details>`, solo se abre uno a la vez.
 
 ## Con icono y detalle
 
-Como en el portfolio: un icono en un círculo a la izquierda y una línea de detalle bajo el título.
+Un icono en un círculo a la izquierda y una línea de detalle bajo el título.
 
 ```html
 <div class="gm-accordion">
@@ -91,7 +91,7 @@ Como en el portfolio: un icono en un círculo a la izquierda y una línea de det
 
 ## Con vista previa y lista de logos
 
-Como Habilidades en la plantilla de portfolio: cerrado, unos logos a la derecha (`.gm-accordion__preview`) y cuántos más hay; abierto, la lista con un logo delante de cada elemento, uno debajo de otro (`.gm-accordion__list--icons`). Con `--cascade` y `style="--i: 0"`, `1`, `2`… los elementos entran uno detrás de otro al abrir.
+Para enseñar una lista de habilidades o herramientas: cerrado, unos logos a la derecha (`.gm-accordion__preview`) y cuántos más hay; abierto, la lista con un logo delante de cada elemento, uno debajo de otro (`.gm-accordion__list--icons`). Con `--cascade` y `style="--i: 0"`, `1`, `2`… los elementos entran uno detrás de otro al abrir.
 
 ```html
 <div class="gm-accordion">

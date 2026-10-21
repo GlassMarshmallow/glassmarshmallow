@@ -249,7 +249,7 @@ export const en = {
     showSample: 'Show the sample text',
     presets: 'Presets',
     presetLights: 'Drawing lights',
-    presetTitles: 'Portfolio titles',
+    presetTitles: 'Teal, violet and orange',
     presetCyan: 'Cyan and turquoise',
     presetApplied: '“{name}” gradient applied',
     type: 'Type',

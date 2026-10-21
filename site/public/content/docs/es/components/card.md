@@ -1,6 +1,6 @@
 # Tarjeta
 
-Un recuadro de cristal para agrupar contenido: fondo translúcido con desenfoque, borde fino, esquinas redondeadas y una sombra suave. Es el panel de My Book Box.
+Un recuadro de cristal para agrupar contenido: fondo translúcido con desenfoque, borde fino, esquinas redondeadas y una sombra suave.
 
 ## Ejemplo
 

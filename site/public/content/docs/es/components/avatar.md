@@ -41,7 +41,7 @@ Con las iniciales: añade un color de la paleta (`.gm-theme-sky`, `.gm-theme-min
 
 ## Con marco
 
-`.gm-avatar--ring`: la foto con un marco de color, como la de la plantilla de portfolio. Por defecto, en cielo (turquesa en oscuro); el grosor va en proporción al tamaño.
+`.gm-avatar--ring`: la foto con un marco de color. Por defecto, en cielo (turquesa en oscuro); el grosor va en proporción al tamaño.
 
 ```html
 <div class="gm-flex gm-flex-wrap gm-items-center gm-gap-4">

@@ -26,12 +26,12 @@ Short movements so something appears, leaves or draws a little attention. **They
 | `gm-animate-slide-left` / `-right` | Enters from the left / the right |
 | `gm-animate-zoom-in` | Appears growing a little |
 | `gm-animate-pop` | Appears growing with a small bounce |
-| `gm-animate-blur-in` | Rises and comes into focus from blurry (the portfolio technologies) |
-| `gm-animate-spin-in` | Appears spinning with a bounce (the portfolio logos) |
+| `gm-animate-blur-in` | Rises and comes into focus from blurry |
+| `gm-animate-spin-in` | Appears spinning with a bounce |
 
 ## Cascade
 
-With `gm-stagger` on the container, children enter one after another, 40 ms apart, like the portfolio technologies. `blur-in` by default; for another, put its class on the children.
+With `gm-stagger` on the container, children enter one after another, 40 ms apart. `blur-in` by default; for another, put its class on the children.
 
 ```html
 <div class="gm-flex gm-gap-3 gm-flex-wrap gm-items-center">
@@ -100,7 +100,7 @@ To remove something smoothly: add the class and, when the animation ends (`anima
 
 ## Countdown
 
-The “next episode” button from My MTV Box: it fills from left to right. The duration goes in `--gm-countdown` (10 s by default).
+Like a “next episode” button: it fills from left to right. The duration goes in `--gm-countdown` (10 s by default).
 
 ```html
 <div class="gm-flex gm-gap-3 gm-flex-wrap gm-items-center">

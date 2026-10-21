@@ -13,7 +13,7 @@ What GlassMarshmallow applies to the whole page when loaded, with no classes: th
 
 ## Headings
 
-Tight letters, as in My Book Box, and balanced lines (`text-wrap: balance`) so no single word is left alone at the end.
+Tight letters and balanced lines (`text-wrap: balance`) so no single word is left alone at the end.
 
 ```html
 <h1 class="gm-m-0">Page title</h1>

@@ -26,7 +26,7 @@
 .gm-btn--ghost:hover:not(:disabled) { box-shadow: none; background: var(--gm-hover); }
 .gm-btn--sm { min-height: 2.375rem; padding-inline: 1rem; font-size: .84rem; }
 
-/* Botón píldora: pequeño, con el gris de las etiquetas (el .pill-button de My Book Box) */
+/* Botón píldora: pequeño, con el gris de las etiquetas */
 .gm-btn--pill {
   min-height: 1.875rem;
   padding: 0 .875rem;
@@ -40,7 +40,7 @@
 .gm-btn--pill:hover:not(:disabled) { box-shadow: none; transform: none; background: var(--gm-tag-hover); }
 .gm-btn--danger { color: var(--gm-btn-danger); }
 
-/* Botón de texto: sin fondo ni borde, en el color de los enlaces (el .text-button de My Book Box; con el color
+/* Botón de texto: sin fondo ni borde, en el color de los enlaces (con el color
    de enlace en lugar del acento, que en claro solo llegaba a 3,6:1) */
 .gm-btn-text {
   padding: 0;
@@ -52,7 +52,7 @@
 }
 .gm-btn-text:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-/* Volver a la sección anterior: «‹ Volver» (el .detail-back de My Book Box) */
+/* Volver a la sección anterior: «‹ Volver» */
 .gm-btn-back {
   display: inline-flex;
   min-height: 2.625rem;
@@ -118,7 +118,7 @@
 }
 
 /* --- Formulario ----------------------------------------------------------------
-   Como el formulario de contacto del portfolio (su última versión): recuadro de cristal, etiquetas en negrita,
+   Recuadro de cristal, etiquetas en negrita,
    campos redondeados con relleno gris y anillo al escribir, casillas en lista y botones en píldora. */
 .gm-form {
   display: grid;
@@ -232,7 +232,7 @@
 .gm-check label { display: flex; min-height: 2.75rem; /* WCAG 2.5.5 (AAA) */ align-items: center; gap: .625rem; color: var(--gm-text-secondary); cursor: pointer; }
 .gm-check input { width: 1.05rem; height: 1.05rem; margin: 0; accent-color: var(--gm-field-focus); flex-shrink: 0; }
 
-/* Botón de envío: píldora turquesa con texto blanco, como el del portfolio (7,9:1, AAA) */
+/* Botón de envío: píldora turquesa con texto blanco (7,9:1, AAA) */
 .gm-btn--accent { color: #fff; background: var(--gm-accent-strong); }
 .gm-btn--accent:hover:not(:disabled) { background: var(--gm-accent-hover); }
 
@@ -265,7 +265,7 @@
 .gm-error-summary__list a:hover { text-decoration-thickness: 2px; }
 
 /* --- Aviso -------------------------------------------------------------------- */
-/* Información: gris, como el panel de My Book Box. Éxito, advertencia y error: el pastel del estado (menta,
+/* Información: gris. Éxito, advertencia y error: el pastel del estado (menta,
    limón y coral) a media intensidad con un borde del mismo pastel y el texto normal encima (elegido por Sara).
    Texto de 12:1 o más de día y de 7,5:1 o más de noche (AAA) */
 .gm-alert {
@@ -289,7 +289,7 @@
   border-color: rgb(var(--gm-alert-rgb) / .9);
   background: rgb(var(--gm-alert-rgb) / var(--gm-alert-alpha));
 }
-/* Nota: sin color, sobre una superficie sólida con sombra suave (el recuadro .tg-hint de My Book Box), para
+/* Nota: sin color, sobre una superficie sólida con sombra suave, para
    aclaraciones dentro de un texto */
 .gm-alert--note {
   display: block;
@@ -351,7 +351,7 @@ code span[style*="--code-light:#008000" i] { color: var(--gm-muted); }        /*
 code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /* el resto (signos, espacios) */
 [data-theme="dark"] code span[style*="--code-dark"] { color: var(--code-dark); }
 
-/* --- Barra de navegación (como My Book Box y My MTV Box) ------------------------- */
+/* --- Barra de navegación ---------------------------------------------------------- */
 .gm-navbar {
   position: sticky;
   z-index: 20;
@@ -413,7 +413,7 @@ code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /*
 /* El icono gira un poco al pasar el ratón (el sol y la luna), salvo en el botón de menú */
 .gm-navbar__actions .gm-icon-btn:not(.gm-navbar__menu):hover .gmi { transform: rotate(25deg) scale(1.08); }
 
-/* Barra sin logo (la de la plantilla de portfolio): los enlaces en el centro y las acciones a la derecha */
+/* Barra sin logo: los enlaces en el centro y las acciones a la derecha */
 .gm-navbar--centered { justify-content: center; }
 /* Sus enlaces, como en la plantilla: 1 rem, en peso 500 y con 2 rem entre ellos (el tamaño se cambia con --gm-nav-size) */
 .gm-navbar--centered .gm-navbar__nav { gap: 2rem; font-size: var(--gm-nav-size, 1rem); font-weight: 500; }
@@ -492,7 +492,7 @@ code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /*
 .gm-tabbar a[aria-current="page"],
 .gm-tabbar button.is-active { color: var(--gm-text); }
 
-/* Panel «Más»: las páginas que no caben en la barra (el .mobile-more de My Book Box). La barra tiene 4 botones
+/* Panel «Más»: las páginas que no caben en la barra. La barra tiene 4 botones
    como mucho, contando «Más» */
 .gm-tabbar-more {
   position: fixed;
@@ -570,7 +570,7 @@ code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /*
 }
 
 /* --- Tooltip -----------------------------------------------------------------
-   La burbuja del lector de My Book Box (.selection-popover) en pequeño: fondo #1d1d1f, texto blanco, borde fino
+   Fondo #1d1d1f, texto blanco, borde fino
    y sombra grande, en los dos modos. Sale al pasar el ratón y al llegar con el teclado, y se puede pasar el
    ratón por encima sin que se cierre.
    <span class="gm-tooltip">
@@ -1007,7 +1007,7 @@ code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /*
   .gm-color-picker__sliders { width: 100%; }
 }
 
-/* --- Reproductor de vídeo (el de My MTV Box) -----------------------------------
+/* --- Reproductor de vídeo ---------------------------------------------------------
    <div class="gm-player" data-gm-player>
      <video src="pelicula.mp4" controls playsinline><track kind="subtitles" src="es.vtt" srclang="es" label="Español"></video>
    </div>
@@ -1196,7 +1196,7 @@ code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /*
 a.gm-avatar[data-gm-zoom] { cursor: zoom-in; transition: transform .2s ease; }
 a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 @media (prefers-reduced-motion: reduce) { a.gm-avatar[data-gm-zoom]:hover { transform: none; } }
-/* Marco de color alrededor de la foto (el de la plantilla de portfolio): cielo (turquesa en oscuro) y una sombra suave.
+/* Marco de color alrededor de la foto: cielo (turquesa en oscuro) y una sombra suave.
    El grosor va en proporción al tamaño */
 .gm-avatar--ring {
   padding: max(.125rem, calc(var(--gm-avatar-size) * .02));
@@ -1232,7 +1232,7 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 .gm-avatar-group > .gm-avatar { box-shadow: 0 0 0 2px var(--gm-bg); }
 .gm-avatar-group > .gm-avatar + .gm-avatar { margin-left: calc(var(--gm-avatar-size) * -.28); }
 
-/* --- Acordeón (el de Habilidades del portfolio) ------------------------------
+/* --- Acordeón ------------------------------------------------------------------
    <div class="gm-accordion">
      <details class="gm-accordion__item" name="faq">
        <summary class="gm-accordion__summary">
@@ -1335,7 +1335,7 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
   .gm-accordion__item::details-content, .gm-accordion__summary, .gm-accordion__chevron { transition: none; }
 }
 
-/* --- Segmentado (el de My Book Box) ------------------------------------------
+/* --- Segmentado ----------------------------------------------------------------
    Opciones juntas en una barra gris; la elegida, en una píldora blanca (negra de noche) con sombra.
    Para elegir un ajuste, con botones de opción (radio) dentro de un fieldset:
    <fieldset class="gm-field"><legend>Vista</legend>
@@ -1400,7 +1400,7 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 .gm-segmented--stack { display: inline-flex; flex-direction: column; align-items: stretch; border-radius: 1.25rem; }
 .gm-segmented--stack > a, .gm-segmented--stack > button, .gm-segmented--stack > label { min-height: 2.5rem; border-radius: 1rem; }
 
-/* --- Carrusel (el de Proyectos del portfolio) ----------------------------------
+/* --- Carrusel ------------------------------------------------------------------
    <div class="gm-carousel" data-gm-carousel aria-label="Proyectos">
      <div class="gm-carousel__track">
        <figure class="gm-carousel__slide"><img src="…" alt="…"><figcaption class="gm-carousel__caption">…</figcaption></figure>
@@ -1514,7 +1514,7 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
   .gm-carousel__dot::before { transition: none; }
 }
 
-/* --- Barra de progreso (la de lectura de My Book Box) --------------------------
+/* --- Barra de progreso ----------------------------------------------------------
    <div class="gm-progress">
      <progress class="gm-progress__bar" id="leido" max="100" value="45">45 %</progress>
      <label class="gm-progress__label" for="leido">45 % leído</label>
@@ -1629,7 +1629,7 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
   .gm-gallery__item:hover img { transform: none; }
 }
 
-/* --- Fila deslizable (las preguntas rápidas del chat del portfolio) -------------
+/* --- Fila deslizable (para opciones rápidas, como las preguntas de un chat) ------
    Un carrusel sin botones: los elementos en una sola fila que se desliza de lado, encajando en cada uno,
    con el borde derecho difuminado para que se vea que hay más.
    <div class="gm-scroll-row" role="group" aria-label="Preguntas rápidas">
@@ -1833,7 +1833,7 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
 /* Antetítulo dentro del bocadillo («Seguimos donde lo dejamos») */
 .gm-bubble__note { display: block; margin-bottom: .3rem; color: var(--gm-accent); font-size: .75rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
 /* Cola: un rombo del color del bocadillo con dos lados del color del borde, estirado para que quede afilado
-   (como la del portfolio). Va encima del borde con degradado, así el borde no la cruza por la base. */
+   Va encima del borde con degradado, así el borde no la cruza por la base. */
 .gm-bubble--tail-end::before,
 .gm-bubble--tail-start::before {
   position: absolute;
@@ -2029,7 +2029,7 @@ html:has(.gm-fullscreen-menu.is-open) { overflow: hidden; }
    </div></section> */
 .gm-section { padding-block: 6rem; }
 .gm-section__title { margin: 0 0 2rem; font-size: 2rem; text-align: center; }
-/* Columna centrada de 44 rem como mucho (la de «Sobre mí» del portfolio), con el texto alineado a la izquierda */
+/* Columna centrada de 44 rem como mucho, con el texto alineado a la izquierda */
 .gm-section__text { max-inline-size: 44rem; margin: 0 auto 1.2rem; color: var(--gm-text-secondary); font-size: 1.1rem; line-height: 1.7; }
 .gm-section__text strong { color: var(--gm-text); }
 @media (max-width: 37.5rem) {
@@ -2067,7 +2067,7 @@ html:has(.gm-fullscreen-menu.is-open) { overflow: hidden; }
 .gm-dl dt { color: var(--gm-muted); font-weight: 600; }
 .gm-dl dd { margin: 0; overflow-wrap: anywhere; }
 
-/* --- Pie de página (el de la plantilla de portfolio) ----------------------------------
+/* --- Pie de página ------------------------------------------------------------------
    <footer class="gm-footer">
      <div class="gm-container">
        <h2>Conectemos</h2>
@@ -2097,7 +2097,7 @@ html:has(.gm-fullscreen-menu.is-open) { overflow: hidden; }
        <p class="gm-site-footer__credit gm-muted gm-small">Diseñado por <a class="gm-site-footer__author" href="…">Nombre</a> · Licencia MIT</p>
      </div>
    </footer>
-   Una fila de enlaces y debajo los créditos, sobre el fondo de la página con una línea arriba (como My Book Box).
+   Una fila de enlaces y debajo los créditos, sobre el fondo de la página con una línea arriba.
    Con el fondo de luces a toda la página (.gm-backdrop), el pie es blanco en claro y negro en oscuro y sin línea,
    para continuar el degradado del final. Con .gm-has-tabbar deja sitio a la barra de pestañas del móvil. */
 .gm-site-footer {
@@ -2285,7 +2285,7 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
    </div>
    Con varios lenguajes, pestañas en vez del nombre: <div class="gm-snippet__tabs" role="tablist"> con
    <button class="gm-snippet__tab" role="tab" aria-selected="true">HTML</button>… y un <pre> por pestaña. Copiar y
-   cambiar de pestaña lo hace tu código. Panel de cristal (el .panel de My Book Box) y pestañas como su control
+   cambiar de pestaña lo hace tu código. Panel de cristal y pestañas como el control
    segmentado; el ejemplo, blanco en claro y negro del todo en oscuro, como en Bootstrap. */
 .gm-snippet {
   overflow: hidden;
@@ -2340,7 +2340,7 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
 .gm-snippet__copy::after { position: absolute; inset: min(0px, calc(50% - 1.375rem)); content: ""; }
 .gm-snippet__tab:hover { color: var(--gm-text); }
 .gm-snippet__tab[aria-selected="true"] { color: var(--gm-text); background: var(--gm-surface-solid); box-shadow: 0 2px 8px rgba(0, 0, 0, .08), 0 1px 2px rgba(0, 0, 0, .06); }
-/* Copiar: el botón .library-action de My Book Box */
+/* Copiar */
 .gm-snippet__copy {
   min-height: 2.375rem;
   justify-content: center;
@@ -2617,7 +2617,7 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
      <li><a class="gm-icon-tile" href="…"><span class="gm-icon-tile__box"><i class="gmi gmi-heart" aria-hidden="true"></i></span>
        <span class="gm-icon-tile__name">heart</span></a></li>
    </ul>
-   Casillas como las de Bootstrap Icons; la caja es la tarjeta .tg-hint de My Book Box. Caben las que quepan por fila. */
+   Casillas como las de Bootstrap Icons; la caja es una tarjeta sólida con sombra. Caben las que quepan por fila. */
 .gm-icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(6.875rem, 1fr)); gap: 1.5rem 1rem; margin: 0; padding: 0; list-style: none; }
 .gm-icon-tile { display: grid; justify-items: center; gap: .5rem; color: var(--gm-text); }
 .gm-icon-tile__box {

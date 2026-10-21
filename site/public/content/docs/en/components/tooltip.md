@@ -1,6 +1,6 @@
 # Tooltip
 
-A small bubble with extra information about a button or a control. It uses the style of the reading bubble of My Book Box: dark background, white text and a soft shadow, in light and dark mode.
+A small bubble with extra information about a button or a control. Dark background, white text and a soft shadow, in light and dark mode.
 
 ## How it works
 

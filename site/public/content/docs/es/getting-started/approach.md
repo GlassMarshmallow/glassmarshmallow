@@ -6,10 +6,6 @@ Las ideas que hay detrás de GlassMarshmallow y que guían cada decisión. Si va
 
 El aspecto de GlassMarshmallow sale de dos cosas: **superficies de cristal** (fondo translúcido, desenfoque y borde fino) y una **paleta pastel** de 8 colores, más negro, blanco y grises. Todo lo demás es sobrio: Montserrat, fondos claros de día y negros de noche, y un solo color de acento: rosa de día y azul de noche.
 
-## Diseños que salen de proyectos reales
-
-Cada componente sale de un proyecto que ya existe y funciona: el portfolio, My Book Box o My MTV Box. No se inventan estilos: se toman de ahí, se ajustan para que sean accesibles y se añaden al framework para que todos los proyectos los compartan.
-
 ## Accesible desde el principio
 
 - **WCAG 2.2 AA siempre**, en modo claro y oscuro, y **AAA siempre que se puede**: texto de 7:1, 44 px para pulsar, foco visible y no tapado.

@@ -1,6 +1,6 @@
 # Reproductor de vídeo
 
-El reproductor de My MTV Box: los controles aparecen sobre el vídeo con un degradado negro, los botones son redondos de cristal y el de reproducir es blanco. Mientras se ve el vídeo, los controles se esconden solos.
+Un reproductor de vídeo: los controles aparecen sobre el vídeo con un degradado negro, los botones son redondos de cristal y el de reproducir es blanco. Mientras se ve el vídeo, los controles se esconden solos.
 
 ## Ejemplo
 

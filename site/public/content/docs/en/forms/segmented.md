@@ -1,6 +1,6 @@
 # Segmented control
 
-Options together in a gray bar; the chosen one sits in a white pill (black at night) with a shadow. It is the one from the My Book Box library.
+Options together in a gray bar; the chosen one sits in a white pill (black at night) with a shadow.
 
 ## To pick a setting
 

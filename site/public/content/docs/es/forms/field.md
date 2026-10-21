@@ -1,6 +1,6 @@
 # Campo
 
-Campos y formularios como el formulario de contacto del portfolio: recuadro de cristal, etiquetas en negrita, campos redondeados con relleno gris, un anillo al escribir y las opciones en lista.
+Campos y formularios: recuadro de cristal, etiquetas en negrita, campos redondeados con relleno gris, un anillo al escribir y las opciones en lista.
 
 ## Formulario completo
 

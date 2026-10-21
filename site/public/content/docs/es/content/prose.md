@@ -1,6 +1,6 @@
 # Texto largo
 
-`.gm-prose` da formato a páginas de texto largo, como la de privacidad o el aviso legal: títulos, párrafos con buen interlineado, listas y enlaces. Con `.gm-prose--card`, el texto va en una tarjeta de cristal, como en la plantilla de portfolio.
+`.gm-prose` da formato a páginas de texto largo, como la de privacidad o el aviso legal: títulos, párrafos con buen interlineado, listas y enlaces. Con `.gm-prose--card`, el texto va en una tarjeta de cristal.
 
 ## Ejemplo
 

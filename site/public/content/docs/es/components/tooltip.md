@@ -1,6 +1,6 @@
 # Tooltip
 
-Una burbuja pequeña con información de más sobre un botón o un control. Usa el estilo de la burbuja del lector de My Book Box: fondo oscuro, texto blanco y una sombra suave, en modo claro y oscuro.
+Una burbuja pequeña con información de más sobre un botón o un control. Fondo oscuro, texto blanco y una sombra suave, en modo claro y oscuro.
 
 ## Cómo funciona
 

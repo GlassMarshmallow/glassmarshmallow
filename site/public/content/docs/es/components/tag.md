@@ -1,6 +1,6 @@
 # Etiqueta
 
-Una píldora pequeña para marcar algo: una categoría, un estado, una novedad. Es la etiqueta gris de My Book Box.
+Una píldora pequeña para marcar algo: una categoría, un estado, una novedad.
 
 ## Ejemplo
 

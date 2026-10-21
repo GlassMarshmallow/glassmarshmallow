@@ -1,6 +1,6 @@
 # Menú a pantalla completa
 
-El menú del móvil de la plantilla de portfolio: un botón redondo de cristal con la hamburguesa abre los enlaces en grande, ocupando toda la pantalla sobre un fondo casi opaco. Es otra forma de navegar en el móvil, para webs con pocas secciones; la otra es la [barra de pestañas](/docs/components/tabbar).
+Un menú para el móvil: un botón redondo de cristal con la hamburguesa abre los enlaces en grande, ocupando toda la pantalla sobre un fondo casi opaco. Es otra forma de navegar en el móvil, para webs con pocas secciones; la otra es la [barra de pestañas](/docs/components/tabbar).
 
 ## Ejemplo
 

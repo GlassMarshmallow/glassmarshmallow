@@ -26,12 +26,12 @@ Movimientos cortos para que algo aparezca, se vaya o llame un poco la atención.
 | `gm-animate-slide-left` / `-right` | Entra desde la izquierda / la derecha |
 | `gm-animate-zoom-in` | Aparece creciendo un poco |
 | `gm-animate-pop` | Aparece creciendo con un pequeño rebote |
-| `gm-animate-blur-in` | Sube y se enfoca desde borroso (las tecnologías del portfolio) |
-| `gm-animate-spin-in` | Aparece girando con rebote (los logos del portfolio) |
+| `gm-animate-blur-in` | Sube y se enfoca desde borroso |
+| `gm-animate-spin-in` | Aparece girando con rebote |
 
 ## Cascada
 
-Con `gm-stagger` en el contenedor, los hijos entran uno detrás de otro, 40 ms entre cada uno, como las tecnologías del portfolio. Por defecto con `blur-in`; para otra, pon su clase en los hijos.
+Con `gm-stagger` en el contenedor, los hijos entran uno detrás de otro, 40 ms entre cada uno. Por defecto con `blur-in`; para otra, pon su clase en los hijos.
 
 ```html
 <div class="gm-flex gm-gap-3 gm-flex-wrap gm-items-center">
@@ -100,7 +100,7 @@ Para quitar algo con suavidad: pon la clase y, al terminar la animación (evento
 
 ## Cuenta atrás
 
-El botón de «siguiente episodio» de My MTV Box: se va llenando de izquierda a derecha. La duración va en `--gm-countdown` (10 s por defecto).
+Como un botón de «siguiente episodio»: se va llenando de izquierda a derecha. La duración va en `--gm-countdown` (10 s por defecto).
 
 ```html
 <div class="gm-flex gm-gap-3 gm-flex-wrap gm-items-center">

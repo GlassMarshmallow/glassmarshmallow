@@ -10,7 +10,7 @@ The page background color comes from a variable that changes on its own with lig
 | `--gm-surface` | white at 82 % | dark gray at 82 % | Glass cards and panels |
 | `--gm-surface-solid` | `#fff` | `#1c1c1e` | Opaque panels (menus, windows) |
 
-The very light gray by day and black at night is the My Book Box background: white cards (or gray at night) stand out on it without strong borders.
+The very light gray by day and black at night is the framework background: white cards (or gray at night) stand out on it without strong borders.
 
 ## Changing the background
 

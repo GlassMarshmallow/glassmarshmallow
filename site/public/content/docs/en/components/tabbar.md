@@ -1,6 +1,6 @@
 # Tab bar
 
-The phone's bottom bar, floating and glass, like in iOS and My Book Box. It replaces the [navbar](/docs/components/navbar) links below 860 px.
+The phone's bottom bar, floating and glass, like in iOS. It replaces the [navbar](/docs/components/navbar) links below 860 px.
 
 ## Example
 

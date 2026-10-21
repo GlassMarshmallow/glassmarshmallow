@@ -18,7 +18,7 @@ Desvanece un elemento hacia un lado o en círculo, y mezcla sus colores con lo q
 </div>
 ```
 
-El dibujo del portfolio en modo claro se funde con la página así: arriba y abajo se desvanece para que no se note dónde termina.
+Una imagen se funde con la página así: arriba y abajo se desvanece para que no se note dónde termina.
 
 ## Mezcla de colores
 

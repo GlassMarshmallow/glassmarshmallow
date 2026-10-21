@@ -1,6 +1,6 @@
 # Barra de progreso
 
-Cuánto se lleva hecho de algo: lectura de un libro, subida de un archivo, pasos de un formulario. Una línea fina sobre gris con la parte hecha en el color de acento y un texto debajo. Es la de lectura de My Book Box.
+Cuánto se lleva hecho de algo: lectura de un libro, subida de un archivo, pasos de un formulario. Una línea fina sobre gris con la parte hecha en el color de acento y un texto debajo.
 
 ## Ejemplo
 

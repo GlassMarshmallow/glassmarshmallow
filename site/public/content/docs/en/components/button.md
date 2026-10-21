@@ -1,6 +1,6 @@
 # Button
 
-Buttons for actions in forms, dialogs and pages, with the rounded shape of My Book Box. All of them meet WCAG 2.2 AA in light and dark mode.
+Buttons for actions in forms, dialogs and pages, with rounded shapes. All of them meet WCAG 2.2 AA in light and dark mode.
 
 ## Variants
 

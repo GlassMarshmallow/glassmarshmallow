@@ -1,6 +1,6 @@
 # Tag
 
-A small pill to label something: a category, a status, something new. It is the gray My Book Box tag.
+A small pill to label something: a category, a status, something new.
 
 ## Example
 

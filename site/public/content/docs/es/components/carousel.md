@@ -1,6 +1,6 @@
 # Carrusel
 
-Imágenes que se pasan una a una, dentro de un recuadro de cristal, con flechas a los lados y puntos debajo. Es el de la sección de proyectos del portfolio.
+Imágenes que se pasan una a una, dentro de un recuadro de cristal, con flechas a los lados y puntos debajo.
 
 ## Ejemplo
 
@@ -68,7 +68,7 @@ Con `.gm-carousel--peek` y sin `data-gm-carousel`: las fotos se pasan deslizando
 
 ## Fila deslizable
 
-Como las preguntas rápidas del chat del portfolio: todo en una sola fila que se desliza de lado con el dedo, el ratón o el teclado, sin flechas ni puntos. El borde derecho se difumina para que se vea que hay más. Usa `.gm-scroll-row`; no necesita script.
+Para opciones rápidas, como las preguntas sugeridas de un chat: todo en una sola fila que se desliza de lado con el dedo, el ratón o el teclado, sin flechas ni puntos. El borde derecho se difumina para que se vea que hay más. Usa `.gm-scroll-row`; no necesita script.
 
 ```html
 <div class="gm-scroll-row gm-max-w-xs" role="group" aria-label="Preguntas rápidas">

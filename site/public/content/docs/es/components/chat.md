@@ -1,6 +1,6 @@
 # Chat
 
-Las piezas del chat de la plantilla de portfolio con IA: el campo para preguntar, el bocadillo con la respuesta y los puntos de «escribiendo». El chat en sí (preguntar a la IA, escribir la respuesta letra a letra) lo pone tu aplicación; el framework da el aspecto.
+Las piezas de un chat con IA: el campo para preguntar, el bocadillo con la respuesta y los puntos de «escribiendo». El chat en sí (preguntar a la IA, escribir la respuesta letra a letra) lo pone tu aplicación; el framework da el aspecto.
 
 ## Campo para preguntar
 
