@@ -11,7 +11,6 @@ import { HighlightPipe } from '../../../../shared/utils/highlight';
   selector: 'app-icon-detail',
   imports: [HighlightPipe, RouterLink, TranslatePipe, BackLink],
   templateUrl: './icon-detail.html',
-  styleUrl: './icon-detail.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconDetail {

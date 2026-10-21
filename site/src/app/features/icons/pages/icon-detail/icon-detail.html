@@ -1,34 +1,35 @@
-<section class="gm-container icon" aria-labelledby="icon-title">
+<section class="gm-container gm-pt-[4.5rem] gm-pb-0" aria-labelledby="icon-title">
   <app-back-link path="/icons" section="nav.icons" />
 
   @if (icon(); as current) {
-    <p class="icon__category gm-muted">{{ current.category }}</p>
-    <h1 id="icon-title">{{ title() }}</h1>
-    <code class="icon__file">{{ current.name }}.svg</code>
+    <!-- Categoría: el antetítulo de My Book Box -->
+    <p class="gm-mb-2 gm-text-[.9rem] gm-font-semibold gm-tracking-[-.01em] gm-muted">{{ current.category }}</p>
+    <h1 id="icon-title" class="gm-mb-[.375rem]">{{ title() }}</h1>
+    <code class="gm-muted gm-text-[1rem]">{{ current.name }}.svg</code>
 
     <!-- Vista grande -->
-    <div class="gm-card icon__preview">
-      <i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i>
+    <div class="gm-card gm-d-grid gm-min-h-[20rem] gm-mt-[1.75rem] gm-place-items-center">
+      <i class="gmi gmi-{{ current.name }} gm-text-[10rem]" aria-hidden="true"></i>
     </div>
 
-    <h2>{{ 'icons.examples' | t }}</h2>
-    <div class="gm-card icon__examples">
-      <p class="icon__ex-heading"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i> {{ 'icons.exHeading' | t }}</p>
-      <p class="icon__ex-small"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i> {{ 'icons.exSmall' | t }}</p>
-      <p class="gm-muted">{{ 'icons.exInline' | t }} <i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i></p>
-      <p><a class="icon__ex-link" href="#" (click)="$event.preventDefault()">{{ 'icons.exLink' | t }} <i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i></a></p>
-      <div class="icon__ex-buttons">
+    <h2 class="gm-mt-12 gm-mb-4 gm-text-[1.5rem]">{{ 'icons.examples' | t }}</h2>
+    <div class="gm-card gm-d-grid gm-gap-[.875rem]">
+      <p class="gm-m-0 gm-text-[2rem] gm-font-bold gm-tracking-[-.03em]"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i> {{ 'icons.exHeading' | t }}</p>
+      <p class="gm-m-0 gm-text-[1.3rem] gm-font-[650]"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i> {{ 'icons.exSmall' | t }}</p>
+      <p class="gm-m-0 gm-muted">{{ 'icons.exInline' | t }} <i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i></p>
+      <p class="gm-m-0"><a class="gm-d-inline-flex gm-min-h-[2.75rem] gm-items-center gm-gap-[.375rem] gm-[color:var(--gm-link)] gm-[text-decoration:underline] gm-[text-underline-offset:3px]" href="#" (click)="$event.preventDefault()">{{ 'icons.exLink' | t }} <i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i></a></p>
+      <div class="gm-d-flex gm-flex-wrap gm-gap-[.625rem]">
         <button type="button" class="gm-btn"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i>{{ 'icons.exButton' | t }}</button>
         <button type="button" class="gm-btn gm-btn--secondary"><i class="gmi gmi-{{ current.name }}" aria-hidden="true"></i>{{ 'icons.exButton' | t }}</button>
       </div>
     </div>
 
-    <h2>{{ 'icons.use' | t }}</h2>
-    <div class="gm-card icon__use">
-      <div class="icon__code">
-        <div class="icon__code-bar">
-          <h3>SVG</h3>
-          <div class="icon__code-actions">
+    <h2 class="gm-mt-12 gm-mb-4 gm-text-[1.5rem]">{{ 'icons.use' | t }}</h2>
+    <div class="gm-card gm-d-grid gm-gap-[1.75rem]">
+      <div class="gm-d-grid gm-min-w-0 gm-gap-[.625rem]">
+        <div class="gm-d-flex gm-flex-wrap gm-items-center gm-justify-between gm-gap-[.625rem]">
+          <h3 class="gm-m-0 gm-text-[1rem]">SVG</h3>
+          <div class="gm-d-flex gm-flex-wrap gm-gap-2">
             <a class="gm-btn gm-btn--secondary gm-btn--sm" [href]="svgUrl()" [attr.download]="current.name + '.svg'"
                data-umami-event="Descargar icono" [attr.data-umami-event-icono]="current.name">
               <i class="gmi gmi-download" aria-hidden="true"></i>{{ 'icons.download' | t }}
@@ -40,30 +41,31 @@
             </button>
           </div>
         </div>
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'icons.svgCode' | t"><code [innerHTML]="(svg.value() ?? '…') | highlight: 'html'"></code></pre>
+        <pre class="gm-code gm-code--wrap" tabindex="0" [attr.aria-label]="'icons.svgCode' | t"><code [innerHTML]="(svg.value() ?? '…') | highlight: 'html'"></code></pre>
       </div>
-      <div class="icon__code">
-        <div class="icon__code-bar">
-          <h3>{{ 'icons.fontHtml' | t }}</h3>
+      <div class="gm-d-grid gm-min-w-0 gm-gap-[.625rem]">
+        <div class="gm-d-flex gm-flex-wrap gm-items-center gm-justify-between gm-gap-[.625rem]">
+          <h3 class="gm-m-0 gm-text-[1rem]">{{ 'icons.fontHtml' | t }}</h3>
           <button type="button" class="gm-btn gm-btn--sm" (click)="copy('html')"
                   data-umami-event="Copiar HTML del icono" [attr.data-umami-event-icono]="current.name">
             <i class="gmi" [class.gmi-clipboard]="copied() !== 'html'" [class.gmi-check]="copied() === 'html'" aria-hidden="true"></i>
             {{ (copied() === 'html' ? 'common.copied' : 'common.copy') | t }}
           </button>
         </div>
-        <pre class="gm-code" tabindex="0" [attr.aria-label]="'icons.fontHtml' | t"><code [innerHTML]="fontHtml() | highlight: 'html'"></code></pre>
+        <pre class="gm-code gm-code--wrap" tabindex="0" [attr.aria-label]="'icons.fontHtml' | t"><code [innerHTML]="fontHtml() | highlight: 'html'"></code></pre>
       </div>
       <span class="gm-visually-hidden" aria-live="polite">{{ announcement() }}</span>
     </div>
 
     @if (related().length) {
-      <h2>{{ 'icons.related' | t }}</h2>
-      <ul class="icon__related">
+      <h2 class="gm-mt-12 gm-mb-4 gm-text-[1.5rem]">{{ 'icons.related' | t }}</h2>
+      <!-- Iconos relacionados: las mismas casillas que la lista -->
+      <ul class="gm-icon-grid gm-gap-4 gm-grid-cols-[repeat(auto-fill,minmax(6.875rem,1fr))]">
         @for (other of related(); track other.name) {
           <li>
-            <a class="icon__tile" [routerLink]="['/icons', other.name]">
-              <span class="icon__tile-box"><i class="gmi gmi-{{ other.name }}" aria-hidden="true"></i></span>
-              <span class="icon__tile-name">{{ other.name }}</span>
+            <a class="gm-icon-tile" [routerLink]="['/icons', other.name]">
+              <span class="gm-icon-tile__box"><i class="gmi gmi-{{ other.name }}" aria-hidden="true"></i></span>
+              <span class="gm-icon-tile__name">{{ other.name }}</span>
             </a>
           </li>
         }
