@@ -29,7 +29,7 @@ The list opens aligned to the right of the button. Next to the left edge, add `.
 ```html
 <div style="min-height: 11.875rem">
   <div class="gm-menu gm-menu--start" data-gm-menu>
-    <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language: English">
+    <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false" aria-label="EN, language: English">
       <i class="gmi gmi-translate" aria-hidden="true"></i> EN
       <i class="gmi gmi-chevron-expand gm-menu__chevron" aria-hidden="true"></i>
     </button>

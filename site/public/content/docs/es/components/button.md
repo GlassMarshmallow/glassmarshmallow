@@ -93,7 +93,7 @@ Pon un icono antes o después del texto. Es decorativo, así que lleva `aria-hid
 
 ## Píldora
 
-`.gm-btn--pill` es un botón pequeño con el gris de las etiquetas, para acciones secundarias en listas y tarjetas. Añade `.gm-btn--danger` para las acciones que borran.
+`.gm-btn--pill` es un botón pequeño con el gris de las etiquetas, para acciones secundarias en listas y tarjetas. Añade `.gm-btn--danger` para las acciones que borran. Solo funciona en la píldora, donde su color se lee bien (9,6:1); en los demás botones no cambia nada.
 
 ```html
 <div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">

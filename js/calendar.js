@@ -15,6 +15,10 @@
  * Intro/Espacio (elegir).
  */
 
+/** El texto, listo para ir dentro del HTML: sin que < > & " ' se lean como código */
+const esc = (text) => String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+
 const pad = (n) => String(n).padStart(2, '0');
 const iso = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 const parse = (s) => {
@@ -64,15 +68,15 @@ export function initCalendar(root) {
     const title = monthName.format(first);
     root.innerHTML = `
       <div class="gm-calendar__header">
-        <h3 class="gm-calendar__title" id="${id}-title" aria-live="polite">${title.charAt(0).toUpperCase() + title.slice(1)} <span>${first.getFullYear()}</span></h3>
+        <h3 class="gm-calendar__title" id="${id}-title" aria-live="polite">${esc(title.charAt(0).toUpperCase() + title.slice(1))} <span>${first.getFullYear()}</span></h3>
         <div class="gm-calendar__nav">
-          <button type="button" class="gm-icon-btn" data-step="-1" aria-label="${es ? 'Mes anterior' : 'Previous month'}"><i class="gmi gmi-chevron-left" aria-hidden="true"></i></button>
-          <button type="button" class="gm-icon-btn" data-step="1" aria-label="${es ? 'Mes siguiente' : 'Next month'}"><i class="gmi gmi-chevron-right" aria-hidden="true"></i></button>
+          <button type="button" class="gm-icon-btn" data-step="-1" aria-label="${esc(es ? 'Mes anterior' : 'Previous month')}"><i class="gmi gmi-chevron-left" aria-hidden="true"></i></button>
+          <button type="button" class="gm-icon-btn" data-step="1" aria-label="${esc(es ? 'Mes siguiente' : 'Next month')}"><i class="gmi gmi-chevron-right" aria-hidden="true"></i></button>
         </div>
       </div>
       <table class="gm-calendar__grid" role="grid" aria-labelledby="${id}-title">
         <thead><tr>${days
-          .map((d) => `<th scope="col"><abbr title="${weekday('long').format(d)}">${weekday('narrow').format(d)}</abbr></th>`)
+          .map((d) => `<th scope="col"><abbr title="${esc(weekday('long').format(d))}">${esc(weekday('narrow').format(d))}</abbr></th>`)
           .join('')}</tr></thead>
         <tbody>${weeks
           .map(
@@ -81,7 +85,7 @@ export function initCalendar(root) {
                 .map((d) => {
                   const attrs = [
                     `data-date="${iso(d)}"`,
-                    `aria-label="${dayName.format(d)}"`,
+                    `aria-label="${esc(dayName.format(d))}"`,
                     `tabindex="${iso(d) === iso(focus) ? 0 : -1}"`,
                   ];
                   if (iso(d) === iso(today)) attrs.push('aria-current="date"');

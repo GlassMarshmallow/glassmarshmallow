@@ -130,6 +130,7 @@ La barra de esta documentación junta piezas que sirven para cualquier web con m
 - `gm-navbar__start`: la marca y los enlaces juntos a la izquierda; lo demás (buscador, acciones) queda a la derecha.
 - `gm-navbar__icon`: un enlace con icono en las acciones, como el de GitHub, con la zona que se pulsa de 44 px.
 - `gm-glass-logo--backdrop`: el logo de cristal con el fondo de luces de la portada detrás en claro, en vez de la sombra.
+- `gm-search--collapse-lg` (en el buscador): pasa a ser la lupa hasta 1100 px en vez de hasta 860 px, para barras con muchos enlaces o largos (como esta en español), y entre 1100 y 1300 px el campo se estrecha si hace falta para no tapar nunca un enlace.
 - `gm-navbar--dense`: en el móvil, marca, logo y botones más juntos para que quepan el buscador, el idioma y el tema; por debajo de 360 px, solo el logo (el nombre lo siguen leyendo los lectores de pantalla).
 
 ```html-code
@@ -138,7 +139,7 @@ La barra de esta documentación junta piezas que sirven para cualquier web con m
     <a class="gm-navbar__brand" href="/"><img class="gm-navbar__logo gm-glass-logo gm-glass-logo--backdrop" src="logo.svg" alt=""><span>GlassMarshmallow</span></a>
     <nav class="gm-navbar__nav" aria-label="Principal">…</nav>
   </div>
-  <div class="gm-search gm-search--navbar" role="search">…</div>
+  <div class="gm-search gm-search--navbar gm-search--collapse-lg" role="search">…</div>
   <div class="gm-navbar__actions">
     <a class="gm-navbar__icon" href="https://github.com/…" aria-label="GitHub"><svg aria-hidden="true">…</svg></a>
     …

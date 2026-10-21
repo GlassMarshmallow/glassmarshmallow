@@ -12,6 +12,10 @@
  * - Textos en español si <html lang="es">; en inglés si no. Se cambian con initCarousel(root, { texts }).
  */
 
+/** El texto, listo para ir dentro del HTML: sin que < > & " ' se lean como código */
+const esc = (text) => String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+
 const TEXTS = {
   es: {
     carousel: 'carrusel',
@@ -55,7 +59,7 @@ export function initCarousel(root, options = {}) {
   slides.forEach((slide, i) => {
     slide.setAttribute('role', 'group');
     slide.setAttribute('aria-roledescription', t.slide);
-    slide.setAttribute('aria-label', `${i + 1} ${t.of} ${slides.length}`);
+    slide.setAttribute('aria-label', `${i + 1} ${esc(t.of)} ${slides.length}`);
   });
 
   // Las flechas van sobre la imagen: se envuelve la pista en un visor
@@ -65,13 +69,13 @@ export function initCarousel(root, options = {}) {
   viewport.append(track);
   viewport.insertAdjacentHTML(
     'beforeend',
-    `<button type="button" class="gm-carousel__prev" aria-label="${t.previous}"><i class="gmi gmi-chevron-left" aria-hidden="true"></i></button>
-     <button type="button" class="gm-carousel__next" aria-label="${t.next}"><i class="gmi gmi-chevron-right" aria-hidden="true"></i></button>`,
+    `<button type="button" class="gm-carousel__prev" aria-label="${esc(t.previous)}"><i class="gmi gmi-chevron-left" aria-hidden="true"></i></button>
+     <button type="button" class="gm-carousel__next" aria-label="${esc(t.next)}"><i class="gmi gmi-chevron-right" aria-hidden="true"></i></button>`,
   );
   root.insertAdjacentHTML(
     'beforeend',
     `<div class="gm-carousel__nav">
-      ${slides.map((_, i) => `<button type="button" class="gm-carousel__dot" data-index="${i}" aria-label="${t.goTo.replace('{n}', i + 1)}"></button>`).join('')}
+      ${slides.map((_, i) => `<button type="button" class="gm-carousel__dot" data-index="${i}" aria-label="${esc(t.goTo.replace('{n}', i + 1))}"></button>`).join('')}
       ${interval ? `<button type="button" class="gm-icon-btn gm-carousel__pause"><i class="gmi" aria-hidden="true"></i></button>` : ''}
     </div>`,
   );

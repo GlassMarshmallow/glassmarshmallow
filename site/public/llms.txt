@@ -14,6 +14,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 - [CSS variables](/docs/getting-started/css-variables): All of GlassMarshmallow's look comes from CSS variables with the `--gm-` prefix. They change on their own with light and dark mode (`data-theme`), and you can change them for the whole site or for just one part.
 - [Accessibility](/docs/getting-started/accessibility): GlassMarshmallow follows **WCAG 2.2 at level AA** in light and dark mode, the level asked for by European and Spanish law, and also meets the AAA criteria for contrast, presentation, focus and target size. These are all the rules, grouped by the four principles of WCAG, with how the framework meets each one.
 - [All the rules (WCAG 2.2)](/docs/getting-started/wcag): The 86 success criteria of WCAG 2.2, at levels A, AA and AAA, explained in plain words. Check this list every time you add something new to the framework, so that it meets them from the start.
+- [Performance](/docs/getting-started/performance): How much GlassMarshmallow weighs and how to load only what you need. The tables are measured every time the
 
 ## Color
 

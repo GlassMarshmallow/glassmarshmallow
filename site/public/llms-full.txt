@@ -795,6 +795,65 @@ The 86 success criteria of WCAG 2.2, at levels A, AA and AAA, explained in plain
 
 The official text, in English: [WCAG 2.2](https://www.w3.org/TR/WCAG22/). In Spanish: [the UNE-EN 301549 standard](https://www.une.org) and the guides of the [Observatorio de Accesibilidad](https://administracionelectronica.gob.es/pae_Home/pae_Estrategias/pae_Accesibilidad.html).
 
+<!-- /docs/getting-started/performance -->
+# Performance
+
+How much GlassMarshmallow weighs and how to load only what you need. The tables are measured every time the
+documentation is built, so they always match the current version.
+
+## Size
+
+What the browser downloads. Servers and CDNs (jsDelivr, unpkg, Cloudflare…) send it compressed, so the real
+download is the **gzip** or **Brotli** column.
+
+<!-- sizes -->
+| File | As is | gzip | Brotli |
+| --- | --- | --- | --- |
+| `glassmarshmallow.min.css` | 209.1 kB | 34.7 kB | 24.2 kB |
+| `glassmarshmallow.css` | 297.3 kB | 58.3 kB | 43.3 kB |
+| `glassmarshmallow-font.min.css` | 0.6 kB | 0.4 kB | 0.4 kB |
+
+The font file (`montserrat-latin.woff2`) is 34.7 kB; it is already compressed.
+
+| Script | As is | gzip | Brotli |
+| --- | --- | --- | --- |
+| `js/calendar.js` | 6.9 kB | 2.7 kB | 2.3 kB |
+| `js/carousel.js` | 7.7 kB | 2.8 kB | 2.4 kB |
+| `js/color-picker.js` | 14.8 kB | 5.2 kB | 4.6 kB |
+| `js/dialog.js` | 2.5 kB | 1.1 kB | 0.9 kB |
+| `js/fullscreen-menu.js` | 2.8 kB | 1.2 kB | 1.0 kB |
+| `js/gallery.js` | 5.0 kB | 1.9 kB | 1.6 kB |
+| `js/menu.js` | 3.6 kB | 1.4 kB | 1.2 kB |
+| `js/player.js` | 15.9 kB | 4.6 kB | 4.1 kB |
+| `js/range.js` | 1.2 kB | 0.6 kB | 0.5 kB |
+| `js/search.js` | 5.3 kB | 1.9 kB | 1.7 kB |
+| `js/ticker.js` | 1.7 kB | 0.8 kB | 0.7 kB |
+<!-- /sizes -->
+
+## Load only what you need
+
+- **Link the `.min.css`** file in production; the other one has comments to read it.
+- **The font is optional.** `glassmarshmallow-font.css` adds Montserrat; without it, the framework uses the
+  system font and downloads nothing else. See [Typography](/docs/customize/typography).
+- **Scripts go one by one.** Each component that moves has its own file and you only import the ones you use;
+  pages with no menus, carousels or players need no JavaScript at all.
+- **Arbitrary values** (`gm-mt-[1.75rem]`) are only written if you use them: `npx glassmarshmallow build` puts
+  just those classes in a separate file.
+
+## Glass and blur
+
+The glass effect uses `backdrop-filter: blur()`, which the browser paints with the graphics card. A few glass
+panels on a page are no problem, even on phones; dozens of large panels on top of each other, or blurring
+something that moves (a video, an animation) under the glass, can make scrolling less smooth on older phones.
+If you notice it, use a solid surface (`gm-bg-surface`) for the big panels and keep glass for the small ones.
+
+## Animations
+
+Most of the framework's animations only change `opacity` and `transform`, which do not make the browser
+recalculate the layout. A few cost a little more: `gm-animate-blur-in` also animates `filter`, the shimmer and the
+moving progress bar animate the background position, and the countdown animates the width. They all turn off on
+their own with `prefers-reduced-motion`.
+
 <!-- /docs/color/colors -->
 # Palette
 
@@ -1842,7 +1901,7 @@ A tag in the corner of a card:
 ```html
 <div class="gm-relative gm-p-8 gm-max-w-sm">
   <div class="gm-absolute gm-inset-0 gm-z-0 gm-rounded-sm gm-theme-sky gm-theme-solid"></div>
-  <p class="gm-relative gm-z-10 gm-m-0 gm-font-semibold">This text sits on top of the colored background: it has gm-z-10 and the background, gm-z-0.</p>
+  <p class="gm-relative gm-z-10 gm-m-0 gm-font-semibold gm-[color:var(--gm-on-pastel)]">This text sits on top of the colored background: it has gm-z-10 and the background, gm-z-0.</p>
 </div>
 ```
 
@@ -4126,7 +4185,7 @@ Put an icon before or after the text. It is decorative, so it has `aria-hidden="
 
 ## Pill
 
-`.gm-btn--pill` is a small button with the gray of the tags, for secondary actions in lists and cards. Add `.gm-btn--danger` for actions that delete.
+`.gm-btn--pill` is a small button with the gray of the tags, for secondary actions in lists and cards. Add `.gm-btn--danger` for actions that delete. It only works on the pill, where its color reads well (9.6:1); on other buttons it changes nothing.
 
 ```html
 <div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
@@ -4901,6 +4960,7 @@ This documentation's bar combines parts that work for any site with many pages:
 - `gm-navbar__start`: the brand and the links together on the left; the rest (search, actions) stays on the right.
 - `gm-navbar__icon`: an icon link in the actions, like the GitHub one, with a 44 px target.
 - `gm-glass-logo--backdrop`: the glass logo with the home page lights behind it in light mode, instead of the shadow.
+- `gm-search--collapse-lg` (on the search): it turns into the magnifying glass up to 1100 px instead of 860 px, for bars with many or long links (like this one in Spanish), and between 1100 and 1300 px the field gets narrower if needed so it never covers a link.
 - `gm-navbar--dense`: on phones, brand, logo and buttons closer together so search, language and theme fit; below 360 px, only the logo (screen readers still read the name).
 
 ```html-code
@@ -4909,7 +4969,7 @@ This documentation's bar combines parts that work for any site with many pages:
     <a class="gm-navbar__brand" href="/"><img class="gm-navbar__logo gm-glass-logo gm-glass-logo--backdrop" src="logo.svg" alt=""><span>GlassMarshmallow</span></a>
     <nav class="gm-navbar__nav" aria-label="Main">…</nav>
   </div>
-  <div class="gm-search gm-search--navbar" role="search">…</div>
+  <div class="gm-search gm-search--navbar gm-search--collapse-lg" role="search">…</div>
   <div class="gm-navbar__actions">
     <a class="gm-navbar__icon" href="https://github.com/…" aria-label="GitHub"><svg aria-hidden="true">…</svg></a>
     …
@@ -5045,7 +5105,7 @@ The list opens aligned to the right of the button. Next to the left edge, add `.
 ```html
 <div style="min-height: 11.875rem">
   <div class="gm-menu gm-menu--start" data-gm-menu>
-    <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false" aria-label="Language: English">
+    <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false" aria-label="EN, language: English">
       <i class="gmi gmi-translate" aria-hidden="true"></i> EN
       <i class="gmi gmi-chevron-expand gm-menu__chevron" aria-hidden="true"></i>
     </button>

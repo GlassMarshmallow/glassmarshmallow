@@ -14,6 +14,10 @@
  * - Textos en español si <html lang="es">; en inglés si no. Se cambian con initPlayer(root, { texts }).
  */
 
+/** El texto, listo para ir dentro del HTML: sin que < > & " ' se lean como código */
+const esc = (text) => String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+
 const TEXTS = {
   es: {
     play: 'Reproducir',
@@ -83,10 +87,10 @@ export function initPlayer(root, options = {}) {
     : '';
   const subtitlesMenu = tracks.length
     ? `<div class="gm-player__menu-wrap">
-        <button type="button" class="gm-player__button" data-action="subtitles" aria-haspopup="menu" aria-expanded="false" aria-controls="${id}-subs" aria-label="${t.subtitles}"><i class="gmi gmi-badge-cc" aria-hidden="true"></i></button>
+        <button type="button" class="gm-player__button" data-action="subtitles" aria-haspopup="menu" aria-expanded="false" aria-controls="${id}-subs" aria-label="${esc(t.subtitles)}"><i class="gmi gmi-badge-cc" aria-hidden="true"></i></button>
         <div class="gm-player__menu" id="${id}-subs" role="menu" hidden>
-          <p aria-hidden="true">${t.subtitles}</p>
-          <button type="button" role="menuitemradio" data-track="-1">${t.off}</button>
+          <p aria-hidden="true">${esc(t.subtitles)}</p>
+          <button type="button" role="menuitemradio" data-track="-1">${esc(t.off)}</button>
           ${tracks.map((track, i) => `<button type="button" role="menuitemradio" data-track="${i}"></button>`).join('')}
         </div>
       </div>`
@@ -97,13 +101,13 @@ export function initPlayer(root, options = {}) {
     `${header}
     <div class="gm-player__loading" hidden><div class="gm-player__spinner"></div></div>
     <div class="gm-player__controls">
-      <input class="gm-player__timeline" type="range" min="0" max="0" step="1" value="0" aria-label="${t.position}" />
+      <input class="gm-player__timeline" type="range" min="0" max="0" step="1" value="0" aria-label="${esc(t.position)}" />
       <div class="gm-player__bar">
         <button type="button" class="gm-player__button gm-player__button--main" data-action="play"><i class="gmi gmi-play-fill" aria-hidden="true"></i></button>
-        <button type="button" class="gm-player__button" data-action="back" aria-label="${t.back}"><i class="gmi gmi-arrow-counterclockwise" aria-hidden="true"></i></button>
-        <button type="button" class="gm-player__button" data-action="forward" aria-label="${t.forward}"><i class="gmi gmi-arrow-clockwise" aria-hidden="true"></i></button>
+        <button type="button" class="gm-player__button" data-action="back" aria-label="${esc(t.back)}"><i class="gmi gmi-arrow-counterclockwise" aria-hidden="true"></i></button>
+        <button type="button" class="gm-player__button" data-action="forward" aria-label="${esc(t.forward)}"><i class="gmi gmi-arrow-clockwise" aria-hidden="true"></i></button>
         <button type="button" class="gm-player__button" data-action="mute"><i class="gmi gmi-volume-up-fill" aria-hidden="true"></i></button>
-        <input class="gm-player__volume" type="range" min="0" max="1" step="0.05" aria-label="${t.volume}" />
+        <input class="gm-player__volume" type="range" min="0" max="1" step="0.05" aria-label="${esc(t.volume)}" />
         <span class="gm-player__time" aria-hidden="true">0:00 / 0:00</span>
         <span class="gm-player__spacer"></span>
         ${subtitlesMenu}
@@ -128,7 +132,7 @@ export function initPlayer(root, options = {}) {
   const subsMenu = tracks.length ? $(`#${id}-subs`) : null;
   subsMenu?.querySelectorAll('[data-track]').forEach((button) => {
     const index = Number(button.dataset.track);
-    if (index >= 0) button.textContent = tracks[index].label || tracks[index].language || `${t.subtitles} ${index + 1}`;
+    if (index >= 0) button.textContent = tracks[index].label || tracks[index].language || `${esc(t.subtitles)} ${index + 1}`;
   });
   let scrubbing = false;
   let idleTimer;
@@ -144,7 +148,7 @@ export function initPlayer(root, options = {}) {
     timeline.max = String(Math.floor(duration));
     if (!scrubbing) timeline.value = String(Math.floor(current));
     timeline.style.setProperty('--gm-range-progress', `${duration ? (current / duration) * 100 : 0}%`);
-    timeline.setAttribute('aria-valuetext', `${clock(current)} ${t.of} ${clock(duration)}`);
+    timeline.setAttribute('aria-valuetext', `${clock(current)} ${esc(t.of)} ${clock(duration)}`);
     time.textContent = `${clock(current)} / ${clock(duration)}`;
   }
   function renderSound() {

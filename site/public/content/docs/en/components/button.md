@@ -93,7 +93,7 @@ Put an icon before or after the text. It is decorative, so it has `aria-hidden="
 
 ## Pill
 
-`.gm-btn--pill` is a small button with the gray of the tags, for secondary actions in lists and cards. Add `.gm-btn--danger` for actions that delete.
+`.gm-btn--pill` is a small button with the gray of the tags, for secondary actions in lists and cards. Add `.gm-btn--danger` for actions that delete. It only works on the pill, where its color reads well (9.6:1); on other buttons it changes nothing.
 
 ```html
 <div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">

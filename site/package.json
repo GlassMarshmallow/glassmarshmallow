@@ -12,7 +12,8 @@
     "llms": "node ../build/build-llms.mjs",
     "values": "node ../bin/glassmarshmallow.mjs build --content src --content public/content --out src/glassmarshmallow.extra.css",
     "prestart": "npm run icons:svg && npm run llms",
-    "prebuild": "npm run icons:svg && npm run llms && npm run values"
+    "prebuild": "npm run icons:svg && npm run sizes && npm run llms && npm run values",
+    "sizes": "node ../build/build-sizes.mjs"
   },
   "private": true,
   "packageManager": "npm@11.6.2",

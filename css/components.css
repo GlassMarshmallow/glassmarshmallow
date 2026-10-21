@@ -38,7 +38,8 @@
   transition: background .2s;
 }
 .gm-btn--pill:hover:not(:disabled) { box-shadow: none; transform: none; background: var(--gm-tag-hover); }
-.gm-btn--danger { color: var(--gm-btn-danger); }
+/* Peligro: solo sobre la píldora gris (9,6:1 de día y 9,8:1 de noche). En el botón negro no cambia nada, para que nunca quede ilegible */
+.gm-btn--pill.gm-btn--danger { color: var(--gm-btn-danger); }
 
 /* Botón de texto: sin fondo ni borde, en el color de los enlaces (con el color
    de enlace en lugar del acento, que en claro solo llegaba a 3,6:1) */
@@ -341,7 +342,7 @@ code span[style*="--code-light:#AF00DB" i] { color: var(--gm-lavender-700); } /*
 code span[style*="--code-light:#A31515" i] { color: var(--gm-pink-800); }     /* textos y argumentos (install …) */
 code span[style*="--code-light:#800000" i] { color: var(--gm-pink-900); }     /* etiquetas HTML */
 code span[style*="--code-light:#E50000" i],
-code span[style*="--code-light:#EE0000" i] { color: var(--gm-pink-700); }     /* atributos y propiedades CSS */
+code span[style*="--code-light:#EE0000" i] { color: var(--gm-coral-800); }    /* atributos y propiedades CSS (7:1 también sobre el gris de gm-code) */
 code span[style*="--code-light:#0000FF" i],
 code span[style*="--code-light:#0451A5" i] { color: var(--gm-blue-800); }     /* palabras clave y valores CSS */
 code span[style*="--code-light:#001080" i] { color: var(--gm-blue-900); }     /* variables */
@@ -350,6 +351,9 @@ code span[style*="--code-light:#098658" i] { color: var(--gm-mint-800); }     /*
 code span[style*="--code-light:#008000" i] { color: var(--gm-muted); }        /* comentarios */
 code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /* el resto (signos, espacios) */
 [data-theme="dark"] code span[style*="--code-dark"] { color: var(--code-dark); }
+/* En oscuro, los grises y verdes de «Dark+» no llegan a 4,5:1 sobre el gris de gm-code: comentarios y signos, en el gris secundario (7:1) */
+[data-theme="dark"] code span[style*="--code-dark:#6A9955" i],
+[data-theme="dark"] code span[style*="--code-dark:#808080" i] { color: var(--gm-muted); }
 
 /* --- Barra de navegación ---------------------------------------------------------- */
 .gm-navbar {
@@ -846,7 +850,7 @@ code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /*
        <i class="gmi gmi-search" aria-hidden="true"></i></button>
      <div id="panel-buscar" class="gm-search__panel"><div class="gm-search__field">…</div><ul class="gm-search__results">…</ul></div>
    </div>
-   Abrir y cerrar el panel lo hace tu código. */
+   Abrir y cerrar el panel lo hace tu código. Con gm-search--collapse-lg, la lupa llega hasta 1100 px. */
 .gm-search__toggle { display: none; }
 @media (max-width: 53.75rem) {
   .gm-search--navbar { position: static; width: auto; }
@@ -882,6 +886,42 @@ code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /*
   .gm-search--navbar .gm-search__results { position: static; width: 100%; max-width: none; margin-top: .5rem; box-shadow: none; }
 }
 
+/* gm-search--collapse-lg: la lupa hasta 1100 px (lg) en vez de hasta 860 px, para barras con muchos enlaces o con
+   textos largos (por ejemplo, en español) en las que el campo no cabe al lado */
+/* Con más ancho, los enlaces no se encogen y es el campo el que se estrecha si falta sitio: nunca tapa un enlace */
+.gm-search--collapse-lg { min-width: 0; }
+.gm-navbar:has(.gm-search--collapse-lg) .gm-navbar__start { flex-shrink: 0; }
+@media (max-width: 68.75rem) {
+  .gm-search--navbar.gm-search--collapse-lg { position: static; width: auto; }
+  .gm-search--collapse-lg .gm-search__toggle {
+    position: relative;
+    display: grid;
+    min-width: 2rem;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--gm-radius-sm);
+    color: var(--gm-nav-link);
+    background: transparent;
+    place-items: center;
+    cursor: pointer;
+  }
+  .gm-search--collapse-lg .gm-search__toggle .gmi { font-size: 1.35rem; }
+  .gm-search--collapse-lg .gm-search__toggle::after { position: absolute; inset: 0 -.375rem; content: ""; }
+  .gm-search--collapse-lg .gm-search__panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    padding: .625rem 1rem .75rem;
+    border-bottom: 1px solid var(--gm-header-border);
+    background: var(--gm-surface-solid);
+  }
+  .gm-search--collapse-lg .gm-search__panel.is-open { display: block; }
+  .gm-search--collapse-lg .gm-search__input { font-size: 1rem; }
+  .gm-search--collapse-lg .gm-search__results { position: static; width: 100%; max-width: none; margin-top: .5rem; box-shadow: none; }
+}
 /* --- Selector de color --------------------------------------------------------
    Un botón con la muestra del color que abre una ventana con el círculo de color, las barras de tono,
    saturación, luminosidad y opacidad, el código y el contraste de un texto blanco y uno negro encima.

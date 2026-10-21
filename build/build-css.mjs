@@ -16,14 +16,22 @@ function bundle(file) {
 }
 
 // Minificado sencillo: sin comentarios (salvo los que empiezan por /*!), espacios ni saltos de línea sobrantes.
+// Los textos entre comillas (content: "A > B", url("…")) se apartan antes y se devuelven tal cual al final, para no
+// cambiar nada dentro de ellos; tampoco se confunde con un comentario un «/*» que vaya dentro de un texto.
 function minify(css) {
-  return css
-    .replace(/\/\*(?!!)[\s\S]*?\*\//g, '')
+  const strings = [];
+  const code = css.replace(/"(?:\\[\s\S]|[^"\\])*"|'(?:\\[\s\S]|[^'\\])*'|\/\*[\s\S]*?\*\//g, (match) => {
+    if (match.startsWith('/*')) return match.startsWith('/*!') ? match : '';
+    strings.push(match);
+    return `\u0000${strings.length - 1}\u0000`;
+  });
+  return code
     .replace(/\s+/g, ' ')
     .replace(/\s*([{};,>])\s*/g, '$1')
     .replace(/:\s+/g, ':') // solo el espacio de después: «.a :hover» (descendiente) no cambia
     .replace(/;}/g, '}')
-    .trim();
+    .trim()
+    .replace(/\u0000(\d+)\u0000/g, (_, i) => strings[Number(i)]);
 }
 
 const css = bundle('glassmarshmallow.css') + '\n';

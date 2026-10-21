@@ -130,6 +130,7 @@ This documentation's bar combines parts that work for any site with many pages:
 - `gm-navbar__start`: the brand and the links together on the left; the rest (search, actions) stays on the right.
 - `gm-navbar__icon`: an icon link in the actions, like the GitHub one, with a 44 px target.
 - `gm-glass-logo--backdrop`: the glass logo with the home page lights behind it in light mode, instead of the shadow.
+- `gm-search--collapse-lg` (on the search): it turns into the magnifying glass up to 1100 px instead of 860 px, for bars with many or long links (like this one in Spanish), and between 1100 and 1300 px the field gets narrower if needed so it never covers a link.
 - `gm-navbar--dense`: on phones, brand, logo and buttons closer together so search, language and theme fit; below 360 px, only the logo (screen readers still read the name).
 
 ```html-code
@@ -138,7 +139,7 @@ This documentation's bar combines parts that work for any site with many pages:
     <a class="gm-navbar__brand" href="/"><img class="gm-navbar__logo gm-glass-logo gm-glass-logo--backdrop" src="logo.svg" alt=""><span>GlassMarshmallow</span></a>
     <nav class="gm-navbar__nav" aria-label="Main">…</nav>
   </div>
-  <div class="gm-search gm-search--navbar" role="search">…</div>
+  <div class="gm-search gm-search--navbar gm-search--collapse-lg" role="search">…</div>
   <div class="gm-navbar__actions">
     <a class="gm-navbar__icon" href="https://github.com/…" aria-label="GitHub"><svg aria-hidden="true">…</svg></a>
     …

@@ -14,6 +14,10 @@
  *   Mayús, de 10 en 10). Escape cierra la ventana y el foco vuelve al botón.
  */
 
+/** El texto, listo para ir dentro del HTML: sin que < > & " ' se lean como código */
+const esc = (text) => String(text).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+
+
 const TEXTS = {
   es: {
     wheel: 'Círculo de color: tono y saturación',
@@ -139,7 +143,7 @@ export function initColorPicker(root, options = {}) {
 
   const slider = (key, name, max, extra = '') => `
     <div class="gm-color-picker__slider">
-      <label for="${id}-${key}">${name}</label>
+      <label for="${id}-${key}">${esc(name)}</label>
       <output for="${id}-${key}" data-out="${key}"></output>
       <input id="${id}-${key}" type="range" min="0" max="${max}" data-channel="${key}" ${extra} />
     </div>`;
@@ -156,11 +160,11 @@ export function initColorPicker(root, options = {}) {
     <dialog class="gm-color-picker__dialog" aria-labelledby="${id}-title">
       <div class="gm-color-picker__head">
         <h2 id="${id}-title"></h2>
-        <button type="button" class="gm-icon-btn" data-close aria-label="${t.close}"><i class="gmi gmi-x-lg" aria-hidden="true"></i></button>
+        <button type="button" class="gm-icon-btn" data-close aria-label="${esc(t.close)}"><i class="gmi gmi-x-lg" aria-hidden="true"></i></button>
       </div>
       <div class="gm-color-picker__body">
         <div class="gm-color-picker__wheel">
-          <span class="gm-color-picker__thumb" role="slider" tabindex="0" aria-label="${t.wheel}" aria-valuemin="0" aria-valuemax="360"></span>
+          <span class="gm-color-picker__thumb" role="slider" tabindex="0" aria-label="${esc(t.wheel)}" aria-valuemin="0" aria-valuemax="360"></span>
         </div>
         <div class="gm-color-picker__sliders">
           ${slider('h', t.hue, 359)}
@@ -168,9 +172,9 @@ export function initColorPicker(root, options = {}) {
           ${slider('l', t.lightness, 100)}
           ${alpha ? slider('a', t.opacity, 100, 'class="gm-color-picker__range--alpha"') : ''}
           <div class="gm-field gm-color-picker__hex">
-            <label for="${id}-hex">${t.code}</label>
+            <label for="${id}-hex">${esc(t.code)}</label>
             <input id="${id}-hex" type="text" spellcheck="false" autocomplete="off" />
-            <span id="${id}-hex-error" class="gm-field__error" hidden>${t.codeError}</span>
+            <span id="${id}-hex-error" class="gm-field__error" hidden>${esc(t.codeError)}</span>
           </div>
         </div>
       </div>
@@ -181,7 +185,7 @@ export function initColorPicker(root, options = {}) {
             .map(
               (c) => `<div class="gm-color-picker__contrast-item" data-on="${c}">
                 <span class="gm-color-picker__sample" style="color: ${c === 'white' ? '#fff' : '#000'}" aria-hidden="true"></span>
-                <span>${format(t.textOn, { color: t[c] })} <strong></strong>
+                <span>${esc(format(t.textOn, { color: t[c] }))} <strong></strong>
                   <span class="gm-color-picker__badge"><i class="gmi" aria-hidden="true"></i><span></span></span>
                 </span>
               </div>`,
@@ -189,7 +193,7 @@ export function initColorPicker(root, options = {}) {
             .join('')}
         </div>
       </div>
-      <div class="gm-color-picker__actions"><button type="button" class="gm-btn" data-close>${t.done}</button></div>
+      <div class="gm-color-picker__actions"><button type="button" class="gm-btn" data-close>${esc(t.done)}</button></div>
     </dialog>`,
   );
 

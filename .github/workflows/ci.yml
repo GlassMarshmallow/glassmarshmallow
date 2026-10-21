@@ -1,0 +1,46 @@
+# Pruebas en cada cambio: el CSS del framework, la web de documentación y su accesibilidad (axe-core)
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      # Los dos repositorios uno al lado del otro: la documentación usa los iconos de ../glassmarshmallow-icons
+      - uses: actions/checkout@v4
+        with:
+          path: glassmarshmallow
+      - uses: actions/checkout@v4
+        with:
+          repository: GlassMarshmallow/glassmarshmallow-icons
+          path: glassmarshmallow-icons
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            glassmarshmallow/package-lock.json
+            glassmarshmallow/site/package-lock.json
+
+      - name: Framework
+        working-directory: glassmarshmallow
+        run: |
+          npm ci
+          npm test
+
+      - name: Documentation
+        working-directory: glassmarshmallow/site
+        run: |
+          npm ci
+          npm run build:site
+
+      - name: Accessibility (axe-core)
+        working-directory: glassmarshmallow
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run test:a11y

@@ -5,6 +5,11 @@
 <h1 align="center">GlassMarshmallow</h1>
 
 <p align="center">
+  <a href="https://github.com/GlassMarshmallow/glassmarshmallow/actions/workflows/ci.yml"><img src="https://github.com/GlassMarshmallow/glassmarshmallow/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://www.npmjs.com/package/glassmarshmallow"><img src="https://img.shields.io/npm/v/glassmarshmallow" alt="npm"></a>
+</p>
+
+<p align="center">
   A CSS framework with glass surfaces, a pastel palette, light and dark mode<br>
   and WCAG 2.2 accessibility (AA, and AAA whenever possible) from the first component.
 </p>
@@ -51,9 +56,15 @@ Organised like [Bootstrap](https://github.com/twbs/bootstrap):
 ## Development
 
 ```sh
-npm run css     # build dist/css
-npm run site    # documentation site at http://localhost:4500
+npm run css        # build dist/css
+npm run site       # documentation site at http://localhost:4500
+npm test           # the CSS builds, is inside the layer and every class in the docs examples exists
+npm run test:a11y  # axe-core on every documentation page (build the site first)
 ```
+
+The checks run on every push with GitHub Actions. See [CONTRIBUTING.md](CONTRIBUTING.md) to help,
+[CHANGELOG.md](CHANGELOG.md) for what changed in each version and [SECURITY.md](SECURITY.md) to report a
+security problem.
 
 ## License
 

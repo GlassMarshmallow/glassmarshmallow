@@ -40,7 +40,7 @@ Una etiqueta en la esquina de una tarjeta:
 ```html
 <div class="gm-relative gm-p-8 gm-max-w-sm">
   <div class="gm-absolute gm-inset-0 gm-z-0 gm-rounded-sm gm-theme-sky gm-theme-solid"></div>
-  <p class="gm-relative gm-z-10 gm-m-0 gm-font-semibold">Este texto queda encima del fondo de color: lleva gm-z-10 y el fondo, gm-z-0.</p>
+  <p class="gm-relative gm-z-10 gm-m-0 gm-font-semibold gm-[color:var(--gm-on-pastel)]">Este texto queda encima del fondo de color: lleva gm-z-10 y el fondo, gm-z-0.</p>
 </div>
 ```
 

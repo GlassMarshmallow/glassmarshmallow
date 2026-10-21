@@ -15,7 +15,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
   {
     id: 'getting-started',
     icon: 'gmi-book',
-    pages: ['introduction', 'install', 'ai', 'approach', 'utilities', 'css-variables', 'accessibility', 'wcag'].map((p) => ({ path: `getting-started/${p}` })),
+    pages: ['introduction', 'install', 'ai', 'approach', 'utilities', 'css-variables', 'accessibility', 'wcag', 'performance'].map((p) => ({ path: `getting-started/${p}` })),
   },
   {
     id: 'color',
