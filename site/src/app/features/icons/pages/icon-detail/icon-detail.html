@@ -29,10 +29,12 @@
         <div class="icon__code-bar">
           <h3>SVG</h3>
           <div class="icon__code-actions">
-            <a class="gm-btn gm-btn--secondary gm-btn--sm" [href]="svgUrl()" [attr.download]="current.name + '.svg'">
+            <a class="gm-btn gm-btn--secondary gm-btn--sm" [href]="svgUrl()" [attr.download]="current.name + '.svg'"
+               data-umami-event="Descargar icono" [attr.data-umami-event-icono]="current.name">
               <i class="gmi gmi-download" aria-hidden="true"></i>{{ 'icons.download' | t }}
             </a>
-            <button type="button" class="gm-btn gm-btn--sm" (click)="copy('svg')" [disabled]="!svg.hasValue()">
+            <button type="button" class="gm-btn gm-btn--sm" (click)="copy('svg')" [disabled]="!svg.hasValue()"
+                    data-umami-event="Copiar SVG del icono" [attr.data-umami-event-icono]="current.name">
               <i class="gmi" [class.gmi-clipboard]="copied() !== 'svg'" [class.gmi-check]="copied() === 'svg'" aria-hidden="true"></i>
               {{ (copied() === 'svg' ? 'common.copied' : 'common.copy') | t }}
             </button>
@@ -43,7 +45,8 @@
       <div class="icon__code">
         <div class="icon__code-bar">
           <h3>{{ 'icons.fontHtml' | t }}</h3>
-          <button type="button" class="gm-btn gm-btn--sm" (click)="copy('html')">
+          <button type="button" class="gm-btn gm-btn--sm" (click)="copy('html')"
+                  data-umami-event="Copiar HTML del icono" [attr.data-umami-event-icono]="current.name">
             <i class="gmi" [class.gmi-clipboard]="copied() !== 'html'" [class.gmi-check]="copied() === 'html'" aria-hidden="true"></i>
             {{ (copied() === 'html' ? 'common.copied' : 'common.copy') | t }}
           </button>

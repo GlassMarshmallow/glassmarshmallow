@@ -11,6 +11,9 @@ services:
     restart: unless-stopped
     ports:
       - "127.0.0.1:8100:80"
+    networks:
+      - default
+      - estadisticas
     mem_limit: 64m
 
   # Túnel con dominio propio. Necesita CLOUDFLARE_TUNNEL_TOKEN en el archivo .env (permisos 600).
@@ -26,3 +29,9 @@ services:
     depends_on:
       - web
     mem_limit: 128m
+
+networks:
+  # Red creada por las estadísticas compartidas (Umami, ~/apps/estadisticas): nginx le pasa /stats/
+  estadisticas:
+    external: true
+    name: estadisticas-compartido
