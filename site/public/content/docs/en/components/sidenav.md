@@ -1,6 +1,6 @@
 # Side navigation
 
-The menu of sections next to the content, like the one in this documentation. On desktop it stays in view while scrolling; below 900 px it hides behind a button.
+The menu of sections next to the content, like the one in this documentation. On desktop it stays in view while scrolling; below 860 px (`md`) it hides behind a button.
 
 ## Example
 

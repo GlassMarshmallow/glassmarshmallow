@@ -2222,7 +2222,7 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
      <main class="gm-sidenav-layout__main">…</main>
    </div>
    En el ordenador, el menú va a la izquierda y se queda a la vista al hacer scroll (con su propio scroll si es más
-   alto que la pantalla). Por debajo de 900 px se esconde y lo abre el botón: tu código pone .is-open en el menú y
+   alto que la pantalla). Por debajo de 860 px (md) se esconde y lo abre el botón: tu código pone .is-open en el menú y
    aria-expanded en el botón. La página actual, con aria-current="page", va en el color del texto y seminegrita. */
 .gm-sidenav-layout {
   display: grid;
@@ -2269,7 +2269,7 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
 }
 .gm-sidenav__link:hover { color: var(--gm-text); }
 .gm-sidenav__link[aria-current="page"] { color: var(--gm-text); font-weight: 650; }
-@media (max-width: 56.25rem) {
+@media (max-width: 53.75rem) {
   .gm-sidenav-layout { grid-template-columns: minmax(0, 1fr); gap: 1rem; padding-top: 1.25rem; }
   .gm-sidenav__toggle { display: inline-flex; justify-self: start; }
   .gm-sidenav { position: static; display: none; max-height: none; padding: 1.25rem; }

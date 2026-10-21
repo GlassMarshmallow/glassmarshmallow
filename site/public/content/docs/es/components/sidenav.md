@@ -1,6 +1,6 @@
 # Menú lateral
 
-El menú de secciones al lado del contenido, como el de esta documentación. En el ordenador se queda a la vista al hacer scroll; por debajo de 900 px se esconde detrás de un botón.
+El menú de secciones al lado del contenido, como el de esta documentación. En el ordenador se queda a la vista al hacer scroll; por debajo de 860 px (`md`) se esconde detrás de un botón.
 
 ## Ejemplo
 
