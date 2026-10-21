@@ -5,9 +5,9 @@
 
   <div class="gm-tool">
     <!-- Cuadrícula de fondo para que se note la transparencia -->
-    <div class="gm-tool__preview preview-column">
-      <div class="preview">
-        <div class="preview__gradient" [style.background]="gradient()"></div>
+    <div class="gm-tool__preview gm-justify-items-start">
+      <div class="gm-tool__stage gm-w-full gm-p-0 gm-border gm-bg-[repeating-conic-gradient(#d6d6da_0_25%,#f5f5f7_0_50%)] gm-bg-[length:1.5rem_1.5rem]">
+        <div class="gm-w-full gm-h-full gm-min-h-[18.75rem] gm-md-min-h-[28.75rem]" [style.background]="gradient()"></div>
       </div>
       <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm" aria-haspopup="dialog" (click)="openFullscreen()">
         <i class="gmi gmi-arrows-fullscreen" aria-hidden="true"></i>{{ 'single.fullscreen' | t }}
@@ -17,7 +17,7 @@
     <div class="gm-card gm-tool__controls">
       <app-color-picker [label]="'single.color' | t" [alpha]="false" [(value)]="color" />
 
-      <fieldset class="gm-tool__group segmented">
+      <fieldset class="gm-tool__group">
         <legend>{{ 'gradient.type' | t }}</legend>
         <div class="gm-segmented">
           @for (option of types; track option.value) {
@@ -30,14 +30,14 @@
       </fieldset>
 
       @if (type() === 'linear') {
-        <fieldset class="gm-tool__group pad">
+        <fieldset class="gm-tool__group">
           <legend>{{ 'single.direction' | t }}</legend>
-          <div class="pad__grid">
+          <div class="gm-tool__pad">
             @for (dir of directions; track $index) {
               @if (dir.icon) {
                 <button
                   type="button"
-                  class="pad__btn"
+                  class="gm-tool__pad-btn"
                   [attr.aria-pressed]="angle() === dir.value"
                   [attr.aria-label]="dir.label | t"
                   [title]="dir.label | t"
@@ -46,7 +46,7 @@
                   <i class="gmi {{ dir.icon }}" aria-hidden="true"></i>
                 </button>
               } @else {
-                <span class="pad__center" aria-hidden="true"></span>
+                <span class="gm-tool__pad-center" aria-hidden="true"></span>
               }
             }
           </div>
@@ -57,7 +57,7 @@
           <input id="single-angle" class="gm-range" type="range" min="0" max="359" [value]="angle()" (input)="setNumber(angle, $event)" />
         </div>
       } @else {
-        <fieldset class="gm-tool__group segmented">
+        <fieldset class="gm-tool__group">
           <legend>{{ 'single.shape' | t }}</legend>
           <div class="gm-segmented">
             @for (option of shapes; track option.value) {
@@ -68,24 +68,24 @@
             }
           </div>
         </fieldset>
-        <label class="invert">
+        <label class="gm-tool__toggle gm-font-[650]">
           <input type="checkbox" [checked]="inverted()" (change)="inverted.set($any($event.target).checked)" aria-describedby="single-invert-help" />
           {{ 'single.invert' | t }}
         </label>
-        <p id="single-invert-help" class="invert__help gm-muted">{{ 'single.invertHelp' | t }}</p>
-        <fieldset class="gm-tool__group pad">
+        <p id="single-invert-help" class="gm-mt-[-.875rem] gm-mb-0 gm-text-[.84rem] gm-muted">{{ 'single.invertHelp' | t }}</p>
+        <fieldset class="gm-tool__group">
           <legend>{{ 'single.position' | t }}</legend>
-          <div class="pad__grid">
+          <div class="gm-tool__pad">
             @for (pos of positions; track pos.value) {
               <button
                 type="button"
-                class="pad__btn pad__btn--dot"
+                class="gm-tool__pad-btn"
                 [attr.aria-pressed]="position() === pos.value"
                 [attr.aria-label]="pos.label | t"
                 [title]="pos.label | t"
                 (click)="position.set(pos.value)"
               >
-                <span class="pad__dot" aria-hidden="true"></span>
+                <span class="gm-tool__pad-dot" aria-hidden="true"></span>
               </button>
             }
           </div>
@@ -120,15 +120,15 @@
 </section>
 
 <!-- Pantalla completa: el degradado sobre el fondo real de la web, para verlo como quedará -->
-<dialog #fullscreen class="fullscreen" [attr.aria-label]="'single.fullscreen' | t">
-  <div class="gm-backdrop gm-backdrop--contained fullscreen__backdrop" aria-hidden="true">
+<dialog #fullscreen class="gm-tool__fullscreen" [attr.aria-label]="'single.fullscreen' | t">
+  <div class="gm-backdrop gm-backdrop--contained" aria-hidden="true">
     <span class="gm-backdrop__dots"></span>
     <span class="gm-backdrop__grain"></span>
     <span class="gm-backdrop__scanlines"></span>
     <span class="gm-backdrop__curve"></span>
   </div>
-  <div class="fullscreen__gradient" [style.background]="gradient()" aria-hidden="true"></div>
-  <div class="fullscreen__bar">
+  <div class="gm-absolute gm-z-[1] gm-inset-0" [style.background]="gradient()" aria-hidden="true"></div>
+  <div class="gm-tool__fullscreen-bar">
     <span>{{ 'single.fullscreenHint' | t }}</span>
     <button type="button" class="gm-btn gm-btn--sm" (click)="closeFullscreen()">{{ 'common.close' | t }}</button>
   </div>

@@ -6,27 +6,27 @@
   <div class="gm-tool">
     <div class="gm-tool__preview">
       <!-- Fondo de muestra con formas de colores (como en el generador de cristal), el filtro encima y el texto -->
-      <div class="preview" [attr.data-theme]="previewTheme()">
-        <span class="preview__shape preview__shape--cyan" aria-hidden="true"></span>
-        <span class="preview__shape preview__shape--violet" aria-hidden="true"></span>
-        <span class="preview__shape preview__shape--amber" aria-hidden="true"></span>
-        <div class="preview__filter" [style.background]="filter()" aria-hidden="true"></div>
+      <div class="gm-tool__stage gm-border gm-bg-body" [attr.data-theme]="previewTheme()">
+        <span class="gm-absolute gm-rounded-full gm-top-[12%] gm-start-[12%] gm-w-[11.25rem] gm-h-[11.25rem] gm-bg-[#3cd2ff]" aria-hidden="true"></span>
+        <span class="gm-absolute gm-rounded-full gm-end-[10%] gm-bottom-[14%] gm-w-[13.75rem] gm-h-[13.75rem] gm-bg-[#8c64ff]" aria-hidden="true"></span>
+        <span class="gm-absolute gm-rounded-full gm-top-[18%] gm-end-[24%] gm-w-[6.875rem] gm-h-[6.875rem] gm-bg-[#ff9646]" aria-hidden="true"></span>
+        <div class="gm-absolute gm-z-[1] gm-inset-0" [style.background]="filter()" aria-hidden="true"></div>
         @if (showSample()) {
-          <div class="preview__sample">
-            <p class="preview__title">{{ sampleTitle() || ('filter.sampleTitle' | t) }}</p>
+          <div class="gm-tool__sample gm-z-[2]">
+            <p class="gm-tool__sample-title">{{ sampleTitle() || ('filter.sampleTitle' | t) }}</p>
             <p>{{ sampleText() || ('filter.sampleText' | t) }}</p>
-            <p class="gm-muted preview__small">{{ sampleSmall() || ('filter.sampleSmall' | t) }}</p>
+            <p class="gm-muted gm-tool__sample-small">{{ sampleSmall() || ('filter.sampleSmall' | t) }}</p>
           </div>
         }
       </div>
-      <label class="sample-toggle">
+      <label class="gm-tool__toggle gm-justify-self-start">
         <input type="checkbox" [checked]="showSample()" (change)="toggleSample($event)" />
         {{ 'filter.showSample' | t }}
       </label>
     </div>
 
     <div class="gm-card gm-tool__controls">
-      <fieldset class="gm-tool__group segmented">
+      <fieldset class="gm-tool__group">
         <legend>{{ 'filter.previewMode' | t }}</legend>
         <div class="gm-segmented">
           @for (option of themes; track option.value) {

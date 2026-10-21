@@ -48,7 +48,6 @@ import { BackLink } from '../../../../shared/components/back-link/back-link';
   selector: 'app-single-color-gradient',
   imports: [CodeOutput, RangeFill, ColorPicker, TranslatePipe, BackLink],
   templateUrl: './single-color-gradient.html',
-  styleUrl: './single-color-gradient.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SingleColorGradient {

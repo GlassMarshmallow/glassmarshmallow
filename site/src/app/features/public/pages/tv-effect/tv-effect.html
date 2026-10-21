@@ -6,13 +6,13 @@
   <div class="gm-tool">
     <div class="gm-tool__preview gm-tool__preview--sticky">
       <!-- Fondo de luces como el de la portada, el texto y, encima, las dos capas del efecto -->
-      <div class="preview" [attr.data-theme]="previewTheme()">
-        <div class="preview__sample">
-          <p class="preview__title gm-text-outline">{{ sampleTitle() || ('tv.sampleTitle' | t) }}</p>
+      <div class="gm-tool__stage gm-border gm-text-[var(--gm-text)] gm-bg-[var(--gm-backdrop-lights),var(--gm-backdrop-bg)]" [attr.data-theme]="previewTheme()">
+        <div class="gm-tool__sample">
+          <p class="gm-tool__sample-title gm-font-[800] gm-text-outline">{{ sampleTitle() || ('tv.sampleTitle' | t) }}</p>
           <p class="gm-text-outline">{{ sampleText() || ('tv.sampleText' | t) }}</p>
         </div>
-        <div class="preview__layer" [style]="topStyle()" aria-hidden="true"></div>
-        <div class="preview__layer" [style]="grainStyle()" aria-hidden="true"></div>
+        <div class="gm-absolute gm-z-[1] gm-inset-0 gm-pointer-events-none" [style]="topStyle()" aria-hidden="true"></div>
+        <div class="gm-absolute gm-z-[1] gm-inset-0 gm-pointer-events-none" [style]="grainStyle()" aria-hidden="true"></div>
       </div>
     </div>
 
@@ -26,8 +26,8 @@
         </div>
       </fieldset>
 
-      <fieldset class="gm-tool__group layer">
-        <legend><label class="layer__toggle"><input type="checkbox" [checked]="lines()" (change)="toggle(lines, $event)" /> {{ 'tv.lines' | t }}</label></legend>
+      <fieldset class="gm-tool__group gm-d-grid gm-gap-3 gm-pt-4 gm-border-t">
+        <legend><label class="gm-tool__toggle gm-text-[.95rem] gm-font-bold"><input type="checkbox" [checked]="lines()" (change)="toggle(lines, $event)" /> {{ 'tv.lines' | t }}</label></legend>
         @if (lines()) {
           <div class="gm-slider">
             <label for="tv-line-opacity">{{ 'tv.intensity' | t }}</label>
@@ -42,8 +42,8 @@
         }
       </fieldset>
 
-      <fieldset class="gm-tool__group layer">
-        <legend><label class="layer__toggle"><input type="checkbox" [checked]="grain()" (change)="toggle(grain, $event)" /> {{ 'tv.grain' | t }}</label></legend>
+      <fieldset class="gm-tool__group gm-d-grid gm-gap-3 gm-pt-4 gm-border-t">
+        <legend><label class="gm-tool__toggle gm-text-[.95rem] gm-font-bold"><input type="checkbox" [checked]="grain()" (change)="toggle(grain, $event)" /> {{ 'tv.grain' | t }}</label></legend>
         @if (grain()) {
           <div class="gm-slider">
             <label for="tv-grain">{{ 'tv.intensity' | t }}</label>
@@ -53,8 +53,8 @@
         }
       </fieldset>
 
-      <fieldset class="gm-tool__group layer">
-        <legend><label class="layer__toggle"><input type="checkbox" [checked]="vignette()" (change)="toggle(vignette, $event)" /> {{ 'tv.vignette' | t }}</label></legend>
+      <fieldset class="gm-tool__group gm-d-grid gm-gap-3 gm-pt-4 gm-border-t">
+        <legend><label class="gm-tool__toggle gm-text-[.95rem] gm-font-bold"><input type="checkbox" [checked]="vignette()" (change)="toggle(vignette, $event)" /> {{ 'tv.vignette' | t }}</label></legend>
         @if (vignette()) {
           <div class="gm-slider">
             <label for="tv-vignette">{{ 'tv.intensity' | t }}</label>
@@ -69,8 +69,8 @@
         }
       </fieldset>
 
-      <fieldset class="gm-tool__group layer">
-        <legend><label class="layer__toggle"><input type="checkbox" [checked]="curve()" (change)="toggle(curve, $event)" /> {{ 'tv.curve' | t }}</label></legend>
+      <fieldset class="gm-tool__group gm-d-grid gm-gap-3 gm-pt-4 gm-border-t">
+        <legend><label class="gm-tool__toggle gm-text-[.95rem] gm-font-bold"><input type="checkbox" [checked]="curve()" (change)="toggle(curve, $event)" /> {{ 'tv.curve' | t }}</label></legend>
         @if (curve()) {
           <div class="gm-slider">
             <label for="tv-curve">{{ 'tv.intensity' | t }}</label>
@@ -87,7 +87,7 @@
 
       <app-sample-texts [fields]="sampleFields()" />
 
-      <app-code-output [css]="css()" />
+      <app-code-output [css]="css()" codeClass="gm-max-h-[22.5rem]" />
     </div>
   </div>
 </section>

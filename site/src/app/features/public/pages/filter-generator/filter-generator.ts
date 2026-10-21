@@ -16,7 +16,6 @@ import { CodeOutput } from '../../../../shared/components/code-output/code-outpu
   selector: 'app-filter-generator',
   imports: [CodeOutput, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './filter-generator.html',
-  styleUrl: './filter-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterGenerator {

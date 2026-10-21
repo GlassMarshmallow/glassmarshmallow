@@ -1,11 +1,11 @@
 <!-- Índice de la página, anterior y siguiente: componentes del framework (gm-toc, gm-pager) -->
 <div class="gm-toc-layout">
-  <article class="doc__body" [attr.aria-busy]="loading()">
-    <header class="doc__header">
+  <article [attr.aria-busy]="loading()">
+    <header class="gm-docs__header">
       <h1>{{ doc()?.title || (titleKey() | t) }}</h1>
       @if (doc()) {
-        <p class="doc__lead" [innerHTML]="lead()"></p>
-        <a class="gm-btn gm-btn--secondary gm-btn--sm doc__edit" [href]="editUrl()">
+        <p class="gm-docs__lead" [innerHTML]="lead()"></p>
+        <a class="gm-btn gm-btn--secondary gm-btn--sm" [href]="editUrl()">
           <i class="gmi gmi-box-arrow-up-right" aria-hidden="true"></i>{{ 'docsNav.viewOnGithub' | t }}
         </a>
       }
@@ -22,12 +22,12 @@
           </ul>
         </details>
       }
-      <div class="doc__content" [innerHTML]="content()" (click)="onContentClick($event)" (keydown)="onContentKeydown($event)" (mouseout)="onTooltipLeave($event)" (focusout)="onTooltipLeave($event)" (submit)="$event.preventDefault()"></div>
+      <div class="gm-docs__content" [innerHTML]="content()" (click)="onContentClick($event)" (keydown)="onContentKeydown($event)" (mouseout)="onTooltipLeave($event)" (focusout)="onTooltipLeave($event)" (submit)="$event.preventDefault()"></div>
     } @else if (!loading()) {
-      <p class="doc__soon gm-muted">{{ 'docsNav.comingSoon' | t }}</p>
+      <p class="gm-muted gm-text-[1.05rem]">{{ 'docsNav.comingSoon' | t }}</p>
     }
 
-    <nav class="gm-pager doc__pager" [attr.aria-label]="'docsNav.pager' | t">
+    <nav class="gm-pager gm-docs__pager" [attr.aria-label]="'docsNav.pager' | t">
       @if (previous(); as p) {
         <a class="gm-pager__link" [routerLink]="p.path">
           <span class="gm-pager__label"><i class="gmi gmi-arrow-left" aria-hidden="true"></i>{{ 'docsNav.previous' | t }}</span>

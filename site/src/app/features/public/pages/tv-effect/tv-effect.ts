@@ -15,7 +15,6 @@ import { CodeOutput } from '../../../../shared/components/code-output/code-outpu
   selector: 'app-tv-effect',
   imports: [CodeOutput, BackLink, SampleTexts, TranslatePipe, RangeFill],
   templateUrl: './tv-effect.html',
-  styleUrl: './tv-effect.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TvEffect {

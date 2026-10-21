@@ -5,7 +5,7 @@ import { BackLink } from '../../../../shared/components/back-link/back-link';
 import { ColorPicker } from '../../../../shared/components/color-picker/color-picker';
 import { SampleField, SampleTexts } from '../../../../shared/components/sample-texts/sample-texts';
 import { HARMONIES, Harmony, Mode, Role, generatePalette, randomColor, tokens } from './palette';
-import { HighlightPipe } from '../../../../shared/utils/highlight';
+import { CodeOutput } from '../../../../shared/components/code-output/code-output';
 
 /**
  * Generador de paletas: un color base y una armonía dan la paleta, cada color con su papel. Se ve aplicada a una
@@ -13,9 +13,8 @@ import { HighlightPipe } from '../../../../shared/utils/highlight';
  */
 @Component({
   selector: 'app-palette-generator',
-  imports: [HighlightPipe, BackLink, ColorPicker, SampleTexts, TranslatePipe],
+  imports: [CodeOutput, BackLink, ColorPicker, SampleTexts, TranslatePipe],
   templateUrl: './palette-generator.html',
-  styleUrl: './palette-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaletteGenerator {
@@ -60,9 +59,7 @@ export class PaletteGenerator {
     return `/* ${this.i18n.t('common.generatedWith')} */\n${block(':root', light)}\n\n${block('[data-theme="dark"]', dark)}`;
   });
 
-  readonly copied = signal(false);
   readonly announcement = signal('');
-  private resetTimer?: ReturnType<typeof setTimeout>;
 
   grade(ratio: number) {
     return ratio >= 7 ? 'AAA' : ratio >= 4.5 ? 'AA' : '';
@@ -72,17 +69,5 @@ export class PaletteGenerator {
     this.base.set(randomColor());
     this.harmony.set(HARMONIES[Math.floor(Math.random() * HARMONIES.length)]);
     this.announcement.set(this.i18n.t('palette.randomDone'));
-  }
-
-  async copy() {
-    try {
-      await navigator.clipboard.writeText(this.css());
-      this.copied.set(true);
-      this.announcement.set(this.i18n.t('common.cssCopied'));
-      clearTimeout(this.resetTimer);
-      this.resetTimer = setTimeout(() => this.copied.set(false), 2000);
-    } catch {
-      this.copied.set(false);
-    }
   }
 }

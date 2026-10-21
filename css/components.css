@@ -2447,8 +2447,11 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
        <div class="gm-tool__code"><pre class="gm-code gm-code--wrap">…</pre><button class="gm-btn">Copiar</button></div>
      </div>
    </div>
-   La vista previa a la izquierda y los controles a la derecha; por debajo de 900 px, una debajo de la otra.
-   gm-tool__preview--sticky deja la vista previa a la vista mientras se bajan los controles. */
+   La vista previa a la izquierda y los controles a la derecha; por debajo de 860 px (md), una debajo de la otra.
+   gm-tool__preview--sticky deja la vista previa a la vista mientras se bajan los controles.
+   gm-tool__stage es el recuadro de la vista previa (más bajo en el móvil); gm-tool__sample, el texto de muestra que va
+   encima (con gm-tool__sample-title y gm-tool__sample-small), y gm-tool__toggle, una casilla con su texto
+   («Mostrar el texto de ejemplo»). */
 .gm-tool { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: start; gap: 2rem; }
 .gm-tool__preview { display: grid; gap: .875rem; }
 .gm-tool__preview--sticky { position: sticky; top: calc(var(--gm-header-height) + 1rem); }
@@ -2456,9 +2459,89 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
 .gm-tool__group { min-width: 0; margin: 0; padding: 0; border: 0; }
 .gm-tool__group > legend { margin-bottom: .625rem; padding: 0; font-size: .9rem; font-weight: 650; }
 .gm-tool__code { display: grid; gap: .75rem; }
-@media (max-width: 56.25rem) {
+.gm-tool__stage {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 28.75rem;
+  padding: 2rem;
+  border-radius: var(--gm-radius-md);
+  place-items: center;
+}
+.gm-tool__sample { position: relative; max-width: 23.75rem; text-align: center; }
+.gm-tool__sample p { margin: 0; font-size: 1.05rem; }
+.gm-tool__sample .gm-tool__sample-title { margin-bottom: .375rem; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -.03em; }
+.gm-tool__sample .gm-tool__sample-small { margin-top: .625rem; font-size: .82rem; }
+.gm-tool__toggle { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .625rem; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.gm-tool__toggle input { width: 1.25rem; height: 1.25rem; margin: 0; accent-color: var(--gm-accent); cursor: pointer; }
+.gm-tool__presets { display: flex; flex-wrap: wrap; gap: .625rem; }
+/* Botón de un valor de partida, con su muestra de color */
+.gm-tool__preset {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: .625rem;
+  padding: .375rem 1rem .375rem .375rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-text);
+  background: var(--gm-surface-glass);
+  font-size: .88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.gm-tool__preset:hover { background: var(--gm-hover); }
+.gm-tool__swatch { width: 1.75rem; height: 1.75rem; border-radius: 50%; }
+/* Lista de colores: cada fila con su selector, su posición y el botón de quitar */
+.gm-tool__stops { display: grid; gap: .875rem; }
+.gm-tool__stop { display: grid; grid-template-columns: minmax(0, 9.375rem) minmax(0, 1fr) auto; align-items: center; gap: .75rem; }
+.gm-tool__stop output { color: var(--gm-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.gm-tool__stop input[type="range"] { grid-column: 1 / -1; width: 100%; }
+.gm-tool__stop-position { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .25rem .5rem; }
+.gm-tool__stop-position label { font-size: .82rem; }
+.gm-tool__stop .gm-icon-btn:disabled { cursor: not-allowed; opacity: .4; }
+/* Móvil: el selector y el botón de quitar arriba, la posición debajo a todo el ancho */
+@media (max-width: 37.5rem) {
+  .gm-tool__stop { grid-template-columns: minmax(0, 1fr) auto; padding-bottom: .875rem; border-bottom: 1px solid var(--gm-line); }
+  .gm-tool__stop-position { grid-column: 1 / -1; grid-row: 2; }
+}
+/* Cuadrícula de 3 × 3 botones: direcciones (con flechas) o posiciones (con puntos, gm-tool__pad-dot) */
+.gm-tool__pad { display: grid; grid-template-columns: repeat(3, 2.75rem); gap: .375rem; }
+.gm-tool__pad-btn,
+.gm-tool__pad-center { display: grid; width: 2.75rem; height: 2.75rem; border-radius: var(--gm-radius-sm); place-items: center; }
+.gm-tool__pad-btn { border: 1px solid var(--gm-field-border); color: var(--gm-text); background: var(--gm-field-bg); font-size: 1.15rem; cursor: pointer; }
+.gm-tool__pad-btn:hover { background: var(--gm-hover); }
+.gm-tool__pad-btn[aria-pressed="true"] { border-color: var(--gm-text); color: var(--gm-on-primary); background: var(--gm-primary); }
+.gm-tool__pad-dot { width: .625rem; height: .625rem; border: 2px solid currentColor; border-radius: 50%; }
+.gm-tool__pad-btn[aria-pressed="true"] .gm-tool__pad-dot { background: currentColor; }
+/* Pantalla completa (un <dialog>): el resultado sobre el fondo de la web, con una barra abajo para cerrar */
+.gm-tool__fullscreen { width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: var(--gm-backdrop-bg); }
+.gm-tool__fullscreen::backdrop { background: transparent; }
+.gm-tool__fullscreen > .gm-backdrop { position: absolute; z-index: 0; }
+.gm-tool__fullscreen > .gm-backdrop > * { position: absolute; }
+.gm-tool__fullscreen-bar {
+  position: absolute;
+  z-index: 2;
+  bottom: 1.5rem;
+  left: 50%;
+  display: flex;
+  max-width: calc(100% - 2rem);
+  align-items: center;
+  gap: .875rem;
+  padding: .5rem .5rem .5rem 1.125rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-text);
+  background: var(--gm-surface-solid);
+  box-shadow: var(--gm-shadow-md);
+  font-size: .9rem;
+  transform: translateX(-50%);
+}
+@media (max-width: 53.75rem) {
   .gm-tool { grid-template-columns: minmax(0, 1fr); }
   .gm-tool__preview--sticky { position: static; }
+  .gm-tool__stage { min-height: 18.75rem; }
 }
 
 /* --- Página interior: hueco arriba y entradilla ---------------------------------------
@@ -2574,3 +2657,48 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
 /* Las piezas, una debajo de otra */
 .gm-showcase__links { display: grid; gap: .25rem; margin: 0 0 1.5rem; padding-left: 1.2rem; }
 .gm-showcase__links a { display: inline-flex; min-height: 2rem; align-items: center; color: var(--gm-link); text-decoration: underline; text-underline-offset: .1875rem; }
+
+/* --- Página de documentación (la de esta web) ----------------------------------------------
+   <article>
+     <header class="gm-docs__header"><h1>Botón</h1><p class="gm-docs__lead">Una frase que lo explica.</p></header>
+     <div class="gm-docs__content">  (el texto, salido de Markdown: h2, h3, p, listas, tablas, código, notas…)  </div>
+     <nav class="gm-pager gm-docs__pager">…</nav>
+   </article>
+   El texto va en una columna de lectura (47,5 rem). Los ejemplos (.gm-snippet) se quedan como los deja el framework,
+   para que se vean igual que en cualquier web. Con gm-toc-layout, el índice «En esta página» va al lado. */
+.gm-docs__header { margin-bottom: 1.75rem; }
+.gm-docs__header h1 { margin-bottom: .625rem; font-size: clamp(2rem, 4vw, 2.6rem); }
+.gm-docs__lead { max-width: 45rem; margin-bottom: 1.125rem; color: var(--gm-text-secondary); font-size: 1.15rem; line-height: 1.55; }
+.gm-docs__content { max-width: 47.5rem; line-height: 1.7; }
+.gm-docs__content > h2 { margin: 2.75rem 0 .875rem; font-size: 1.7rem; scroll-margin-top: calc(var(--gm-header-height) + 1rem); }
+.gm-docs__content > h3 { margin: 1.875rem 0 .625rem; font-size: 1.2rem; scroll-margin-top: calc(var(--gm-header-height) + 1rem); }
+.gm-docs__content > :is(p, ul, ol) { margin: 0 0 1rem; color: var(--gm-text-secondary); }
+.gm-docs__content li + li:not(.gm-snippet__example li) { margin-top: .25rem; }
+.gm-docs__content strong:not(.gm-player strong):not(.gm-snippet__example strong) { color: var(--gm-text); }
+/* Enlaces del texto (no los de los ejemplos: cada componente lleva su estilo) */
+.gm-docs__content a:not([class]):not(.gm-snippet__example a) { color: var(--gm-link); text-decoration: underline; text-underline-offset: 3px; }
+.gm-docs__content a:not([class]):not(.gm-snippet__example a):hover { color: var(--gm-link-hover); }
+.gm-docs__content :not(pre) > code:not(.gm-snippet__example code) {
+  padding: .12em .35em;
+  border-radius: .3125rem;
+  color: var(--gm-text);
+  background: var(--gm-tag);
+  font-size: .9em;
+}
+.gm-docs__content > table { display: block; overflow-x: auto; width: 100%; margin: 0 0 1.25rem; border-collapse: collapse; font-size: .92rem; }
+.gm-docs__content > table :is(th, td) { padding: .5rem .75rem; border-bottom: 1px solid var(--gm-line); text-align: left; vertical-align: top; }
+.gm-docs__content > table th { color: var(--gm-text); }
+.gm-docs__content > .gm-alert--note { margin: 0 0 1.25rem; }
+.gm-docs__content .gm-alert--note strong { color: var(--gm-text); }
+/* Dibujo explicativo (sin código debajo): el mismo recuadro que los ejemplos */
+.gm-docs__diagram {
+  margin: 0 0 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-md);
+  background: rgb(var(--gm-page-end-rgb));
+}
+.gm-docs__content .gm-docs__diagram code { padding: 0; color: inherit; background: none; }
+/* En los ejemplos, el contenedor ocupa lo que le deja el panel */
+.gm-docs__content .gm-snippet__example .gm-container { width: auto; }
+.gm-docs__pager { max-width: 47.5rem; margin-top: 3rem; }

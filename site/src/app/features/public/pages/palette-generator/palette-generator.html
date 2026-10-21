@@ -7,50 +7,51 @@
     <!-- Página de ejemplo hecha con componentes del framework; la paleta entra por sus variables -->
     <div class="gm-tool__preview">
       <div
-        class="sim"
+        class="gm-d-grid gm-gap-5 gm-overflow-hidden gm-pb-6 gm-border gm-rounded-md gm-bg-body"
         role="img"
         [attr.aria-label]="'palette.previewLabel' | t"
         [attr.data-theme]="previewTheme()"
         [style]="previewStyle()"
         inert
       >
-        <div class="sim__nav">
-          <span class="sim__brand"><span class="sim__logo" aria-hidden="true"></span>{{ 'palette.simBrand' | t }}</span>
-          <span class="sim__links">
-            <span class="sim__link is-active">{{ 'palette.simHome' | t }}</span>
-            <span class="sim__link">{{ 'palette.simProduct' | t }}</span>
-            <span class="sim__link">{{ 'palette.simPricing' | t }}</span>
+        <div class="gm-d-flex gm-flex-wrap gm-items-center gm-justify-between gm-gap-3 gm-py-3 gm-px-6 gm-border-b gm-bg-[var(--gm-header-bg)]">
+          <span class="gm-d-inline-flex gm-items-center gm-gap-2 gm-font-bold"><span class="gm-w-[1.4rem] gm-h-[1.4rem] gm-rounded-[30%] gm-bg-[var(--gm-primary)]" aria-hidden="true"></span>{{ 'palette.simBrand' | t }}</span>
+          <span class="gm-d-none gm-sm-d-flex gm-gap-4 gm-text-[.88rem]">
+            <span class="gm-text-[var(--gm-text)] gm-font-[650]">{{ 'palette.simHome' | t }}</span>
+            <span class="gm-text-[var(--gm-text-secondary)]">{{ 'palette.simProduct' | t }}</span>
+            <span class="gm-text-[var(--gm-text-secondary)]">{{ 'palette.simPricing' | t }}</span>
           </span>
           <span class="gm-btn gm-btn--sm">{{ 'palette.simStart' | t }}</span>
         </div>
 
-        <div class="sim__hero">
+        <div class="gm-mx-6 gm-d-grid gm-justify-items-start gm-gap-3 gm-pt-3 gm-pb-1">
           <span class="gm-tag">{{ 'palette.simTag' | t }}</span>
-          <p class="sim__title">{{ sampleTitle() || ('palette.sampleTitle' | t) }}</p>
-          <p class="gm-muted sim__text">{{ sampleText() || ('palette.sampleText' | t) }}</p>
-          <span class="sim__actions">
+          <p class="gm-m-0 gm-text-[clamp(1.6rem,3.5vw,2.3rem)] gm-font-bold gm-tracking-[-.035em] gm-leading-[1.15]">{{ sampleTitle() || ('palette.sampleTitle' | t) }}</p>
+          <p class="gm-m-0 gm-muted gm-max-w-[46ch]">{{ sampleText() || ('palette.sampleText' | t) }}</p>
+          <span class="gm-d-flex gm-flex-wrap gm-gap-[.625rem]">
             <span class="gm-btn">{{ 'palette.simStart' | t }}</span>
             <span class="gm-btn gm-btn--secondary">{{ 'palette.simMore' | t }}</span>
           </span>
         </div>
 
-        <div class="sim__cards">
+        <div class="gm-mx-6 gm-d-grid gm-grid-cols-[repeat(auto-fit,minmax(min(100%,9.375rem),1fr))] gm-gap-3">
           @for (card of cards; track card.icon) {
-            <div class="gm-card sim__card">
-              <i class="gmi {{ card.icon }} sim__icon" aria-hidden="true"></i>
-              <p class="sim__card-title">{{ card.title | t }}</p>
-              <p class="gm-muted">{{ card.text | t }}</p>
+            <div class="gm-card gm-d-grid gm-content-start gm-gap-[.375rem] gm-p-[1.125rem] gm-text-[.88rem]">
+              <i class="gmi {{ card.icon }} gm-text-[var(--gm-accent)] gm-text-[1.4rem]" aria-hidden="true"></i>
+              <p class="gm-m-0 gm-font-bold">{{ card.title | t }}</p>
+              <p class="gm-m-0 gm-muted">{{ card.text | t }}</p>
               <span class="gm-btn-text">{{ 'palette.simLink' | t }}</span>
             </div>
           }
         </div>
 
-        <div class="gm-alert"><i class="gmi gmi-info-circle" aria-hidden="true"></i>{{ 'palette.simAlert' | t }}</div>
+        <!-- El aviso, con el color secundario de la paleta (así se explica abajo) -->
+        <div class="gm-alert gm-mx-6 gm-border-transparent gm-bg-[var(--gm-fill-subtle)]"><i class="gmi gmi-info-circle" aria-hidden="true"></i>{{ 'palette.simAlert' | t }}</div>
 
-        <div class="gm-form sim__form">
+        <div class="gm-form gm-mx-6 gm-grid-cols-1 gm-sm-grid-cols-[minmax(0,1fr)_auto] gm-items-end gm-p-[1.125rem]">
           <div class="gm-field">
-            <span class="sim__label">{{ 'palette.simEmail' | t }}</span>
-            <span class="sim__input">nombre&#64;correo.com</span>
+            <span class="gm-text-[.9rem] gm-font-bold">{{ 'palette.simEmail' | t }}</span>
+            <span class="gm-d-flex gm-min-h-[3rem] gm-items-center gm-px-[.9rem] gm-border gm-[border-color:var(--gm-field-border)] gm-rounded-[.75rem] gm-muted gm-bg-[var(--gm-field-bg)]">nombre&#64;correo.com</span>
           </div>
           <span class="gm-btn">{{ 'palette.simSubscribe' | t }}</span>
         </div>
@@ -58,7 +59,7 @@
     </div>
 
     <div class="gm-card gm-tool__controls">
-      <fieldset class="gm-tool__group segmented">
+      <fieldset class="gm-tool__group">
         <legend>{{ 'filter.previewMode' | t }}</legend>
         <div class="gm-segmented">
           @for (option of themes; track option.value) {
@@ -72,7 +73,7 @@
 
       <app-color-picker [label]="'palette.base' | t" [alpha]="false" [(value)]="base" />
 
-      <fieldset class="gm-tool__group segmented">
+      <fieldset class="gm-tool__group">
         <legend>{{ 'palette.harmony' | t }}</legend>
         <div class="gm-segmented gm-segmented--stack">
           @for (option of harmonies; track option) {
@@ -90,16 +91,16 @@
         </button>
       </div>
 
-      <div class="roles">
-        <p class="roles__title">{{ 'palette.rolesTitle' | t }}</p>
-        <ul class="roles__list">
+      <div class="gm-d-grid gm-gap-[.625rem]">
+        <p class="gm-m-0 gm-text-[.9rem] gm-font-[650]">{{ 'palette.rolesTitle' | t }}</p>
+        <ul class="gm-d-grid gm-gap-2 gm-m-0 gm-p-0 gm-list-none">
           @for (role of roles(); track role.id) {
-            <li class="roles__item">
-              <span class="roles__swatch" [style.background]="role.hex" aria-hidden="true"></span>
-              <span class="roles__name">{{ 'palette.roles.' + role.id | t }}</span>
-              <code class="roles__hex">{{ role.hex }}</code>
+            <li class="gm-d-grid gm-grid-cols-[auto_minmax(0,1fr)_auto] gm-items-center gm-gap-[.25rem_.625rem] gm-text-[.88rem]">
+              <span class="gm-w-[2rem] gm-h-[2rem] gm-border gm-border-line-strong gm-rounded-[.5rem]" [style.background]="role.hex" aria-hidden="true"></span>
+              <span>{{ 'palette.roles.' + role.id | t }}</span>
+              <code class="gm-[font-family:var(--gm-font-mono)] gm-text-[.8rem]">{{ role.hex }}</code>
               @if (role.ratio) {
-                <span class="roles__ratio gm-muted">{{ role.ratio }}:1 {{ grade(role.ratio) }}</span>
+                <span class="gm-[grid-column:2/-1] gm-text-[.78rem] gm-[font-variant-numeric:tabular-nums] gm-muted">{{ role.ratio }}:1 {{ grade(role.ratio) }}</span>
               }
             </li>
           }
@@ -108,50 +109,42 @@
 
       <app-sample-texts [fields]="sampleFields()" />
 
-      <div class="gm-tool__code">
-        <pre class="gm-code gm-code--wrap" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="css() | highlight: 'css'"></code></pre>
-        <div>
-          <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
-            <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
-            {{ (copied() ? 'common.copied' : 'common.copyCss') | t }}
-          </button>
-        </div>
-      </div>
+      <app-code-output [css]="css()" />
       <span class="gm-visually-hidden" aria-live="polite">{{ announcement() }}</span>
     </div>
   </div>
 
   <!-- Cómo se aplican los colores de la paleta -->
-  <section class="guide" aria-labelledby="palette-guide">
-    <h2 id="palette-guide">{{ 'palette.guideTitle' | t }}</h2>
-    <p class="gm-muted guide__lead">{{ 'palette.guideLead' | t }}</p>
+  <section class="gm-d-grid gm-gap-4 gm-max-w-[51.25rem] gm-pt-16 gm-pb-0" aria-labelledby="palette-guide">
+    <h2 id="palette-guide" class="gm-m-0">{{ 'palette.guideTitle' | t }}</h2>
+    <p class="gm-m-0 gm-muted gm-leading-[1.6]">{{ 'palette.guideLead' | t }}</p>
 
-    <div class="ratio" aria-hidden="true">
-      <span class="ratio__part" [style.background]="color().background" [style.color]="color().text" style="flex: 60">60 %</span>
-      <span class="ratio__part" [style.background]="color().secondary" [style.color]="color().text" style="flex: 30">30 %</span>
-      <span class="ratio__part" [style.background]="color().primary" [style.color]="color().onPrimary" style="flex: 10">10 %</span>
+    <div class="gm-d-flex gm-overflow-hidden gm-border gm-rounded-sm gm-text-[.85rem] gm-font-bold" aria-hidden="true">
+      <span class="gm-d-grid gm-min-h-[3.5rem] gm-place-items-center" [style.background]="color().background" [style.color]="color().text" style="flex: 60">60 %</span>
+      <span class="gm-d-grid gm-min-h-[3.5rem] gm-place-items-center" [style.background]="color().secondary" [style.color]="color().text" style="flex: 30">30 %</span>
+      <span class="gm-d-grid gm-min-h-[3.5rem] gm-place-items-center" [style.background]="color().primary" [style.color]="color().onPrimary" style="flex: 10">10 %</span>
     </div>
-    <ul class="guide__rule">
+    <ul class="gm-d-grid gm-gap-2 gm-m-0 gm-ps-[1.2rem] gm-leading-[1.6]">
       <li><b>60 %</b> {{ 'palette.rule60' | t }}</li>
       <li><b>30 %</b> {{ 'palette.rule30' | t }}</li>
       <li><b>10 %</b> {{ 'palette.rule10' | t }}</li>
     </ul>
 
-    <h3>{{ 'palette.whereTitle' | t }}</h3>
-    <ul class="where">
+    <h3 class="gm-mt-4 gm-mb-0">{{ 'palette.whereTitle' | t }}</h3>
+    <ul class="gm-d-grid gm-grid-cols-[repeat(auto-fill,minmax(min(100%,21.25rem),1fr))] gm-gap-[.875rem] gm-m-0 gm-p-0 gm-list-none">
       @for (role of roles(); track role.id) {
-        <li class="where__item">
-          <span class="roles__swatch" [style.background]="role.hex" aria-hidden="true"></span>
+        <li class="gm-d-grid gm-grid-cols-[auto_minmax(0,1fr)] gm-items-start gm-gap-3 gm-leading-[1.5]">
+          <span class="gm-w-[2rem] gm-h-[2rem] gm-border gm-border-line-strong gm-rounded-[.5rem]" [style.background]="role.hex" aria-hidden="true"></span>
           <span>
-            <b>{{ 'palette.roles.' + role.id | t }}</b>
-            <span class="gm-muted">{{ 'palette.where.' + role.id | t }}</span>
+            <b class="gm-d-block">{{ 'palette.roles.' + role.id | t }}</b>
+            <span class="gm-muted gm-text-[.9rem]">{{ 'palette.where.' + role.id | t }}</span>
           </span>
         </li>
       }
     </ul>
 
-    <h3>{{ 'palette.rulesTitle' | t }}</h3>
-    <ul class="guide__list">
+    <h3 class="gm-mt-4 gm-mb-0">{{ 'palette.rulesTitle' | t }}</h3>
+    <ul class="gm-d-grid gm-gap-2 gm-m-0 gm-ps-[1.2rem] gm-leading-[1.6]">
       <li>{{ 'palette.ruleContrast' | t }}</li>
       <li>{{ 'palette.ruleOnly' | t }}</li>
       <li>{{ 'palette.ruleStates' | t }}</li>

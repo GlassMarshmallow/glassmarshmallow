@@ -37,7 +37,6 @@ import { CodeOutput } from '../../../../shared/components/code-output/code-outpu
   selector: 'app-gradient-generator',
   imports: [CodeOutput, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './gradient-generator.html',
-  styleUrl: './gradient-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GradientGenerator {

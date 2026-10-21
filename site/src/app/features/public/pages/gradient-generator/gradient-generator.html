@@ -5,25 +5,25 @@
 
   <div class="gm-tool">
     <div class="gm-tool__preview gm-gap-6">
-      <div class="preview" [style.background]="gradient()">
+      <div class="gm-tool__stage gm-shadow-sm gm-min-h-[17.5rem] gm-p-5 gm-md-min-h-[26.25rem] gm-md-p-8" [style.background]="gradient()">
         @if (showSample()) {
-          <div class="preview__sample">
-            <p class="preview__title">{{ sampleTitle() || ('gradient.sampleTitle' | t) }}</p>
+          <div class="gm-tool__sample gm-max-w-[22.5rem] gm-text-[#fff] gm-[text-shadow:0_1px_10px_rgba(0,0,0,.3)]">
+            <p class="gm-tool__sample-title">{{ sampleTitle() || ('gradient.sampleTitle' | t) }}</p>
             <p>{{ sampleText() || ('gradient.sampleText' | t) }}</p>
           </div>
         }
       </div>
-      <label class="sample-toggle">
+      <label class="gm-tool__toggle gm-justify-self-start">
         <input type="checkbox" [checked]="showSample()" (change)="toggleSample($event)" />
         {{ 'gradient.showSample' | t }}
       </label>
 
-      <div class="presets">
-        <h2 class="presets__title">{{ 'gradient.presets' | t }}</h2>
-        <div class="presets__list">
+      <div>
+        <h2 class="gm-m-0 gm-mb-3 gm-text-[1rem]">{{ 'gradient.presets' | t }}</h2>
+        <div class="gm-tool__presets">
           @for (preset of presets; track preset.name) {
-            <button type="button" class="preset" (click)="applyPreset(preset)">
-              <span class="preset__swatch" aria-hidden="true"
+            <button type="button" class="gm-tool__preset" (click)="applyPreset(preset)">
+              <span class="gm-tool__swatch" aria-hidden="true"
                 [style.background]="'linear-gradient(90deg, ' + preset.stops[0][0] + ', ' + preset.stops[preset.stops.length - 1][0] + ')'"></span>
               {{ preset.name | t }}
             </button>
@@ -33,7 +33,7 @@
     </div>
 
     <div class="gm-card gm-tool__controls">
-      <fieldset class="gm-tool__group types">
+      <fieldset class="gm-tool__group">
         <legend>{{ 'gradient.type' | t }}</legend>
         <div class="gm-segmented">
           @for (option of types; track option.value) {
@@ -53,23 +53,23 @@
         </div>
       }
 
-      <fieldset class="gm-tool__group stops">
+      <fieldset class="gm-tool__group gm-tool__stops">
         <legend>{{ 'gradient.colors' | t }}</legend>
         @for (stop of stops(); track stop.id; let i = $index) {
-          <div class="stop">
-            <app-color-picker class="stop__color" [label]="'gradient.color' | t: { n: i + 1 }" [value]="stop.color" (valueChange)="setStopColor(stop.id, $event)" />
-            <div class="stop__position">
+          <div class="gm-tool__stop">
+            <app-color-picker class="gm-min-w-0" [label]="'gradient.color' | t: { n: i + 1 }" [value]="stop.color" (valueChange)="setStopColor(stop.id, $event)" />
+            <div class="gm-tool__stop-position">
               <label [for]="'stop-position-' + stop.id">{{ 'gradient.position' | t: { n: i + 1 } }}</label>
               <output [for]="'stop-position-' + stop.id">{{ stop.position }} %</output>
               <input [id]="'stop-position-' + stop.id" class="gm-range" type="range" min="0" max="100" [value]="stop.position" (input)="setStopPosition(stop.id, $event)" />
             </div>
-            <button type="button" class="gm-icon-btn stop__remove" [attr.aria-label]="'gradient.remove' | t: { n: i + 1 }"
+            <button type="button" class="gm-icon-btn" [attr.aria-label]="'gradient.remove' | t: { n: i + 1 }"
               [disabled]="stops().length <= minStops" (click)="removeStop(stop.id, i)">
               <i class="gmi gmi-x-lg" aria-hidden="true"></i>
             </button>
           </div>
         }
-        <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm" [disabled]="stops().length >= maxStops" (click)="addStop()">
+        <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm gm-justify-self-start" [disabled]="stops().length >= maxStops" (click)="addStop()">
           <i class="gmi gmi-plus-lg" aria-hidden="true"></i> {{ 'gradient.add' | t }}
         </button>
       </fieldset>

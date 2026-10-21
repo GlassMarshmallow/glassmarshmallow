@@ -1,7 +1,7 @@
 <section class="gm-container gm-hero" aria-labelledby="hero-title">
   <img class="gm-hero__logo" src="logo.svg" alt="" width="120" height="120" />
-  <!-- En claro, en negro liso, sin degradado, brillo ni borde (prueba pedida por Sara; la versión con degradado está en el commit 0a1e0a4) -->
-  <h1 id="hero-title" class="gm-gradient-title gm-text-outline gm-light:[background:none] gm-light:text-[var(--gm-text)] gm-light:[-webkit-text-fill-color:currentColor] gm-light:[filter:none]">GlassMarshmallow</h1>
+  <!-- De un solo color en los dos modos, sin degradado (pedido por Sara; la versión con degradado está en el commit 0a1e0a4) -->
+  <h1 id="hero-title" class="gm-text-outline">GlassMarshmallow</h1>
   <p class="gm-hero__lead gm-text-outline">{{ 'home.lead' | t }}</p>
   <div class="gm-hero__actions">
     <app-copy-command [command]="installCommand" />

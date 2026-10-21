@@ -17,7 +17,7 @@ import { HighlightPipe } from '../../utils/highlight';
         <button type="button" [class.is-active]="mode() === 'classes'" [attr.aria-pressed]="mode() === 'classes'" (click)="mode.set('classes')">{{ 'common.inClass' | t }}</button>
       </div>
     }
-    <pre class="gm-code gm-code--wrap" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="code() | highlight: 'css'"></code></pre>
+    <pre class="gm-code gm-code--wrap" [class]="codeClass()" tabindex="0" [attr.aria-label]="'common.generatedCss' | t"><code [innerHTML]="code() | highlight: 'css'"></code></pre>
     <div class="gm-d-flex gm-flex-wrap gm-gap-[.625rem]">
       <button type="button" class="gm-btn gm-btn--sm" (click)="copy()">
         <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
@@ -35,6 +35,8 @@ export class CodeOutput {
   readonly css = input.required<string>();
   /** El nombre de la clase en la que se puede copiar el CSS (glass → .glass { … }). Sin él, solo se ve el CSS */
   readonly className = input<string>('');
+  /** Clases de más para el bloque de código (por ejemplo, una altura máxima) */
+  readonly codeClass = input<string>('');
 
   readonly mode = signal<'css' | 'classes'>('css');
   readonly copied = signal(false);

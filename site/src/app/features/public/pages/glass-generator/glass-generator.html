@@ -5,13 +5,14 @@
 
   <div class="gm-tool">
     <!-- Muestra: fondo con las luces del portfolio y formas para que se note el desenfoque -->
-    <div class="preview" aria-hidden="true">
-      <span class="preview__shape preview__shape--cyan"></span>
-      <span class="preview__shape preview__shape--violet"></span>
-      <span class="preview__shape preview__shape--amber"></span>
-      <div class="preview__card" [style]="cardStyle()">
-        <strong>{{ sampleTitle() || ('glass.sampleTitle' | t) }}</strong>
-        <span>{{ sampleText() || 'GlassMarshmallow' }}</span>
+    <div class="gm-tool__stage gm-p-0 gm-min-h-[21.25rem] gm-md-min-h-[28.75rem] gm-bg-[linear-gradient(45deg,#1b2a4a,#2a1f4f_50%,#4a2a2a)]" aria-hidden="true">
+      <span class="gm-absolute gm-rounded-full gm-top-[12%] gm-start-[12%] gm-w-[11.25rem] gm-h-[11.25rem] gm-bg-[#3cd2ff]"></span>
+      <span class="gm-absolute gm-rounded-full gm-end-[10%] gm-bottom-[14%] gm-w-[13.75rem] gm-h-[13.75rem] gm-bg-[#8c64ff]"></span>
+      <span class="gm-absolute gm-rounded-full gm-top-[18%] gm-end-[24%] gm-w-[6.875rem] gm-h-[6.875rem] gm-bg-[#ff9646]"></span>
+      <div class="gm-relative gm-d-grid gm-w-[min(78%,21.25rem)] gm-aspect-[16/10] gm-content-end gm-gap-[.125rem] gm-p-6 gm-text-[#fff] gm-[text-shadow:0_1px_8px_rgba(0,0,0,.35)]" [style]="cardStyle()">
+        <strong class="gm-text-[1.6rem] gm-tracking-[-.02em]">{{ sampleTitle() || ('glass.sampleTitle' | t) }}</strong>
+        <!-- Texto grande (19 px en negrita): sobre las formas de color basta 3:1 -->
+        <span class="gm-text-[1.2rem] gm-font-bold">{{ sampleText() || 'GlassMarshmallow' }}</span>
       </div>
     </div>
 

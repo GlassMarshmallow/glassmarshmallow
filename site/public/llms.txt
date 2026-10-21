@@ -105,7 +105,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 - [Previous and next](/docs/components/pager): Two glass cards at the end of a page that belongs to a series (documentation, a course, a step-by-step tutorial), with the name of the previous and the next page.
 - [Code snippet](/docs/components/snippet): A piece of code to copy, with its result above it when needed: the one in this documentation. A glass panel, a bar with the language (or tabs) and the copy button.
 - [Logo ticker](/docs/components/ticker): A strip that slowly moves from right to left with logos and names, like the technologies strip of the portfolio template. Dark glass (white by day) with a thin border above and below, sky by day and turquoise at night.
-- [Tool](/docs/components/tool): The layout of this site's generators: a preview and, next to it, the controls that change it and the code to copy. Below 900 px, the preview goes on top and the controls below.
+- [Tool](/docs/components/tool): The layout of this site's generators: a preview and, next to it, the controls that change it and the code to copy. Below 860 px (`md`), the preview goes on top and the controls below.
 - [Tooltip](/docs/components/tooltip): A small bubble with extra information about a button or a control. It uses the style of the reading bubble of My Book Box: dark background, white text and a soft shadow, in light and dark mode.
 
 ## Helpers

@@ -31,7 +31,6 @@ const REPO = 'https://github.com/GlassMarshmallow/glassmarshmallow/blob/main/sit
   host: { '(document:keydown.escape)': 'dismissTooltips()' },
   imports: [RouterLink, TranslatePipe],
   templateUrl: './doc-page.html',
-  styleUrl: './doc-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DocPage {
@@ -66,7 +65,7 @@ export class DocPage {
     // Cuando el contenido ya está en la página, pone en marcha los calendarios, menús, buscadores, selectores de color, barras, reproductores, carruseles y galerías de los ejemplos
     afterRenderEffect(() => {
       this.doc();
-      const content = this.host.nativeElement.querySelector('.doc__content');
+      const content = this.host.nativeElement.querySelector('.gm-docs__content');
       if (content) {
         initCalendars(content);
         initMenus(content);

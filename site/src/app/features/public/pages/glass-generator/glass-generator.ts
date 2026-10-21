@@ -19,7 +19,6 @@ import { CodeOutput } from '../../../../shared/components/code-output/code-outpu
   selector: 'app-glass-generator',
   imports: [CodeOutput, RangeFill, ColorPicker, TranslatePipe, BackLink, SampleTexts],
   templateUrl: './glass-generator.html',
-  styleUrl: './glass-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GlassGenerator {
