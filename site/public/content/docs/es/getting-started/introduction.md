@@ -2,7 +2,7 @@
 
 GlassMarshmallow es un framework CSS con superficies de cristal, modo claro y oscuro y accesibilidad WCAG 2.2 AA (y AAA siempre que se puede) desde el primer componente.
 
-> **GlassMarshmallow está en desarrollo (v0.1).** La documentación crece página a página junto con el framework.
+> **GlassMarshmallow está en desarrollo (v0.2).** La documentación crece página a página junto con el framework.
 
 ## Qué incluye
 
