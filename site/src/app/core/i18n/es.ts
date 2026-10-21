@@ -158,6 +158,7 @@ export const es: Dictionary = {
       'layout/page': 'Estructura de la página',
       'layout/breakpoints': 'Puntos de corte',
       'layout/grid': 'Cuadrícula',
+      'utilities/overview': 'Todas las utilidades',
       'utilities/spacing': 'Espaciado',
       'utilities/sizing': 'Tamaños',
       'utilities/position': 'Posición y capas',

@@ -1,6 +1,6 @@
 # Building with utilities
 
-GlassMarshmallow comes with **ready-made components**, like Bootstrap (`gm-btn`, `gm-card`, `gm-navbar`…), and **utilities**, like Tailwind: small classes that each do one thing. By combining utilities you can build any design of your own without writing CSS. This page explains how to use them; each topic then has its own page with all its classes.
+GlassMarshmallow comes with **ready-made components**, like Bootstrap (`gm-btn`, `gm-card`, `gm-navbar`…), and **utilities**, like Tailwind: small classes that each do one thing. By combining utilities you can build any design of your own without writing CSS. This page explains how to use them; each topic then has its own page with all its classes (they are all in [Utilities](/docs/utilities/overview)).
 
 ## The idea
 
@@ -125,6 +125,55 @@ This is how a profile card is built with utilities only.
 ```
 
 The circle's gradient is made of utilities too: the direction (`gm-bg-linear-to-br`) and the colors (`gm-from-sky`, `gm-to-lavender`). How to make gradients, filters, masks or colored shadows is in the [Utilities](/docs/utilities/gradients) pages.
+
+## Colors and dark mode
+
+Utility colors come from the framework's variables, so they **change on their own** in dark mode (`data-theme="dark"`): there is nothing else to write.
+
+```html
+<div class="gm-d-grid gm-gap-2 gm-p-6 gm-rounded-lg gm-bg-surface gm-border gm-max-w-md">
+  <p class="gm-m-0 gm-font-bold gm-text-body">Sara Paez Yamuza</p>
+  <p class="gm-m-0 gm-text-muted">Easy to read in light and dark mode.</p>
+  <p class="gm-m-0"><span class="gm-tag gm-bg-sky">Design</span> <span class="gm-text-sky gm-font-semibold">Sky text</span></p>
+</div>
+```
+
+- `gm-bg-surface`, `gm-bg-body`, `gm-text-body`, `gm-text-muted`, `gm-border`… are the colors of the page, the cards, the text and the lines in each mode.
+- Palette colors come ready to read: `gm-bg-sky` sets the pastel **and** the black text on top, and `gm-text-sky` uses the dark shade of sky, which meets the contrast.
+- For something **different** in one mode only, use the `gm-dark:` or `gm-light:` variant with an arbitrary value: `gm-dark:bg-[#0b0b0c]`.
+- A color written by hand (`gm-bg-[#ffffff]`) does **not** change with the mode. Better use the framework's ones, or add its dark version with `gm-dark:`.
+
+All the colors are in [Text color](/docs/color/text), [Background](/docs/color/background) and [Light and dark mode](/docs/color/color-modes).
+
+## Changing the scale for the whole site
+
+Utilities and components use the same variables (`--gm-radius-lg`, `--gm-shadow-md`, `--gm-sky`, `--gm-font`…). If you change a variable, **every** class and component that uses it changes, without touching the HTML:
+
+```html-code
+<style>
+  /* The whole site: less rounded medium corners and another font */
+  :root { --gm-radius-md: 1rem; --gm-font: "Inter", sans-serif; }
+  /* Dark mode only: a less black background */
+  [data-theme="dark"] { --gm-bg: #0b0b0c; }
+  /* Only inside one part: another accent color */
+  .my-shop { --gm-accent: #8c57e9; }
+</style>
+```
+
+With that, `gm-rounded-md`, the cards (`gm-card`) and the other pieces with medium corners change at once. The spacing numbers (`gm-p-4`, `gm-mt-8`…) are fixed so everything stays aligned; if you need another size, use an arbitrary value (`gm-p-[1.125rem]`). The list of variables is in [CSS variables](/docs/getting-started/css-variables).
+
+## Accessibility when you build it yourself
+
+Components already meet WCAG 2.2; when you build something with utilities, that is up to you. What is most often forgotten:
+
+- **Keyboard focus.** The framework draws an outline when you arrive with the keyboard (`:focus-visible`). Do not remove it with `gm-[outline:none]`; if you want another one, change it with `gm-focus-visible:`.
+- **Contrast.** Text needs 4.5:1 on its background (3:1 if it is large, and for borders and icons). The framework's colors already meet it; if you write one by hand, check it.
+- **Tap size.** What can be pressed must be at least 44 × 44 px. If a button or an icon is smaller, add [`gm-hit-area`](/docs/helpers/hit-area), which makes the area bigger without changing how it looks.
+- **Links inside text,** underlined: they should not stand out by color only.
+- **Decorative icons,** with `aria-hidden="true"`; if an icon is alone in a button, the button gets an `aria-label`.
+- **Motion.** The framework's animations turn off on their own if the person asked for it; if you make your own, add them with `gm-motion-safe:`.
+
+All the rules are in [Accessibility](/docs/getting-started/accessibility).
 
 ## Component or utilities?
 

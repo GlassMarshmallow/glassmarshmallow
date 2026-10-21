@@ -1,6 +1,6 @@
 # Construir con utilidades
 
-GlassMarshmallow trae **componentes hechos**, como Bootstrap (`gm-btn`, `gm-card`, `gm-navbar`…), y **utilidades**, como Tailwind: clases pequeñas que hacen una sola cosa cada una. Combinando utilidades se puede construir cualquier diseño propio sin escribir CSS. Esta página explica cómo se usan; cada tema tiene después su página con todas sus clases.
+GlassMarshmallow trae **componentes hechos**, como Bootstrap (`gm-btn`, `gm-card`, `gm-navbar`…), y **utilidades**, como Tailwind: clases pequeñas que hacen una sola cosa cada una. Combinando utilidades se puede construir cualquier diseño propio sin escribir CSS. Esta página explica cómo se usan; cada tema tiene después su página con todas sus clases (están todas en [Utilidades](/docs/utilities/overview)).
 
 ## La idea
 
@@ -125,6 +125,55 @@ Así se construye una tarjeta de perfil solo con utilidades.
 ```
 
 El degradado del círculo también son utilidades: la dirección (`gm-bg-linear-to-br`) y los colores (`gm-from-sky`, `gm-to-lavender`). Cómo se hacen degradados, filtros, máscaras o sombras de color está en las páginas de [Utilidades](/docs/utilities/gradients).
+
+## Colores y modo oscuro
+
+Los colores de las utilidades salen de las variables del framework, así que **cambian solos** con el modo oscuro (`data-theme="dark"`): no hay que escribir nada más.
+
+```html
+<div class="gm-d-grid gm-gap-2 gm-p-6 gm-rounded-lg gm-bg-surface gm-border gm-max-w-md">
+  <p class="gm-m-0 gm-font-bold gm-text-body">Sara Paez Yamuza</p>
+  <p class="gm-m-0 gm-text-muted">Se lee bien en claro y en oscuro.</p>
+  <p class="gm-m-0"><span class="gm-tag gm-bg-sky">Diseño</span> <span class="gm-text-sky gm-font-semibold">Texto en celeste</span></p>
+</div>
+```
+
+- `gm-bg-surface`, `gm-bg-body`, `gm-text-body`, `gm-text-muted`, `gm-border`… son los colores de la página, de las tarjetas, del texto y de las líneas en cada modo.
+- Los de la paleta ya vienen preparados para leerse: `gm-bg-sky` pone el pastel **y** el texto negro encima, y `gm-text-sky` usa el tono oscuro del celeste, que cumple el contraste.
+- Para algo **distinto** solo en un modo, usa la variante `gm-dark:` o `gm-light:` con un valor libre: `gm-dark:bg-[#0b0b0c]`.
+- Un color escrito a mano (`gm-bg-[#ffffff]`) **no** cambia con el modo. Mejor usa los del framework o pon su versión oscura con `gm-dark:`.
+
+Todos los colores, en [Color de texto](/docs/color/text), [Fondo](/docs/color/background) y [Modo claro y oscuro](/docs/color/color-modes).
+
+## Cambiar la escala para toda la web
+
+Las utilidades y los componentes usan las mismas variables (`--gm-radius-lg`, `--gm-shadow-md`, `--gm-sky`, `--gm-font`…). Si cambias una variable, cambian **todas** las clases y componentes que la usan, sin tocar el HTML:
+
+```html-code
+<style>
+  /* Toda la web: esquinas medianas menos redondas y otra letra */
+  :root { --gm-radius-md: 1rem; --gm-font: "Inter", sans-serif; }
+  /* Solo en modo oscuro: un fondo menos negro */
+  [data-theme="dark"] { --gm-bg: #0b0b0c; }
+  /* Solo dentro de una parte: otro color de acento */
+  .mi-tienda { --gm-accent: #8c57e9; }
+</style>
+```
+
+Con eso, `gm-rounded-md`, las tarjetas (`gm-card`) y el resto de piezas con esquinas medianas cambian a la vez. Los números del espaciado (`gm-p-4`, `gm-mt-8`…) son fijos para que todo siga alineado; si necesitas otra medida, usa un valor libre (`gm-p-[1.125rem]`). La lista de variables está en [Variables CSS](/docs/getting-started/css-variables).
+
+## Accesibilidad cuando construyes tú
+
+Los componentes ya cumplen WCAG 2.2; cuando construyes algo con utilidades, eso depende de ti. Lo que más se olvida:
+
+- **El foco del teclado.** El framework dibuja un contorno al llegar con el teclado (`:focus-visible`). No lo quites con `gm-[outline:none]`; si quieres otro, cámbialo con `gm-focus-visible:`.
+- **El contraste.** El texto necesita 4,5:1 sobre su fondo (3:1 si es grande, y para bordes e iconos). Los colores del framework ya lo cumplen; si escribes uno a mano, compruébalo.
+- **El tamaño para pulsar.** Lo que se pulsa tiene que medir al menos 44 × 44 px. Si un botón o un icono es más pequeño, añade [`gm-hit-area`](/docs/helpers/hit-area), que agranda la zona sin cambiar cómo se ve.
+- **Los enlaces dentro del texto,** subrayados: que no se distingan solo por el color.
+- **Los iconos decorativos,** con `aria-hidden="true"`; si un icono va solo en un botón, el botón lleva `aria-label`.
+- **El movimiento.** Las animaciones del framework se quitan solas si la persona lo ha pedido; si haces las tuyas, ponlas con `gm-motion-safe:`.
+
+Todas las reglas, en [Accesibilidad](/docs/getting-started/accessibility).
 
 ## ¿Componente o utilidades?
 

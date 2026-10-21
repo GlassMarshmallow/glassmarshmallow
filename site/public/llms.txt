@@ -10,7 +10,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 - [Install](/docs/getting-started/install): Use a package manager, a CDN or the source files to add GlassMarshmallow to your project.
 - [AI](/docs/getting-started/ai): GlassMarshmallow is ready for AI assistants (Claude, ChatGPT, Copilot…) to use it well: they have the documentation in a format they understand and step-by-step guides for the most common tasks.
 - [Approach](/docs/getting-started/approach): The ideas behind GlassMarshmallow that guide every decision. If you are going to use it or add to it, start here.
-- [Building with utilities](/docs/getting-started/utilities): GlassMarshmallow comes with **ready-made components**, like Bootstrap (`gm-btn`, `gm-card`, `gm-navbar`…), and **utilities**, like Tailwind: small classes that each do one thing. By combining utilities you can build any design of your own without writing CSS. This page explains how to use them; each topic then has its own page with all its classes.
+- [Building with utilities](/docs/getting-started/utilities): GlassMarshmallow comes with **ready-made components**, like Bootstrap (`gm-btn`, `gm-card`, `gm-navbar`…), and **utilities**, like Tailwind: small classes that each do one thing. By combining utilities you can build any design of your own without writing CSS. This page explains how to use them; each topic then has its own page with all its classes (they are all in [Utilities](/docs/utilities/overview)).
 - [CSS variables](/docs/getting-started/css-variables): All of GlassMarshmallow's look comes from CSS variables with the `--gm-` prefix. They change on their own with light and dark mode (`data-theme`), and you can change them for the whole site or for just one part.
 - [Accessibility](/docs/getting-started/accessibility): GlassMarshmallow follows **WCAG 2.2 at level AA** in light and dark mode, the level asked for by European and Spanish law, and also meets the AAA criteria for contrast, presentation, focus and target size. These are all the rules, grouped by the four principles of WCAG, with how the framework meets each one.
 - [All the rules (WCAG 2.2)](/docs/getting-started/wcag): The 86 success criteria of WCAG 2.2, at levels A, AA and AAA, explained in plain words. Check this list every time you add something new to the framework, so that it meets them from the start.
@@ -39,6 +39,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 
 ## Utilities
 
+- [All utilities](/docs/utilities/overview): Small classes that each do one thing, to build without writing CSS. If it is your first time, start with [Building with utilities](/docs/getting-started/utilities): it explains how to read the names, the scale, screen sizes and variants.
 - [Spacing](/docs/utilities/spacing): Margin (outside) and padding (inside) without writing CSS. As in Tailwind: the number is the scale, and **4 = 1 rem** (16 px).
 - [Sizing](/docs/utilities/sizing): Width, height and their minimums and maximums. Like Tailwind's [min-width](https://tailwindcss.com/docs/min-width) and max-width.
 - [Position and layers](/docs/utilities/position): Where an element goes and what covers what. Like Tailwind's [position](https://tailwindcss.com/docs/position) and z-index.

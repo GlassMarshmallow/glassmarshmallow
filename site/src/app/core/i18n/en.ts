@@ -157,6 +157,7 @@ export const en = {
       'layout/page': 'Page structure',
       'layout/breakpoints': 'Breakpoints',
       'layout/grid': 'Grid',
+      'utilities/overview': 'All utilities',
       'utilities/spacing': 'Spacing',
       'utilities/sizing': 'Sizing',
       'utilities/position': 'Position and layers',
