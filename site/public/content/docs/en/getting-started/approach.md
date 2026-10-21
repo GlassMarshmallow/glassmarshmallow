@@ -28,7 +28,7 @@ Unprefixed classes apply to every screen and prefixed ones (`gm-md-…`) are add
 
 - **Components**, like Bootstrap: ready-made pieces with one class (`.gm-btn`, `.gm-accordion`).
 - **Utilities**, like Tailwind: small classes to adjust without writing CSS (`gm-mt-4`, `gm-shadow-md`).
-- They combine: a component tweaked with utilities.
+- They combine: a component tweaked with utilities. How to use them, step by step, in [Building with utilities](/docs/getting-started/utilities).
 
 ## Plain CSS, optional JavaScript
 

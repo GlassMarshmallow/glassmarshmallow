@@ -28,7 +28,7 @@ Las clases sin prefijo valen para todas las pantallas y las de prefijo (`gm-md-�
 
 - **Componentes**, como Bootstrap: piezas listas con una clase (`.gm-btn`, `.gm-accordion`).
 - **Utilidades**, como Tailwind: clases pequeñas para ajustar sin escribir CSS (`gm-mt-4`, `gm-shadow-md`).
-- Se combinan: un componente retocado con utilidades.
+- Se combinan: un componente retocado con utilidades. Cómo se usan, paso a paso, en [Construir con utilidades](/docs/getting-started/utilities).
 
 ## CSS normal, JavaScript opcional
 

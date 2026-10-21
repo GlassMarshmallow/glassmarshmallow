@@ -141,6 +141,7 @@ export const es: Dictionary = {
       'getting-started/install': 'Instalación',
       'getting-started/ai': 'IA',
       'getting-started/approach': 'Enfoque',
+      'getting-started/utilities': 'Construir con utilidades',
       'getting-started/css-variables': 'Variables CSS',
       'getting-started/accessibility': 'Accesibilidad',
       'getting-started/wcag': 'Todas las reglas (WCAG 2.2)',

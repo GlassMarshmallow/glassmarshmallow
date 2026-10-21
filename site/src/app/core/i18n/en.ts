@@ -140,6 +140,7 @@ export const en = {
       'getting-started/install': 'Install',
       'getting-started/ai': 'AI',
       'getting-started/approach': 'Approach',
+      'getting-started/utilities': 'Building with utilities',
       'getting-started/css-variables': 'CSS variables',
       'getting-started/accessibility': 'Accessibility',
       'getting-started/wcag': 'All the rules (WCAG 2.2)',
