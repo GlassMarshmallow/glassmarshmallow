@@ -9,7 +9,6 @@ import { initZooms } from '../../../../../../../js/gallery.js';
   selector: 'app-examples',
   imports: [RouterLink, TranslatePipe],
   templateUrl: './examples.html',
-  styleUrl: './examples.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Examples {

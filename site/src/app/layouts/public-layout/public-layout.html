@@ -7,9 +7,9 @@
 }
 <a class="gm-skip-link" href="#contenido">{{ 'common.skipLink' | t }}</a>
 <app-header />
-<main id="contenido" tabindex="-1" [class.main--home]="isHome()">
+<main id="contenido" class="gm-app__main" tabindex="-1" [class.gm-app__main--center]="isHome()">
   <router-outlet />
 </main>
 <!-- Portada: degradado hasta el pie que ocupa el espacio libre. En el resto, solo un hueco flexible -->
-<div [class.page-end-fade]="isHome()" class="page-end" aria-hidden="true"></div>
+<div [class.gm-app__end--fade]="isHome()" class="gm-app__end" aria-hidden="true"></div>
 <app-footer />

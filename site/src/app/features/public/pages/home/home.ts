@@ -15,7 +15,6 @@ import { initMenu } from '../../../../../../../js/menu.js';
   selector: 'app-home',
   imports: [RouterLink, CopyCommand, TranslatePipe],
   templateUrl: './home.html',
-  styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {

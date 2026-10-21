@@ -41,6 +41,25 @@ The list opens aligned to the right of the button. Next to the left edge, add `.
 </div>
 ```
 
+## Centered, with a regular button
+
+`.gm-menu--center` centers the list under the button. The button can be any [button](/docs/components/button) (`.gm-btn`): it keeps its size and, with `gm-theme-solid`, its theme color. Like "For agents" on this site's home page.
+
+```html
+<div style="min-height: 12.5rem; text-align: center">
+  <div class="gm-menu gm-menu--center" data-gm-menu>
+    <button type="button" class="gm-btn gm-theme-pink-blue gm-theme-solid gm-menu__trigger" aria-haspopup="menu" aria-expanded="false">
+      <i class="gmi gmi-stars" aria-hidden="true"></i>For agents
+      <i class="gmi gmi-chevron-expand gm-menu__chevron" aria-hidden="true"></i>
+    </button>
+    <ul class="gm-menu__list" role="menu" aria-label="For agents" hidden>
+      <li role="none"><a class="gm-menu__item" role="menuitem" href="#"><span>AI docs</span></a></li>
+      <li role="none"><a class="gm-menu__item" role="menuitem" href="#"><span>All the skills</span></a></li>
+    </ul>
+  </div>
+</div>
+```
+
 ## Script
 
 The framework gives the look. To open, close and move with the keyboard, load the optional script:

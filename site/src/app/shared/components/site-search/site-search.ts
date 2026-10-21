@@ -40,9 +40,8 @@ const normalize = (text: string) => text.toLowerCase().normalize('NFD').replace(
   selector: 'app-site-search',
   imports: [TranslatePipe],
   templateUrl: './site-search.html',
-  styleUrl: './site-search.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { '(document:pointerdown)': 'onOutside($event)' },
+  host: { class: 'gm-d-contents', '(document:pointerdown)': 'onOutside($event)' },
 })
 export class SiteSearch {
   private readonly i18n = inject(I18nService);

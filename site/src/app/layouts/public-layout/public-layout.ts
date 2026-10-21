@@ -10,7 +10,7 @@ import { TranslatePipe } from '../../core/i18n/translate.pipe';
   selector: 'app-public-layout',
   imports: [RouterOutlet, Header, Footer, TranslatePipe],
   templateUrl: './public-layout.html',
-  styleUrl: './public-layout.css',
+  host: { class: 'gm-app' },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PublicLayout {

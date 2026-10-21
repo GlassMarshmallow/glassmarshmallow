@@ -1250,6 +1250,43 @@ Any component can go after the title, for example an [accordion](/docs/component
 - Lines of 80 characters at most and 1.7 line height (WCAG 1.4.8 and 1.4.12).
 - The gray text reaches 7:1 on the background (AAA).
 
+<!-- /docs/layout/page -->
+# Page structure
+
+The header, the content and the footer, with the footer at the bottom of the window even when the page is short. It is this site's structure.
+
+## Example
+
+```html-code
+<body class="gm-app">
+  <a class="gm-skip-link" href="#content">Skip to content</a>
+  <header>…</header>
+  <main id="content" class="gm-app__main" tabindex="-1">…</main>
+  <div class="gm-app__end" aria-hidden="true"></div>
+  <footer class="gm-site-footer">…</footer>
+</body>
+```
+
+`gm-app__end` takes the free space: if the page is short, it grows and the footer stays at the bottom of the window with no scroll; if it is long, it is as small as possible.
+
+## Centered content
+
+`gm-app__main--center` centers the content in height in the gap between the header and the footer (this site's home page).
+
+## Fade down to the footer
+
+With the [lights background](/docs/customize/background) (`.gm-backdrop`), `gm-app__end--fade` adds a gradient that rises behind the end of the content to the footer color: white in light mode and black in dark mode. It starts and ends smoothly, with no step.
+
+```html-code
+<main id="content" class="gm-app__main gm-app__main--center" tabindex="-1">…</main>
+<div class="gm-app__end gm-app__end--fade" aria-hidden="true"></div>
+```
+
+## Accessibility
+
+- `tabindex="-1"` on `main` lets the [skip link](/docs/helpers/skip-link) move the focus to the content.
+- `gm-app__end` is empty and decorative: `aria-hidden="true"`.
+
 <!-- /docs/layout/breakpoints -->
 # Breakpoints
 
@@ -2786,6 +2823,10 @@ If you prefer long lines to wrap instead of scrolling, add `style="white-space: 
 ```html
 <pre class="gm-code gm-code--wrap"><code>background: linear-gradient(135deg, rgb(92 223 235 / .9) 0%, rgb(185 163 255 / .9) 50%, rgb(255 166 209 / .9) 100%);</code></pre>
 ```
+
+## Colors
+
+If you color the code with [Shiki](https://shiki.style) and its `light-plus` and `dark-plus` themes, putting each piece in a `<span style="--code-light:…; --code-dark:…">` (as this site does), the framework paints it like Visual Studio Code: "Dark+" in dark mode and, in light mode, the "Light+" colors changed to the 700–900 shades of the palette, all with a contrast of 4.5:1 or more. Only the color of the letters changes.
 
 ## Accessibility
 
@@ -4766,6 +4807,25 @@ The list opens aligned to the right of the button. Next to the left edge, add `.
 </div>
 ```
 
+## Centered, with a regular button
+
+`.gm-menu--center` centers the list under the button. The button can be any [button](/docs/components/button) (`.gm-btn`): it keeps its size and, with `gm-theme-solid`, its theme color. Like "For agents" on this site's home page.
+
+```html
+<div style="min-height: 12.5rem; text-align: center">
+  <div class="gm-menu gm-menu--center" data-gm-menu>
+    <button type="button" class="gm-btn gm-theme-pink-blue gm-theme-solid gm-menu__trigger" aria-haspopup="menu" aria-expanded="false">
+      <i class="gmi gmi-stars" aria-hidden="true"></i>For agents
+      <i class="gmi gmi-chevron-expand gm-menu__chevron" aria-hidden="true"></i>
+    </button>
+    <ul class="gm-menu__list" role="menu" aria-label="For agents" hidden>
+      <li role="none"><a class="gm-menu__item" role="menuitem" href="#"><span>AI docs</span></a></li>
+      <li role="none"><a class="gm-menu__item" role="menuitem" href="#"><span>All the skills</span></a></li>
+    </ul>
+  </div>
+</div>
+```
+
 ## Script
 
 The framework gives the look. To open, close and move with the keyboard, load the optional script:
@@ -4875,6 +4935,87 @@ document.querySelector('.gm-search').addEventListener('gm-search-select', (event
 - The field has its `<label>` (hidden from view, not from screen readers) and `role="search"` marks the area as a search.
 - The number of results is announced with `aria-live`.
 - Field and results are 44 px tall (WCAG 2.5.5, AAA). The highlighted result has a background and a border, not just color.
+
+<!-- /docs/components/hero -->
+# Hero
+
+The home page block: the logo, the name, one sentence and the buttons, centered. Like this site's home page.
+
+## Example
+
+```html
+<section class="gm-container gm-hero">
+  <img class="gm-hero__logo" src="/logo.svg" alt="" width="120" height="120">
+  <h1>GlassMarshmallow</h1>
+  <p class="gm-hero__lead">A CSS framework with glass surfaces, light and dark mode and accessibility from the first component.</p>
+  <div class="gm-hero__actions">
+    <a class="gm-btn gm-btn--secondary" href="#">Examples</a>
+    <a class="gm-btn" href="#">Read the docs</a>
+  </div>
+</section>
+```
+
+- The name shrinks with the screen so it fits on one line on a phone.
+- `gm-hero__buttons` groups buttons that, on a phone, go one under the other with the same width (the longest one's). On a computer they stay in the row.
+
+## Accessibility
+
+- Only one `h1` per page: the hero one.
+- The logo next to the name is decorative: `alt=""`.
+
+<!-- /docs/components/icon-grid -->
+# Icon grid
+
+Boxes with an icon and its name, like Bootstrap Icons. It is the grid on this site's [Icons](/icons) page. As many as fit go in each row.
+
+## Example
+
+```html
+<ul class="gm-icon-grid">
+  <li><a class="gm-icon-tile" href="#"><span class="gm-icon-tile__box"><i class="gmi gmi-heart" aria-hidden="true"></i></span><span class="gm-icon-tile__name">heart</span></a></li>
+  <li><a class="gm-icon-tile" href="#"><span class="gm-icon-tile__box"><i class="gmi gmi-star" aria-hidden="true"></i></span><span class="gm-icon-tile__name">star</span></a></li>
+  <li><a class="gm-icon-tile" href="#"><span class="gm-icon-tile__box"><i class="gmi gmi-book" aria-hidden="true"></i></span><span class="gm-icon-tile__name">book</span></a></li>
+  <li><a class="gm-icon-tile" href="#"><span class="gm-icon-tile__box"><i class="gmi gmi-github" aria-hidden="true"></i></span><span class="gm-icon-tile__name">github</span></a></li>
+</ul>
+```
+
+Long names break onto the next line instead of spilling out.
+
+## Accessibility
+
+- The icon is decorative (`aria-hidden="true"`): the link is named by the text under it.
+
+<!-- /docs/components/showcase -->
+# Showcase
+
+A project made with the framework: its screenshots (computer and phone, in light and dark mode) and its text. Like this site's [Examples](/examples) page.
+
+## Example
+
+```html
+<article class="gm-card gm-showcase">
+  <ul class="gm-showcase__shots">
+    <li><a class="gm-showcase__shot" href="/media/examples/portfolio-escritorio-claro.jpg"><img src="/media/examples/portfolio-escritorio-claro.jpg" width="1600" height="1000" alt="Portfolio on a computer"></a><span class="gm-showcase__mode">Light</span></li>
+    <li><a class="gm-showcase__shot" href="/media/examples/portfolio-escritorio-oscuro.jpg"><img src="/media/examples/portfolio-escritorio-oscuro.jpg" width="1600" height="1000" alt="Portfolio on a computer"></a><span class="gm-showcase__mode">Dark</span></li>
+  </ul>
+  <div class="gm-showcase__text">
+    <h2>Portfolio</h2>
+    <p>Sara Paez Yamuza's portfolio, made with GlassMarshmallow.</p>
+    <h3>Pieces</h3>
+    <ul class="gm-showcase__links">
+      <li><a href="/docs/components/navbar">Navbar</a></li>
+      <li><a href="/docs/components/card">Card</a></li>
+    </ul>
+  </div>
+</article>
+```
+
+- The screenshots go above and the text below; from 1100 px, side by side.
+- For the phone screenshots (narrower), add `gm-showcase__figure--mobile` to their `li`.
+
+## Accessibility
+
+- Each screenshot has an `alt` that says what it shows; the mode (light or dark) goes as text under it.
 
 <!-- /docs/components/player -->
 # Video player

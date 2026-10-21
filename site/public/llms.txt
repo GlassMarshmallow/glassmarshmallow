@@ -32,6 +32,7 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 
 - [Containers](/docs/layout/containers): The container centers the page content and leaves a margin on the sides. It is the first thing inside each section.
 - [Sections](/docs/layout/sections): Each part of a home page (About me, Skills, Contact…) is a section: some space above and below, the title centered and the text below it, in a narrow container so lines are not too long. As in the portfolio template.
+- [Page structure](/docs/layout/page): The header, the content and the footer, with the footer at the bottom of the window even when the page is short. It is this site's structure.
 - [Breakpoints](/docs/layout/breakpoints): The screen widths where the layout changes. You think of phones first and add from each breakpoint upwards, as in Bootstrap.
 - [Grid](/docs/layout/grid): To place pieces in columns. It has 12 columns, like Bootstrap's, but is built with CSS Grid: each child says how many of the 12 it spans, and that can change at each [breakpoint](/docs/layout/breakpoints).
 
@@ -94,6 +95,9 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 - [Fullscreen menu](/docs/components/fullscreen-menu): The mobile menu from the portfolio template: a round glass button with the hamburger opens the links in large type, filling the whole screen over a nearly opaque background. It is another way to navigate on phones, for sites with few sections; the other is the [tab bar](/docs/components/tabbar).
 - [Menu](/docs/components/menu): A button that opens a list of options, like the language, version and theme menus of the top bar. One option can be marked as chosen.
 - [Search](/docs/components/search): A text field with the magnifier inside and, below it, the results that match what is typed. It is the search box in the top bar of this site.
+- [Hero](/docs/components/hero): The home page block: the logo, the name, one sentence and the buttons, centered. Like this site's home page.
+- [Icon grid](/docs/components/icon-grid): Boxes with an icon and its name, like Bootstrap Icons. It is the grid on this site's [Icons](/icons) page. As many as fit go in each row.
+- [Showcase](/docs/components/showcase): A project made with the framework: its screenshots (computer and phone, in light and dark mode) and its text. Like this site's [Examples](/examples) page.
 - [Video player](/docs/components/player): The My MTV Box player: controls appear over the video on a black gradient, the buttons are round glass and the play button is white. While the video plays, the controls hide on their own.
 - [Progress](/docs/components/progress): How much of something is done: reading a book, uploading a file, the steps of a form. A thin line on gray with the done part in the accent color and a text below. It is the reading bar from My Book Box.
 - [Side navigation](/docs/components/sidenav): The menu of sections next to the content, like the one in this documentation. On desktop it stays in view while scrolling; below 900 px it hides behind a button.

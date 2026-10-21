@@ -41,6 +41,25 @@ La lista se abre alineada a la derecha del botón. Junto al borde izquierdo, añ
 </div>
 ```
 
+## Centrado, con un botón normal
+
+`.gm-menu--center` centra la lista bajo el botón. El botón puede ser cualquier [botón](/docs/components/button) (`.gm-btn`): conserva su tamaño y, con `gm-theme-solid`, el color de su tema. Como «Para agentes» en la portada de esta web.
+
+```html
+<div style="min-height: 12.5rem; text-align: center">
+  <div class="gm-menu gm-menu--center" data-gm-menu>
+    <button type="button" class="gm-btn gm-theme-pink-blue gm-theme-solid gm-menu__trigger" aria-haspopup="menu" aria-expanded="false">
+      <i class="gmi gmi-stars" aria-hidden="true"></i>Para agentes
+      <i class="gmi gmi-chevron-expand gm-menu__chevron" aria-hidden="true"></i>
+    </button>
+    <ul class="gm-menu__list" role="menu" aria-label="Para agentes" hidden>
+      <li role="none"><a class="gm-menu__item" role="menuitem" href="#"><span>Documentación para IA</span></a></li>
+      <li role="none"><a class="gm-menu__item" role="menuitem" href="#"><span>Todas las skills</span></a></li>
+    </ul>
+  </div>
+</div>
+```
+
 ## Script
 
 El framework da el aspecto. Para abrir, cerrar y moverse con el teclado, carga el script opcional:

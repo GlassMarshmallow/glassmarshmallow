@@ -1,45 +1,47 @@
-<section class="hero gm-container" aria-labelledby="hero-title">
-  <img class="hero__logo" src="logo.svg" alt="" width="120" height="120" />
-  <h1 id="hero-title" class="gm-gradient-title gm-text-outline">GlassMarshmallow</h1>
-  <p class="hero__lead gm-text-outline">{{ 'home.lead' | t }}</p>
-  <div class="hero__actions">
+<section class="gm-container gm-hero" aria-labelledby="hero-title">
+  <img class="gm-hero__logo" src="logo.svg" alt="" width="120" height="120" />
+  <!-- En claro, en negro liso, sin degradado, brillo ni borde (prueba pedida por Sara; la versión con degradado está en el commit 0a1e0a4) -->
+  <h1 id="hero-title" class="gm-gradient-title gm-text-outline gm-light:[background:none] gm-light:text-[var(--gm-text)] gm-light:[-webkit-text-fill-color:currentColor] gm-light:[filter:none]">GlassMarshmallow</h1>
+  <p class="gm-hero__lead gm-text-outline">{{ 'home.lead' | t }}</p>
+  <div class="gm-hero__actions">
     <app-copy-command [command]="installCommand" />
     <!-- Los dos botones juntos: en el móvil, uno debajo del otro y con el mismo ancho (el del más largo) -->
-    <div class="hero__buttons">
+    <div class="gm-hero__buttons">
       <!-- Menú «Para agentes», como el «For Agents» de Bootstrap. Lo que necesita la web publicada (dominio,
            repositorio público) se enseña solo cuando está en core/config/site.ts -->
-      <div #agents class="gm-menu home__agents" data-gm-menu>
-        <button type="button" class="gm-btn gm-btn--secondary gm-menu__trigger" aria-haspopup="menu" aria-expanded="false">
+      <div #agents class="gm-menu gm-menu--center" data-gm-menu>
+        <!-- En el rosa pastel de la paleta en claro y en el azul en oscuro (pedido por Sara) -->
+        <button type="button" class="gm-btn gm-theme-pink-blue gm-theme-solid gm-menu__trigger" aria-haspopup="menu" aria-expanded="false">
           <i class="gmi gmi-stars" aria-hidden="true"></i>{{ 'home.agents' | t }}
           <i class="gmi gmi-chevron-expand gm-menu__chevron" aria-hidden="true"></i>
         </button>
-        <ul class="gm-menu__list home__agents-list" role="menu" [attr.aria-label]="'home.agents' | t" hidden>
+        <ul class="gm-menu__list gm-min-w-[15rem] gm-text-start" role="menu" [attr.aria-label]="'home.agents' | t" hidden>
           @if (site.repoPublic) {
             <li role="none">
-              <button type="button" class="gm-menu__item" role="menuitem" (click)="copySkill()">
+              <button type="button" class="gm-menu__item gm-justify-between gm-gap-4" role="menuitem" (click)="copySkill()">
                 <span>{{ (copied() ? 'home.skillCopied' : 'home.installSkill') | t }}</span>
                 <i class="gmi" [class.gmi-clipboard]="!copied()" [class.gmi-check]="copied()" aria-hidden="true"></i>
               </button>
             </li>
           }
           <li role="none">
-            <a class="gm-menu__item" role="menuitem" routerLink="/docs/getting-started/ai"><span>{{ 'home.aiDocs' | t }}</span></a>
+            <a class="gm-menu__item gm-justify-between gm-gap-4" role="menuitem" routerLink="/docs/getting-started/ai"><span>{{ 'home.aiDocs' | t }}</span></a>
           </li>
           @if (site.repoPublic) {
             <li role="none">
-              <a class="gm-menu__item" role="menuitem" [href]="skillsUrl" target="_blank" rel="noopener">
+              <a class="gm-menu__item gm-justify-between gm-gap-4" role="menuitem" [href]="skillsUrl" target="_blank" rel="noopener">
                 <span>{{ 'home.allSkills' | t }}</span><i class="gmi gmi-box-arrow-up-right" aria-hidden="true"></i>
               </a>
             </li>
           }
           @if (site.url) {
             <li role="none">
-              <a class="gm-menu__item" role="menuitem" [href]="askChatGpt()" target="_blank" rel="noopener">
+              <a class="gm-menu__item gm-justify-between gm-gap-4" role="menuitem" [href]="askChatGpt()" target="_blank" rel="noopener">
                 <span>{{ 'home.askChatGpt' | t }}</span><i class="gmi gmi-box-arrow-up-right" aria-hidden="true"></i>
               </a>
             </li>
             <li role="none">
-              <a class="gm-menu__item" role="menuitem" [href]="askClaude()" target="_blank" rel="noopener">
+              <a class="gm-menu__item gm-justify-between gm-gap-4" role="menuitem" [href]="askClaude()" target="_blank" rel="noopener">
                 <span>{{ 'home.askClaude' | t }}</span><i class="gmi gmi-box-arrow-up-right" aria-hidden="true"></i>
               </a>
             </li>

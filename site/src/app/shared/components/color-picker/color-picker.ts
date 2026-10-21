@@ -18,7 +18,6 @@ let nextId = 0;
   host: { class: 'gm-color-picker' },
   imports: [TranslatePipe],
   templateUrl: './color-picker.html',
-  styleUrl: './color-picker.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ColorPicker {

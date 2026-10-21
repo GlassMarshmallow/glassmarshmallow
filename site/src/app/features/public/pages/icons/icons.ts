@@ -9,7 +9,6 @@ import catalog from '../../../../../../../../glassmarshmallow-icons/catalog.json
   selector: 'app-icons',
   imports: [RouterLink, TranslatePipe],
   templateUrl: './icons.html',
-  styleUrl: './icons.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Icons {

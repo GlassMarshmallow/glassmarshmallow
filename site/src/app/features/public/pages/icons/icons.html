@@ -2,8 +2,8 @@
   <h1 id="icons-title">{{ 'icons.title' | t }}</h1>
   <p class="gm-lead gm-mb-8 gm-muted">{{ 'icons.lead' | t: { line: lineCount, fill: fillCount, brands: brandCount } }}</p>
 
-  <div class="icons-page__filters">
-    <div class="gm-field icons-page__search">
+  <div class="gm-d-grid gm-grid-cols-1 gm-sm-grid-cols-[minmax(0,26.25rem)_minmax(0,16.25rem)] gm-gap-4">
+    <div class="gm-field">
       <label for="icon-search">{{ 'icons.search' | t }}</label>
       <input id="icon-search" type="search" [placeholder]="'icons.searchPlaceholder' | t" (input)="onSearch($event)" />
     </div>
@@ -17,15 +17,15 @@
       </select>
     </div>
   </div>
-  <p class="icons-page__count gm-muted" aria-live="polite">{{ 'icons.found' | t: { count: icons().length } }}</p>
+  <p class="gm-mt-[.875rem] gm-mb-[1.75rem] gm-text-[.88rem] gm-muted" aria-live="polite">{{ 'icons.found' | t: { count: icons().length } }}</p>
 
   @if (icons().length) {
-    <ul class="grid">
+    <ul class="gm-icon-grid">
       @for (icon of icons(); track icon.name) {
         <li>
-          <a class="tile" [routerLink]="['/icons', icon.name]">
-            <span class="tile__box"><i class="gmi gmi-{{ icon.name }}" aria-hidden="true"></i></span>
-            <span class="tile__name">{{ icon.name }}</span>
+          <a class="gm-icon-tile" [routerLink]="['/icons', icon.name]">
+            <span class="gm-icon-tile__box"><i class="gmi gmi-{{ icon.name }}" aria-hidden="true"></i></span>
+            <span class="gm-icon-tile__name">{{ icon.name }}</span>
           </a>
         </li>
       }
