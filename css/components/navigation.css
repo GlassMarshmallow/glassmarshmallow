@@ -23,13 +23,12 @@
 .gm-navbar__logo { display: block; width: 3rem; height: 3rem; object-fit: contain; }
 
 /* Logo de cristal sobre fondo claro (<img class="gm-glass-logo">): su recuadro translúcido y sus bordes de brillo no se
-   ven sobre blanco. De día lleva un borde blanco fino, una sombra en degradado detrás del cristal (de abajo a la
-   izquierda hacia arriba a la derecha, como los colores del logo) y la sombra mediana por fuera. La curva es la del
-   recuadro del logo (114/512). De noche, sin nada: el cristal ya se ve sobre el fondo oscuro. */
+   ven sobre blanco. De día lleva un borde blanco fino y la sombra mediana por fuera, con el cristal limpio, como de
+   noche (elegido por Sara). La curva es la del recuadro del logo (114/512). De noche, sin nada: el cristal ya se ve
+   sobre el fondo oscuro. */
 .gm-glass-logo {
   border: .05rem solid #fff;
   border-radius: 22.3%;
-  background: linear-gradient(to top right, rgba(0, 0, 0, .35), rgba(0, 0, 0, 0) 75%);
   box-shadow: var(--gm-shadow-md);
 }
 [data-theme="dark"] .gm-glass-logo { border-color: transparent; background: none; box-shadow: none; }

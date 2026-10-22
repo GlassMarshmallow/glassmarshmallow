@@ -32,7 +32,7 @@ En la web va pegada arriba (`position: sticky`); aquí se ve dentro del recuadro
 
 ## Logo de cristal
 
-Si el logo es de cristal (translúcido, con bordes de brillo, como el de GlassMarshmallow), sobre fondo claro casi no se ve. Añade `.gm-glass-logo`: de día le pone un borde blanco fino, una sombra en degradado detrás del cristal y la sombra mediana por fuera; de noche no cambia nada. Sirve también fuera de la barra, por ejemplo en una tarjeta.
+Si el logo es de cristal (translúcido, con bordes de brillo, como el de GlassMarshmallow), sobre fondo claro casi no se ve. Añade `.gm-glass-logo`: de día le pone un borde blanco fino y la sombra mediana por fuera, y el cristal queda limpio, como de noche; de noche no cambia nada. Sirve también fuera de la barra, por ejemplo en una tarjeta.
 
 ```html
 <img class="gm-navbar__logo gm-glass-logo" src="logo.svg" alt="" width="48" height="48">

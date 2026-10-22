@@ -14,6 +14,8 @@ can include changes that need small updates in your code; they are listed under 
   load only the components you use. See "Only the parts you need" in Install.
 
 ### Changed
+- `gm-glass-logo` in light mode: a thin white border and the medium shadow, with no gradient shadow behind the
+  glass, so the glass looks as clean as in dark mode.
 - **Sublayers:** the framework is in `glassmarshmallow.tokens`, `.base`, `.layout`, `.icons`, `.components`, `.theme`,
   `.utilities` and `.extra`, inside the `glassmarshmallow` layer. Every file starts with that order, so
   the files can be linked in any order and utilities still win over components. Your own CSS still always wins.

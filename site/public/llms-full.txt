@@ -4885,7 +4885,7 @@ On the site it sticks to the top (`position: sticky`); here it is shown inside t
 
 ## Glass logo
 
-If the logo is made of glass (translucent, with shiny edges, like the GlassMarshmallow one), it barely shows on a light background. Add `.gm-glass-logo`: in light mode it gets a thin white border, a gradient shadow behind the glass and the medium shadow outside; in dark mode nothing changes. It also works outside the navbar, for example in a card.
+If the logo is made of glass (translucent, with shiny edges, like the GlassMarshmallow one), it barely shows on a light background. Add `.gm-glass-logo`: in light mode it gets a thin white border and the medium shadow outside, and the glass stays clean, as in dark mode; in dark mode nothing changes. It also works outside the navbar, for example in a card.
 
 ```html
 <img class="gm-navbar__logo gm-glass-logo" src="logo.svg" alt="" width="48" height="48">
