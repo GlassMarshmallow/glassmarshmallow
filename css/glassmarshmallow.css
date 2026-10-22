@@ -1,12 +1,22 @@
 /*!
- * GlassMarshmallow v0.2.1 · Licencia MIT
+ * GlassMarshmallow v0.3.0 · Licencia MIT
  * Diseñado y desarrollado por Sara Paez Yamuza
  */
-@import "./tokens.css" layer(glassmarshmallow);
-@import "./base.css" layer(glassmarshmallow);
-@import "./layout.css" layer(glassmarshmallow);
-@import "./components.css" layer(glassmarshmallow);
-@import "./theme.css" layer(glassmarshmallow);
-@import "./utilities.css" layer(glassmarshmallow);
-@import "./utilities-layout.css" layer(glassmarshmallow);
-@import "./backdrop.css" layer(glassmarshmallow);
+/* Todo va en la capa glassmarshmallow, en este orden de subcapas: el CSS propio, sin capa, gana siempre, y el orden
+   no depende de cómo se enlacen los archivos (el núcleo, las familias de componentes, los iconos o los valores libres) */
+@layer glassmarshmallow.tokens, glassmarshmallow.base, glassmarshmallow.layout, glassmarshmallow.icons, glassmarshmallow.components, glassmarshmallow.theme, glassmarshmallow.utilities, glassmarshmallow.extra;
+@import "./tokens.css" layer(glassmarshmallow.tokens);
+@import "./base.css" layer(glassmarshmallow.base);
+@import "./layout.css" layer(glassmarshmallow.layout);
+@import "./components/basics.css" layer(glassmarshmallow.components);
+@import "./components/forms.css" layer(glassmarshmallow.components);
+@import "./components/navigation.css" layer(glassmarshmallow.components);
+@import "./components/media.css" layer(glassmarshmallow.components);
+@import "./components/chat.css" layer(glassmarshmallow.components);
+@import "./components/pages.css" layer(glassmarshmallow.components);
+@import "./components/tools.css" layer(glassmarshmallow.components);
+@import "./theme.css" layer(glassmarshmallow.theme);
+@import "./utilities.css" layer(glassmarshmallow.utilities);
+@import "./utilities-layout.css" layer(glassmarshmallow.utilities);
+/* El fondo de luces, con los componentes y después de todos: lo ajustan con más especificidad (como la pantalla completa de gm-tool) */
+@import "./backdrop.css" layer(glassmarshmallow.components);

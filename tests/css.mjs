@@ -1,5 +1,6 @@
 // Pruebas del CSS del framework. Uso: npm test
-// 1. Se compila (npm run css) y el resultado está completo: llaves equilibradas y todo dentro de @layer glassmarshmallow.
+// 1. Se compila (npm run css) y cada archivo (el completo, el núcleo y cada familia, normal y minificado) está completo:
+//    llaves equilibradas, el orden de las subcapas al principio y todo dentro de alguna subcapa de glassmarshmallow.
 // 2. Todas las clases gm- que salen en los ejemplos de la documentación (en inglés y en español) existen en el CSS,
 //    para que nadie copie un ejemplo con una clase que no hace nada.
 import { execSync } from 'node:child_process';
@@ -12,26 +13,34 @@ const errors = [];
 const check = (ok, message) => { if (!ok) errors.push(message); };
 
 execSync('npm run css --silent', { cwd: root, stdio: 'ignore' });
-const css = readFileSync(join(root, 'dist/css/glassmarshmallow.css'), 'utf8');
-const min = readFileSync(join(root, 'dist/css/glassmarshmallow.min.css'), 'utf8');
+const dist = join(root, 'dist/css');
+const css = readFileSync(join(dist, 'glassmarshmallow.css'), 'utf8');
+const ORDER = '@layer glassmarshmallow.tokens, glassmarshmallow.base, glassmarshmallow.layout, glassmarshmallow.icons, glassmarshmallow.components, glassmarshmallow.theme, glassmarshmallow.utilities, glassmarshmallow.extra;';
+const entries = ['glassmarshmallow', 'glassmarshmallow-core', ...readdirSync(join(dist, 'components')).filter((f) => f.endsWith('.css') && !f.endsWith('.min.css')).map((f) => `components/${f.slice(0, -4)}`)];
 
-// Llaves equilibradas (sin contar las de los comentarios ni las de los textos entre comillas)
-for (const [name, text] of [['glassmarshmallow.css', css], ['glassmarshmallow.min.css', min]]) {
-  const code = text.replace(/\/\*[\s\S]*?\*\//g, '').replace(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, '""');
-  let depth = 0;
-  for (const c of code) { if (c === '{') depth++; else if (c === '}') depth--; if (depth < 0) break; }
-  check(depth === 0, `${name}: las llaves no están equilibradas (${depth})`);
+for (const entry of entries) {
+  for (const name of [`${entry}.css`, `${entry}.min.css`]) {
+    const text = readFileSync(join(dist, name), 'utf8');
+    const code = text.replace(/\/\*[\s\S]*?\*\//g, '').replace(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, '""');
+    // Llaves equilibradas (sin contar las de los comentarios ni las de los textos entre comillas)
+    let depth = 0;
+    for (const c of code) { if (c === '{') depth++; else if (c === '}') depth--; if (depth < 0) break; }
+    check(depth === 0, `${name}: las llaves no están equilibradas (${depth})`);
+    // El orden de las subcapas, lo primero: así no importa en qué orden se enlacen los archivos
+    const statement = code.trim().slice(0, code.trim().indexOf(';') + 1);
+    check(statement.replace(/\s+/g, '') === ORDER.replace(/\s+/g, ''), `${name}: no empieza por el orden de las subcapas`);
+    // Todo dentro de alguna subcapa: fuera solo quedan la cabecera y el orden
+    const rest = code.trim().slice(statement.length);
+    let level = 0; let stray = '';
+    for (let i = 0; i < rest.length; i++) {
+      const open = level === 0 && /^@layer glassmarshmallow\.[a-z]+\s*\{/.exec(rest.slice(i, i + 50));
+      if (open) { level = 1; i += open[0].length - 1; continue; }
+      const c = rest[i];
+      if (c === '{') level++; else if (c === '}') level--; else if (level === 0 && !/\s/.test(c)) stray += c;
+    }
+    check(!stray, `${name}: hay CSS fuera de las subcapas: «${stray.slice(0, 80)}»`);
+  }
 }
-
-// Todo dentro de la capa: fuera solo quedan la cabecera, los @property y los propios @layer
-const outside = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^@property [^\n]*$/gm, '');
-let depth = 0; let stray = '';
-for (let i = 0; i < outside.length; i++) {
-  if (depth === 0 && outside.startsWith('@layer glassmarshmallow {', i)) { depth = 1; i += '@layer glassmarshmallow {'.length - 1; continue; }
-  const c = outside[i];
-  if (c === '{') depth++; else if (c === '}') depth--; else if (depth === 0 && !/\s/.test(c)) stray += c;
-}
-check(!stray, `glassmarshmallow.css: hay CSS fuera de @layer glassmarshmallow: «${stray.slice(0, 80)}»`);
 
 // Las clases que existen: las del CSS del framework (sin escapar)
 const known = new Set([...css.matchAll(/\.(gm-(?:\\.|[\w-])+)/g)].map((m) => m[1].replace(/\\(.)/g, '$1')));
@@ -63,4 +72,4 @@ if (errors.length) {
   console.error(`✗ ${errors.length} problemas:\n  ${errors.join('\n  ')}`);
   process.exit(1);
 }
-console.log(`✓ CSS completo y dentro de la capa; ${known.size} clases; los ejemplos de ${files.length} páginas usan solo clases que existen`);
+console.log(`✓ ${entries.length} archivos (completo, núcleo y familias) completos y en sus subcapas; ${known.size} clases; los ejemplos de ${files.length} páginas usan solo clases que existen`);

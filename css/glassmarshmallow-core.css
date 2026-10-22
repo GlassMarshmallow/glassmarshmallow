@@ -1,0 +1,15 @@
+/*!
+ * GlassMarshmallow v0.3.0 · Licencia MIT
+ * Diseñado y desarrollado por Sara Paez Yamuza
+ */
+/* El núcleo: todo menos los componentes, que se añaden por familias (components/*.css).
+   Todo va en la capa glassmarshmallow, en este orden de subcapas: el CSS propio, sin capa, gana siempre, y el orden
+   no depende de cómo se enlacen los archivos (el núcleo, las familias de componentes, los iconos o los valores libres) */
+@layer glassmarshmallow.tokens, glassmarshmallow.base, glassmarshmallow.layout, glassmarshmallow.icons, glassmarshmallow.components, glassmarshmallow.theme, glassmarshmallow.utilities, glassmarshmallow.extra;
+@import "./tokens.css" layer(glassmarshmallow.tokens);
+@import "./base.css" layer(glassmarshmallow.base);
+@import "./layout.css" layer(glassmarshmallow.layout);
+@import "./theme.css" layer(glassmarshmallow.theme);
+@import "./utilities.css" layer(glassmarshmallow.utilities);
+@import "./utilities-layout.css" layer(glassmarshmallow.utilities);
+@import "./backdrop.css" layer(glassmarshmallow.components);

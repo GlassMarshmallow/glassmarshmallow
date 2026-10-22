@@ -58,18 +58,33 @@ GlassMarshmallow uses Montserrat. It comes in a separate file, `glassmarshmallow
 @import "glassmarshmallow/dist/css/glassmarshmallow.css";
 ```
 
-If you only need some parts, import the source files one by one. `tokens.css` always goes first.
+### Only the parts you need
 
-```css
-@import "glassmarshmallow/css/tokens.css";
-@import "glassmarshmallow/css/base.css";
-@import "glassmarshmallow/css/components.css";
-@import "glassmarshmallow/css/backdrop.css";
+`glassmarshmallow.css` has everything. If your site only uses some components, load the **core** (colors, base,
+grid, theme, utilities and background) and then the **component families** you need. They can go in any order:
+the framework's layers keep them in place.
+
+```css:CSS
+@import "glassmarshmallow/dist/css/glassmarshmallow-core.css";
+@import "glassmarshmallow/dist/css/components/basics.css";
+@import "glassmarshmallow/dist/css/components/navigation.css";
 ```
+
+| Family | Components | Needs |
+| --- | --- | --- |
+| `basics` | Button, card, alert, tag, code, avatar, accordion, progress, tooltip, dialog, round glass button, data list, hit area, copy command | — |
+| `forms` | Form, field, range and slider, error summary, segmented control, calendar, color picker | `basics` |
+| `navigation` | Navbar and tab bar, menu, search, full-screen menu, side menu, table of contents, previous/next, footers, social icons | `basics` |
+| `media` | Video player, carousel, gallery, logo ticker | — |
+| `chat` | Scroll row, chip, chat field, answer bubble, AI notice | — |
+| `pages` | Section, hero, page structure, inner page, long text, code snippet, icon grid, showcase, documentation page | `basics` |
+| `tools` | The generators' layout (`gm-tool`) | `basics`, `forms` |
+
+Each file also has its `.min.css`. How much each one weighs is in [Performance](/docs/getting-started/performance).
 
 ## Icons
 
-The icons live in their own package, [GlassMarshmallow Icons](/icons).
+The icons live in their own package, [GlassMarshmallow Icons](/icons). With GlassMarshmallow 0.3 or later, use the icons 0.4 or later: they go in the framework's icons layer, so components and utilities can adjust them.
 
 ```sh:npm
 npm install glassmarshmallow-icons
@@ -97,7 +112,7 @@ Then load the stylesheet and use an icon with two classes. Icons take the color 
 Skip the install and load the compiled CSS from a CDN.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.2.1/dist/css/glassmarshmallow.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.3.0/dist/css/glassmarshmallow.min.css">
 ```
 
 ## Download

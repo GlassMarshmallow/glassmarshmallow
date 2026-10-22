@@ -1,0 +1,572 @@
+/* ==========================================================================
+   glassmarshmallow · Componentes · Básicos
+   ========================================================================== */
+
+/* --- Botón ----------------------------------------------------------------- */
+.gm-btn {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: .4375rem;
+  padding: 0 1.375rem;
+  border: 0;
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-on-primary);
+  background: var(--gm-primary);
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, opacity .2s;
+}
+.gm-btn .gmi { font-size: 1.25em; line-height: 1; } /* más grande que el texto, pedido por Sara */
+.gm-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: var(--gm-shadow-hover); }
+.gm-btn:disabled { cursor: not-allowed; opacity: .45; }
+.gm-btn--secondary { border: 1px solid var(--gm-line); color: var(--gm-text); background: var(--gm-surface-glass); }
+.gm-btn--ghost { color: var(--gm-text); background: transparent; }
+.gm-btn--ghost:hover:not(:disabled) { box-shadow: none; background: var(--gm-hover); }
+.gm-btn--sm { min-height: 2.375rem; padding-inline: 1rem; font-size: .84rem; }
+
+/* Botón píldora: pequeño, con el gris de las etiquetas */
+.gm-btn--pill {
+  min-height: 1.875rem;
+  padding: 0 .875rem;
+  color: var(--gm-text);
+  background: var(--gm-tag);
+  font-size: .8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background .2s;
+}
+.gm-btn--pill:hover:not(:disabled) { box-shadow: none; transform: none; background: var(--gm-tag-hover); }
+/* Peligro: solo sobre la píldora gris (9,6:1 de día y 9,8:1 de noche). En el botón negro no cambia nada, para que nunca quede ilegible */
+.gm-btn--pill.gm-btn--danger { color: var(--gm-btn-danger); }
+
+/* Botón de texto: sin fondo ni borde, en el color de los enlaces (con el color
+   de enlace en lugar del acento, que en claro solo llegaba a 3,6:1) */
+.gm-btn-text {
+  padding: 0;
+  border: 0;
+  color: var(--gm-link);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.gm-btn-text:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Volver a la sección anterior: «‹ Volver» */
+.gm-btn-back {
+  display: inline-flex;
+  min-height: 2.625rem;
+  align-items: center;
+  gap: .5rem;
+  padding: 0 1rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-text);
+  background: var(--gm-surface-glass);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.gm-btn-back:hover { transform: translateY(-1px); box-shadow: var(--gm-shadow-hover); }
+.gm-btn-back > span[aria-hidden] { font-size: 1.5rem; line-height: 1; }
+
+/* Botón redondo solo con icono (lleva aria-label) */
+.gm-icon-btn {
+  display: grid;
+  width: 2.625rem;
+  height: 2.625rem;
+  padding: 0;
+  border: 1px solid var(--gm-line);
+  border-radius: 50%;
+  color: var(--gm-text);
+  background: var(--gm-surface-glass);
+  place-items: center;
+  cursor: pointer;
+  transition: background .2s;
+}
+.gm-icon-btn:hover { background: var(--gm-hover); }
+.gm-icon-btn .gmi { font-size: 1.25rem; }
+/* Botón de envío: píldora turquesa con texto blanco (7,9:1, AAA) */
+.gm-btn--accent { color: #fff; background: var(--gm-accent-strong); }
+.gm-btn--accent:hover:not(:disabled) { background: var(--gm-accent-hover); }
+
+/* --- Tarjeta de cristal ----------------------------------------------------- */
+.gm-card {
+  padding: 1.75rem;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+}
+.gm-card > :last-child { margin-bottom: 0; }
+/* Tarjeta que es un enlace (<a class="gm-card gm-card--link">): sube un poco al pasar el ratón, como los botones */
+.gm-card--link { color: var(--gm-text); transition: transform .2s; }
+.gm-card--link:hover { transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { .gm-card--link:hover { transform: none; } }
+
+/* --- WCAG 2.5.5 (AAA): zona que se pulsa de al menos 44 × 44 px ----------------
+   Si el elemento se ve más pequeño (botones pequeños, píldoras, botones redondos), una capa invisible amplía la
+   zona que se pulsa sin cambiar su aspecto. */
+.gm-btn, .gm-icon-btn, .gm-btn-back, .gm-btn-text, .gm-calendar__day { position: relative; }
+.gm-btn::after, .gm-icon-btn::after, .gm-btn-back::after, .gm-btn-text::after, .gm-calendar__day::after {
+  position: absolute;
+  top: min(0px, calc(50% - 1.375rem));
+  right: min(0px, calc(50% - 1.375rem));
+  bottom: min(0px, calc(50% - 1.375rem));
+  left: min(0px, calc(50% - 1.375rem));
+  content: "";
+}
+
+/* --- Aviso -------------------------------------------------------------------- */
+/* Información: gris. Éxito, advertencia y error: el pastel del estado (menta,
+   limón y coral) a media intensidad con un borde del mismo pastel y el texto normal encima (elegido por Sara).
+   Texto de 12:1 o más de día y de 7,5:1 o más de noche (AAA) */
+.gm-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: .625rem;
+  padding: .875rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-text);
+  background: var(--gm-fill-subtle);
+  font-size: .92rem;
+  line-height: 1.5;
+}
+/* Icono un poco más grande que el texto y centrado con la primera línea (alto de línea: 0,92 rem × 1,5) */
+.gm-alert .gmi { flex-shrink: 0; font-size: 1.25rem; margin-top: calc((.92rem * 1.5 - 1.25rem) / 2); }
+.gm-alert--success { --gm-alert-rgb: var(--gm-mint-rgb); }
+.gm-alert--warning { --gm-alert-rgb: var(--gm-lemon-rgb); }
+.gm-alert--danger { --gm-alert-rgb: var(--gm-coral-rgb); }
+:is(.gm-alert--success, .gm-alert--warning, .gm-alert--danger) {
+  border-color: rgb(var(--gm-alert-rgb) / .9);
+  background: rgb(var(--gm-alert-rgb) / var(--gm-alert-alpha));
+}
+/* Nota: sin color, sobre una superficie sólida con sombra suave, para
+   aclaraciones dentro de un texto */
+.gm-alert--note {
+  display: block;
+  padding: .875rem 1.125rem;
+  border: 0;
+  border-radius: .875rem;
+  background: var(--gm-surface-solid);
+  box-shadow: var(--gm-shadow-sm);
+  font-size: .88rem;
+  line-height: inherit;
+}
+.gm-alert--note p { margin: 0; color: inherit; }
+
+/* --- Etiqueta ------------------------------------------------------------------- */
+.gm-tag {
+  display: inline-block;
+  padding: .1875rem .625rem;
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-text);
+  background: var(--gm-tag);
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+/* --- Bloque de código ------------------------------------------------------------ */
+.gm-code {
+  display: block;
+  overflow-x: auto;
+  margin: 0;
+  padding: 1rem 1.125rem;
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-text);
+  background: var(--gm-tag);
+  font-family: var(--gm-font-mono);
+  font-size: .86rem;
+  line-height: 1.6;
+  white-space: pre;
+}
+/* Las líneas largas pasan a la siguiente en vez de desplazarse de lado (CSS generado, con valores largos) */
+.gm-code--wrap { white-space: pre-wrap; overflow-wrap: anywhere; }
+/* Colores del código como en Visual Studio Code: para el coloreado con Shiki y sus temas light-plus y dark-plus, con
+   cada trozo en un <span style="--code-light:…; --code-dark:…"> (como lo hace la web del framework, en
+   site/src/app/shared/utils/highlight.ts). «Dark+» en oscuro y, en claro, los colores de «Light+»
+   cambiados por los tonos 700–900 de la paleta del framework (pedido por Sara), todos con 4,5:1 o más sobre el fondo
+   claro. Solo cambia el color de las letras */
+code span[style*="--code-light"] { color: var(--code-light); }
+code span[style*="--code-light:#795E26" i] { color: var(--gm-lavender-800); } /* comandos y funciones (npm) */
+code span[style*="--code-light:#AF00DB" i] { color: var(--gm-lavender-700); } /* palabras de control */
+code span[style*="--code-light:#A31515" i] { color: var(--gm-pink-800); }     /* textos y argumentos (install …) */
+code span[style*="--code-light:#800000" i] { color: var(--gm-pink-900); }     /* etiquetas HTML */
+code span[style*="--code-light:#E50000" i],
+code span[style*="--code-light:#EE0000" i] { color: var(--gm-coral-800); }    /* atributos y propiedades CSS (7:1 también sobre el gris de gm-code) */
+code span[style*="--code-light:#0000FF" i],
+code span[style*="--code-light:#0451A5" i] { color: var(--gm-blue-800); }     /* palabras clave y valores CSS */
+code span[style*="--code-light:#001080" i] { color: var(--gm-blue-900); }     /* variables */
+code span[style*="--code-light:#267F99" i] { color: var(--gm-sky-800); }      /* tipos y clases */
+code span[style*="--code-light:#098658" i] { color: var(--gm-mint-800); }     /* números */
+code span[style*="--code-light:#008000" i] { color: var(--gm-muted); }        /* comentarios */
+code span[style*="--code-light:#000000" i] { color: var(--gm-text); }         /* el resto (signos, espacios) */
+[data-theme="dark"] code span[style*="--code-dark"] { color: var(--code-dark); }
+/* En oscuro, los grises y verdes de «Dark+» no llegan a 4,5:1 sobre el gris de gm-code: comentarios y signos, en el gris secundario (7:1) */
+[data-theme="dark"] code span[style*="--code-dark:#6A9955" i],
+[data-theme="dark"] code span[style*="--code-dark:#808080" i] { color: var(--gm-muted); }
+
+/* --- Tooltip -----------------------------------------------------------------
+   Fondo #1d1d1f, texto blanco, borde fino
+   y sombra grande, en los dos modos. Sale al pasar el ratón y al llegar con el teclado, y se puede pasar el
+   ratón por encima sin que se cierre.
+   <span class="gm-tooltip">
+     <button type="button" class="gm-icon-btn" aria-label="Buscar" aria-describedby="tip-1">…</button>
+     <span class="gm-tooltip__bubble" role="tooltip" id="tip-1">Buscar en la biblioteca</span>
+   </span> */
+.gm-tooltip { position: relative; display: inline-flex; }
+.gm-tooltip__bubble {
+  position: absolute;
+  z-index: 40;
+  bottom: calc(100% + .5rem);
+  left: 50%;
+  width: max-content;
+  max-width: 15rem;
+  padding: .4375rem .6875rem;
+  border: 1px solid var(--gm-line);
+  border-radius: .75rem;
+  color: #fff;
+  background: #1d1d1f;
+  box-shadow: var(--gm-shadow-md);
+  font-size: .78rem;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: center;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 4px);
+  transition: opacity .15s, transform .15s, visibility .15s;
+}
+/* Puente invisible entre el botón y la burbuja, para poder llevar el ratón a la burbuja sin que se cierre */
+.gm-tooltip__bubble::before { position: absolute; right: 0; bottom: -.625rem; left: 0; height: .625rem; content: ""; }
+.gm-tooltip:hover .gm-tooltip__bubble,
+.gm-tooltip:focus-within .gm-tooltip__bubble {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+/* Debajo del elemento */
+.gm-tooltip--bottom .gm-tooltip__bubble { top: calc(100% + .5rem); bottom: auto; transform: translate(-50%, -4px); }
+.gm-tooltip--bottom .gm-tooltip__bubble::before { top: -.625rem; bottom: auto; }
+/* Junto a un borde: alineada al principio o al final del elemento en lugar de centrada */
+.gm-tooltip--start .gm-tooltip__bubble { left: 0; transform: translate(0, 4px); }
+.gm-tooltip--end .gm-tooltip__bubble { right: 0; left: auto; transform: translate(0, 4px); }
+.gm-tooltip--start:is(:hover, :focus-within) .gm-tooltip__bubble,
+.gm-tooltip--end:is(:hover, :focus-within) .gm-tooltip__bubble { transform: none; }
+/* Escape la oculta mientras el foco siga en el botón (lo pone el script de la documentación) */
+.gm-tooltip.is-dismissed .gm-tooltip__bubble { opacity: 0; visibility: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .gm-tooltip__bubble { transition: none; }
+}
+
+/* --- Imagen de perfil (avatar) ------------------------------------------------
+   <span class="gm-avatar"><img src="foto.jpg" alt="Sara Paez"></span>                  foto en círculo
+   <span class="gm-avatar gm-avatar--square">…</span>                                     cuadrado redondeado
+   <span class="gm-avatar gm-theme-sky" role="img" aria-label="Sara Paez">SP</span>      iniciales en un pastel
+   <span class="gm-avatar gm-avatar--ring">…</span>                                       con el marco de color (cielo; turquesa en oscuro)
+   Tamaños: --sm (2 rem), normal (3 rem), --lg (5 rem) y --xl (8 rem). El redondeo y las letras van en
+   proporción al tamaño. Sin .gm-theme-*, las iniciales van sobre gris.
+   Se personaliza con --gm-avatar-radius (redondeo) y, con marco, --gm-avatar-ring (color o degradado). */
+.gm-avatar {
+  --gm-avatar-size: 3rem;
+  --gm-avatar-radius: 50%;
+  position: relative;
+  display: inline-grid;
+  width: var(--gm-avatar-size);
+  height: var(--gm-avatar-size);
+  flex-shrink: 0;
+  border-radius: var(--gm-avatar-radius);
+  color: var(--gm-theme-on, var(--gm-text));
+  background: var(--gm-theme, var(--gm-tag));
+  box-shadow: inset 0 0 0 1px var(--gm-line);
+  font-size: calc(var(--gm-avatar-size) * .38);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .02em;
+  place-items: center;
+  user-select: none;
+}
+.gm-avatar > img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
+.gm-avatar > .gmi { font-size: calc(var(--gm-avatar-size) * .55); }
+.gm-avatar--square { --gm-avatar-radius: 22%; }
+/* Foto que se amplía al pulsarla (un enlace con data-gm-zoom, ver la galería): lupa al pasar el ratón */
+a.gm-avatar[data-gm-zoom] { cursor: zoom-in; transition: transform .2s ease; }
+a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { a.gm-avatar[data-gm-zoom]:hover { transform: none; } }
+/* Marco de color alrededor de la foto: cielo (turquesa en oscuro) y una sombra suave.
+   El grosor va en proporción al tamaño */
+.gm-avatar--ring {
+  padding: max(.125rem, calc(var(--gm-avatar-size) * .02));
+  background: var(--gm-avatar-ring, var(--gm-lights-gradient));
+  box-shadow: var(--gm-bubble-shadow);
+}
+.gm-avatar--sm { --gm-avatar-size: 2rem; }
+.gm-avatar--lg { --gm-avatar-size: 5rem; }
+.gm-avatar--xl { --gm-avatar-size: 8rem; }
+
+/* Botón para cambiar la foto (página de perfil): redondo, abajo a la derecha, 44 px como mínimo (AAA) */
+.gm-avatar__edit {
+  position: absolute;
+  right: -.25rem;
+  bottom: -.25rem;
+  display: grid;
+  width: max(2.75rem, calc(var(--gm-avatar-size) * .32));
+  height: max(2.75rem, calc(var(--gm-avatar-size) * .32));
+  padding: 0;
+  border: 3px solid var(--gm-bg);
+  border-radius: 50%;
+  color: var(--gm-on-primary);
+  background: var(--gm-primary);
+  font-size: 1.1rem;
+  place-items: center;
+  cursor: pointer;
+}
+.gm-avatar__edit:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 2px; }
+.gm-avatar--square .gm-avatar__edit { right: -.5rem; bottom: -.5rem; }
+
+/* Grupo de avatares montados (quién participa) */
+.gm-avatar-group { display: inline-flex; }
+.gm-avatar-group > .gm-avatar { box-shadow: 0 0 0 2px var(--gm-bg); }
+.gm-avatar-group > .gm-avatar + .gm-avatar { margin-left: calc(var(--gm-avatar-size) * -.28); }
+
+/* --- Acordeón ------------------------------------------------------------------
+   <div class="gm-accordion">
+     <details class="gm-accordion__item" name="faq">
+       <summary class="gm-accordion__summary">
+         <span class="gm-accordion__icon" aria-hidden="true"><i class="gmi gmi-palette"></i></span>   (opcional)
+         <span class="gm-accordion__text"><span class="gm-accordion__title">Título</span>
+           <span class="gm-accordion__meta">Detalle</span></span>                                 (opcional)
+         <i class="gmi gmi-chevron-down gm-accordion__chevron" aria-hidden="true"></i>
+       </summary>
+       <div class="gm-accordion__content">…</div>
+     </details>
+   </div>
+   Sin JavaScript: <details> y <summary> se abren con el ratón y el teclado. Con el mismo name en todos,
+   solo se abre uno a la vez. */
+.gm-accordion {
+  overflow: hidden;
+  border: 1px solid var(--gm-accordion-border);
+  border-radius: 1.125rem;
+  background: var(--gm-accordion-bg);
+  box-shadow: var(--gm-accordion-shadow);
+  -webkit-backdrop-filter: var(--gm-accordion-filter);
+  backdrop-filter: var(--gm-accordion-filter);
+}
+.gm-accordion__item { interpolate-size: allow-keywords; }
+.gm-accordion__item + .gm-accordion__item { border-top: 1px solid var(--gm-line); }
+.gm-accordion__summary {
+  display: flex;
+  min-height: 2.75rem; /* WCAG 2.5.5 (AAA) */
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color .2s ease;
+}
+.gm-accordion__summary::-webkit-details-marker { display: none; }
+.gm-accordion__summary:hover { background: var(--gm-hover); }
+/* El foco va por dentro: el acordeón recorta lo que sobresale */
+.gm-accordion__summary:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: -3px; border-radius: 1.125rem; }
+.gm-accordion__icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--gm-accordion-icon);
+  background: var(--gm-accordion-icon-bg);
+  font-size: 1.2rem;
+  place-items: center;
+}
+.gm-accordion__text { display: flex; min-width: 0; flex-direction: column; }
+.gm-accordion__title { margin: 0 0 .1rem; font-size: 1.1rem; font-weight: 600; }
+.gm-accordion__meta { color: var(--gm-muted); font-size: .85rem; }
+.gm-accordion__chevron { flex-shrink: 0; margin-left: auto; color: var(--gm-accordion-chevron); font-size: 1.1rem; transition: transform .25s ease; }
+.gm-accordion__item[open] .gm-accordion__chevron { transform: rotate(180deg); }
+.gm-accordion__content { padding: .5rem 1.5rem 1.4rem; line-height: 1.6; }
+/* Lista dentro del acordeón: un elemento debajo de otro (con más de 3, nunca seguidos en una frase) */
+.gm-accordion__list { display: grid; gap: .5rem; margin: 0; padding-left: 1.2rem; }
+.gm-accordion__list li::marker { color: var(--gm-muted); }
+/* Vista previa a la derecha del título (cerrado): unos logos en cuadritos y cuántos más hay */
+.gm-accordion__preview { display: flex; align-items: center; gap: .35rem; margin-left: auto; color: var(--gm-text-secondary); }
+.gm-accordion__preview + .gm-accordion__chevron { margin-left: 0; }
+.gm-accordion__preview-item { display: grid; width: 2rem; height: 2rem; border-radius: .5rem; background: var(--gm-hover); font-size: 1.15rem; place-items: center; }
+.gm-accordion__preview-more { padding: 0 .35rem; color: var(--gm-muted); font-size: .8rem; font-weight: 600; }
+@media (max-width: 37.5rem) {
+  .gm-accordion__preview-item:nth-child(n + 4), .gm-accordion__preview-more { display: none; }
+}
+@media (max-width: 26.25rem) {
+  .gm-accordion__preview { display: none; }
+  .gm-accordion__preview + .gm-accordion__chevron { margin-left: auto; }
+}
+/* Lista con un logo o icono delante de cada elemento, uno debajo de otro. Es información, no botones: sin caja ni
+   efecto al pasar el ratón. Con --cascade (y style="--i: 0, 1, 2…") entran uno detrás de otro al abrir */
+.gm-accordion__list--icons { gap: .75rem; list-style: none; }
+.gm-accordion__list--icons:not(.gm-accordion__content) { padding-left: 0; }
+.gm-accordion__list--icons li { display: flex; align-items: center; gap: .75rem; line-height: 1.3; }
+.gm-accordion__list-icon { display: grid; width: 2.25rem; flex: none; font-size: 1.5rem; place-items: center; }
+.gm-accordion__item[open] .gm-accordion__list--cascade li { animation: gm-list-in .45s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i, 0) * 40ms); }
+.gm-accordion__item[open] .gm-accordion__list--cascade .gm-accordion__list-icon { animation: gm-icon-pop .5s cubic-bezier(.34, 1.56, .64, 1) both; animation-delay: calc(var(--i, 0) * 40ms + 80ms); }
+@keyframes gm-list-in { from { opacity: 0; filter: blur(4px); transform: translateY(12px) scale(.96); } }
+@keyframes gm-icon-pop { from { opacity: 0; transform: scale(.3) rotate(-20deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .gm-accordion__item[open] .gm-accordion__list--cascade :is(li, .gm-accordion__list-icon) { animation: none; }
+}
+.gm-accordion__content > :first-child { margin-top: 0; }
+.gm-accordion__content > :last-child { margin-bottom: 0; }
+
+/* Se despliega suavemente (donde se puede; en el resto se abre de golpe) */
+.gm-accordion__item::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size .4s cubic-bezier(.2, .8, .2, 1), content-visibility .4s allow-discrete;
+}
+.gm-accordion__item[open]::details-content { block-size: auto; }
+
+@media (max-width: 30rem) {
+  .gm-accordion__summary { padding: .9rem 1rem; }
+  .gm-accordion__content { padding: .25rem 1rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gm-accordion__item::details-content, .gm-accordion__summary, .gm-accordion__chevron { transition: none; }
+}
+
+/* --- Barra de progreso ----------------------------------------------------------
+   <div class="gm-progress">
+     <progress class="gm-progress__bar" id="leido" max="100" value="45">45 %</progress>
+     <label class="gm-progress__label" for="leido">45 % leído</label>
+   </div>
+   Sin value, la barra no sabe cuánto falta y enseña un tramo que se mueve (cargando). */
+.gm-progress { display: grid; gap: .375rem; }
+.gm-progress__bar {
+  display: block;
+  width: 100%;
+  height: .375rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-accent);
+  background: var(--gm-tag);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.gm-progress__bar::-webkit-progress-bar { border-radius: inherit; background: var(--gm-tag); }
+.gm-progress__bar::-webkit-progress-value { border-radius: inherit; background: var(--gm-accent); transition: width .3s; }
+.gm-progress__bar::-moz-progress-bar { border-radius: inherit; background: var(--gm-accent); }
+/* Sin valor: un tramo que va y viene */
+.gm-progress__bar:indeterminate { background: linear-gradient(90deg, transparent 0 35%, var(--gm-accent) 35% 65%, transparent 65%) 0 0 / 250% 100%, var(--gm-tag); animation: gm-progress-move 1.4s ease-in-out infinite; }
+.gm-progress__bar:indeterminate::-webkit-progress-bar { background: transparent; }
+.gm-progress__bar:indeterminate::-moz-progress-bar { background: transparent; }
+@keyframes gm-progress-move { from { background-position: 100% 0, 0 0; } to { background-position: 0 0, 0 0; } }
+.gm-progress__label { color: var(--gm-muted); font-size: .76rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.gm-progress--lg .gm-progress__bar { height: .625rem; }
+.gm-progress--lg .gm-progress__label { font-size: .86rem; }
+@media (prefers-reduced-motion: reduce) {
+  .gm-progress__bar::-webkit-progress-value { transition: none; }
+  .gm-progress__bar:indeterminate { animation: none; background-position: 50% 0, 0 0; }
+}
+
+/* --- Ventana (modal) ----------------------------------------------------------------
+   <dialog class="gm-dialog" id="info" aria-labelledby="info-titulo">
+     <div class="gm-dialog__body">
+       <header class="gm-dialog__header"><h2 class="gm-dialog__title" id="info-titulo">Título</h2>
+         <button type="button" class="gm-icon-btn" data-gm-dialog-close aria-label="Cerrar">…</button></header>
+       <section class="gm-dialog__section">…</section>
+     </div>
+   </dialog>
+   El script opcional js/dialog.js la abre con data-gm-dialog-open="info" y la cierra con Escape, la ✕ o
+   pulsando fuera. */
+.gm-dialog {
+  width: min(34rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  border: 1px solid var(--gm-panel-border);
+  border-radius: 1.125rem;
+  color: var(--gm-text);
+  background: var(--gm-dialog-bg);
+  box-shadow: var(--gm-dialog-shadow);
+  -webkit-backdrop-filter: var(--gm-panel-filter);
+  backdrop-filter: var(--gm-panel-filter);
+}
+.gm-dialog:not([open]) { display: none; }
+.gm-dialog::backdrop { background: var(--gm-dialog-backdrop); }
+.gm-dialog__body { max-height: calc(100dvh - 2rem); padding: 1.5rem 1.75rem 1.75rem; overflow-y: auto; }
+.gm-dialog__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .5rem; }
+.gm-dialog__title { margin: 0; font-size: 1.25rem; font-weight: 700; outline: none; }
+.gm-dialog__section { padding: 1rem 0; border-top: 1px solid var(--gm-line); }
+.gm-dialog__section:last-child { padding-bottom: 0; }
+.gm-dialog__section > h3 { width: fit-content; margin: 0 0 .4rem; font-size: .95rem; font-weight: 700; }
+.gm-dialog__section > h4 { margin: .75rem 0 .2rem; font-size: .92rem; font-weight: 600; }
+.gm-dialog__section > h3 + h4 { margin-top: 0; }
+.gm-dialog__section :is(p, ol, ul) { margin: 0; font-size: .92rem; line-height: 1.55; }
+.gm-dialog__section :is(ol, ul) { padding-left: 1.2rem; }
+.gm-dialog__section li + li { margin-top: .35rem; }
+.gm-dialog a { color: var(--gm-link); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 37.5rem) {
+  .gm-dialog__body { padding: 1.1rem 1.15rem 1.25rem; }
+  .gm-dialog__title { font-size: 1.1rem; }
+}
+
+/* Títulos de color de la ventana y del texto largo: en claro, el degradado de acento de 7:1; en oscuro, celeste */
+:is(.gm-dialog__section > h3, .gm-prose h2) {
+  color: transparent;
+  background: var(--gm-accent-gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* De noche, el celeste de la paleta: sobre el cristal oscuro llega a 11:1 (el turquesa se queda en 6,4:1) */
+[data-theme="dark"] :is(.gm-dialog__section > h3, .gm-prose h2) { color: var(--gm-sky); background: none; -webkit-text-fill-color: currentColor; }
+
+/* --- Botón redondo de cristal (sobre fondos con dibujo o imagen) ----------------------
+   <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Abrir menú">…</button> */
+.gm-icon-btn--glass {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-color: var(--gm-glass-btn-border);
+  color: var(--gm-text);
+  background: var(--gm-glass-btn-bg);
+  box-shadow: var(--gm-glass-btn-shadow);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.gm-icon-btn--glass:hover { color: var(--gm-accent); background: var(--gm-glass-btn-bg); }
+
+/* --- Lista de datos (etiqueta y valor, como un resumen) ---------------------------------
+   <dl class="gm-dl"><div><dt>Nombre</dt><dd>Sara Paez Yamuza</dd></div>…</dl> */
+.gm-dl { margin: 0; }
+.gm-dl > div { margin-bottom: .35rem; }
+.gm-dl dt { color: var(--gm-muted); font-weight: 600; }
+.gm-dl dd { margin: 0; overflow-wrap: anywhere; }
+
+/* --- Zona que se pulsa de 44 × 44 px -----------------------------------------------------
+   <a class="gm-hit-area" href="…"><i class="gmi gmi-github" aria-label="GitHub"></i></a>
+   Para algo que se pulsa y se ve más pequeño de 44 px: una capa invisible amplía la zona sin cambiar el aspecto
+   (WCAG 2.5.5, AAA). Es lo que ya hacen los botones del framework. */
+.gm-hit-area { position: relative; }
+.gm-hit-area::after { position: absolute; inset: min(0px, calc(50% - 1.375rem)); content: ""; }
+
+/* --- Comando para copiar (el «npm install» de la portada) --------------------------------
+   <div class="gm-command"><code class="gm-command__text">npm install glassmarshmallow</code>
+     <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm">Copiar</button></div>
+   Copiar lo hace tu código. Si no cabe, el comando pasa a la línea siguiente. */
+.gm-command {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: .75rem;
+  padding: .375rem .375rem .375rem 1.125rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-pill);
+  background: var(--gm-surface-glass);
+}
+.gm-command__text { min-width: 0; font-size: .9rem; overflow-wrap: anywhere; }

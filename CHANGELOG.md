@@ -6,6 +6,22 @@ can include changes that need small updates in your code; they are listed under 
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-22
+
+### Added
+- **Component families:** besides `glassmarshmallow.css` (everything), the core (`glassmarshmallow-core.css`) and
+  seven families in `dist/css/components/` (`basics`, `forms`, `navigation`, `media`, `chat`, `pages`, `tools`), to
+  load only the components you use. See "Only the parts you need" in Install.
+
+### Changed
+- **Sublayers:** the framework is in `glassmarshmallow.tokens`, `.base`, `.layout`, `.icons`, `.components`, `.theme`,
+  `.utilities` and `.extra`, inside the `glassmarshmallow` layer. Every file starts with that order, so
+  the files can be linked in any order and utilities still win over components. Your own CSS still always wins.
+- **Icons:** use `glassmarshmallow-icons` 0.4.0 or later, which goes in `glassmarshmallow.icons`. With 0.3.0, the
+  icons sit above the sublayers and some sizes set by components (like the ticker's) are lost.
+- `npx glassmarshmallow build` writes its classes in `glassmarshmallow.extra`.
+- The source is split: `css/components/<family>.css` instead of a single `css/components.css`.
+
 ## [0.2.1] - 2026-10-22
 
 ### Added
@@ -88,7 +104,8 @@ can include changes that need small updates in your code; they are listed under 
 - First public version: glass surfaces, pastel palette, light and dark mode, WCAG 2.2 AA (AAA whenever
   possible), components, utilities and optional scripts with no dependencies.
 
-[Unreleased]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.1.3...v0.1.4

@@ -1,0 +1,415 @@
+/* ==========================================================================
+   glassmarshmallow · Componentes · Formularios
+   ========================================================================== */
+
+/* --- Formulario ----------------------------------------------------------------
+   Recuadro de cristal, etiquetas en negrita,
+   campos redondeados con relleno gris y anillo al escribir, casillas en lista y botones en píldora. */
+.gm-form {
+  display: grid;
+  gap: 1.15rem;
+  padding: 2.5rem 2rem;
+  border-radius: var(--gm-radius-md);
+  background: var(--gm-form-bg);
+  box-shadow: var(--gm-form-shadow);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+}
+.gm-form__intro { margin: 0; color: var(--gm-text-secondary); font-size: .9rem; }
+.gm-form__actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; margin-top: .5rem; }
+
+/* --- Campo -------------------------------------------------------------------- */
+.gm-field { display: grid; gap: .375rem; min-width: 0; margin: 0; padding: 0; border: 0; }
+.gm-field > label,
+.gm-field > legend { padding: 0; color: var(--gm-text); font-size: .95rem; font-weight: 700; }
+.gm-field input:not([type="checkbox"], [type="radio"], [type="range"]),
+.gm-field select,
+.gm-field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: .75rem .9rem;
+  border: 1px solid var(--gm-field-border);
+  border-radius: .75rem;
+  color: var(--gm-text);
+  background-color: var(--gm-field-bg);
+  font: inherit;
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+.gm-field textarea { resize: vertical; }
+/* Desplegable igual que los campos de texto en todos los navegadores (Safari pinta el suyo si no) */
+.gm-field select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-inline-end: 2.6rem;
+  background-image: var(--gm-select-arrow);
+  background-repeat: no-repeat;
+  background-position: right .85rem center;
+  background-size: 1.1rem;
+  cursor: pointer;
+}
+.gm-field option { color: var(--gm-text); background-color: var(--gm-field-bg); }
+.gm-field input::placeholder,
+.gm-field textarea::placeholder { color: var(--gm-muted); }
+.gm-field input:not([type="checkbox"], [type="radio"], [type="range"]):focus,
+.gm-field select:focus,
+.gm-field textarea:focus {
+  border-color: var(--gm-field-focus);
+  outline: none;
+  background-color: var(--gm-field-bg-focus);
+  box-shadow: 0 0 0 4px var(--gm-field-ring);
+}
+.gm-field__help { margin: 0; color: var(--gm-text-secondary); font-size: .85rem; }
+.gm-field__error { margin: 0; color: var(--gm-danger); font-size: .85rem; font-weight: 600; }
+.gm-field [aria-invalid="true"] { border-color: var(--gm-danger); }
+
+/* --- Barra deslizante (range) ---------------------------------------------------
+   <input class="gm-range" type="range" min="0" max="100" value="40">
+   Tirador redondo (bolita) y la parte recorrida en el color de acento. Chrome y Safari no pintan la parte
+   recorrida solos: el script opcional js/range.js pone su tamaño en --gm-range-progress. */
+.gm-range {
+  --gm-range-progress: 0%;
+  width: 100%;
+  min-height: 2.75rem; /* WCAG 2.5.5 (AAA) */
+  margin: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.gm-range:focus { outline: none; }
+.gm-range::-webkit-slider-runnable-track {
+  height: .375rem;
+  border-radius: var(--gm-radius-pill);
+  background: linear-gradient(90deg, var(--gm-accent) var(--gm-range-progress), var(--gm-tag) var(--gm-range-progress));
+}
+.gm-range::-moz-range-track { height: .375rem; border-radius: var(--gm-radius-pill); background: var(--gm-tag); }
+.gm-range::-moz-range-progress { height: .375rem; border-radius: var(--gm-radius-pill); background: var(--gm-accent); }
+/* La bolita: blanca, con un borde gris de 3,5:1 para que se vea también sobre blanco (WCAG 1.4.11) */
+.gm-range::-webkit-slider-thumb {
+  width: 1.375rem;
+  height: 1.375rem;
+  margin-top: -.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--gm-field-border), 0 2px 6px rgba(0, 0, 0, .25);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.gm-range::-moz-range-thumb {
+  width: 1.375rem;
+  height: 1.375rem;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--gm-field-border), 0 2px 6px rgba(0, 0, 0, .25);
+}
+.gm-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 1px var(--gm-field-border), 0 0 0 4px var(--gm-focus); }
+.gm-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 1px var(--gm-field-border), 0 0 0 4px var(--gm-focus); }
+.gm-range:disabled { cursor: not-allowed; opacity: .45; }
+
+/* Prefijo y número en la misma fila (un tercio y dos tercios) */
+.gm-input-group { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: .5rem; }
+.gm-input-group select { padding-inline: .5rem 2rem; background-position: right .5rem center; }
+
+/* Casillas y opciones en lista */
+.gm-check { display: grid; gap: 0; }
+.gm-check label { display: flex; min-height: 2.75rem; /* WCAG 2.5.5 (AAA) */ align-items: center; gap: .625rem; color: var(--gm-text-secondary); cursor: pointer; }
+.gm-check input { width: 1.05rem; height: 1.05rem; margin: 0; accent-color: var(--gm-field-focus); flex-shrink: 0; }
+
+
+@media (max-width: 37.5rem) {
+  .gm-form { padding: 1.75rem 1.25rem; }
+  .gm-form__actions .gm-btn { flex: 1; }
+}
+
+/* --- Resumen de errores ----------------------------------------------------------
+   Arriba del formulario al enviarlo con errores: cuántos hay y un enlace a cada campo.
+   <div class="gm-error-summary" role="alert" tabindex="-1" aria-labelledby="errores-titulo">
+     <h2 class="gm-error-summary__title" id="errores-titulo">Hay 2 errores en el formulario</h2>
+     <ul class="gm-error-summary__list"><li><a href="#email">Escribe un correo completo…</a></li></ul>
+   </div>
+   Al aparecer, el foco va al resumen (tabindex="-1") para que se lea entero. */
+.gm-error-summary {
+  display: grid;
+  gap: .5rem;
+  padding: 1rem 1.125rem;
+  border: 2px solid currentColor;
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-danger);
+  background: var(--gm-danger-bg);
+}
+.gm-error-summary:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
+.gm-error-summary__title { display: flex; align-items: center; gap: .5rem; margin: 0; color: inherit; font-size: 1rem; font-weight: 700; letter-spacing: 0; }
+.gm-error-summary__list { display: grid; margin: 0; padding-left: 1.2rem; }
+/* Enlaces de 44 px de alto (WCAG 2.5.5, AAA), subrayados: no dependen solo del color */
+.gm-error-summary__list a { display: inline-flex; min-height: 2.75rem; align-items: center; color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.gm-error-summary__list a:hover { text-decoration-thickness: 2px; }
+
+/* --- Calendario ---------------------------------------------------------------
+   Panel de cristal, mes en grande, días en círculos de 44 px, hoy en azul de
+   enlace y el día elegido relleno (negro en claro, blanco en oscuro). Los días de otros meses, en gris.
+   Hoy: aria-current="date". Elegido: aria-pressed="true". */
+.gm-calendar {
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+  gap: .875rem;
+  padding: 1.25rem;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  color: var(--gm-text);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+}
+.gm-calendar__header { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.gm-calendar__title { margin: 0; font-size: 1.25rem; font-weight: 700; letter-spacing: -.02em; }
+.gm-calendar__title span { color: var(--gm-muted); font-weight: 500; }
+.gm-calendar__nav { display: flex; gap: .375rem; }
+.gm-calendar__nav .gm-icon-btn { width: 2.25rem; height: 2.25rem; }
+.gm-calendar__nav .gm-icon-btn .gmi { font-size: 1.1rem; }
+.gm-calendar__grid { border-collapse: collapse; }
+.gm-calendar__grid th {
+  height: 1.875rem;
+  padding: 0;
+  color: var(--gm-muted);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.gm-calendar__grid th abbr { text-decoration: none; }
+.gm-calendar__grid td { padding: .125rem; text-align: center; }
+.gm-calendar__day {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--gm-text);
+  background: transparent;
+  font: inherit;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  place-items: center;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.gm-calendar__day:hover { background: var(--gm-hover); }
+.gm-calendar__day.is-outside { color: var(--gm-muted); }
+.gm-calendar__day[aria-current="date"] { color: var(--gm-link); font-weight: 700; }
+.gm-calendar__day[aria-pressed="true"] { color: var(--gm-on-primary); background: var(--gm-primary); font-weight: 700; }
+.gm-calendar__day:disabled { color: var(--gm-muted); opacity: .45; cursor: default; }
+/* Móvil: menos relleno para que quepan los días de 44 px (WCAG 2.5.5) */
+@media (max-width: 25rem) {
+  .gm-calendar { padding: .625rem; }
+  .gm-calendar__grid td { padding: 0; }
+}
+
+/* --- Selector de color --------------------------------------------------------
+   Un botón con la muestra del color que abre una ventana con el círculo de color, las barras de tono,
+   saturación, luminosidad y opacidad, el código y el contraste de un texto blanco y uno negro encima.
+   El script opcional js/color-picker.js lo crea todo a partir de:
+   <div class="gm-color-picker" data-gm-color-picker data-label="Color de fondo">
+     <input type="hidden" name="fondo" value="#5cdfeb" />
+   </div>
+   Las barras llevan el tirador redondo (bolita). */
+.gm-color-picker { display: block; }
+
+/* Botón con la muestra del color */
+.gm-color-picker__trigger {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: .625rem;
+  padding: .25rem .875rem .25rem .25rem;
+  border: 1px solid var(--gm-field-border);
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-text);
+  background: var(--gm-field-bg);
+  cursor: pointer;
+  text-align: left;
+}
+.gm-color-picker__trigger:hover { background: var(--gm-hover); }
+.gm-color-picker__swatch, .gm-color-picker__sample {
+  /* Cuadrícula de fondo para que se note la transparencia */
+  background:
+    linear-gradient(var(--gm-swatch), var(--gm-swatch)),
+    repeating-conic-gradient(#c8c8cc 0 25%, #fff 0 50%) 0 0 / .625rem .625rem;
+}
+.gm-color-picker__swatch { display: block; flex-shrink: 0; width: 2.375rem; height: 2.375rem; border: 1px solid var(--gm-line); border-radius: .5625rem; }
+.gm-color-picker__text { display: grid; min-width: 0; }
+.gm-color-picker__label { font-size: .8rem; font-weight: 650; }
+.gm-color-picker__value { overflow: hidden; color: var(--gm-muted); font-family: var(--gm-font-mono); font-size: .75rem; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Ventana */
+.gm-color-picker__dialog {
+  width: min(35rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 1.5rem;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  color: var(--gm-text);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-md);
+  -webkit-backdrop-filter: blur(var(--gm-blur-header));
+  backdrop-filter: blur(var(--gm-blur-header));
+}
+/* Fondo casi transparente: la vista previa se sigue viendo mientras se elige */
+.gm-color-picker__dialog::backdrop { background: rgba(0, 0, 0, .12); }
+.gm-color-picker__head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1.25rem; }
+.gm-color-picker__head h2 { margin: 0; font-size: 1.2rem; }
+.gm-color-picker__body { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 1.5rem; }
+
+.gm-color-picker__wheel { position: relative; width: 12.5rem; height: 12.5rem; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--gm-line); cursor: crosshair; touch-action: none; }
+.gm-color-picker__thumb {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .35), 0 2px 6px rgba(0, 0, 0, .3);
+  transform: translate(-50%, -50%);
+  cursor: grab;
+}
+.gm-color-picker__thumb:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
+
+.gm-color-picker__sliders { display: grid; align-content: start; gap: .875rem; }
+.gm-color-picker__slider { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .375rem; }
+.gm-color-picker__slider label { font-size: .84rem; font-weight: 650; }
+.gm-color-picker__slider output { color: var(--gm-muted); font-size: .8rem; font-variant-numeric: tabular-nums; }
+.gm-color-picker__slider input {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: .875rem;
+  margin: .3125rem 0;
+  border-radius: 62.4375rem;
+  background: var(--gm-track);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.gm-color-picker__slider input.gm-color-picker__range--alpha {
+  background: var(--gm-track), repeating-conic-gradient(#c8c8cc 0 25%, #fff 0 50%) 0 0 / .625rem .625rem;
+}
+.gm-color-picker__slider input::-webkit-slider-thumb {
+  width: 1.375rem;
+  height: 1.375rem;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .4), 0 2px 6px rgba(0, 0, 0, .3);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.gm-color-picker__slider input::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .4), 0 2px 6px rgba(0, 0, 0, .3);
+}
+.gm-color-picker__hex input { min-height: 2.5rem; font-family: var(--gm-font-mono); }
+
+/* Contraste */
+.gm-color-picker__contrast { margin-top: 1.375rem; padding-top: 1.125rem; border-top: 1px solid var(--gm-line); }
+.gm-color-picker__contrast h3 { margin: 0 0 .75rem; font-size: .9rem; }
+.gm-color-picker__contrast-list { display: grid; gap: .625rem; }
+.gm-color-picker__contrast-item { display: flex; align-items: center; gap: .75rem; font-size: .88rem; }
+.gm-color-picker__sample::after { content: 'Aa'; }
+.gm-color-picker__sample { display: grid; flex-shrink: 0; width: 2.75rem; height: 2rem; border: 1px solid var(--gm-line); border-radius: .5rem; font-weight: 700; place-items: center; }
+.gm-color-picker__badge { display: inline-flex; align-items: center; gap: .25rem; margin-left: .375rem; padding: .125rem .5rem; border-radius: 62.4375rem; color: var(--gm-danger); background: var(--gm-fill-subtle); font-size: .78rem; font-weight: 600; }
+.gm-color-picker__badge--ok { color: var(--gm-success); background: var(--gm-success-bg); }
+
+.gm-color-picker__actions { display: flex; justify-content: flex-end; margin-top: 1.25rem; }
+
+@media (max-width: 35rem) {
+  .gm-color-picker__dialog { padding: 1.125rem; }
+  .gm-color-picker__body { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .gm-color-picker__sliders { width: 100%; }
+}
+
+/* --- Segmentado ----------------------------------------------------------------
+   Opciones juntas en una barra gris; la elegida, en una píldora blanca (negra de noche) con sombra.
+   Para elegir un ajuste, con botones de opción (radio) dentro de un fieldset:
+   <fieldset class="gm-field"><legend>Vista</legend>
+     <div class="gm-segmented">
+       <label><input type="radio" name="vista" checked> Claro</label>
+       <label><input type="radio" name="vista"> Oscuro</label>
+     </div>
+   </fieldset>
+   Para filtrar, con botones: <div class="gm-segmented" role="group" aria-label="Filtrar">
+     <button type="button" class="is-active" aria-pressed="true">Todas</button>
+     <button type="button" aria-pressed="false">Libros <span class="gm-segmented__count">3</span></button></div>
+   2 o 3 opciones cortas, en fila; más de 3 o con textos largos, .gm-segmented--stack (en columna). */
+.gm-segmented {
+  display: inline-flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: .25rem;
+  padding: .25rem;
+  border-radius: var(--gm-radius-pill);
+  background: var(--gm-tag);
+}
+.gm-segmented > a,
+.gm-segmented > button,
+.gm-segmented > label {
+  position: relative;
+  display: inline-flex;
+  min-height: 2.125rem;
+  align-items: center;
+  gap: .375rem;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-muted); /* 7,5:1 de día y 7,1:1 de noche sobre la barra (AAA) */
+  background: transparent;
+  font: inherit;
+  font-size: .86rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .2s, color .2s, box-shadow .2s;
+}
+/* Zona que se pulsa de 44 px de alto aunque la opción mida 34 (WCAG 2.5.5, como los botones) */
+.gm-segmented > a::after,
+.gm-segmented > button::after,
+.gm-segmented > label::after { position: absolute; top: min(0px, calc(50% - 1.375rem)); right: 0; bottom: min(0px, calc(50% - 1.375rem)); left: 0; content: ""; }
+.gm-segmented > :hover { color: var(--gm-text); }
+.gm-segmented > .is-active,
+.gm-segmented > [aria-pressed="true"],
+.gm-segmented > [aria-current="page"],
+.gm-segmented > label:has(input:checked) {
+  color: var(--gm-text);
+  background: var(--gm-surface-solid);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08), 0 1px 2px rgba(0, 0, 0, .06);
+}
+.gm-segmented > :focus-visible,
+.gm-segmented > label:has(input:focus-visible) { outline: 2px solid var(--gm-focus); outline-offset: 2px; }
+/* El círculo del radio no se ve: la píldora blanca ya dice cuál está elegida */
+.gm-segmented > label > input { position: absolute; width: .0625rem; height: .0625rem; margin: 0; opacity: 0; pointer-events: none; }
+.gm-segmented__count { color: var(--gm-muted); font-size: .76rem; }
+.gm-segmented--small > a, .gm-segmented--small > button, .gm-segmented--small > label { min-height: 1.75rem; padding: 0 .75rem; font-size: .78rem; }
+/* Más de 3 opciones o textos largos: una debajo de otra */
+.gm-segmented--stack { display: inline-flex; flex-direction: column; align-items: stretch; border-radius: 1.25rem; }
+.gm-segmented--stack > a, .gm-segmented--stack > button, .gm-segmented--stack > label { min-height: 2.5rem; border-radius: 1rem; }
+
+/* --- Control deslizante con su nombre y su valor -----------------------------------------
+   <div class="gm-slider">
+     <label for="desenfoque">Desenfoque</label>
+     <output for="desenfoque">12 px</output>
+     <input id="desenfoque" class="gm-range" type="range" min="0" max="40" value="12">
+     <p class="gm-slider__help gm-muted">Opcional: una ayuda debajo.</p>
+   </div>
+   El nombre a la izquierda, el valor a la derecha (con cifras del mismo ancho, para que no baile al moverlo) y la
+   barra debajo, a todo el ancho. */
+.gm-slider { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .5rem; }
+.gm-slider label { font-size: .9rem; font-weight: 650; }
+.gm-slider output { color: var(--gm-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.gm-slider input[type="range"] { grid-column: 1 / -1; width: 100%; }
+.gm-slider__help { grid-column: 1 / -1; font-size: .82rem; }

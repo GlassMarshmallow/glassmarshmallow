@@ -1,6 +1,9 @@
-// Junta los archivos de css/ en uno solo (dist/css/glassmarshmallow.css) y crea la versión minificada.
+// Junta los archivos de css/ y crea, cada uno con su versión minificada (.min.css):
+// - dist/css/glassmarshmallow.css: todo el framework;
+// - dist/css/glassmarshmallow-core.css: el núcleo (colores, base, maquetación, tema, utilidades y fondo), sin componentes;
+// - dist/css/components/<familia>.css: cada familia de componentes, para añadirla al núcleo.
 // Uso: node build/build-css.mjs
-import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -11,7 +14,7 @@ const outDir = join(root, 'dist', 'css');
 /** Sustituye cada @import "./archivo.css" por el contenido del archivo (dentro de su capa si lleva layer(…)). */
 function bundle(file) {
   const css = readFileSync(join(srcDir, file), 'utf8');
-  return css.replace(/@import\s+"\.\/([^"]+)"(?:\s+layer\(([\w-]+)\))?;/g, (_, name, layer) =>
+  return css.replace(/@import\s+"\.\/([^"]+)"(?:\s+layer\(([\w.-]+)\))?;/g, (_, name, layer) =>
     layer ? `@layer ${layer} {\n${bundle(name).trim()}\n}` : bundle(name).trim());
 }
 
@@ -34,10 +37,20 @@ function minify(css) {
     .replace(/\u0000(\d+)\u0000/g, (_, i) => strings[Number(i)]);
 }
 
+const write = (name, css) => {
+  writeFileSync(join(outDir, `${name}.css`), css);
+  writeFileSync(join(outDir, `${name}.min.css`), minify(css) + '\n');
+};
 const css = bundle('glassmarshmallow.css') + '\n';
-mkdirSync(outDir, { recursive: true });
-writeFileSync(join(outDir, 'glassmarshmallow.css'), css);
-writeFileSync(join(outDir, 'glassmarshmallow.min.css'), minify(css) + '\n');
+mkdirSync(join(outDir, 'components'), { recursive: true });
+write('glassmarshmallow', css);
+write('glassmarshmallow-core', bundle('glassmarshmallow-core.css') + '\n');
+// Cada familia: la cabecera y el orden de las subcapas (los mismos que el archivo completo) y sus componentes
+const header = css.slice(0, css.indexOf('@layer glassmarshmallow.tokens {'));
+const families = readdirSync(join(srcDir, 'components')).filter((f) => f.endsWith('.css')).map((f) => f.slice(0, -4));
+for (const family of families) {
+  write(`components/${family}`, `${header}@layer glassmarshmallow.components {\n${readFileSync(join(srcDir, 'components', `${family}.css`), 'utf8').trim()}\n}\n`);
+}
 // La letra (opcional) va aparte, con su archivo en dist/fonts (el CSS la busca en ../fonts)
 const font = readFileSync(join(srcDir, 'glassmarshmallow-font.css'), 'utf8');
 writeFileSync(join(outDir, 'glassmarshmallow-font.css'), font);
@@ -46,4 +59,4 @@ mkdirSync(join(root, 'dist', 'fonts'), { recursive: true });
 for (const file of ['montserrat-latin.woff2', 'OFL.txt']) {
   copyFileSync(join(root, 'fonts', file), join(root, 'dist', 'fonts', file));
 }
-console.log(`dist/css/glassmarshmallow.css (${Math.round(css.length / 1024)} kB) y glassmarshmallow.min.css`);
+console.log(`dist/css/glassmarshmallow.css (${Math.round(css.length / 1024)} kB), glassmarshmallow-core.css y ${families.length} familias en dist/css/components (con sus .min.css)`);

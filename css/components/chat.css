@@ -1,0 +1,271 @@
+/* ==========================================================================
+   glassmarshmallow · Componentes · Chat e IA
+   ========================================================================== */
+
+/* --- Fila deslizable (para opciones rápidas, como las preguntas de un chat) ------
+   Un carrusel sin botones: los elementos en una sola fila que se desliza de lado, encajando en cada uno,
+   con el borde derecho difuminado para que se vea que hay más.
+   <div class="gm-scroll-row" role="group" aria-label="Preguntas rápidas">
+     <button type="button" class="gm-btn gm-btn--pill">…</button> …
+   </div>
+   Con .gm-scroll-row--mobile solo se desliza en pantallas de 767 px o menos; en las grandes, las piezas
+   bajan a la línea siguiente. */
+.gm-scroll-row {
+  display: flex;
+  min-width: 0;
+  gap: .4rem;
+  padding-block: .25rem;
+  overflow-x: auto;
+  scroll-padding-inline: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+}
+.gm-scroll-row::-webkit-scrollbar { display: none; }
+.gm-scroll-row > * { flex: none; white-space: nowrap; scroll-snap-align: start; }
+/* El último no queda bajo el difuminado al llegar al final */
+.gm-scroll-row::after { flex: none; width: 1.5rem; content: ""; }
+@media (min-width: 48rem) {
+  .gm-scroll-row--mobile { flex-wrap: wrap; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .gm-scroll-row--mobile::after { display: none; }
+}
+
+/* ==========================================================================
+   Piezas de la plantilla de portfolio con IA (portfolio-ia-template)
+   Todas usan el cristal de los paneles (--gm-panel-*) y el borde de un solo color
+   (--gm-lights-gradient: cielo en claro, turquesa en oscuro).
+   ========================================================================== */
+
+/* Borde con degradado sobre un fondo translúcido: una capa encima recortada con una máscara */
+.gm-chip::after,
+.gm-chat-input::after,
+.gm-bubble::after {
+  position: absolute;
+  inset: -.0625rem;
+  padding: .0625rem;
+  border-radius: inherit;
+  background: var(--gm-lights-gradient);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+/* --- Chip (las preguntas rápidas y «Quiero un proyecto») ----------------------
+   <button type="button" class="gm-chip">¿Qué tecnologías usas?</button>
+   <button type="button" class="gm-chip gm-chip--accent"><i class="gmi gmi-stars" aria-hidden="true"></i>Quiero un proyecto</button>
+   Se personaliza con --gm-chip-border (el borde en reposo) y --gm-chip-color (el borde al pasar el ratón y el del
+   destacado: un color o un degradado). Sin borde: .gm-chip--borderless. */
+.gm-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .35rem .85rem;
+  border: 1px solid var(--gm-chip-border, var(--gm-panel-border));
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-text);
+  background: var(--gm-panel-bg);
+  box-shadow: var(--gm-panel-shadow);
+  font: inherit;
+  font-size: .82rem;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-backdrop-filter: var(--gm-panel-filter);
+  backdrop-filter: var(--gm-panel-filter);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .3s ease;
+}
+/* Zona que se pulsa de 44 px de alto (WCAG 2.5.5) */
+.gm-chip::before { position: absolute; top: min(0px, calc(50% - 1.375rem)); right: 0; bottom: min(0px, calc(50% - 1.375rem)); left: 0; content: ""; }
+.gm-chip .gmi { font-size: 1.15em; }
+.gm-chip:hover:not(:disabled, [aria-disabled="true"]) { border-color: transparent; transform: translateY(-2px); }
+.gm-chip::after { background: var(--gm-chip-color, var(--gm-lights-gradient)); }
+.gm-chip:hover:not(:disabled, [aria-disabled="true"])::after { opacity: 1; }
+.gm-chip:disabled, .gm-chip[aria-disabled="true"] { opacity: .5; cursor: default; }
+/* Destacado: el borde de color siempre */
+.gm-chip--accent { border-color: transparent; font-weight: 600; }
+.gm-chip--accent::after { opacity: 1; }
+/* Sin borde: solo el cristal (el texto ya dice qué es); al pasar el ratón sigue subiendo un poco */
+.gm-chip--borderless { --gm-chip-border: transparent; --gm-chip-color: transparent; }
+
+/* --- Chat: campo para preguntar --------------------------------------------------
+   <form class="gm-chat-input" role="search">
+     <label class="gm-visually-hidden" for="pregunta">Escribe una pregunta</label>
+     <input id="pregunta" class="gm-chat-input__field" placeholder="Pregúntame lo que quieras…">
+     <button type="submit" class="gm-chat-input__send" aria-label="Enviar pregunta"><i class="gmi gmi-arrow-up-circle-fill" aria-hidden="true"></i></button>
+   </form> */
+.gm-chat-input {
+  position: relative;
+  display: flex;
+  max-width: 30rem;
+  align-items: center;
+  gap: .25rem;
+  padding: .3rem .35rem .3rem 1.1rem;
+  border: 1px solid var(--gm-panel-border);
+  border-radius: var(--gm-radius-pill);
+  background: var(--gm-panel-bg);
+  box-shadow: var(--gm-panel-shadow);
+  -webkit-backdrop-filter: var(--gm-panel-filter);
+  backdrop-filter: var(--gm-panel-filter);
+}
+.gm-chat-input:focus-within { border-color: transparent; box-shadow: 0 0 0 3px var(--gm-field-ring); }
+.gm-chat-input:focus-within::after { opacity: 1; }
+.gm-chat-input__field {
+  flex: 1;
+  min-width: 0;
+  min-height: 2.75rem;
+  margin: 0;
+  padding: .55rem 0;
+  border: 0;
+  color: var(--gm-text);
+  background: transparent;
+  font: inherit;
+  font-size: 1rem;
+}
+.gm-chat-input__field::placeholder { color: var(--gm-muted); }
+.gm-chat-input__field:focus { outline: none; }
+.gm-chat-input__send {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--gm-accent);
+  background: none;
+  font-size: 2.75rem; /* el círculo del icono se ve de unos 31 px, como el de la plantilla */
+  place-items: center;
+  cursor: pointer;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.gm-chat-input__send:hover:not(:disabled) { transform: scale(1.08); }
+.gm-chat-input__send:disabled { opacity: .4; cursor: default; }
+
+/* --- Chat: bocadillo de respuesta -------------------------------------------------
+   <div class="gm-bubble gm-bubble--tail-end">
+     <div class="gm-bubble__scroll" tabindex="0" role="region" aria-label="Respuesta">Texto de la respuesta…</div>
+     <button type="button" class="gm-bubble__close" aria-label="Cerrar"><i class="gmi gmi-x" aria-hidden="true"></i></button>
+   </div>
+   La cola apunta a la derecha (--tail-end) o a la izquierda (--tail-start); su altura, en --gm-bubble-tail-y. */
+.gm-bubble {
+  --gm-bubble-tail-y: 1.1rem;
+  /* La cola toma el color de --gm-bubble-color; si este es un degradado, pon un color en --gm-bubble-tail-color */
+  --gm-bubble-tail-color: var(--gm-bubble-color);
+  position: relative;
+  display: flex;
+  min-height: 0;
+  padding: .85rem 1rem .9rem;
+  border: 1px solid transparent;
+  border-radius: 1.125rem;
+  color: var(--gm-text);
+  background: var(--gm-bubble-bg);
+  box-shadow: var(--gm-bubble-shadow);
+  font-size: .95rem;
+  line-height: 1.5;
+  text-align: start;
+  -webkit-backdrop-filter: var(--gm-panel-filter);
+  backdrop-filter: var(--gm-panel-filter);
+  animation: gm-bubble-in .35s ease both;
+}
+.gm-bubble::after { background: var(--gm-bubble-color, var(--gm-lights-gradient)); opacity: 1; }
+/* Con --gm-bubble-color (un color o un degradado) cambian el borde y la cola a la vez */
+.gm-bubble--error { --gm-bubble-color: var(--gm-danger); }
+.gm-bubble__scroll {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  padding-right: .9rem;
+  overflow-y: auto;
+  scrollbar-color: rgba(128, 128, 128, .45) transparent;
+  scrollbar-width: thin;
+}
+.gm-bubble__scroll:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 2px; }
+.gm-bubble a { color: var(--gm-link); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.gm-bubble__close {
+  position: absolute;
+  top: .4rem;
+  right: .4rem;
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: inherit;
+  background: none;
+  opacity: .6;
+  place-items: center;
+  cursor: pointer;
+}
+.gm-bubble__close:hover { opacity: 1; }
+/* Antetítulo dentro del bocadillo («Seguimos donde lo dejamos») */
+.gm-bubble__note { display: block; margin-bottom: .3rem; color: var(--gm-accent); font-size: .75rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
+/* Cola: un rombo del color del bocadillo con dos lados del color del borde, estirado para que quede afilado
+   Va encima del borde con degradado, así el borde no la cruza por la base. */
+.gm-bubble--tail-end::before,
+.gm-bubble--tail-start::before {
+  position: absolute;
+  z-index: 1;
+  width: .8125rem;
+  height: .8125rem;
+  border: 0 solid;
+  background: var(--gm-bubble-tail-bg);
+  content: "";
+  transform: scaleX(1.25) rotate(45deg);
+}
+.gm-bubble--tail-end::before {
+  right: -.40625rem;
+  bottom: clamp(min(1.125rem, calc(50% - .4375rem)), var(--gm-bubble-tail-y), max(calc(100% - 2rem), calc(50% - .4375rem)));
+  border-color: var(--gm-bubble-tail-color, var(--gm-bubble-tail-end));
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+.gm-bubble--tail-start::before {
+  top: var(--gm-bubble-tail-y);
+  left: -.40625rem;
+  border-color: var(--gm-bubble-tail-color, var(--gm-bubble-tail-start));
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+/* Cola a la izquierda medida desde abajo, como la de la derecha (cuando quien habla queda abajo, p. ej. una foto) */
+.gm-bubble--tail-start.gm-bubble--tail-bottom::before {
+  top: auto;
+  bottom: clamp(min(1.125rem, calc(50% - .4375rem)), var(--gm-bubble-tail-y), max(calc(100% - 2rem), calc(50% - .4375rem)));
+}
+@keyframes gm-bubble-in { from { opacity: 0; transform: translateY(8px) scale(.97); } }
+
+/* Puntos de «escribiendo…» */
+.gm-typing { display: inline-flex; gap: .3rem; padding: .35rem 0; }
+.gm-typing > span { width: .45rem; height: .45rem; border-radius: 50%; background: var(--gm-typing-color, var(--gm-lights-gradient)); animation: gm-typing 1.2s ease-in-out infinite; }
+.gm-typing > span:nth-child(2) { animation-delay: .15s; }
+.gm-typing > span:nth-child(3) { animation-delay: .3s; }
+@keyframes gm-typing { 0%, 60%, 100% { opacity: .4; transform: none; } 30% { opacity: 1; transform: translateY(-5px); } }
+
+/* --- Aviso de IA (transparencia, junto a un chat) -----------------------------------
+   <p class="gm-ai-notice">Respuestas generadas con IA…; pueden contener errores.
+     <button type="button" class="gm-ai-notice__link">Más información</button></p> */
+.gm-ai-notice { max-width: 30rem; margin: .75rem auto 0; color: var(--gm-muted); font-size: .75rem; line-height: 1.4; text-align: center; }
+.gm-ai-notice__link {
+  display: inline-flex;
+  min-height: 1.5rem;
+  align-items: center;
+  padding: 0 .15rem;
+  border: 0;
+  color: inherit;
+  background: none;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.gm-ai-notice__link:hover { color: var(--gm-text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-chip, .gm-chat-input__send, .gm-bubble, .gm-typing > span { animation: none; transition: none; }
+  .gm-chip:hover:not(:disabled, [aria-disabled="true"]) { transform: none; }
+}

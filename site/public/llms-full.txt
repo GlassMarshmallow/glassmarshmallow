@@ -5,7 +5,7 @@
 
 GlassMarshmallow is a CSS framework with glass surfaces, light and dark mode and WCAG 2.2 AA accessibility (and AAA whenever possible) from the first component.
 
-> **GlassMarshmallow is in development (v0.2).** The docs grow page by page together with the framework.
+> **GlassMarshmallow is in development (v0.3).** The docs grow page by page together with the framework.
 
 ## What's included
 
@@ -111,18 +111,33 @@ GlassMarshmallow uses Montserrat. It comes in a separate file, `glassmarshmallow
 @import "glassmarshmallow/dist/css/glassmarshmallow.css";
 ```
 
-If you only need some parts, import the source files one by one. `tokens.css` always goes first.
+### Only the parts you need
 
-```css
-@import "glassmarshmallow/css/tokens.css";
-@import "glassmarshmallow/css/base.css";
-@import "glassmarshmallow/css/components.css";
-@import "glassmarshmallow/css/backdrop.css";
+`glassmarshmallow.css` has everything. If your site only uses some components, load the **core** (colors, base,
+grid, theme, utilities and background) and then the **component families** you need. They can go in any order:
+the framework's layers keep them in place.
+
+```css:CSS
+@import "glassmarshmallow/dist/css/glassmarshmallow-core.css";
+@import "glassmarshmallow/dist/css/components/basics.css";
+@import "glassmarshmallow/dist/css/components/navigation.css";
 ```
+
+| Family | Components | Needs |
+| --- | --- | --- |
+| `basics` | Button, card, alert, tag, code, avatar, accordion, progress, tooltip, dialog, round glass button, data list, hit area, copy command | — |
+| `forms` | Form, field, range and slider, error summary, segmented control, calendar, color picker | `basics` |
+| `navigation` | Navbar and tab bar, menu, search, full-screen menu, side menu, table of contents, previous/next, footers, social icons | `basics` |
+| `media` | Video player, carousel, gallery, logo ticker | — |
+| `chat` | Scroll row, chip, chat field, answer bubble, AI notice | — |
+| `pages` | Section, hero, page structure, inner page, long text, code snippet, icon grid, showcase, documentation page | `basics` |
+| `tools` | The generators' layout (`gm-tool`) | `basics`, `forms` |
+
+Each file also has its `.min.css`. How much each one weighs is in [Performance](/docs/getting-started/performance).
 
 ## Icons
 
-The icons live in their own package, [GlassMarshmallow Icons](/icons).
+The icons live in their own package, [GlassMarshmallow Icons](/icons). With GlassMarshmallow 0.3 or later, use the icons 0.4 or later: they go in the framework's icons layer, so components and utilities can adjust them.
 
 ```sh:npm
 npm install glassmarshmallow-icons
@@ -150,7 +165,7 @@ Then load the stylesheet and use an icon with two classes. Icons take the color 
 Skip the install and load the compiled CSS from a CDN.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.2.1/dist/css/glassmarshmallow.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.3.0/dist/css/glassmarshmallow.min.css">
 ```
 
 ## Download
@@ -809,8 +824,16 @@ download is the **gzip** or **Brotli** column.
 <!-- sizes -->
 | File | As is | gzip | Brotli |
 | --- | --- | --- | --- |
-| `glassmarshmallow.min.css` | 209.3 kB | 34.8 kB | 24.4 kB |
-| `glassmarshmallow.css` | 297.7 kB | 58.4 kB | 43.2 kB |
+| `glassmarshmallow.min.css` | 209.9 kB | 34.9 kB | 24.6 kB |
+| `glassmarshmallow.css` | 300.0 kB | 58.9 kB | 43.4 kB |
+| `glassmarshmallow-core.min.css` | 131.3 kB | 21.5 kB | 13.0 kB |
+| `components/basics.min.css` | 16.4 kB | 3.9 kB | 3.4 kB |
+| `components/chat.min.css` | 6.9 kB | 2.0 kB | 1.7 kB |
+| `components/forms.min.css` | 12.6 kB | 3.0 kB | 2.5 kB |
+| `components/media.min.css` | 12.2 kB | 3.0 kB | 2.6 kB |
+| `components/navigation.min.css` | 18.8 kB | 4.0 kB | 3.5 kB |
+| `components/pages.min.css` | 9.5 kB | 2.5 kB | 2.2 kB |
+| `components/tools.min.css` | 4.2 kB | 1.3 kB | 1.1 kB |
 | `glassmarshmallow-font.min.css` | 0.6 kB | 0.4 kB | 0.4 kB |
 
 The font file (`montserrat-latin.woff2`) is 34.7 kB; it is already compressed.

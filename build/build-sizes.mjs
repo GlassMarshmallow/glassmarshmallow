@@ -14,9 +14,12 @@ const measure = (file) => {
 };
 const row = (name, file) => { const m = measure(file); return `| ${name} | ${kb(m.raw)} | ${kb(m.gzip)} | ${kb(m.brotli)} |`; };
 
+const families = readdirSync(join(root, 'dist/css/components')).filter((f) => f.endsWith('.min.css')).sort();
 const css = [
   ['`glassmarshmallow.min.css`', 'dist/css/glassmarshmallow.min.css'],
   ['`glassmarshmallow.css`', 'dist/css/glassmarshmallow.css'],
+  ['`glassmarshmallow-core.min.css`', 'dist/css/glassmarshmallow-core.min.css'],
+  ...families.map((f) => [`\`components/${f}\``, `dist/css/components/${f}`]),
   ['`glassmarshmallow-font.min.css`', 'dist/css/glassmarshmallow-font.min.css'],
 ];
 const scripts = readdirSync(join(root, 'js')).filter((f) => f.endsWith('.js')).sort();

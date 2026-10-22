@@ -1,0 +1,109 @@
+/* ==========================================================================
+   glassmarshmallow · Componentes · Herramientas
+   ========================================================================== */
+
+/* --- Herramienta: vista previa y controles (los generadores de esta web) ----------------
+   <div class="gm-tool">
+     <div class="gm-tool__preview">…la vista previa…</div>
+     <div class="gm-card gm-tool__controls">
+       <div class="gm-slider">…</div>
+       <fieldset class="gm-tool__group"><legend>Dirección</legend>…</fieldset>
+       <div class="gm-tool__code"><pre class="gm-code gm-code--wrap">…</pre><button class="gm-btn">Copiar</button></div>
+     </div>
+   </div>
+   La vista previa a la izquierda y los controles a la derecha; por debajo de 860 px (md), una debajo de la otra.
+   gm-tool__preview--sticky deja la vista previa a la vista mientras se bajan los controles.
+   gm-tool__stage es el recuadro de la vista previa (más bajo en el móvil); gm-tool__sample, el texto de muestra que va
+   encima (con gm-tool__sample-title y gm-tool__sample-small), y gm-tool__toggle, una casilla con su texto
+   («Mostrar el texto de ejemplo»). */
+.gm-tool { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: start; gap: 2rem; }
+.gm-tool__preview { display: grid; gap: .875rem; }
+.gm-tool__preview--sticky { position: sticky; top: calc(var(--gm-header-height) + 1rem); }
+.gm-tool__controls { display: grid; gap: 1.375rem; }
+.gm-tool__group { min-width: 0; margin: 0; padding: 0; border: 0; }
+.gm-tool__group > legend { margin-bottom: .625rem; padding: 0; font-size: .9rem; font-weight: 650; }
+.gm-tool__code { display: grid; gap: .75rem; }
+.gm-tool__stage {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: 28.75rem;
+  padding: 2rem;
+  border-radius: var(--gm-radius-md);
+  place-items: center;
+}
+.gm-tool__sample { position: relative; max-width: 23.75rem; text-align: center; }
+.gm-tool__sample p { margin: 0; font-size: 1.05rem; }
+.gm-tool__sample .gm-tool__sample-title { margin-bottom: .375rem; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -.03em; }
+.gm-tool__sample .gm-tool__sample-small { margin-top: .625rem; font-size: .82rem; }
+.gm-tool__toggle { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .625rem; font-size: .9rem; font-weight: 600; cursor: pointer; }
+.gm-tool__toggle input { width: 1.25rem; height: 1.25rem; margin: 0; accent-color: var(--gm-accent); cursor: pointer; }
+.gm-tool__presets { display: flex; flex-wrap: wrap; gap: .625rem; }
+/* Botón de un valor de partida, con su muestra de color */
+.gm-tool__preset {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: .625rem;
+  padding: .375rem 1rem .375rem .375rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-text);
+  background: var(--gm-surface-glass);
+  font-size: .88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.gm-tool__preset:hover { background: var(--gm-hover); }
+.gm-tool__swatch { width: 1.75rem; height: 1.75rem; border-radius: 50%; }
+/* Lista de colores: cada fila con su selector, su posición y el botón de quitar */
+.gm-tool__stops { display: grid; gap: .875rem; }
+.gm-tool__stop { display: grid; grid-template-columns: minmax(0, 9.375rem) minmax(0, 1fr) auto; align-items: center; gap: .75rem; }
+.gm-tool__stop output { color: var(--gm-muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.gm-tool__stop input[type="range"] { grid-column: 1 / -1; width: 100%; }
+.gm-tool__stop-position { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .25rem .5rem; }
+.gm-tool__stop-position label { font-size: .82rem; }
+.gm-tool__stop .gm-icon-btn:disabled { cursor: not-allowed; opacity: .4; }
+/* Móvil: el selector y el botón de quitar arriba, la posición debajo a todo el ancho */
+@media (max-width: 37.5rem) {
+  .gm-tool__stop { grid-template-columns: minmax(0, 1fr) auto; padding-bottom: .875rem; border-bottom: 1px solid var(--gm-line); }
+  .gm-tool__stop-position { grid-column: 1 / -1; grid-row: 2; }
+}
+/* Cuadrícula de 3 × 3 botones: direcciones (con flechas) o posiciones (con puntos, gm-tool__pad-dot) */
+.gm-tool__pad { display: grid; grid-template-columns: repeat(3, 2.75rem); gap: .375rem; }
+.gm-tool__pad-btn,
+.gm-tool__pad-center { display: grid; width: 2.75rem; height: 2.75rem; border-radius: var(--gm-radius-sm); place-items: center; }
+.gm-tool__pad-btn { border: 1px solid var(--gm-field-border); color: var(--gm-text); background: var(--gm-field-bg); font-size: 1.15rem; cursor: pointer; }
+.gm-tool__pad-btn:hover { background: var(--gm-hover); }
+.gm-tool__pad-btn[aria-pressed="true"] { border-color: var(--gm-text); color: var(--gm-on-primary); background: var(--gm-primary); }
+.gm-tool__pad-dot { width: .625rem; height: .625rem; border: 2px solid currentColor; border-radius: 50%; }
+.gm-tool__pad-btn[aria-pressed="true"] .gm-tool__pad-dot { background: currentColor; }
+/* Pantalla completa (un <dialog>): el resultado sobre el fondo de la web, con una barra abajo para cerrar */
+.gm-tool__fullscreen { width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: var(--gm-backdrop-bg); }
+.gm-tool__fullscreen::backdrop { background: transparent; }
+.gm-tool__fullscreen > .gm-backdrop { position: absolute; z-index: 0; }
+.gm-tool__fullscreen > .gm-backdrop > * { position: absolute; }
+.gm-tool__fullscreen-bar {
+  position: absolute;
+  z-index: 2;
+  bottom: 1.5rem;
+  left: 50%;
+  display: flex;
+  max-width: calc(100% - 2rem);
+  align-items: center;
+  gap: .875rem;
+  padding: .5rem .5rem .5rem 1.125rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-pill);
+  color: var(--gm-text);
+  background: var(--gm-surface-solid);
+  box-shadow: var(--gm-shadow-md);
+  font-size: .9rem;
+  transform: translateX(-50%);
+}
+@media (max-width: 53.75rem) {
+  .gm-tool { grid-template-columns: minmax(0, 1fr); }
+  .gm-tool__preview--sticky { position: static; }
+  .gm-tool__stage { min-height: 18.75rem; }
+}

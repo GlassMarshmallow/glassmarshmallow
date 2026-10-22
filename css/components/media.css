@@ -1,0 +1,395 @@
+/* ==========================================================================
+   glassmarshmallow · Componentes · Multimedia
+   ========================================================================== */
+
+/* --- Reproductor de vídeo ---------------------------------------------------------
+   <div class="gm-player" data-gm-player>
+     <video src="pelicula.mp4" controls playsinline><track kind="subtitles" src="es.vtt" srclang="es" label="Español"></video>
+   </div>
+   El script opcional js/player.js quita los controles del navegador y pone los del framework: reproducir,
+   10 s atrás y adelante, sonido, volumen, tiempo, subtítulos y pantalla completa. Sin el script, el vídeo
+   se queda con los controles del navegador. Siempre en oscuro, como una sala de cine. */
+.gm-player {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: .5rem;
+  color: #f5f5f7;
+  background: #000;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .55);
+  container-type: inline-size;
+}
+.gm-player:fullscreen { border-radius: 0; box-shadow: none; }
+.gm-player video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.gm-player video::cue { color: #fff; background: rgba(0, 0, 0, .55); font-size: clamp(1rem, 2.4vw, 1.6rem); }
+/* Mientras se ve: sin ratón y sin controles hasta que se mueve el ratón o se toca */
+.gm-player.is-idle { cursor: none; }
+.gm-player.is-idle :is(.gm-player__header, .gm-player__controls) { opacity: 0; pointer-events: none; }
+
+/* Título opcional arriba */
+.gm-player__header {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: grid;
+  gap: .125rem;
+  padding: .875rem clamp(1rem, 3vw, 2.25rem) 2.5rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .82), transparent);
+  transition: opacity .3s;
+}
+.gm-player__header strong, .gm-player__header span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gm-player__header strong { color: #f5f5f7; }
+.gm-player__header span { color: rgba(245, 245, 247, .82); font-size: .9rem; }
+
+.gm-player__loading { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.gm-player__loading[hidden] { display: none; }
+.gm-player__spinner { width: 1.75rem; height: 1.75rem; border: 3px solid rgba(255, 255, 255, .3); border-top-color: #fff; border-radius: 50%; animation: gm-spin .8s linear infinite; }
+@keyframes gm-spin { to { transform: rotate(360deg); } }
+
+/* Controles abajo, sobre un degradado negro para que se lean sobre cualquier imagen */
+.gm-player__controls {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  gap: .625rem;
+  padding: 2.5rem clamp(1rem, 3vw, 2.25rem) 1.125rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .78));
+  transition: opacity .3s;
+}
+.gm-player__bar { display: flex; align-items: center; gap: .5rem; }
+.gm-player__spacer { flex: 1; }
+
+/* Línea de tiempo: blanca, con la bolita */
+.gm-player__timeline {
+  --gm-range-progress: 0%;
+  width: 100%;
+  height: 1.25rem;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.gm-player__timeline:focus { outline: none; }
+.gm-player__timeline::-webkit-slider-runnable-track {
+  height: .3125rem;
+  border-radius: 62.4375rem;
+  background: linear-gradient(90deg, #f5f5f7 var(--gm-range-progress), rgba(255, 255, 255, .25) var(--gm-range-progress));
+}
+.gm-player__timeline::-moz-range-track { height: .3125rem; border-radius: 62.4375rem; background: rgba(255, 255, 255, .25); }
+.gm-player__timeline::-moz-range-progress { height: .3125rem; border-radius: 62.4375rem; background: #f5f5f7; }
+.gm-player__timeline::-webkit-slider-thumb { width: .875rem; height: .875rem; margin-top: -.28125rem; border: 0; border-radius: 50%; background: #fff; -webkit-appearance: none; appearance: none; }
+.gm-player__timeline::-moz-range-thumb { width: .875rem; height: .875rem; border: 0; border-radius: 50%; background: #fff; }
+.gm-player__timeline:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px #000, 0 0 0 5px #fff; }
+.gm-player__timeline:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 3px #000, 0 0 0 5px #fff; }
+
+/* Botones redondos de cristal; el de reproducir, blanco */
+.gm-player__button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  color: #f5f5f7;
+  background: rgba(255, 255, 255, .13);
+  font-size: 1.2rem;
+  place-items: center;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(3.9px);
+  backdrop-filter: blur(3.9px);
+  transition: background .2s;
+}
+.gm-player__button:hover, .gm-player__button.is-on { background: rgba(255, 255, 255, .24); }
+.gm-player__button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.gm-player__button--main { color: #111113; background: rgba(255, 255, 255, .94); font-size: 1.5rem; }
+.gm-player__button--main:hover { background: #fff; }
+
+.gm-player__volume { width: 5.625rem; min-height: 2.75rem; margin: 0; accent-color: #f5f5f7; cursor: pointer; }
+.gm-player__time { margin-left: .375rem; color: rgba(245, 245, 247, .88); font-size: .9rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Menú de subtítulos */
+.gm-player__menu-wrap { position: relative; }
+.gm-player__menu {
+  position: absolute;
+  right: 0;
+  bottom: 3.375rem;
+  display: grid;
+  min-width: 13.75rem;
+  max-height: 50vh;
+  overflow-y: auto;
+  gap: .125rem;
+  padding: .5rem;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: .875rem;
+  background: rgba(30, 32, 36, .86);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .5);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+.gm-player__menu[hidden] { display: none; }
+.gm-player__menu p { margin: .25rem .625rem .375rem; color: rgba(245, 245, 247, .82); font-size: .78rem; font-weight: 700; text-transform: uppercase; }
+.gm-player__menu button { min-height: 2.75rem; padding: .5625rem .75rem; border: 0; border-radius: .625rem; color: #f5f5f7; background: transparent; font: inherit; text-align: left; cursor: pointer; }
+.gm-player__menu button:hover { background: rgba(255, 255, 255, .12); }
+.gm-player__menu button[aria-checked="true"] { background: rgba(255, 255, 255, .2); font-weight: 700; }
+.gm-player__menu button:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+
+/* Reproductor estrecho (según su propio ancho, no el de la pantalla): sin volumen ni tiempo (el volumen va
+   con los botones del teléfono); los botones siguen en 44 px (AAA) */
+@container (max-width: 640px) {
+  .gm-player__volume, .gm-player__time { display: none; }
+  .gm-player__bar { gap: .375rem; }
+  .gm-player__controls { padding: 2rem .75rem .625rem; }
+  .gm-player__header { padding: .625rem .75rem 1.75rem; font-size: .9rem; }
+}
+/* Muy estrecho: sin los botones de 10 s (siguen con las flechas del teclado) ni la segunda línea del título */
+@container (max-width: 420px) {
+  .gm-player [data-action="back"], .gm-player [data-action="forward"], .gm-player__header span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gm-player__header, .gm-player__controls { transition: none; }
+  .gm-player__spinner { animation-duration: 2.4s; }
+}
+
+/* --- Carrusel ------------------------------------------------------------------
+   <div class="gm-carousel" data-gm-carousel aria-label="Proyectos">
+     <div class="gm-carousel__track">
+       <figure class="gm-carousel__slide"><img src="…" alt="…"><figcaption class="gm-carousel__caption">…</figcaption></figure>
+       …
+     </div>
+   </div>
+   Sin script, las diapositivas se pasan deslizando (o con la barra de desplazamiento). El script opcional
+   js/carousel.js añade las flechas, los puntos y, con data-interval, el paso automático con su botón de pausa. */
+.gm-carousel {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  overflow: hidden;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: .75rem;
+  background: var(--gm-surface-glass);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.gm-carousel__viewport { position: relative; }
+.gm-carousel__track {
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  border-radius: .625rem;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.gm-carousel__track::-webkit-scrollbar { display: none; }
+.gm-carousel__track:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
+.gm-carousel__slide { position: relative; margin: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+.gm-carousel__slide > img,
+.gm-carousel__slide > video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: .625rem; object-fit: cover; }
+/* Texto blanco sobre la imagen, con sombra y un degradado debajo para que se lea sobre cualquier foto */
+.gm-carousel__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 3rem clamp(1rem, 4%, 2rem) 1.125rem;
+  border-radius: 0 0 .625rem .625rem;
+  color: #fff;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .72));
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .8);
+}
+.gm-carousel__caption p { margin: .25rem 0 0; font-weight: 400; }
+
+/* Flechas: los botones redondos de cristal del reproductor, a los lados de la imagen */
+.gm-carousel__prev,
+.gm-carousel__next {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  color: #f5f5f7;
+  background: rgba(0, 0, 0, .45);
+  font-size: 1.2rem;
+  place-items: center;
+  cursor: pointer;
+  transform: translateY(-50%);
+  -webkit-backdrop-filter: blur(3.9px);
+  backdrop-filter: blur(3.9px);
+  transition: background .2s;
+}
+.gm-carousel__prev { left: .75rem; }
+.gm-carousel__next { right: .75rem; }
+.gm-carousel__prev:hover, .gm-carousel__next:hover { background: rgba(0, 0, 0, .65); }
+.gm-carousel__prev:focus-visible, .gm-carousel__next:focus-visible { outline: 2px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 4px #000; }
+.gm-carousel__prev:disabled, .gm-carousel__next:disabled { opacity: 0; pointer-events: none; }
+
+/* Puntos y pausa, debajo */
+.gm-carousel__nav { display: flex; align-items: center; justify-content: center; gap: .25rem; }
+.gm-carousel__dot {
+  display: grid;
+  width: 2rem;
+  height: 2.75rem; /* WCAG 2.5.5 (AAA) */
+  padding: 0;
+  border: 0;
+  background: none;
+  place-items: center;
+  cursor: pointer;
+}
+.gm-carousel__dot::before { width: .625rem; height: .625rem; border: 1px solid var(--gm-field-border); border-radius: 50%; content: ""; transition: width .2s, background .2s; }
+.gm-carousel__dot[aria-current="true"]::before { width: 1.5rem; border-color: var(--gm-text); border-radius: 62.4375rem; background: var(--gm-text); }
+.gm-carousel__dot:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: -4px; border-radius: .5rem; }
+.gm-carousel__pause { margin-left: .5rem; }
+
+/* Sin botones: se pasa deslizando y la siguiente foto asoma por el lado para que se vea que hay más.
+   Sin data-gm-carousel; la pista lleva tabindex="0" para moverla con las flechas del teclado */
+.gm-carousel--peek .gm-carousel__track { grid-auto-columns: 85%; gap: .75rem; scroll-padding-inline: 0; }
+.gm-carousel--peek .gm-carousel__track:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
+.gm-carousel--peek .gm-carousel__slide:last-child { scroll-snap-align: end; }
+
+@media (max-width: 37.5rem) {
+  .gm-carousel { gap: .75rem; padding: .75rem; }
+  .gm-carousel__caption { padding-top: 2rem; font-size: .9rem; }
+  .gm-carousel__caption p { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gm-carousel__track { scroll-behavior: auto; }
+  .gm-carousel__dot::before { transition: none; }
+}
+
+/* --- Galería (álbum de fotos) -----------------------------------------------------
+   <div class="gm-gallery" data-gm-gallery aria-label="Vacaciones">
+     <a class="gm-gallery__item" href="foto-grande.jpg" data-caption="Texto opcional">
+       <img src="foto.jpg" alt="Descripción de la foto">
+     </a>
+     …
+   </div>
+   Sin script, cada foto abre la imagen grande. El script opcional js/gallery.js la enseña en un visor
+   (.gm-lightbox) con flechas, contador y su texto. */
+.gm-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr)); gap: .75rem; }
+.gm-gallery--lg { grid-template-columns: repeat(auto-fill, minmax(min(100%, 18.75rem), 1fr)); gap: 1rem; }
+.gm-gallery__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: .625rem;
+  color: inherit;
+  background: var(--gm-tag);
+  box-shadow: var(--gm-shadow-sm);
+}
+.gm-gallery__item img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .35s ease; }
+.gm-gallery--square .gm-gallery__item img { aspect-ratio: 1; }
+.gm-gallery__item:hover img { transform: scale(1.04); }
+.gm-gallery__item:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 3px; }
+/* Texto opcional debajo de la foto */
+.gm-gallery__caption { display: block; padding: .5rem .625rem; color: var(--gm-text); background: var(--gm-surface-solid); font-size: .85rem; }
+
+/* Visor: la foto en grande sobre fondo casi negro, con los botones del reproductor */
+.gm-lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #f5f5f7;
+  background: transparent;
+}
+.gm-lightbox::backdrop { background: rgba(0, 0, 0, .92); }
+.gm-lightbox[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+.gm-lightbox__head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .875rem clamp(1rem, 3vw, 2rem); }
+.gm-lightbox__count { color: rgba(245, 245, 247, .88); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.gm-lightbox__stage { position: relative; display: grid; min-height: 0; padding: 0 clamp(1rem, 7vw, 6rem); place-items: center; }
+/* La foto cabe siempre en la pantalla: el 100 % de alto no se resuelve dentro de la rejilla, así que se mide con la
+   ventana, menos la cabecera y el pie de foto (también las fotos altas, como capturas de móvil) */
+.gm-lightbox__stage img { max-width: 100%; max-height: calc(100dvh - 10rem); border-radius: .5rem; object-fit: contain; box-shadow: 0 30px 90px rgba(0, 0, 0, .55); }
+.gm-lightbox__caption { min-height: 1.5em; margin: 0; padding: .875rem clamp(1rem, 3vw, 2rem) 1.375rem; text-align: center; }
+.gm-lightbox__button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  color: #f5f5f7;
+  background: rgba(255, 255, 255, .13);
+  font-size: 1.2rem;
+  place-items: center;
+  cursor: pointer;
+  transition: background .2s;
+}
+.gm-lightbox__button:hover { background: rgba(255, 255, 255, .24); }
+.gm-lightbox__button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.gm-lightbox__prev, .gm-lightbox__next { position: absolute; top: 50%; transform: translateY(-50%); }
+.gm-lightbox__prev { left: clamp(.5rem, 2vw, 1.5rem); }
+.gm-lightbox__next { right: clamp(.5rem, 2vw, 1.5rem); }
+/* Una sola foto (data-gm-zoom): sin flechas ni contador */
+.gm-lightbox--single :is(.gm-lightbox__prev, .gm-lightbox__next, .gm-lightbox__count) { display: none; }
+.gm-lightbox--single .gm-lightbox__head { justify-content: flex-end; }
+@media (max-width: 37.5rem) {
+  .gm-lightbox__stage { padding: 0 .5rem; }
+  .gm-lightbox__prev, .gm-lightbox__next { top: auto; bottom: -3.5rem; transform: none; }
+  .gm-lightbox__caption { padding-inline: 4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gm-gallery__item img { transition: none; }
+  .gm-gallery__item:hover img { transform: none; }
+}
+
+/* --- Franja de logos que se desliza (la de tecnologías de la plantilla) ---------------
+   <div class="gm-ticker"><div class="gm-ticker__track" aria-hidden="true">
+     <span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>Angular</span> … (dos copias seguidas)
+   </div>
+   <button type="button" class="gm-icon-btn gm-icon-btn--glass gm-ticker__pause" aria-pressed="false" aria-label="Pausar la franja">…</button></div>
+   Decorativa: la información tiene que estar también en otro sitio. Se para con el ratón, con el foco,
+   con .is-paused (el botón de pausa) y si la persona pide menos movimiento. --static: quieta y centrada. */
+.gm-ticker {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-image: var(--gm-ticker-border);
+  background: var(--gm-ticker-bg);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.gm-ticker__track { display: flex; width: max-content; animation: gm-ticker 60s linear infinite; }
+.gm-ticker:is(:hover, :focus-within, .is-paused) .gm-ticker__track { animation-play-state: paused; }
+.gm-ticker__item { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.4rem; color: var(--gm-text); font-size: .95rem; font-weight: 500; white-space: nowrap; }
+.gm-ticker__item :is(svg, .gmi) { width: 1.9rem; height: 1.3rem; fill: currentColor; font-size: 1.3rem; }
+.gm-ticker--static .gm-ticker__track { width: auto; justify-content: center; animation: none; }
+/* Botón para pararla (WCAG 2.2.2): redondo, de cristal, al final de la franja y sin ocupar sitio */
+/* Los logos se desvanecen antes de llegar al botón, para que no asomen por debajo ni a su lado */
+.gm-ticker:has(.gm-ticker__pause)::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 6rem;
+  background: linear-gradient(to right, transparent, var(--gm-ticker-fade) 55%);
+  content: "";
+  pointer-events: none;
+}
+.gm-ticker__pause { position: absolute; z-index: 2; top: 50%; right: .5rem; transform: translateY(-50%); }
+/* La franja recorta lo que sobresale: el contorno del foco va por dentro del botón para que se vea entero */
+.gm-ticker__pause:focus-visible { outline-offset: -4px; }
+@keyframes gm-ticker { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-ticker__track { animation: none; transition: none; }
+}

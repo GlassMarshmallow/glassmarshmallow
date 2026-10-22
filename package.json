@@ -1,6 +1,6 @@
 {
   "name": "glassmarshmallow",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "A CSS framework with glass surfaces, light and dark mode and WCAG 2.2 AA accessibility.",
   "author": "Sara Paez Yamuza",
   "license": "MIT",
@@ -26,7 +26,9 @@
   },
   "files": [
     "css/*.css",
+    "css/components/*.css",
     "dist/css/*.css",
+    "dist/css/components/*.css",
     "fonts/*",
     "dist/fonts/*",
     "js/*.js",

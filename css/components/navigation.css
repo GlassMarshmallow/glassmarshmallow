@@ -1,0 +1,702 @@
+/* ==========================================================================
+   glassmarshmallow · Componentes · Navegación
+   ========================================================================== */
+
+/* --- Barra de navegación ---------------------------------------------------------- */
+.gm-navbar {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: flex;
+  height: var(--gm-header-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-inline: max(1.5rem, calc((100% - var(--gm-container)) / 2));
+  border-bottom: 1px solid var(--gm-header-border);
+  background: var(--gm-header-bg);
+  box-shadow: var(--gm-header-shadow);
+  -webkit-backdrop-filter: var(--gm-header-filter);
+  backdrop-filter: var(--gm-header-filter);
+}
+.gm-navbar__brand { display: inline-flex; min-width: max-content; align-items: center; gap: .625rem; font-weight: 700; }
+.gm-navbar__logo { display: block; width: 3rem; height: 3rem; object-fit: contain; }
+
+/* Logo de cristal sobre fondo claro (<img class="gm-glass-logo">): su recuadro translúcido y sus bordes de brillo no se
+   ven sobre blanco. De día lleva un borde blanco fino, una sombra en degradado detrás del cristal (de abajo a la
+   izquierda hacia arriba a la derecha, como los colores del logo) y la sombra mediana por fuera. La curva es la del
+   recuadro del logo (114/512). De noche, sin nada: el cristal ya se ve sobre el fondo oscuro. */
+.gm-glass-logo {
+  border: .05rem solid #fff;
+  border-radius: 22.3%;
+  background: linear-gradient(to top right, rgba(0, 0, 0, .35), rgba(0, 0, 0, 0) 75%);
+  box-shadow: var(--gm-shadow-md);
+}
+[data-theme="dark"] .gm-glass-logo { border-color: transparent; background: none; box-shadow: none; }
+.gm-navbar__nav { display: flex; align-items: center; gap: clamp(.875rem, 2vw, 2rem); font-size: var(--gm-nav-size, .88rem); }
+/* 44 px de alto para pulsarlos (WCAG 2.5.5, AAA) */
+.gm-navbar__nav a { display: inline-flex; min-width: 2.75rem; min-height: 2.75rem; align-items: center; justify-content: center; color: var(--gm-nav-link); transition: color .2s; }
+/* La página actual (aria-current="page") o, en una página de una sola pantalla, la sección que se ve (aria-current="location") */
+.gm-navbar__nav a:is([aria-current="page"], [aria-current="location"]) { color: var(--gm-text); font-weight: 650; }
+/* Al pasar el ratón o pulsar: --gm-nav-link-hover (un color o un degradado). Por defecto, el acento: de día el
+   fuerte (rosa oscuro, AAA) y de noche el normal (en la plantilla, enlaces blancos que pasan a turquesa) */
+.gm-navbar__nav a:is(:hover, :active) {
+  text-shadow: none;
+  background: var(--gm-nav-link-hover);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.gm-navbar__actions { display: flex; align-items: center; gap: .75rem; font-size: .84rem; }
+/* Botón de tema: círculo suave; al pasar el ratón se tiñe con el degradado y el icono gira un poco */
+.gm-navbar__actions .gm-icon-btn {
+  width: 2.375rem;
+  height: 2.375rem;
+  border-color: var(--gm-toggle-border);
+  background: var(--gm-toggle-bg);
+  font-size: 1rem;
+  transition: background .25s ease, color .25s ease;
+}
+/* Al pasar el ratón (sol, luna y menú): el fondo y el icono se tiñen del color de acento, también en la barra flotante */
+.gm-navbar .gm-navbar__actions .gm-icon-btn:hover { color: var(--gm-accent); background: var(--gm-accent-tint); }
+.gm-navbar__actions .gm-icon-btn .gmi { transition: transform .35s ease; }
+/* El icono gira un poco al pasar el ratón (el sol y la luna), salvo en el botón de menú */
+.gm-navbar__actions .gm-icon-btn:not(.gm-navbar__menu):hover .gmi { transform: rotate(25deg) scale(1.08); }
+
+/* Barra sin logo: los enlaces en el centro y las acciones a la derecha */
+.gm-navbar--centered { justify-content: center; }
+/* Sus enlaces, como en la plantilla: 1 rem, en peso 500 y con 2 rem entre ellos (el tamaño se cambia con --gm-nav-size) */
+.gm-navbar--centered .gm-navbar__nav { gap: 2rem; font-size: var(--gm-nav-size, 1rem); font-weight: 500; }
+.gm-navbar--centered .gm-navbar__actions { position: absolute; right: max(1.5rem, calc((100% - var(--gm-container)) / 2)); }
+/* Botón que abre el menú a pantalla completa: solo en el móvil */
+.gm-navbar__menu { display: none; }
+
+/* La marca y los enlaces juntos a la izquierda (la barra de la web de GlassMarshmallow): <div class="gm-navbar__start">
+   con el logo y el <nav> dentro; lo demás (buscador, acciones) queda a la derecha */
+.gm-navbar__start { display: flex; min-width: 0; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); }
+/* Enlace con icono en las acciones (como el de GitHub): cuadrado suave que se tiñe al pasar el ratón, con la zona que
+   se pulsa de 44 px aunque se vea más pequeño (WCAG 2.5.5) */
+.gm-navbar__icon {
+  position: relative;
+  display: grid;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-nav-link);
+  place-items: center;
+  text-shadow: none;
+}
+.gm-navbar__icon:hover { color: var(--gm-text); background: var(--gm-hover); }
+.gm-navbar__icon::after { position: absolute; inset: min(0px, calc(50% - 1.375rem)); content: ""; }
+/* Logo de cristal con el fondo de luces de la portada detrás en claro (en vez de la sombra), como en esta web */
+:root:not([data-theme="dark"]) .gm-glass-logo--backdrop { background: var(--gm-backdrop-lights), var(--gm-backdrop-bg); box-shadow: none; }
+/* Barra apretada en el móvil (gm-navbar--dense): marca, logo y acciones más juntos para que quepan el buscador, el
+   idioma y el tema; por debajo de 360 px, solo el logo (el nombre lo siguen leyendo los lectores de pantalla) */
+@media (max-width: 53.75rem) {
+  .gm-navbar--dense .gm-navbar__brand { gap: .375rem; font-size: .88rem; }
+  .gm-navbar--dense .gm-navbar__logo { width: 2rem; height: 2rem; }
+  .gm-navbar--dense .gm-navbar__actions { gap: 0; }
+  .gm-navbar--dense .gm-navbar__actions .gm-menu__trigger { padding-inline: .25rem; }
+}
+@media (max-width: 22.4375rem) {
+  .gm-navbar--dense .gm-navbar__brand > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* Barra inferior de pestañas para móvil (flotante y de cristal, como en iOS) */
+.gm-tabbar,
+.gm-tabbar-more { display: none; }
+
+/* Aspecto de la barra y del panel «Más» (se enseñan solo en el móvil, abajo) */
+.gm-tabbar {
+  position: fixed;
+  z-index: 25;
+  right: .75rem;
+  bottom: calc(.625rem + env(safe-area-inset-bottom));
+  left: .75rem;
+  height: 4.125rem;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: 1.375rem;
+  background: var(--gm-tabbar-bg);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, .16);
+  -webkit-backdrop-filter: var(--gm-header-filter);
+  backdrop-filter: var(--gm-header-filter);
+}
+.gm-tabbar :is(a, button) {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: .125rem;
+  padding: 0;
+  border: 0;
+  color: var(--gm-muted);
+  background: transparent;
+  font: inherit;
+  font-size: .64rem;
+  white-space: nowrap;
+  cursor: pointer;
+  place-items: center;
+}
+.gm-tabbar :is(a, button) .gmi { font-size: 1.25rem; }
+.gm-tabbar a[aria-current="page"],
+.gm-tabbar button.is-active { color: var(--gm-text); }
+
+/* Panel «Más»: las páginas que no caben en la barra. La barra tiene 4 botones
+   como mucho, contando «Más» */
+.gm-tabbar-more {
+  position: fixed;
+  z-index: 26;
+  right: .75rem;
+  bottom: calc(5.375rem + env(safe-area-inset-bottom));
+  left: .75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .5rem;
+  padding: .75rem;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: 1.375rem;
+  background: var(--gm-header-bg);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(22px);
+}
+.gm-tabbar-more a {
+  display: grid;
+  min-width: 0;
+  min-height: 3.625rem;
+  gap: .25rem;
+  padding: .4375rem .3125rem;
+  border-radius: .875rem;
+  color: var(--gm-muted);
+  font-size: .68rem;
+  text-align: center;
+  place-items: center;
+}
+.gm-tabbar-more a .gmi { font-size: 1.25rem; }
+.gm-tabbar-more a[aria-current="page"] { color: var(--gm-text); background: var(--gm-surface-soft); }
+
+
+/* Con Montserrat el menú es más ancho: más compacto en pantallas medianas, sin el nombre junto al logo en las
+   pequeñas, y la disposición del móvil (menú abajo) desde 860 px */
+@media (max-width: 68.75rem) {
+  .gm-navbar__nav { gap: .8125rem; font-size: .8rem; }
+}
+
+@media (max-width: 64rem) {
+  .gm-navbar__brand > span { position: absolute; width: .0625rem; height: .0625rem; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+@media (max-width: 53.75rem) {
+  .gm-navbar__menu { display: grid; }
+  .gm-navbar--centered .gm-navbar__actions { right: 1.25rem; }
+  /* Flotante: en el móvil no hay barra, solo los botones redondos de cristal sobre la página */
+  .gm-navbar--floating {
+    border-bottom: 0;
+    background: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    pointer-events: none;
+  }
+  .gm-navbar--floating .gm-navbar__actions { pointer-events: auto; }
+  .gm-navbar--floating .gm-navbar__actions .gm-icon-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-color: var(--gm-glass-btn-border);
+    background: var(--gm-glass-btn-bg);
+    box-shadow: var(--gm-glass-btn-shadow);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+  .gm-navbar__brand > span { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
+  .gm-navbar { height: 3.875rem; padding-inline: .9375rem; }
+  .gm-navbar__logo { width: 2.625rem; height: 2.625rem; }
+  .gm-navbar__nav { display: none; }
+
+  .gm-tabbar { display: flex; }
+  .gm-tabbar-more.is-open { display: grid; }
+  /* Hueco al final de la página para que la barra no tape el contenido */
+  .gm-has-tabbar { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
+}
+
+/* --- Menú desplegable ------------------------------------------------------------
+   Botón que abre una lista de opciones (idioma, tema, versión…), como los de la barra de la web.
+   <div class="gm-menu" data-gm-menu>
+     <button type="button" class="gm-menu__trigger" aria-haspopup="menu" aria-expanded="false">Tema</button>
+     <ul class="gm-menu__list" role="menu" hidden>
+       <li role="none"><button type="button" class="gm-menu__item" role="menuitemradio" aria-checked="true">…</button></li>
+     </ul>
+   </div>
+   El script opcional js/menu.js lo abre y lo cierra, y mueve el foco con el teclado. */
+.gm-menu { position: relative; display: inline-flex; }
+.gm-menu__trigger {
+  position: relative;
+  display: inline-flex;
+  min-height: 2.75rem; /* WCAG 2.5.5 (AAA) */
+  align-items: center;
+  gap: .25rem;
+  padding: 0 .5rem;
+  border: 0;
+  border-radius: var(--gm-radius-sm);
+  color: var(--gm-nav-link);
+  background: transparent;
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.gm-menu__trigger:hover { color: var(--gm-text); background: var(--gm-hover); }
+.gm-menu__trigger .gmi { font-size: 1.35rem; } /* iconos de la barra más grandes (pedido por Sara) */
+.gm-menu__chevron { font-size: .7rem !important; opacity: .8; }
+.gm-menu__list {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + .5rem);
+  right: 0;
+  display: grid;
+  min-width: 11.875rem;
+  margin: 0;
+  padding: .375rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-sm);
+  background: var(--gm-surface-solid);
+  box-shadow: var(--gm-shadow-md);
+  list-style: none;
+}
+.gm-menu__list[hidden] { display: none; }
+/* Alineado a la izquierda del botón (por defecto, a la derecha) */
+.gm-menu--start .gm-menu__list { right: auto; left: 0; }
+/* Centrado bajo el botón */
+.gm-menu--center .gm-menu__list { right: 50%; transform: translateX(50%); }
+/* Un .gm-btn como botón del menú: conserva el tamaño del botón (y su color con gm-theme-solid) */
+.gm-menu__trigger.gm-btn { min-height: 3rem; gap: .4375rem; padding: 0 1.375rem; border-radius: var(--gm-radius-pill); font-size: 1rem; font-weight: 650; }
+.gm-menu__trigger.gm-btn:hover { box-shadow: var(--gm-shadow-hover); transform: translateY(-1px); }
+.gm-menu__trigger.gm-btn .gmi { font-size: 1.25em; }
+.gm-menu__trigger.gm-theme-solid,
+.gm-menu__trigger.gm-theme-solid:hover { color: var(--gm-theme-on); background: var(--gm-theme); }
+.gm-menu__item {
+  display: flex;
+  width: 100%;
+  min-height: 2.75rem; /* WCAG 2.5.5 (AAA) */
+  align-items: center;
+  gap: .625rem;
+  padding: .375rem .625rem;
+  border: 0;
+  border-radius: .5rem;
+  color: var(--gm-text);
+  background: transparent;
+  font: inherit;
+  font-size: .9rem;
+  text-align: left;
+  text-shadow: none;
+  cursor: pointer;
+}
+.gm-menu__item:hover,
+.gm-menu__item:focus-visible { background: var(--gm-hover); }
+.gm-menu__item:focus-visible { outline-offset: -2px; }
+.gm-menu__item > span { flex: 1; }
+.gm-menu__check { visibility: hidden; color: var(--gm-text); }
+.gm-menu__item[aria-checked="true"] { font-weight: 650; }
+.gm-menu__item[aria-checked="true"] .gm-menu__check { visibility: visible; }
+
+/* --- Buscador -----------------------------------------------------------------
+   Un campo de texto y, debajo, la lista de resultados (patrón «combobox» de WAI-ARIA):
+   <div class="gm-search" role="search" data-gm-search>
+     <div class="gm-search__field">
+       <i class="gmi gmi-search" aria-hidden="true"></i>
+       <label class="gm-visually-hidden" for="buscar">Buscar</label>
+       <input id="buscar" class="gm-search__input" type="search" role="combobox" aria-autocomplete="list"
+              aria-controls="buscar-lista" aria-expanded="false" placeholder="Buscar…" />
+     </div>
+     <ul id="buscar-lista" class="gm-search__results" role="listbox" aria-label="Resultados" hidden>
+       <li class="gm-search__option" role="option" data-href="/docs/button">
+         <span class="gm-search__title">Botón</span><span class="gm-search__section">Componentes</span>
+       </li>
+     </ul>
+   </div>
+   El script opcional js/search.js filtra la lista mientras se escribe y la maneja con el teclado. */
+.gm-search { position: relative; }
+.gm-search__field { position: relative; display: flex; align-items: center; }
+.gm-search__field > .gmi { position: absolute; left: .75rem; color: var(--gm-muted); font-size: 1.35rem; pointer-events: none; }
+/* Los colores y el foco de los campos (.gm-field) */
+.gm-search__input {
+  width: 100%;
+  min-height: 2.75rem; /* WCAG 2.5.5 (AAA) */
+  padding: 0 .875rem 0 2.75rem;
+  border: 1px solid var(--gm-field-border);
+  border-radius: .75rem;
+  color: var(--gm-text);
+  background-color: var(--gm-field-bg);
+  font: inherit;
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+.gm-search__input::placeholder { color: var(--gm-muted); }
+.gm-search__input:focus {
+  border-color: var(--gm-field-focus);
+  outline: none;
+  background-color: var(--gm-field-bg-focus);
+  box-shadow: 0 0 0 4px var(--gm-field-ring);
+}
+/* Sin la «x» propia de Safari y Chrome: Escape ya borra */
+.gm-search__input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+/* Resultados: la misma caja que la lista de los menús (.gm-menu__list) */
+.gm-search__results {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + .5rem);
+  left: 0;
+  display: grid;
+  width: max(100%, 20rem);
+  margin: 0;
+  padding: .375rem;
+  border: 1px solid var(--gm-line);
+  border-radius: var(--gm-radius-sm);
+  background: var(--gm-surface-solid);
+  box-shadow: var(--gm-shadow-md);
+  list-style: none;
+}
+.gm-search__results[hidden],
+.gm-search__option[hidden],
+.gm-search__empty[hidden] { display: none; }
+.gm-search__option { display: grid; min-height: 2.75rem; align-content: center; gap: .0625rem; padding: .375rem .75rem; border-radius: .5rem; color: var(--gm-text); cursor: pointer; }
+.gm-search__option:hover,
+.gm-search__option.is-active { background: var(--gm-hover); }
+.gm-search__option.is-active { box-shadow: inset 0 0 0 2px var(--gm-focus); }
+.gm-search__title { font-weight: 650; }
+.gm-search__section { color: var(--gm-muted); font-size: .78rem; }
+.gm-search__empty { padding: .625rem .75rem; color: var(--gm-muted); font-size: .9rem; }
+/* Pantallas estrechas: la lista, tan ancha como el campo, para que no se salga */
+@media (max-width: 37.5rem) {
+  .gm-search__results { width: 100%; }
+}
+
+/* En la barra de navegación (gm-search--navbar): en el ordenador, el campo en la barra; en el móvil, una lupa
+   (gm-search__toggle) que despliega el campo a todo el ancho debajo de la barra (gm-search__panel, con .is-open).
+   <div class="gm-search gm-search--navbar" role="search">
+     <button type="button" class="gm-search__toggle" aria-label="Buscar" aria-expanded="false" aria-controls="panel-buscar">
+       <i class="gmi gmi-search" aria-hidden="true"></i></button>
+     <div id="panel-buscar" class="gm-search__panel"><div class="gm-search__field">…</div><ul class="gm-search__results">…</ul></div>
+   </div>
+   Abrir y cerrar el panel lo hace tu código. Con gm-search--collapse-lg, la lupa llega hasta 1100 px. */
+.gm-search__toggle { display: none; }
+@media (max-width: 53.75rem) {
+  .gm-search--navbar { position: static; width: auto; }
+  .gm-search__toggle {
+    position: relative;
+    display: grid;
+    min-width: 2rem;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--gm-radius-sm);
+    color: var(--gm-nav-link);
+    background: transparent;
+    place-items: center;
+    cursor: pointer;
+  }
+  .gm-search__toggle .gmi { font-size: 1.35rem; }
+  /* Zona que se pulsa de 44 px aunque el botón sea más estrecho (WCAG 2.5.5) */
+  .gm-search__toggle::after { position: absolute; inset: 0 -.375rem; content: ""; }
+  .gm-search--navbar .gm-search__panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    padding: .625rem 1rem .75rem;
+    border-bottom: 1px solid var(--gm-header-border);
+    background: var(--gm-surface-solid);
+  }
+  .gm-search--navbar .gm-search__panel.is-open { display: block; }
+  /* 16 px en el móvil: con menos, el iPhone amplía la página al escribir */
+  .gm-search--navbar .gm-search__input { font-size: 1rem; }
+  .gm-search--navbar .gm-search__results { position: static; width: 100%; max-width: none; margin-top: .5rem; box-shadow: none; }
+}
+
+/* gm-search--collapse-lg: la lupa hasta 1100 px (lg) en vez de hasta 860 px, para barras con muchos enlaces o con
+   textos largos (por ejemplo, en español) en las que el campo no cabe al lado */
+/* Con más ancho, los enlaces no se encogen y es el campo el que se estrecha si falta sitio: nunca tapa un enlace */
+.gm-search--collapse-lg { min-width: 0; }
+.gm-navbar:has(.gm-search--collapse-lg) .gm-navbar__start { flex-shrink: 0; }
+@media (max-width: 68.75rem) {
+  .gm-search--navbar.gm-search--collapse-lg { position: static; width: auto; }
+  .gm-search--collapse-lg .gm-search__toggle {
+    position: relative;
+    display: grid;
+    min-width: 2rem;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--gm-radius-sm);
+    color: var(--gm-nav-link);
+    background: transparent;
+    place-items: center;
+    cursor: pointer;
+  }
+  .gm-search--collapse-lg .gm-search__toggle .gmi { font-size: 1.35rem; }
+  .gm-search--collapse-lg .gm-search__toggle::after { position: absolute; inset: 0 -.375rem; content: ""; }
+  .gm-search--collapse-lg .gm-search__panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    padding: .625rem 1rem .75rem;
+    border-bottom: 1px solid var(--gm-header-border);
+    background: var(--gm-surface-solid);
+  }
+  .gm-search--collapse-lg .gm-search__panel.is-open { display: block; }
+  .gm-search--collapse-lg .gm-search__input { font-size: 1rem; }
+  .gm-search--collapse-lg .gm-search__results { position: static; width: 100%; max-width: none; margin-top: .5rem; box-shadow: none; }
+}
+
+/* --- Menú a pantalla completa (móvil) -----------------------------------------------
+   <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-controls="menu-movil" aria-expanded="false" aria-label="Abrir menú">…</button>
+   <div class="gm-fullscreen-menu" id="menu-movil" role="dialog" aria-modal="true" aria-label="Menú">
+     <button type="button" class="gm-icon-btn gm-icon-btn--glass gm-fullscreen-menu__close" aria-label="Cerrar menú">…</button>
+     <nav aria-label="Menú móvil"><ul class="gm-fullscreen-menu__links"><li><a href="#">Inicio</a></li></ul></nav>
+   </div>
+   El script opcional js/fullscreen-menu.js lo abre y lo cierra (Escape, la ✕ o un enlace). */
+.gm-fullscreen-menu {
+  position: fixed;
+  z-index: 2500;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--gm-text);
+  background: var(--gm-fullscreen-menu-bg);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility 0s linear .3s;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  /* Si los enlaces no caben (pantallas bajas, letra grande), el menú se desplaza por dentro sin arrastrar la página */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.gm-fullscreen-menu.is-open { opacity: 1; pointer-events: auto; visibility: visible; transition: opacity .3s ease, visibility 0s; }
+/* Con el menú abierto, la página de detrás se queda quieta: al deslizar no se mueve ni asoma por debajo */
+html:has(.gm-fullscreen-menu.is-open) { overflow: hidden; }
+.gm-fullscreen-menu__close { position: absolute; top: .625rem; right: 1.25rem; }
+.gm-fullscreen-menu__links { display: flex; width: 100%; align-items: center; flex-direction: column; gap: 1.5rem; margin: 0; padding: 0; list-style: none; }
+.gm-fullscreen-menu__links a { display: inline-flex; min-height: 2.75rem; align-items: center; color: var(--gm-text); font-size: 2rem; font-weight: 600; transition: color .2s; }
+.gm-fullscreen-menu__links a:hover,
+.gm-fullscreen-menu__links a:is([aria-current="page"], [aria-current="location"]) { color: var(--gm-accent); }
+
+/* --- Iconos sociales grandes (correo, redes) ------------------------------------------
+   <div class="gm-socials"><a href="…" aria-label="GitHub (se abre en una pestaña nueva)"><i class="gmi gmi-github" aria-hidden="true"></i></a>…</div>
+   Tamaño del icono: --gm-socials-size (36 px por defecto). Cada enlace mide 44 px como mínimo. */
+.gm-socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; }
+.gm-socials :is(a, button) {
+  display: grid;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0;
+  border: 0;
+  color: var(--gm-text);
+  background: none;
+  font-size: var(--gm-socials-size, 2.25rem);
+  place-items: center;
+  cursor: pointer;
+  transition: transform .2s ease, color .2s ease;
+}
+.gm-socials :is(a, button):hover { color: var(--gm-accent); transform: scale(1.1); }
+/* Ajuste a ojo para que el correo, GitHub y LinkedIn se vean del mismo tamaño juntos: el sobre es apaisado y parece
+   pequeño; el cuadrado de LinkedIn, lleno, parece grande (también en el pie) */
+:is(.gm-socials, .gm-footer__socials) .gmi:is(.gmi-envelope, .gmi-envelope-fill) { transform: scale(1.15); }
+:is(.gm-socials, .gm-footer__socials) .gmi-linkedin { transform: scale(.9); }
+
+/* --- Pie de página ------------------------------------------------------------------
+   <footer class="gm-footer">
+     <div class="gm-container">
+       <h2>Conectemos</h2>
+       <div class="gm-footer__socials">enlaces con icono</div>
+       <nav class="gm-footer__links" aria-label="Información legal"><a href="…">Privacidad</a> · …</nav>
+       <p class="gm-footer__bottom">2026 · <strong>Nombre</strong> · Portfolio</p>
+     </div>
+   </footer> */
+.gm-footer { padding-block: 3rem; border-top: 1px solid var(--gm-line); text-align: center; }
+.gm-footer h2 { margin: 0; }
+.gm-footer__socials { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+.gm-footer__socials a { display: grid; min-width: 2.75rem; min-height: 2.75rem; color: var(--gm-text); place-items: center; transition: transform .25s ease, color .25s ease; }
+.gm-footer__socials a:hover { color: var(--gm-accent); transform: translateY(-2px); }
+.gm-footer__socials :is(svg, .gmi) { width: 2rem; height: 2rem; font-size: 2rem; }
+.gm-footer__links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .35rem .6rem; margin-top: 1rem; color: var(--gm-muted); font-size: .85rem; }
+.gm-footer__links :is(a, button) { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0; border: 0; color: inherit; background: none; font: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.gm-footer__links :is(a, button):hover { color: var(--gm-text); }
+.gm-footer__bottom { max-inline-size: none; margin: 1.5rem 0 0; color: var(--gm-muted); text-align: center; }
+.gm-footer__bottom strong { color: var(--gm-text); }
+.gm-footer__credit { max-inline-size: none; margin: .5rem 0 0; color: var(--gm-muted); font-size: .8rem; text-align: center; }
+.gm-footer__credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+/* --- Pie sencillo (el de la web de GlassMarshmallow) -------------------------------------
+   <footer class="gm-site-footer">
+     <div class="gm-container gm-site-footer__inner">
+       <nav class="gm-site-footer__links" aria-label="Pie"><a href="…">Docs</a>…</nav>
+       <p class="gm-site-footer__credit gm-muted gm-small">Diseñado por <a class="gm-site-footer__author" href="…">Nombre</a> · Licencia MIT</p>
+     </div>
+   </footer>
+   Una fila de enlaces y debajo los créditos, sobre el fondo de la página con una línea arriba.
+   Con el fondo de luces a toda la página (.gm-backdrop), el pie es blanco en claro y negro en oscuro y sin línea,
+   para continuar el degradado del final. Con .gm-has-tabbar deja sitio a la barra de pestañas del móvil. */
+.gm-site-footer {
+  position: relative;
+  padding-block: 2rem 2.25rem;
+  border-top: 1px solid var(--gm-line);
+  color: var(--gm-text);
+  background: var(--gm-bg);
+}
+html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top: 0; background: rgb(var(--gm-page-end-rgb)); }
+.gm-site-footer__inner { display: grid; gap: .875rem; }
+.gm-site-footer__links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-size: .88rem; }
+/* 44 px de alto y de ancho como mínimo (WCAG 2.5.5, AAA) */
+.gm-site-footer__links a { display: inline-flex; min-width: 2.75rem; min-height: 2.75rem; align-items: center; padding-block: .25rem; color: var(--gm-text); }
+.gm-site-footer__links a:hover { color: var(--gm-link-hover); text-decoration: underline; }
+.gm-site-footer__credit { margin: 0; }
+.gm-site-footer__author { color: var(--gm-text); font-weight: 600; text-decoration: underline; text-underline-offset: .1875rem; }
+@media (max-width: 53.75rem) {
+  .gm-site-footer.gm-has-tabbar { padding-bottom: calc(2.25rem + 6rem + env(safe-area-inset-bottom)); }
+}
+
+/* --- Menú lateral (el de la documentación de GlassMarshmallow) -------------------------
+   <div class="gm-sidenav-layout">
+     <button type="button" class="gm-btn gm-btn--secondary gm-btn--sm gm-sidenav__toggle" aria-controls="menu" aria-expanded="false">…</button>
+     <nav id="menu" class="gm-sidenav" aria-label="Documentación">
+       <div class="gm-sidenav__group">
+         <h2 class="gm-sidenav__title"><i class="gmi gmi-book" aria-hidden="true"></i>Empezar</h2>
+         <ul class="gm-sidenav__list"><li><a class="gm-sidenav__link" href="…" aria-current="page">Introducción</a></li>…</ul>
+       </div>
+     </nav>
+     <main class="gm-sidenav-layout__main">…</main>
+   </div>
+   En el ordenador, el menú va a la izquierda y se queda a la vista al hacer scroll (con su propio scroll si es más
+   alto que la pantalla). Por debajo de 860 px (md) se esconde y lo abre el botón: tu código pone .is-open en el menú y
+   aria-expanded en el botón. La página actual, con aria-current="page", va en el color del texto y seminegrita. */
+.gm-sidenav-layout {
+  display: grid;
+  grid-template-columns: 13.75rem minmax(0, 1fr);
+  align-items: start;
+  gap: 2.5rem;
+  padding-top: 2rem;
+}
+.gm-sidenav-layout__main { min-width: 0; }
+.gm-sidenav__toggle { display: none; }
+.gm-sidenav {
+  position: sticky;
+  top: calc(var(--gm-header-height) + 1.25rem);
+  max-height: calc(100dvh - var(--gm-header-height) - 2.5rem);
+  overflow-y: auto;
+  padding: 1.125rem .75rem 1.5rem;
+  border-radius: .875rem;
+  /* Blanco en claro y negro en oscuro (el final del fondo de la página) */
+  background: rgb(var(--gm-page-end-rgb, 255 255 255));
+  box-shadow: var(--gm-shadow-sm);
+  font-size: .88rem;
+}
+.gm-sidenav__group + .gm-sidenav__group { margin-top: 1.125rem; }
+.gm-sidenav__title {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 0 .375rem;
+  color: var(--gm-text);
+  font-size: .92rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.gm-sidenav__title .gmi { font-size: 1.05rem; }
+.gm-sidenav__list { display: grid; gap: .125rem; margin: 0; padding: 0 0 0 1.625rem; list-style: none; }
+/* Enlaces en gris (7:1) y la página actual en el color del texto y seminegrita; 44 px de alto (WCAG 2.5.5) */
+.gm-sidenav__link {
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: .25rem .625rem;
+  color: var(--gm-muted);
+  text-shadow: none;
+}
+.gm-sidenav__link:hover { color: var(--gm-text); }
+.gm-sidenav__link[aria-current="page"] { color: var(--gm-text); font-weight: 650; }
+@media (max-width: 53.75rem) {
+  .gm-sidenav-layout { grid-template-columns: minmax(0, 1fr); gap: 1rem; padding-top: 1.25rem; }
+  .gm-sidenav__toggle { display: inline-flex; justify-self: start; }
+  .gm-sidenav { position: static; display: none; max-height: none; padding: 1.25rem; }
+  .gm-sidenav.is-open { display: block; }
+}
+
+/* --- Índice de la página («En esta página») ---------------------------------------------
+   <div class="gm-toc-layout">
+     <article>…<details class="gm-toc gm-toc--collapsible"><summary>En esta página</summary><ul class="gm-toc__list">…</ul></details>…</article>
+     <aside class="gm-toc" aria-label="En esta página"><p class="gm-toc__title">En esta página</p>
+       <ul class="gm-toc__list"><li><a class="gm-toc__link" href="#ejemplo">Ejemplo</a></li><li class="gm-toc__sub">…</li></ul></aside>
+   </div>
+   En pantallas anchas, el índice va a la derecha (12,5 rem) y se queda a la vista al hacer scroll; por debajo de
+   1200 px se esconde y aparece el desplegable (gm-toc--collapsible) encima del texto. gm-toc__sub: un subapartado. */
+.gm-toc-layout { display: grid; grid-template-columns: minmax(0, 1fr) 12.5rem; align-items: start; gap: 2.5rem; }
+.gm-toc:where(:not(.gm-toc--collapsible)) {
+  position: sticky;
+  top: calc(var(--gm-header-height) + 1.25rem);
+  max-height: calc(100dvh - var(--gm-header-height) - 2.5rem);
+  overflow-y: auto;
+  font-size: .85rem;
+}
+.gm-toc__title { margin: 0 0 .5rem; color: var(--gm-text); font-weight: 700; }
+.gm-toc__list { display: grid; gap: .125rem; margin: 0; padding: 0; list-style: none; }
+/* 44 px de alto: WCAG 2.5.5 (AAA) */
+.gm-toc__link { display: flex; min-height: 2.75rem; align-items: center; padding: .1875rem 0; color: var(--gm-text-secondary); text-shadow: none; }
+.gm-toc__link:hover { color: var(--gm-text); }
+.gm-toc__sub .gm-toc__link { padding-left: .875rem; }
+.gm-toc--collapsible {
+  display: none;
+  margin-bottom: 1.5rem;
+  padding: .875rem 1.125rem;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+}
+.gm-toc--collapsible summary { font-weight: 650; cursor: pointer; }
+.gm-toc--collapsible .gm-toc__list { margin-top: .5rem; }
+@media (max-width: 75rem) {
+  .gm-toc-layout { grid-template-columns: minmax(0, 1fr); }
+  .gm-toc:where(:not(.gm-toc--collapsible)) { display: none; }
+  .gm-toc--collapsible { display: block; }
+}
+
+/* --- Anterior y siguiente (al final de una página de una serie) -------------------------
+   <nav class="gm-pager" aria-label="Más páginas">
+     <a class="gm-pager__link" href="…"><span class="gm-pager__label"><i class="gmi gmi-arrow-left" aria-hidden="true"></i>Anterior</span><span class="gm-pager__title">Botón</span></a>
+     <a class="gm-pager__link gm-pager__link--next" href="…"><span class="gm-pager__label">Siguiente<i class="gmi gmi-arrow-right" aria-hidden="true"></i></span><span class="gm-pager__title">Tarjeta</span></a>
+   </nav> */
+.gm-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.gm-pager__link {
+  display: grid;
+  gap: .25rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--gm-surface-glass-border);
+  border-radius: var(--gm-radius-md);
+  background: var(--gm-surface);
+  box-shadow: var(--gm-shadow-sm);
+  -webkit-backdrop-filter: blur(var(--gm-blur));
+  backdrop-filter: blur(var(--gm-blur));
+  color: var(--gm-text);
+  text-shadow: none;
+  transition: transform .2s, background .2s;
+}
+.gm-pager__link:hover { background: var(--gm-surface-glass); transform: translateY(-1px); }
+.gm-pager__link--next { grid-column: 2; text-align: right; }
+.gm-pager__label { display: inline-flex; align-items: center; gap: .375rem; color: var(--gm-muted); font-size: .82rem; }
+.gm-pager__link--next .gm-pager__label { justify-content: flex-end; }
+.gm-pager__title { font-weight: 650; }
+@media (prefers-reduced-motion: reduce) { .gm-pager__link:hover { transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-fullscreen-menu, .gm-socials :is(a, button) { animation: none; transition: none; }
+  .gm-socials :is(a, button):hover { transform: none; }
+}

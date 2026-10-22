@@ -58,18 +58,33 @@ GlassMarshmallow usa Montserrat. Viene incluida en un archivo aparte, `glassmars
 @import "glassmarshmallow/dist/css/glassmarshmallow.css";
 ```
 
-Si solo necesitas algunas partes, importa los archivos fuente uno a uno. `tokens.css` siempre va primero.
+### Solo las partes que necesitas
 
-```css
-@import "glassmarshmallow/css/tokens.css";
-@import "glassmarshmallow/css/base.css";
-@import "glassmarshmallow/css/components.css";
-@import "glassmarshmallow/css/backdrop.css";
+`glassmarshmallow.css` lo trae todo. Si tu web solo usa algunos componentes, carga el **núcleo** (colores, base,
+cuadrícula, tema, utilidades y fondo) y después las **familias de componentes** que necesites. Pueden ir en
+cualquier orden: las capas del framework las colocan en su sitio.
+
+```css:CSS
+@import "glassmarshmallow/dist/css/glassmarshmallow-core.css";
+@import "glassmarshmallow/dist/css/components/basics.css";
+@import "glassmarshmallow/dist/css/components/navigation.css";
 ```
+
+| Familia | Componentes | Necesita |
+| --- | --- | --- |
+| `basics` | Botón, tarjeta, aviso, etiqueta, código, avatar, acordeón, progreso, tooltip, ventana, botón redondo de cristal, lista de datos, zona que se pulsa, comando para copiar | — |
+| `forms` | Formulario, campo, barras y control deslizante, resumen de errores, segmentado, calendario, selector de color | `basics` |
+| `navigation` | Barra de navegación y de pestañas, menú, buscador, menú a pantalla completa, menú lateral, índice, anterior/siguiente, pies, iconos sociales | `basics` |
+| `media` | Reproductor de vídeo, carrusel, galería, franja de logos | — |
+| `chat` | Fila deslizable, chip, campo del chat, bocadillo, aviso de IA | — |
+| `pages` | Sección, portada, estructura de la página, página interior, texto largo, fragmento de código, cuadrícula de iconos, escaparate, página de documentación | `basics` |
+| `tools` | La estructura de los generadores (`gm-tool`) | `basics`, `forms` |
+
+Cada archivo tiene también su `.min.css`. Lo que pesa cada uno está en [Rendimiento](/docs/getting-started/performance).
 
 ## Iconos
 
-Los iconos están en su propio paquete, [GlassMarshmallow Icons](/icons).
+Los iconos están en su propio paquete, [GlassMarshmallow Icons](/icons). Con GlassMarshmallow 0.3 o posterior, usa los iconos 0.4 o posteriores: van en la capa de iconos del framework, así que los componentes y las utilidades pueden ajustarlos.
 
 ```sh:npm
 npm install glassmarshmallow-icons
@@ -97,7 +112,7 @@ Después carga la hoja de estilos y usa un icono con dos clases. Los iconos toma
 Sáltate la instalación y carga el CSS compilado desde un CDN.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.2.1/dist/css/glassmarshmallow.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.3.0/dist/css/glassmarshmallow.min.css">
 ```
 
 ## Descarga

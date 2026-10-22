@@ -1,6 +1,6 @@
 ---
 name: glassmarshmallow-create-component
-description: Add a new component to the GlassMarshmallow framework (CSS in css/components.css, optional script in js/, docs page in English and Spanish) following its naming, design and accessibility rules. Use when a design from a project is not in GlassMarshmallow yet.
+description: Add a new component to the GlassMarshmallow framework (CSS in the right family in css/components/, optional script in js/, docs page in English and Spanish) following its naming, design and accessibility rules. Use when a design from a project is not in GlassMarshmallow yet.
 ---
 
 # Create a GlassMarshmallow component
@@ -9,7 +9,7 @@ Every design that is not in GlassMarshmallow yet is added to the framework so al
 
 1. **Find the source.** Locate the design and copy its values (sizes, colors, radius, shadows) instead of making them up.
 
-2. **CSS in `css/components.css`**, in its own section with a comment showing the markup:
+2. **CSS in its family in `css/components/`** (`basics`, `forms`, `navigation`, `media`, `chat`, `pages` or `tools`), in its own section with a comment showing the markup:
    - classes with the `gm-` prefix and BEM: `.gm-name`, `.gm-name__part`, `.gm-name--variant`;
    - colors only from `--gm-` variables (light and dark); add new tokens to `css/tokens.css` in both modes if needed;
    - relative units (`rem`, `em`, `%`);
