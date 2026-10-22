@@ -14,7 +14,7 @@ can include changes that need small updates in your code; they are listed under 
 - **`gm-hero` (WCAG 1.4.12):** with larger letter or word spacing, the name and the lead stay inside the hero.
 - **`gm-calendar` on small screens:** the box adapts to the space it has: 1.25rem of padding when it fits and
   less (down to .5rem) when the week of 44 px days would not, so the days and arrows never stick out. Up to
-  480 px the days have no gap between them; at 360 px or less (also 400 % zoom, WCAG 1.4.10) the days are 28 px (WCAG 2.5.8 asks
+  480 px the days have no gap between them; at 360 px or less (also 400 % zoom, WCAG 1.4.10) the days are 36 px (WCAG 2.5.8 asks
   for 24 px) and the month can move to its own line.
 - **`gm-btn` in forced colors mode:** the filled button gets a border, so it still looks like a button when the
   system removes backgrounds. Nothing changes outside that mode.

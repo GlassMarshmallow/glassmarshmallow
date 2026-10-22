@@ -210,12 +210,12 @@
 @media (max-width: 30rem) {
   .gm-calendar__grid td { padding: 0; }
 }
-/* Pantallas de 360 px o menos (también el zoom al 400 %, WCAG 1.4.10): días de 28 px para que quepa la semana
+/* Pantallas de 360 px o menos (también el zoom al 400 %, WCAG 1.4.10): días de 36 px para que quepa la semana
    entera (mínimo de WCAG 2.5.8: 24 px) y el mes pasa a otra línea si no cabe junto a las flechas */
 @media (max-width: 22.5rem) {
   .gm-calendar__header { flex-wrap: wrap; }
   .gm-calendar__title { font-size: 1.1rem; }
-  .gm-calendar__day { width: 1.75rem; height: 1.75rem; font-size: .9rem; }
+  .gm-calendar__day { width: 2.25rem; height: 2.25rem; font-size: .95rem; }
 }
 
 /* --- Selector de color --------------------------------------------------------

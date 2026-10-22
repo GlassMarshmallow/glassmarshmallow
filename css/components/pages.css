@@ -137,7 +137,7 @@
    deja todo su espacio: los 7 días de 44 px (WCAG 2.5.5) necesitan 308 px */
 .gm-snippet__example:has(.gm-calendar) { container-type: inline-size; }
 @media (max-width: 30rem) {
-  .gm-snippet__example:has(.gm-calendar) { padding: 0; }
+  .gm-snippet__example:has(.gm-calendar) { display: grid; justify-items: center; padding-inline: 0; }
 }
 .gm-snippet__bar {
   display: flex;

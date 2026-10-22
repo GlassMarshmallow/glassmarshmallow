@@ -11,7 +11,7 @@ que lo que se descarga de verdad es la columna **gzip** o **Brotli**.
 <!-- sizes -->
 | Archivo | Tal cual | gzip | Brotli |
 | --- | --- | --- | --- |
-| `glassmarshmallow.min.css` | 210.4 kB | 35.0 kB | 24.4 kB |
+| `glassmarshmallow.min.css` | 210.5 kB | 35.0 kB | 24.5 kB |
 | `glassmarshmallow.css` | 301.9 kB | 59.6 kB | 43.9 kB |
 | `glassmarshmallow-core.min.css` | 131.4 kB | 21.5 kB | 13.1 kB |
 | `components/basics.min.css` | 16.5 kB | 3.9 kB | 3.4 kB |
