@@ -36,7 +36,13 @@ export class ColorPicker {
   readonly hexDraft = signal('');
   readonly hexInvalid = signal(false);
 
-  readonly rgba = computed(() => hslToRgb(this.hsla()));
+  /** El color exacto que se escribió en el código: pasar a HSL en números enteros y volver lo cambiaría un poco
+      (#3cd2ff saldría #3dd2ff). Se mantiene hasta que se mueve el tono, la saturación o la luminosidad */
+  private readonly exact = signal<{ r: number; g: number; b: number } | null>(null);
+  readonly rgba = computed(() => {
+    const exact = this.exact();
+    return exact ? { ...exact, a: this.hsla().a } : hslToRgb(this.hsla());
+  });
   readonly hex = computed(() => toHex(this.rgba()));
   readonly css = computed(() => toCss(this.rgba()));
 
@@ -81,7 +87,10 @@ export class ColorPicker {
 
   open() {
     const parsed = parseColor(this.value());
-    if (parsed) this.hsla.set(rgbToHsl(parsed));
+    if (parsed) {
+      this.hsla.set(rgbToHsl(parsed));
+      this.exact.set({ r: parsed.r, g: parsed.g, b: parsed.b });
+    }
     // Se muestra el código tal cual (pasar a HSL y volver puede cambiar una cifra por redondeo)
     this.hexDraft.set(parsed ? toHex(parsed) : this.hex());
     this.hexInvalid.set(false);
@@ -93,6 +102,8 @@ export class ColorPicker {
   }
 
   private update(changes: Partial<Hsla>) {
+    // La opacidad no cambia el color: el exacto se conserva; el tono, la saturación o la luminosidad, sí
+    if ('h' in changes || 's' in changes || 'l' in changes) this.exact.set(null);
     this.hsla.update((current) => ({ ...current, ...changes }));
     this.hexDraft.set(this.hex());
     this.hexInvalid.set(false);
@@ -140,6 +151,7 @@ export class ColorPicker {
     if (parsed) {
       const { h, s, l } = rgbToHsl(parsed);
       this.hsla.update((current) => ({ ...current, h, s, l }));
+      this.exact.set({ r: parsed.r, g: parsed.g, b: parsed.b });
       this.value.set(this.css());
     }
   }

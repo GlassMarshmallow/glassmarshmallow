@@ -139,6 +139,9 @@ export function initColorPicker(root, options = {}) {
   const alpha = root.dataset.alpha !== 'false';
   const id = `gm-color-picker-${++uid}`;
   let hsla = rgbToHsl(parseColor(input.value) ?? { r: 255, g: 255, b: 255, a: 1 });
+  // El color exacto del código escrito (o del valor inicial): pasar a HSL en números enteros y volver lo cambiaría un
+  // poco (#3cd2ff saldría #3dd2ff). Se mantiene hasta que se mueve el tono, la saturación o la luminosidad
+  let exact = parseColor(input.value);
   if (!alpha) hsla.a = 1;
 
   const slider = (key, name, max, extra = '') => `
@@ -209,7 +212,7 @@ export function initColorPicker(root, options = {}) {
   $(`#${id}-title`).textContent = label;
 
   function render(skipHex) {
-    const rgba = hslToRgb(hsla);
+    const rgba = current();
     const css = toCss(rgba);
     const { h, s, l, a } = hsla;
     root.style.setProperty('--gm-swatch', css);
@@ -269,8 +272,11 @@ export function initColorPicker(root, options = {}) {
     }
   }
 
+  /** El color actual: el exacto si se escribió un código, o el que dan el tono, la saturación y la luminosidad */
+  const current = () => (exact ? { ...exact, a: hsla.a } : hslToRgb(hsla));
+
   function commit() {
-    const value = toCss(hslToRgb(hsla));
+    const value = toCss(current());
     input.value = value;
     input.dispatchEvent(new Event('input', { bubbles: true }));
     input.dispatchEvent(new Event('change', { bubbles: true }));
@@ -278,6 +284,8 @@ export function initColorPicker(root, options = {}) {
   }
 
   function update(changes, skipHex) {
+    // La opacidad no cambia el color: el exacto se conserva; el tono, la saturación o la luminosidad, sí
+    if ('h' in changes || 's' in changes || 'l' in changes) exact = null;
     hsla = { ...hsla, ...changes };
     render(skipHex);
     commit();
@@ -285,7 +293,10 @@ export function initColorPicker(root, options = {}) {
 
   const onTrigger = () => {
     const parsed = parseColor(input.value);
-    if (parsed) hsla = rgbToHsl(alpha ? parsed : { ...parsed, a: 1 });
+    if (parsed) {
+      hsla = rgbToHsl(alpha ? parsed : { ...parsed, a: 1 });
+      exact = parsed;
+    }
     render();
     dialog.showModal();
   };
@@ -326,7 +337,10 @@ export function initColorPicker(root, options = {}) {
     setHexError(!parsed);
     if (parsed) {
       const { h, s, l } = rgbToHsl(parsed);
-      update({ h, s, l }, true);
+      hsla = { ...hsla, h, s, l };
+      exact = parsed;
+      render(true);
+      commit();
     }
   };
 
