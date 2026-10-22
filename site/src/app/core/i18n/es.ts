@@ -225,6 +225,7 @@ export const es: Dictionary = {
       'helpers/skip-link': 'Saltar al contenido',
       'helpers/gradient-text': 'Texto con degradado',
       'helpers/text-outline': 'Contorno de texto',
+      'guides/logo': 'Cómo se hizo el logo',
       'guides/ux': 'Experiencia de usuario',
     },
   },
@@ -281,6 +282,11 @@ export const es: Dictionary = {
       text: 'Un portfolio con un chat que responde por ti con IA y un formulario inteligente para que te cuenten su proyecto. Hecho con Angular y .NET, en modo claro y oscuro y accesible (WCAG 2.2 AA).',
       shotDesktop: 'Inicio de la plantilla de portfolio en el ordenador: foto, saludo, chat y preguntas rápidas',
       shotMobile: 'Inicio de la plantilla de portfolio en el móvil',
+    },
+    logo: {
+      title: 'El logo de GlassMarshmallow',
+      text: 'Dos malvaviscos de cristal hechos solo con el framework: los colores salen de las herramientas y la forma, de las utilidades. El mismo código en modo claro y oscuro.',
+      link: 'Cómo se hizo',
     },
   },
   tools: {

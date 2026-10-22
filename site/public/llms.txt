@@ -122,3 +122,4 @@ All the documentation in a single file: [llms-full.txt](/llms-full.txt).
 ## Guides
 
 - [User experience](/docs/guides/ux): Rules so that what you build with GlassMarshmallow is easy to understand and use. Some are ours (we decided them while designing the framework) and others come from reference guides (GOV.UK, W3C, Nielsen Norman Group). For forms, see the [form rules](/docs/forms/rules) too.
+- [How the logo was made](/docs/guides/logo): The GlassMarshmallow logo is **two glass marshmallows**: two soft panels with very rounded corners, one in front of the other, on a glass tile. It is made with the framework itself: its colors come from this site's [tools](/tools) and its shape, from the utilities. The SVG the site uses (`logo.svg`) is generated from that same code.

@@ -60,7 +60,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
   {
     id: 'guides',
     icon: 'gmi-stars',
-    pages: ['ux'].map((p) => ({ path: `guides/${p}` })),
+    pages: ['ux', 'logo'].map((p) => ({ path: `guides/${p}` })),
   },
 ];
 

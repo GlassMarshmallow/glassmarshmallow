@@ -224,6 +224,7 @@ export const en = {
       'helpers/skip-link': 'Skip link',
       'helpers/gradient-text': 'Gradient text',
       'helpers/text-outline': 'Text outline',
+      'guides/logo': 'How the logo was made',
       'guides/ux': 'User experience',
     },
   },
@@ -280,6 +281,11 @@ export const en = {
       text: 'A portfolio with a chat that answers for you with AI and a smart form for people to tell you about their project. Built with Angular and .NET, in light and dark mode and accessible (WCAG 2.2 AA).',
       shotDesktop: 'Home of the portfolio template on a computer: photo, greeting, chat and quick questions',
       shotMobile: 'Home of the portfolio template on a phone',
+    },
+    logo: {
+      title: 'The GlassMarshmallow logo',
+      text: 'Two glass marshmallows made only with the framework: the colors come from the tools and the shape from the utilities. The same code in light and dark mode.',
+      link: 'How it was made',
     },
   },
   tools: {

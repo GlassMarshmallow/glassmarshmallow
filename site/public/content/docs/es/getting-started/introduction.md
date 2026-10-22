@@ -15,6 +15,8 @@ GlassMarshmallow es un framework CSS con superficies de cristal, modo claro y os
 - **Scripts opcionales**, sin dependencias, para los componentes que se mueven (menú, calendario, carrusel, reproductor…).
 - **Iconos**: en su propio paquete, [GlassMarshmallow Icons](/icons), con los mismos nombres que Bootstrap Icons.
 
+El logo de GlassMarshmallow también está hecho con el framework: [mira cómo se hizo](/docs/guides/logo).
+
 ## Empezar rápido
 
 Copia esta página para empezar. Carga GlassMarshmallow y elige el modo de color con `data-theme` en `<html>`.

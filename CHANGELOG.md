@@ -13,6 +13,13 @@ can include changes that need small updates in your code; they are listed under 
   seven families in `dist/css/components/` (`basics`, `forms`, `navigation`, `media`, `chat`, `pages`, `tools`), to
   load only the components you use. See "Only the parts you need" in Install.
 
+- Guide "How the logo was made": the logo built only with the framework's classes and its tools, and the SVG
+  generated from that code.
+
+### Fixed
+- **Color picker (`js/color-picker.js`):** a color typed as a code keeps exactly that value (`#3cd2ff` no longer
+  turns into `#3dd2ff`); it is only recalculated when hue, saturation or lightness change.
+
 ### Changed
 - `gm-glass-logo` in light mode: a thin white border and the medium shadow, with no gradient shadow behind the
   glass, so the glass looks as clean as in dark mode.

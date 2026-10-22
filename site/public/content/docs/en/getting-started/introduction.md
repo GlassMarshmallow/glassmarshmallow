@@ -15,6 +15,8 @@ GlassMarshmallow is a CSS framework with glass surfaces, light and dark mode and
 - **Optional scripts**, with no dependencies, for components that move (menu, calendar, carousel, player…).
 - **Icons**: in their own package, [GlassMarshmallow Icons](/icons), with the same names as Bootstrap Icons.
 
+The GlassMarshmallow logo is made with the framework too: [see how it was made](/docs/guides/logo).
+
 ## Quick start
 
 Copy this page to start. It loads GlassMarshmallow and sets the color mode with `data-theme` on `<html>`.
