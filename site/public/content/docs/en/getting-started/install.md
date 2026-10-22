@@ -97,7 +97,7 @@ Then load the stylesheet and use an icon with two classes. Icons take the color 
 Skip the install and load the compiled CSS from a CDN.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.2.0/dist/css/glassmarshmallow.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.2.1/dist/css/glassmarshmallow.min.css">
 ```
 
 ## Download

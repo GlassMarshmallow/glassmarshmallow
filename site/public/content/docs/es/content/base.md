@@ -7,7 +7,7 @@ Lo que GlassMarshmallow pone a toda la página al cargarlo, sin clases: la fuent
 - **Tamaños:** todo se mide con `box-sizing: border-box` (el relleno y el borde van dentro del ancho).
 - **Página:** fondo `--gm-bg`, texto `--gm-text`, fuente Montserrat (`--gm-font`) e interlineado de 1,5. Ancho mínimo de 320 px.
 - **Formularios:** los botones y campos usan la misma fuente que el texto.
-- **Enlaces:** sin subrayado ni color propio (cada componente les da el suyo).
+- **Enlaces:** sin color propio (cada componente les da el suyo). Los que van dentro del texto (párrafos, listas, citas, tablas), sin clase, van subrayados para que no se distingan solo por el color; con cualquier clase o componente se cambia sin pelearse.
 - **Imágenes:** nunca más anchas que su contenedor.
 - **Selección:** el texto seleccionado se tiñe con `--gm-selection`.
 

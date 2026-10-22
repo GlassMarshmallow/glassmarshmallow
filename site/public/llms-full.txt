@@ -150,7 +150,7 @@ Then load the stylesheet and use an icon with two classes. Icons take the color 
 Skip the install and load the compiled CSS from a CDN.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.2.0/dist/css/glassmarshmallow.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.2.1/dist/css/glassmarshmallow.min.css">
 ```
 
 ## Download
@@ -809,8 +809,8 @@ download is the **gzip** or **Brotli** column.
 <!-- sizes -->
 | File | As is | gzip | Brotli |
 | --- | --- | --- | --- |
-| `glassmarshmallow.min.css` | 209.1 kB | 34.7 kB | 24.2 kB |
-| `glassmarshmallow.css` | 297.3 kB | 58.3 kB | 43.3 kB |
+| `glassmarshmallow.min.css` | 209.3 kB | 34.8 kB | 24.4 kB |
+| `glassmarshmallow.css` | 297.7 kB | 58.4 kB | 43.2 kB |
 | `glassmarshmallow-font.min.css` | 0.6 kB | 0.4 kB | 0.4 kB |
 
 The font file (`montserrat-latin.woff2`) is 34.7 kB; it is already compressed.
@@ -3010,7 +3010,7 @@ What GlassMarshmallow applies to the whole page when loaded, with no classes: th
 - **Sizing:** everything uses `box-sizing: border-box` (padding and border are inside the width).
 - **Page:** `--gm-bg` background, `--gm-text` text, Montserrat font (`--gm-font`) and 1.5 line height. Minimum width of 320 px.
 - **Forms:** buttons and fields use the same font as the text.
-- **Links:** no underline or color of their own (each component gives them theirs).
+- **Links:** no color of their own (each component gives them theirs). Links inside text (paragraphs, lists, quotes, tables) with no class are underlined, so they do not stand out by color only; any class or component changes it without a fight.
 - **Images:** never wider than their container.
 - **Selection:** selected text is tinted with `--gm-selection`.
 

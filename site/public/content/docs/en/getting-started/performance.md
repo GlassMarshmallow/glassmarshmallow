@@ -11,8 +11,8 @@ download is the **gzip** or **Brotli** column.
 <!-- sizes -->
 | File | As is | gzip | Brotli |
 | --- | --- | --- | --- |
-| `glassmarshmallow.min.css` | 209.1 kB | 34.7 kB | 24.2 kB |
-| `glassmarshmallow.css` | 297.3 kB | 58.3 kB | 43.3 kB |
+| `glassmarshmallow.min.css` | 209.3 kB | 34.8 kB | 24.4 kB |
+| `glassmarshmallow.css` | 297.7 kB | 58.4 kB | 43.2 kB |
 | `glassmarshmallow-font.min.css` | 0.6 kB | 0.4 kB | 0.4 kB |
 
 The font file (`montserrat-latin.woff2`) is 34.7 kB; it is already compressed.

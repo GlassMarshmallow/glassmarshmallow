@@ -97,7 +97,7 @@ Después carga la hoja de estilos y usa un icono con dos clases. Los iconos toma
 Sáltate la instalación y carga el CSS compilado desde un CDN.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.2.0/dist/css/glassmarshmallow.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glassmarshmallow@0.2.1/dist/css/glassmarshmallow.min.css">
 ```
 
 ## Descarga

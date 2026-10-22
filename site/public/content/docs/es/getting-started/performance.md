@@ -11,8 +11,8 @@ que lo que se descarga de verdad es la columna **gzip** o **Brotli**.
 <!-- sizes -->
 | Archivo | Tal cual | gzip | Brotli |
 | --- | --- | --- | --- |
-| `glassmarshmallow.min.css` | 209.1 kB | 34.7 kB | 24.2 kB |
-| `glassmarshmallow.css` | 297.3 kB | 58.3 kB | 43.3 kB |
+| `glassmarshmallow.min.css` | 209.3 kB | 34.8 kB | 24.4 kB |
+| `glassmarshmallow.css` | 297.7 kB | 58.4 kB | 43.2 kB |
 | `glassmarshmallow-font.min.css` | 0.6 kB | 0.4 kB | 0.4 kB |
 
 El archivo de la letra (`montserrat-latin.woff2`) pesa 34.7 kB; ya va comprimido.

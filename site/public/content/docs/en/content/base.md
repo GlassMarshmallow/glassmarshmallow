@@ -7,7 +7,7 @@ What GlassMarshmallow applies to the whole page when loaded, with no classes: th
 - **Sizing:** everything uses `box-sizing: border-box` (padding and border are inside the width).
 - **Page:** `--gm-bg` background, `--gm-text` text, Montserrat font (`--gm-font`) and 1.5 line height. Minimum width of 320 px.
 - **Forms:** buttons and fields use the same font as the text.
-- **Links:** no underline or color of their own (each component gives them theirs).
+- **Links:** no color of their own (each component gives them theirs). Links inside text (paragraphs, lists, quotes, tables) with no class are underlined, so they do not stand out by color only; any class or component changes it without a fight.
 - **Images:** never wider than their container.
 - **Selection:** selected text is tinted with `--gm-selection`.
 

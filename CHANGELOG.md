@@ -6,6 +6,8 @@ can include changes that need small updates in your code; they are listed under 
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-10-22
+
 ### Added
 - Guide "Building with utilities" and an index of all utilities in the documentation.
 - `npm test` (the CSS builds, everything is inside the layer, every class used in the docs examples exists) and
@@ -17,6 +19,8 @@ can include changes that need small updates in your code; they are listed under 
 - Documentation page "Performance", with the size of every file (as is, gzip and Brotli) measured on each build.
 
 ### Fixed
+- **Links inside text** (paragraphs, lists, quotes, tables) with no class are underlined, so they do not
+  stand out by color only (WCAG 1.4.1). It has no specificity, so any class or component changes it.
 - **Scripts:** the carousel, gallery, player, color picker and calendar escape the texts they insert, so a label
   or a translation passed in `options.texts` can never run as HTML.
 - **Minified CSS:** the minifier no longer changes anything inside quoted strings (`content: "A > B"`,
@@ -84,7 +88,8 @@ can include changes that need small updates in your code; they are listed under 
 - First public version: glass surfaces, pastel palette, light and dark mode, WCAG 2.2 AA (AAA whenever
   possible), components, utilities and optional scripts with no dependencies.
 
-[Unreleased]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.1.3...v0.1.4
 [0.1.3]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.1.2...v0.1.3

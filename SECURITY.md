@@ -7,7 +7,7 @@ into a new patch or minor version; there are no backports.
 
 | Version | Supported |
 | --- | --- |
-| 0.2.x | Yes |
+| 0.2.x | Yes (0.2.1 or later: it escapes the scripts' texts) |
 | < 0.2 | No |
 
 ## Reporting a vulnerability
