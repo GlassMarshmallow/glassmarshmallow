@@ -57,7 +57,8 @@ export function initCarousel(root, options = {}) {
   root.setAttribute('role', 'region');
   root.setAttribute('aria-roledescription', t.carousel);
   slides.forEach((slide, i) => {
-    slide.setAttribute('role', 'group');
+    // Un <figure> con <figcaption> ya es un grupo con nombre (role figure) y HTML no deja cambiarle el rol
+    if (!(slide.localName === 'figure' && slide.querySelector('figcaption'))) slide.setAttribute('role', 'group');
     slide.setAttribute('aria-roledescription', t.slide);
     slide.setAttribute('aria-label', `${i + 1} ${esc(t.of)} ${slides.length}`);
   });
