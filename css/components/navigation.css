@@ -673,7 +673,8 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
      <a class="gm-pager__link" href="…"><span class="gm-pager__label"><i class="gmi gmi-arrow-left" aria-hidden="true"></i>Anterior</span><span class="gm-pager__title">Botón</span></a>
      <a class="gm-pager__link gm-pager__link--next" href="…"><span class="gm-pager__label">Siguiente<i class="gmi gmi-arrow-right" aria-hidden="true"></i></span><span class="gm-pager__title">Tarjeta</span></a>
    </nav> */
-.gm-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+/* minmax(0, 1fr): con un título largo en una pantalla estrecha, la columna se estrecha y el título se parte */
+.gm-pager { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .gm-pager__link {
   display: grid;
   gap: .25rem;
@@ -692,7 +693,7 @@ html:has(.gm-backdrop:not(.gm-backdrop--contained)) .gm-site-footer { border-top
 .gm-pager__link--next { grid-column: 2; text-align: right; }
 .gm-pager__label { display: inline-flex; align-items: center; gap: .375rem; color: var(--gm-muted); font-size: .82rem; }
 .gm-pager__link--next .gm-pager__label { justify-content: flex-end; }
-.gm-pager__title { font-weight: 650; }
+.gm-pager__title { font-weight: 650; overflow-wrap: break-word; }
 @media (prefers-reduced-motion: reduce) { .gm-pager__link:hover { transform: none; } }
 
 @media (prefers-reduced-motion: reduce) {

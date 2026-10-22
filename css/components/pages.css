@@ -31,13 +31,16 @@
    móvil van uno debajo del otro y con el mismo ancho (el del más largo); en el ordenador siguen en la fila. */
 .gm-hero {
   display: grid;
+  /* minmax(0, 1fr): la columna no pasa del ancho disponible aunque el nombre no quepa (con el texto agrandado o
+     más espaciado, WCAG 1.4.12); entonces el nombre se parte en vez de salirse */
+  grid-template-columns: minmax(0, 1fr);
   align-content: center;
   justify-items: center;
   padding-block: 3rem 1rem;
   text-align: center;
 }
 .gm-hero__logo { width: clamp(5.5rem, 12vw, 7.5rem); height: auto; margin-bottom: 1.25rem; }
-.gm-hero h1 { font-size: clamp(2.8rem, 7vw, 4rem); }
+.gm-hero h1 { max-width: 100%; font-size: clamp(2.8rem, 7vw, 4rem); }
 .gm-hero p { text-align: center; } /* el framework alinea los párrafos al inicio */
 .gm-hero__lead { max-width: 40rem; margin-bottom: 2rem; color: var(--gm-text); font-size: clamp(1.1rem, 2.2vw, 1.35rem); line-height: 1.5; }
 .gm-hero__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .875rem; margin-bottom: 1.125rem; }
@@ -130,6 +133,12 @@
   line-height: 1.5;
 }
 .gm-snippet__example > :last-child { margin-bottom: 0; }
+/* El ejemplo del calendario le dice cuánto sitio tiene (su caja ajusta el relleno con 100cqi) y, en el móvil, le
+   deja todo su espacio: los 7 días de 44 px (WCAG 2.5.5) necesitan 308 px */
+.gm-snippet__example:has(.gm-calendar) { container-type: inline-size; }
+@media (max-width: 30rem) {
+  .gm-snippet__example:has(.gm-calendar) { padding: 0; }
+}
 .gm-snippet__bar {
   display: flex;
   min-height: 2.625rem;

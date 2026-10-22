@@ -111,6 +111,12 @@
 /* --- WCAG 2.5.5 (AAA): zona que se pulsa de al menos 44 × 44 px ----------------
    Si el elemento se ve más pequeño (botones pequeños, píldoras, botones redondos), una capa invisible amplía la
    zona que se pulsa sin cambiar su aspecto. */
+/* Alto contraste del sistema: quita los fondos, así que el botón relleno necesita un borde para seguir viéndose
+   como botón (fuera de ese modo no cambia nada) */
+@media (forced-colors: active) {
+  .gm-btn:not(.gm-btn--ghost, .gm-btn--secondary) { border: 1px solid ButtonText; }
+}
+
 .gm-btn, .gm-icon-btn, .gm-btn-back, .gm-btn-text, .gm-calendar__day { position: relative; }
 .gm-btn::after, .gm-icon-btn::after, .gm-btn-back::after, .gm-btn-text::after, .gm-calendar__day::after {
   position: absolute;

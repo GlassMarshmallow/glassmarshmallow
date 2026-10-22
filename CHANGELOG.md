@@ -6,6 +6,24 @@ can include changes that need small updates in your code; they are listed under 
 
 ## [Unreleased]
 
+### Fixed
+- **Reflow at 320 px (WCAG 1.4.10):** headings, paragraphs, list items, table cells, captions and quotes break a
+  word (or a long inline code) only when it does not fit, instead of making the page scroll sideways. Nothing
+  changes when it fits.
+- **`gm-pager`:** a long page title no longer pushes the "next" card out of narrow screens.
+- **`gm-hero` (WCAG 1.4.12):** with larger letter or word spacing, the name and the lead stay inside the hero.
+- **`gm-calendar` on small screens:** the box adapts to the space it has: 1.25rem of padding when it fits and
+  less (down to .5rem) when the week of 44 px days would not, so the days and arrows never stick out. Up to
+  480 px the days have no gap between them; at 360 px or less (also 400 % zoom, WCAG 1.4.10) the days are 28 px (WCAG 2.5.8 asks
+  for 24 px) and the month can move to its own line.
+- **`gm-btn` in forced colors mode:** the filled button gets a border, so it still looks like a button when the
+  system removes backgrounds. Nothing changes outside that mode.
+- **Carousel (`js/carousel.js`):** a slide that is a `<figure>` with a `<figcaption>` keeps its `figure` role
+  (HTML does not allow `role="group"` there); other slides are still groups.
+- Documentation examples: the tab bar's "More" button controls an element that exists, the code snippet's
+  panel is named by its tab, and the example landmarks (navbar, footer, table of contents, tab bar) no longer
+  repeat the names of the site's own ones.
+
 ## [0.3.0] - 2026-10-22
 
 ### Added

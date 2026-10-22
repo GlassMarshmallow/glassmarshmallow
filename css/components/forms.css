@@ -155,7 +155,10 @@
   width: max-content;
   max-width: 100%;
   gap: .875rem;
-  padding: 1.25rem;
+  /* La caja se adapta al sitio que tiene: 20 px de relleno cuando cabe y menos (hasta 8 px) cuando la semana de
+     días de 44 px no cabría. 100cqi es el ancho del contenedor (o de la pantalla, si no hay contenedor) y 21.5rem,
+     los 7 días más el borde y los márgenes de la página */
+  padding: clamp(.5rem, calc((100cqi - 21.5rem) / 2), 1.25rem);
   border: 1px solid var(--gm-surface-glass-border);
   border-radius: var(--gm-radius-md);
   color: var(--gm-text);
@@ -203,10 +206,16 @@
 .gm-calendar__day[aria-current="date"] { color: var(--gm-link); font-weight: 700; }
 .gm-calendar__day[aria-pressed="true"] { color: var(--gm-on-primary); background: var(--gm-primary); font-weight: 700; }
 .gm-calendar__day:disabled { color: var(--gm-muted); opacity: .45; cursor: default; }
-/* Móvil: menos relleno para que quepan los días de 44 px (WCAG 2.5.5) */
-@media (max-width: 25rem) {
-  .gm-calendar { padding: .625rem; }
+/* Móvil: los días sin separación para que quepan con sus 44 px (WCAG 2.5.5) */
+@media (max-width: 30rem) {
   .gm-calendar__grid td { padding: 0; }
+}
+/* Pantallas de 360 px o menos (también el zoom al 400 %, WCAG 1.4.10): días de 28 px para que quepa la semana
+   entera (mínimo de WCAG 2.5.8: 24 px) y el mes pasa a otra línea si no cabe junto a las flechas */
+@media (max-width: 22.5rem) {
+  .gm-calendar__header { flex-wrap: wrap; }
+  .gm-calendar__title { font-size: 1.1rem; }
+  .gm-calendar__day { width: 1.75rem; height: 1.75rem; font-size: .9rem; }
 }
 
 /* --- Selector de color --------------------------------------------------------

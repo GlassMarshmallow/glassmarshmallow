@@ -121,6 +121,10 @@ code, pre { font-family: var(--gm-font-mono); }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
+/* 1.4.10 Reflow: una palabra o un código más largo que la pantalla se parte en vez de salirse por el lado
+   (solo cuando no cabe: si cabe, no cambia nada) */
+h1, h2, h3, h4, h5, h6, p, li, dd, td, th, figcaption, blockquote { overflow-wrap: break-word; }
+
 /* --- WCAG 2.2 nivel AAA -------------------------------------------------------- */
 /* 2.4.12 Foco no tapado: lo que recibe el foco queda entero a la vista, por debajo de la barra de arriba y por
    encima de la del móvil */
