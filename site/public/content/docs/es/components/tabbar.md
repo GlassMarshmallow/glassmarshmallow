@@ -7,12 +7,13 @@ La barra de abajo del móvil, flotante y de cristal, como en iOS. Sustituye a lo
 En la web solo aparece en el móvil y flota sobre la página (`position: fixed`); aquí se ve dentro del recuadro.
 
 ```html
-<nav class="gm-tabbar gm-relative gm-flex gm-max-w-sm" aria-label="Principal (móvil)" style="inset: auto">
+<nav class="gm-tabbar gm-relative gm-flex gm-max-w-sm" aria-label="Ejemplo de barra del móvil" style="inset: auto">
   <a href="#" aria-current="page"><i class="gmi gmi-house" aria-hidden="true"></i>Inicio</a>
   <a href="#"><i class="gmi gmi-book" aria-hidden="true"></i>Docs</a>
   <a href="#"><i class="gmi gmi-heart" aria-hidden="true"></i>Iconos</a>
   <button type="button" aria-expanded="false" aria-controls="ejemplo-mas"><i class="gmi gmi-grid" aria-hidden="true"></i>Más</button>
 </nav>
+<nav id="ejemplo-mas" class="gm-tabbar-more" aria-label="Ejemplo de más secciones" hidden></nav>
 ```
 
 ## Panel «Más»

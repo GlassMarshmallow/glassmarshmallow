@@ -27,12 +27,12 @@ For the same example in several languages or package managers: `gm-snippet__tabs
 <div class="gm-snippet">
   <div class="gm-snippet__bar">
     <div class="gm-snippet__tabs" role="tablist">
-      <button type="button" class="gm-snippet__tab" role="tab" aria-selected="true">npm</button>
-      <button type="button" class="gm-snippet__tab" role="tab" aria-selected="false">pnpm</button>
+      <button type="button" class="gm-snippet__tab" id="example-tab-npm" role="tab" aria-selected="true" aria-controls="example-panel">npm</button>
+      <button type="button" class="gm-snippet__tab" id="example-tab-pnpm" role="tab" aria-selected="false" aria-controls="example-panel">pnpm</button>
     </div>
     <button type="button" class="gm-snippet__copy"><i class="gmi gmi-clipboard" aria-hidden="true"></i><span>Copy</span></button>
   </div>
-  <pre class="gm-snippet__code" tabindex="0" role="tabpanel"><code>npm install glassmarshmallow</code></pre>
+  <pre id="example-panel" class="gm-snippet__code" tabindex="0" role="tabpanel" aria-labelledby="example-tab-npm"><code>npm install glassmarshmallow</code></pre>
 </div>
 ```
 
@@ -51,4 +51,4 @@ For the same example in several languages or package managers: `gm-snippet__tabs
 - The code can be reached with the keyboard (`tabindex="0"` on the `<pre>`) and scrolled sideways when long.
 - The tabs and the copy button are 44 × 44 px where you press them, even if they look smaller (WCAG 2.5.5).
 - When copying, tell screen readers ("Code copied") with an `aria-live` region.
-- Tabs have `role="tab"` and `aria-selected`; each code block, `role="tabpanel"`.
+- Tabs have `role="tab"` and `aria-selected`; each code block, `role="tabpanel"` with the name of its tab (`aria-labelledby`).

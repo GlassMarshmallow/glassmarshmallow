@@ -27,12 +27,12 @@ Para el mismo ejemplo en varios lenguajes o gestores de paquetes: `gm-snippet__t
 <div class="gm-snippet">
   <div class="gm-snippet__bar">
     <div class="gm-snippet__tabs" role="tablist">
-      <button type="button" class="gm-snippet__tab" role="tab" aria-selected="true">npm</button>
-      <button type="button" class="gm-snippet__tab" role="tab" aria-selected="false">pnpm</button>
+      <button type="button" class="gm-snippet__tab" id="example-tab-npm" role="tab" aria-selected="true" aria-controls="example-panel">npm</button>
+      <button type="button" class="gm-snippet__tab" id="example-tab-pnpm" role="tab" aria-selected="false" aria-controls="example-panel">pnpm</button>
     </div>
     <button type="button" class="gm-snippet__copy"><i class="gmi gmi-clipboard" aria-hidden="true"></i><span>Copiar</span></button>
   </div>
-  <pre class="gm-snippet__code" tabindex="0" role="tabpanel"><code>npm install glassmarshmallow</code></pre>
+  <pre id="example-panel" class="gm-snippet__code" tabindex="0" role="tabpanel" aria-labelledby="example-tab-npm"><code>npm install glassmarshmallow</code></pre>
 </div>
 ```
 
@@ -51,4 +51,4 @@ Para el mismo ejemplo en varios lenguajes o gestores de paquetes: `gm-snippet__t
 - El código se puede recorrer con el teclado (`tabindex="0"` en el `<pre>`) y desplazar de lado si es largo.
 - Las pestañas y el botón de copiar miden 44 × 44 px donde se pulsan aunque se vean más pequeños (WCAG 2.5.5).
 - Al copiar, avisa a los lectores de pantalla («Código copiado») con una zona `aria-live`.
-- Las pestañas llevan `role="tab"` y `aria-selected`; cada código, `role="tabpanel"`.
+- Las pestañas llevan `role="tab"` y `aria-selected`; cada código, `role="tabpanel"` con el nombre de su pestaña (`aria-labelledby`).

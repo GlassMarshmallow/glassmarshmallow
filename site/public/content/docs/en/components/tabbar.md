@@ -7,12 +7,13 @@ The phone's bottom bar, floating and glass, like in iOS. It replaces the [navbar
 On the site it only appears on phones and floats over the page (`position: fixed`); here it is shown inside the frame.
 
 ```html
-<nav class="gm-tabbar gm-relative gm-flex gm-max-w-sm" aria-label="Main (mobile)" style="inset: auto">
+<nav class="gm-tabbar gm-relative gm-flex gm-max-w-sm" aria-label="Mobile bar example" style="inset: auto">
   <a href="#" aria-current="page"><i class="gmi gmi-house" aria-hidden="true"></i>Home</a>
   <a href="#"><i class="gmi gmi-book" aria-hidden="true"></i>Docs</a>
   <a href="#"><i class="gmi gmi-heart" aria-hidden="true"></i>Icons</a>
   <button type="button" aria-expanded="false" aria-controls="example-more"><i class="gmi gmi-grid" aria-hidden="true"></i>More</button>
 </nav>
+<nav id="example-more" class="gm-tabbar-more" aria-label="More sections example" hidden></nav>
 ```
 
 ## “More” panel

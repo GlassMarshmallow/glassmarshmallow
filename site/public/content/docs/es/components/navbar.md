@@ -9,7 +9,7 @@ En la web va pegada arriba (`position: sticky`); aquí se ve dentro del recuadro
 ```html
 <header class="gm-navbar gm-relative gm-rounded-sm">
   <a class="gm-navbar__brand" href="#"><img class="gm-navbar__logo" src="logo.svg" alt="" width="48" height="48"><span>Mi web</span></a>
-  <nav class="gm-navbar__nav" aria-label="Principal">
+  <nav class="gm-navbar__nav" aria-label="Ejemplo de barra principal">
     <a href="#" aria-current="page">Inicio</a>
     <a href="#">Servicios</a>
     <a href="#">Contacto</a>

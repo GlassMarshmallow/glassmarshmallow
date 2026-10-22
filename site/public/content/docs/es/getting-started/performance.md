@@ -11,15 +11,15 @@ que lo que se descarga de verdad es la columna **gzip** o **Brotli**.
 <!-- sizes -->
 | Archivo | Tal cual | gzip | Brotli |
 | --- | --- | --- | --- |
-| `glassmarshmallow.min.css` | 209.9 kB | 34.9 kB | 24.3 kB |
-| `glassmarshmallow.css` | 299.9 kB | 58.8 kB | 43.5 kB |
-| `glassmarshmallow-core.min.css` | 131.3 kB | 21.5 kB | 13.0 kB |
-| `components/basics.min.css` | 16.4 kB | 3.9 kB | 3.4 kB |
+| `glassmarshmallow.min.css` | 210.4 kB | 35.0 kB | 24.4 kB |
+| `glassmarshmallow.css` | 301.9 kB | 59.6 kB | 43.9 kB |
+| `glassmarshmallow-core.min.css` | 131.4 kB | 21.5 kB | 13.1 kB |
+| `components/basics.min.css` | 16.5 kB | 3.9 kB | 3.4 kB |
 | `components/chat.min.css` | 6.9 kB | 2.0 kB | 1.7 kB |
-| `components/forms.min.css` | 12.6 kB | 3.0 kB | 2.5 kB |
+| `components/forms.min.css` | 12.8 kB | 3.0 kB | 2.6 kB |
 | `components/media.min.css` | 12.2 kB | 3.0 kB | 2.6 kB |
-| `components/navigation.min.css` | 18.8 kB | 3.9 kB | 3.4 kB |
-| `components/pages.min.css` | 9.5 kB | 2.5 kB | 2.2 kB |
+| `components/navigation.min.css` | 18.8 kB | 4.0 kB | 3.5 kB |
+| `components/pages.min.css` | 9.7 kB | 2.6 kB | 2.2 kB |
 | `components/tools.min.css` | 4.2 kB | 1.3 kB | 1.1 kB |
 | `glassmarshmallow-font.min.css` | 0.6 kB | 0.4 kB | 0.4 kB |
 
@@ -28,7 +28,7 @@ El archivo de la letra (`montserrat-latin.woff2`) pesa 34.7 kB; ya va comprimido
 | Script | Tal cual | gzip | Brotli |
 | --- | --- | --- | --- |
 | `js/calendar.js` | 6.9 kB | 2.7 kB | 2.3 kB |
-| `js/carousel.js` | 7.7 kB | 2.8 kB | 2.4 kB |
+| `js/carousel.js` | 7.8 kB | 2.9 kB | 2.5 kB |
 | `js/color-picker.js` | 15.5 kB | 5.5 kB | 4.8 kB |
 | `js/dialog.js` | 2.5 kB | 1.1 kB | 0.9 kB |
 | `js/fullscreen-menu.js` | 2.8 kB | 1.2 kB | 1.0 kB |

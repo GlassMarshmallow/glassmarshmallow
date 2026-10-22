@@ -9,7 +9,7 @@ On the site it sticks to the top (`position: sticky`); here it is shown inside t
 ```html
 <header class="gm-navbar gm-relative gm-rounded-sm">
   <a class="gm-navbar__brand" href="#"><img class="gm-navbar__logo" src="logo.svg" alt="" width="48" height="48"><span>My site</span></a>
-  <nav class="gm-navbar__nav" aria-label="Main">
+  <nav class="gm-navbar__nav" aria-label="Main bar example">
     <a href="#" aria-current="page">Home</a>
     <a href="#">Services</a>
     <a href="#">Contact</a>

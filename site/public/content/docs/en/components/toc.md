@@ -5,7 +5,7 @@
 ## Example
 
 ```html
-<aside class="gm-toc gm-static gm-block" aria-label="On this page">
+<aside class="gm-toc gm-static gm-block" aria-label="Table of contents example">
   <p class="gm-toc__title">On this page</p>
   <ul class="gm-toc__list">
     <li><a class="gm-toc__link" href="#">Example</a></li>

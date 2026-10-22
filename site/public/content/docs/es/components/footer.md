@@ -54,7 +54,7 @@ GitHub y LinkedIn están en los iconos de GlassMarshmallow (`gmi-github`, `gmi-l
 ```html
 <footer class="gm-site-footer">
   <div class="gm-site-footer__inner">
-    <nav class="gm-site-footer__links" aria-label="Pie">
+    <nav class="gm-site-footer__links" aria-label="Ejemplo de pie">
       <a href="#">Docs</a><a href="#">Ejemplos</a><a href="#">Iconos</a>
     </nav>
     <p class="gm-site-footer__credit gm-muted gm-small">Diseñado y desarrollado por <a class="gm-site-footer__author" href="#">Sara Paez Yamuza</a> · Licencia MIT</p>

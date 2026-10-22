@@ -5,7 +5,7 @@
 ## Ejemplo
 
 ```html
-<aside class="gm-toc gm-static gm-block" aria-label="En esta página">
+<aside class="gm-toc gm-static gm-block" aria-label="Ejemplo de índice">
   <p class="gm-toc__title">En esta página</p>
   <ul class="gm-toc__list">
     <li><a class="gm-toc__link" href="#">Ejemplo</a></li>
