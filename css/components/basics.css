@@ -522,16 +522,10 @@ a.gm-avatar[data-gm-zoom]:hover { transform: scale(1.03); }
   .gm-dialog__title { font-size: 1.1rem; }
 }
 
-/* Títulos de color de la ventana y del texto largo: en claro, el degradado de acento de 7:1; en oscuro, celeste */
-:is(.gm-dialog__section > h3, .gm-prose h2) {
-  color: transparent;
-  background: var(--gm-accent-gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* Títulos de la ventana y del texto largo, de un solo color (sin degradado en las letras): en claro, el del texto */
+:is(.gm-dialog__section > h3, .gm-prose h2) { color: var(--gm-text); }
 /* De noche, el celeste de la paleta: sobre el cristal oscuro llega a 11:1 (el turquesa se queda en 6,4:1) */
-[data-theme="dark"] :is(.gm-dialog__section > h3, .gm-prose h2) { color: var(--gm-sky); background: none; -webkit-text-fill-color: currentColor; }
+[data-theme="dark"] :is(.gm-dialog__section > h3, .gm-prose h2) { color: var(--gm-sky); }
 
 /* --- Botón redondo de cristal (sobre fondos con dibujo o imagen) ----------------------
    <button type="button" class="gm-icon-btn gm-icon-btn--glass" aria-label="Abrir menú">…</button> */

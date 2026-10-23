@@ -11,6 +11,10 @@ can include changes that need small updates in your code; they are listed under 
   Tailwind (`gm-from-sky-400`, `gm-via-peach-300`, `gm-to-gray-900`). The Gradients page shows them, with gradient
   text (`gm-bg-clip-text`) and how to use more than three colors.
 
+### Changed
+- **Headings of `gm-prose` and `gm-dialog`** in a single color, with no gradient on the letters: the text color in
+  light mode (sky at night, as before).
+
 ### Fixed
 - **Reflow at 320 px (WCAG 1.4.10):** headings, paragraphs, list items, table cells, captions and quotes break a
   word (or a long inline code) only when it does not fit, instead of making the page scroll sideways. Nothing

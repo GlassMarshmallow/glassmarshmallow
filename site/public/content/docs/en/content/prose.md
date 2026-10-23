@@ -28,7 +28,7 @@ With `.gm-prose` alone, the text sits on the page background.
 | --- | --- |
 | `h1` | 1.9 rem (1.5 rem on phones) |
 | `.gm-prose__updated` | The date, in small gray |
-| `h2` | 1.1 rem, colored: accent gradient by day, sky at night |
+| `h2` | 1.1 rem, a single color: the text color by day, sky at night |
 | `p`, `li` | 0.95 rem with 1.65 line height |
 | `a` | Link color, semibold and underlined |
 

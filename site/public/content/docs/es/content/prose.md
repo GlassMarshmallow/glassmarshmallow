@@ -28,7 +28,7 @@ Solo con `.gm-prose`, el texto va sobre el fondo de la página.
 | --- | --- |
 | `h1` | 1,9 rem (1,5 rem en el móvil) |
 | `.gm-prose__updated` | La fecha, en gris pequeño |
-| `h2` | 1,1 rem, de color: degradado de acento de día, celeste de noche |
+| `h2` | 1,1 rem, de un solo color: el del texto de día, celeste de noche |
 | `p`, `li` | 0,95 rem con interlineado de 1,65 |
 | `a` | Color de enlace, en seminegrita y subrayado |
 
