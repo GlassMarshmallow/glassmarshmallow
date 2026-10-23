@@ -6,6 +6,11 @@ can include changes that need small updates in your code; they are listed under 
 
 ## [Unreleased]
 
+### Added
+- **Gradient tones:** `gm-from-…`, `gm-via-…` and `gm-to-…` also take the palette tones, from `025` to `975`, as in
+  Tailwind (`gm-from-sky-400`, `gm-via-peach-300`, `gm-to-gray-900`). The Gradients page shows them, with gradient
+  text (`gm-bg-clip-text`) and how to use more than three colors.
+
 ### Fixed
 - **Reflow at 320 px (WCAG 1.4.10):** headings, paragraphs, list items, table cells, captions and quotes break a
   word (or a long inline code) only when it does not fit, instead of making the page scroll sideways. Nothing

@@ -603,6 +603,357 @@
 .gm-to-accent { --gm-gradient-to: var(--gm-accent) var(--gm-gradient-to-position, 100%); }
 .gm-to-line { --gm-gradient-to: var(--gm-line) var(--gm-gradient-to-position, 100%); }
 .gm-to-line-strong { --gm-gradient-to: var(--gm-line-strong) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-025 { --gm-gradient-from: var(--gm-sky-025) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-025 { --gm-gradient-via: var(--gm-sky-025) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-025 { --gm-gradient-to: var(--gm-sky-025) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-050 { --gm-gradient-from: var(--gm-sky-050) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-050 { --gm-gradient-via: var(--gm-sky-050) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-050 { --gm-gradient-to: var(--gm-sky-050) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-100 { --gm-gradient-from: var(--gm-sky-100) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-100 { --gm-gradient-via: var(--gm-sky-100) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-100 { --gm-gradient-to: var(--gm-sky-100) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-200 { --gm-gradient-from: var(--gm-sky-200) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-200 { --gm-gradient-via: var(--gm-sky-200) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-200 { --gm-gradient-to: var(--gm-sky-200) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-300 { --gm-gradient-from: var(--gm-sky-300) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-300 { --gm-gradient-via: var(--gm-sky-300) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-300 { --gm-gradient-to: var(--gm-sky-300) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-400 { --gm-gradient-from: var(--gm-sky-400) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-400 { --gm-gradient-via: var(--gm-sky-400) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-400 { --gm-gradient-to: var(--gm-sky-400) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-500 { --gm-gradient-from: var(--gm-sky-500) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-500 { --gm-gradient-via: var(--gm-sky-500) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-500 { --gm-gradient-to: var(--gm-sky-500) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-600 { --gm-gradient-from: var(--gm-sky-600) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-600 { --gm-gradient-via: var(--gm-sky-600) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-600 { --gm-gradient-to: var(--gm-sky-600) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-700 { --gm-gradient-from: var(--gm-sky-700) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-700 { --gm-gradient-via: var(--gm-sky-700) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-700 { --gm-gradient-to: var(--gm-sky-700) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-800 { --gm-gradient-from: var(--gm-sky-800) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-800 { --gm-gradient-via: var(--gm-sky-800) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-800 { --gm-gradient-to: var(--gm-sky-800) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-900 { --gm-gradient-from: var(--gm-sky-900) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-900 { --gm-gradient-via: var(--gm-sky-900) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-900 { --gm-gradient-to: var(--gm-sky-900) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-950 { --gm-gradient-from: var(--gm-sky-950) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-950 { --gm-gradient-via: var(--gm-sky-950) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-950 { --gm-gradient-to: var(--gm-sky-950) var(--gm-gradient-to-position, 100%); }
+.gm-from-sky-975 { --gm-gradient-from: var(--gm-sky-975) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-sky-975 { --gm-gradient-via: var(--gm-sky-975) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-sky-975 { --gm-gradient-to: var(--gm-sky-975) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-025 { --gm-gradient-from: var(--gm-blue-025) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-025 { --gm-gradient-via: var(--gm-blue-025) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-025 { --gm-gradient-to: var(--gm-blue-025) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-050 { --gm-gradient-from: var(--gm-blue-050) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-050 { --gm-gradient-via: var(--gm-blue-050) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-050 { --gm-gradient-to: var(--gm-blue-050) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-100 { --gm-gradient-from: var(--gm-blue-100) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-100 { --gm-gradient-via: var(--gm-blue-100) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-100 { --gm-gradient-to: var(--gm-blue-100) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-200 { --gm-gradient-from: var(--gm-blue-200) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-200 { --gm-gradient-via: var(--gm-blue-200) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-200 { --gm-gradient-to: var(--gm-blue-200) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-300 { --gm-gradient-from: var(--gm-blue-300) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-300 { --gm-gradient-via: var(--gm-blue-300) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-300 { --gm-gradient-to: var(--gm-blue-300) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-400 { --gm-gradient-from: var(--gm-blue-400) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-400 { --gm-gradient-via: var(--gm-blue-400) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-400 { --gm-gradient-to: var(--gm-blue-400) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-500 { --gm-gradient-from: var(--gm-blue-500) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-500 { --gm-gradient-via: var(--gm-blue-500) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-500 { --gm-gradient-to: var(--gm-blue-500) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-600 { --gm-gradient-from: var(--gm-blue-600) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-600 { --gm-gradient-via: var(--gm-blue-600) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-600 { --gm-gradient-to: var(--gm-blue-600) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-700 { --gm-gradient-from: var(--gm-blue-700) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-700 { --gm-gradient-via: var(--gm-blue-700) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-700 { --gm-gradient-to: var(--gm-blue-700) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-800 { --gm-gradient-from: var(--gm-blue-800) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-800 { --gm-gradient-via: var(--gm-blue-800) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-800 { --gm-gradient-to: var(--gm-blue-800) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-900 { --gm-gradient-from: var(--gm-blue-900) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-900 { --gm-gradient-via: var(--gm-blue-900) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-900 { --gm-gradient-to: var(--gm-blue-900) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-950 { --gm-gradient-from: var(--gm-blue-950) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-950 { --gm-gradient-via: var(--gm-blue-950) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-950 { --gm-gradient-to: var(--gm-blue-950) var(--gm-gradient-to-position, 100%); }
+.gm-from-blue-975 { --gm-gradient-from: var(--gm-blue-975) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-blue-975 { --gm-gradient-via: var(--gm-blue-975) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-blue-975 { --gm-gradient-to: var(--gm-blue-975) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-025 { --gm-gradient-from: var(--gm-lavender-025) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-025 { --gm-gradient-via: var(--gm-lavender-025) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-025 { --gm-gradient-to: var(--gm-lavender-025) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-050 { --gm-gradient-from: var(--gm-lavender-050) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-050 { --gm-gradient-via: var(--gm-lavender-050) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-050 { --gm-gradient-to: var(--gm-lavender-050) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-100 { --gm-gradient-from: var(--gm-lavender-100) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-100 { --gm-gradient-via: var(--gm-lavender-100) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-100 { --gm-gradient-to: var(--gm-lavender-100) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-200 { --gm-gradient-from: var(--gm-lavender-200) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-200 { --gm-gradient-via: var(--gm-lavender-200) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-200 { --gm-gradient-to: var(--gm-lavender-200) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-300 { --gm-gradient-from: var(--gm-lavender-300) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-300 { --gm-gradient-via: var(--gm-lavender-300) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-300 { --gm-gradient-to: var(--gm-lavender-300) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-400 { --gm-gradient-from: var(--gm-lavender-400) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-400 { --gm-gradient-via: var(--gm-lavender-400) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-400 { --gm-gradient-to: var(--gm-lavender-400) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-500 { --gm-gradient-from: var(--gm-lavender-500) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-500 { --gm-gradient-via: var(--gm-lavender-500) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-500 { --gm-gradient-to: var(--gm-lavender-500) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-600 { --gm-gradient-from: var(--gm-lavender-600) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-600 { --gm-gradient-via: var(--gm-lavender-600) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-600 { --gm-gradient-to: var(--gm-lavender-600) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-700 { --gm-gradient-from: var(--gm-lavender-700) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-700 { --gm-gradient-via: var(--gm-lavender-700) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-700 { --gm-gradient-to: var(--gm-lavender-700) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-800 { --gm-gradient-from: var(--gm-lavender-800) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-800 { --gm-gradient-via: var(--gm-lavender-800) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-800 { --gm-gradient-to: var(--gm-lavender-800) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-900 { --gm-gradient-from: var(--gm-lavender-900) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-900 { --gm-gradient-via: var(--gm-lavender-900) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-900 { --gm-gradient-to: var(--gm-lavender-900) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-950 { --gm-gradient-from: var(--gm-lavender-950) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-950 { --gm-gradient-via: var(--gm-lavender-950) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-950 { --gm-gradient-to: var(--gm-lavender-950) var(--gm-gradient-to-position, 100%); }
+.gm-from-lavender-975 { --gm-gradient-from: var(--gm-lavender-975) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lavender-975 { --gm-gradient-via: var(--gm-lavender-975) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lavender-975 { --gm-gradient-to: var(--gm-lavender-975) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-025 { --gm-gradient-from: var(--gm-pink-025) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-025 { --gm-gradient-via: var(--gm-pink-025) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-025 { --gm-gradient-to: var(--gm-pink-025) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-050 { --gm-gradient-from: var(--gm-pink-050) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-050 { --gm-gradient-via: var(--gm-pink-050) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-050 { --gm-gradient-to: var(--gm-pink-050) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-100 { --gm-gradient-from: var(--gm-pink-100) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-100 { --gm-gradient-via: var(--gm-pink-100) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-100 { --gm-gradient-to: var(--gm-pink-100) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-200 { --gm-gradient-from: var(--gm-pink-200) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-200 { --gm-gradient-via: var(--gm-pink-200) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-200 { --gm-gradient-to: var(--gm-pink-200) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-300 { --gm-gradient-from: var(--gm-pink-300) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-300 { --gm-gradient-via: var(--gm-pink-300) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-300 { --gm-gradient-to: var(--gm-pink-300) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-400 { --gm-gradient-from: var(--gm-pink-400) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-400 { --gm-gradient-via: var(--gm-pink-400) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-400 { --gm-gradient-to: var(--gm-pink-400) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-500 { --gm-gradient-from: var(--gm-pink-500) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-500 { --gm-gradient-via: var(--gm-pink-500) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-500 { --gm-gradient-to: var(--gm-pink-500) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-600 { --gm-gradient-from: var(--gm-pink-600) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-600 { --gm-gradient-via: var(--gm-pink-600) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-600 { --gm-gradient-to: var(--gm-pink-600) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-700 { --gm-gradient-from: var(--gm-pink-700) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-700 { --gm-gradient-via: var(--gm-pink-700) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-700 { --gm-gradient-to: var(--gm-pink-700) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-800 { --gm-gradient-from: var(--gm-pink-800) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-800 { --gm-gradient-via: var(--gm-pink-800) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-800 { --gm-gradient-to: var(--gm-pink-800) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-900 { --gm-gradient-from: var(--gm-pink-900) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-900 { --gm-gradient-via: var(--gm-pink-900) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-900 { --gm-gradient-to: var(--gm-pink-900) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-950 { --gm-gradient-from: var(--gm-pink-950) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-950 { --gm-gradient-via: var(--gm-pink-950) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-950 { --gm-gradient-to: var(--gm-pink-950) var(--gm-gradient-to-position, 100%); }
+.gm-from-pink-975 { --gm-gradient-from: var(--gm-pink-975) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-pink-975 { --gm-gradient-via: var(--gm-pink-975) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-pink-975 { --gm-gradient-to: var(--gm-pink-975) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-025 { --gm-gradient-from: var(--gm-peach-025) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-025 { --gm-gradient-via: var(--gm-peach-025) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-025 { --gm-gradient-to: var(--gm-peach-025) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-050 { --gm-gradient-from: var(--gm-peach-050) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-050 { --gm-gradient-via: var(--gm-peach-050) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-050 { --gm-gradient-to: var(--gm-peach-050) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-100 { --gm-gradient-from: var(--gm-peach-100) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-100 { --gm-gradient-via: var(--gm-peach-100) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-100 { --gm-gradient-to: var(--gm-peach-100) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-200 { --gm-gradient-from: var(--gm-peach-200) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-200 { --gm-gradient-via: var(--gm-peach-200) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-200 { --gm-gradient-to: var(--gm-peach-200) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-300 { --gm-gradient-from: var(--gm-peach-300) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-300 { --gm-gradient-via: var(--gm-peach-300) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-300 { --gm-gradient-to: var(--gm-peach-300) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-400 { --gm-gradient-from: var(--gm-peach-400) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-400 { --gm-gradient-via: var(--gm-peach-400) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-400 { --gm-gradient-to: var(--gm-peach-400) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-500 { --gm-gradient-from: var(--gm-peach-500) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-500 { --gm-gradient-via: var(--gm-peach-500) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-500 { --gm-gradient-to: var(--gm-peach-500) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-600 { --gm-gradient-from: var(--gm-peach-600) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-600 { --gm-gradient-via: var(--gm-peach-600) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-600 { --gm-gradient-to: var(--gm-peach-600) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-700 { --gm-gradient-from: var(--gm-peach-700) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-700 { --gm-gradient-via: var(--gm-peach-700) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-700 { --gm-gradient-to: var(--gm-peach-700) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-800 { --gm-gradient-from: var(--gm-peach-800) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-800 { --gm-gradient-via: var(--gm-peach-800) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-800 { --gm-gradient-to: var(--gm-peach-800) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-900 { --gm-gradient-from: var(--gm-peach-900) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-900 { --gm-gradient-via: var(--gm-peach-900) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-900 { --gm-gradient-to: var(--gm-peach-900) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-950 { --gm-gradient-from: var(--gm-peach-950) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-950 { --gm-gradient-via: var(--gm-peach-950) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-950 { --gm-gradient-to: var(--gm-peach-950) var(--gm-gradient-to-position, 100%); }
+.gm-from-peach-975 { --gm-gradient-from: var(--gm-peach-975) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-peach-975 { --gm-gradient-via: var(--gm-peach-975) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-peach-975 { --gm-gradient-to: var(--gm-peach-975) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-025 { --gm-gradient-from: var(--gm-lemon-025) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-025 { --gm-gradient-via: var(--gm-lemon-025) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-025 { --gm-gradient-to: var(--gm-lemon-025) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-050 { --gm-gradient-from: var(--gm-lemon-050) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-050 { --gm-gradient-via: var(--gm-lemon-050) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-050 { --gm-gradient-to: var(--gm-lemon-050) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-100 { --gm-gradient-from: var(--gm-lemon-100) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-100 { --gm-gradient-via: var(--gm-lemon-100) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-100 { --gm-gradient-to: var(--gm-lemon-100) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-200 { --gm-gradient-from: var(--gm-lemon-200) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-200 { --gm-gradient-via: var(--gm-lemon-200) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-200 { --gm-gradient-to: var(--gm-lemon-200) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-300 { --gm-gradient-from: var(--gm-lemon-300) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-300 { --gm-gradient-via: var(--gm-lemon-300) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-300 { --gm-gradient-to: var(--gm-lemon-300) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-400 { --gm-gradient-from: var(--gm-lemon-400) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-400 { --gm-gradient-via: var(--gm-lemon-400) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-400 { --gm-gradient-to: var(--gm-lemon-400) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-500 { --gm-gradient-from: var(--gm-lemon-500) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-500 { --gm-gradient-via: var(--gm-lemon-500) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-500 { --gm-gradient-to: var(--gm-lemon-500) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-600 { --gm-gradient-from: var(--gm-lemon-600) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-600 { --gm-gradient-via: var(--gm-lemon-600) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-600 { --gm-gradient-to: var(--gm-lemon-600) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-700 { --gm-gradient-from: var(--gm-lemon-700) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-700 { --gm-gradient-via: var(--gm-lemon-700) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-700 { --gm-gradient-to: var(--gm-lemon-700) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-800 { --gm-gradient-from: var(--gm-lemon-800) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-800 { --gm-gradient-via: var(--gm-lemon-800) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-800 { --gm-gradient-to: var(--gm-lemon-800) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-900 { --gm-gradient-from: var(--gm-lemon-900) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-900 { --gm-gradient-via: var(--gm-lemon-900) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-900 { --gm-gradient-to: var(--gm-lemon-900) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-950 { --gm-gradient-from: var(--gm-lemon-950) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-950 { --gm-gradient-via: var(--gm-lemon-950) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-950 { --gm-gradient-to: var(--gm-lemon-950) var(--gm-gradient-to-position, 100%); }
+.gm-from-lemon-975 { --gm-gradient-from: var(--gm-lemon-975) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-lemon-975 { --gm-gradient-via: var(--gm-lemon-975) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-lemon-975 { --gm-gradient-to: var(--gm-lemon-975) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-025 { --gm-gradient-from: var(--gm-mint-025) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-025 { --gm-gradient-via: var(--gm-mint-025) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-025 { --gm-gradient-to: var(--gm-mint-025) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-050 { --gm-gradient-from: var(--gm-mint-050) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-050 { --gm-gradient-via: var(--gm-mint-050) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-050 { --gm-gradient-to: var(--gm-mint-050) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-100 { --gm-gradient-from: var(--gm-mint-100) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-100 { --gm-gradient-via: var(--gm-mint-100) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-100 { --gm-gradient-to: var(--gm-mint-100) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-200 { --gm-gradient-from: var(--gm-mint-200) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-200 { --gm-gradient-via: var(--gm-mint-200) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-200 { --gm-gradient-to: var(--gm-mint-200) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-300 { --gm-gradient-from: var(--gm-mint-300) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-300 { --gm-gradient-via: var(--gm-mint-300) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-300 { --gm-gradient-to: var(--gm-mint-300) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-400 { --gm-gradient-from: var(--gm-mint-400) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-400 { --gm-gradient-via: var(--gm-mint-400) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-400 { --gm-gradient-to: var(--gm-mint-400) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-500 { --gm-gradient-from: var(--gm-mint-500) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-500 { --gm-gradient-via: var(--gm-mint-500) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-500 { --gm-gradient-to: var(--gm-mint-500) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-600 { --gm-gradient-from: var(--gm-mint-600) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-600 { --gm-gradient-via: var(--gm-mint-600) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-600 { --gm-gradient-to: var(--gm-mint-600) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-700 { --gm-gradient-from: var(--gm-mint-700) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-700 { --gm-gradient-via: var(--gm-mint-700) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-700 { --gm-gradient-to: var(--gm-mint-700) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-800 { --gm-gradient-from: var(--gm-mint-800) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-800 { --gm-gradient-via: var(--gm-mint-800) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-800 { --gm-gradient-to: var(--gm-mint-800) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-900 { --gm-gradient-from: var(--gm-mint-900) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-900 { --gm-gradient-via: var(--gm-mint-900) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-900 { --gm-gradient-to: var(--gm-mint-900) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-950 { --gm-gradient-from: var(--gm-mint-950) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-950 { --gm-gradient-via: var(--gm-mint-950) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-950 { --gm-gradient-to: var(--gm-mint-950) var(--gm-gradient-to-position, 100%); }
+.gm-from-mint-975 { --gm-gradient-from: var(--gm-mint-975) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-mint-975 { --gm-gradient-via: var(--gm-mint-975) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-mint-975 { --gm-gradient-to: var(--gm-mint-975) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-025 { --gm-gradient-from: var(--gm-coral-025) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-025 { --gm-gradient-via: var(--gm-coral-025) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-025 { --gm-gradient-to: var(--gm-coral-025) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-050 { --gm-gradient-from: var(--gm-coral-050) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-050 { --gm-gradient-via: var(--gm-coral-050) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-050 { --gm-gradient-to: var(--gm-coral-050) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-100 { --gm-gradient-from: var(--gm-coral-100) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-100 { --gm-gradient-via: var(--gm-coral-100) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-100 { --gm-gradient-to: var(--gm-coral-100) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-200 { --gm-gradient-from: var(--gm-coral-200) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-200 { --gm-gradient-via: var(--gm-coral-200) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-200 { --gm-gradient-to: var(--gm-coral-200) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-300 { --gm-gradient-from: var(--gm-coral-300) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-300 { --gm-gradient-via: var(--gm-coral-300) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-300 { --gm-gradient-to: var(--gm-coral-300) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-400 { --gm-gradient-from: var(--gm-coral-400) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-400 { --gm-gradient-via: var(--gm-coral-400) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-400 { --gm-gradient-to: var(--gm-coral-400) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-500 { --gm-gradient-from: var(--gm-coral-500) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-500 { --gm-gradient-via: var(--gm-coral-500) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-500 { --gm-gradient-to: var(--gm-coral-500) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-600 { --gm-gradient-from: var(--gm-coral-600) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-600 { --gm-gradient-via: var(--gm-coral-600) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-600 { --gm-gradient-to: var(--gm-coral-600) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-700 { --gm-gradient-from: var(--gm-coral-700) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-700 { --gm-gradient-via: var(--gm-coral-700) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-700 { --gm-gradient-to: var(--gm-coral-700) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-800 { --gm-gradient-from: var(--gm-coral-800) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-800 { --gm-gradient-via: var(--gm-coral-800) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-800 { --gm-gradient-to: var(--gm-coral-800) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-900 { --gm-gradient-from: var(--gm-coral-900) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-900 { --gm-gradient-via: var(--gm-coral-900) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-900 { --gm-gradient-to: var(--gm-coral-900) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-950 { --gm-gradient-from: var(--gm-coral-950) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-950 { --gm-gradient-via: var(--gm-coral-950) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-950 { --gm-gradient-to: var(--gm-coral-950) var(--gm-gradient-to-position, 100%); }
+.gm-from-coral-975 { --gm-gradient-from: var(--gm-coral-975) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-coral-975 { --gm-gradient-via: var(--gm-coral-975) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-coral-975 { --gm-gradient-to: var(--gm-coral-975) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-025 { --gm-gradient-from: var(--gm-gray-025) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-025 { --gm-gradient-via: var(--gm-gray-025) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-025 { --gm-gradient-to: var(--gm-gray-025) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-050 { --gm-gradient-from: var(--gm-gray-050) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-050 { --gm-gradient-via: var(--gm-gray-050) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-050 { --gm-gradient-to: var(--gm-gray-050) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-100 { --gm-gradient-from: var(--gm-gray-100) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-100 { --gm-gradient-via: var(--gm-gray-100) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-100 { --gm-gradient-to: var(--gm-gray-100) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-200 { --gm-gradient-from: var(--gm-gray-200) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-200 { --gm-gradient-via: var(--gm-gray-200) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-200 { --gm-gradient-to: var(--gm-gray-200) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-300 { --gm-gradient-from: var(--gm-gray-300) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-300 { --gm-gradient-via: var(--gm-gray-300) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-300 { --gm-gradient-to: var(--gm-gray-300) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-400 { --gm-gradient-from: var(--gm-gray-400) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-400 { --gm-gradient-via: var(--gm-gray-400) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-400 { --gm-gradient-to: var(--gm-gray-400) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-500 { --gm-gradient-from: var(--gm-gray-500) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-500 { --gm-gradient-via: var(--gm-gray-500) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-500 { --gm-gradient-to: var(--gm-gray-500) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-600 { --gm-gradient-from: var(--gm-gray-600) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-600 { --gm-gradient-via: var(--gm-gray-600) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-600 { --gm-gradient-to: var(--gm-gray-600) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-700 { --gm-gradient-from: var(--gm-gray-700) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-700 { --gm-gradient-via: var(--gm-gray-700) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-700 { --gm-gradient-to: var(--gm-gray-700) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-800 { --gm-gradient-from: var(--gm-gray-800) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-800 { --gm-gradient-via: var(--gm-gray-800) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-800 { --gm-gradient-to: var(--gm-gray-800) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-900 { --gm-gradient-from: var(--gm-gray-900) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-900 { --gm-gradient-via: var(--gm-gray-900) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-900 { --gm-gradient-to: var(--gm-gray-900) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-950 { --gm-gradient-from: var(--gm-gray-950) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-950 { --gm-gradient-via: var(--gm-gray-950) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-950 { --gm-gradient-to: var(--gm-gray-950) var(--gm-gradient-to-position, 100%); }
+.gm-from-gray-975 { --gm-gradient-from: var(--gm-gray-975) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-to, transparent 100%); }
+.gm-via-gray-975 { --gm-gradient-via: var(--gm-gray-975) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: var(--gm-gradient-from, transparent 0%), var(--gm-gradient-via), var(--gm-gradient-to, transparent 100%); }
+.gm-to-gray-975 { --gm-gradient-to: var(--gm-gray-975) var(--gm-gradient-to-position, 100%); }
 .gm-from-0\% { --gm-gradient-from-position: 0%; }
 .gm-via-0\% { --gm-gradient-via-position: 0%; }
 .gm-to-0\% { --gm-gradient-to-position: 0%; }

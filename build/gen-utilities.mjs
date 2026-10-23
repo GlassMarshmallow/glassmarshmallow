@@ -23,6 +23,8 @@ const TEXT_SIZES = { xs: '.75rem', sm: '.875rem', base: '1rem', lg: '1.125rem', 
 
 /** Colores con los que se construye (degradados, bordes, anillos): la paleta y los de la página */
 const PALETTE = ['sky', 'blue', 'lavender', 'pink', 'peach', 'lemon', 'mint', 'coral'];
+// Los tonos de cada color de la paleta (--gm-sky-025 … --gm-sky-975, en theme.css)
+const TONES = ['025', '050', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950', '975'];
 const BUILD_COLORS = {
   ...Object.fromEntries(PALETTE.map((c) => [c, `var(--gm-${c})`])),
   white: 'var(--gm-white)', black: 'var(--gm-black)', transparent: 'transparent', current: 'currentColor',
@@ -216,6 +218,16 @@ function fixed() {
   for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`from-${name}`, `--gm-gradient-from: ${value} var(--gm-gradient-from-position, 0%); --gm-gradient-stops: ${STOPS2};`));
   for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`via-${name}`, `--gm-gradient-via: ${value} var(--gm-gradient-via-position, 50%); --gm-gradient-stops: ${STOPS3};`));
   for (const [name, value] of Object.entries(BUILD_COLORS)) out.push(rule(`to-${name}`, `--gm-gradient-to: ${value} var(--gm-gradient-to-position, 100%);`));
+  // Los tonos de la paleta (gm-from-sky-400, gm-via-peach-300, gm-to-gray-900…), como en Tailwind
+  for (const c of [...PALETTE, 'gray']) {
+    for (const t of TONES) {
+      out.push(
+        rule(`from-${c}-${t}`, `--gm-gradient-from: var(--gm-${c}-${t}) var(--gm-gradient-from-position, 0%); --gm-gradient-stops: ${STOPS2};`),
+        rule(`via-${c}-${t}`, `--gm-gradient-via: var(--gm-${c}-${t}) var(--gm-gradient-via-position, 50%); --gm-gradient-stops: ${STOPS3};`),
+        rule(`to-${c}-${t}`, `--gm-gradient-to: var(--gm-${c}-${t}) var(--gm-gradient-to-position, 100%);`),
+      );
+    }
+  }
   for (const pos of [0, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100]) {
     for (const stop of ['from', 'via', 'to']) out.push(rule(`${stop}-${pos}\\%`, `--gm-gradient-${stop}-position: ${pos}%;`));
   }

@@ -26,6 +26,30 @@ The colors are the palette ones (`sky`, `blue`, `lavender`, `pink`, `peach`, `le
 <div class="gm-bg-linear-to-r gm-from-sky gm-via-pink gm-to-mint gm-rounded-md gm-p-8"></div>
 ```
 
+## Tones
+
+Each palette color also has its tones, from `025` (the lightest) to `975` (the darkest), as in Tailwind: `gm-from-sky-400`, `gm-via-peach-300`, `gm-to-gray-900`… They are the same ones as the variables (`--gm-sky-400`), and `gray` has them too.
+
+```html
+<div class="gm-bg-linear-to-r gm-from-sky-400 gm-via-pink-400 gm-to-lavender-400 gm-rounded-md gm-p-8"></div>
+```
+
+## Gradient text
+
+With `gm-bg-clip-text` the gradient only paints the letters. Use it on large titles and check the contrast of each color.
+
+```html
+<p class="gm-bg-linear-to-r gm-from-sky-600 gm-to-lavender-700 gm-bg-clip-text gm-text-3xl gm-font-bold">Sara Paez Yamuza</p>
+```
+
+## More than three colors
+
+Like in Tailwind, the classes take up to three colors (start, middle and end). For more, write the whole gradient with an [arbitrary value](/docs/utilities/arbitrary):
+
+```html-code
+<span class="gm-bg-[linear-gradient(90deg,var(--gm-sky-400),var(--gm-peach-400),var(--gm-pink-400),var(--gm-lavender-400))] gm-bg-clip-text">Sara</span>
+```
+
 ## Where each color starts and ends
 
 `gm-from-25%`, `gm-via-60%`, `gm-to-75%`…: from 0 to 100 in steps of 10 (plus 25 and 75); any other one in brackets, with an [arbitrary value](/docs/utilities/arbitrary): `gm-from-[12.5%]`. Before `gm-from-25%`, everything is the first color; after `gm-to-75%`, everything is the last.
