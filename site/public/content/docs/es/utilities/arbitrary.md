@@ -82,9 +82,11 @@ Delante de la utilidad, una o varias variantes con `:` dicen **cuándo** se apli
 | `gm-dark:` / `gm-light:` | en modo oscuro / claro (`data-theme`) |
 | `gm-group-hover:` / `gm-group-focus-within:` | cuando se pasa el ratón o se enfoca el antepasado con la clase `gm-group` |
 | `gm-motion-safe:` / `gm-motion-reduce:` | si la persona no ha pedido menos movimiento / si lo ha pedido |
+| `gm-min-[…]:` / `gm-max-[…]:` / `gm-min-h-[…]:` / `gm-max-h-[…]:` | desde un ancho de pantalla / hasta un ancho / desde un alto / hasta un alto (tus propios puntos de corte) |
 
 - Se pueden combinar: `gm-dark:hover:bg-[…]` (en modo oscuro, al pasar el ratón).
 - Con un punto de corte, el punto de corte va primero: `gm-md-hover:translate-[0_-1px]`.
+- Para un punto de corte que el framework no tiene, como en Tailwind: `gm-max-[47.9375rem]:px-[.5rem]` (hasta 767 px), `gm-min-[48rem]:mt-[.25rem]` (desde 768 px). Se pueden juntar: `gm-max-[47.9375rem]:max-h-[47.5rem]:pt-[4rem]` (pantallas estrechas y bajas).
 - `gm-before:` y `gm-after:` ya dibujan la capa; su texto se pone con `gm-before:content-[…]` (sin comillas: el programa las pone).
 - Los movimientos al pasar el ratón, mejor con `gm-motion-safe:` para respetar a quien pide menos movimiento.
 

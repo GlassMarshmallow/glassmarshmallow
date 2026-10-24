@@ -82,9 +82,11 @@ Before the utility, one or more variants with `:` say **when** the class applies
 | `gm-dark:` / `gm-light:` | in dark / light mode (`data-theme`) |
 | `gm-group-hover:` / `gm-group-focus-within:` | when the ancestor with the `gm-group` class is hovered or focused |
 | `gm-motion-safe:` / `gm-motion-reduce:` | if the person has not asked for less motion / if they have |
+| `gm-min-[…]:` / `gm-max-[…]:` / `gm-min-h-[…]:` / `gm-max-h-[…]:` | from a screen width / up to a width / from a height / up to a height (your own breakpoints) |
 
 - They can be combined: `gm-dark:hover:bg-[…]` (in dark mode, on hover).
 - With a breakpoint, the breakpoint goes first: `gm-md-hover:translate-[0_-1px]`.
+- For a breakpoint the framework does not have, like in Tailwind: `gm-max-[47.9375rem]:px-[.5rem]` (up to 767 px), `gm-min-[48rem]:mt-[.25rem]` (from 768 px). They can be combined: `gm-max-[47.9375rem]:max-h-[47.5rem]:pt-[4rem]` (narrow and short screens).
 - `gm-before:` and `gm-after:` already draw the layer; its text is set with `gm-before:content-[…]` (no quotes: the program adds them).
 - Hover movements are better with `gm-motion-safe:`, to respect people who ask for less motion.
 

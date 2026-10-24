@@ -37,7 +37,7 @@ The round button with the pause icon (`.gm-ticker__pause`) goes at the end of th
 </script>
 ```
 
-It also stops on its own on hover or with focus inside, and it does not move if the person asks for reduced motion.
+It also stops on its own on hover (on devices with a mouse) or with keyboard focus inside, and it does not move if the person asks for reduced motion. A click or a tap does not leave it stopped.
 
 ## Accessibility
 

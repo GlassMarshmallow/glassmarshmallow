@@ -356,8 +356,8 @@
      <span class="gm-ticker__item"><i class="gmi gmi-code-slash"></i>Angular</span> … (dos copias seguidas)
    </div>
    <button type="button" class="gm-icon-btn gm-icon-btn--glass gm-ticker__pause" aria-pressed="false" aria-label="Pausar la franja">…</button></div>
-   Decorativa: la información tiene que estar también en otro sitio. Se para con el ratón, con el foco,
-   con .is-paused (el botón de pausa) y si la persona pide menos movimiento. --static: quieta y centrada. */
+   Decorativa: la información tiene que estar también en otro sitio. Se para con el ratón, con el foco del
+   teclado, con .is-paused (el botón de pausa) y si la persona pide menos movimiento. --static: quieta y centrada. */
 .gm-ticker {
   position: relative;
   overflow: hidden;
@@ -369,7 +369,11 @@
   backdrop-filter: blur(4px);
 }
 .gm-ticker__track { display: flex; width: max-content; animation: gm-ticker 60s linear infinite; }
-.gm-ticker:is(:hover, :focus-within, .is-paused) .gm-ticker__track { animation-play-state: paused; }
+/* Se para con el foco del teclado dentro y con el botón; al pulsar con el ratón o el dedo no se queda parada
+   (el foco que deja el clic no cuenta). Con el ratón encima solo donde hay ratón: en pantallas táctiles el toque
+   la dejaría «con el ratón encima» hasta tocar en otro sitio */
+.gm-ticker:is(:has(:focus-visible), .is-paused) .gm-ticker__track { animation-play-state: paused; }
+@media (hover: hover) { .gm-ticker:hover .gm-ticker__track { animation-play-state: paused; } }
 .gm-ticker__item { display: inline-flex; align-items: center; gap: .5rem; padding: .7rem 1.4rem; color: var(--gm-text); font-size: .95rem; font-weight: 500; white-space: nowrap; }
 .gm-ticker__item :is(svg, .gmi) { width: 1.9rem; height: 1.3rem; fill: currentColor; font-size: 1.3rem; }
 .gm-ticker--static .gm-ticker__track { width: auto; justify-content: center; animation: none; }

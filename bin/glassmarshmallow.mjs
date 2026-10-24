@@ -107,9 +107,16 @@ const VARIANTS = {
   // Si la persona ha pedido menos movimiento (o no)
   'motion-safe': { media: '(prefers-reduced-motion: no-preference)' }, 'motion-reduce': { media: '(prefers-reduced-motion: reduce)' },
 };
+// Puntos de corte a medida, como en Tailwind: gm-max-[47.9375rem]:…, gm-min-[48rem]:…, gm-max-h-[47.5rem]:…
+const SIZE_VARIANT = /^(min|max)-(h-)?\[([^\]\s:]+)\]$/;
+const variant = (name) => {
+  const size = name.match(SIZE_VARIANT);
+  return size ? { media: `(${size[1]}-${size[2] ? 'height' : 'width'}: ${size[3].replace(/_/g, ' ')})` } : VARIANTS[name];
+};
 // Los nombres más largos primero, para que «max-w» no se lea como «m»
 const NAMES = Object.keys(UTILITIES).sort((a, b) => b.length - a.length);
-const VARIANT_NAMES = Object.keys(VARIANTS).sort((a, b) => b.length - a.length).map((n) => n.replace(/-/g, '\\-')).join('|');
+const VARIANT_NAMES = ['(?:min|max)-(?:h-)?\\[[^\\]\\s:]+\\]',
+  ...Object.keys(VARIANTS).sort((a, b) => b.length - a.length).map((n) => n.replace(/-/g, '\\-'))].join('|');
 const CLASS = new RegExp(`gm-(?:(${Object.keys(BREAKPOINTS).join('|')})-)?((?:(?:${VARIANT_NAMES}):)*)(${NAMES.map((n) => n.replace(/-/g, '\\-')).join('|')})-\\[([^\\]\\s"'\`<>]+)\\]`, 'g');
 
 // gm-[propiedad:valor] (con punto de corte y variantes delante, como las demás): cualquier propiedad de CSS
@@ -163,7 +170,7 @@ function build(dirs, outFile) {
   const entries = [...found].sort(([a, x], [b, y]) => x.variants.length - y.variants.length || a.localeCompare(b));
   for (const [name, { bp, variants, util, prop, value }] of entries) {
     const props = util === '[property]' ? { [prop]: value } : UTILITIES[util](value);
-    const parts = variants.map((v) => VARIANTS[v]);
+    const parts = variants.map(variant);
     // ::before y ::after necesitan un contenido para dibujarse
     if (parts.some((p) => p.element === '::before' || p.element === '::after') && util !== 'content') props.content = 'var(--gm-content, "")';
     const body = Object.entries(props).map(([p, v]) => `${p}: ${v};`).join(' ');

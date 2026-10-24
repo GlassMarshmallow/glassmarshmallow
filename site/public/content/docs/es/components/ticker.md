@@ -37,7 +37,7 @@ El botón redondo con el icono de pausa (`.gm-ticker__pause`) va al final de la 
 </script>
 ```
 
-También se para sola al pasar el ratón o con el foco dentro, y no se mueve si la persona pide menos movimiento.
+También se para sola al pasar el ratón (donde hay ratón) o con el foco del teclado dentro, y no se mueve si la persona pide menos movimiento. Un clic o un toque no la dejan parada.
 
 ## Accesibilidad
 

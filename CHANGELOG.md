@@ -10,12 +10,16 @@ can include changes that need small updates in your code; they are listed under 
 - **Gradient tones:** `gm-from-…`, `gm-via-…` and `gm-to-…` also take the palette tones, from `025` to `975`, as in
   Tailwind (`gm-from-sky-400`, `gm-via-peach-300`, `gm-to-gray-900`). The Gradients page shows them, with gradient
   text (`gm-bg-clip-text`) and how to use more than three colors.
+- **Your own breakpoints** with `npx glassmarshmallow build`, like in Tailwind: `gm-max-[47.9375rem]:…`,
+  `gm-min-[48rem]:…`, `gm-max-h-[47.5rem]:…` and `gm-min-h-[…]:…`, also combined.
 
 ### Changed
 - **Headings of `gm-prose` and `gm-dialog`** in a single color, with no gradient on the letters: the text color in
   light mode (sky at night, as before).
 
 ### Fixed
+- **`gm-ticker`:** a click or a tap on its pause button no longer leaves it stopped (the focus left by the click
+  kept it paused). It stops with keyboard focus inside, with the button and, on devices with a mouse, on hover.
 - **Reflow at 320 px (WCAG 1.4.10):** headings, paragraphs, list items, table cells, captions and quotes break a
   word (or a long inline code) only when it does not fit, instead of making the page scroll sideways. Nothing
   changes when it fits.
