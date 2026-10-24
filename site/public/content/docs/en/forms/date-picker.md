@@ -24,6 +24,7 @@ Add `data-gm-calendar` and load the calendar script: it creates the calendar, ch
 | Chosen | `aria-pressed="true"` | Black circle in light mode, white in dark mode |
 | From another month | `.is-outside` | Gray |
 | Not available | `disabled` | Paler, and it cannot be chosen |
+| With something | `data-marked` on the calendar (`.is-marked` on the day) | An accent dot in the top right corner (pink by day, blue at night); on the chosen day, in the text color of the fill |
 
 ## Options
 
@@ -34,6 +35,8 @@ Add `data-gm-calendar` and load the calendar script: it creates the calendar, ch
 | `data-today="2026-10-17"` | Which day is «today» (by default, the date of the device) |
 | `data-locale="es"` | Language of the names (by default, the `lang` of the page) |
 | `data-min`, `data-max` | First and last day that can be chosen |
+| `data-marked="2026-10-20 2026-10-22"` | Days with something (events, reminders…): they get the dot. It can change at any time |
+| `data-marked-label="with something planned"` | What screen readers hear on those days (by default, «with something planned» or «con algo apuntado») |
 
 When a day is chosen, the calendar sends the `gm-date-change` event with the date:
 
@@ -79,6 +82,25 @@ Without the script you can write the calendar by hand: the framework gives the l
 </div>
 ```
 
+## Days with something
+
+Put the dates in `data-marked`, separated by spaces or commas. If they come from an API, listen to
+`gm-month-change`: the calendar sends it when it starts and every time the month changes, with the month and the first
+and last visible day (also those of the months around it), so you can ask only for those days.
+
+```html
+<div class="gm-calendar" data-gm-calendar data-today="2026-10-17" data-selected="2026-10-22" data-marked="2026-10-12 2026-10-20 2026-10-22 2026-10-29"></div>
+```
+
+```js
+const calendar = document.querySelector('.gm-calendar');
+calendar.addEventListener('gm-month-change', async (event) => {
+  const { from, to } = event.detail; // '2026-09-28', '2026-11-01'
+  const days = await getDaysWithSomething(from, to); // your API
+  calendar.dataset.marked = days.join(' ');
+});
+```
+
 ## Accessibility
 
 - Each day is a button with the full date in `aria-label`, so screen readers say «October 22, 2026» and not just «22».
@@ -86,3 +108,5 @@ Without the script you can write the calendar by hand: the framework gives the l
 - The month buttons have `aria-label`.
 - Days of 44 px, the size WCAG 2.5.5 (AAA) asks for, also on mobile.
 - Contrast: numbers 15:1 or more, today in blue 5:1 or more, days from other months 5:1 or more (AA).
+- The dot is not the only clue: days with something add «with something planned» (or your `data-marked-label`) to
+  their `aria-label`. The dot has 3:1 or more over the panel and over the fill of the chosen day (WCAG 1.4.11).

@@ -24,6 +24,7 @@ Añade `data-gm-calendar` y carga el script del calendario: crea el calendario, 
 | Elegido | `aria-pressed="true"` | Círculo negro en modo claro, blanco en oscuro |
 | De otro mes | `.is-outside` | En gris |
 | No disponible | `disabled` | Más claro, y no se puede elegir |
+| Con algo apuntado | `data-marked` en el calendario (`.is-marked` en el día) | Una bolita de color de acento arriba a la derecha (rosa de día, azul de noche); en el día elegido, del color del texto del relleno |
 
 ## Opciones
 
@@ -34,6 +35,8 @@ Añade `data-gm-calendar` y carga el script del calendario: crea el calendario, 
 | `data-today="2026-10-17"` | Qué día es «hoy» (por defecto, la fecha del dispositivo) |
 | `data-locale="es"` | Idioma de los nombres (por defecto, el `lang` de la página) |
 | `data-min`, `data-max` | Primer y último día que se pueden elegir |
+| `data-marked="2026-10-20 2026-10-22"` | Los días con algo (eventos, recordatorios…): llevan la bolita. Se puede cambiar cuando se quiera |
+| `data-marked-label="con algo apuntado"` | Lo que oyen los lectores de pantalla en esos días (por defecto, «con algo apuntado» o «with something planned») |
 
 Al elegir un día, el calendario lanza el evento `gm-date-change` con la fecha:
 
@@ -79,6 +82,25 @@ Sin el script puedes escribir el calendario a mano: el framework da el aspecto y
 </div>
 ```
 
+## Días con algo apuntado
+
+Pon las fechas en `data-marked`, separadas por espacios o comas. Si llegan de una API, escucha `gm-month-change`: el
+calendario lo lanza al empezar y cada vez que cambia de mes, con el mes y el primer y el último día que se ven (también
+los de los meses de al lado), para pedir solo esos días.
+
+```html
+<div class="gm-calendar" data-gm-calendar data-today="2026-10-17" data-selected="2026-10-22" data-marked="2026-10-12 2026-10-20 2026-10-22 2026-10-29"></div>
+```
+
+```js
+const calendario = document.querySelector('.gm-calendar');
+calendario.addEventListener('gm-month-change', async (event) => {
+  const { from, to } = event.detail; // '2026-09-28', '2026-11-01'
+  const dias = await diasConAlgo(from, to); // tu API
+  calendario.dataset.marked = dias.join(' ');
+});
+```
+
 ## Accesibilidad
 
 - Cada día es un botón con la fecha completa en `aria-label`, para que los lectores de pantalla digan «22 octubre 2026» y no solo «22».
@@ -86,3 +108,5 @@ Sin el script puedes escribir el calendario a mano: el framework da el aspecto y
 - Los botones del mes llevan `aria-label`.
 - Días de 44 px, el tamaño que pide WCAG 2.5.5 (AAA), también en el móvil.
 - Contraste: números de 15:1 o más, hoy en azul de 5:1 o más, días de otros meses de 5:1 o más (AA).
+- La bolita no es la única pista: los días con algo añaden «con algo apuntado» (o tu `data-marked-label`) a su
+  `aria-label`. La bolita tiene 3:1 o más sobre el panel y sobre el relleno del día elegido (WCAG 1.4.11).
