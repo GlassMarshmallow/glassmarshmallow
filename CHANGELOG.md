@@ -6,6 +6,13 @@ can include changes that need small updates in your code; they are listed under 
 
 ## [Unreleased]
 
+### Added
+- **Days with something on the calendar:** `data-marked="2026-10-26 2026-10-30"` puts an accent dot in the top right
+  corner of those days (in the text color on the selected day), and screen readers hear "with something planned"
+  (`data-marked-label` to change it). It can change at any time, for example when the data arrives from an API.
+- **`gm-month-change`:** the calendar tells which month is shown (and its first and last visible day) when it starts
+  and every time the month changes, to load the days with something.
+
 ## [0.4.0] - 2026-10-24
 
 ### Added

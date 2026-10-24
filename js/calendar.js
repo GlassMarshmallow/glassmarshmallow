@@ -9,7 +9,11 @@
  *   data-today="2026-10-17"     «hoy» (por defecto, la fecha del dispositivo)
  *   data-locale="es"            idioma de los nombres (por defecto, el lang de la página)
  *   data-min / data-max         primer y último día que se pueden elegir
+ *   data-marked="2026-10-26 2026-10-30"  días con algo (bolita); se puede cambiar cuando se quiera
+ *   data-marked-label="con algo apuntado"  lo que oyen los lectores de pantalla en esos días
  * Al elegir un día, el calendario lanza el evento «gm-date-change» con { date: 'AAAA-MM-DD' } en detail.
+ * Al empezar y al cambiar de mes, lanza «gm-month-change» con { month: 'AAAA-MM', from, to } (from y to: el primer y
+ * el último día que se ven, también los de los meses de al lado), para pedir los días con algo de ese mes.
  *
  * Teclado: flechas (día y semana), Inicio/Fin (principio y final de la semana), Re Pág/Av Pág (mes) e
  * Intro/Espacio (elegir).
@@ -51,6 +55,9 @@ export function initCalendar(root) {
   const monday = new Date(2024, 0, 1);
   const days = Array.from({ length: 7 }, (_, i) => addDays(monday, i));
   const out = (d) => (min && d < min) || (max && d > max);
+  const marked = () => new Set((root.dataset.marked || '').split(/[\s,]+/).filter(Boolean));
+  const markedLabel = () => root.dataset.markedLabel || (es ? 'con algo apuntado' : 'with something planned');
+  let shownMonth = '';
 
   root.setAttribute('role', 'group');
   root.setAttribute('aria-labelledby', `${id}-title`);
@@ -66,6 +73,7 @@ export function initCalendar(root) {
       if (d.getMonth() !== focus.getMonth() && w >= 3) break;
     }
     const title = monthName.format(first);
+    const withSomething = marked();
     root.innerHTML = `
       <div class="gm-calendar__header">
         <h3 class="gm-calendar__title" id="${id}-title" aria-live="polite">${esc(title.charAt(0).toUpperCase() + title.slice(1))} <span>${first.getFullYear()}</span></h3>
@@ -83,16 +91,17 @@ export function initCalendar(root) {
             (row) =>
               `<tr>${row
                 .map((d) => {
+                  const isMarked = withSomething.has(iso(d));
                   const attrs = [
                     `data-date="${iso(d)}"`,
-                    `aria-label="${esc(dayName.format(d))}"`,
+                    `aria-label="${esc(isMarked ? `${dayName.format(d)}, ${markedLabel()}` : dayName.format(d))}"`,
                     `tabindex="${iso(d) === iso(focus) ? 0 : -1}"`,
                   ];
                   if (iso(d) === iso(today)) attrs.push('aria-current="date"');
                   if (selected && iso(d) === iso(selected)) attrs.push('aria-pressed="true"');
                   else attrs.push('aria-pressed="false"');
                   if (out(d)) attrs.push('disabled');
-                  const cls = `gm-calendar__day${d.getMonth() !== focus.getMonth() ? ' is-outside' : ''}`;
+                  const cls = `gm-calendar__day${d.getMonth() !== focus.getMonth() ? ' is-outside' : ''}${isMarked ? ' is-marked' : ''}`;
                   return `<td><button type="button" class="${cls}" ${attrs.join(' ')}>${d.getDate()}</button></td>`;
                 })
                 .join('')}</tr>`,
@@ -100,6 +109,12 @@ export function initCalendar(root) {
           .join('')}</tbody>
       </table>`;
     if (keepFocus) root.querySelector(`[data-date="${iso(focus)}"]`)?.focus();
+    const month = iso(first).slice(0, 7);
+    if (month !== shownMonth) {
+      shownMonth = month;
+      const last = weeks[weeks.length - 1][6];
+      root.dispatchEvent(new CustomEvent('gm-month-change', { bubbles: true, detail: { month, from: iso(start), to: iso(last) } }));
+    }
   }
 
   function choose(d) {
@@ -145,8 +160,17 @@ export function initCalendar(root) {
 
   root.addEventListener('click', onClick);
   root.addEventListener('keydown', onKeydown);
+  // Los días con algo pueden llegar después (por ejemplo, de una API): al cambiar data-marked se vuelve a pintar
+  const observer = new MutationObserver(() => {
+    // El foco se queda en el día en el que estaba
+    const day = document.activeElement?.closest?.('[data-date]');
+    if (day && root.contains(day)) focus = parse(day.dataset.date);
+    render(root.contains(document.activeElement));
+  });
+  observer.observe(root, { attributes: true, attributeFilter: ['data-marked', 'data-marked-label'] });
   render(false);
   root.gmCalendar = () => {
+    observer.disconnect();
     root.removeEventListener('click', onClick);
     root.removeEventListener('keydown', onKeydown);
     delete root.gmCalendar;

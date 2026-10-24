@@ -149,7 +149,8 @@
 /* --- Calendario ---------------------------------------------------------------
    Panel de cristal, mes en grande, días en círculos de 44 px, hoy en azul de
    enlace y el día elegido relleno (negro en claro, blanco en oscuro). Los días de otros meses, en gris.
-   Hoy: aria-current="date". Elegido: aria-pressed="true". */
+   Hoy: aria-current="date". Elegido: aria-pressed="true". Con algo apuntado: .is-marked (bolita de color de acento
+   arriba a la derecha, elegida por Sara; en el día elegido, del color del texto para que se vea sobre el relleno). */
 .gm-calendar {
   display: grid;
   width: max-content;
@@ -206,6 +207,21 @@
 .gm-calendar__day[aria-current="date"] { color: var(--gm-link); font-weight: 700; }
 .gm-calendar__day[aria-pressed="true"] { color: var(--gm-on-primary); background: var(--gm-primary); font-weight: 700; }
 .gm-calendar__day:disabled { color: var(--gm-muted); opacity: .45; cursor: default; }
+/* Día con algo apuntado: bolita de acento (rosa de día y azul de noche, 3:1 o más sobre el panel, WCAG 1.4.11) */
+.gm-calendar__day.is-marked::before {
+  position: absolute;
+  top: .3rem;
+  right: .3rem;
+  width: .4rem;
+  height: .4rem;
+  border-radius: 50%;
+  background: var(--gm-accent);
+  content: "";
+}
+.gm-calendar__day.is-marked[aria-pressed="true"]::before { background: var(--gm-on-primary); }
+@media (forced-colors: active) {
+  .gm-calendar__day.is-marked::before { background: CanvasText; }
+}
 /* Móvil: los días sin separación para que quepan con sus 44 px (WCAG 2.5.5) */
 @media (max-width: 30rem) {
   .gm-calendar__grid td { padding: 0; }
@@ -216,6 +232,7 @@
   .gm-calendar__header { flex-wrap: wrap; }
   .gm-calendar__title { font-size: 1.1rem; }
   .gm-calendar__day { width: 2.25rem; height: 2.25rem; font-size: .95rem; }
+  .gm-calendar__day.is-marked::before { top: .2rem; right: .2rem; }
 }
 
 /* --- Selector de color --------------------------------------------------------
