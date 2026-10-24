@@ -60,6 +60,8 @@ Para una propiedad de CSS que no tiene utilidad, escríbela entera entre corchet
 
 En los fondos, una pista de tipo dice qué parte del fondo es: `gm-bg-[length:1.5rem_1.5rem]` (tamaño), `gm-bg-[position:top]` (posición); `gm-bg-[url(…)]` y los degradados son la imagen.
 
+`gm-text-[…]`, `gm-bg-[…]` y `gm-border-[…]` distinguen un color de un tamaño por su forma (`#…`, `rgb(…)`) o, con una variable del framework, por su nombre (`var(--gm-link)` es un color). Con una variable tuya, di que es un color con `color:`, como en Tailwind: `gm-text-[color:var(--mi-color)]`.
+
 ## Variantes: cuándo se aplica
 
 Delante de la utilidad, una o varias variantes con `:` dicen **cuándo** se aplica la clase, como en Tailwind. Así se escriben sin CSS los efectos al pasar el ratón, el modo oscuro, los estados y las capas `::before` / `::after`.

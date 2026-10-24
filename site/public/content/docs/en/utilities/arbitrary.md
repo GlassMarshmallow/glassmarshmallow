@@ -60,6 +60,8 @@ For a CSS property with no utility, write it whole in brackets: `gm-[property:va
 
 For backgrounds, a type hint says which part of the background it is: `gm-bg-[length:1.5rem_1.5rem]` (size), `gm-bg-[position:top]` (position); `gm-bg-[url(…)]` and gradients are the image.
 
+`gm-text-[…]`, `gm-bg-[…]` and `gm-border-[…]` tell a color from a size by its form (`#…`, `rgb(…)`) or, with a framework variable, by its name (`var(--gm-link)` is a color). With a variable of your own, say it is a color with `color:`, like in Tailwind: `gm-text-[color:var(--my-color)]`.
+
 ## Variants: when it applies
 
 Before the utility, one or more variants with `:` say **when** the class applies, like in Tailwind. This way hover effects, dark mode, states and the `::before` / `::after` layers are written without CSS.

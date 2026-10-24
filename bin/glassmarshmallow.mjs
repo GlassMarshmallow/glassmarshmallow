@@ -17,8 +17,11 @@ import { extname, join, relative, resolve } from 'node:path';
 /** Puntos de corte del framework (los mismos que las utilidades: gm-md-… desde 53,75 rem) */
 const BREAKPOINTS = { sm: '37.5rem', md: '53.75rem', lg: '68.75rem', xl: '81.25rem' };
 
-const isColor = (v) => /^(#|rgb|hsl|oklch|oklab|lab|lch|color\(|var\(--gm-[\w-]*(color|text|bg|accent|line|surface|sky|blue|lavender|pink|peach|lemon|mint|coral|gray|white|black))/.test(v)
+// Un color (y no un tamaño): por su forma o, si es una variable del framework, por su nombre. Con «color:» delante se
+// fuerza, como en Tailwind: gm-text-[color:var(--mi-color)]
+const isColor = (v) => v.startsWith('color:') || /^(#|rgb|hsl|oklch|oklab|lab|lch|color\(|var\(--gm-[\w-]*(color|text|bg|accent|line|surface|link|focus|muted|primary|danger|success|warning|info|tint|selection|sky|blue|lavender|pink|peach|lemon|mint|coral|gray|white|black))/.test(v)
   || /^(transparent|currentColor|white|black|inherit)$/i.test(v);
+const color = (v) => v.replace(/^color:/, '');
 
 const isPercent = (v) => /^-?\d*\.?\d+%$/.test(v);
 
@@ -41,7 +44,7 @@ const UTILITIES = {
   top: (v) => ({ top: v }), bottom: (v) => ({ bottom: v }),
   start: (v) => ({ 'inset-inline-start': v }), end: (v) => ({ 'inset-inline-end': v }),
   // Texto: tamaño o color según el valor (como en Tailwind)
-  text: (v) => (isColor(v) ? { color: v } : { 'font-size': v }),
+  text: (v) => (isColor(v) ? { color: color(v) } : { 'font-size': v }),
   font: (v) => ({ 'font-weight': v }),
   leading: (v) => ({ 'line-height': v }),
   tracking: (v) => ({ 'letter-spacing': v }),
@@ -50,9 +53,9 @@ const UTILITIES = {
   bg: (v) => (v.startsWith('length:') ? { 'background-size': v.slice(7) }
     : v.startsWith('position:') ? { 'background-position': v.slice(9) }
     : /^(url\(|(repeating-)?(linear|radial|conic)-gradient\()/.test(v) ? { 'background-image': v }
-    : isColor(v) ? { 'background-color': v } : { background: v }),
+    : isColor(v) ? { 'background-color': color(v) } : { background: v }),
   rounded: (v) => ({ 'border-radius': v }),
-  border: (v) => (isColor(v) ? { 'border-color': v } : { 'border-width': v, 'border-style': 'solid' }),
+  border: (v) => (isColor(v) ? { 'border-color': color(v) } : { 'border-width': v, 'border-style': 'solid' }),
   shadow: (v) => ({ 'box-shadow': v }),
   opacity: (v) => ({ opacity: v }),
   blur: (v) => ({ '-webkit-backdrop-filter': `blur(${v})`, 'backdrop-filter': `blur(${v})` }),

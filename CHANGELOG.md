@@ -12,6 +12,7 @@ can include changes that need small updates in your code; they are listed under 
   text (`gm-bg-clip-text`) and how to use more than three colors.
 - **Your own breakpoints** with `npx glassmarshmallow build`, like in Tailwind: `gm-max-[47.9375rem]:…`,
   `gm-min-[48rem]:…`, `gm-max-h-[47.5rem]:…` and `gm-min-h-[…]:…`, also combined.
+- **`--gm-prose-heading`:** the color of the `gm-prose` and `gm-dialog` headings, to change it without CSS rules.
 - **`gm-btn--soft`:** a small button with a light tint and its border (pastel peach by day, the transparent
   accent at night), for secondary actions like "Edit". Its colors are `--gm-btn-soft-*` variables.
 
@@ -20,6 +21,8 @@ can include changes that need small updates in your code; they are listed under 
   light mode (sky at night, as before).
 
 ### Fixed
+- **`npx glassmarshmallow build`:** `gm-text-[var(--gm-link)]` (and `--gm-focus`, `--gm-muted`, `--gm-primary`…) is a
+  color, not a font size. With your own variables, `gm-text-[color:var(--my-color)]`.
 - **`gm-ticker`:** a click or a tap on its pause button no longer leaves it stopped (the focus left by the click
   kept it paused). It stops with keyboard focus inside, with the button and, on devices with a mouse, on hover.
 - **Reflow at 320 px (WCAG 1.4.10):** headings, paragraphs, list items, table cells, captions and quotes break a
