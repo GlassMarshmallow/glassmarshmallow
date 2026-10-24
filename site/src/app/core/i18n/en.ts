@@ -209,6 +209,7 @@ export const en = {
       'components/tag': 'Tag',
       'components/navbar': 'Navbar',
       'components/tabbar': 'Tab bar',
+      'components/dock': 'Side bar',
       'components/menu': 'Menu',
       'components/search': 'Search',
       'components/player': 'Video player',

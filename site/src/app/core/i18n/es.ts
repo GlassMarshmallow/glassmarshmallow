@@ -210,6 +210,7 @@ export const es: Dictionary = {
       'components/tag': 'Etiqueta',
       'components/navbar': 'Barra de navegación',
       'components/tabbar': 'Barra de pestañas',
+      'components/dock': 'Barra lateral de iconos',
       'components/menu': 'Menú desplegable',
       'components/search': 'Buscador',
       'components/player': 'Reproductor de vídeo',

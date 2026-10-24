@@ -219,6 +219,82 @@
   .gm-has-tabbar { padding-bottom: calc(6rem + env(safe-area-inset-bottom)); }
 }
 
+/* --- Barra lateral de iconos (dock) ---------------------------------------------------
+   Barra de escritorio (24/10/2026): pegada al borde izquierdo y a todo el alto, como
+   el dock de Ubuntu, con el cristal de la barra de navegación. Solo iconos: el nombre sale en una burbuja al lado
+   al pasar el ratón o con el teclado, y la sección actual lleva el icono resaltado como la opción elegida de
+   gm-segmented. Con js/dock.js, los iconos crecen al pasar el ratón como en el Dock del Mac. Aparece desde
+   861 px; por debajo, la barra inferior (gm-tabbar).
+   <body class="gm-has-dock">
+   <nav class="gm-dock" aria-label="Principal" data-gm-dock>
+     <ul class="gm-dock__list">
+       <li class="gm-dock__item"><span class="gm-tooltip">
+         <a class="gm-dock__link" href="/" aria-label="Inicio" aria-describedby="dock-inicio" aria-current="page"><i class="gmi gmi-house" aria-hidden="true"></i></a>
+         <span class="gm-tooltip__bubble" role="tooltip" id="dock-inicio">Inicio</span>
+       </span></li>
+     </ul>
+     <ul class="gm-dock__list">…lo de abajo (tema, ajustes)…</ul>
+   </nav> */
+.gm-dock { display: none; }
+.gm-dock {
+  --gm-dock-width: 4.75rem;
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: calc(var(--gm-dock-width) + env(safe-area-inset-left, 0px));
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(1rem + env(safe-area-inset-top, 0px)) 0 calc(1rem + env(safe-area-inset-bottom, 0px)) env(safe-area-inset-left, 0px);
+  border-right: 1px solid var(--gm-header-border);
+  background: var(--gm-header-bg);
+  box-shadow: var(--gm-header-shadow);
+  -webkit-backdrop-filter: var(--gm-header-filter);
+  backdrop-filter: var(--gm-header-filter);
+}
+.gm-dock__list { display: flex; width: 100%; flex-direction: column; align-items: center; gap: .25rem; margin: 0; padding: 0; list-style: none; }
+/* --gm-dock-scale lo cambia js/dock.js en cada fotograma: el alto del hueco aparta a los vecinos y el icono crece
+   con transform (sin transiciones de CSS, que se reinician con cada movimiento del ratón y dan tirones) */
+.gm-dock__item { --gm-dock-scale: 1; display: flex; width: 100%; height: calc(3rem * var(--gm-dock-scale)); align-items: center; justify-content: center; }
+.gm-dock__link {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: .875rem;
+  color: var(--gm-text);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+  place-items: center;
+  transform: scale(var(--gm-dock-scale));
+  transition: background .2s, box-shadow .2s;
+  will-change: transform;
+}
+.gm-dock__link .gmi { font-size: 1.375rem; }
+.gm-dock__link:hover { color: var(--gm-text); }
+.gm-dock__link[aria-current="page"],
+.gm-dock__link.is-active {
+  background: var(--gm-surface-solid);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08), 0 1px 2px rgba(0, 0, 0, .06);
+}
+.gm-dock__link:focus-visible { outline: 2px solid var(--gm-focus); outline-offset: 2px; }
+/* La burbuja del nombre, a la derecha del icono (gm-tooltip la pone arriba por defecto) */
+.gm-dock .gm-tooltip__bubble { top: 50%; bottom: auto; left: calc(100% + .75rem); white-space: nowrap; transform: translate(-4px, -50%); }
+.gm-dock .gm-tooltip__bubble::before { top: 0; right: auto; bottom: 0; left: -.75rem; width: .75rem; height: auto; }
+.gm-dock .gm-tooltip:is(:hover, :focus-within) .gm-tooltip__bubble { transform: translate(0, -50%); }
+@media (min-width: 53.8125rem) {
+  .gm-dock { display: flex; }
+  /* Hueco a la izquierda para que la barra no tape el contenido */
+  .gm-has-dock { padding-left: calc(var(--gm-dock-width, 4.75rem) + env(safe-area-inset-left, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gm-dock__link { transition: none; transform: none; }
+}
+
 /* --- Menú desplegable ------------------------------------------------------------
    Botón que abre una lista de opciones (idioma, tema, versión…), como los de la barra de la web.
    <div class="gm-menu" data-gm-menu>
