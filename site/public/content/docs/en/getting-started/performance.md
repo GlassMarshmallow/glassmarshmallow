@@ -11,12 +11,12 @@ download is the **gzip** or **Brotli** column.
 <!-- sizes -->
 | File | As is | gzip | Brotli |
 | --- | --- | --- | --- |
-| `glassmarshmallow.min.css` | 269.4 kB | 38.3 kB | 25.9 kB |
-| `glassmarshmallow.css` | 366.8 kB | 63.7 kB | 46.1 kB |
+| `glassmarshmallow.min.css` | 269.8 kB | 38.3 kB | 26.1 kB |
+| `glassmarshmallow.css` | 367.6 kB | 63.9 kB | 46.3 kB |
 | `glassmarshmallow-core.min.css` | 188.1 kB | 24.3 kB | 14.4 kB |
 | `components/basics.min.css` | 16.7 kB | 3.9 kB | 3.4 kB |
 | `components/chat.min.css` | 6.9 kB | 2.0 kB | 1.7 kB |
-| `components/forms.min.css` | 12.8 kB | 3.0 kB | 2.6 kB |
+| `components/forms.min.css` | 13.2 kB | 3.1 kB | 2.7 kB |
 | `components/media.min.css` | 12.3 kB | 3.0 kB | 2.6 kB |
 | `components/navigation.min.css` | 20.8 kB | 4.3 kB | 3.8 kB |
 | `components/pages.min.css` | 9.7 kB | 2.6 kB | 2.2 kB |
@@ -27,7 +27,7 @@ The font file (`montserrat-latin.woff2`) is 34.7 kB; it is already compressed.
 
 | Script | As is | gzip | Brotli |
 | --- | --- | --- | --- |
-| `js/calendar.js` | 6.9 kB | 2.7 kB | 2.3 kB |
+| `js/calendar.js` | 8.6 kB | 3.2 kB | 2.8 kB |
 | `js/carousel.js` | 7.8 kB | 2.9 kB | 2.5 kB |
 | `js/color-picker.js` | 15.5 kB | 5.5 kB | 4.8 kB |
 | `js/dialog.js` | 2.5 kB | 1.1 kB | 0.9 kB |
