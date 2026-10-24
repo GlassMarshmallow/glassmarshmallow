@@ -38,6 +38,18 @@
   transition: background .2s;
 }
 .gm-btn--pill:hover:not(:disabled) { box-shadow: none; transform: none; background: var(--gm-tag-hover); }
+/* Botón suave: pequeño, con un fondo de color tenue y su borde (Editar, acciones secundarias dentro de una tarjeta) */
+.gm-btn--soft {
+  min-height: 0;
+  padding: .25rem .8rem;
+  border: 1px solid var(--gm-btn-soft-border);
+  color: var(--gm-btn-soft-text);
+  background: var(--gm-btn-soft-bg);
+  font-size: .78rem;
+  font-weight: 600;
+  transition: background-color .2s ease;
+}
+.gm-btn--soft:hover:not(:disabled) { box-shadow: none; transform: none; background: var(--gm-btn-soft-hover); }
 /* Peligro: solo sobre la píldora gris (9,6:1 de día y 9,8:1 de noche). En el botón negro no cambia nada, para que nunca quede ilegible */
 .gm-btn--pill.gm-btn--danger { color: var(--gm-btn-danger); }
 

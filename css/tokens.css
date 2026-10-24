@@ -28,6 +28,11 @@
   --gm-fill-subtle: rgba(0, 0, 0, .025);
   --gm-tag: #e8e8ed;
   --gm-tag-hover: #dcdce1;
+  /* Botón suave (gm-btn--soft): de día, melocotón pastel; de noche, el acento transparente */
+  --gm-btn-soft-bg: var(--gm-peach-100);
+  --gm-btn-soft-hover: var(--gm-peach-200);
+  --gm-btn-soft-border: var(--gm-peach-300);
+  --gm-btn-soft-text: var(--gm-peach-900);
 
   /* Campos de formulario: borde con contraste 3:1 (WCAG 2.2 AA) */
   /* Campos: relleno gris claro y borde #86868b (3,6:1); al escribir, blanco con
@@ -175,6 +180,10 @@
   --gm-fill-subtle: rgba(255, 255, 255, .04);
   --gm-tag: #2c2c2e;
   --gm-tag-hover: #3a3a3c;
+  --gm-btn-soft-bg: color-mix(in srgb, var(--gm-accent) 14%, transparent);
+  --gm-btn-soft-hover: color-mix(in srgb, var(--gm-accent) 18%, transparent);
+  --gm-btn-soft-border: color-mix(in srgb, var(--gm-accent) 50%, transparent);
+  --gm-btn-soft-text: var(--gm-accent);
 
   --gm-field-bg: #1d1d1f;
   --gm-field-bg-focus: #1d1d1f;

@@ -102,6 +102,18 @@ Put an icon before or after the text. It is decorative, so it has `aria-hidden="
 </div>
 ```
 
+## Soft
+
+`.gm-btn--soft` is a small button with a light tint and its border: pastel peach by day and the accent, transparent, at night. For secondary actions inside a card or a window, like "Edit" next to each piece of information.
+
+```html
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
+  <button type="button" class="gm-btn gm-btn--soft">Edit</button>
+</div>
+```
+
+Its colors are variables: `--gm-btn-soft-bg`, `--gm-btn-soft-hover`, `--gm-btn-soft-border` and `--gm-btn-soft-text`.
+
 ## Text
 
 `.gm-btn-text` looks like a link but is a button, for small actions inside a text.
@@ -152,6 +164,7 @@ With the `disabled` attribute the button is paler and cannot be pressed.
 | `.gm-btn--secondary`, `--ghost` | 16.6:1 / 13.9:1 | AAA |
 | `.gm-btn--pill` | 13.8:1 / 12.8:1 | AAA |
 | `.gm-btn--danger` | 9.6:1 / 9.8:1 | AAA |
+| `.gm-btn--soft` | 9.3:1 / 6.2:1 (with `gm-accent-turquoise`: 4.9:1, and 4.6:1 on hover) | AAA / AA |
 | `.gm-btn-text` | 7:1 / 7:1 | AAA |
 
 - The focus is always visible: a 2 px outline when you move with the keyboard.

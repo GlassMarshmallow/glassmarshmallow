@@ -12,6 +12,8 @@ can include changes that need small updates in your code; they are listed under 
   text (`gm-bg-clip-text`) and how to use more than three colors.
 - **Your own breakpoints** with `npx glassmarshmallow build`, like in Tailwind: `gm-max-[47.9375rem]:…`,
   `gm-min-[48rem]:…`, `gm-max-h-[47.5rem]:…` and `gm-min-h-[…]:…`, also combined.
+- **`gm-btn--soft`:** a small button with a light tint and its border (pastel peach by day, the transparent
+  accent at night), for secondary actions like "Edit". Its colors are `--gm-btn-soft-*` variables.
 
 ### Changed
 - **Headings of `gm-prose` and `gm-dialog`** in a single color, with no gradient on the letters: the text color in

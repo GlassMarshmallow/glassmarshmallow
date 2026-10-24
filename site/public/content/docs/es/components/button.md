@@ -102,6 +102,18 @@ Pon un icono antes o después del texto. Es decorativo, así que lleva `aria-hid
 </div>
 ```
 
+## Suave
+
+`.gm-btn--soft` es un botón pequeño con un color tenue y su borde: melocotón pastel de día y el acento, transparente, de noche. Para acciones secundarias dentro de una tarjeta o una ventana, como «Editar» junto a cada dato.
+
+```html
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
+  <button type="button" class="gm-btn gm-btn--soft">Editar</button>
+</div>
+```
+
+Sus colores son variables: `--gm-btn-soft-bg`, `--gm-btn-soft-hover`, `--gm-btn-soft-border` y `--gm-btn-soft-text`.
+
 ## Texto
 
 `.gm-btn-text` parece un enlace pero es un botón, para acciones pequeñas dentro de un texto.
@@ -152,6 +164,7 @@ Con el atributo `disabled` el botón se ve más claro y no se puede pulsar.
 | `.gm-btn--secondary`, `--ghost` | 16,6:1 / 13,9:1 | AAA |
 | `.gm-btn--pill` | 13,8:1 / 12,8:1 | AAA |
 | `.gm-btn--danger` | 9,6:1 / 9,8:1 | AAA |
+| `.gm-btn--soft` | 9,3:1 / 6,2:1 (con `gm-accent-turquoise`: 4,9:1, y 4,6:1 al pasar el ratón) | AAA / AA |
 | `.gm-btn-text` | 7:1 / 7:1 | AAA |
 
 - El foco siempre se ve: un contorno de 2 px al moverte con el teclado.
