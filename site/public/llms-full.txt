@@ -826,14 +826,14 @@ download is the **gzip** or **Brotli** column.
 <!-- sizes -->
 | File | As is | gzip | Brotli |
 | --- | --- | --- | --- |
-| `glassmarshmallow.min.css` | 210.5 kB | 35.0 kB | 24.5 kB |
-| `glassmarshmallow.css` | 301.9 kB | 59.6 kB | 43.9 kB |
-| `glassmarshmallow-core.min.css` | 131.4 kB | 21.5 kB | 13.1 kB |
-| `components/basics.min.css` | 16.5 kB | 3.9 kB | 3.4 kB |
+| `glassmarshmallow.min.css` | 269.4 kB | 38.3 kB | 25.9 kB |
+| `glassmarshmallow.css` | 366.8 kB | 63.7 kB | 46.1 kB |
+| `glassmarshmallow-core.min.css` | 188.1 kB | 24.3 kB | 14.4 kB |
+| `components/basics.min.css` | 16.7 kB | 3.9 kB | 3.4 kB |
 | `components/chat.min.css` | 6.9 kB | 2.0 kB | 1.7 kB |
 | `components/forms.min.css` | 12.8 kB | 3.0 kB | 2.6 kB |
-| `components/media.min.css` | 12.2 kB | 3.0 kB | 2.6 kB |
-| `components/navigation.min.css` | 18.8 kB | 4.0 kB | 3.5 kB |
+| `components/media.min.css` | 12.3 kB | 3.0 kB | 2.6 kB |
+| `components/navigation.min.css` | 20.8 kB | 4.3 kB | 3.8 kB |
 | `components/pages.min.css` | 9.7 kB | 2.6 kB | 2.2 kB |
 | `components/tools.min.css` | 4.2 kB | 1.3 kB | 1.1 kB |
 | `glassmarshmallow-font.min.css` | 0.6 kB | 0.4 kB | 0.4 kB |
@@ -846,6 +846,7 @@ The font file (`montserrat-latin.woff2`) is 34.7 kB; it is already compressed.
 | `js/carousel.js` | 7.8 kB | 2.9 kB | 2.5 kB |
 | `js/color-picker.js` | 15.5 kB | 5.5 kB | 4.8 kB |
 | `js/dialog.js` | 2.5 kB | 1.1 kB | 0.9 kB |
+| `js/dock.js` | 3.6 kB | 1.5 kB | 1.3 kB |
 | `js/fullscreen-menu.js` | 2.8 kB | 1.2 kB | 1.0 kB |
 | `js/gallery.js` | 5.0 kB | 1.9 kB | 1.6 kB |
 | `js/menu.js` | 3.6 kB | 1.4 kB | 1.2 kB |
@@ -2277,7 +2278,7 @@ Each palette color also has its tones, from `025` (the lightest) to `975` (the d
 With `gm-bg-clip-text` the gradient only paints the letters. Use it on large titles and check the contrast of each color.
 
 ```html
-<p class="gm-bg-linear-to-r gm-from-sky-600 gm-to-lavender-700 gm-bg-clip-text gm-text-3xl gm-font-bold">Hello</p>
+<p class="gm-bg-linear-to-r gm-from-sky-600 gm-to-lavender-700 gm-bg-clip-text gm-text-3xl gm-font-bold">Sara Paez Yamuza</p>
 ```
 
 ## More than three colors
@@ -2932,6 +2933,8 @@ For a CSS property with no utility, write it whole in brackets: `gm-[property:va
 
 For backgrounds, a type hint says which part of the background it is: `gm-bg-[length:1.5rem_1.5rem]` (size), `gm-bg-[position:top]` (position); `gm-bg-[url(…)]` and gradients are the image.
 
+`gm-text-[…]`, `gm-bg-[…]` and `gm-border-[…]` tell a color from a size by its form (`#…`, `rgb(…)`) or, with a framework variable, by its name (`var(--gm-link)` is a color). With a variable of your own, say it is a color with `color:`, like in Tailwind: `gm-text-[color:var(--my-color)]`.
+
 ## Variants: when it applies
 
 Before the utility, one or more variants with `:` say **when** the class applies, like in Tailwind. This way hover effects, dark mode, states and the `::before` / `::after` layers are written without CSS.
@@ -2954,9 +2957,11 @@ Before the utility, one or more variants with `:` say **when** the class applies
 | `gm-dark:` / `gm-light:` | in dark / light mode (`data-theme`) |
 | `gm-group-hover:` / `gm-group-focus-within:` | when the ancestor with the `gm-group` class is hovered or focused |
 | `gm-motion-safe:` / `gm-motion-reduce:` | if the person has not asked for less motion / if they have |
+| `gm-min-[…]:` / `gm-max-[…]:` / `gm-min-h-[…]:` / `gm-max-h-[…]:` | from a screen width / up to a width / from a height / up to a height (your own breakpoints) |
 
 - They can be combined: `gm-dark:hover:bg-[…]` (in dark mode, on hover).
 - With a breakpoint, the breakpoint goes first: `gm-md-hover:translate-[0_-1px]`.
+- For a breakpoint the framework does not have, like in Tailwind: `gm-max-[47.9375rem]:px-[.5rem]` (up to 767 px), `gm-min-[48rem]:mt-[.25rem]` (from 768 px). They can be combined: `gm-max-[47.9375rem]:max-h-[47.5rem]:pt-[4rem]` (narrow and short screens).
 - `gm-before:` and `gm-after:` already draw the layer; its text is set with `gm-before:content-[…]` (no quotes: the program adds them).
 - Hover movements are better with `gm-motion-safe:`, to respect people who ask for less motion.
 
@@ -3140,7 +3145,7 @@ With `.gm-prose` alone, the text sits on the page background.
 | --- | --- |
 | `h1` | 1.9 rem (1.5 rem on phones) |
 | `.gm-prose__updated` | The date, in small gray |
-| `h2` | 1.1 rem, colored: accent gradient by day, sky at night |
+| `h2` | 1.1 rem, a single color: the text color by day, sky at night (`--gm-prose-heading` to change it) |
 | `p`, `li` | 0.95 rem with 1.65 line height |
 | `a` | Link color, semibold and underlined |
 
@@ -4243,6 +4248,18 @@ Put an icon before or after the text. It is decorative, so it has `aria-hidden="
 </div>
 ```
 
+## Soft
+
+`.gm-btn--soft` is a small button with a light tint and its border: pastel peach by day and the accent, transparent, at night. For secondary actions inside a card or a window, like "Edit" next to each piece of information.
+
+```html
+<div class="gm-flex gm-flex-wrap gm-items-center gm-gap-3">
+  <button type="button" class="gm-btn gm-btn--soft">Edit</button>
+</div>
+```
+
+Its colors are variables: `--gm-btn-soft-bg`, `--gm-btn-soft-hover`, `--gm-btn-soft-border` and `--gm-btn-soft-text`.
+
 ## Text
 
 `.gm-btn-text` looks like a link but is a button, for small actions inside a text.
@@ -4293,6 +4310,7 @@ With the `disabled` attribute the button is paler and cannot be pressed.
 | `.gm-btn--secondary`, `--ghost` | 16.6:1 / 13.9:1 | AAA |
 | `.gm-btn--pill` | 13.8:1 / 12.8:1 | AAA |
 | `.gm-btn--danger` | 9.6:1 / 9.8:1 | AAA |
+| `.gm-btn--soft` | 9.3:1 / 6.2:1 (with `gm-accent-turquoise`: 4.9:1, and 4.6:1 on hover) | AAA / AA |
 | `.gm-btn-text` | 7:1 / 7:1 | AAA |
 
 - The focus is always visible: a 2 px outline when you move with the keyboard.
@@ -5079,6 +5097,93 @@ What does not fit in the bar goes in a panel opened with the “More” button (
 - “More” is a button with `aria-expanded` and `aria-controls`; Escape closes the panel.
 - Focused items are not hidden behind the bar (WCAG 2.4.12).
 
+<!-- /docs/components/dock -->
+# Side bar
+
+The desktop bar stuck to the left edge and as tall as the screen, like the Ubuntu dock, with the glass of the [navbar](/docs/components/navbar). It only has icons: the name of each section shows in a bubble next to it and, with its script, the icons grow on hover like in the Mac Dock. Below 861 px it is hidden and the [tab bar](/docs/components/tabbar) is used.
+
+## Example
+
+On a site it is fixed to the left (`position: fixed`); here it is shown inside the frame. Hover over it or reach it with the keyboard.
+
+```html
+<nav class="gm-dock gm-relative gm-flex" aria-label="Side bar example" data-gm-dock style="height: 26rem; inset: auto">
+  <ul class="gm-dock__list">
+    <li class="gm-dock__item"><span class="gm-tooltip">
+      <a class="gm-dock__link" href="#" aria-label="Home" aria-describedby="dock-en-home" aria-current="page"><i class="gmi gmi-house" aria-hidden="true"></i></a>
+      <span class="gm-tooltip__bubble" role="tooltip" id="dock-en-home">Home</span>
+    </span></li>
+    <li class="gm-dock__item"><span class="gm-tooltip">
+      <a class="gm-dock__link" href="#" aria-label="Assistant" aria-describedby="dock-en-assistant"><i class="gmi gmi-chat" aria-hidden="true"></i></a>
+      <span class="gm-tooltip__bubble" role="tooltip" id="dock-en-assistant">Assistant</span>
+    </span></li>
+    <li class="gm-dock__item"><span class="gm-tooltip">
+      <a class="gm-dock__link" href="#" aria-label="Calendar" aria-describedby="dock-en-calendar"><i class="gmi gmi-calendar" aria-hidden="true"></i></a>
+      <span class="gm-tooltip__bubble" role="tooltip" id="dock-en-calendar">Calendar</span>
+    </span></li>
+    <li class="gm-dock__item"><span class="gm-tooltip">
+      <a class="gm-dock__link" href="#" aria-label="Tasks" aria-describedby="dock-en-tasks"><i class="gmi gmi-check-square" aria-hidden="true"></i></a>
+      <span class="gm-tooltip__bubble" role="tooltip" id="dock-en-tasks">Tasks</span>
+    </span></li>
+    <li class="gm-dock__item"><span class="gm-tooltip">
+      <a class="gm-dock__link" href="#" aria-label="Health" aria-describedby="dock-en-health"><i class="gmi gmi-heart" aria-hidden="true"></i></a>
+      <span class="gm-tooltip__bubble" role="tooltip" id="dock-en-health">Health</span>
+    </span></li>
+  </ul>
+  <ul class="gm-dock__list">
+    <li class="gm-dock__item"><span class="gm-tooltip">
+      <a class="gm-dock__link" href="#" aria-label="Settings" aria-describedby="dock-en-settings"><i class="gmi gmi-gear" aria-hidden="true"></i></a>
+      <span class="gm-tooltip__bubble" role="tooltip" id="dock-en-settings">Settings</span>
+    </span></li>
+  </ul>
+</nav>
+```
+
+## Parts
+
+| Class | What it is |
+| --- | --- |
+| `.gm-dock` | The bar: glass, fixed to the left and as tall as the screen, from 861 px |
+| `.gm-dock__list` | A group of icons. With two, the first goes at the top and the second at the bottom (for example, light or dark mode and settings) |
+| `.gm-dock__item` | The space of each icon (it grows with the zoom and pushes the neighbours away) |
+| `.gm-dock__link` | The icon: a link (`<a>`) or a button (`<button>`). The current page has `aria-current="page"` and is highlighted like the chosen option of the [segmented control](/docs/forms/segmented) |
+| `.gm-has-dock` | On the `<body>` or the page container: leaves room for the bar on the left |
+
+The name of each icon is a [tooltip](/docs/components/tooltip) (`.gm-tooltip`), which shows on the right inside the bar.
+
+## Zoom on hover
+
+Add `data-gm-dock` to the bar and load its script:
+
+```html-code
+<script type="module">
+  import { initDocks } from 'glassmarshmallow/js/dock.js';
+  initDocks();
+</script>
+```
+
+| Attribute | What it does | Default |
+| --- | --- | --- |
+| `data-dock-max` | How much the icon under the pointer grows (`0.6` = 60 % bigger) | `0.6` |
+| `data-dock-radius` | How far the effect reaches the neighbours, in pixels | `96` |
+| `data-dock-ease` | How fast it follows the pointer, from 0 to 1 (higher, faster) | `0.22` |
+
+Without the script, the bar works the same, without the zoom.
+
+## Rules
+
+- For sites or apps with several sections on desktop. On phones, the [tab bar](/docs/components/tabbar), with 4 buttons at most.
+- Every icon with its name in the bubble: with no visible text, the name is the only thing that says what it is.
+- The main sections at the top; settings (theme, preferences) in a second list at the bottom.
+
+## Accessibility
+
+- It is a named `<nav>`. Each icon has its name in `aria-label` and the bubble is linked with `aria-describedby`.
+- The bubble also shows with the keyboard (when reached with Tab) and you can move the pointer onto it without it closing.
+- The current page is announced with `aria-current="page"` and shown by the background and shadow of the icon, not by color alone.
+- Each icon is 44 × 44 px (WCAG 2.5.5).
+- With «reduce motion» turned on, the icons do not grow.
+
 <!-- /docs/components/fullscreen-menu -->
 # Fullscreen menu
 
@@ -5741,7 +5846,7 @@ The round button with the pause icon (`.gm-ticker__pause`) goes at the end of th
 </script>
 ```
 
-It also stops on its own on hover or with focus inside, and it does not move if the person asks for reduced motion.
+It also stops on its own on hover (on devices with a mouse) or with keyboard focus inside, and it does not move if the person asks for reduced motion. A click or a tap does not leave it stopped.
 
 ## Accessibility
 

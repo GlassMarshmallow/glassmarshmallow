@@ -6,7 +6,12 @@ can include changes that need small updates in your code; they are listed under 
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-24
+
 ### Added
+- **`gm-dock`:** a side bar of icons for desktop, stuck to the left edge, with the glass of the navbar and the name
+  of each section in a tooltip. With the optional script (`js/dock.js`), the icons grow on hover like in the Mac Dock
+  (not with reduced motion). Below 861 px it is hidden and the tab bar is used.
 - **Gradient tones:** `gm-from-…`, `gm-via-…` and `gm-to-…` also take the palette tones, from `025` to `975`, as in
   Tailwind (`gm-from-sky-400`, `gm-via-peach-300`, `gm-to-gray-900`). The Gradients page shows them, with gradient
   text (`gm-bg-clip-text`) and how to use more than three colors.
@@ -149,7 +154,8 @@ can include changes that need small updates in your code; they are listed under 
 - First public version: glass surfaces, pastel palette, light and dark mode, WCAG 2.2 AA (AAA whenever
   possible), components, utilities and optional scripts with no dependencies.
 
-[Unreleased]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/GlassMarshmallow/glassmarshmallow/compare/v0.1.4...v0.2.0
